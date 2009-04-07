@@ -33,7 +33,9 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	
-	NSString *urlAddress = @"http://www.keithandthegirl.com/forums/f22";
+//	NSString *urlAddress = @"http://www.keithandthegirl.com/forums/f22";
+	NSString *urlAddress = @"http://reader.mac.com/mobile/v1/http%3A%2F%2Fwww.keithandthegirl.com%2Frss%2F";
+
 	
 	//Create a URL object.
 	NSURL *url = [NSURL URLWithString:urlAddress];
@@ -45,6 +47,10 @@
 	[webView loadRequest:requestObj];
 }
 
+- (IBAction) goBack:(id)sender
+{
+	[webView goBack];
+}
 
 /*
  // Override to allow orientations other than the default portrait orientation.

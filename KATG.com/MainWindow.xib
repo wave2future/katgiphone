@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="106"/>
+			<integer value="141"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -52,7 +52,7 @@
 				<object class="IBUIViewController" key="IBUISelectedViewController" id="1016965937">
 					<string key="IBUITitle">Meetups</string>
 					<object class="IBUITabBarItem" key="IBUITabBarItem" id="106067645">
-						<string key="IBUITitle">Meetups</string>
+						<string key="IBUITitle">Archive</string>
 						<object class="NSCustomResource" key="IBUIImage" id="972013555">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">Cal.png</string>
