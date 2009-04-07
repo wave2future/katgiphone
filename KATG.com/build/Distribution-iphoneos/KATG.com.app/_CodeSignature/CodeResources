@@ -12,9 +12,13 @@
 		<data>
 		FO8R7nr/8xkXJFJRpLDsfvP9Q84=
 		</data>
+		<key>Entitlements.plist</key>
+		<data>
+		s45CsB1sm2EFR9Z1NilFQ5hxXrI=
+		</data>
 		<key>FifthView.nib</key>
 		<data>
-		QeGfXg2jimkEYRK0lCYooV9VCDc=
+		hDNdGK1k6+WxXHBr55HeWNnJczA=
 		</data>
 		<key>FourthView.nib</key>
 		<data>
@@ -26,7 +30,7 @@
 		</data>
 		<key>MainWindow.nib</key>
 		<data>
-		LxWp2VUdLk7TZckHp0UJYG2/Ks8=
+		zcco+J8Iv4l1Gu04KbHVkzY0CZE=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -38,15 +42,15 @@
 		</data>
 		<key>SecondView.nib</key>
 		<data>
-		UnFaeA5ptID3Mlx9U+4Du2cGrzM=
+		+Q9BWp1Uh2zCB5VeBTr7KwUclXY=
 		</data>
 		<key>ThirdView.nib</key>
 		<data>
-		UnFaeA5ptID3Mlx9U+4Du2cGrzM=
+		+Q9BWp1Uh2zCB5VeBTr7KwUclXY=
 		</data>
 		<key>ToDo</key>
 		<data>
-		J8/MGh/68EioGuVhS/ETEdhydQo=
+		RMtdyJ4oovUh0Xsc1Pg3NxzCR5o=
 		</data>
 		<key>ads.html</key>
 		<data>
@@ -58,7 +62,7 @@
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
-		Yg3+9PAr91iWn0nyYeirVO5Hy9U=
+		9c7e4p5L7tX3KqOSB+2fUKscqnQ=
 		</data>
 		<key>gpl-3.0.txt</key>
 		<data>

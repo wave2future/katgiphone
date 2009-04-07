@@ -35,7 +35,7 @@
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Release;
+		activeBuildConfigurationName = Distribution;
 		activeExecutable = 536CD4410F89E5C20063DED2 /* KATG.com */;
 		activeSDKPreference = iphoneos2.1;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* KATG.com */;
@@ -68,7 +68,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					444,
+					343,
 					20,
 					48,
 					43,
@@ -85,11 +85,37 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 260757397;
-			PBXWorkspaceStateSaveDate = 260757397;
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					700,
+					60,
+					20,
+					48.16259765625,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 260769369;
+			PBXWorkspaceStateSaveDate = 260769369;
 		};
 		perUserProjectItems = {
+			530291570F8B0673004BDF01 /* PlistBookmark */ = 530291570F8B0673004BDF01 /* PlistBookmark */;
 			5324E1720F8A86280052B7CA = 5324E1720F8A86280052B7CA /* PBXTextBookmark */;
+			53335EBE0F8AF59500F4E105 = 53335EBE0F8AF59500F4E105 /* PBXTextBookmark */;
+			53335EBF0F8AF59500F4E105 = 53335EBF0F8AF59500F4E105 /* PBXTextBookmark */;
+			53335EC10F8AF59500F4E105 = 53335EC10F8AF59500F4E105 /* PBXTextBookmark */;
 			535FE5630F89F80100F6AD75 = 535FE5630F89F80100F6AD75 /* PBXBookmark */;
 			535FE5640F89F80100F6AD75 = 535FE5640F89F80100F6AD75 /* PBXBookmark */;
 			535FE5650F89F80100F6AD75 = 535FE5650F89F80100F6AD75 /* PBXBookmark */;
@@ -107,7 +133,6 @@
 			535FE61D0F89FFA200F6AD75 = 535FE61D0F89FFA200F6AD75 /* PBXTextBookmark */;
 			535FE6200F89FFA200F6AD75 = 535FE6200F89FFA200F6AD75 /* PBXTextBookmark */;
 			535FE6210F89FFA200F6AD75 = 535FE6210F89FFA200F6AD75 /* PBXTextBookmark */;
-			535FE6520F8A02CA00F6AD75 = 535FE6520F8A02CA00F6AD75 /* PBXTextBookmark */;
 			535FE6590F8A02CA00F6AD75 = 535FE6590F8A02CA00F6AD75 /* PBXTextBookmark */;
 			535FE6680F8A036E00F6AD75 = 535FE6680F8A036E00F6AD75 /* PBXTextBookmark */;
 			535FE6810F8A072D00F6AD75 = 535FE6810F8A072D00F6AD75 /* PBXTextBookmark */;
@@ -129,17 +154,30 @@
 			536CD6070F89E9270063DED2 = 536CD6070F89E9270063DED2 /* PBXTextBookmark */;
 			536CD6080F89E9270063DED2 = 536CD6080F89E9270063DED2 /* PlistBookmark */;
 			536CD60A0F89E9270063DED2 = 536CD60A0F89E9270063DED2 /* PBXTextBookmark */;
-			538604F20F8AAB9F00B39541 = 538604F20F8AAB9F00B39541 /* PlistBookmark */;
 			538604F30F8AAB9F00B39541 = 538604F30F8AAB9F00B39541 /* PBXTextBookmark */;
 			5386051D0F8ACAB900B39541 = 5386051D0F8ACAB900B39541 /* PBXTextBookmark */;
-			538605250F8ACD5400B39541 = 538605250F8ACD5400B39541 /* PBXTextBookmark */;
-			53CEDAF80F8ACE1C00500D89 = 53CEDAF80F8ACE1C00500D89 /* PBXTextBookmark */;
-			53E5B25D0F8AD07000633E45 = 53E5B25D0F8AD07000633E45 /* PBXTextBookmark */;
-			53E5B2690F8AD52700633E45 = 53E5B2690F8AD52700633E45 /* PBXTextBookmark */;
+			53DAF5440F8AFE7600D13F05 = 53DAF5440F8AFE7600D13F05 /* PBXTextBookmark */;
+			53DAF5450F8AFE7600D13F05 = 53DAF5450F8AFE7600D13F05 /* PlistBookmark */;
+			53DAF5460F8AFE7600D13F05 = 53DAF5460F8AFE7600D13F05 /* PlistBookmark */;
+			53DAF5470F8AFE7600D13F05 = 53DAF5470F8AFE7600D13F05 /* PBXTextBookmark */;
+			53DAF5480F8AFE7600D13F05 = 53DAF5480F8AFE7600D13F05 /* PlistBookmark */;
+			53DAF54F0F8B057B00D13F05 = 53DAF54F0F8B057B00D13F05 /* PlistBookmark */;
 		};
 		sourceControlManager = 536CD44D0F89E5CF0063DED2 /* Source Control */;
 		userBuildSettings = {
 		};
+	};
+	530291570F8B0673004BDF01 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 53DAF53E0F8AFE4500D13F05 /* Entitlements.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			"get-task-allow",
+		);
+		name = "/Users/hayroob/Documents/Dropbox/DEV/Objective-C/Github/katgiphone/KATG.com/Entitlements.plist";
+		rLen = 0;
+		rLoc = 2147483647;
 	};
 	5324E1720F8A86280052B7CA /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -149,6 +187,36 @@
 		rLoc = 227;
 		rType = 0;
 		vrLen = 316;
+		vrLoc = 0;
+	};
+	53335EBE0F8AF59500F4E105 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE6750F8A05BC00F6AD75 /* FifthViewController.h */;
+		name = "FifthViewController.h: 18";
+		rLen = 0;
+		rLoc = 360;
+		rType = 0;
+		vrLen = 367;
+		vrLoc = 0;
+	};
+	53335EBF0F8AF59500F4E105 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 536CD46E0F89E68A0063DED2 /* ToDo */;
+		name = "ToDo: 12";
+		rLen = 0;
+		rLoc = 232;
+		rType = 0;
+		vrLen = 232;
+		vrLoc = 0;
+	};
+	53335EC10F8AF59500F4E105 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 536CD46E0F89E68A0063DED2 /* ToDo */;
+		name = "ToDo: 12";
+		rLen = 0;
+		rLoc = 232;
+		rType = 0;
+		vrLen = 232;
 		vrLoc = 0;
 	};
 	535FE54E0F89F71800F6AD75 /* SecondViewController.h */ = {
@@ -248,7 +316,7 @@
 	};
 	535FE6130F89FF6600F6AD75 /* xmlParser.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {964, 408}}";
+			sepNavIntBoundsRect = "{{0, 0}, {918, 530}}";
 			sepNavSelRange = "{192, 0}";
 			sepNavVisRange = "{0, 236}";
 		};
@@ -296,16 +364,6 @@
 			sepNavSelRange = "{217, 1437}";
 			sepNavVisRange = "{0, 1095}";
 		};
-	};
-	535FE6520F8A02CA00F6AD75 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 535FE6130F89FF6600F6AD75 /* xmlParser.h */;
-		name = "xmlParser.h: 11";
-		rLen = 0;
-		rLoc = 192;
-		rType = 0;
-		vrLen = 236;
-		vrLoc = 0;
 	};
 	535FE6590F8A02CA00F6AD75 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -543,6 +601,13 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
+	536CD46E0F89E68A0063DED2 /* ToDo */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {918, 553}}";
+			sepNavSelRange = "{232, 0}";
+			sepNavVisRange = "{0, 232}";
+		};
+	};
 	536CD6060F89E9270063DED2 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 28216C950DB411BC00E5133A /* FirstViewController.h */;
@@ -585,18 +650,6 @@
 		vrLen = 717;
 		vrLoc = 0;
 	};
-	538604F20F8AAB9F00B39541 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-			CFBundleInfoDictionaryVersion,
-		);
-		name = "/Users/hayroob/Documents/Dropbox/DEV/Objective-C/Github/katgiphone/KATG.com/Info.plist";
-		rLen = 0;
-		rLoc = 2147483647;
-	};
 	538604F30F8AAB9F00B39541 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 28216C960DB411BC00E5133A /* FirstViewController.m */;
@@ -617,44 +670,69 @@
 		vrLen = 1139;
 		vrLoc = 680;
 	};
-	538605250F8ACD5400B39541 /* PBXTextBookmark */ = {
+	53DAF5440F8AFE7600D13F05 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 535FE6750F8A05BC00F6AD75 /* FifthViewController.h */;
-		name = "FifthViewController.h: 18";
+		fRef = 535FE6130F89FF6600F6AD75 /* xmlParser.h */;
+		name = "xmlParser.h: 11";
 		rLen = 0;
-		rLoc = 360;
+		rLoc = 192;
 		rType = 0;
-		vrLen = 367;
+		vrLen = 236;
 		vrLoc = 0;
 	};
-	53CEDAF80F8ACE1C00500D89 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 535FE6750F8A05BC00F6AD75 /* FifthViewController.h */;
-		name = "FifthViewController.h: 18";
+	53DAF5450F8AFE7600D13F05 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/hayroob/Documents/Dropbox/DEV/Objective-C/Github/katgiphone/KATG.com/Info.plist";
 		rLen = 0;
-		rLoc = 360;
+		rLoc = 2147483647;
+	};
+	53DAF5460F8AFE7600D13F05 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 53DAF53E0F8AFE4500D13F05 /* Entitlements.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/hayroob/Documents/Dropbox/DEV/Objective-C/Github/katgiphone/KATG.com/Entitlements.plist";
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	53DAF5470F8AFE7600D13F05 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE6130F89FF6600F6AD75 /* xmlParser.h */;
+		name = "xmlParser.h: 11";
+		rLen = 0;
+		rLoc = 192;
 		rType = 0;
-		vrLen = 367;
+		vrLen = 236;
 		vrLoc = 0;
 	};
-	53E5B25D0F8AD07000633E45 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 535FE6750F8A05BC00F6AD75 /* FifthViewController.h */;
-		name = "FifthViewController.h: 18";
+	53DAF5480F8AFE7600D13F05 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/hayroob/Documents/Dropbox/DEV/Objective-C/Github/katgiphone/KATG.com/Info.plist";
 		rLen = 0;
-		rLoc = 360;
-		rType = 0;
-		vrLen = 367;
-		vrLoc = 0;
+		rLoc = 2147483647;
 	};
-	53E5B2690F8AD52700633E45 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 535FE6750F8A05BC00F6AD75 /* FifthViewController.h */;
-		name = "FifthViewController.h: 18";
+	53DAF54F0F8B057B00D13F05 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 53DAF53E0F8AFE4500D13F05 /* Entitlements.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			"get-task-allow",
+		);
+		name = "/Users/hayroob/Documents/Dropbox/DEV/Objective-C/Github/katgiphone/KATG.com/Entitlements.plist";
 		rLen = 0;
-		rLoc = 360;
-		rType = 0;
-		vrLen = 367;
-		vrLoc = 0;
+		rLoc = 2147483647;
 	};
 }
