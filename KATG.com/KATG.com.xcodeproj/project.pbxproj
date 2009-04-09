@@ -26,15 +26,12 @@
 		535FE60F0F89FF1700F6AD75 /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE6020F89FF1700F6AD75 /* CXMLNode_CreationExtensions.m */; };
 		535FE6100F89FF1700F6AD75 /* CXMLNode_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE6040F89FF1700F6AD75 /* CXMLNode_PrivateExtensions.m */; };
 		535FE6110F89FF1700F6AD75 /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE6060F89FF1700F6AD75 /* CXMLNode_XPathExtensions.m */; };
-		535FE6150F89FF6600F6AD75 /* xmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE6140F89FF6600F6AD75 /* xmlParser.m */; };
 		535FE64E0F8A022B00F6AD75 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE64D0F8A022B00F6AD75 /* ThirdViewController.m */; };
 		535FE6510F8A02BB00F6AD75 /* ThirdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 535FE6500F8A02BB00F6AD75 /* ThirdView.xib */; };
 		535FE66E0F8A046900F6AD75 /* FifthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 535FE66C0F8A046900F6AD75 /* FifthView.xib */; };
 		535FE66F0F8A046900F6AD75 /* FourthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 535FE66D0F8A046900F6AD75 /* FourthView.xib */; };
 		535FE6720F8A048D00F6AD75 /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE6710F8A048D00F6AD75 /* FourthViewController.m */; };
 		535FE6770F8A05BC00F6AD75 /* FifthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE6760F8A05BC00F6AD75 /* FifthViewController.m */; };
-		535FE6EA0F8A0DF600F6AD75 /* ads.html in Resources */ = {isa = PBXBuildFile; fileRef = 535FE6E90F8A0DF600F6AD75 /* ads.html */; };
-		535FE7240F8A160100F6AD75 /* ads.png in Resources */ = {isa = PBXBuildFile; fileRef = 535FE7230F8A160100F6AD75 /* ads.png */; };
 		536CD45D0F89E6240063DED2 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 536CD45C0F89E6240063DED2 /* AudioStreamer.m */; };
 		536CD4640F89E6650063DED2 /* Cal.png in Resources */ = {isa = PBXBuildFile; fileRef = 536CD45E0F89E6650063DED2 /* Cal.png */; };
 		536CD4650F89E6650063DED2 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 536CD45F0F89E6650063DED2 /* icon.png */; };
@@ -88,8 +85,6 @@
 		535FE6050F89FF1700F6AD75 /* CXMLNode_XPathExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_XPathExtensions.h; sourceTree = "<group>"; };
 		535FE6060F89FF1700F6AD75 /* CXMLNode_XPathExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_XPathExtensions.m; sourceTree = "<group>"; };
 		535FE6070F89FF1700F6AD75 /* TouchXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchXML.h; sourceTree = "<group>"; };
-		535FE6130F89FF6600F6AD75 /* xmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xmlParser.h; sourceTree = "<group>"; };
-		535FE6140F89FF6600F6AD75 /* xmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xmlParser.m; sourceTree = "<group>"; };
 		535FE64C0F8A022B00F6AD75 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
 		535FE64D0F8A022B00F6AD75 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		535FE6500F8A02BB00F6AD75 /* ThirdView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThirdView.xib; sourceTree = "<group>"; };
@@ -99,8 +94,6 @@
 		535FE6710F8A048D00F6AD75 /* FourthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourthViewController.m; sourceTree = "<group>"; };
 		535FE6750F8A05BC00F6AD75 /* FifthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FifthViewController.h; sourceTree = "<group>"; };
 		535FE6760F8A05BC00F6AD75 /* FifthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FifthViewController.m; sourceTree = "<group>"; };
-		535FE6E90F8A0DF600F6AD75 /* ads.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ads.html; sourceTree = "<group>"; };
-		535FE7230F8A160100F6AD75 /* ads.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ads.png; sourceTree = "<group>"; };
 		536CD45B0F89E6240063DED2 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
 		536CD45C0F89E6240063DED2 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		536CD45E0F89E6650063DED2 /* Cal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cal.png; sourceTree = "<group>"; };
@@ -140,7 +133,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				535FE5F10F89FEEB00F6AD75 /* Parser */,
+				535FE5F20F89FEF300F6AD75 /* TouchXML */,
 				536CD45A0F89E5FA0063DED2 /* Controllers */,
 				536CD4590F89E5F20063DED2 /* Delegate */,
 				536CD4570F89E5EC0063DED2 /* Streamer */,
@@ -181,8 +174,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				535FE6E90F8A0DF600F6AD75 /* ads.html */,
-				535FE6DA0F8A0C2900F6AD75 /* png */,
+				535FE6DA0F8A0C2900F6AD75 /* PNG */,
 				535FE6D90F8A0C1C00F6AD75 /* XIB */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				53DAF53E0F8AFE4500D13F05 /* Entitlements.plist */,
@@ -201,16 +193,6 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		535FE5F10F89FEEB00F6AD75 /* Parser */ = {
-			isa = PBXGroup;
-			children = (
-				535FE5F20F89FEF300F6AD75 /* TouchXML */,
-				535FE6130F89FF6600F6AD75 /* xmlParser.h */,
-				535FE6140F89FF6600F6AD75 /* xmlParser.m */,
-			);
-			name = Parser;
 			sourceTree = "<group>";
 		};
 		535FE5F20F89FEF300F6AD75 /* TouchXML */ = {
@@ -253,10 +235,9 @@
 			name = XIB;
 			sourceTree = "<group>";
 		};
-		535FE6DA0F8A0C2900F6AD75 /* png */ = {
+		535FE6DA0F8A0C2900F6AD75 /* PNG */ = {
 			isa = PBXGroup;
 			children = (
-				535FE7230F8A160100F6AD75 /* ads.png */,
 				536CD45E0F89E6650063DED2 /* Cal.png */,
 				536CD45F0F89E6650063DED2 /* icon.png */,
 				536CD4600F89E6650063DED2 /* KATG.png */,
@@ -264,7 +245,7 @@
 				536CD4620F89E6650063DED2 /* playButton.png */,
 				536CD4630F89E6650063DED2 /* stopButton.png */,
 			);
-			name = png;
+			name = PNG;
 			sourceTree = "<group>";
 		};
 		536CD4570F89E5EC0063DED2 /* Streamer */ = {
@@ -370,8 +351,6 @@
 				535FE6510F8A02BB00F6AD75 /* ThirdView.xib in Resources */,
 				535FE66E0F8A046900F6AD75 /* FifthView.xib in Resources */,
 				535FE66F0F8A046900F6AD75 /* FourthView.xib in Resources */,
-				535FE6EA0F8A0DF600F6AD75 /* ads.html in Resources */,
-				535FE7240F8A160100F6AD75 /* ads.png in Resources */,
 				53DAF53F0F8AFE4500D13F05 /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,7 +377,6 @@
 				535FE60F0F89FF1700F6AD75 /* CXMLNode_CreationExtensions.m in Sources */,
 				535FE6100F89FF1700F6AD75 /* CXMLNode_PrivateExtensions.m in Sources */,
 				535FE6110F89FF1700F6AD75 /* CXMLNode_XPathExtensions.m in Sources */,
-				535FE6150F89FF6600F6AD75 /* xmlParser.m in Sources */,
 				535FE64E0F8A022B00F6AD75 /* ThirdViewController.m in Sources */,
 				535FE6720F8A048D00F6AD75 /* FourthViewController.m in Sources */,
 				535FE6770F8A05BC00F6AD75 /* FifthViewController.m in Sources */,
