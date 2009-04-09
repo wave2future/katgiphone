@@ -46,6 +46,7 @@
 		536CD4740F89E6C30063DED2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536CD4730F89E6C30063DED2 /* AudioToolbox.framework */; };
 		536CD4780F89E6F50063DED2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536CD4770F89E6F50063DED2 /* CFNetwork.framework */; };
 		536CD4EF0F89E73E0063DED2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536CD4EE0F89E73E0063DED2 /* QuartzCore.framework */; };
+		5398AC4C0F8DCABE00C3984C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5398AC4B0F8DCABE00C3984C /* Default.png */; };
 		53DAF53F0F8AFE4500D13F05 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53DAF53E0F8AFE4500D13F05 /* Entitlements.plist */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +110,7 @@
 		536CD4730F89E6C30063DED2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		536CD4770F89E6F50063DED2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		536CD4EE0F89E73E0063DED2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5398AC4B0F8DCABE00C3984C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		53DAF53E0F8AFE4500D13F05 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +176,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5398AC4B0F8DCABE00C3984C /* Default.png */,
 				535FE6DA0F8A0C2900F6AD75 /* PNG */,
 				535FE6D90F8A0C1C00F6AD75 /* XIB */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -352,6 +355,7 @@
 				535FE66E0F8A046900F6AD75 /* FifthView.xib in Resources */,
 				535FE66F0F8A046900F6AD75 /* FourthView.xib in Resources */,
 				53DAF53F0F8AFE4500D13F05 /* Entitlements.plist in Resources */,
+				5398AC4C0F8DCABE00C3984C /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,7 +428,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				OTHER_LDFLAGS = "-lxml2";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "21CB2C21-70DE-4C72-89DA-60C69FE73C04";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "79BFB5BC-BF28-4EAB-A796-15F56C9A2331";
 				SDKROOT = iphoneos2.1;
 			};
 			name = Distribution;

@@ -148,13 +148,13 @@
 }
 
 // 
--(void) grabRSSFeed:(NSString *)blogAddress {
+-(void) grabRSSFeed:(NSString *)feedAddress {
 	
-    // Initialize the blogEntries MutableArray that we declared in the header
-    blogEntries = [[NSMutableArray alloc] init];	
+    // Initialize the feedEntries MutableArray that we declared in the header
+    feedEntries = [[NSMutableArray alloc] init];	
 	
     // Convert the supplied URL string into a usable URL object
-    NSURL *url = [NSURL URLWithString: blogAddress];
+    NSURL *url = [NSURL URLWithString: feedAddress];
 	
     // Create a new rssParser object based on the TouchXML "CXMLDocument" class, this is the
     // object that actually grabs and processes the RSS data
@@ -164,13 +164,14 @@
     NSArray *resultNodes = NULL;
 	
     // Set the resultNodes Array to contain an object for every instance of an  node in our RSS feed
-    resultNodes = [rssParser nodesForXPath:@"//KATGGadget" error:nil];
-	
+    //resultNodes = [rssParser nodesForXPath:@"//KATGFeed" error:nil];
+	resultNodes = [rssParser nodesForXPath:@"//KATGGadget" error:nil];
+
     // Loop through the resultNodes to access each items actual data
     for (CXMLElement *resultElement in resultNodes) {
 		
-        // Create a temporary MutableDictionary to store the items fields in, which will eventually end up in blogEntries
-        NSMutableDictionary *blogItem = [[NSMutableDictionary alloc] init];
+        // Create a temporary MutableDictionary to store the items fields in, which will eventually end up in feedEntries
+        NSMutableDictionary *feedItem = [[NSMutableDictionary alloc] init];
 		
         // Create a counter variable as type "int"
         int counter;
@@ -178,26 +179,26 @@
         // Loop through the children of the current  node
         for(counter = 0; counter < [resultElement childCount]; counter++) {
 			
-            // Add each field to the blogItem Dictionary with the node name as key and node value as the value
-            [blogItem setObject:[[resultElement childAtIndex:counter] stringValue] forKey:[[resultElement childAtIndex:counter] name]];
+            // Add each field to the feedItem Dictionary with the node name as key and node value as the value
+            [feedItem setObject:[[resultElement childAtIndex:counter] stringValue] forKey:[[resultElement childAtIndex:counter] name]];
         }
 		
-        // Add the blogItem to the global blogEntries Array so that the view can access it.
-        [blogEntries addObject:[blogItem copy]];
+        // Add the feedItem to the global feedEntries Array so that the view can access it.
+        [feedEntries addObject:[feedItem copy]];
     }
 }
 
-// 
-- (IBAction)statButtonPressed:(id)sender {
-	// Create the feed string, in this case I have used dBlog
-	//NSString *blogAddress = @"http://whywontyoudie.com/work/KATGGadget.xml";
-    NSString *blogAddress = @"http://www.thegrundleonline.com/xml/KATGGadget.xml";
-    // Call the grabRSSFeed function with the above
+//
+- (IBAction)feedStatusButton:(id)sender {
+	// Create the feed string
+    //NSString *feedAddress = @"http://dysenteryevents.com/katg/Feed.xml";
+    NSString *feedAddress = @"http://www.thegrundleonline.com/xml/KATGGadget.xml";
+	// Call the grabRSSFeed function with the above
     // string as a parameter
-    [self grabRSSFeed:blogAddress];
+    [self grabRSSFeed:feedAddress];
 	
-	int blogEntryIndex = 0;
-	NSString *feedStatusString = [[blogEntries objectAtIndex: blogEntryIndex] objectForKey: @"FeedStatus"];
+	int feedEntryIndex = 0;
+	NSString *feedStatusString = [[feedEntries objectAtIndex: feedEntryIndex] objectForKey: @"FeedStatus"];
 	int feedStatusInt = [feedStatusString intValue];
 	NSString *feedStatus = nil;
 	if(feedStatusInt == 0) {
@@ -222,7 +223,6 @@
 	NSString *submitButton = @"&ButtonSubmit=Send+Comment";
 //	NSString *hiddenVoxbackId = @"&HiddenVoxbackId=43&HiddenMixerCode=T2XPE";
 	NSString *hiddenVoxbackId = @"&HiddenVoxbackId=3&HiddenMixerCode=IEOSE";
-
 	
 	NSString *myRequestString = [namePrefix stringByAppendingString:name];
 	myRequestString = [myRequestString stringByAppendingString:locPrefix];
@@ -245,17 +245,16 @@
 	UIImage *image = [UIImage imageNamed:@"playButton.png"];
 	[self setButtonImage:image];
 	// Adds clear button to comment field
-	comField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    
-	// Create the feed string, in this case I have used Grundle gadget xml
-	//NSString *blogAddress = @"http://whywontyoudie.com/work/KATGGadget.xml";
-    NSString *blogAddress = @"http://www.thegrundleonline.com/xml/KATGGadget.xml";
+//	comField.clearButtonMode = UITextFieldViewModeWhileEditing;
+	
+	// Create the feed string
+    NSString *feedAddress = @"http://www.thegrundleonline.com/xml/KATGGadget.xml";
     // Call the grabRSSFeed function with the above
     // string as a parameter
-    [self grabRSSFeed:blogAddress];
+    [self grabRSSFeed:feedAddress];
 	
-	int blogEntryIndex = 0;
-	NSString *feedStatusString = [[blogEntries objectAtIndex: blogEntryIndex] objectForKey: @"FeedStatus"];
+	int feedEntryIndex = 0;
+	NSString *feedStatusString = [[feedEntries objectAtIndex: feedEntryIndex] objectForKey: @"FeedStatus"];
 	int feedStatusInt = [feedStatusString intValue];
 	NSString *feedStatus = nil;
 	if(feedStatusInt == 0) {

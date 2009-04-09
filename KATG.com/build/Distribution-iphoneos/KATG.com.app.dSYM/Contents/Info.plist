@@ -13,11 +13,11 @@
 		<key>CFBundleSignature</key>
 		<string>????</string>
 		<key>CFBundleVersion</key>
-		<string>0.1</string>
+		<string>0.2</string>
 		<key>dSYM_UUID</key>
 		<dict>
 			<key>arm</key>
-			<string>E89245C9-038A-D869-2B6D-38B881836BAF</string>
+			<string>3CF07AFA-2746-F02D-47BF-8D247BE1D228</string>
 		</dict>
 	</dict>
 </plist>

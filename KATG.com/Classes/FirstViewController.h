@@ -37,31 +37,30 @@
 	AudioStreamer        *streamer;
 	
 	// Feed status, button only temporary
-	IBOutlet UIButton    *statButton;
-	IBOutlet UILabel     *statusText;
+	NSMutableArray    *feedEntries;
+	IBOutlet UILabel  *statusText;
+	IBOutlet UIButton *liveFeedStatus;
 	
 	// Feedback fields and button
 	IBOutlet UIButton    *feedButton;
 	IBOutlet UITextField *nameField;
 	IBOutlet UITextField *locField;
-	IBOutlet UITextField *comField;
+	IBOutlet UITextView *comField;
 	
-	// Array for xml feeds
-	NSMutableArray       *blogEntries;
 }
 
 // Insures textFields and Labels will persist in memory until they've been used
-@property (nonatomic, retain) UILabel *statusText;
-@property (nonatomic, retain) UITextField *nameField;
-@property (nonatomic, retain) UITextField *locField;
-@property (nonatomic, retain) UITextField *comField;
+@property (nonatomic, retain) IBOutlet UILabel *statusText; 
+@property (nonatomic, retain) IBOutlet UITextField *nameField;
+@property (nonatomic, retain) IBOutlet UITextField *locField;
+@property (nonatomic, retain) IBOutlet UITextView *comField;
 
 
 // Set up actions for GUI to perform
 // Play Button
 - (IBAction)buttonPressed:(id)sender;
 // Check feed status, this is temporary
-- (IBAction)statButtonPressed:(id)sender;
+- (IBAction)feedStatusButton:(id)sender;
 // Submit feedback
 - (IBAction)feedButtonPressed:(id)sender;
 // Dismiss keyboard when DONE is pressed
