@@ -39,7 +39,6 @@
 	// Feed status, button only temporary
 	NSMutableArray    *feedEntries;
 	IBOutlet UILabel  *statusText;
-	IBOutlet UIButton *liveFeedStatus;
 	
 	// Feedback fields and button
 	IBOutlet UIButton    *feedButton;
@@ -59,8 +58,6 @@
 // Set up actions for GUI to perform
 // Play Button
 - (IBAction)buttonPressed:(id)sender;
-// Check feed status, this is temporary
-- (IBAction)feedStatusButton:(id)sender;
 // Submit feedback
 - (IBAction)feedButtonPressed:(id)sender;
 // Dismiss keyboard when DONE is pressed

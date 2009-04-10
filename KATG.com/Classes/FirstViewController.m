@@ -164,8 +164,8 @@
     NSArray *resultNodes = NULL;
 	
     // Set the resultNodes Array to contain an object for every instance of an  node in our RSS feed
-    //resultNodes = [rssParser nodesForXPath:@"//KATGFeed" error:nil];
-	resultNodes = [rssParser nodesForXPath:@"//KATGGadget" error:nil];
+    //resultNodes = [rssParser nodesForXPath:@"//KATGFeed" error:nil]; //My Feed
+	resultNodes = [rssParser nodesForXPath:@"//KATGGadget" error:nil]; //Grundle's Feed
 
     // Loop through the resultNodes to access each items actual data
     for (CXMLElement *resultElement in resultNodes) {
@@ -186,30 +186,6 @@
         // Add the feedItem to the global feedEntries Array so that the view can access it.
         [feedEntries addObject:[feedItem copy]];
     }
-}
-
-//
-- (IBAction)feedStatusButton:(id)sender {
-	// Create the feed string
-    //NSString *feedAddress = @"http://dysenteryevents.com/katg/Feed.xml";
-    NSString *feedAddress = @"http://www.thegrundleonline.com/xml/KATGGadget.xml";
-	// Call the grabRSSFeed function with the above
-    // string as a parameter
-    [self grabRSSFeed:feedAddress];
-	
-	int feedEntryIndex = 0;
-	NSString *feedStatusString = [[feedEntries objectAtIndex: feedEntryIndex] objectForKey: @"FeedStatus"];
-	int feedStatusInt = [feedStatusString intValue];
-	NSString *feedStatus = nil;
-	if(feedStatusInt == 0) {
-		feedStatus = @"Off Air";
-	} else if(feedStatusInt == 1) {
-		feedStatus = @"On Air";
-	} else {
-		feedStatus = @"Unknown";
-	}
-	
-	statusText.text = feedStatus;
 }
 
 // Submit Feedback
@@ -241,17 +217,11 @@
 	comField.text = @"";
 }
 
-- (void)viewDidLoad {
-	// Loads Play button for audioStream
-	UIImage *image = [UIImage imageNamed:@"playButton.png"];
-	[self setButtonImage:image];
-	
-	// Adds clear button to comment field
-    //comField.clearButtonMode = UITextFieldViewModeWhileEditing;
-	
+- (void) handleTimer: (NSTimer *) timer {
 	// Create the feed string
+    //NSString *feedAddress = @"http://dysenteryevents.com/katg/Feed.xml";
     NSString *feedAddress = @"http://www.thegrundleonline.com/xml/KATGGadget.xml";
-    // Call the grabRSSFeed function with the above
+	// Call the grabRSSFeed function with the above
     // string as a parameter
     [self grabRSSFeed:feedAddress];
 	
@@ -260,14 +230,49 @@
 	int feedStatusInt = [feedStatusString intValue];
 	NSString *feedStatus = nil;
 	if(feedStatusInt == 0) {
-		feedStatus = @"Off Air";
+		feedStatus = @"Not Live";
 	} else if(feedStatusInt == 1) {
-		feedStatus = @"On Air";
+		feedStatus = @"Live";
 	} else {
 		feedStatus = @"Unknown";
 	}
 	
 	statusText.text = feedStatus;
+} // handleTimer
+
+- (void)viewDidLoad {
+	// Loads Play button for audioStream
+	UIImage *image = [UIImage imageNamed:@"playButton.png"];
+	[self setButtonImage:image];
+	
+	// Create the feed string
+    //NSString *feedAddress = @"http://dysenteryevents.com/katg/Feed.xml";
+    NSString *feedAddress = @"http://www.thegrundleonline.com/xml/KATGGadget.xml";
+	// Call the grabRSSFeed function with the above
+    // string as a parameter
+    [self grabRSSFeed:feedAddress];
+	
+	int feedEntryIndex = 0;
+	NSString *feedStatusString = [[feedEntries objectAtIndex: feedEntryIndex] objectForKey: @"FeedStatus"];
+	int feedStatusInt = [feedStatusString intValue];
+	NSString *feedStatus = nil;
+	if(feedStatusInt == 0) {
+		feedStatus = @"Not Live";
+	} else if(feedStatusInt == 1) {
+		feedStatus = @"Live";
+	} else {
+		feedStatus = @"Unknown";
+	}
+	
+	statusText.text = feedStatus;
+	
+	NSTimer *timer;
+	
+	timer = [NSTimer scheduledTimerWithTimeInterval: 180.0
+											 target: self
+										   selector: @selector(handleTimer:)
+										   userInfo: nil
+											repeats: YES];
 }
 
 // Dismiss keyboard when done is pressed (technically it just releases control from the front most GUI object)

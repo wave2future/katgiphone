@@ -6,7 +6,6 @@ get rid of statuscheckbutton and implement NSTimer
 
 - (void) handleTimer: (NSTimer *) timer
 {
-    - (IBAction)feedStatusButton:(id)sender {
 	// Create the feed string
     //NSString *feedAddress = @"http://dysenteryevents.com/katg/Feed.xml";
     NSString *feedAddress = @"http://www.thegrundleonline.com/xml/KATGGadget.xml";
@@ -27,7 +26,6 @@ get rid of statuscheckbutton and implement NSTimer
 	}
 	
 	statusText.text = feedStatus;
-}
 } // handleTimer
 
 NSTimer *timer;
