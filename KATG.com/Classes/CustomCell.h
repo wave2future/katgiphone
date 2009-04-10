@@ -1,7 +1,11 @@
 //
-//  KATG_comAppDelegate.h
-//  KATG.com
-//
+//  CustomCell.h
+//  CustomTableCells
+//  
+//  This currently loads keithandthegirl.com/events
+//  It will be replaced with a table view
+//  generated from an xml feed of the events page
+//  
 //  Created by Doug Russell on 4/5/09.
 //  Copyright Radio Dysentery 2009. All rights reserved.
 //  
@@ -20,14 +24,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KATG_comAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
-	IBOutlet UIWindow *window;
-	IBOutlet UITabBarController *tabBarController;
-	UINavigationController *navigationController;
+@interface CustomCell : UITableViewCell {
+    UILabel *lblTitle;
+    UILabel *lblPublish;
+    UIImageView *imgSquare;
 }
 
-@property (nonatomic, retain) UIWindow *window;
-@property (nonatomic, retain) UITabBarController *tabBarController;
-@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+@property (nonatomic, retain) UILabel *lblTitle;
+@property (nonatomic, retain) UILabel *lblPublish;
+@property (nonatomic, retain) UIImageView *imgSquare;
 
 @end

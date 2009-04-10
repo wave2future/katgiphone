@@ -24,10 +24,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController {
-	IBOutlet UIWebView *webView;
+@interface SecondViewController : UITableViewController {
+    NSMutableArray *list;
+	NSMutableArray *feedEntries;
 }
-
-@property (nonatomic, retain) UIWebView *webView;
 
 @end

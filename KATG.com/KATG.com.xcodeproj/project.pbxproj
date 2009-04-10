@@ -46,6 +46,12 @@
 		536CD4740F89E6C30063DED2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536CD4730F89E6C30063DED2 /* AudioToolbox.framework */; };
 		536CD4780F89E6F50063DED2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536CD4770F89E6F50063DED2 /* CFNetwork.framework */; };
 		536CD4EF0F89E73E0063DED2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536CD4EE0F89E73E0063DED2 /* QuartzCore.framework */; };
+		537CDA580F8FF056002F86FA /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 537CDA550F8FF056002F86FA /* CustomCell.m */; };
+		537CDA590F8FF056002F86FA /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 537CDA570F8FF056002F86FA /* Event.m */; };
+		537CDB020F8FF8AD002F86FA /* eventSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 537CDAFF0F8FF8AD002F86FA /* eventSquare.png */; };
+		537CDB030F8FF8AD002F86FA /* otherSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 537CDB000F8FF8AD002F86FA /* otherSquare.png */; };
+		537CDB040F8FF8AD002F86FA /* showSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 537CDB010F8FF8AD002F86FA /* showSquare.png */; };
+		537CDB5B0F900246002F86FA /* grabRSSFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 537CDB5A0F900246002F86FA /* grabRSSFeed.m */; };
 		5398AC4C0F8DCABE00C3984C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5398AC4B0F8DCABE00C3984C /* Default.png */; };
 		53DAF53F0F8AFE4500D13F05 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53DAF53E0F8AFE4500D13F05 /* Entitlements.plist */; };
 		53E8DD910F8DEEC7006A52C6 /* Default_old.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E8DD900F8DEEC7006A52C6 /* Default_old.png */; };
@@ -113,6 +119,15 @@
 		536CD4730F89E6C30063DED2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		536CD4770F89E6F50063DED2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		536CD4EE0F89E73E0063DED2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		537CDA540F8FF056002F86FA /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		537CDA550F8FF056002F86FA /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		537CDA560F8FF056002F86FA /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		537CDA570F8FF056002F86FA /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		537CDAFF0F8FF8AD002F86FA /* eventSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eventSquare.png; sourceTree = "<group>"; };
+		537CDB000F8FF8AD002F86FA /* otherSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = otherSquare.png; sourceTree = "<group>"; };
+		537CDB010F8FF8AD002F86FA /* showSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = showSquare.png; sourceTree = "<group>"; };
+		537CDB590F900246002F86FA /* grabRSSFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grabRSSFeed.h; sourceTree = "<group>"; };
+		537CDB5A0F900246002F86FA /* grabRSSFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = grabRSSFeed.m; sourceTree = "<group>"; };
 		5398AC4B0F8DCABE00C3984C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		53DAF53E0F8AFE4500D13F05 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		53E8DD900F8DEEC7006A52C6 /* Default_old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default_old.png; sourceTree = "<group>"; };
@@ -141,6 +156,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				537CDB550F9001FE002F86FA /* GrabRss */,
 				537CD8850F8FBADE002F86FA /* Events */,
 				535FE5F20F89FEF300F6AD75 /* TouchXML */,
 				536CD45A0F89E5FA0063DED2 /* Controllers */,
@@ -249,6 +265,9 @@
 		535FE6DA0F8A0C2900F6AD75 /* PNG */ = {
 			isa = PBXGroup;
 			children = (
+				537CDAFF0F8FF8AD002F86FA /* eventSquare.png */,
+				537CDB000F8FF8AD002F86FA /* otherSquare.png */,
+				537CDB010F8FF8AD002F86FA /* showSquare.png */,
 				53E8DDE00F8E780F006A52C6 /* onAir.png */,
 				536CD45E0F89E6650063DED2 /* Cal.png */,
 				536CD45F0F89E6650063DED2 /* icon.png */,
@@ -310,8 +329,21 @@
 		537CD8850F8FBADE002F86FA /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				537CDA540F8FF056002F86FA /* CustomCell.h */,
+				537CDA550F8FF056002F86FA /* CustomCell.m */,
+				537CDA560F8FF056002F86FA /* Event.h */,
+				537CDA570F8FF056002F86FA /* Event.m */,
 			);
 			name = Events;
+			sourceTree = "<group>";
+		};
+		537CDB550F9001FE002F86FA /* GrabRss */ = {
+			isa = PBXGroup;
+			children = (
+				537CDB590F900246002F86FA /* grabRSSFeed.h */,
+				537CDB5A0F900246002F86FA /* grabRSSFeed.m */,
+			);
+			name = GrabRss;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,6 +408,9 @@
 				53E8DD910F8DEEC7006A52C6 /* Default_old.png in Resources */,
 				53E8DDE10F8E780F006A52C6 /* onAir.png in Resources */,
 				53E8DE4E0F8E95C7006A52C6 /* RoadMap in Resources */,
+				537CDB020F8FF8AD002F86FA /* eventSquare.png in Resources */,
+				537CDB030F8FF8AD002F86FA /* otherSquare.png in Resources */,
+				537CDB040F8FF8AD002F86FA /* showSquare.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +439,9 @@
 				535FE64E0F8A022B00F6AD75 /* ThirdViewController.m in Sources */,
 				535FE6720F8A048D00F6AD75 /* FourthViewController.m in Sources */,
 				535FE6770F8A05BC00F6AD75 /* FifthViewController.m in Sources */,
+				537CDA580F8FF056002F86FA /* CustomCell.m in Sources */,
+				537CDA590F8FF056002F86FA /* Event.m in Sources */,
+				537CDB5B0F900246002F86FA /* grabRSSFeed.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
