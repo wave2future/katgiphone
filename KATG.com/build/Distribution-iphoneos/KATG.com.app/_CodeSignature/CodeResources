@@ -14,6 +14,10 @@
 		</data>
 		<key>Default.png</key>
 		<data>
+		NblecQxLmDdlnhCB6Iq8NlM23BY=
+		</data>
+		<key>Default_old.png</key>
+		<data>
 		G8FrQvo+YqOYuD/CqOnezkjCk2c=
 		</data>
 		<key>Entitlements.plist</key>
@@ -22,11 +26,11 @@
 		</data>
 		<key>FifthView.nib</key>
 		<data>
-		rumB4SbDfAOzzxOWVhX0UFAp10c=
+		hDNdGK1k6+WxXHBr55HeWNnJczA=
 		</data>
 		<key>FourthView.nib</key>
 		<data>
-		+Q9BWp1Uh2zCB5VeBTr7KwUclXY=
+		UnFaeA5ptID3Mlx9U+4Du2cGrzM=
 		</data>
 		<key>KATG.png</key>
 		<data>
@@ -34,7 +38,7 @@
 		</data>
 		<key>MainWindow.nib</key>
 		<data>
-		T5uoiCYzYGPsIBj77w7Zz0DbjU0=
+		gzgvGq3LlQSiN67bMNAc4nEi8TA=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -44,9 +48,13 @@
 		<data>
 		VA+PdfKt4zl2PWemUr+PaKoUToQ=
 		</data>
+		<key>RoadMap</key>
+		<data>
+		+BE6smBe9VHbEBOKfPSeNwl26uw=
+		</data>
 		<key>SecondView.nib</key>
 		<data>
-		+Q9BWp1Uh2zCB5VeBTr7KwUclXY=
+		UnFaeA5ptID3Mlx9U+4Du2cGrzM=
 		</data>
 		<key>ThirdView.nib</key>
 		<data>
@@ -54,11 +62,11 @@
 		</data>
 		<key>ToDo</key>
 		<data>
-		YTi0OKHVi1JHpAYbK/EIvF/s/EM=
+		SrPEdPfD1snQwtbw1NO5U//wamE=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
-		pQ17ylLQthWVfloj+8OW8Sn/We0=
+		hw9eiUegNbE0nrTzbTJfU3c2U/M=
 		</data>
 		<key>gpl-3.0.txt</key>
 		<data>
@@ -71,6 +79,10 @@
 		<key>loadingButton.png</key>
 		<data>
 		UF79y4Jfsaktfrphfx6jveksz0s=
+		</data>
+		<key>onAir.png</key>
+		<data>
+		U1vW/+L0O+W6V9fMQogOaK2vUEE=
 		</data>
 		<key>playButton.png</key>
 		<data>

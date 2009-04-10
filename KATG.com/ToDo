@@ -1,36 +1,39 @@
-1.0 (End of april)
-Live show tab:
-live show feed status
-new live show time
-play live show via shoutcast
-submit feedback
+Combine textviewdoneediting and statuscheckbutton into one action
 
-Events tab:
-Upcoming KATG events (possibly w/ calender integration)
+or
 
-Twitter Tab:
-View Twitters from KATG
-@keithandthegirl
-@keithmalley
-@patricec
-@insectsandmeat
+get rid of statuscheckbutton and implement NSTimer
 
-Youtube tab:
-Mobile Youtube interface w/ KATG vids
+- (void) handleTimer: (NSTimer *) timer
+{
+    - (IBAction)feedStatusButton:(id)sender {
+	// Create the feed string
+    //NSString *feedAddress = @"http://dysenteryevents.com/katg/Feed.xml";
+    NSString *feedAddress = @"http://www.thegrundleonline.com/xml/KATGGadget.xml";
+	// Call the grabRSSFeed function with the above
+    // string as a parameter
+    [self grabRSSFeed:feedAddress];
+	
+	int feedEntryIndex = 0;
+	NSString *feedStatusString = [[feedEntries objectAtIndex: feedEntryIndex] objectForKey: @"FeedStatus"];
+	int feedStatusInt = [feedStatusString intValue];
+	NSString *feedStatus = nil;
+	if(feedStatusInt == 0) {
+		feedStatus = @"Not Live";
+	} else if(feedStatusInt == 1) {
+		feedStatus = @"Live";
+	} else {
+		feedStatus = @"Unknown";
+	}
+	
+	statusText.text = feedStatus;
+}
+} // handleTimer
 
-1.1 (middle of summer)
-Move live show tab into navigation bar
+NSTimer *timer;
 
-Past shows tab:
-Past shows with notes, pics and playback (I am putting this off until 1.1 because the iPhone 3.0 SDK doesn't have the same data streaming restrictions as 2.2 and I don't want to fight that fight)
-
-Twitter tab:
-Ability to use your twitter account to post tweets
-
-Store tab:
-Mobile interface to KATG store that exits to safari for paypal transaction
-
-1.2
-
-Store tab:
-Integrate in app transactions (This will be last because e-commerce means evaluating the app for security in detail) 
+timer = [NSTimer scheduledTimerWithTimeInterval: 0.5
+                 target: self
+                 selector: @selector(handleTimer:)
+                 userInfo: nil
+                 repeats: YES];

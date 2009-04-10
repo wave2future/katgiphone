@@ -202,9 +202,9 @@
 	int feedStatusInt = [feedStatusString intValue];
 	NSString *feedStatus = nil;
 	if(feedStatusInt == 0) {
-		feedStatus = @"Not Live";
+		feedStatus = @"Off Air";
 	} else if(feedStatusInt == 1) {
-		feedStatus = @"Live";
+		feedStatus = @"On Air";
 	} else {
 		feedStatus = @"Unknown";
 	}
@@ -238,14 +238,16 @@
 	[ request setHTTPBody: myRequestData ];
 	
 	[ NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil ];
+	comField.text = @"";
 }
 
 - (void)viewDidLoad {
 	// Loads Play button for audioStream
 	UIImage *image = [UIImage imageNamed:@"playButton.png"];
 	[self setButtonImage:image];
+	
 	// Adds clear button to comment field
-//	comField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    //comField.clearButtonMode = UITextFieldViewModeWhileEditing;
 	
 	// Create the feed string
     NSString *feedAddress = @"http://www.thegrundleonline.com/xml/KATGGadget.xml";
@@ -258,9 +260,9 @@
 	int feedStatusInt = [feedStatusString intValue];
 	NSString *feedStatus = nil;
 	if(feedStatusInt == 0) {
-		feedStatus = @"Not Live";
+		feedStatus = @"Off Air";
 	} else if(feedStatusInt == 1) {
-		feedStatus = @"Live";
+		feedStatus = @"On Air";
 	} else {
 		feedStatus = @"Unknown";
 	}
@@ -271,6 +273,13 @@
 // Dismiss keyboard when done is pressed (technically it just releases control from the front most GUI object)
 - (IBAction)textFieldDoneEditing:(id)sender {
 	[sender resignFirstResponder];
+}
+
+// Dismiis keyboard when background is clicked
+- (IBAction)textViewDoneEditing:(id)sender {
+	[nameField resignFirstResponder];
+	[locField resignFirstResponder];
+	[comField resignFirstResponder];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

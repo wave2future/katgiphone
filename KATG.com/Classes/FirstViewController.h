@@ -65,5 +65,7 @@
 - (IBAction)feedButtonPressed:(id)sender;
 // Dismiss keyboard when DONE is pressed
 - (IBAction)textFieldDoneEditing:(id)sender;
+// Dismiss Comment textView
+- (IBAction)textViewDoneEditing:(id)sender;
 
 @end
