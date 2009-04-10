@@ -1,37 +1,3 @@
-Combine textviewdoneediting and statuscheckbutton into one action
+Twitter Feeds
 
-or
-
-get rid of statuscheckbutton and implement NSTimer
-
-- (void) handleTimer: (NSTimer *) timer
-{
-	// Create the feed string
-    //NSString *feedAddress = @"http://dysenteryevents.com/katg/Feed.xml";
-    NSString *feedAddress = @"http://www.thegrundleonline.com/xml/KATGGadget.xml";
-	// Call the grabRSSFeed function with the above
-    // string as a parameter
-    [self grabRSSFeed:feedAddress];
-	
-	int feedEntryIndex = 0;
-	NSString *feedStatusString = [[feedEntries objectAtIndex: feedEntryIndex] objectForKey: @"FeedStatus"];
-	int feedStatusInt = [feedStatusString intValue];
-	NSString *feedStatus = nil;
-	if(feedStatusInt == 0) {
-		feedStatus = @"Not Live";
-	} else if(feedStatusInt == 1) {
-		feedStatus = @"Live";
-	} else {
-		feedStatus = @"Unknown";
-	}
-	
-	statusText.text = feedStatus;
-} // handleTimer
-
-NSTimer *timer;
-
-timer = [NSTimer scheduledTimerWithTimeInterval: 0.5
-                 target: self
-                 selector: @selector(handleTimer:)
-                 userInfo: nil
-                 repeats: YES];
+Events Feeds

@@ -25,28 +25,28 @@
 @implementation FirstViewController
 
 // Set up interface for sending and receiving data from fields and labels
+// Feedback Fields
 @synthesize nameField;
 @synthesize locField;
 @synthesize comField;
+// Feed Status
 @synthesize statusText;
 
-// Launch NIB (The GUI file)
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
 		// Initialization code
 	}
 	return self;
-}
+} // Launch NIB (The GUI file)
 
-// 
 - (void)setButtonImage:(UIImage *)image {
 	[button.layer removeAllAnimations];
 	[button
 	 setImage:image
 	 forState:0];
-}
+} // Sets button to appropiate image (Play or Stop)
 
-// 
 - (void)spinButton {
 	[CATransaction begin];
 	[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
@@ -68,19 +68,17 @@
 	[button.layer addAnimation:animation forKey:@"rotationAnimation"];
 	
 	[CATransaction commit];
-}
+} // Fancy Spinny Button Animation using CoreAnimation
 
-//
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)finished {
 	if (finished)
 	{
 		[self spinButton];
 	}
-}
+} // 
 
-// 
 - (IBAction)buttonPressed:(id)sender {
-	if (!streamer)
+	if (!streamer) // If the streamer is not active, activate stream and iniate button spin and image change
 	{
 		
 		NSString *escapedValue =
@@ -105,14 +103,13 @@
 		
 		[self spinButton];
 	}
-	else
+	else // If the streamer is active, deactivate stream and change button image
 	{
 		[button.layer removeAllAnimations];
 		[streamer stop];
 	}
-}
+} //
 
-// 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	if ([keyPath isEqual:@"isPlaying"])
 	{
@@ -145,9 +142,8 @@
 	
 	[super observeValueForKeyPath:keyPath ofObject:object change:change
 						  context:context];
-}
+} //
 
-// 
 -(void) grabRSSFeed:(NSString *)feedAddress {
 	
     // Initialize the feedEntries MutableArray that we declared in the header
@@ -186,9 +182,8 @@
         // Add the feedItem to the global feedEntries Array so that the view can access it.
         [feedEntries addObject:[feedItem copy]];
     }
-}
+}//
 
-// Submit Feedback
 - (IBAction)feedButtonPressed:(id)sender {
 	NSString *namePrefix = @"Name=";
 	NSString *name = nameField.text;
@@ -215,7 +210,7 @@
 	
 	[ NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil ];
 	comField.text = @"";
-}
+} // Submit Feedback
 
 - (void) handleTimer: (NSTimer *) timer {
 	// Create the feed string
@@ -238,7 +233,7 @@
 	}
 	
 	statusText.text = feedStatus;
-} // handleTimer
+} // Code to execute on a timer
 
 - (void)viewDidLoad {
 	// Loads Play button for audioStream
@@ -273,37 +268,33 @@
 										   selector: @selector(handleTimer:)
 										   userInfo: nil
 											repeats: YES];
-}
+} //
 
-// Dismiss keyboard when done is pressed (technically it just releases control from the front most GUI object)
 - (IBAction)textFieldDoneEditing:(id)sender {
 	[sender resignFirstResponder];
-}
+} // Dismiss keyboard when done is pressed
 
-// Dismiis keyboard when background is clicked
 - (IBAction)textViewDoneEditing:(id)sender {
 	[nameField resignFirstResponder];
 	[locField resignFirstResponder];
 	[comField resignFirstResponder];
-}
+}// Dismiis keyboard when background is clicked
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	// Return YES for supported orientations
 	return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
+} // Sets up autorotate support (in this case none)
 
-// Does something I'm sure
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
 	// Release anything that's not essential, such as cached data
-}
+} // Does something I'm sure
 
-// Release objects to save memory
 - (void)dealloc {
 	[nameField release];
 	[locField release];
 	[comField release];
 	[super dealloc];
-}
+} // Release objects to save memory
 
 @end

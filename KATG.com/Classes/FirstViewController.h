@@ -36,7 +36,7 @@
 	// Instantiate radio object
 	AudioStreamer        *streamer;
 	
-	// Feed status, button only temporary
+	// Feed status
 	NSMutableArray    *feedEntries;
 	IBOutlet UILabel  *statusText;
 	
@@ -62,7 +62,7 @@
 - (IBAction)feedButtonPressed:(id)sender;
 // Dismiss keyboard when DONE is pressed
 - (IBAction)textFieldDoneEditing:(id)sender;
-// Dismiss Comment textView
+// Dismiss keyboard when user clicks outside Comment textView (big invisible button in background)
 - (IBAction)textViewDoneEditing:(id)sender;
 
 @end
