@@ -72,7 +72,7 @@
     list = [[NSMutableArray alloc] init];
     
 	// Create the feed string
-    NSString *feedAddress = @"http://whywontyoudie.com/work/KATGEvents.xml";
+    NSString *feedAddress = @"http://dysenteryevents.com/katg/KATGEvents.xml";
     // Call the grabRSSFeed function with the above
     // string as a parameter
     [self grabRSSFeed:feedAddress];

@@ -5,9 +5,23 @@
 //  Created by Ashley Mills on 11/04/2009.
 //  Copyright 2009 Joylord Systems Ltd.. All rights reserved.
 //
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//  
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//  
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import "TweetViewController.h"
 #import "TweetViewCell.h"
+#import "DetailViewController.h"
 #import <JSON/JSON.h>
 
 @implementation TweetViewController
@@ -20,9 +34,22 @@
 	
 	[super viewDidLoad];
 	
+	self.navigationItem.title = @"KATG Tweets";
+
 	queryResult = [[NSMutableString alloc] initWithCapacity: bytesToLoad];
 	tweets = [[NSMutableArray alloc] initWithCapacity: 100];
 	iconDict = [[NSMutableDictionary alloc] init];
+	
+	UIBarButtonItem *addButton = [[[UIBarButtonItem alloc]
+                                   initWithTitle:NSLocalizedString(@"Other Tweets", @"On")
+                                   style:UIBarButtonItemStyleBordered
+                                   target:self
+                                   action:@selector(addAction:)] autorelease];
+    self.navigationItem.rightBarButtonItem = addButton;
+}
+
+- (void)addAction:(id)sender{
+	otherTweets = @"ON";
 }
 
 //*******************************************************
@@ -46,7 +73,7 @@
 	NSString * searchString = @"http://search.twitter.com/search.json?q=from%3Akeithandthegirl+OR+from%3AKeithMalley";
 	
 //	if (mainViewController.showOthers.isOn)
-	if (0)
+	if ( otherTweets == @"ON" )
 		searchString = [searchString stringByAppendingString: @"+OR+keithandthegirl+OR+%22keith+and+the+girl%22"];
 	
 //	searchString = [searchString stringByAppendingFormat: @"&rpp=%i", (int)mainViewController.tweetCount.value];
@@ -237,7 +264,12 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	//Add some selection logic here
+	DetailViewController *viewController = [[DetailViewController alloc] initWithNibName:@"DetailView" bundle:[NSBundle mainBundle]];
+//	viewController.TitleTemp = [[list objectAtIndex:indexPath.row] title];
+//	viewController.DateTemp = [[list objectAtIndex:indexPath.row] publishDate];
+//	viewController.BodyTemp = [[list objectAtIndex:indexPath.row] detail];
+	[[self navigationController] pushViewController:viewController animated:YES];
+	[viewController release];
 }
 
 
