@@ -2,13 +2,6 @@
 //  CustomCell.h
 //  CustomTableCells
 //  
-//  This currently loads keithandthegirl.com/events
-//  It will be replaced with a table view
-//  generated from an xml feed of the events page
-//  
-//  Created by Doug Russell on 4/5/09.
-//  Copyright Radio Dysentery 2009. All rights reserved.
-//  
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or

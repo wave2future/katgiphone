@@ -1,9 +1,6 @@
 //
 //  KATG_comAppDelegate.h
 //  KATG.com
-//
-//  Created by Doug Russell on 4/5/09.
-//  Copyright Radio Dysentery 2009. All rights reserved.
 //  
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -23,11 +20,12 @@
 @interface KATG_comAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
 	IBOutlet UIWindow *window;
 	IBOutlet UITabBarController *tabBarController;
-	UINavigationController *navigationController;
+	IBOutlet UINavigationController *navigationController;
+
 }
 
-@property (nonatomic, retain) UIWindow *window;
-@property (nonatomic, retain) UITabBarController *tabBarController;
+@property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
 @end

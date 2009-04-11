@@ -1,9 +1,6 @@
 //
 //  SecondViewController.m
 //  KATG.com
-//
-//  Created by Doug Russell on 4/5/09.
-//  Copyright Radio Dysentery 2009. All rights reserved.
 //  
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -23,8 +20,9 @@
 #import "Event.h"
 #import "CustomCell.h"
 #import "TouchXML.h"
+#import "DetailViewController.h"
 
-#define ROW_HEIGHT 100.0
+#define ROW_HEIGHT 80.0
 
 @implementation SecondViewController
 
@@ -68,6 +66,9 @@
 }
 
 - (void)awakeFromNib {
+	
+	self.navigationItem.title = @"Events";
+	
     list = [[NSMutableArray alloc] init];
     
 	// Create the feed string
@@ -77,19 +78,28 @@
     [self grabRSSFeed:feedAddress];
 	
 	//[feedEntries count]
-	int feedEntryIndex = [feedEntries count];
-	int counter = 0;
+	int feedEntryIndex = [feedEntries count] - 1;
 	
 	NSString *eventType = nil;
 	
-	while ( counter < feedEntryIndex ) {
+	while ( 0 <= feedEntryIndex ) {
 		
-		NSString *feedDetails = [[feedEntries objectAtIndex: counter] objectForKey: @"Details"];
-		NSString *Details = feedDetails;
+		NSString *feedTitle = [[[feedEntries objectAtIndex: feedEntryIndex] 
+								objectForKey: @"title"] 
+							   stringByReplacingOccurrencesOfString:(NSString *)@"&" 
+							   withString:(NSString *)@"and"];
 		
-		NSString *feedTimeString = [[feedEntries objectAtIndex: counter] objectForKey: @"Date"];
+		NSString *feedDetails = [[[feedEntries objectAtIndex: feedEntryIndex] 
+								  objectForKey: @"Details"]
+								 stringByReplacingOccurrencesOfString:(NSString *)@"&" 
+								 withString:(NSString *)@"and"];
 		
-		BOOL match = ([feedDetails rangeOfString:@"Live Show" options:NSCaseInsensitiveSearch].location != NSNotFound);
+		NSString *feedTimeString = [[[feedEntries objectAtIndex: feedEntryIndex] 
+									 objectForKey: @"Date"]
+									stringByReplacingOccurrencesOfString:(NSString *)@"&" 
+									withString:(NSString *)@"and"];
+		
+		BOOL match = ([feedTitle rangeOfString:@"Live Show" options:NSCaseInsensitiveSearch].location != NSNotFound);
 		
 		if (match) {
 			eventType = @"show";
@@ -97,12 +107,12 @@
 			eventType = @"event";
 		}
 		
-		Event *Ev = [[Event alloc] initWithTitle:Details publishDate:feedTimeString type:eventType];
+		Event *Ev = [[Event alloc] initWithTitle:feedTitle publishDate:feedTimeString type:eventType detail:feedDetails];
 		[list addObject:Ev];
 		
 		[Ev release];
 		
-		counter = counter + 1;
+		feedEntryIndex = feedEntryIndex - 1;
 	}
 }
 
@@ -112,7 +122,7 @@
     self.tableView.rowHeight = ROW_HEIGHT;
 	
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -163,8 +173,14 @@
 }
 
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
+	DetailViewController *viewController = [[DetailViewController alloc] initWithNibName:@"DetailView" bundle:[NSBundle mainBundle]];
+	viewController.TitleTemp = [[list objectAtIndex:indexPath.row] title];
+	viewController.DateTemp = [[list objectAtIndex:indexPath.row] publishDate];
+	viewController.BodyTemp = [[list objectAtIndex:indexPath.row] detail];
+	[[self navigationController] pushViewController:viewController animated:YES];
+	[viewController release];
 }
 
 

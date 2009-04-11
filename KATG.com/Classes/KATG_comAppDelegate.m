@@ -1,9 +1,6 @@
 //
 //  KATG_comAppDelegate.m
 //  KATG.com
-//
-//  Created by Doug Russell on 4/5/09.
-//  Copyright Radio Dysentery 2009. All rights reserved.
 //  
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -31,12 +28,10 @@
 	
 	// Add the tab bar controller's current view as a subview of the window
 	[window addSubview:tabBarController.view];
-	[window addSubview:[navigationController view]];
 }
 
 - (void)dealloc {
 	[tabBarController release];
-	[navigationController release];
 	[window release];
 	[super dealloc];
 }

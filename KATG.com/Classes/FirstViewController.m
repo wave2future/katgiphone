@@ -1,9 +1,6 @@
 //
 //  FirstViewController.m
 //  KATG.com
-//
-//  Created by Doug Russell on 4/5/09.
-//  Copyright Radio Dysentery 2009. All rights reserved.
 //  
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -31,6 +28,7 @@
 @synthesize comField;
 // Feed Status
 @synthesize statusText;
+@synthesize comText;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -143,7 +141,7 @@
 						  context:context];
 } //
 
--(void) grabRSSFeed:(NSString *)feedAddress {
+- (void)grabRSSFeed:(NSString *)feedAddress {
 	
     // Initialize the feedEntries MutableArray that we declared in the header
     feedEntries = [[NSMutableArray alloc] init];	
@@ -183,12 +181,29 @@
     }
 }//
 
+/*
+- (void)sanitizeString:(NSString *)dirtString {
+	BOOL match = ([dirtString rangeOfString:@"&" options:NSCaseInsensitiveSearch].location != NSNotFound);
+	if (match) {
+		comText.text = @"& Discoverd";
+	} else {
+		comText.text = @"Location Good";
+	}
+}
+*/
+
 - (IBAction)feedButtonPressed:(id)sender {
 	NSString *namePrefix = @"Name=";
 	NSString *name = nameField.text;
+	name = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)name, NULL, NULL, kCFStringEncodingUTF8);
+	name = [name stringByReplacingOccurrencesOfString:(NSString *)@"&" withString:(NSString *)@"and"];
 	NSString *locPrefix = @"&Location=";
 	NSString *location = locField.text;
+	location = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)location, NULL, NULL, kCFStringEncodingUTF8);
+	location = [location stringByReplacingOccurrencesOfString:(NSString *)@"&" withString:(NSString *)@"and"];
 	NSString *comment = comField.text;
+	comment = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)comment, NULL, NULL, kCFStringEncodingUTF8);
+	comment = [comment stringByReplacingOccurrencesOfString:(NSString *)@"&" withString:(NSString *)@"and"];
 	NSString *comPrefix = @"&Comment=";
 	NSString *submitButton = @"&ButtonSubmit=Send+Comment";
 //	NSString *hiddenVoxbackId = @"&HiddenVoxbackId=43&HiddenMixerCode=T2XPE";

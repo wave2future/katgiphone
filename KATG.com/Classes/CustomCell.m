@@ -2,13 +2,6 @@
 //  CustomCell.m
 //  CustomTableCells
 //  
-//  This currently loads keithandthegirl.com/events
-//  It will be replaced with a table view
-//  generated from an xml feed of the events page
-//  
-//  Created by Doug Russell on 4/5/09.
-//  Copyright Radio Dysentery 2009. All rights reserved.
-//  
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
@@ -58,15 +51,16 @@
     CGRect rect = baseRect;
     rect.origin.y += -7;
     rect.size.width = self.contentView.bounds.size.width - 70;
+	
     lblTitle.frame = rect;
     
-    rect.origin.y += 40;
+    rect.origin.y += 30;
     lblPublish.frame = rect;
     
-    rect.size.width = 40;
+    rect.size.width = 60;
     rect.size.height = 40;
-    rect.origin.x = self.contentView.bounds.size.width - 50;
-    rect.origin.y += -7;
+    rect.origin.x = self.contentView.bounds.size.width - 80;
+    rect.origin.y += 0;
     
     imgSquare.frame = rect;
 }

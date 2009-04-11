@@ -7,9 +7,6 @@
 //  Submit Feedback
 //  Next live show time
 //  Live Feed Status
-//
-//  Created by Doug Russell on 4/5/09.
-//  Copyright Radio Dysentery 2009. All rights reserved.
 //  
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -39,6 +36,7 @@
 	// Feed status
 	NSMutableArray    *feedEntries;
 	IBOutlet UILabel  *statusText;
+	IBOutlet UILabel  *comText;
 	
 	// Feedback fields and button
 	IBOutlet UIButton    *feedButton;
@@ -49,7 +47,8 @@
 }
 
 // Insures textFields and Labels will persist in memory until they've been used
-@property (nonatomic, retain) IBOutlet UILabel *statusText; 
+@property (nonatomic, retain) IBOutlet UILabel *statusText;
+@property (nonatomic, retain) IBOutlet UILabel *comText; 
 @property (nonatomic, retain) IBOutlet UITextField *nameField;
 @property (nonatomic, retain) IBOutlet UITextField *locField;
 @property (nonatomic, retain) IBOutlet UITextView *comField;

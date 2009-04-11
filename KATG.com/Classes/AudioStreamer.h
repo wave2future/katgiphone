@@ -5,6 +5,18 @@
 //  Created by Matt Gallagher on 27/09/08.
 //  Copyright 2008 Matt Gallagher. All rights reserved.
 //
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//  
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//  
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef TARGET_OS_IPHONE			
 #import <UIKit/UIKit.h>
@@ -35,6 +47,7 @@
 	unsigned int fillBufferIndex;	// the index of the audioQueueBuffer that is being filled
 	size_t bytesFilled;				// how many bytes have been filled
 	size_t packetsFilled;			// how many packets have been filled
+	
 	
 	bool inuse[kNumAQBufs];			// flags to indicate that a buffer is still in use
 	bool started;					// flag to indicate that the queue has been started
