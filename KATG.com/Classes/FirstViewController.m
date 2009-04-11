@@ -30,6 +30,10 @@
 @synthesize statusText;
 @synthesize comText;
 
+- (void)UITextViewTextDidBeginEditingNotification:(NSNotification*)aNotification {
+	comField.text = @"";
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
 		// Initialization code
@@ -181,17 +185,6 @@
     }
 }//
 
-/*
-- (void)sanitizeString:(NSString *)dirtString {
-	BOOL match = ([dirtString rangeOfString:@"&" options:NSCaseInsensitiveSearch].location != NSNotFound);
-	if (match) {
-		comText.text = @"& Discoverd";
-	} else {
-		comText.text = @"Location Good";
-	}
-}
-*/
-
 - (IBAction)feedButtonPressed:(id)sender {
 	NSString *namePrefix = @"Name=";
 	NSString *name = nameField.text;
@@ -247,6 +240,10 @@
 	}
 	
 	statusText.text = feedStatus;
+	
+	[nameField release];
+	[locField release];
+	[comField release];
 } // Code to execute on a timer
 
 - (void)viewDidLoad {
@@ -305,9 +302,6 @@
 } // Does something I'm sure
 
 - (void)dealloc {
-	[nameField release];
-	[locField release];
-	[comField release];
 	[super dealloc];
 } // Release objects to save memory
 
