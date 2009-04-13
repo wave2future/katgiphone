@@ -161,8 +161,8 @@
     NSArray *resultNodes = NULL;
 	
     // Set the resultNodes Array to contain an object for every instance of an  node in our RSS feed
-    //resultNodes = [rssParser nodesForXPath:@"//KATGFeed" error:nil]; //My Feed
-	resultNodes = [rssParser nodesForXPath:@"//KATGGadget" error:nil]; //Grundle's Feed
+    //resultNodes = [rssParser nodesForXPath:@"//KATGFeed" error:nil];
+	resultNodes = [rssParser nodesForXPath:@"//root" error:nil];
 
     // Loop through the resultNodes to access each items actual data
     for (CXMLElement *resultElement in resultNodes) {
@@ -220,46 +220,33 @@
 } // Submit Feedback
 
 - (void) handleTimer: (NSTimer *) timer {
-	// Create the feed string
-    //NSString *feedAddress = @"http://dysenteryevents.com/katg/Feed.xml";
-    NSString *feedAddress = @"http://www.thegrundleonline.com/xml/KATGGadget.xml";
-	// Call the grabRSSFeed function with the above
-    // string as a parameter
-    [self grabRSSFeed:feedAddress];
-	
-	int feedEntryIndex = 0;
-	NSString *feedStatusString = [[feedEntries objectAtIndex: feedEntryIndex] objectForKey: @"FeedStatus"];
-	int feedStatusInt = [feedStatusString intValue];
-	NSString *feedStatus = nil;
-	if(feedStatusInt == 0) {
-		feedStatus = @"Not Live";
-	} else if(feedStatusInt == 1) {
-		feedStatus = @"Live";
-	} else {
-		feedStatus = @"Unknown";
-	}
-	
-	statusText.text = feedStatus;
-	
-	[nameField release];
-	[locField release];
-	[comField release];
+	[self loadURL];
 } // Code to execute on a timer
 
 - (void)viewDidLoad {
 	// Loads Play button for audioStream
 	UIImage *image = [UIImage imageNamed:@"playButton.png"];
 	[self setButtonImage:image];
-	
+	[self loadURL];
+	[self setTimer];
+} //
+
+//*******************************************************
+//* loadURL
+//*
+//* Create and run live feed xml
+//*******************************************************
+- (void) loadURL
+{
 	// Create the feed string
-    //NSString *feedAddress = @"http://dysenteryevents.com/katg/Feed.xml";
-    NSString *feedAddress = @"http://www.thegrundleonline.com/xml/KATGGadget.xml";
+	NSString *feedAddress = @"http://www.keithandthegirl.com/feed/show/live";
+    //NSString *feedAddress = @"http://www.thegrundleonline.com/xml/KATGGadget.xml";
 	// Call the grabRSSFeed function with the above
     // string as a parameter
     [self grabRSSFeed:feedAddress];
 	
 	int feedEntryIndex = 0;
-	NSString *feedStatusString = [[feedEntries objectAtIndex: feedEntryIndex] objectForKey: @"FeedStatus"];
+	NSString *feedStatusString = [[feedEntries objectAtIndex: feedEntryIndex] objectForKey: @"OnAir"];
 	int feedStatusInt = [feedStatusString intValue];
 	NSString *feedStatus = nil;
 	if(feedStatusInt == 0) {
@@ -271,7 +258,16 @@
 	}
 	
 	statusText.text = feedStatus;
-	
+}
+
+//*******************************************************
+//* setTimer
+//*
+//* Create and start timer 
+//* for updating live feed indicator
+//*******************************************************
+- (void) setTimer
+{
 	NSTimer *timer;
 	
 	timer = [NSTimer scheduledTimerWithTimeInterval: 180.0
@@ -279,7 +275,7 @@
 										   selector: @selector(handleTimer:)
 										   userInfo: nil
 											repeats: YES];
-} //
+}
 
 - (IBAction)textFieldDoneEditing:(id)sender {
 	[sender resignFirstResponder];

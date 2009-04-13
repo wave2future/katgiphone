@@ -5,24 +5,12 @@
 //  Created by Ashley Mills on 11/04/2009.
 //  Copyright 2009 Joylord Systems Ltd.. All rights reserved.
 //
-//
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-//  
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-//  
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import "TweetViewController.h"
 #import "TweetViewCell.h"
-#import "DetailViewController.h"
+//#import "MainViewController.h"
 #import <JSON/JSON.h>
+#import "DetailViewController.h"
 
 @implementation TweetViewController
 
@@ -35,21 +23,61 @@
 	[super viewDidLoad];
 	
 	self.navigationItem.title = @"KATG Tweets";
-
-	queryResult = [[NSMutableString alloc] initWithCapacity: bytesToLoad];
+	
 	tweets = [[NSMutableArray alloc] initWithCapacity: 100];
 	iconDict = [[NSMutableDictionary alloc] init];
+	isURL = [[NSMutableDictionary alloc] init];
+	urlDict = [[NSMutableDictionary alloc] init];
 	
-	UIBarButtonItem *addButton = [[[UIBarButtonItem alloc]
+	connections = CFDictionaryCreateMutable(kCFAllocatorDefault,
+											0,
+											&kCFTypeDictionaryKeyCallBacks,
+											&kCFTypeDictionaryValueCallBacks);
+		
+	addButton = [[[UIBarButtonItem alloc]
                                    initWithTitle:NSLocalizedString(@"Other Tweets", @"On")
                                    style:UIBarButtonItemStyleBordered
                                    target:self
-                                   action:@selector(addAction:)] autorelease];
+                                   action:@selector(otherTweets:)] autorelease];
     self.navigationItem.rightBarButtonItem = addButton;
+	
+	refButton = [[[UIBarButtonItem alloc]
+                                   initWithTitle:NSLocalizedString(@"Update", @"On")
+                                   style:UIBarButtonItemStyleBordered
+                                   target:self
+                                   action:@selector(refTweets:)] autorelease];
+    self.navigationItem.leftBarButtonItem = refButton;
+	refButton.enabled = NO;
+	addButton.enabled = NO;
 }
 
-- (void)addAction:(id)sender{
-	otherTweets = @"ON";
+- (void)refTweets:(id)sender{
+	refButton.enabled = NO;
+	tweets = [[NSMutableArray alloc] initWithCapacity: 100];
+	iconDict = [[NSMutableDictionary alloc] init];
+	
+	connections = CFDictionaryCreateMutable(kCFAllocatorDefault,
+											0,
+											&kCFTypeDictionaryKeyCallBacks,
+											&kCFTypeDictionaryValueCallBacks);
+	[self loadURL];
+}
+
+- (void)otherTweets:(id)sender{
+	addButton.enabled = NO;
+	if (otherTweets == @"YES") {
+		otherTweets = @"NO";
+	} else {
+			otherTweets = @"YES";
+	}
+	tweets = [[NSMutableArray alloc] initWithCapacity: 100];
+	iconDict = [[NSMutableDictionary alloc] init];
+	
+	connections = CFDictionaryCreateMutable(kCFAllocatorDefault,
+											0,
+											&kCFTypeDictionaryKeyCallBacks,
+											&kCFTypeDictionaryValueCallBacks);
+	[self loadURL];
 }
 
 //*******************************************************
@@ -73,7 +101,7 @@
 	NSString * searchString = @"http://search.twitter.com/search.json?q=from%3Akeithandthegirl+OR+from%3AKeithMalley";
 	
 //	if (mainViewController.showOthers.isOn)
-	if ( otherTweets == @"ON" )
+	if ( otherTweets == @"YES" )
 		searchString = [searchString stringByAppendingString: @"+OR+keithandthegirl+OR+%22keith+and+the+girl%22"];
 	
 //	searchString = [searchString stringByAppendingFormat: @"&rpp=%i", (int)mainViewController.tweetCount.value];
@@ -84,6 +112,11 @@
 	
 	NSURLRequest *request = [NSURLRequest requestWithURL: url];
 	NSURLConnection *connection = [NSURLConnection connectionWithRequest: request delegate: self];
+	NSMutableDictionary *connectionDict = [NSMutableDictionary dictionaryWithObjectsAndKeys: [NSMutableData data], @"data",
+										   searchString, @"url", 
+										   @"search", @"type", nil];
+	
+	CFDictionaryAddValue(connections, connection, connectionDict);
 }
 
 #pragma mark NSURLConnection delegate methods
@@ -106,28 +139,44 @@
 //*******************************************************
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-	NSString *newData = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
-	[queryResult appendString: newData];
-	[newData release];
+	NSMutableDictionary * dict = (NSMutableDictionary *)CFDictionaryGetValue(connections, connection);
+	NSMutableData *connectionData = [dict objectForKey: @"data"];
+	[connectionData appendData: data];
 	bytesLoaded += [data length];
 }
 
 //*******************************************************
 //* connectionDidFinishLoading:
 //*
-//* All data has arrived, so parse and store relevant parts
+//* All data has arrived, so 
 //*******************************************************
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+	NSString *type = [(NSMutableDictionary *)CFDictionaryGetValue(connections, connection) objectForKey: @"type"];
+	
+	if ([type isEqualToString: @"search"]) {
+		[self processSearchData: [(NSMutableDictionary *)CFDictionaryGetValue(connections, connection) objectForKey: @"data"]];
+	} else {
+		[self processIconData: (NSMutableDictionary *)CFDictionaryGetValue(connections, connection)];
+	}
+}
+
+//*******************************************************
+//* processSearchData:
+//*
+//* Parse and store relevant parts of the search query.
+//* Submit more requests for icon data if necessary.
+//*******************************************************
+- (void) processSearchData: (NSMutableData *) data
+{
+	NSString *queryResult = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+	
 	SBJSON *jsonParser = [SBJSON new];
-//	NSLog(@"Query result - %@", queryResult);
 	
 	NSError * error;
 	NSDictionary * queryDict = [jsonParser objectWithString: queryResult error: &error];
 	NSArray * results = [queryDict objectForKey: @"results"];
 	
-//	NSLog(@"Results - %@", results);
-
 	//******************************************
 	//* Set up the date formatter - has to use 10.4 format for iPhone
 	//******************************************
@@ -135,24 +184,27 @@
 	[formatter setDateStyle: NSDateFormatterLongStyle];
 	[formatter setFormatterBehavior: NSDateFormatterBehavior10_4];
 	[formatter setDateFormat: @"EEE, dd MMM yyyy HH:mm:ss +0000"];
-
+	
 	//******************************************
 	//* Process the results 1 tweet at a time
 	//******************************************
 	NSDictionary * tweet;
-
+	
 	for (tweet in results) {
 		NSString * from = [tweet objectForKey: @"from_user"];
 		NSString * text = [tweet objectForKey: @"text"];
+		NSString * imageURL = [tweet objectForKey: @"profile_image_url"];
 		NSDate * createdAt = [formatter dateFromString: [tweet objectForKey: @"created_at"]];
 		
 		//******************************************
-		//* Calculate the time & units since creation.
-		//* Compensating for TimeZone
+		//* Calculate the time & units since creation
 		//******************************************
 		NSString * interval = @"s";
 		int timeSince = -[createdAt timeIntervalSinceNow];
 		
+		//******************************************
+		//* Convert from GMT to local time
+		//******************************************
 		NSInteger seconds = [[NSTimeZone defaultTimeZone] secondsFromGMT];
 		timeSince -= seconds;
 		
@@ -175,34 +227,65 @@
 				}
 			}
 		}
-		NSString * since = [NSString stringWithFormat:@"%i%@", timeSince, interval];
 		
-		//******************************************
-		// Store an icon for this user if we haven't already 
-		//******************************************
-		if ([iconDict objectForKey: from] == nil) {
-			NSURL *iconURL = [NSURL URLWithString: [tweet objectForKey: @"profile_image_url"]];
-			NSData *iconData = [NSData dataWithContentsOfURL: iconURL];
-			[iconDict setObject: iconData forKey: from];
+		NSString * since = [NSString stringWithFormat:@"%i%@", timeSince, interval];
+		NSURL *iconURL = [NSURL URLWithString: imageURL];
+		
+		if ([iconDict objectForKey: imageURL] == nil) {
+			NSURLRequest *request = [NSURLRequest requestWithURL: iconURL];
+			NSURLConnection *connection = [NSURLConnection connectionWithRequest: request delegate: self];
+			NSMutableDictionary *connectionDict = [NSMutableDictionary dictionaryWithObjectsAndKeys: [NSMutableData data], @"data",
+												   imageURL, @"url", 
+												   @"icon", @"type", nil];
+			
+			CFDictionaryAddValue(connections, connection, connectionDict);
+			
+			[iconDict setObject: [NSNull null] forKey: imageURL];
 		}
+		
 		
 		//******************************************
 		//* Put everything in a dictionary and add to tweet array
 		//******************************************
-
+		
 		NSDictionary * tweetDict = [NSDictionary dictionaryWithObjectsAndKeys: from, @"from_user", 
 									text, @"text", 
-									since, @"since", nil];
+									since, @"since",
+									imageURL, @"profile_image_url", nil];
 		
 		[tweets addObject: tweetDict];
 		
 	}
-//	NSLog(@"%@", tweets);
 	
 	//******************************************
 	//* Finally reload the table view
 	//******************************************
 	[tv reloadData];
+	refButton.enabled = YES;
+	addButton.enabled = YES;
+}
+
+//*******************************************************
+//* processIconData:
+//*
+//*
+//*
+//*******************************************************
+- (void) processIconData: (NSMutableDictionary *) dict
+{
+	NSData *iconData = [dict objectForKey: @"data"];
+	NSString *iconURL = [dict objectForKey: @"url"]; 
+	[iconDict setObject: iconData forKey: iconURL];
+	
+	NSArray * visibleCells = [self.tableView visibleCells];
+	TweetViewCell * cell;
+	
+	for (cell in visibleCells) {
+		if ([cell.imageURL isEqualToString: iconURL]) {
+			cell.iconImage = [UIImage imageWithData: [iconDict objectForKey: iconURL]];
+			[cell setNeedsDisplay];
+		}
+	}
 }
 
 #pragma mark UITableViewDataSource methods
@@ -227,18 +310,46 @@
         cell = [self createNewTweetCellFromNib];
     }
 	
-    cell.tweet.text = [[tweets objectAtIndex: indexPath.row] objectForKey: @"text"];
-	cell.since.text = [[tweets objectAtIndex: indexPath.row] objectForKey: @"since"];
-	NSString * from = [[tweets objectAtIndex: indexPath.row] objectForKey: @"from_user"];
-	[cell.icon setImage: [UIImage imageWithData: [iconDict objectForKey: from]]];
+    cell.tweetText = [[tweets objectAtIndex: indexPath.row] objectForKey: @"text"];
+	cell.sinceText = [[tweets objectAtIndex: indexPath.row] objectForKey: @"since"];
+	cell.fromText = [[tweets objectAtIndex: indexPath.row] objectForKey: @"from_user"];
+	cell.imageURL = [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"];
 	
-	if ([cell.tweet.text rangeOfString: @"www"].location != NSNotFound |
-		[cell.tweet.text rangeOfString: @"http:"].location != NSNotFound |
-		[cell.tweet.text rangeOfString: @".com"].location != NSNotFound) {
+	if ([iconDict objectForKey: cell.imageURL] != [NSNull null]) {
+		cell.iconImage = [UIImage imageWithData: [iconDict objectForKey: cell.imageURL]];
+	}
+	NSString *index = [NSString stringWithFormat:@"%d", indexPath.row];
+	
+	if ([cell.tweetText rangeOfString: @"www" options:1].location != NSNotFound ||
+		[cell.tweetText rangeOfString: @"http:" options:1].location != NSNotFound ||
+		[cell.tweetText rangeOfString: @".com" options:1].location != NSNotFound) {
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		[isURL setObject: @"YES" forKey: index];
+		[urlDict setObject:cell.tweetText forKey:index];
 	}
 	
+	CGRect cellFrame = cell.frame;
+	cellFrame.size.height = [self tableView: aTableView heightForRowAtIndexPath: indexPath];
+	cell.frame = cellFrame;
+	
+	[cell setNeedsDisplay];
     return (UITableViewCell *)cell;
+}
+
+
+//*************************************************
+//* tableView:cellForRowAtIndexPath:
+//*
+//* Set the cell text etc, and show a disclosure
+//* inidicator if tweet contains a url
+//*************************************************
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	NSString * text = [[tweets objectAtIndex: indexPath.row] objectForKey: @"text"];
+	CGSize maxTextSize = CGSizeMake(220.0, 200.0);
+	CGSize textSize = [text sizeWithFont: [UIFont systemFontOfSize: 12] constrainedToSize: maxTextSize];
+	CGFloat height = MAX((textSize.height + 20.0f), 46.0f);
+	return height;
 }
 
 //*************************************************
@@ -261,15 +372,66 @@
 	return tweetCell;
 }
 
-
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	DetailViewController *viewController = [[DetailViewController alloc] initWithNibName:@"DetailView" bundle:[NSBundle mainBundle]];
-//	viewController.TitleTemp = [[list objectAtIndex:indexPath.row] title];
-//	viewController.DateTemp = [[list objectAtIndex:indexPath.row] publishDate];
-//	viewController.BodyTemp = [[list objectAtIndex:indexPath.row] detail];
-	[[self navigationController] pushViewController:viewController animated:YES];
-	[viewController release];
+	if ( [isURL objectForKey: [NSString stringWithFormat:@"%d", indexPath.row]] == @"YES" ) {
+		WebViewController *viewController = [[WebViewController alloc] initWithNibName:@"WebView" bundle:[NSBundle mainBundle]];
+		
+		NSString *tweetURL = [urlDict objectForKey: [NSString stringWithFormat:@"%d", indexPath.row]];
+		
+		NSString *urlAddress = nil;
+		
+		if ([tweetURL rangeOfString: @"http:" options:1].location != NSNotFound) {
+			int tweetLength = tweetURL.length;
+			int urlStart = [tweetURL rangeOfString: @"http:" options:1].location;
+			NSRange tweetRange = {urlStart, tweetLength-urlStart};
+			NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
+			NSRange urlEndRange = [tweetURL rangeOfCharacterFromSet:charSet options:1 range:tweetRange];
+			int urlEnd = urlEndRange.location;
+			if (urlEnd > tweetLength ) {
+				urlEnd = tweetLength;
+			}
+			int urlLength = urlEnd - urlStart;
+			urlAddress = [tweetURL substringWithRange:NSMakeRange( urlStart, urlLength ) ];
+		} else if ( [tweetURL rangeOfString: @"www." options:1].location != NSNotFound ) {
+			int tweetLength = tweetURL.length;
+			int urlStart = [tweetURL rangeOfString: @"www." options:1].location;
+			NSRange tweetRange = {urlStart, tweetLength-urlStart};
+			NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
+			NSRange urlEndRange = [tweetURL rangeOfCharacterFromSet:charSet options:1 range:tweetRange];
+			int urlEnd = urlEndRange.location;
+			if (urlEnd > tweetLength ) {
+				urlEnd = tweetLength;
+			}
+			int urlLength = urlEnd - urlStart;
+			urlAddress = @"http://";
+			NSString *urlStub = [tweetURL substringWithRange:NSMakeRange( urlStart, urlLength ) ];
+			urlAddress = [urlAddress stringByAppendingString:urlStub];
+		} else if ( [tweetURL rangeOfString: @".com" options:1].location != NSNotFound ) {
+			int tweetLength = tweetURL.length;
+			int comStart = [tweetURL rangeOfString: @".com" options:1].location;
+			NSRange startRange = {0, comStart};
+			NSRange endRange = {comStart, tweetLength - comStart};
+			NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
+			NSRange urlStartRange = [tweetURL rangeOfCharacterFromSet:charSet options:5 range:startRange];
+			NSRange urlEndRange = [tweetURL rangeOfCharacterFromSet:charSet options:1 range:endRange];
+			int urlStart = urlStartRange.location + 1;
+			if (urlStart < 0) {
+				urlStart = 0;
+			}
+			int urlEnd = urlEndRange.location;
+			if (urlEnd > tweetLength) {
+				urlEnd = tweetLength;
+			}
+			int urlLength = urlEnd - urlStart;
+			urlAddress = @"http://";
+			NSString *urlStub = [tweetURL substringWithRange:NSMakeRange( urlStart, urlLength ) ];
+			urlAddress = [urlAddress stringByAppendingString:urlStub];
+		}
+		
+		viewController.urlAddress = urlAddress;
+		[[self navigationController] pushViewController:viewController animated:YES];
+		[viewController release];
+	}
 }
 
 
@@ -279,7 +441,6 @@
 
 - (void)dealloc {
 	[iconDict release];
-	[queryResult release];
 	[tweets release];
     [super dealloc];
 }

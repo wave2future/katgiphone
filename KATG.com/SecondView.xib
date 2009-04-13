@@ -38,7 +38,7 @@
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
-					<bytes key="NSRGB">MC40NDcwNTg4MyAwLjY5ODAzOTIzIDAuMzM3MjU0OTEAA</bytes>
+					<bytes key="NSRGB">MC42Mjc0NTEgMC43NDUwOTgwNSAwLjY2NjY2NjY5AA</bytes>
 				</object>
 				<bool key="IBUIOpaque">NO</bool>
 				<bool key="IBUIClipsSubviews">YES</bool>
@@ -127,7 +127,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>SecondViewController</string>
 					<string>UIResponder</string>
-					<string>{{94, 135}, {320, 480}}</string>
+					<string>{{310, 151}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>

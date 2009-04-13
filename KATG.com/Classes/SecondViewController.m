@@ -70,9 +70,19 @@
 	self.navigationItem.title = @"Events";
 	
     list = [[NSMutableArray alloc] init];
-    
+	
+	[self loadURL];
+}
+
+//*******************************************************
+//* loadURL
+//*
+//* Create and run live feed xml
+//*******************************************************
+- (void) loadURL
+{
 	// Create the feed string
-    NSString *feedAddress = @"http://dysenteryevents.com/katg/KATGEvents.xml";
+    NSString *feedAddress = @"http://www.keithandthegirl.com/feed/event/?order=datereverse";
     // Call the grabRSSFeed function with the above
     // string as a parameter
     [self grabRSSFeed:feedAddress];
@@ -84,20 +94,14 @@
 	
 	while ( 0 <= feedEntryIndex ) {
 		
-		NSString *feedTitle = [[[feedEntries objectAtIndex: feedEntryIndex] 
-								objectForKey: @"title"] 
-							   stringByReplacingOccurrencesOfString:(NSString *)@"&" 
-							   withString:(NSString *)@"and"];
+		NSString *feedTitle = [[feedEntries objectAtIndex: feedEntryIndex] 
+							   objectForKey: @"Title"];
 		
-		NSString *feedDetails = [[[feedEntries objectAtIndex: feedEntryIndex] 
-								  objectForKey: @"Details"]
-								 stringByReplacingOccurrencesOfString:(NSString *)@"&" 
-								 withString:(NSString *)@"and"];
+		NSString *feedDetails = [[feedEntries objectAtIndex: feedEntryIndex] 
+								 objectForKey: @"Details"];
 		
-		NSString *feedTimeString = [[[feedEntries objectAtIndex: feedEntryIndex] 
-									 objectForKey: @"Date"]
-									stringByReplacingOccurrencesOfString:(NSString *)@"&" 
-									withString:(NSString *)@"and"];
+		NSString *feedTimeString = [[feedEntries objectAtIndex: feedEntryIndex] 
+									objectForKey: @"StartDate"];
 		
 		BOOL match = ([feedTitle rangeOfString:@"Live Show" options:NSCaseInsensitiveSearch].location != NSNotFound);
 		
