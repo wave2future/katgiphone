@@ -22,32 +22,29 @@
 #import "WebViewController.h"
 
 @class TweetViewCell;
-//@class MainViewController;
 
 @interface TweetViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
 	IBOutlet UIActivityIndicatorView *activity;
 	IBOutlet UITableView *tv;
-//	IBOutlet MainViewController *mainViewController;
-	
-	long long bytesToLoad;
-	long long bytesLoaded;
 	
 	CFMutableDictionaryRef connections;
 	
 	NSMutableArray *tweets;
 	
-	UIImageView *icon;
 	NSMutableDictionary *iconDict;
-	UIImage * iconImage;
 
+	// Added code
 	NSString *otherTweets;
 	NSMutableDictionary *isURL;
 	NSMutableDictionary *urlDict;
 	
 	UIBarButtonItem *refButton;
 	UIBarButtonItem *addButton;
+	// End Added code
 }
 
+- (void) loadData;
+- (void) saveData;
 - (void) loadURL;
 - (TweetViewCell *) createNewTweetCellFromNib;
 - (void) processSearchData: (NSMutableData *) data;

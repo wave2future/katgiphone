@@ -35,34 +35,62 @@
     // Configure the view for the selected state
 }
 
+//*************************************************
+//* drawRect:
+//*
+//* The entire cell is drawn here
+//*************************************************
 - (void)drawRect:(CGRect)rect {
 	
 	CGContextRef ctx = UIGraphicsGetCurrentContext();
-	CGFunctionRef shadingFunction = createFunctionForRGB(KaTGGreenShading);
-	CGShadingRef shadingRef = CGShadingCreateAxial(CGColorSpaceCreateDeviceRGB(), rect.origin, CGPointMake(rect.origin.x, rect.origin.y + rect.size.height), shadingFunction, false, false);
-	CGFunctionRelease(shadingFunction);
 	
+	//*************************************************
+	//* Clip the context to a rounded rectangle
+	//*************************************************
 	addRoundedRectPathToContext(ctx, rect, 1.5f, 5.0f);
 	CGContextClip(ctx);
 	
+	//*************************************************
+	//* Shade withing the clipping region
+	//*************************************************
+	CGFunctionRef shadingFunction = createFunctionForRGB(KaTGGreenShading);
+	CGShadingRef shadingRef = CGShadingCreateAxial(CGColorSpaceCreateDeviceRGB(), rect.origin, CGPointMake(rect.origin.x, rect.origin.y + rect.size.height), shadingFunction, false, false);
+	CGFunctionRelease(shadingFunction);
 	CGContextDrawShading(ctx, shadingRef);
 	CGShadingRelease(shadingRef);
 	
+	//*************************************************
+	//* Draw a black border
+	//*************************************************
 	CGContextSetLineWidth(ctx, 1.5f);
 	CGContextSetStrokeColorWithColor(ctx, [[UIColor blackColor] CGColor]);
 	CGContextStrokePath(ctx);
 	
-	[[UIColor blackColor] setFill];
+	//*************************************************
+	//* Draw the 'from' text
+	//*************************************************
+	CGContextSetFillColorWithColor(ctx, [[UIColor blackColor] CGColor]);
 	[fromText drawAtPoint: CGPointMake(50.0, 2.0) withFont: [UIFont boldSystemFontOfSize: 12.0f]];
 	
+	//*************************************************
+	//* Draw the 'tweet' text
+	//*************************************************
 	CGRect textRect = CGRectMake(50.0, 17.0, 220.0, rect.size.height - 20.0);
 	[tweetText drawInRect: textRect withFont: [UIFont systemFontOfSize: 12.0f]];
 	
+	//*************************************************
+	//* Calculate the size of the 'since' text and
+	//* draw it aligned
+	//*************************************************
 	CGSize textSize = [sinceText sizeWithFont: [UIFont systemFontOfSize: 12.0f]];
 	textRect = CGRectMake(315.0 - textSize.width, 3.0, textSize.width, textSize.height);
-	[[UIColor blueColor] setFill];
+	CGContextSetFillColorWithColor(ctx, [[UIColor blueColor] CGColor]);
 	[sinceText drawInRect: textRect withFont: [UIFont systemFontOfSize: 12.0f]];
 	
+	//*************************************************
+	//* If the icon image has been set, clip to a rounded
+	//* rect and draw the icon.
+	//*************************************************
 	if (iconImage != nil) {
 		CGRect iconRect = CGRectMake(5.0, (rect.size.height - 36.0) / 2.0f, 36.0, 36.0);
 		addRoundedRectPathToContext(ctx, iconRect, 1.0f, 4.0f);
@@ -71,6 +99,11 @@
 	}
 }
 
+//*************************************************
+//* addRoundedRectPathToContext
+//*
+//* Add a new path to the context
+//*************************************************
 void addRoundedRectPathToContext(CGContextRef ctx, CGRect rect, CGFloat lineWidth, CGFloat cornerRadius)
 {
 	CGContextBeginPath(ctx);
@@ -101,6 +134,11 @@ void addRoundedRectPathToContext(CGContextRef ctx, CGRect rect, CGFloat lineWidt
 	
 }
 
+//*************************************************
+//* createFunctionForRGB
+//*
+//* Create an RGB function to calculate the shading
+//*************************************************
 static CGFunctionRef createFunctionForRGB(CGFunctionEvaluateCallback evaluationFunction)
 {
 	CGFunctionRef function;
@@ -115,6 +153,11 @@ static CGFunctionRef createFunctionForRGB(CGFunctionEvaluateCallback evaluationF
 	return function;
 }
 
+//*************************************************
+//* KaTGGreenShading
+//*
+//* Creates RGB shading values from {50,180,0} to {20,140,0}
+//*************************************************
 static void KaTGGreenShading (void * info, const float * in, float * out)
 {
 	out[0] = (50.0f - (in[0] * 30.0f)) / 256.0;

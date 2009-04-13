@@ -21,14 +21,10 @@
 #import <UIKit/UIKit.h>
 
 @interface TweetViewCell : UITableViewCell {
-	IBOutlet UIImageView *icon;
-	IBOutlet UITextView *tweet;
-	IBOutlet UILabel *since;
 	NSString * tweetText;
 	NSString * fromText;
 	NSString * sinceText;
 	NSString *imageURL;
-	
 	UIImage * iconImage;
 }
 
@@ -43,3 +39,4 @@ void addRoundedRectPathToContext(CGContextRef ctx, CGRect rect, CGFloat lineWidt
 @property (nonatomic, retain) UIImage * iconImage;
 
 @end
+
