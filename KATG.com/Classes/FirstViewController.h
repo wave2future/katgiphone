@@ -23,6 +23,7 @@
 
 #import <UIKit/UIKit.h>
 #import	"TouchXML.h"
+#import <MediaPlayer/MPVolumeView.h>
 
 @class AudioStreamer; // This is the shoutcast radio class
 

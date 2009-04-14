@@ -160,9 +160,9 @@ static CGFunctionRef createFunctionForRGB(CGFunctionEvaluateCallback evaluationF
 //*************************************************
 static void KaTGGreenShading (void * info, const float * in, float * out)
 {
-	out[0] = (50.0f - (in[0] * 30.0f)) / 256.0;
-	out[1] = (180.0f - (in[0] * 40.0f)) / 256.0;
-	out[2] = 0.0f;
+	out[0] = (160.0f - (in[0] * 30.0f)) / 256.0;
+	out[1] = (240.0f - (in[0] * 40.0f)) / 256.0;
+	out[2] = (160.0f - (in[0] * 30.0f)) / 256.0;
 	out[3] = 1.0f;
 }
 

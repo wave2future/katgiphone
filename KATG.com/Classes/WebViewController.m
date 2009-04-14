@@ -19,9 +19,8 @@
 
 @implementation WebViewController
 
-@synthesize webView;
-@synthesize urlAddress;
-
+@synthesize webView;    // Set up webview for TweetViewController to pass too
+@synthesize urlAddress; // Variable for TweetViewController to pass URL address
 
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -31,15 +30,13 @@
     return self;
 }
 
-
-/*
- // Implement loadView to create a view hierarchy programmatically, without using a nib.
- - (void)loadView {
- }
- */
-
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+//*************************************************
+//* viewDidLoad
+//*
+//* Setup urladdress and make the request
+//* This needs to be converted into a method
+//* with error handling
+//*************************************************
 - (void)viewDidLoad {
 		
 	//Create a URL object.
@@ -52,15 +49,6 @@
 	[webView loadRequest:requestObj];
 }
 
-
-/*
- // Override to allow orientations other than the default portrait orientation.
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- // Return YES for supported orientations
- return (interfaceOrientation == UIInterfaceOrientationPortrait);
- }
- */
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
     // Release anything that's not essential, such as cached data
@@ -69,6 +57,7 @@
 
 - (void)dealloc {
 	[webView release];
+	[urlAddress release];
     [super dealloc];
 }
 

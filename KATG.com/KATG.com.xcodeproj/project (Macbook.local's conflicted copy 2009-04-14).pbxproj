@@ -565,7 +565,7 @@
 					"-lxml2",
 				);
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5429A17B-F9BB-4B1E-99AF-B10C73D7FBBA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "912B587F-6273-4715-B997-D2D771B125AF";
 				SDKROOT = iphoneos2.1;
 			};
 			name = Distribution;

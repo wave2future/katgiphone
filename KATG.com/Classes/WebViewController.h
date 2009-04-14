@@ -18,8 +18,8 @@
 #import <UIKit/UIKit.h>
 
 @interface WebViewController : UIViewController {
-	IBOutlet UIWebView *webView;
-	NSString *urlAddress;
+	IBOutlet UIWebView *webView; // Set up webview for TweetViewController to pass too
+	NSString *urlAddress;        // Variable for TweetViewController to pass URL address
 }
 
 @property (nonatomic, retain) UIWebView *webView;

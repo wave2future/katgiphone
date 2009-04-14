@@ -1,3 +1,11 @@
 Exception Handling for loss of network connection
 
 Reconnection Structure
+
+Replace FourthView with Webview (use same webview in twitter and youtube)
+
+Format events details page
+
+Add linking from events details	page to webview for URLs
+
+Move live feed check to some time after loading is complete

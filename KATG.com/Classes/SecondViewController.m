@@ -21,6 +21,7 @@
 #import "CustomCell.h"
 #import "TouchXML.h"
 #import "DetailViewController.h"
+#import "TweetViewCell.h"
 
 #define ROW_HEIGHT 80.0
 
@@ -84,7 +85,6 @@
 	
     list = [[NSMutableArray alloc] init];
 	
-	[self pollFeed];
 }
 
 //*******************************************************
@@ -105,6 +105,12 @@
 	
 	// Evaluate the contents of feed for classification and add results into list
 	NSString *eventType = nil;
+	
+	NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+	[formatter setDateStyle: NSDateFormatterLongStyle];
+	[formatter setFormatterBehavior: NSDateFormatterBehavior10_4];
+	[formatter setDateFormat: @"EEE, dd MMM yyyy HH:mm:ss +0000"];
+	
 	while ( 0 <= feedEntryIndex ) {
 		
 		NSString *feedTitle = [[feedEntries objectAtIndex: feedEntryIndex] 
@@ -115,6 +121,9 @@
 		
 		NSString *feedTimeString = [[feedEntries objectAtIndex: feedEntryIndex] 
 									objectForKey: @"StartDate"]; // This should be converted into NSDate for sorting functions
+		
+		//NSDate *eventDate = [formatter dateFromString: feedTimeString];
+		
 		// Determines if event is live show
 		BOOL match = ([feedTitle rangeOfString:@"Live Show" options:NSCaseInsensitiveSearch].location != NSNotFound);
 		
@@ -144,6 +153,8 @@
     [super viewDidLoad];
     
     self.tableView.rowHeight = ROW_HEIGHT;
+	
+	[self pollFeed];
 	
 }
 
