@@ -26,6 +26,12 @@
 
 @implementation SecondViewController
 
+//*******************************************************
+//* grabRSSFeed:
+//*
+//* Poll XML feed at feedAddress and parse at xpath </Event>
+//*
+//*******************************************************
 -(void) grabRSSFeed:(NSString *)feedAddress {
 	
     // Initialize the feedEntries MutableArray that we declared in the header
@@ -65,21 +71,28 @@
     }
 }
 
+//*******************************************************
+//* awakeFromNib:
+//*
+//* Set title in navigation bar, establish list array for
+//* events and poll xml feed
+//*
+//*******************************************************
 - (void)awakeFromNib {
 	
 	self.navigationItem.title = @"Events";
 	
     list = [[NSMutableArray alloc] init];
 	
-	[self loadURL];
+	[self pollFeed];
 }
 
 //*******************************************************
-//* loadURL
+//* pollFeed
 //*
-//* Create and run live feed xml
+//* Create and run live show feed xml
 //*******************************************************
-- (void) loadURL
+- (void) pollFeed
 {
 	// Create the feed string
     NSString *feedAddress = @"http://www.keithandthegirl.com/feed/event/?order=datereverse";
@@ -90,8 +103,8 @@
 	//[feedEntries count]
 	int feedEntryIndex = [feedEntries count] - 1;
 	
+	// Evaluate the contents of feed for classification and add results into list
 	NSString *eventType = nil;
-	
 	while ( 0 <= feedEntryIndex ) {
 		
 		NSString *feedTitle = [[feedEntries objectAtIndex: feedEntryIndex] 
@@ -101,8 +114,8 @@
 								 objectForKey: @"Details"];
 		
 		NSString *feedTimeString = [[feedEntries objectAtIndex: feedEntryIndex] 
-									objectForKey: @"StartDate"];
-		
+									objectForKey: @"StartDate"]; // This should be converted into NSDate for sorting functions
+		// Determines if event is live show
 		BOOL match = ([feedTitle rangeOfString:@"Live Show" options:NSCaseInsensitiveSearch].location != NSNotFound);
 		
 		if (match) {
@@ -120,13 +133,18 @@
 	}
 }
 
+//*******************************************************
+//* viewDidLoad:
+//*
+//* Set row height, you could add buttons to the
+//* navigation controller here.
+//*
+//*******************************************************
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.tableView.rowHeight = ROW_HEIGHT;
 	
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -145,14 +163,23 @@
     return 1;
 }
 
-
-// Customize the number of rows in the table view.
+//*******************************************************
+//* tableView:numberOfRowsInSection
+//*
+//*  Customize the number of rows in the table view
+//*
+//*******************************************************
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [list count];
 }
 
-
-// Customize the appearance of table view cells.
+//*******************************************************
+//* tableView:cellForRowAtIndexPath
+//*
+//* Customize the appearance of table view cells.
+//* Assign icons to event types
+//*
+//*******************************************************
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"CustomCell";
     
@@ -176,8 +203,15 @@
     return cell;
 }
 
-
-
+//*******************************************************
+//* tableView:didSelectRowAtIndexPath
+//*
+//*  Establishes a view controller using the
+//*  DetailViewController and passes it variable.
+//*  When a row is selected the DetailView.xib is
+//*  pushed.
+//*
+//*******************************************************
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	DetailViewController *viewController = [[DetailViewController alloc] initWithNibName:@"DetailView" bundle:[NSBundle mainBundle]];
 	viewController.TitleTemp = [[list objectAtIndex:indexPath.row] title];

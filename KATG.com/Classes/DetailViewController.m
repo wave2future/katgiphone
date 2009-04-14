@@ -2,9 +2,6 @@
 //  DetailViewController.m
 //  KATG.com
 //
-//  Created by iPhone SDK Articles on 3/8/09.
-//  Copyright www.iPhoneSDKArticles.com 2009. 
-//
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
@@ -19,18 +16,26 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import "DetailViewController.h"
-#import "KATG_comAppDelegate.h"
+#import "KATG_comAppDelegate.h" // This gives access to the navigation controller
 
 @implementation DetailViewController
 
-@synthesize detailTitle;
-@synthesize detailDate;
-@synthesize detailBody;
-@synthesize TitleTemp;
-@synthesize DateTemp;
-@synthesize BodyTemp;
+@synthesize detailTitle; // Label to display event title
+@synthesize detailDate;  // Label to display event date
+@synthesize detailBody;  // Label to display event description
+@synthesize TitleTemp;   // Variable to store title passed from SecondViewController
+@synthesize DateTemp;    // Variable to store date passed from SecondViewController
+@synthesize BodyTemp;    // Variable to store description passed from SecondViewController
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+
+//*******************************************************
+//* viewDidLoad:
+//*
+//* Set navigation controller title
+//* Add button to navigate back to SecondView
+//* Set text of Title, Date and Body
+//*
+//*******************************************************
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
@@ -39,7 +44,7 @@
                                    initWithTitle:NSLocalizedString(@"Done", @"")
                                    style:UIBarButtonItemStyleDone
                                    target:self
-                                   action:@selector(addAction:)] autorelease];
+                                   action:@selector(dismissView:)] autorelease];
     self.navigationItem.leftBarButtonItem = addButton;
 	
 	
@@ -48,7 +53,14 @@
 	detailBody.text = BodyTemp;
 }
 
-- (void)addAction:(id)sender{
+//*******************************************************
+//* dismissView
+//*
+//* Return to view from which this view was pushed
+//* in this case SecondView
+//*
+//*******************************************************
+- (void)dismissView:(id)sender{
 	[self.navigationController popViewControllerAnimated:YES];
 }
 

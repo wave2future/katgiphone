@@ -18,8 +18,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SecondViewController : UITableViewController {
-    NSMutableArray *list;
-	NSMutableArray *feedEntries;
+    NSMutableArray *list;         // Adds formmated contents of each cell in an array
+	NSMutableArray *feedEntries;  // Child nodes of the feed being queried
 }
 
 @end

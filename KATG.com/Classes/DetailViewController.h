@@ -2,9 +2,6 @@
 //  DetailViewController.h
 //  KATG.com
 //
-//  Created by iPhone SDK Articles on 3/8/09.
-//  Copyright www.iPhoneSDKArticles.com 2009. 
-//
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
@@ -20,12 +17,12 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailViewController : UIViewController {
-	IBOutlet UILabel *detailTitle;
-	IBOutlet UILabel *detailDate;
-	IBOutlet UITextView *detailBody;
-	NSString *TitleTemp;
-	NSString *DateTemp;
-	NSString *BodyTemp;
+	IBOutlet UILabel *detailTitle;    // Label to display event title
+	IBOutlet UILabel *detailDate;     // Label to display event date
+	IBOutlet UITextView *detailBody;  // Label to display event description
+	NSString *TitleTemp;              // Variable to store title passed from SecondViewController
+	NSString *DateTemp;               // Variable to store date passed from SecondViewController
+	NSString *BodyTemp;               // Variable to store description passed from SecondViewController
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *detailTitle;
