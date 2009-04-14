@@ -227,7 +227,9 @@
 	// Loads Play button for audioStream
 	UIImage *image = [UIImage imageNamed:@"playButton.png"];
 	[self setButtonImage:image];
-	
+}
+
+- (void)viewDidAppear:(BOOL)animated {
 	// Creae and run live feed xml
 	[self loadURL];
 	// Set update timer for live feed xml
