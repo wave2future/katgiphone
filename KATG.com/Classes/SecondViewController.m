@@ -21,56 +21,11 @@
 #import "CustomCell.h"
 #import "TouchXML.h"
 #import "DetailViewController.h"
-#import "TweetViewCell.h"
+#import "grabRSSFeed.h"
 
 #define ROW_HEIGHT 80.0
 
 @implementation SecondViewController
-
-//*******************************************************
-//* grabRSSFeed:
-//*
-//* Poll XML feed at feedAddress and parse at xpath </Event>
-//*
-//*******************************************************
--(void) grabRSSFeed:(NSString *)feedAddress {
-	
-    // Initialize the feedEntries MutableArray that we declared in the header
-    feedEntries = [[NSMutableArray alloc] init];	
-	
-    // Convert the supplied URL string into a usable URL object
-    NSURL *url = [NSURL URLWithString: feedAddress];
-	
-    // Create a new rssParser object based on the TouchXML "CXMLDocument" class, this is the
-    // object that actually grabs and processes the RSS data
-    CXMLDocument *rssParser = [[[CXMLDocument alloc] initWithContentsOfURL:url options:0 error:nil] autorelease];
-	
-    // Create a new Array object to be used with the looping of the results from the rssParser
-    NSArray *resultNodes = NULL;
-	
-    // Set the resultNodes Array to contain an object for every instance of an  node in our RSS feed
-    resultNodes = [rssParser nodesForXPath:@"//Event" error:nil];
-	
-    // Loop through the resultNodes to access each items actual data
-    for (CXMLElement *resultElement in resultNodes) {
-		
-        // Create a temporary MutableDictionary to store the items fields in, which will eventually end up in feedEntries
-        NSMutableDictionary *feedItem = [[NSMutableDictionary alloc] init];
-		
-        // Create a counter variable as type "int"
-        int counter;
-		
-        // Loop through the children of the current  node
-        for(counter = 0; counter < [resultElement childCount]; counter++) {
-			
-            // Add each field to the feedItem Dictionary with the node name as key and node value as the value
-            [feedItem setObject:[[resultElement childAtIndex:counter] stringValue] forKey:[[resultElement childAtIndex:counter] name]];
-        }
-		
-        // Add the feedItem to the global feedEntries Array so that the view can access it.
-        [feedEntries addObject:[feedItem copy]];
-    }
-}
 
 //*******************************************************
 //* awakeFromNib:
@@ -95,10 +50,14 @@
 - (void) pollFeed
 {
 	// Create the feed string
+	//NSString *feedAddress = @"http://127.0.0.1:8888/feed/event";
     NSString *feedAddress = @"http://www.keithandthegirl.com/feed/event/?order=datereverse";
+	NSString *xPath = @"//Event";
     // Call the grabRSSFeed function with the above
     // string as a parameter
-    [self grabRSSFeed:feedAddress];
+	grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:(NSString *)xPath];
+	feedEntries = [feed entries];
+	[feed release];
 	
 	//[feedEntries count]
 	int feedEntryIndex = [feedEntries count] - 1;

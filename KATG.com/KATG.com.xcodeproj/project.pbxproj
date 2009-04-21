@@ -27,6 +27,7 @@
 		532424F10F912543009C1C10 /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 532424F00F912543009C1C10 /* SecondView.xib */; };
 		532425600F9127D0009C1C10 /* CellBg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5324255E0F9127D0009C1C10 /* CellBg.jpg */; };
 		532425610F9127D0009C1C10 /* twitTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 5324255F0F9127D0009C1C10 /* twitTab.png */; };
+		532C13B90F9556BB005879B1 /* grabRSSFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 532C13B80F9556BB005879B1 /* grabRSSFeed.m */; };
 		535FE5500F89F71800F6AD75 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */; };
 		535FE6080F89FF1700F6AD75 /* CXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE5F40F89FF1700F6AD75 /* CXMLDocument.m */; };
 		535FE6090F89FF1700F6AD75 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE5F60F89FF1700F6AD75 /* CXMLDocument_CreationExtensions.m */; };
@@ -69,6 +70,7 @@
 		53E8DD910F8DEEC7006A52C6 /* Default_old.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E8DD900F8DEEC7006A52C6 /* Default_old.png */; };
 		53E8DDE10F8E780F006A52C6 /* onAir.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E8DDE00F8E780F006A52C6 /* onAir.png */; };
 		53E8DE4E0F8E95C7006A52C6 /* RoadMap in Resources */ = {isa = PBXBuildFile; fileRef = 53E8DE4D0F8E95C7006A52C6 /* RoadMap */; };
+		53E9562B0F9D5F3E0071709B /* sanitizeField.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9562A0F9D5F3E0071709B /* sanitizeField.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +101,8 @@
 		532424F00F912543009C1C10 /* SecondView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondView.xib; sourceTree = "<group>"; };
 		5324255E0F9127D0009C1C10 /* CellBg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CellBg.jpg; sourceTree = "<group>"; };
 		5324255F0F9127D0009C1C10 /* twitTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitTab.png; sourceTree = "<group>"; };
+		532C13B70F9556BB005879B1 /* grabRSSFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grabRSSFeed.h; sourceTree = "<group>"; };
+		532C13B80F9556BB005879B1 /* grabRSSFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = grabRSSFeed.m; sourceTree = "<group>"; };
 		535FE54E0F89F71800F6AD75 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		535FE54F0F89F71800F6AD75 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		535FE5F30F89FF1700F6AD75 /* CXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument.h; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 		53E8DD900F8DEEC7006A52C6 /* Default_old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default_old.png; sourceTree = "<group>"; };
 		53E8DDE00F8E780F006A52C6 /* onAir.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onAir.png; sourceTree = "<group>"; };
 		53E8DE4D0F8E95C7006A52C6 /* RoadMap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadMap; sourceTree = "<group>"; };
+		53E956290F9D5F3E0071709B /* sanitizeField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sanitizeField.h; sourceTree = "<group>"; };
+		53E9562A0F9D5F3E0071709B /* sanitizeField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sanitizeField.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,12 +189,12 @@
 			isa = PBXGroup;
 			children = (
 				536CD4590F89E5F20063DED2 /* Delegate */,
-				537CD8850F8FBADE002F86FA /* Events */,
 				53D696630F9308A400FDBD0C /* Live Show */,
-				536CD4570F89E5EC0063DED2 /* Streamer */,
-				535FE5F20F89FEF300F6AD75 /* TouchXML */,
+				537CD8850F8FBADE002F86FA /* Events */,
 				532424EB0F9124AC009C1C10 /* Twitter */,
 				536CD45A0F89E5FA0063DED2 /* Youtube */,
+				536CD4570F89E5EC0063DED2 /* Streamer */,
+				535FE5F20F89FEF300F6AD75 /* Parser */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -306,32 +312,13 @@
 			name = Twitter;
 			sourceTree = "<group>";
 		};
-		535FE5F20F89FEF300F6AD75 /* TouchXML */ = {
+		535FE5F20F89FEF300F6AD75 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				535FE5F30F89FF1700F6AD75 /* CXMLDocument.h */,
-				535FE5F40F89FF1700F6AD75 /* CXMLDocument.m */,
-				535FE5F50F89FF1700F6AD75 /* CXMLDocument_CreationExtensions.h */,
-				535FE5F60F89FF1700F6AD75 /* CXMLDocument_CreationExtensions.m */,
-				535FE5F70F89FF1700F6AD75 /* CXMLDocument_PrivateExtensions.h */,
-				535FE5F80F89FF1700F6AD75 /* CXMLDocument_PrivateExtensions.m */,
-				535FE5F90F89FF1700F6AD75 /* CXMLElement.h */,
-				535FE5FA0F89FF1700F6AD75 /* CXMLElement.m */,
-				535FE5FB0F89FF1700F6AD75 /* CXMLElement_CreationExtensions.h */,
-				535FE5FC0F89FF1700F6AD75 /* CXMLElement_CreationExtensions.m */,
-				535FE5FD0F89FF1700F6AD75 /* CXMLElement_ElementTreeExtensions.h */,
-				535FE5FE0F89FF1700F6AD75 /* CXMLElement_ElementTreeExtensions.m */,
-				535FE5FF0F89FF1700F6AD75 /* CXMLNode.h */,
-				535FE6000F89FF1700F6AD75 /* CXMLNode.m */,
-				535FE6010F89FF1700F6AD75 /* CXMLNode_CreationExtensions.h */,
-				535FE6020F89FF1700F6AD75 /* CXMLNode_CreationExtensions.m */,
-				535FE6030F89FF1700F6AD75 /* CXMLNode_PrivateExtensions.h */,
-				535FE6040F89FF1700F6AD75 /* CXMLNode_PrivateExtensions.m */,
-				535FE6050F89FF1700F6AD75 /* CXMLNode_XPathExtensions.h */,
-				535FE6060F89FF1700F6AD75 /* CXMLNode_XPathExtensions.m */,
-				535FE6070F89FF1700F6AD75 /* TouchXML.h */,
+				53E955CF0F9D58BA0071709B /* grabRSSFeed */,
+				53E955C00F9D58AC0071709B /* TouchXML */,
 			);
-			name = TouchXML;
+			name = Parser;
 			sourceTree = "<group>";
 		};
 		536AC5480F91495A00B55D50 /* Tab Icons */ = {
@@ -405,8 +392,47 @@
 			children = (
 				28216C950DB411BC00E5133A /* FirstViewController.h */,
 				28216C960DB411BC00E5133A /* FirstViewController.m */,
+				53E956290F9D5F3E0071709B /* sanitizeField.h */,
+				53E9562A0F9D5F3E0071709B /* sanitizeField.m */,
 			);
 			name = "Live Show";
+			sourceTree = "<group>";
+		};
+		53E955C00F9D58AC0071709B /* TouchXML */ = {
+			isa = PBXGroup;
+			children = (
+				535FE5F30F89FF1700F6AD75 /* CXMLDocument.h */,
+				535FE5F40F89FF1700F6AD75 /* CXMLDocument.m */,
+				535FE5F50F89FF1700F6AD75 /* CXMLDocument_CreationExtensions.h */,
+				535FE5F60F89FF1700F6AD75 /* CXMLDocument_CreationExtensions.m */,
+				535FE5F70F89FF1700F6AD75 /* CXMLDocument_PrivateExtensions.h */,
+				535FE5F80F89FF1700F6AD75 /* CXMLDocument_PrivateExtensions.m */,
+				535FE5F90F89FF1700F6AD75 /* CXMLElement.h */,
+				535FE5FA0F89FF1700F6AD75 /* CXMLElement.m */,
+				535FE5FB0F89FF1700F6AD75 /* CXMLElement_CreationExtensions.h */,
+				535FE5FC0F89FF1700F6AD75 /* CXMLElement_CreationExtensions.m */,
+				535FE5FD0F89FF1700F6AD75 /* CXMLElement_ElementTreeExtensions.h */,
+				535FE5FE0F89FF1700F6AD75 /* CXMLElement_ElementTreeExtensions.m */,
+				535FE5FF0F89FF1700F6AD75 /* CXMLNode.h */,
+				535FE6000F89FF1700F6AD75 /* CXMLNode.m */,
+				535FE6010F89FF1700F6AD75 /* CXMLNode_CreationExtensions.h */,
+				535FE6020F89FF1700F6AD75 /* CXMLNode_CreationExtensions.m */,
+				535FE6030F89FF1700F6AD75 /* CXMLNode_PrivateExtensions.h */,
+				535FE6040F89FF1700F6AD75 /* CXMLNode_PrivateExtensions.m */,
+				535FE6050F89FF1700F6AD75 /* CXMLNode_XPathExtensions.h */,
+				535FE6060F89FF1700F6AD75 /* CXMLNode_XPathExtensions.m */,
+				535FE6070F89FF1700F6AD75 /* TouchXML.h */,
+			);
+			name = TouchXML;
+			sourceTree = "<group>";
+		};
+		53E955CF0F9D58BA0071709B /* grabRSSFeed */ = {
+			isa = PBXGroup;
+			children = (
+				532C13B70F9556BB005879B1 /* grabRSSFeed.h */,
+				532C13B80F9556BB005879B1 /* grabRSSFeed.m */,
+			);
+			name = grabRSSFeed;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -516,6 +542,8 @@
 				532424E90F912490009C1C10 /* TweetViewCell.m in Sources */,
 				532424EA0F912490009C1C10 /* TweetViewController.m in Sources */,
 				5314D4550F92C54E0098A81A /* WebViewController.m in Sources */,
+				532C13B90F9556BB005879B1 /* grabRSSFeed.m in Sources */,
+				53E9562B0F9D5F3E0071709B /* sanitizeField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

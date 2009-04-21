@@ -158,7 +158,7 @@
 //*******************************************************
 //* saveData:
 //*
-//* Save tweets and icons
+//* Save tweet1s and icons
 //*******************************************************
 - (void) saveData
 {
@@ -258,6 +258,10 @@
 	//*******************************************************
 	CFDictionaryRemoveValue(connections, connection);
 	
+	// Added Code
+	refButton.enabled = YES;
+	addButton.enabled = YES;
+	// End Added Code
 }
 
 
@@ -401,10 +405,6 @@
 	//* Finally reload the table view
 	//*******************************************************
 	[tv reloadData];
-	// Added Code
-	refButton.enabled = YES;
-	addButton.enabled = YES;
-	// End Added Code
 }
 
 //*******************************************************

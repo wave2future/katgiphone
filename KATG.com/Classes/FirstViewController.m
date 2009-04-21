@@ -18,18 +18,26 @@
 #import "FirstViewController.h"
 #import "AudioStreamer.h"
 #import <QuartzCore/CoreAnimation.h>
+#import "grabRSSFeed.h"
+#import "sanitizeField.h"
 
 @implementation FirstViewController
 
 // Set up interface for sending and receiving data from fields and labels
+// Feed Status
+@synthesize statusText;
 // Feedback Fields
 @synthesize nameField;
 @synthesize locField;
 @synthesize comField;
-// Feed Status
-@synthesize statusText;
-@synthesize comText;
 
+//*******************************************************
+//* UITextViewTextDidBeginEditingNotification
+//*
+//* When TextView send DidBeginEditing Notification
+//* set value of text to blank
+//* This is not currently working
+//*******************************************************
 - (void)UITextViewTextDidBeginEditingNotification:(NSNotification*)aNotification {
 	comField.text = @"";
 }
@@ -39,15 +47,25 @@
 		// Initialization code
 	}
 	return self;
-} // Launch NIB (The GUI file)
+}
 
+//*******************************************************
+//* setButtonImage
+//*
+//* Sets image for AudioStreamer play button
+//*******************************************************
 - (void)setButtonImage:(UIImage *)image {
 	[button.layer removeAllAnimations];
 	[button
 	 setImage:image
 	 forState:0];
-} // Sets button to appropiate image (Play or Stop)
+}
 
+//*******************************************************
+//* spinButton
+//*
+//* Fancy Spinny Button Animation using CoreAnimation
+//*******************************************************
 - (void)spinButton {
 	[CATransaction begin];
 	[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
@@ -69,7 +87,7 @@
 	[button.layer addAnimation:animation forKey:@"rotationAnimation"];
 	
 	[CATransaction commit];
-} // Fancy Spinny Button Animation using CoreAnimation
+}
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)finished {
 	if (finished)
@@ -145,62 +163,17 @@
 						  context:context];
 } //
 
-- (void)grabRSSFeed:(NSString *)feedAddress {
-	
-    // Initialize the feedEntries MutableArray that we declared in the header
-    feedEntries = [[NSMutableArray alloc] init];	
-	
-    // Convert the supplied URL string into a usable URL object
-    NSURL *url = [NSURL URLWithString: feedAddress];
-	
-    // Create a new rssParser object based on the TouchXML "CXMLDocument" class, this is the
-    // object that actually grabs and processes the RSS data
-    CXMLDocument *rssParser = [[[CXMLDocument alloc] initWithContentsOfURL:url options:0 error:nil] autorelease];
-	
-    // Create a new Array object to be used with the looping of the results from the rssParser
-    NSArray *resultNodes = NULL;
-	
-    // Set the resultNodes Array to contain an object for every instance of an  node in our RSS feed
-    //resultNodes = [rssParser nodesForXPath:@"//KATGFeed" error:nil];
-	resultNodes = [rssParser nodesForXPath:@"//root" error:nil];
-
-    // Loop through the resultNodes to access each items actual data
-    for (CXMLElement *resultElement in resultNodes) {
-		
-        // Create a temporary MutableDictionary to store the items fields in, which will eventually end up in feedEntries
-        NSMutableDictionary *feedItem = [[NSMutableDictionary alloc] init];
-		
-        // Create a counter variable as type "int"
-        int counter;
-		
-        // Loop through the children of the current  node
-        for(counter = 0; counter < [resultElement childCount]; counter++) {
-			
-            // Add each field to the feedItem Dictionary with the node name as key and node value as the value
-            [feedItem setObject:[[resultElement childAtIndex:counter] stringValue] forKey:[[resultElement childAtIndex:counter] name]];
-        }
-		
-        // Add the feedItem to the global feedEntries Array so that the view can access it.
-        [feedEntries addObject:[feedItem copy]];
-    }
-}//
-
 - (IBAction)feedButtonPressed:(id)sender {
+	sanitizeField *cleaner = [[sanitizeField alloc] init];
 	NSString *namePrefix = @"Name=";
-	NSString *name = nameField.text;
-	name = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)name, NULL, NULL, kCFStringEncodingUTF8);
-	name = [name stringByReplacingOccurrencesOfString:(NSString *)@"&" withString:(NSString *)@"and"];
+	NSString *name = [cleaner stringCleaner:nameField.text];
 	NSString *locPrefix = @"&Location=";
-	NSString *location = locField.text;
-	location = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)location, NULL, NULL, kCFStringEncodingUTF8);
-	location = [location stringByReplacingOccurrencesOfString:(NSString *)@"&" withString:(NSString *)@"and"];
-	NSString *comment = comField.text;
-	comment = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)comment, NULL, NULL, kCFStringEncodingUTF8);
-	comment = [comment stringByReplacingOccurrencesOfString:(NSString *)@"&" withString:(NSString *)@"and"];
+	NSString *location = [cleaner stringCleaner:locField.text];
+	NSString *comment = [cleaner stringCleaner:comField.text];
 	NSString *comPrefix = @"&Comment=";
 	NSString *submitButton = @"&ButtonSubmit=Send+Comment";
-//	NSString *hiddenVoxbackId = @"&HiddenVoxbackId=43&HiddenMixerCode=T2XPE";
 	NSString *hiddenVoxbackId = @"&HiddenVoxbackId=3&HiddenMixerCode=IEOSE";
+	[cleaner release];
 	
 	NSString *myRequestString = [namePrefix stringByAppendingString:name];
 	myRequestString = [myRequestString stringByAppendingString:locPrefix];
@@ -220,7 +193,7 @@
 } // Submit Feedback
 
 - (void) handleTimer: (NSTimer *) timer {
-	[self loadURL];
+	[self pollFeed];
 } // Code to execute on a timer
 
 - (void)viewDidLoad {
@@ -231,35 +204,63 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	// Creae and run live feed xml
-	[self loadURL];
+	[self pollFeed];
 	// Set update timer for live feed xml
 	[self setTimer];
 }
 
 //*******************************************************
-//* loadURL
+//* pollFeed
 //*
 //* Create and run live feed xml
 //*******************************************************
-- (void) loadURL
+- (void) pollFeed
 {
 	// Create the feed string
 	NSString *feedAddress = @"http://www.keithandthegirl.com/feed/show/live";
+	//NSString *feedAddress = @"http://127.0.0.1/show/live";
     //NSString *feedAddress = @"http://www.thegrundleonline.com/xml/KATGGadget.xml";
+	NSString *xPath = @"//root";
 	// Call the grabRSSFeed function with the above
     // string as a parameter
-    [self grabRSSFeed:feedAddress];
 	
-	int feedEntryIndex = 0;
-	NSString *feedStatusString = [[feedEntries objectAtIndex: feedEntryIndex] objectForKey: @"OnAir"];
-	int feedStatusInt = [feedStatusString intValue];
+	// create the request
+	
+	NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:feedAddress]
+							  
+											cachePolicy:NSURLRequestUseProtocolCachePolicy
+							  
+											timeoutInterval:60.0];
+	
+	// create the connection with the request
+	
+	// and start loading the data
+	
 	NSString *feedStatus = nil;
-	if(feedStatusInt == 0) {
-		feedStatus = @"Not Live";
-	} else if(feedStatusInt == 1) {
-		feedStatus = @"Live";
+	
+	NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+		
+	if (theConnection) {
+		
+		grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:xPath];
+		feedEntries = [feed entries];
+		[feed release];
+		
+		int feedEntryIndex = 0;
+		NSString *feedStatusString = [[feedEntries objectAtIndex: feedEntryIndex] objectForKey: @"OnAir"];
+		int feedStatusInt = [feedStatusString intValue];
+		if(feedStatusInt == 0) {
+			feedStatus = @"Not Live";
+		} else if(feedStatusInt == 1) {
+			feedStatus = @"Live";
+		} else {
+			feedStatus = @"Unknown";
+		}
+		
 	} else {
+		
 		feedStatus = @"Unknown";
+		
 	}
 	
 	statusText.text = feedStatus;
@@ -290,7 +291,7 @@
 	[nameField resignFirstResponder];
 	[locField resignFirstResponder];
 	[comField resignFirstResponder];
-}// Dismiis keyboard when background is clicked
+}// Dismiss keyboard when background is clicked
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	// Return YES for supported orientations

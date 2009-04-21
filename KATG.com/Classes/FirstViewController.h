@@ -22,37 +22,32 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import <UIKit/UIKit.h>
-#import	"TouchXML.h"
-#import <MediaPlayer/MPVolumeView.h>
 
 @class AudioStreamer; // This is the shoutcast radio class
 
 @interface FirstViewController : UIViewController {
 	// Live Feed Play Button
-	IBOutlet UIButton    *button;
+	IBOutlet UIButton		*button;
 	
 	// Instantiate radio object
-	AudioStreamer        *streamer;
+	AudioStreamer			*streamer;
 	
 	// Feed status
-	NSMutableArray    *feedEntries;
-	IBOutlet UILabel  *statusText;
-	IBOutlet UILabel  *comText;
+	NSMutableArray			*feedEntries;
+	IBOutlet UILabel		*statusText;
 	
 	// Feedback fields and button
-	IBOutlet UIButton    *feedButton;
-	IBOutlet UITextField *nameField;
-	IBOutlet UITextField *locField;
-	IBOutlet UITextView *comField;
-	
+	IBOutlet UIButton		*feedButton;
+	IBOutlet UITextField	*nameField;
+	IBOutlet UITextField	*locField;
+	IBOutlet UITextView		*comField;
 }
 
 // Insures textFields and Labels will persist in memory until they've been used
-@property (nonatomic, retain) IBOutlet UILabel *statusText;
-@property (nonatomic, retain) IBOutlet UILabel *comText; 
-@property (nonatomic, retain) IBOutlet UITextField *nameField;
-@property (nonatomic, retain) IBOutlet UITextField *locField;
-@property (nonatomic, retain) IBOutlet UITextView *comField;
+@property (nonatomic, retain) IBOutlet UILabel		*statusText;
+@property (nonatomic, retain) IBOutlet UITextField	*nameField;
+@property (nonatomic, retain) IBOutlet UITextField	*locField;
+@property (nonatomic, retain) IBOutlet UITextView	*comField;
 
 
 // Set up actions for GUI to perform

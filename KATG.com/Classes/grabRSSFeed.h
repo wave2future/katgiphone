@@ -1,7 +1,7 @@
 //
-//  KATG_comAppDelegate.m
+//  grabRSSFeed.h
 //  KATG.com
-//  
+//
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
@@ -15,27 +15,16 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#import "KATG_comAppDelegate.h"
-#import "SecondViewController.h"
+#import <Foundation/Foundation.h>
 
-@implementation KATG_comAppDelegate
 
-@synthesize window;
-@synthesize tabBarController;
-@synthesize navigationController;
-
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
-	
-	// Add the tab bar controller's current view as a subview of the window
-	[window addSubview:tabBarController.view];
+@interface grabRSSFeed : NSObject {
+	NSMutableArray *feedEntries;  // Child nodes of the feed being queried
+	NSString	   *xPath;        // XPath to parse at
+	NSMutableData  *receivedData;
 }
 
-- (void)dealloc {
-	[tabBarController release];
-	[navigationController release];
-	[window release];
-	[super dealloc];
-}
+- (id)initWithFeed:(NSString *)feedAddress XPath:(NSString *)xPath;
+- (id)entries;
 
 @end
-
