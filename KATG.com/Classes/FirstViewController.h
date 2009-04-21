@@ -59,5 +59,9 @@
 - (IBAction)textFieldDoneEditing:(id)sender;
 // Dismiss keyboard when user clicks outside Comment textView (big invisible button in background)
 - (IBAction)textViewDoneEditing:(id)sender;
+// Poll live show status feed
+- (void)pollFeed;
+// Establish timer to update feed status
+- (void)setTimer;
 
 @end

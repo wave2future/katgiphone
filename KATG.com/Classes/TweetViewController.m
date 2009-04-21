@@ -224,8 +224,7 @@
 //*
 //* Append incoming data to the existing string
 //*******************************************************
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
 	NSMutableDictionary * dict = (NSMutableDictionary *)CFDictionaryGetValue(connections, connection);
 	NSMutableData *connectionData = [dict objectForKey: @"data"];
 	[connectionData appendData: data];
@@ -236,8 +235,7 @@
 //*
 //* All data has arrived, so process according to type
 //*******************************************************
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	NSString *type = [(NSMutableDictionary *)CFDictionaryGetValue(connections, connection) objectForKey: @"type"];
 	
 	//*******************************************************
@@ -264,7 +262,6 @@
 	// End Added Code
 }
 
-
 #pragma mark Process data methods
 //*******************************************************
 //* processSearchData:
@@ -275,8 +272,7 @@
 //* The iconDict only gets cleared out when it gets to 
 //* 1000 icons
 //*******************************************************
-- (void) processSearchData: (NSMutableDictionary *) dict
-{
+- (void) processSearchData: (NSMutableDictionary *) dict {
 	NSMutableData * data = [dict objectForKey: @"data"];
 	NSString *queryResult = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
 	
@@ -414,8 +410,7 @@
 //* the visible cells and assign the image if the url
 //* matches the one just returned
 //*******************************************************
-- (void) processIconData: (NSMutableDictionary *) dict
-{
+- (void) processIconData: (NSMutableDictionary *) dict {
 	NSData *iconData = [dict objectForKey: @"data"];
 	NSString *iconURL = [dict objectForKey: @"url"]; 
 	[iconDict setObject: iconData forKey: iconURL];

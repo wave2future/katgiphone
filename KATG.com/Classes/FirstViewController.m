@@ -89,6 +89,11 @@
 	[CATransaction commit];
 }
 
+//*******************************************************
+//* animationDidStop
+//*
+//* 
+//*******************************************************
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)finished {
 	if (finished)
 	{
@@ -96,6 +101,11 @@
 	}
 } // 
 
+//*******************************************************
+//* buttonPressed
+//*
+//* 
+//*******************************************************
 - (IBAction)buttonPressed:(id)sender {
 	if (!streamer) // If the streamer is not active, activate stream and iniate button spin and image change
 	{
@@ -129,6 +139,11 @@
 	}
 } //
 
+//*******************************************************
+//* observeValueForKeyPath
+//*
+//* 
+//*******************************************************
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	if ([keyPath isEqual:@"isPlaying"])
 	{
@@ -163,6 +178,19 @@
 						  context:context];
 } //
 
+//*******************************************************
+//* feedButtonPressed
+//*
+//* When Submit Feedback button is pressed
+//* a string is constructed from the name,
+//* location and comment fields and sent to
+//* attackwork via a post request
+//* The contents of the string are url encoded
+//* and illegal characters like & are duped out
+//* for safe characters
+//* After comment is submitted comField.text is
+//* blanked
+//*******************************************************
 - (IBAction)feedButtonPressed:(id)sender {
 	sanitizeField *cleaner = [[sanitizeField alloc] init];
 	NSString *namePrefix = @"Name=";
@@ -192,21 +220,36 @@
 	comField.text = @"";
 } // Submit Feedback
 
+//*******************************************************
+//* handleTimer
+//*
+//* Setup code to execute on timer
+//*******************************************************
 - (void) handleTimer: (NSTimer *) timer {
 	[self pollFeed];
 } // Code to execute on a timer
 
+//*******************************************************
+//* viewDidLoad
+//* 
+//* 
+//*******************************************************
 - (void)viewDidLoad {
 	// Loads Play button for audioStream
 	UIImage *image = [UIImage imageNamed:@"playButton.png"];
 	[self setButtonImage:image];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-	// Creae and run live feed xml
-	[self pollFeed];
+	
 	// Set update timer for live feed xml
 	[self setTimer];
+}
+
+//*******************************************************
+//* viewDidAppear
+//*
+//* 
+//*******************************************************
+- (void)viewDidAppear:(BOOL)animated {
+	
 }
 
 //*******************************************************
@@ -214,55 +257,37 @@
 //*
 //* Create and run live feed xml
 //*******************************************************
-- (void) pollFeed
-{
+- (void)pollFeed {
 	// Create the feed string
 	NSString *feedAddress = @"http://www.keithandthegirl.com/feed/show/live";
-	//NSString *feedAddress = @"http://127.0.0.1/show/live";
     //NSString *feedAddress = @"http://www.thegrundleonline.com/xml/KATGGadget.xml";
+	
+	// Select the xPath to parse against
 	NSString *xPath = @"//root";
-	// Call the grabRSSFeed function with the above
-    // string as a parameter
+
+	// Call the grabRSSFeed function with the feedAddress
+	// string as a parameter
+	grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:xPath];
+	feedEntries = [feed entries];
+	[feed release];
 	
-	// create the request
-	
-	NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:feedAddress]
-							  
-											cachePolicy:NSURLRequestUseProtocolCachePolicy
-							  
-											timeoutInterval:60.0];
-	
-	// create the connection with the request
-	
-	// and start loading the data
-	
+	int feedEntryIndex = 0;
+	NSString *feedStatusString;
 	NSString *feedStatus = nil;
-	
-	NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-		
-	if (theConnection) {
-		
-		grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:xPath];
-		feedEntries = [feed entries];
-		[feed release];
-		
-		int feedEntryIndex = 0;
-		NSString *feedStatusString = [[feedEntries objectAtIndex: feedEntryIndex] objectForKey: @"OnAir"];
+	if ([feedEntries count] > 0) {
+		feedStatusString = [[feedEntries objectAtIndex: feedEntryIndex] objectForKey: @"OnAir"];
 		int feedStatusInt = [feedStatusString intValue];
 		if(feedStatusInt == 0) {
 			feedStatus = @"Not Live";
 		} else if(feedStatusInt == 1) {
 			feedStatus = @"Live";
 		} else {
-			feedStatus = @"Unknown";
+			feedStatus = @"????";
 		}
-		
 	} else {
-		
-		feedStatus = @"Unknown";
-		
+		feedStatus = @"????";
 	}
-	
+
 	statusText.text = feedStatus;
 }
 
@@ -272,15 +297,21 @@
 //* Create and start timer 
 //* for updating live feed indicator
 //*******************************************************
-- (void) setTimer
-{
+- (void)setTimer {
+	// Repeating timer to update feed
 	NSTimer *timer;
-	
 	timer = [NSTimer scheduledTimerWithTimeInterval: 180.0
 											 target: self
 										   selector: @selector(handleTimer:)
 										   userInfo: nil
 											repeats: YES];
+	// One Time timer to set up feed status when app launches
+	NSTimer *shortTimer; // This is almost definitely the wrong way to do this
+	shortTimer = [NSTimer scheduledTimerWithTimeInterval: 3.0
+											 target: self
+										   selector: @selector(handleTimer:)
+										   userInfo: nil
+											repeats: NO];
 }
 
 - (IBAction)textFieldDoneEditing:(id)sender {

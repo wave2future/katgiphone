@@ -271,6 +271,7 @@
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>080E96DDFE201D6D7F000001</string>
 								<string>53D696630F9308A400FDBD0C</string>
+								<string>532424EB0F9124AC009C1C10</string>
 								<string>535FE5F20F89FEF300F6AD75</string>
 								<string>53E955CF0F9D58BA0071709B</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
@@ -334,7 +335,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>53E9566E0F9D639C0071709B</string>
+										<string>53E956C70F9D78320071709B</string>
 										<key>history</key>
 										<array>
 											<string>5332364C0F8C7AD700B385E5</string>
@@ -386,7 +387,6 @@
 											<string>5302308F0F9457630051038E</string>
 											<string>530230910F9457630051038E</string>
 											<string>530230DF0F946B4F0051038E</string>
-											<string>530230E10F946B4F0051038E</string>
 											<string>530230E20F946B4F0051038E</string>
 											<string>5302312E0F94721D0051038E</string>
 											<string>538152FD0F9541BD00411866</string>
@@ -398,7 +398,6 @@
 											<string>535B30E20F995E0000480112</string>
 											<string>53E955410F9D52B00071709B</string>
 											<string>53E955440F9D52B00071709B</string>
-											<string>53E955450F9D52B00071709B</string>
 											<string>53E955F10F9D5CA70071709B</string>
 											<string>53E955F20F9D5CA70071709B</string>
 											<string>53E955F30F9D5CA70071709B</string>
@@ -408,10 +407,12 @@
 											<string>53E955FA0F9D5CA70071709B</string>
 											<string>53E956350F9D62AE0071709B</string>
 											<string>53E956370F9D62AE0071709B</string>
-											<string>53E956380F9D62AE0071709B</string>
-											<string>53E956630F9D63290071709B</string>
-											<string>53E956640F9D63290071709B</string>
-											<string>53E956650F9D63290071709B</string>
+											<string>53E9567A0F9D6D710071709B</string>
+											<string>53E9567B0F9D6D710071709B</string>
+											<string>53E9567C0F9D6D710071709B</string>
+											<string>53E956A20F9D714C0071709B</string>
+											<string>53E956AB0F9D74A10071709B</string>
+											<string>53E956AC0F9D74A10071709B</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -613,6 +614,25 @@
 											<string>53E956670F9D63290071709B</string>
 											<string>53E956680F9D63290071709B</string>
 											<string>53E956690F9D63290071709B</string>
+											<string>53E9567E0F9D6D710071709B</string>
+											<string>53E9567F0F9D6D710071709B</string>
+											<string>53E956800F9D6D710071709B</string>
+											<string>53E956810F9D6D710071709B</string>
+											<string>53E956820F9D6D710071709B</string>
+											<string>53E956830F9D6D710071709B</string>
+											<string>53E956840F9D6D710071709B</string>
+											<string>53E956850F9D6D710071709B</string>
+											<string>53E956860F9D6D710071709B</string>
+											<string>53E956870F9D6D710071709B</string>
+											<string>53E956880F9D6D710071709B</string>
+											<string>53E956890F9D6D710071709B</string>
+											<string>53E9568A0F9D6D710071709B</string>
+											<string>53E9568B0F9D6D710071709B</string>
+											<string>53E9568C0F9D6D710071709B</string>
+											<string>53E9568D0F9D6D710071709B</string>
+											<string>53E956A30F9D714C0071709B</string>
+											<string>53E956A40F9D714C0071709B</string>
+											<string>53E956AD0F9D74A10071709B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -806,14 +826,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>53E9566F0F9D639C0071709B</string>
 		<string>53E955A50F9D56D20071709B</string>
 		<string>53E9557F0F9D548C0071709B</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>536CD60D0F89E9270063DED2</string>
 		<string>53E9553F0F9D529C0071709B</string>
 		<string>/Users/hayroob/Documents/Dropbox/DEV/Objective-C/Github/katgiphone/KATG.com/KATG.com.xcodeproj</string>
-		<string>1C78EAAD065D492600B07095</string>
 	</array>
 	<key>WindowString</key>
 	<string>5 54 1276 723 0 0 1280 778 </string>
