@@ -51,17 +51,17 @@
 	// Added Code
 	isURL = [[NSMutableDictionary alloc] init];
 	addButton = [[[UIBarButtonItem alloc]
-                                   initWithTitle:NSLocalizedString(@"Other Tweets", @"On")
-                                   style:UIBarButtonItemStyleBordered
-                                   target:self
-                                   action:@selector(otherTweets:)] autorelease];
+				  initWithTitle:NSLocalizedString(@"Other Tweets", @"On")
+				  style:UIBarButtonItemStyleBordered
+				  target:self
+				  action:@selector(otherTweets:)] autorelease];
     self.navigationItem.rightBarButtonItem = addButton;
 	
 	refButton = [[[UIBarButtonItem alloc]
-                                   initWithTitle:NSLocalizedString(@"Update", @"On")
-                                   style:UIBarButtonItemStyleBordered
-                                   target:self
-                                   action:@selector(refTweets:)] autorelease];
+				  initWithTitle:NSLocalizedString(@"Update", @"On")
+				  style:UIBarButtonItemStyleBordered
+				  target:self
+				  action:@selector(refTweets:)] autorelease];
     self.navigationItem.leftBarButtonItem = refButton;
 	refButton.enabled = NO;
 	addButton.enabled = NO;
@@ -78,6 +78,7 @@
 											&kCFTypeDictionaryKeyCallBacks,
 											&kCFTypeDictionaryValueCallBacks);
 	[self loadURL];
+	
 }
 
 - (void)otherTweets:(id)sender{
@@ -85,7 +86,7 @@
 	if (otherTweets == @"YES") {
 		otherTweets = @"NO";
 	} else {
-			otherTweets = @"YES";
+		otherTweets = @"YES";
 	}
 	tweets = [[NSMutableArray alloc] initWithCapacity: 100];
 	iconDict = [[NSMutableDictionary alloc] init];
@@ -110,6 +111,7 @@
 	//* Run the search query
 	//*******************************************************
 	[self loadURL];
+	
 }
 
 //*******************************************************
@@ -255,11 +257,13 @@
 	//* the dictionary.
 	//*******************************************************
 	CFDictionaryRemoveValue(connections, connection);
-	
-	// Added Code
-	refButton.enabled = YES;
-	addButton.enabled = YES;
-	// End Added Code
+	int conCount = [connections count];
+	if (conCount <= 0) {
+		// Added Code
+		refButton.enabled = YES;
+		addButton.enabled = YES;
+		// End Added Code
+	}
 }
 
 #pragma mark Process data methods
@@ -456,7 +460,7 @@
     }
 	
 	// Added converter code
-    cell.tweetText = [converter convertEntiesInString:[[tweets objectAtIndex: indexPath.row] objectForKey: @"text"]];
+    cell.tweetText = [converter convertEntitiesInString:[[tweets objectAtIndex: indexPath.row] objectForKey: @"text"]];
 	cell.sinceText = [[tweets objectAtIndex: indexPath.row] objectForKey: @"since"];
 	cell.fromText = [[tweets objectAtIndex: indexPath.row] objectForKey: @"from_user"];
 	cell.imageURL = [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"];

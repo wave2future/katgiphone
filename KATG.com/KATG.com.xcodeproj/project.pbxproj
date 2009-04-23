@@ -72,7 +72,6 @@
 		53E8DE4E0F8E95C7006A52C6 /* RoadMap in Resources */ = {isa = PBXBuildFile; fileRef = 53E8DE4D0F8E95C7006A52C6 /* RoadMap */; };
 		53E9562B0F9D5F3E0071709B /* sanitizeField.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9562A0F9D5F3E0071709B /* sanitizeField.m */; };
 		53F0BBE80F9F994900CCEEBF /* MREntitiesConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F0BBE70F9F994900CCEEBF /* MREntitiesConverter.m */; };
-		53F0BC4A0F9FA1F900CCEEBF /* stripHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F0BC490F9FA1F900CCEEBF /* stripHTML.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -168,8 +167,6 @@
 		53E9562A0F9D5F3E0071709B /* sanitizeField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sanitizeField.m; sourceTree = "<group>"; };
 		53F0BBE60F9F994900CCEEBF /* MREntitiesConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MREntitiesConverter.h; sourceTree = "<group>"; };
 		53F0BBE70F9F994900CCEEBF /* MREntitiesConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MREntitiesConverter.m; sourceTree = "<group>"; };
-		53F0BC480F9FA1F900CCEEBF /* stripHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stripHTML.h; sourceTree = "<group>"; };
-		53F0BC490F9FA1F900CCEEBF /* stripHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = stripHTML.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -391,8 +388,6 @@
 				537CDA550F8FF056002F86FA /* CustomCell.m */,
 				537CDA560F8FF056002F86FA /* Event.h */,
 				537CDA570F8FF056002F86FA /* Event.m */,
-				53F0BC480F9FA1F900CCEEBF /* stripHTML.h */,
-				53F0BC490F9FA1F900CCEEBF /* stripHTML.m */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -555,7 +550,6 @@
 				532C13B90F9556BB005879B1 /* grabRSSFeed.m in Sources */,
 				53E9562B0F9D5F3E0071709B /* sanitizeField.m in Sources */,
 				53F0BBE80F9F994900CCEEBF /* MREntitiesConverter.m in Sources */,
-				53F0BC4A0F9FA1F900CCEEBF /* stripHTML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,6 +644,7 @@
 				ADDITIONAL_SDKS = "$HOME/Library/SDKs/JSON/$(PLATFORM_NAME).sdk";
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Russell";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist\n";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
