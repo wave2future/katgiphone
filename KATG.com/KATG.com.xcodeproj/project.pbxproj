@@ -300,8 +300,6 @@
 				532424E80F912490009C1C10 /* TweetViewController.m */,
 				5314D4530F92C54E0098A81A /* WebViewController.h */,
 				5314D4540F92C54E0098A81A /* WebViewController.m */,
-				53F0BBE60F9F994900CCEEBF /* MREntitiesConverter.h */,
-				53F0BBE70F9F994900CCEEBF /* MREntitiesConverter.m */,
 			);
 			name = Twitter;
 			sourceTree = "<group>";
@@ -320,6 +318,7 @@
 		535FE5F20F89FEF300F6AD75 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				536AC7DD0FA0A8D70064B31E /* MREntitiesConverter */,
 				53E955CF0F9D58BA0071709B /* grabRSSFeed */,
 				53E955C00F9D58AC0071709B /* TouchXML */,
 			);
@@ -336,6 +335,15 @@
 				536AC52D0F91405B00B55D50 /* ytTab.png */,
 			);
 			name = "Tab Icons";
+			sourceTree = "<group>";
+		};
+		536AC7DD0FA0A8D70064B31E /* MREntitiesConverter */ = {
+			isa = PBXGroup;
+			children = (
+				53F0BBE60F9F994900CCEEBF /* MREntitiesConverter.h */,
+				53F0BBE70F9F994900CCEEBF /* MREntitiesConverter.m */,
+			);
+			name = MREntitiesConverter;
 			sourceTree = "<group>";
 		};
 		536CD4570F89E5EC0063DED2 /* Streamer */ = {
@@ -643,6 +651,7 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = "$HOME/Library/SDKs/JSON/$(PLATFORM_NAME).sdk";
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = 663S5ZMX2C.com.KATG;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Russell";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist\n";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -655,7 +664,7 @@
 					"-lxml2",
 				);
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6CBA1905-FCCD-4626-AA12-2720FF9D2BD3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FE0F8310-082B-436B-AC01-1C6B4E29254D";
 				SDKROOT = iphoneos2.1;
 			};
 			name = Release;

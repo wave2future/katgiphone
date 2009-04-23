@@ -5,7 +5,6 @@
 //  Live Show Tab with: 
 //  Live Feed Playback
 //  Submit Feedback
-//  Next live show time
 //  Live Feed Status
 //  
 //  This program is free software: you can redistribute it and/or modify
@@ -43,7 +42,7 @@
 	IBOutlet UITextView		*comField;
 }
 
-// Insures textFields and Labels will persist in memory until they've been used
+// Ensures textFields and Labels will persist in memory until they've been used
 @property (nonatomic, retain) IBOutlet UILabel		*statusText;
 @property (nonatomic, retain) IBOutlet UITextField	*nameField;
 @property (nonatomic, retain) IBOutlet UITextField	*locField;
