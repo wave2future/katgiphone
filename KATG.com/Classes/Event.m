@@ -16,7 +16,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import "Event.h"
-
+#import "stripHTML.h"
 
 @implementation Event
 
@@ -24,11 +24,12 @@
 
 // Creates the object with primary key and title is brought into memory.
 - (id)initWithTitle:(NSString *)theTitle publishDate:(NSString *)thePublishDate type:(NSString *)theType detail:(NSString *)theDetail {
-    if (self = [super init]) {
+    stripHTML *stripper = [[stripHTML alloc] init];
+	if (self = [super init]) {
         title = [[NSString alloc] initWithString:theTitle];
         publishDate = [[NSString alloc] initWithString:thePublishDate];
         type = [[NSString alloc] initWithString:theType];
-		detail = [[NSString alloc] initWithString:theDetail];
+		detail = [stripper processHtml:[[NSString alloc] initWithString:theDetail]];
     }
     return self;
 }

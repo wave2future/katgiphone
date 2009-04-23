@@ -71,6 +71,8 @@
 		53E8DDE10F8E780F006A52C6 /* onAir.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E8DDE00F8E780F006A52C6 /* onAir.png */; };
 		53E8DE4E0F8E95C7006A52C6 /* RoadMap in Resources */ = {isa = PBXBuildFile; fileRef = 53E8DE4D0F8E95C7006A52C6 /* RoadMap */; };
 		53E9562B0F9D5F3E0071709B /* sanitizeField.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9562A0F9D5F3E0071709B /* sanitizeField.m */; };
+		53F0BBE80F9F994900CCEEBF /* MREntitiesConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F0BBE70F9F994900CCEEBF /* MREntitiesConverter.m */; };
+		53F0BC4A0F9FA1F900CCEEBF /* stripHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F0BC490F9FA1F900CCEEBF /* stripHTML.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -164,6 +166,10 @@
 		53E8DE4D0F8E95C7006A52C6 /* RoadMap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RoadMap; sourceTree = "<group>"; };
 		53E956290F9D5F3E0071709B /* sanitizeField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sanitizeField.h; sourceTree = "<group>"; };
 		53E9562A0F9D5F3E0071709B /* sanitizeField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sanitizeField.m; sourceTree = "<group>"; };
+		53F0BBE60F9F994900CCEEBF /* MREntitiesConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MREntitiesConverter.h; sourceTree = "<group>"; };
+		53F0BBE70F9F994900CCEEBF /* MREntitiesConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MREntitiesConverter.m; sourceTree = "<group>"; };
+		53F0BC480F9FA1F900CCEEBF /* stripHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stripHTML.h; sourceTree = "<group>"; };
+		53F0BC490F9FA1F900CCEEBF /* stripHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = stripHTML.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -297,6 +303,8 @@
 				532424E80F912490009C1C10 /* TweetViewController.m */,
 				5314D4530F92C54E0098A81A /* WebViewController.h */,
 				5314D4540F92C54E0098A81A /* WebViewController.m */,
+				53F0BBE60F9F994900CCEEBF /* MREntitiesConverter.h */,
+				53F0BBE70F9F994900CCEEBF /* MREntitiesConverter.m */,
 			);
 			name = Twitter;
 			sourceTree = "<group>";
@@ -383,6 +391,8 @@
 				537CDA550F8FF056002F86FA /* CustomCell.m */,
 				537CDA560F8FF056002F86FA /* Event.h */,
 				537CDA570F8FF056002F86FA /* Event.m */,
+				53F0BC480F9FA1F900CCEEBF /* stripHTML.h */,
+				53F0BC490F9FA1F900CCEEBF /* stripHTML.m */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -544,6 +554,8 @@
 				5314D4550F92C54E0098A81A /* WebViewController.m in Sources */,
 				532C13B90F9556BB005879B1 /* grabRSSFeed.m in Sources */,
 				53E9562B0F9D5F3E0071709B /* sanitizeField.m in Sources */,
+				53F0BBE80F9F994900CCEEBF /* MREntitiesConverter.m in Sources */,
+				53F0BC4A0F9FA1F900CCEEBF /* stripHTML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,7 +605,7 @@
 					"-lxml2",
 				);
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5429A17B-F9BB-4B1E-99AF-B10C73D7FBBA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1A0D39DA-E362-464C-8BF7-A441C16F49C7";
 				SDKROOT = iphoneos2.1;
 			};
 			name = Distribution;

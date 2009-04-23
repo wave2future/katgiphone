@@ -26,3 +26,19 @@ Sometimes it completes exceptional actions.
 
 Use:
 Jam on the buttons with your marshmallow pig fingers.
+
+
+To install the JSON parser:
+
+Download JSNO_2.1.1.dmg from 
+Copy the content of the 'SDKs' folder to ~/Library/SDKs. (You may have to create that directory.)
+In the target build options, add
+Additional SDKs
+$HOME/Library/SDKs/JSON/$(PLATFORM_NAME).sdk
+Other Linker Flags
+-ObjC -ljson
+Code Signing Resource Rules Path
+$(SDKROOT)/ResourceRules.plist
+
+To install the TouchXML parser:
+

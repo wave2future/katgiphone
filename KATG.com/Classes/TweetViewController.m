@@ -21,7 +21,7 @@
 #import "TweetViewController.h"
 #import "TweetViewCell.h"
 #import <JSON/JSON.h>
-#import "DetailViewController.h"
+#import "MREntitiesConverter.h"
 
 @implementation TweetViewController
 
@@ -448,12 +448,15 @@
 //*************************************************
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TweetViewCell *cell = (TweetViewCell *)[aTableView dequeueReusableCellWithIdentifier: @"TweetViewCell"];
-	
+	// Added Code
+	MREntitiesConverter *converter = [[MREntitiesConverter alloc] init];
+	// End Added Code
     if (cell == nil) {
         cell = [self createNewTweetCellFromNib];
     }
 	
-    cell.tweetText = [[tweets objectAtIndex: indexPath.row] objectForKey: @"text"];
+	// Added converter code
+    cell.tweetText = [converter convertEntiesInString:[[tweets objectAtIndex: indexPath.row] objectForKey: @"text"]];
 	cell.sinceText = [[tweets objectAtIndex: indexPath.row] objectForKey: @"since"];
 	cell.fromText = [[tweets objectAtIndex: indexPath.row] objectForKey: @"from_user"];
 	cell.imageURL = [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"];
