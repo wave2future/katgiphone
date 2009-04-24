@@ -16,8 +16,8 @@
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
 		53022FA40F9431830051038E /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 53022FA30F9431830051038E /* BG.png */; };
 		53022FA70F9431980051038E /* OnAirBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 53022FA60F9431980051038E /* OnAirBar.png */; };
-		530230070F94412E0051038E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530230060F94412E0051038E /* MediaPlayer.framework */; };
 		530231440F9476CF0051038E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 530231430F9476CF0051038E /* Default.png */; };
+		5303EAAD0FA187C600B3989C /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5303EAAC0FA187C600B3989C /* Entitlements.plist */; };
 		5314D2AF0F92A26A0098A81A /* TweetViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5314D2AD0F92A26A0098A81A /* TweetViewCell.xib */; };
 		5314D2B00F92A26A0098A81A /* TweetViewContoller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5314D2AE0F92A26A0098A81A /* TweetViewContoller.xib */; };
 		5314D4550F92C54E0098A81A /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5314D4540F92C54E0098A81A /* WebViewController.m */; };
@@ -45,7 +45,7 @@
 		536AC52E0F91405B00B55D50 /* ytTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 536AC52D0F91405B00B55D50 /* ytTab.png */; };
 		536AC5370F91428900B55D50 /* onAirTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 536AC5360F91428900B55D50 /* onAirTab.png */; };
 		536CD45D0F89E6240063DED2 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 536CD45C0F89E6240063DED2 /* AudioStreamer.m */; };
-		536CD4650F89E6650063DED2 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 536CD45F0F89E6650063DED2 /* icon.png */; };
+		536CD4650F89E6650063DED2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 536CD45F0F89E6650063DED2 /* Icon.png */; };
 		536CD4660F89E6650063DED2 /* KATG.png in Resources */ = {isa = PBXBuildFile; fileRef = 536CD4600F89E6650063DED2 /* KATG.png */; };
 		536CD4670F89E6650063DED2 /* loadingButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 536CD4610F89E6650063DED2 /* loadingButton.png */; };
 		536CD4680F89E6650063DED2 /* playButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 536CD4620F89E6650063DED2 /* playButton.png */; };
@@ -62,7 +62,6 @@
 		537CDB030F8FF8AD002F86FA /* otherSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 537CDB000F8FF8AD002F86FA /* otherSquare.png */; };
 		5398AC4C0F8DCABE00C3984C /* Default_old2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5398AC4B0F8DCABE00C3984C /* Default_old2.png */; };
 		53D696930F939CFC00FDBD0C /* calTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D696920F939CFC00FDBD0C /* calTab.png */; };
-		53DAF53F0F8AFE4500D13F05 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53DAF53E0F8AFE4500D13F05 /* Entitlements.plist */; };
 		53DDC3460F902C5B00B8BC38 /* showSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DDC3450F902C5B00B8BC38 /* showSquare.png */; };
 		53DDC3910F902D7A00B8BC38 /* eventSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DDC3900F902D7A00B8BC38 /* eventSquare.png */; };
 		53E1D2770F90474F005E78EC /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E1D2760F90474F005E78EC /* DetailViewController.m */; };
@@ -91,6 +90,7 @@
 		53022FA60F9431980051038E /* OnAirBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OnAirBar.png; sourceTree = "<group>"; };
 		530230060F94412E0051038E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		530231430F9476CF0051038E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		5303EAAC0FA187C600B3989C /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		5314D2AD0F92A26A0098A81A /* TweetViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetViewCell.xib; sourceTree = "<group>"; };
 		5314D2AE0F92A26A0098A81A /* TweetViewContoller.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetViewContoller.xib; sourceTree = "<group>"; };
 		5314D4530F92C54E0098A81A /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 		536AC5360F91428900B55D50 /* onAirTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onAirTab.png; sourceTree = "<group>"; };
 		536CD45B0F89E6240063DED2 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
 		536CD45C0F89E6240063DED2 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
-		536CD45F0F89E6650063DED2 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		536CD45F0F89E6650063DED2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		536CD4600F89E6650063DED2 /* KATG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KATG.png; sourceTree = "<group>"; };
 		536CD4610F89E6650063DED2 /* loadingButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadingButton.png; sourceTree = "<group>"; };
 		536CD4620F89E6650063DED2 /* playButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playButton.png; sourceTree = "<group>"; };
@@ -155,7 +155,6 @@
 		537CDB000F8FF8AD002F86FA /* otherSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = otherSquare.png; sourceTree = "<group>"; };
 		5398AC4B0F8DCABE00C3984C /* Default_old2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default_old2.png; sourceTree = "<group>"; };
 		53D696920F939CFC00FDBD0C /* calTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calTab.png; sourceTree = "<group>"; };
-		53DAF53E0F8AFE4500D13F05 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		53DDC3450F902C5B00B8BC38 /* showSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = showSquare.png; sourceTree = "<group>"; };
 		53DDC3900F902D7A00B8BC38 /* eventSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eventSquare.png; sourceTree = "<group>"; };
 		53E1D2750F90474F005E78EC /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -183,7 +182,6 @@
 				536CD4740F89E6C30063DED2 /* AudioToolbox.framework in Frameworks */,
 				536CD4780F89E6F50063DED2 /* CFNetwork.framework in Frameworks */,
 				536CD4EF0F89E73E0063DED2 /* QuartzCore.framework in Frameworks */,
-				530230070F94412E0051038E /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,9 +245,9 @@
 				535FE66D0F8A046900F6AD75 /* FourthView.xib */,
 				53E8DD900F8DEEC7006A52C6 /* Default_old.png */,
 				5398AC4B0F8DCABE00C3984C /* Default_old2.png */,
-				536CD45F0F89E6650063DED2 /* icon.png */,
+				536CD45F0F89E6650063DED2 /* Icon.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
-				53DAF53E0F8AFE4500D13F05 /* Entitlements.plist */,
+				5303EAAC0FA187C600B3989C /* Entitlements.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -494,7 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */,
-				536CD4650F89E6650063DED2 /* icon.png in Resources */,
+				536CD4650F89E6650063DED2 /* Icon.png in Resources */,
 				536CD4660F89E6650063DED2 /* KATG.png in Resources */,
 				536CD4670F89E6650063DED2 /* loadingButton.png in Resources */,
 				536CD4680F89E6650063DED2 /* playButton.png in Resources */,
@@ -504,7 +502,6 @@
 				536CD4710F89E68A0063DED2 /* README in Resources */,
 				536CD4720F89E68A0063DED2 /* ToDo in Resources */,
 				535FE66F0F8A046900F6AD75 /* FourthView.xib in Resources */,
-				53DAF53F0F8AFE4500D13F05 /* Entitlements.plist in Resources */,
 				5398AC4C0F8DCABE00C3984C /* Default_old2.png in Resources */,
 				53E8DD910F8DEEC7006A52C6 /* Default_old.png in Resources */,
 				53E8DDE10F8E780F006A52C6 /* onAir.png in Resources */,
@@ -527,6 +524,7 @@
 				53022FA70F9431980051038E /* OnAirBar.png in Resources */,
 				530231440F9476CF0051038E /* Default.png in Resources */,
 				53FB2BBB0FA0F09500623E3B /* Copyright in Resources */,
+				5303EAAD0FA187C600B3989C /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,47 +592,13 @@
 			};
 			name = Release;
 		};
-		5343884F0FA14F1E0044592A /* Distribution App Store */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ADDITIONAL_SDKS = "$HOME/Library/SDKs/JSON/$(PLATFORM_NAME).sdk";
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doug Russell";
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-ljson",
-					"-lxml2",
-				);
-				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4543900B-CC98-4204-B678-779F09DFFF0C";
-				SDKROOT = iphoneos2.1;
-			};
-			name = "Distribution App Store";
-		};
-		534388500FA14F1E0044592A /* Distribution App Store */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = KATG_com_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
-				PRODUCT_NAME = KATG.com;
-			};
-			name = "Distribution App Store";
-		};
 		53DAF5300F8AFAA300D13F05 /* Distribution Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ADDITIONAL_SDKS = "$HOME/Library/SDKs/JSON/$(PLATFORM_NAME).sdk";
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doug Russell";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -645,7 +609,6 @@
 					"-lxml2",
 				);
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1C5B0456-76AF-4E45-8815-EC20492B4972";
 				SDKROOT = iphoneos2.1;
 			};
 			name = "Distribution Ad Hoc";
@@ -689,9 +652,10 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = "$HOME/Library/SDKs/JSON/$(PLATFORM_NAME).sdk";
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_ENTITLEMENTS = 663S5ZMX2C.com.KATG;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Doug Russell";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doug Russell";
-				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist\n";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -702,8 +666,9 @@
 					"-lxml2",
 				);
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4543900B-CC98-4204-B678-779F09DFFF0C";
-				SDKROOT = iphoneos2.1;
+				PROVISIONING_PROFILE = "38EC2828-368B-4AAC-A38A-4497110C9E56";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "38EC2828-368B-4AAC-A38A-4497110C9E56";
+				SDKROOT = iphoneos2.2;
 			};
 			name = Release;
 		};
@@ -716,7 +681,6 @@
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
 				53DAF5310F8AFAA300D13F05 /* Distribution Ad Hoc */,
-				534388500FA14F1E0044592A /* Distribution App Store */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -727,7 +691,6 @@
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
 				53DAF5300F8AFAA300D13F05 /* Distribution Ad Hoc */,
-				5343884F0FA14F1E0044592A /* Distribution App Store */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
