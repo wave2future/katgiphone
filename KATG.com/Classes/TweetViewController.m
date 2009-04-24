@@ -70,6 +70,7 @@
 
 - (void)refTweets:(id)sender{
 	refButton.enabled = NO;
+	addButton.enabled = NO;
 	tweets = [[NSMutableArray alloc] initWithCapacity: 100];
 	iconDict = [[NSMutableDictionary alloc] init];
 	
@@ -83,6 +84,7 @@
 
 - (void)otherTweets:(id)sender{
 	addButton.enabled = NO;
+	refButton.enabled = NO;
 	if (otherTweets == @"YES") {
 		otherTweets = @"NO";
 	} else {
