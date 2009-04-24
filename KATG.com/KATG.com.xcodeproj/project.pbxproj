@@ -57,6 +57,7 @@
 		536CD4740F89E6C30063DED2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536CD4730F89E6C30063DED2 /* AudioToolbox.framework */; };
 		536CD4780F89E6F50063DED2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536CD4770F89E6F50063DED2 /* CFNetwork.framework */; };
 		536CD4EF0F89E73E0063DED2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 536CD4EE0F89E73E0063DED2 /* QuartzCore.framework */; };
+		5379EEE80FA1E5E900F1E9FD /* ChangeLog in Resources */ = {isa = PBXBuildFile; fileRef = 5379EEE70FA1E5E900F1E9FD /* ChangeLog */; };
 		537CDA580F8FF056002F86FA /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 537CDA550F8FF056002F86FA /* CustomCell.m */; };
 		537CDA590F8FF056002F86FA /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 537CDA570F8FF056002F86FA /* Event.m */; };
 		537CDB030F8FF8AD002F86FA /* otherSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 537CDB000F8FF8AD002F86FA /* otherSquare.png */; };
@@ -148,6 +149,7 @@
 		536CD4730F89E6C30063DED2 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		536CD4770F89E6F50063DED2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		536CD4EE0F89E73E0063DED2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5379EEE70FA1E5E900F1E9FD /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
 		537CDA540F8FF056002F86FA /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		537CDA550F8FF056002F86FA /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		537CDA560F8FF056002F86FA /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				536CD46E0F89E68A0063DED2 /* ToDo */,
 				53E8DE4D0F8E95C7006A52C6 /* RoadMap */,
 				53FB2BBA0FA0F09500623E3B /* Copyright */,
+				5379EEE70FA1E5E900F1E9FD /* ChangeLog */,
 			);
 			name = Documents;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				530231440F9476CF0051038E /* Default.png in Resources */,
 				53FB2BBB0FA0F09500623E3B /* Copyright in Resources */,
 				5303EAAD0FA187C600B3989C /* Entitlements.plist in Resources */,
+				5379EEE80FA1E5E900F1E9FD /* ChangeLog in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,7 +602,8 @@
 				ADDITIONAL_SDKS = "$HOME/Library/SDKs/JSON/$(PLATFORM_NAME).sdk";
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Doug Russell";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doug Russell";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -609,7 +614,9 @@
 					"-lxml2",
 				);
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.1;
+				PROVISIONING_PROFILE = "1C5B0456-76AF-4E45-8815-EC20492B4972";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1C5B0456-76AF-4E45-8815-EC20492B4972";
+				SDKROOT = iphoneos3.0;
 			};
 			name = "Distribution Ad Hoc";
 		};
@@ -630,6 +637,7 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = "$HOME/Library/SDKs/JSON/$(PLATFORM_NAME).sdk";
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Russell";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Russell";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -643,7 +651,7 @@
 					"-lxml2",
 				);
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator2.1;
+				SDKROOT = iphonesimulator3.0;
 			};
 			name = Debug;
 		};
@@ -668,7 +676,7 @@
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "38EC2828-368B-4AAC-A38A-4497110C9E56";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "38EC2828-368B-4AAC-A38A-4497110C9E56";
-				SDKROOT = iphoneos2.2;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Release;
 		};

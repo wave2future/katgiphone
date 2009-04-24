@@ -233,8 +233,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -319,7 +317,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Entitlements.plist</string>
+								<string>Info.plist</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -327,11 +325,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Entitlements.plist</string>
+										<string>Info.plist</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>5303EAB40FA1880700B3989C</string>
+										<string>531AE55D0FA1F2AB00120EC6</string>
 										<key>history</key>
 										<array>
 											<string>5332364C0F8C7AD700B385E5</string>
@@ -411,8 +409,9 @@
 											<string>537AAB2B0FA1642B007432BB</string>
 											<string>533ABFA20FA181DF0046731E</string>
 											<string>533ABFAC0FA182FE0046731E</string>
-											<string>5303EAAE0FA187F700B3989C</string>
-											<string>5303EAAF0FA187F700B3989C</string>
+											<string>5379EEEA0FA1E61A00F1E9FD</string>
+											<string>5379EEEB0FA1E61A00F1E9FD</string>
+											<string>5379EF460FA1F07E00F1E9FD</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -495,7 +494,8 @@
 											<string>53F0BC090F9F9C1700CCEEBF</string>
 											<string>53F0BC0A0F9F9C1700CCEEBF</string>
 											<string>53FB2BC20FA0F7A600623E3B</string>
-											<string>5303EAB00FA187F700B3989C</string>
+											<string>5379EEED0FA1E61A00F1E9FD</string>
+											<string>5379EEEF0FA1E61A00F1E9FD</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -553,9 +553,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>5303EAA90FA186B000B3989C</string>
+				<string>531AE55E0FA1F2AB00120EC6</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>5303EAAA0FA186B000B3989C</string>
+				<string>531AE55F0FA1F2AB00120EC6</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -689,7 +689,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>536CD60D0F89E9270063DED2</string>
 		<string>/Users/hayroob/Documents/Dropbox/DEV/Objective-C/Github/katgiphone/KATG.com/KATG.com.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -731,6 +730,8 @@
 							<string>440pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -770,7 +771,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>536CD60D0F89E9270063DED2</string>
-				<string>5303EAB50FA1880700B3989C</string>
+				<string>5379EEF10FA1E61A00F1E9FD</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -890,13 +891,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>53C41C960FA184E900849FC0</string>
+				<string>5379EF060FA1E75C00F1E9FD</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>53C41C970FA184E900849FC0</string>
-				<string>53C41C980FA184E900849FC0</string>
-				<string>53C41C990FA184E900849FC0</string>
-				<string>53C41C9A0FA184E900849FC0</string>
-				<string>53C41C9B0FA184E900849FC0</string>
+				<string>5379EF070FA1E75C00F1E9FD</string>
+				<string>5379EF080FA1E75C00F1E9FD</string>
+				<string>5379EF090FA1E75C00F1E9FD</string>
+				<string>5379EF0A0FA1E75C00F1E9FD</string>
+				<string>5379EF0B0FA1E75C00F1E9FD</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -1060,7 +1061,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>5343884E0FA14F060044592A</string>
+				<string>5379EF0C0FA1E75C00F1E9FD</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
