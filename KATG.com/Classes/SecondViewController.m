@@ -50,7 +50,6 @@
 - (void) pollFeed
 {
 	// Create the feed string
-	//NSString *feedAddress = @"http://127.0.0.1:8888/feed/event";
     NSString *feedAddress = @"http://www.keithandthegirl.com/feed/event/?order=datereverse";
 	NSString *xPath = @"//Event";
     // Call the grabRSSFeed function with the above
@@ -64,12 +63,19 @@
 	
 	// Evaluate the contents of feed for classification and add results into list
 	NSString *eventType = nil;
-	
+		
 	NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateStyle: NSDateFormatterLongStyle];
 	[formatter setFormatterBehavior: NSDateFormatterBehavior10_4];
-	[formatter setDateFormat: @"EEE, dd MMM yyyy HH:mm:ss +0000"];
+	[formatter setDateFormat: @"MM/dd/yyyy HH:mm"];
+	NSTimeZone *EST = [NSTimeZone timeZoneWithName:(NSString *)@"America/New_York"];
+	[formatter setTimeZone:(NSTimeZone *)EST];
 	
+	NSDateFormatter * reFormatter = [[NSDateFormatter alloc] init];
+	[reFormatter setDateStyle: NSDateFormatterLongStyle];
+	[reFormatter setFormatterBehavior: NSDateFormatterBehavior10_4];
+	[reFormatter setDateFormat: @"hh:mm aa"];
+	 
 	while ( 0 <= feedEntryIndex ) {
 		
 		NSString *feedTitle = [[feedEntries objectAtIndex: feedEntryIndex] 
@@ -78,13 +84,21 @@
 		NSString *feedDetails = [[feedEntries objectAtIndex: feedEntryIndex] 
 								 objectForKey: @"Details"];
 		
-		NSString *feedTimeString = [[feedEntries objectAtIndex: feedEntryIndex] 
-									objectForKey: @"StartDate"]; // This should be converted into NSDate for sorting functions
+		NSString *feedTime = [[feedEntries objectAtIndex: feedEntryIndex] 
+							  objectForKey: @"StartDate"];
 		
-		//NSDate *eventDate = [formatter dateFromString: feedTimeString];
-		
+		NSDate *eventTime = [formatter dateFromString: feedTime];
+				
+		NSString *feedTimeString = nil;
+		if (eventTime != nil) {
+			feedTimeString = [reFormatter stringFromDate:eventTime];
+		} else {
+			feedTimeString = @"Unknown";
+		}
+						
 		// Determines if event is live show
 		BOOL match = ([feedTitle rangeOfString:@"Live Show" options:NSCaseInsensitiveSearch].location != NSNotFound);
+		
 		
 		if (match) {
 			eventType = @"show";

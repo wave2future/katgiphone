@@ -61,18 +61,20 @@
     
     CGRect baseRect = CGRectInset(self.contentView.bounds, 10, 0);
     CGRect rect = baseRect;
-    rect.origin.y += -7;
-    rect.size.width = self.contentView.bounds.size.width - 100;
+	rect.origin.x = self.contentView.bounds.size.width - 210;
+    rect.origin.y = 0;
+    rect.size.width = self.contentView.bounds.size.width - 110;
 	
     lblTitle.frame = rect;
     
-    rect.origin.y += 30;
+	rect.origin.x = self.contentView.bounds.size.width - 270;
+    //rect.origin.y = 0;
     lblPublish.frame = rect;
     
-    rect.size.width = 60;
-    rect.size.height = 40;
-    rect.origin.x = self.contentView.bounds.size.width - 80;
-    rect.origin.y += 0;
+    rect.size.width = 20;
+    rect.size.height = 20;
+    rect.origin.x = self.contentView.bounds.size.width - 300;
+    rect.origin.y += 30;
     
     imgSquare.frame = rect;
 }

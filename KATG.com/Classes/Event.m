@@ -29,6 +29,8 @@
         title = [[NSString alloc] initWithString:theTitle];
         publishDate = [[NSString alloc] initWithString:thePublishDate];
         type = [[NSString alloc] initWithString:theType];
+		//detail = [[[NSString alloc] initWithString:theDetail] stringByReplacingOccurrencesOfString:(NSString *)@"<p>" withString:(NSString *)@"\n"];
+		//detail = [converter convertEntitiesInString:detail];
 		detail = [converter convertEntitiesInString:[[NSString alloc] initWithString:theDetail]];
     }
     return self;
