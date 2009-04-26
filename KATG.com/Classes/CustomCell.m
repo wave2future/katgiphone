@@ -31,12 +31,14 @@
 
 @implementation CustomCell
 
-@synthesize lblTitle, lblPublish, imgSquare;
+@synthesize lblTitle, lblPublish, lblPublishDate, imgSquare;
+//@synthesize backgroundView;
+@synthesize backGround;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
         // Initialization code
-        lblTitle = [[UILabel alloc] initWithFrame:CGRectZero];
+		lblTitle = [[UILabel alloc] initWithFrame:CGRectZero];
         lblTitle.textColor = [UIColor blackColor];
         lblTitle.font = [UIFont boldSystemFontOfSize:12.0];
         lblTitle.backgroundColor = [UIColor clearColor];
@@ -46,11 +48,20 @@
         lblPublish.textColor = [UIColor darkGrayColor];
         lblPublish.font = [UIFont systemFontOfSize:12.0];
         lblPublish.backgroundColor = [UIColor clearColor];
+		
+		lblPublishDate = [[UILabel alloc] initWithFrame:CGRectZero];
+        lblPublishDate.textColor = [UIColor darkGrayColor];
+        lblPublishDate.font = [UIFont systemFontOfSize:12.0];
+        lblPublishDate.backgroundColor = [UIColor clearColor];
         
-        imgSquare = [[UIImageView alloc] initWithFrame:CGRectZero];        
-        
-        [self.contentView addSubview:lblTitle];
+        imgSquare = [[UIImageView alloc] initWithFrame:CGRectZero];
+		
+		backGround = [[UIImageView alloc] initWithFrame:CGRectZero];
+		
+		[self.contentView addSubview:backGround];
+		[self.contentView addSubview:lblTitle];
         [self.contentView addSubview:lblPublish];
+        [self.contentView addSubview:lblPublishDate];
         [self.contentView addSubview:imgSquare];
     }
     return self;
@@ -61,24 +72,32 @@
     
     CGRect baseRect = CGRectInset(self.contentView.bounds, 10, 0);
     CGRect rect = baseRect;
-	rect.origin.x = self.contentView.bounds.size.width - 210;
+	rect.origin.x = self.contentView.bounds.size.width - 190;
     rect.origin.y = 0;
-    rect.size.width = self.contentView.bounds.size.width - 110;
-	
+    rect.size.width = self.contentView.bounds.size.width - 120;
     lblTitle.frame = rect;
     
-	rect.origin.x = self.contentView.bounds.size.width - 270;
-    //rect.origin.y = 0;
+	rect.origin.x = self.contentView.bounds.size.width - 265;
+    rect.origin.y = 10;
+	rect.size.width = self.contentView.bounds.size.width - 200;
     lblPublish.frame = rect;
+	
+	rect.origin.y = -10;
+    lblPublishDate.frame = rect;
     
     rect.size.width = 20;
     rect.size.height = 20;
-    rect.origin.x = self.contentView.bounds.size.width - 300;
-    rect.origin.y += 30;
-    
+    rect.origin.x = self.contentView.bounds.size.width - 295;
+    rect.origin.y = 30;
     imgSquare.frame = rect;
+	
+	rect.size.width = 320;
+    rect.size.height = 80;
+    rect.origin.x = 0;
+    rect.origin.y = 0;
+    backGround.frame = rect;
+	
 }
-
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -87,17 +106,21 @@
     if (selected) {
         lblTitle.textColor = [UIColor whiteColor];
         lblPublish.textColor = [UIColor whiteColor];
+		lblPublishDate.textColor = [UIColor whiteColor];
     } else {
         lblTitle.textColor = [UIColor blackColor];
         lblPublish.textColor = [UIColor darkGrayColor];
+        lblPublishDate.textColor = [UIColor darkGrayColor];
     }
 }
 
 - (void)dealloc {
     [lblTitle release];
     [lblPublish release];
+	[lblPublishDate release];
     [imgSquare release];
-    
+	[backGround release];
+	//[backgroundView release];
     [super dealloc];
 }
 

@@ -18,13 +18,21 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomCell : UITableViewCell {
-    UILabel *lblTitle;
+	UILabel *lblTitle;
     UILabel *lblPublish;
+	UILabel *lblPublishDate;
     UIImageView *imgSquare;
+	UIImageView *backGround;
+	//UIView *backgroundView;
 }
 
 @property (nonatomic, retain) UILabel *lblTitle;
 @property (nonatomic, retain) UILabel *lblPublish;
+@property (nonatomic, retain) UILabel *lblPublishDate;
 @property (nonatomic, retain) UIImageView *imgSquare;
+@property (nonatomic, retain) UIImageView *backGround;
+//@property (nonatomic, retain) UIView *backgroundView;
+
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier;
 
 @end

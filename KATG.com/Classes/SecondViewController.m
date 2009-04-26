@@ -27,6 +27,8 @@
 
 @implementation SecondViewController
 
+@synthesize list, feedEntries, odd;
+
 //*******************************************************
 //* awakeFromNib:
 //*
@@ -39,7 +41,6 @@
 	self.navigationItem.title = @"Events";
 	
     list = [[NSMutableArray alloc] init];
-	
 }
 
 //*******************************************************
@@ -47,8 +48,7 @@
 //*
 //* Create and run live show feed xml
 //*******************************************************
-- (void) pollFeed
-{
+- (void) pollFeed {
 	// Create the feed string
     NSString *feedAddress = @"http://www.keithandthegirl.com/feed/event/?order=datereverse";
 	NSString *xPath = @"//Event";
@@ -75,6 +75,11 @@
 	[reFormatter setDateStyle: NSDateFormatterLongStyle];
 	[reFormatter setFormatterBehavior: NSDateFormatterBehavior10_4];
 	[reFormatter setDateFormat: @"hh:mm aa"];
+	
+	NSDateFormatter * reFormatterator = [[NSDateFormatter alloc] init];
+	[reFormatterator setDateStyle: NSDateFormatterLongStyle];
+	[reFormatterator setFormatterBehavior: NSDateFormatterBehavior10_4];
+	[reFormatterator setDateFormat: @"EEE, MM/dd"];
 	 
 	while ( 0 <= feedEntryIndex ) {
 		
@@ -88,17 +93,19 @@
 							  objectForKey: @"StartDate"];
 		
 		NSDate *eventTime = [formatter dateFromString: feedTime];
-				
+		
 		NSString *feedTimeString = nil;
+		NSString *feedDateString = nil;
 		if (eventTime != nil) {
 			feedTimeString = [reFormatter stringFromDate:eventTime];
+			feedDateString = [reFormatterator stringFromDate:eventTime];
 		} else {
+			feedTimeString = @"Unknown";
 			feedTimeString = @"Unknown";
 		}
 						
 		// Determines if event is live show
 		BOOL match = ([feedTitle rangeOfString:@"Live Show" options:NSCaseInsensitiveSearch].location != NSNotFound);
-		
 		
 		if (match) {
 			eventType = @"show";
@@ -106,7 +113,7 @@
 			eventType = @"event";
 		}
 		
-		Event *Ev = [[Event alloc] initWithTitle:feedTitle publishDate:feedTimeString type:eventType detail:feedDetails];
+		Event *Ev = [[Event alloc] initWithTitle:feedTitle publishTime:feedTimeString publishDate:feedDateString type:eventType detail:feedDetails];
 		[list addObject:Ev];
 		
 		[Ev release];
@@ -166,25 +173,34 @@
 //*******************************************************
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"CustomCell";
-    
-    CustomCell *cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[CustomCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    // Set up the cell...
-    cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
-    cell.lblPublish.text = [[list objectAtIndex:indexPath.row] publishDate];
 	
-    NSString *type = [[list objectAtIndex:indexPath.row] type];
-    if ( [type isEqualToString:@"show"] ) {
-        cell.imgSquare.image = [UIImage imageNamed:@"showSquare.png"];
-    } else if ( [type isEqualToString:@"event"] ) {
-        cell.imgSquare.image = [UIImage imageNamed:@"eventSquare.png"];
-    } else if ( [type isEqualToString:@"other"] ) {
-        cell.imgSquare.image = [UIImage imageNamed:@"otherSquare.png"];
-    }
-    return cell;
+	CustomCell *cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[CustomCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+	}
+	
+	// Set up the cell...
+	cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
+	cell.lblPublish.text = [[list objectAtIndex:indexPath.row] publishTime];
+	cell.lblPublishDate.text = [[list objectAtIndex:indexPath.row] publishDate];
+	if (indexPath.row%2 == 0) {
+		cell.backGround.backgroundColor = [UIColor colorWithRed:(CGFloat)0.92 green:(CGFloat).973 blue:(CGFloat)0.92 alpha:(CGFloat)1.0];
+	} else {
+		cell.backGround.backgroundColor = [UIColor clearColor];
+	}
+	
+	NSString *type = [[list objectAtIndex:indexPath.row] type];
+	if ( [type isEqualToString:@"show"] ) {
+		cell.imgSquare.image = [UIImage imageNamed:@"showSquare.png"];
+	} else if ( [type isEqualToString:@"event"] ) {
+		cell.imgSquare.image = [UIImage imageNamed:@"eventSquare.png"];
+	} else if ( [type isEqualToString:@"other"] ) {
+		cell.imgSquare.image = [UIImage imageNamed:@"otherSquare.png"];
+	}
+	
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	
+	return cell;
 }
 
 //*******************************************************
@@ -199,12 +215,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	DetailViewController *viewController = [[DetailViewController alloc] initWithNibName:@"DetailView" bundle:[NSBundle mainBundle]];
 	viewController.TitleTemp = [[list objectAtIndex:indexPath.row] title];
-	viewController.DateTemp = [[list objectAtIndex:indexPath.row] publishDate];
+	viewController.DateTemp = [[list objectAtIndex:indexPath.row] publishTime];
 	viewController.BodyTemp = [[list objectAtIndex:indexPath.row] detail];
 	[[self navigationController] pushViewController:viewController animated:YES];
 	[viewController release];
 }
-
 
 - (void)dealloc {
     [list release];
