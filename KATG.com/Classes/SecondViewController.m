@@ -27,7 +27,7 @@
 
 @implementation SecondViewController
 
-@synthesize list, feedEntries, odd;
+@synthesize list, feedEntries;
 
 //*******************************************************
 //* awakeFromNib:

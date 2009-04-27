@@ -20,11 +20,9 @@
 @interface SecondViewController : UITableViewController {
     NSMutableArray *list;         // Adds formmated contents of each cell in an array
 	NSMutableArray *feedEntries;  // Child nodes of the feed being queried
-	BOOL odd;
 }
 
 @property (nonatomic, retain) NSMutableArray *list;
 @property (nonatomic, retain) NSMutableArray *feedEntries;
-@property BOOL odd;
 
 @end

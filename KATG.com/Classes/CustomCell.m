@@ -31,10 +31,7 @@
 
 @implementation CustomCell
 
-@synthesize lblTitle, lblPublish, lblPublishDate, imgSquare;
-@synthesize backgroundView;
-//@synthesize selectedBackgroundView;
-//@synthesize backGround;
+@synthesize lblTitle, lblPublish, lblPublishDate, imgSquare, backgroundView;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
@@ -96,7 +93,6 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
-    
     if (selected) {
         lblTitle.textColor = [UIColor whiteColor];
         lblPublish.textColor = [UIColor whiteColor];
