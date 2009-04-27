@@ -22,14 +22,12 @@
     UILabel *lblPublish;
 	UILabel *lblPublishDate;
     UIImageView *imgSquare;
-	UIView *backgroundView;
 }
 
 @property (nonatomic, retain) UILabel *lblTitle;
 @property (nonatomic, retain) UILabel *lblPublish;
 @property (nonatomic, retain) UILabel *lblPublishDate;
 @property (nonatomic, retain) UIImageView *imgSquare;
-@property (nonatomic, retain) UIView *backgroundView;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier;
 

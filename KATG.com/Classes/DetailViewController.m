@@ -24,6 +24,7 @@
 @synthesize detailDate;  // Label to display event date
 @synthesize detailBody;  // Label to display event description
 @synthesize TitleTemp;   // Variable to store title passed from SecondViewController
+@synthesize TimeTemp;    // Variable to store time passed from SecondViewController
 @synthesize DateTemp;    // Variable to store date passed from SecondViewController
 @synthesize BodyTemp;    // Variable to store description passed from SecondViewController
 
@@ -47,8 +48,19 @@
                                    action:@selector(dismissView:)] autorelease];
     self.navigationItem.leftBarButtonItem = addButton;
 	
+	CGRect rect = CGRectMake(20, 90, 280, 240);
+	
+	detailBody = [[[UITextView alloc] initWithFrame:rect] autorelease];
+	detailBody.textColor = [UIColor blackColor];
+	detailBody.backgroundColor = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0]; 
+	//detailBody.dataDetectorTypes = UIDataDetectorTypeAll; // Only works in 3.0
+	detailBody.editable = NO;
+	detailBody.font = [UIFont systemFontOfSize:15.0];
+	
+	[self.view addSubview:detailBody];
 	
 	detailTitle.text = TitleTemp;
+	detailTime.text = TimeTemp;
 	detailDate.text = DateTemp;
 	detailBody.text = BodyTemp;
 }
