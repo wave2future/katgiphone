@@ -330,7 +330,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>C57C3B490FA5538500024CFE</string>
+										<string>C56346F20FA57E230088DB8A</string>
 										<key>history</key>
 										<array>
 											<string>C54055A40FA1FF42006B8414</string>
@@ -344,7 +344,7 @@
 											<string>C57C3B380FA5510500024CFE</string>
 											<string>C57C3B390FA5510500024CFE</string>
 											<string>C57C3B3A0FA5510500024CFE</string>
-											<string>C57C3B3B0FA5510500024CFE</string>
+											<string>C57C3B490FA5538500024CFE</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -359,16 +359,7 @@
 											<string>C57C3ADF0FA54C4800024CFE</string>
 											<string>C57C3AE00FA54C4800024CFE</string>
 											<string>C57C3AF00FA54D0100024CFE</string>
-											<string>C57C3B3C0FA5510500024CFE</string>
-											<string>C57C3B3D0FA5510500024CFE</string>
-											<string>C57C3B3E0FA5510500024CFE</string>
-											<string>C57C3B3F0FA5510500024CFE</string>
 											<string>C57C3B400FA5510500024CFE</string>
-											<string>C57C3B410FA5510500024CFE</string>
-											<string>C57C3B420FA5510500024CFE</string>
-											<string>C57C3B430FA5510500024CFE</string>
-											<string>C57C3B440FA5510500024CFE</string>
-											<string>C57C3B450FA5510500024CFE</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -426,9 +417,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>C57C3B260FA54E2400024CFE</string>
+				<string>C56346F00FA57DEA0088DB8A</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>C57C3B270FA54E2400024CFE</string>
+				<string>C56346F10FA57DEA0088DB8A</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -562,9 +553,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>C54055B30FA1FF42006B8414</string>
 		<string>/Developer/Projects/katgiphone/KATG.com/KATG.com.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
