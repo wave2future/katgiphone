@@ -18,17 +18,20 @@
 
 @interface DetailViewController : UIViewController {
 	IBOutlet UILabel *detailTitle;    // Label to display event title
+	IBOutlet UILabel *detailTime;     // Label to display event date
 	IBOutlet UILabel *detailDate;     // Label to display event date
-	IBOutlet UITextView *detailBody;  // Label to display event description
+	UITextView *detailBody;			  // TextView to display event description
 	NSString *TitleTemp;              // Variable to store title passed from SecondViewController
+	NSString *TimeTemp;               // Variable to store time passed from SecondViewController
 	NSString *DateTemp;               // Variable to store date passed from SecondViewController
 	NSString *BodyTemp;               // Variable to store description passed from SecondViewController
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *detailTitle;
 @property (nonatomic, retain) IBOutlet UILabel *detailDate;
-@property (nonatomic, retain) IBOutlet UITextView *detailBody;
+@property (nonatomic, retain) UITextView *detailBody;
 @property (nonatomic, retain) NSString *TitleTemp;
+@property (nonatomic, retain) NSString *TimeTemp;
 @property (nonatomic, retain) NSString *DateTemp;
 @property (nonatomic, retain) NSString *BodyTemp;
 

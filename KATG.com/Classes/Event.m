@@ -31,7 +31,7 @@
         publishTime = [[NSString alloc] initWithString:thePublishTime];
 		publishDate = [[NSString alloc] initWithString:thePublishDate];
         type = [[NSString alloc] initWithString:theType];
-		detail = [converter convertEntitiesInString:[[NSString alloc] initWithString:theDetail]];
+		detail = [converter convertEntitiesInString:[[[NSString alloc] initWithString:theDetail] stringByReplacingOccurrencesOfString:(NSString *)@"<p>" withString:(NSString *)@"<p>\n"]];
     }
 	
     return self;

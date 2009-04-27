@@ -50,10 +50,7 @@
         lblPublishDate.font = [UIFont systemFontOfSize:12.0];
         
         imgSquare = [[UIImageView alloc] initWithFrame:CGRectZero];
-		
-		//backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-		
-		//[self.contentView addSubview:backgroundView];
+				
 		[self.contentView addSubview:lblTitle];
         [self.contentView addSubview:lblPublish];
         [self.contentView addSubview:lblPublishDate];
@@ -109,7 +106,6 @@
     [lblPublish release];
 	[lblPublishDate release];
     [imgSquare release];
-	//[backgroundView release];
     [super dealloc];
 }
 

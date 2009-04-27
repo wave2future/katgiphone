@@ -183,7 +183,7 @@
 	cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
 	cell.lblPublish.text = [[list objectAtIndex:indexPath.row] publishTime];
 	cell.lblPublishDate.text = [[list objectAtIndex:indexPath.row] publishDate];
-	cell.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+	cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
 	UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.92 green:(CGFloat).973 blue:(CGFloat)0.92 alpha:(CGFloat)1.0];
 	UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0];
 	if (indexPath.row%2 == 0) {
@@ -198,7 +198,7 @@
 		 cell.backgroundView.backgroundColor = color2;
 	 }
 	
-	cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+	cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
 	cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
 	
 	NSString *type = [[list objectAtIndex:indexPath.row] type];
@@ -227,7 +227,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	DetailViewController *viewController = [[DetailViewController alloc] initWithNibName:@"DetailView" bundle:[NSBundle mainBundle]];
 	viewController.TitleTemp = [[list objectAtIndex:indexPath.row] title];
-	viewController.DateTemp = [[list objectAtIndex:indexPath.row] publishTime];
+	viewController.TimeTemp = [[list objectAtIndex:indexPath.row] publishTime];
+	viewController.DateTemp = [[list objectAtIndex:indexPath.row] publishDate];
 	viewController.BodyTemp = [[list objectAtIndex:indexPath.row] detail];
 	[[self navigationController] pushViewController:viewController animated:YES];
 	[viewController release];
