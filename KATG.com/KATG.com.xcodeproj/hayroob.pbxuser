@@ -54,9 +54,6 @@
 			1D6058900D05DD3D006BFB54 /* KATG.com */,
 		);
 		breakpoints = (
-			536763720FA51C1A0072F31C /* SecondViewController.m:175 */,
-			536763A00FA51F850072F31C /* CustomCell.m:58 */,
-			536763A80FA51FBD0072F31C /* CustomCell.m:58 */,
 		);
 		codeSenseManager = 536CD44E0F89E5CF0063DED2 /* Code sense */;
 		executables = (
@@ -961,6 +958,184 @@
 			536764320FA528690072F31C /* PBXTextBookmark */ = 536764320FA528690072F31C /* PBXTextBookmark */;
 			536764330FA528690072F31C /* PBXTextBookmark */ = 536764330FA528690072F31C /* PBXTextBookmark */;
 			536764350FA5288C0072F31C /* PBXTextBookmark */ = 536764350FA5288C0072F31C /* PBXTextBookmark */;
+			536764360FA529490072F31C /* PBXTextBookmark */ = 536764360FA529490072F31C /* PBXTextBookmark */;
+			536764370FA529490072F31C /* PBXTextBookmark */ = 536764370FA529490072F31C /* PBXTextBookmark */;
+			536764380FA529490072F31C /* PBXTextBookmark */ = 536764380FA529490072F31C /* PBXTextBookmark */;
+			536764390FA529490072F31C /* PBXTextBookmark */ = 536764390FA529490072F31C /* PBXTextBookmark */;
+			5367643A0FA529490072F31C /* PBXTextBookmark */ = 5367643A0FA529490072F31C /* PBXTextBookmark */;
+			5367643B0FA529490072F31C /* PBXTextBookmark */ = 5367643B0FA529490072F31C /* PBXTextBookmark */;
+			536764400FA529CC0072F31C /* PBXTextBookmark */ = 536764400FA529CC0072F31C /* PBXTextBookmark */;
+			536764410FA529CC0072F31C /* PBXTextBookmark */ = 536764410FA529CC0072F31C /* PBXTextBookmark */;
+			536764420FA529CC0072F31C /* PBXTextBookmark */ = 536764420FA529CC0072F31C /* PBXTextBookmark */;
+			536764430FA529CC0072F31C /* PBXTextBookmark */ = 536764430FA529CC0072F31C /* PBXTextBookmark */;
+			536764440FA529CC0072F31C /* PBXTextBookmark */ = 536764440FA529CC0072F31C /* PBXTextBookmark */;
+			536764450FA529CC0072F31C /* PBXTextBookmark */ = 536764450FA529CC0072F31C /* PBXTextBookmark */;
+			536764460FA529CC0072F31C /* PBXTextBookmark */ = 536764460FA529CC0072F31C /* PBXTextBookmark */;
+			536764480FA529E30072F31C /* PBXTextBookmark */ = 536764480FA529E30072F31C /* PBXTextBookmark */;
+			5367644A0FA52A050072F31C /* PBXTextBookmark */ = 5367644A0FA52A050072F31C /* PBXTextBookmark */;
+			5367644B0FA52A050072F31C /* PBXTextBookmark */ = 5367644B0FA52A050072F31C /* PBXTextBookmark */;
+			5367644C0FA52A050072F31C /* PBXTextBookmark */ = 5367644C0FA52A050072F31C /* PBXTextBookmark */;
+			5367644D0FA52A050072F31C /* PBXTextBookmark */ = 5367644D0FA52A050072F31C /* PBXTextBookmark */;
+			5367644F0FA52A7F0072F31C /* PBXTextBookmark */ = 5367644F0FA52A7F0072F31C /* PBXTextBookmark */;
+			536764500FA52A7F0072F31C /* PBXTextBookmark */ = 536764500FA52A7F0072F31C /* PBXTextBookmark */;
+			536764510FA52A7F0072F31C /* PBXTextBookmark */ = 536764510FA52A7F0072F31C /* PBXTextBookmark */;
+			536764520FA52A7F0072F31C /* PBXTextBookmark */ = 536764520FA52A7F0072F31C /* PBXTextBookmark */;
+			536764530FA52A7F0072F31C /* PBXTextBookmark */ = 536764530FA52A7F0072F31C /* PBXTextBookmark */;
+			536764540FA52A7F0072F31C /* PBXTextBookmark */ = 536764540FA52A7F0072F31C /* PBXTextBookmark */;
+			536764560FA52B2F0072F31C /* PBXTextBookmark */ = 536764560FA52B2F0072F31C /* PBXTextBookmark */;
+			536764570FA52B2F0072F31C /* PBXTextBookmark */ = 536764570FA52B2F0072F31C /* PBXTextBookmark */;
+			536764580FA52B2F0072F31C /* PBXTextBookmark */ = 536764580FA52B2F0072F31C /* PBXTextBookmark */;
+			536764590FA52B2F0072F31C /* PBXTextBookmark */ = 536764590FA52B2F0072F31C /* PBXTextBookmark */;
+			5367645A0FA52B2F0072F31C /* PBXTextBookmark */ = 5367645A0FA52B2F0072F31C /* PBXTextBookmark */;
+			5367645D0FA531EF0072F31C /* PBXTextBookmark */ = 5367645D0FA531EF0072F31C /* PBXTextBookmark */;
+			536764600FA5320B0072F31C /* PBXTextBookmark */ = 536764600FA5320B0072F31C /* PBXTextBookmark */;
+			536764610FA532860072F31C /* PBXTextBookmark */ = 536764610FA532860072F31C /* PBXTextBookmark */;
+			536764620FA532860072F31C /* PBXTextBookmark */ = 536764620FA532860072F31C /* PBXTextBookmark */;
+			536764630FA532860072F31C /* PBXTextBookmark */ = 536764630FA532860072F31C /* PBXTextBookmark */;
+			536764640FA532860072F31C /* PBXTextBookmark */ = 536764640FA532860072F31C /* PBXTextBookmark */;
+			536764650FA532860072F31C /* PBXTextBookmark */ = 536764650FA532860072F31C /* PBXTextBookmark */;
+			536764670FA532F70072F31C /* PBXTextBookmark */ = 536764670FA532F70072F31C /* PBXTextBookmark */;
+			5367646A0FA533650072F31C /* PBXTextBookmark */ = 5367646A0FA533650072F31C /* PBXTextBookmark */;
+			5367646B0FA533650072F31C /* PBXTextBookmark */ = 5367646B0FA533650072F31C /* PBXTextBookmark */;
+			5367646C0FA533650072F31C /* PBXTextBookmark */ = 5367646C0FA533650072F31C /* PBXTextBookmark */;
+			5367646D0FA533650072F31C /* PBXTextBookmark */ = 5367646D0FA533650072F31C /* PBXTextBookmark */;
+			5367646E0FA533650072F31C /* PBXTextBookmark */ = 5367646E0FA533650072F31C /* PBXTextBookmark */;
+			5367646F0FA533650072F31C /* PBXTextBookmark */ = 5367646F0FA533650072F31C /* PBXTextBookmark */;
+			536764700FA533650072F31C /* PBXTextBookmark */ = 536764700FA533650072F31C /* PBXTextBookmark */;
+			536764710FA533650072F31C /* PBXTextBookmark */ = 536764710FA533650072F31C /* PBXTextBookmark */;
+			536764730FA533F60072F31C /* PBXTextBookmark */ = 536764730FA533F60072F31C /* PBXTextBookmark */;
+			536764740FA533F60072F31C /* PBXTextBookmark */ = 536764740FA533F60072F31C /* PBXTextBookmark */;
+			536764750FA533F60072F31C /* PBXTextBookmark */ = 536764750FA533F60072F31C /* PBXTextBookmark */;
+			536764760FA533F60072F31C /* PBXTextBookmark */ = 536764760FA533F60072F31C /* PBXTextBookmark */;
+			536764790FA534500072F31C /* PBXTextBookmark */ = 536764790FA534500072F31C /* PBXTextBookmark */;
+			5367647A0FA534500072F31C /* PBXTextBookmark */ = 5367647A0FA534500072F31C /* PBXTextBookmark */;
+			5367647B0FA534500072F31C /* PBXTextBookmark */ = 5367647B0FA534500072F31C /* PBXTextBookmark */;
+			5367647C0FA534500072F31C /* PBXTextBookmark */ = 5367647C0FA534500072F31C /* PBXTextBookmark */;
+			5367647D0FA534500072F31C /* PBXTextBookmark */ = 5367647D0FA534500072F31C /* PBXTextBookmark */;
+			5367647E0FA534500072F31C /* PBXTextBookmark */ = 5367647E0FA534500072F31C /* PBXTextBookmark */;
+			5367647F0FA534500072F31C /* PBXTextBookmark */ = 5367647F0FA534500072F31C /* PBXTextBookmark */;
+			536764800FA534500072F31C /* PBXTextBookmark */ = 536764800FA534500072F31C /* PBXTextBookmark */;
+			536764810FA534A00072F31C /* PBXTextBookmark */ = 536764810FA534A00072F31C /* PBXTextBookmark */;
+			536764820FA534A00072F31C /* PBXTextBookmark */ = 536764820FA534A00072F31C /* PBXTextBookmark */;
+			536764830FA534A00072F31C /* PBXTextBookmark */ = 536764830FA534A00072F31C /* PBXTextBookmark */;
+			536764840FA534A00072F31C /* PBXTextBookmark */ = 536764840FA534A00072F31C /* PBXTextBookmark */;
+			536764880FA535110072F31C /* PBXTextBookmark */ = 536764880FA535110072F31C /* PBXTextBookmark */;
+			536764890FA535110072F31C /* PBXTextBookmark */ = 536764890FA535110072F31C /* PBXTextBookmark */;
+			5367648A0FA535110072F31C /* PBXTextBookmark */ = 5367648A0FA535110072F31C /* PBXTextBookmark */;
+			5367648B0FA535110072F31C /* PBXTextBookmark */ = 5367648B0FA535110072F31C /* PBXTextBookmark */;
+			5367648C0FA535110072F31C /* PBXTextBookmark */ = 5367648C0FA535110072F31C /* PBXTextBookmark */;
+			5367648D0FA535110072F31C /* PBXTextBookmark */ = 5367648D0FA535110072F31C /* PBXTextBookmark */;
+			536764910FA536D80072F31C /* PBXTextBookmark */ = 536764910FA536D80072F31C /* PBXTextBookmark */;
+			536764930FA537F20072F31C /* PBXTextBookmark */ = 536764930FA537F20072F31C /* PBXTextBookmark */;
+			536764940FA537F20072F31C /* PBXTextBookmark */ = 536764940FA537F20072F31C /* PBXTextBookmark */;
+			536764950FA537F20072F31C /* PBXTextBookmark */ = 536764950FA537F20072F31C /* PBXTextBookmark */;
+			536764960FA537F20072F31C /* PBXTextBookmark */ = 536764960FA537F20072F31C /* PBXTextBookmark */;
+			536764970FA537F20072F31C /* PBXTextBookmark */ = 536764970FA537F20072F31C /* PBXTextBookmark */;
+			536764980FA537F20072F31C /* PBXTextBookmark */ = 536764980FA537F20072F31C /* PBXTextBookmark */;
+			5367649A0FA5381D0072F31C /* PBXTextBookmark */ = 5367649A0FA5381D0072F31C /* PBXTextBookmark */;
+			5367649B0FA5381D0072F31C /* PBXTextBookmark */ = 5367649B0FA5381D0072F31C /* PBXTextBookmark */;
+			5367649C0FA5381D0072F31C /* PBXTextBookmark */ = 5367649C0FA5381D0072F31C /* PBXTextBookmark */;
+			5367649D0FA5381D0072F31C /* PBXTextBookmark */ = 5367649D0FA5381D0072F31C /* PBXTextBookmark */;
+			536764A00FA539E00072F31C /* PBXTextBookmark */ = 536764A00FA539E00072F31C /* PBXTextBookmark */;
+			536764A10FA539E00072F31C /* PBXTextBookmark */ = 536764A10FA539E00072F31C /* PBXTextBookmark */;
+			536764A20FA539E00072F31C /* PBXTextBookmark */ = 536764A20FA539E00072F31C /* PBXTextBookmark */;
+			536764A30FA539E00072F31C /* PBXTextBookmark */ = 536764A30FA539E00072F31C /* PBXTextBookmark */;
+			536764A40FA539E00072F31C /* PBXTextBookmark */ = 536764A40FA539E00072F31C /* PBXTextBookmark */;
+			536764A50FA539E00072F31C /* PBXTextBookmark */ = 536764A50FA539E00072F31C /* PBXTextBookmark */;
+			536764A60FA539E00072F31C /* PBXTextBookmark */ = 536764A60FA539E00072F31C /* PBXTextBookmark */;
+			536764A70FA539E00072F31C /* PBXTextBookmark */ = 536764A70FA539E00072F31C /* PBXTextBookmark */;
+			536764A80FA539E00072F31C /* PBXTextBookmark */ = 536764A80FA539E00072F31C /* PBXTextBookmark */;
+			536764A90FA539E00072F31C /* PBXTextBookmark */ = 536764A90FA539E00072F31C /* PBXTextBookmark */;
+			536764AA0FA539E00072F31C /* PBXTextBookmark */ = 536764AA0FA539E00072F31C /* PBXTextBookmark */;
+			536764AB0FA539E00072F31C /* PBXTextBookmark */ = 536764AB0FA539E00072F31C /* PBXTextBookmark */;
+			536764AC0FA539E00072F31C /* PBXTextBookmark */ = 536764AC0FA539E00072F31C /* PBXTextBookmark */;
+			536764AD0FA539E00072F31C /* PBXTextBookmark */ = 536764AD0FA539E00072F31C /* PBXTextBookmark */;
+			536764AE0FA539E00072F31C /* PBXTextBookmark */ = 536764AE0FA539E00072F31C /* PBXTextBookmark */;
+			536764AF0FA539E00072F31C /* PBXTextBookmark */ = 536764AF0FA539E00072F31C /* PBXTextBookmark */;
+			536764B40FA53A9E0072F31C /* PBXTextBookmark */ = 536764B40FA53A9E0072F31C /* PBXTextBookmark */;
+			536764B50FA53A9E0072F31C /* PBXTextBookmark */ = 536764B50FA53A9E0072F31C /* PBXTextBookmark */;
+			536764B60FA53A9E0072F31C /* PBXTextBookmark */ = 536764B60FA53A9E0072F31C /* PBXTextBookmark */;
+			536764B70FA53A9E0072F31C /* PBXTextBookmark */ = 536764B70FA53A9E0072F31C /* PBXTextBookmark */;
+			536764B80FA53A9E0072F31C /* PBXTextBookmark */ = 536764B80FA53A9E0072F31C /* PBXTextBookmark */;
+			536764B90FA53A9E0072F31C /* PBXTextBookmark */ = 536764B90FA53A9E0072F31C /* PBXTextBookmark */;
+			536764BA0FA53A9E0072F31C /* PBXTextBookmark */ = 536764BA0FA53A9E0072F31C /* PBXTextBookmark */;
+			536764BB0FA53A9E0072F31C /* PBXTextBookmark */ = 536764BB0FA53A9E0072F31C /* PBXTextBookmark */;
+			536764BC0FA53A9E0072F31C /* PBXTextBookmark */ = 536764BC0FA53A9E0072F31C /* PBXTextBookmark */;
+			536764BD0FA53A9E0072F31C /* PBXTextBookmark */ = 536764BD0FA53A9E0072F31C /* PBXTextBookmark */;
+			536764BE0FA53A9E0072F31C /* PBXTextBookmark */ = 536764BE0FA53A9E0072F31C /* PBXTextBookmark */;
+			536764BF0FA53A9E0072F31C /* PBXTextBookmark */ = 536764BF0FA53A9E0072F31C /* PBXTextBookmark */;
+			536764C10FA53B030072F31C /* PBXTextBookmark */ = 536764C10FA53B030072F31C /* PBXTextBookmark */;
+			536764C20FA53B330072F31C /* PBXTextBookmark */ = 536764C20FA53B330072F31C /* PBXTextBookmark */;
+			536764C30FA53B330072F31C /* PBXTextBookmark */ = 536764C30FA53B330072F31C /* PBXTextBookmark */;
+			536764C40FA53B330072F31C /* PBXTextBookmark */ = 536764C40FA53B330072F31C /* PBXTextBookmark */;
+			536764C50FA53B330072F31C /* PBXTextBookmark */ = 536764C50FA53B330072F31C /* PBXTextBookmark */;
+			536764C60FA53B330072F31C /* PBXTextBookmark */ = 536764C60FA53B330072F31C /* PBXTextBookmark */;
+			536764C70FA53B330072F31C /* PBXTextBookmark */ = 536764C70FA53B330072F31C /* PBXTextBookmark */;
+			536764C90FA53B730072F31C /* PBXTextBookmark */ = 536764C90FA53B730072F31C /* PBXTextBookmark */;
+			536764CA0FA53B730072F31C /* PBXTextBookmark */ = 536764CA0FA53B730072F31C /* PBXTextBookmark */;
+			536764CB0FA53B730072F31C /* PBXTextBookmark */ = 536764CB0FA53B730072F31C /* PBXTextBookmark */;
+			536764CC0FA53B730072F31C /* PBXTextBookmark */ = 536764CC0FA53B730072F31C /* PBXTextBookmark */;
+			536764CD0FA53B730072F31C /* PBXTextBookmark */ = 536764CD0FA53B730072F31C /* PBXTextBookmark */;
+			536764CE0FA53B730072F31C /* PBXTextBookmark */ = 536764CE0FA53B730072F31C /* PBXTextBookmark */;
+			536764CF0FA53B730072F31C /* PBXTextBookmark */ = 536764CF0FA53B730072F31C /* PBXTextBookmark */;
+			536764D00FA53B8F0072F31C /* PBXTextBookmark */ = 536764D00FA53B8F0072F31C /* PBXTextBookmark */;
+			536764D20FA53BB80072F31C /* PBXTextBookmark */ = 536764D20FA53BB80072F31C /* PBXTextBookmark */;
+			536764D40FA53BF70072F31C /* PBXTextBookmark */ = 536764D40FA53BF70072F31C /* PBXTextBookmark */;
+			536764D50FA53BF70072F31C /* PBXTextBookmark */ = 536764D50FA53BF70072F31C /* PBXTextBookmark */;
+			536764D60FA53BF70072F31C /* PBXTextBookmark */ = 536764D60FA53BF70072F31C /* PBXTextBookmark */;
+			536764D70FA53BF70072F31C /* PBXTextBookmark */ = 536764D70FA53BF70072F31C /* PBXTextBookmark */;
+			536764DA0FA53CB40072F31C /* PBXTextBookmark */ = 536764DA0FA53CB40072F31C /* PBXTextBookmark */;
+			536764DB0FA53CB40072F31C /* PBXTextBookmark */ = 536764DB0FA53CB40072F31C /* PBXTextBookmark */;
+			536764DC0FA53CB40072F31C /* PBXTextBookmark */ = 536764DC0FA53CB40072F31C /* PBXTextBookmark */;
+			536764DD0FA53CB40072F31C /* PBXTextBookmark */ = 536764DD0FA53CB40072F31C /* PBXTextBookmark */;
+			536764E00FA53D210072F31C /* PBXTextBookmark */ = 536764E00FA53D210072F31C /* PBXTextBookmark */;
+			536764E10FA53D210072F31C /* PBXTextBookmark */ = 536764E10FA53D210072F31C /* PBXTextBookmark */;
+			536764E20FA53D210072F31C /* PBXTextBookmark */ = 536764E20FA53D210072F31C /* PBXTextBookmark */;
+			536764E30FA53D210072F31C /* PBXTextBookmark */ = 536764E30FA53D210072F31C /* PBXTextBookmark */;
+			536764E50FA53D360072F31C /* PBXTextBookmark */ = 536764E50FA53D360072F31C /* PBXTextBookmark */;
+			536764E70FA53D810072F31C /* PBXTextBookmark */ = 536764E70FA53D810072F31C /* PBXTextBookmark */;
+			536764EA0FA53DB30072F31C /* PBXTextBookmark */ = 536764EA0FA53DB30072F31C /* PBXTextBookmark */;
+			536764EC0FA53DDF0072F31C /* PBXTextBookmark */ = 536764EC0FA53DDF0072F31C /* PBXTextBookmark */;
+			536764EE0FA53DF40072F31C /* PBXTextBookmark */ = 536764EE0FA53DF40072F31C /* PBXTextBookmark */;
+			536764F00FA53E270072F31C /* PBXTextBookmark */ = 536764F00FA53E270072F31C /* PBXTextBookmark */;
+			536764F20FA53E350072F31C /* PBXTextBookmark */ = 536764F20FA53E350072F31C /* PBXTextBookmark */;
+			536764F40FA53E430072F31C /* PBXTextBookmark */ = 536764F40FA53E430072F31C /* PBXTextBookmark */;
+			536764F60FA53E730072F31C /* PBXTextBookmark */ = 536764F60FA53E730072F31C /* PBXTextBookmark */;
+			536764F80FA53E800072F31C /* PBXTextBookmark */ = 536764F80FA53E800072F31C /* PBXTextBookmark */;
+			536764F90FA53EFE0072F31C /* PBXTextBookmark */ = 536764F90FA53EFE0072F31C /* PBXTextBookmark */;
+			536764FB0FA53F4F0072F31C /* PBXTextBookmark */ = 536764FB0FA53F4F0072F31C /* PBXTextBookmark */;
+			536764FD0FA53F600072F31C /* PBXTextBookmark */ = 536764FD0FA53F600072F31C /* PBXTextBookmark */;
+			536764FF0FA53F790072F31C /* PBXTextBookmark */ = 536764FF0FA53F790072F31C /* PBXTextBookmark */;
+			536765010FA53F900072F31C /* PBXTextBookmark */ = 536765010FA53F900072F31C /* PBXTextBookmark */;
+			536765030FA53FA80072F31C /* PBXTextBookmark */ = 536765030FA53FA80072F31C /* PBXTextBookmark */;
+			536765050FA53FBD0072F31C /* PBXTextBookmark */ = 536765050FA53FBD0072F31C /* PBXTextBookmark */;
+			536765070FA53FD70072F31C /* PBXTextBookmark */ = 536765070FA53FD70072F31C /* PBXTextBookmark */;
+			536765090FA53FF60072F31C /* PBXTextBookmark */ = 536765090FA53FF60072F31C /* PBXTextBookmark */;
+			5367650B0FA540000072F31C /* PBXTextBookmark */ = 5367650B0FA540000072F31C /* PBXTextBookmark */;
+			5367650D0FA540130072F31C /* PBXTextBookmark */ = 5367650D0FA540130072F31C /* PBXTextBookmark */;
+			5367650F0FA540490072F31C /* PBXTextBookmark */ = 5367650F0FA540490072F31C /* PBXTextBookmark */;
+			536765110FA5405B0072F31C /* PBXTextBookmark */ = 536765110FA5405B0072F31C /* PBXTextBookmark */;
+			536765130FA540D00072F31C /* PBXTextBookmark */ = 536765130FA540D00072F31C /* PBXTextBookmark */;
+			536765140FA540D00072F31C /* PBXTextBookmark */ = 536765140FA540D00072F31C /* PBXTextBookmark */;
+			536765150FA540D00072F31C /* PBXTextBookmark */ = 536765150FA540D00072F31C /* PBXTextBookmark */;
+			536765160FA540D00072F31C /* PBXTextBookmark */ = 536765160FA540D00072F31C /* PBXTextBookmark */;
+			536765170FA540D00072F31C /* PBXTextBookmark */ = 536765170FA540D00072F31C /* PBXTextBookmark */;
+			536765180FA540D00072F31C /* PBXTextBookmark */ = 536765180FA540D00072F31C /* PBXTextBookmark */;
+			536765190FA540D00072F31C /* PBXTextBookmark */ = 536765190FA540D00072F31C /* PBXTextBookmark */;
+			5367651A0FA540D00072F31C /* PBXTextBookmark */ = 5367651A0FA540D00072F31C /* PBXTextBookmark */;
+			5367651B0FA540D00072F31C /* PBXTextBookmark */ = 5367651B0FA540D00072F31C /* PBXTextBookmark */;
+			5367651C0FA540D00072F31C /* PBXTextBookmark */ = 5367651C0FA540D00072F31C /* PBXTextBookmark */;
+			5367651D0FA540D00072F31C /* PBXTextBookmark */ = 5367651D0FA540D00072F31C /* PBXTextBookmark */;
+			5367651F0FA541120072F31C /* PBXTextBookmark */ = 5367651F0FA541120072F31C /* PBXTextBookmark */;
+			536765200FA541120072F31C /* PBXTextBookmark */ = 536765200FA541120072F31C /* PBXTextBookmark */;
+			536765210FA541120072F31C /* PBXTextBookmark */ = 536765210FA541120072F31C /* PBXTextBookmark */;
+			536765230FA541290072F31C /* PBXTextBookmark */ = 536765230FA541290072F31C /* PBXTextBookmark */;
+			536765250FA5413B0072F31C /* PBXTextBookmark */ = 536765250FA5413B0072F31C /* PBXTextBookmark */;
+			536765260FA541D50072F31C /* PBXTextBookmark */ = 536765260FA541D50072F31C /* PBXTextBookmark */;
+			536765270FA541D50072F31C /* PBXTextBookmark */ = 536765270FA541D50072F31C /* PBXTextBookmark */;
+			536765280FA541D50072F31C /* PBXTextBookmark */ = 536765280FA541D50072F31C /* PBXTextBookmark */;
+			536765290FA541D50072F31C /* PBXTextBookmark */ = 536765290FA541D50072F31C /* PBXTextBookmark */;
+			5367652A0FA541D50072F31C /* PBXTextBookmark */ = 5367652A0FA541D50072F31C /* PBXTextBookmark */;
 			536AC4A30F91308200B55D50 = 536AC4A30F91308200B55D50 /* PBXTextBookmark */;
 			536AC4A50F91308200B55D50 = 536AC4A50F91308200B55D50 /* PBXTextBookmark */;
 			536AC4D60F9134B700B55D50 = 536AC4D60F9134B700B55D50 /* PBXTextBookmark */;
@@ -1850,10 +2025,10 @@
 	};
 	535FE54F0F89F71800F6AD75 /* SecondViewController.m */ = {
 		uiCtxt = {
-			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{1525, 2593}\";\n            s = 0;\n        },\n                {\n            r = \"{4556, 62}\";\n            s = 0;\n        },\n                {\n            r = \"{4654, 156}\";\n            s = 0;\n        },\n                {\n            r = \"{4913, 15}\";\n            s = 0;\n        },\n                {\n            r = \"{7741, 42}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 7793}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {966, 2086}}";
-			sepNavSelRange = "{3493, 0}";
-			sepNavVisRange = "{2167, 1843}";
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{1525, 2593}\";\n            s = 0;\n        },\n                {\n            r = \"{4556, 62}\";\n            s = 0;\n        },\n                {\n            r = \"{4654, 156}\";\n            s = 0;\n        },\n                {\n            r = \"{4913, 15}\";\n            s = 0;\n        },\n                {\n            r = \"{8372, 42}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 8424}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {966, 2240}}";
+			sepNavSelRange = "{3536, 0}";
+			sepNavVisRange = "{2437, 2133}";
 			sepNavWindowFrame = "{{19, 0}, {1277, 778}}";
 		};
 	};
@@ -2174,7 +2349,7 @@
 		fRef = 5379EEE70FA1E5E900F1E9FD /* ChangeLog */;
 		name = "ChangeLog: 5";
 		rLen = 0;
-		rLoc = 166;
+		rLoc = 247;
 		rType = 0;
 		vrLen = 152;
 		vrLoc = 0;
@@ -2184,7 +2359,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 64";
 		rLen = 0;
-		rLoc = 3083;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1981;
 		vrLoc = 434;
@@ -2324,7 +2499,7 @@
 		fRef = 5379EEE70FA1E5E900F1E9FD /* ChangeLog */;
 		name = "ChangeLog: 5";
 		rLen = 0;
-		rLoc = 166;
+		rLoc = 247;
 		rType = 0;
 		vrLen = 152;
 		vrLoc = 0;
@@ -2384,7 +2559,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 64";
 		rLen = 0;
-		rLoc = 3083;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1981;
 		vrLoc = 434;
@@ -2544,7 +2719,7 @@
 		comments = "warning: no '-publishDate' method found";
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		rLen = 1;
-		rLoc = 217;
+		rLoc = 228;
 		rType = 1;
 	};
 	536760560FA3E9410072F31C /* PBXTextBookmark */ = {
@@ -2552,7 +2727,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 202";
 		rLen = 77;
-		rLoc = 7466;
+		rLoc = 8097;
 		rType = 0;
 		vrLen = 945;
 		vrLoc = 6096;
@@ -2612,7 +2787,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 202";
 		rLen = 0;
-		rLoc = 7540;
+		rLoc = 8171;
 		rType = 0;
 		vrLen = 1870;
 		vrLoc = 5171;
@@ -2622,7 +2797,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 202";
 		rLen = 0;
-		rLoc = 7540;
+		rLoc = 8171;
 		rType = 0;
 		vrLen = 1283;
 		vrLoc = 5783;
@@ -2640,7 +2815,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 202";
 		rLen = 0;
-		rLoc = 7540;
+		rLoc = 8171;
 		rType = 0;
 		vrLen = 1283;
 		vrLoc = 5783;
@@ -2728,7 +2903,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 206";
 		rLen = 0;
-		rLoc = 7721;
+		rLoc = 8352;
 		rType = 0;
 		vrLen = 1519;
 		vrLoc = 709;
@@ -2838,7 +3013,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 29";
 		rLen = 0;
-		rLoc = 1074;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1086;
 		vrLoc = 0;
@@ -2848,7 +3023,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 81";
 		rLen = 0;
-		rLoc = 3420;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1108;
 		vrLoc = 2845;
@@ -2918,7 +3093,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 64";
 		rLen = 0;
-		rLoc = 3083;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1672;
 		vrLoc = 1160;
@@ -2938,7 +3113,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 64";
 		rLen = 0;
-		rLoc = 3083;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1652;
 		vrLoc = 1209;
@@ -2948,7 +3123,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 29";
 		rLen = 0;
-		rLoc = 1074;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1086;
 		vrLoc = 0;
@@ -2958,7 +3133,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 81";
 		rLen = 0;
-		rLoc = 3420;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1108;
 		vrLoc = 2845;
@@ -3008,7 +3183,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 29";
 		rLen = 0;
-		rLoc = 1074;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1086;
 		vrLoc = 0;
@@ -3018,7 +3193,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 81";
 		rLen = 0;
-		rLoc = 3420;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1103;
 		vrLoc = 2845;
@@ -3038,7 +3213,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 81";
 		rLen = 0;
-		rLoc = 3420;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1103;
 		vrLoc = 2845;
@@ -3048,7 +3223,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 29";
 		rLen = 0;
-		rLoc = 1074;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1086;
 		vrLoc = 0;
@@ -3128,7 +3303,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 86";
 		rLen = 0;
-		rLoc = 3575;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1281;
 		vrLoc = 2557;
@@ -3138,7 +3313,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 86";
 		rLen = 0;
-		rLoc = 3575;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1021;
 		vrLoc = 2948;
@@ -3148,7 +3323,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 86";
 		rLen = 0;
-		rLoc = 3577;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1299;
 		vrLoc = 2424;
@@ -3158,7 +3333,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 80";
 		rLen = 0;
-		rLoc = 3397;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1297;
 		vrLoc = 2424;
@@ -3168,7 +3343,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 77";
 		rLen = 0;
-		rLoc = 3286;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1299;
 		vrLoc = 2424;
@@ -3178,7 +3353,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 77";
 		rLen = 0;
-		rLoc = 3286;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1732;
 		vrLoc = 1473;
@@ -3198,7 +3373,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 77";
 		rLen = 0;
-		rLoc = 3286;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1732;
 		vrLoc = 1473;
@@ -3228,7 +3403,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 77";
 		rLen = 0;
-		rLoc = 3286;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1732;
 		vrLoc = 1473;
@@ -3248,7 +3423,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 77";
 		rLen = 0;
-		rLoc = 3285;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1279;
 		vrLoc = 2557;
@@ -3258,7 +3433,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 70";
 		rLen = 0;
-		rLoc = 3083;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1278;
 		vrLoc = 2557;
@@ -3268,7 +3443,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 70";
 		rLen = 0;
-		rLoc = 3083;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1279;
 		vrLoc = 2557;
@@ -3278,7 +3453,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 72";
 		rLen = 0;
-		rLoc = 3167;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1279;
 		vrLoc = 2557;
@@ -3298,7 +3473,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 72";
 		rLen = 0;
-		rLoc = 3167;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2144;
 		vrLoc = 20;
@@ -3308,7 +3483,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 72";
 		rLen = 0;
-		rLoc = 3167;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1279;
 		vrLoc = 2557;
@@ -3328,7 +3503,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 72";
 		rLen = 0;
-		rLoc = 3167;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2144;
 		vrLoc = 20;
@@ -3368,7 +3543,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 72";
 		rLen = 0;
-		rLoc = 3167;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2131;
 		vrLoc = 33;
@@ -3388,7 +3563,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 102";
 		rLen = 0;
-		rLoc = 4224;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1150;
 		vrLoc = 2948;
@@ -3438,7 +3613,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 102";
 		rLen = 0;
-		rLoc = 4224;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1552;
 		vrLoc = 1926;
@@ -3448,7 +3623,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 102";
 		rLen = 0;
-		rLoc = 4224;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1390;
 		vrLoc = 2557;
@@ -3488,7 +3663,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 102";
 		rLen = 0;
-		rLoc = 4224;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1552;
 		vrLoc = 1926;
@@ -3508,7 +3683,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 70";
 		rLen = 0;
-		rLoc = 3083;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1370;
 		vrLoc = 2509;
@@ -3518,7 +3693,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 70";
 		rLen = 0;
-		rLoc = 3083;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1370;
 		vrLoc = 2509;
@@ -3528,7 +3703,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 72";
 		rLen = 0;
-		rLoc = 3170;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1369;
 		vrLoc = 2509;
@@ -3538,7 +3713,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 72";
 		rLen = 0;
-		rLoc = 3170;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1369;
 		vrLoc = 2509;
@@ -3548,7 +3723,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 72";
 		rLen = 0;
-		rLoc = 3169;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1370;
 		vrLoc = 2509;
@@ -3558,7 +3733,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 77";
 		rLen = 0;
-		rLoc = 3346;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1375;
 		vrLoc = 2509;
@@ -3568,7 +3743,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 72";
 		rLen = 0;
-		rLoc = 3169;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1375;
 		vrLoc = 2509;
@@ -3578,7 +3753,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 72";
 		rLen = 0;
-		rLoc = 3170;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1375;
 		vrLoc = 2509;
@@ -3588,7 +3763,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 72";
 		rLen = 0;
-		rLoc = 3170;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1375;
 		vrLoc = 2509;
@@ -3648,7 +3823,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 32";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1134;
 		vrLoc = 33;
@@ -3658,7 +3833,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 99";
 		rLen = 0;
-		rLoc = 3738;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1408;
 		vrLoc = 1411;
@@ -3668,7 +3843,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 72";
 		rLen = 0;
-		rLoc = 3170;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1491;
 		vrLoc = 2509;
@@ -3728,7 +3903,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 99";
 		rLen = 0;
-		rLoc = 3738;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1409;
 		vrLoc = 1410;
@@ -3738,7 +3913,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 32";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1134;
 		vrLoc = 33;
@@ -3758,7 +3933,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 60";
 		rLen = 0;
-		rLoc = 2653;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1168;
 		vrLoc = 2059;
@@ -3768,7 +3943,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 94";
 		rLen = 0;
-		rLoc = 3658;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 883;
 		vrLoc = 3227;
@@ -3778,7 +3953,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 94";
 		rLen = 0;
-		rLoc = 3658;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 882;
 		vrLoc = 3227;
@@ -3788,7 +3963,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 94";
 		rLen = 0;
-		rLoc = 3657;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 882;
 		vrLoc = 3227;
@@ -3798,7 +3973,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 94";
 		rLen = 0;
-		rLoc = 3657;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 951;
 		vrLoc = 3606;
@@ -3828,7 +4003,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 32";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1147;
 		vrLoc = 20;
@@ -3838,7 +4013,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 103";
 		rLen = 0;
-		rLoc = 3890;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 3390;
 		vrLoc = 1160;
@@ -3847,8 +4022,8 @@
 		isa = PBXTextBookmark;
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 106";
-		rLen = 146;
-		rLoc = 3935;
+		rLen = 0;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1173;
 		vrLoc = 2059;
@@ -3867,8 +4042,8 @@
 		isa = PBXTextBookmark;
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 106";
-		rLen = 146;
-		rLoc = 3935;
+		rLen = 0;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 3198;
 		vrLoc = 1359;
@@ -3888,7 +4063,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 103";
 		rLen = 0;
-		rLoc = 3890;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 3390;
 		vrLoc = 1160;
@@ -3898,7 +4073,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 32";
 		rLen = 0;
-		rLoc = 1217;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1147;
 		vrLoc = 20;
@@ -3908,7 +4083,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 103";
 		rLen = 0;
-		rLoc = 3890;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 3198;
 		vrLoc = 1209;
@@ -3918,7 +4093,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 109";
 		rLen = 0;
-		rLoc = 4082;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 3243;
 		vrLoc = 1160;
@@ -3928,7 +4103,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 104";
 		rLen = 0;
-		rLoc = 3906;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 3199;
 		vrLoc = 1358;
@@ -3938,7 +4113,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 104";
 		rLen = 0;
-		rLoc = 3906;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 3199;
 		vrLoc = 1358;
@@ -3948,7 +4123,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 214";
 		rLen = 0;
-		rLoc = 7691;
+		rLoc = 8322;
 		rType = 0;
 		vrLen = 1162;
 		vrLoc = 6427;
@@ -3958,7 +4133,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 214";
 		rLen = 0;
-		rLoc = 7691;
+		rLoc = 8322;
 		rType = 0;
 		vrLen = 1163;
 		vrLoc = 6427;
@@ -4016,7 +4191,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 32";
 		rLen = 0;
-		rLoc = 1187;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1171;
 		vrLoc = 0;
@@ -4026,7 +4201,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 124";
 		rLen = 0;
-		rLoc = 4417;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1220;
 		vrLoc = 3396;
@@ -4066,7 +4241,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 32";
 		rLen = 0;
-		rLoc = 1187;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1171;
 		vrLoc = 0;
@@ -4076,7 +4251,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 124";
 		rLen = 0;
-		rLoc = 4417;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1220;
 		vrLoc = 3396;
@@ -4146,7 +4321,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 32";
 		rLen = 0;
-		rLoc = 1187;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1167;
 		vrLoc = 0;
@@ -4196,7 +4371,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 124";
 		rLen = 0;
-		rLoc = 4417;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1189;
 		vrLoc = 3427;
@@ -4206,7 +4381,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 32";
 		rLen = 0;
-		rLoc = 1187;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1167;
 		vrLoc = 0;
@@ -4226,7 +4401,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 32";
 		rLen = 0;
-		rLoc = 1187;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1167;
 		vrLoc = 0;
@@ -4576,7 +4751,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 63";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1745;
 		vrLoc = 1358;
@@ -4586,7 +4761,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 26";
 		rLen = 0;
-		rLoc = 918;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1178;
 		vrLoc = 0;
@@ -4606,7 +4781,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 63";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1917;
 		vrLoc = 1160;
@@ -4636,7 +4811,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 26";
 		rLen = 0;
-		rLoc = 918;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1178;
 		vrLoc = 0;
@@ -4646,7 +4821,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 63";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1745;
 		vrLoc = 1358;
@@ -4676,7 +4851,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 26";
 		rLen = 0;
-		rLoc = 918;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1178;
 		vrLoc = 0;
@@ -4686,7 +4861,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 63";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1745;
 		vrLoc = 1358;
@@ -4696,7 +4871,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 26";
 		rLen = 0;
-		rLoc = 918;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1178;
 		vrLoc = 0;
@@ -4706,7 +4881,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 63";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1745;
 		vrLoc = 1358;
@@ -4746,7 +4921,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 63";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1745;
 		vrLoc = 1358;
@@ -4756,7 +4931,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 26";
 		rLen = 0;
-		rLoc = 918;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1178;
 		vrLoc = 0;
@@ -4766,7 +4941,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 26";
 		rLen = 0;
-		rLoc = 918;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1178;
 		vrLoc = 0;
@@ -4776,7 +4951,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 26";
 		rLen = 0;
-		rLoc = 918;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1178;
 		vrLoc = 0;
@@ -5016,7 +5191,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 25";
 		rLen = 0;
-		rLoc = 918;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1167;
 		vrLoc = 0;
@@ -5026,7 +5201,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 59";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1767;
 		vrLoc = 1358;
@@ -5056,7 +5231,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 63";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1743;
 		vrLoc = 1359;
@@ -5066,7 +5241,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 26";
 		rLen = 0;
-		rLoc = 918;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1178;
 		vrLoc = 0;
@@ -5076,7 +5251,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 63";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1769;
 		vrLoc = 1359;
@@ -5086,7 +5261,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 25";
 		rLen = 0;
-		rLoc = 918;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1167;
 		vrLoc = 0;
@@ -5126,7 +5301,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 25";
 		rLen = 0;
-		rLoc = 918;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1167;
 		vrLoc = 0;
@@ -5136,7 +5311,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 59";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1767;
 		vrLoc = 1358;
@@ -5166,7 +5341,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 34";
 		rLen = 0;
-		rLoc = 1241;
+		rLoc = 1156;
 		rType = 0;
 		vrLen = 1198;
 		vrLoc = 0;
@@ -5176,7 +5351,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 62";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1867;
 		vrLoc = 1214;
@@ -5226,7 +5401,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 59";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1767;
 		vrLoc = 1358;
@@ -5236,7 +5411,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 26";
 		rLen = 0;
-		rLoc = 918;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1178;
 		vrLoc = 0;
@@ -5246,7 +5421,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 59";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 3232;
 		vrLoc = 1358;
@@ -5266,7 +5441,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 63";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1872;
 		vrLoc = 1214;
@@ -5276,7 +5451,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 26";
 		rLen = 0;
-		rLoc = 918;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1178;
 		vrLoc = 0;
@@ -5336,7 +5511,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 34";
 		rLen = 0;
-		rLoc = 1241;
+		rLoc = 1156;
 		rType = 0;
 		vrLen = 1218;
 		vrLoc = 0;
@@ -5346,7 +5521,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 35";
 		rLen = 0;
-		rLoc = 1500;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1748;
 		vrLoc = 1214;
@@ -5356,7 +5531,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 34";
 		rLen = 0;
-		rLoc = 1241;
+		rLoc = 1156;
 		rType = 0;
 		vrLen = 1198;
 		vrLoc = 0;
@@ -5366,7 +5541,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 62";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1867;
 		vrLoc = 1214;
@@ -5436,7 +5611,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 34";
 		rLen = 0;
-		rLoc = 1241;
+		rLoc = 1156;
 		rType = 0;
 		vrLen = 1198;
 		vrLoc = 0;
@@ -5456,7 +5631,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 61";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2656;
 		vrLoc = 1284;
@@ -5486,7 +5661,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 62";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1796;
 		vrLoc = 1284;
@@ -5496,7 +5671,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 34";
 		rLen = 0;
-		rLoc = 1241;
+		rLoc = 1156;
 		rType = 0;
 		vrLen = 1198;
 		vrLoc = 0;
@@ -5506,7 +5681,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 62";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1796;
 		vrLoc = 1284;
@@ -5536,7 +5711,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 61";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2656;
 		vrLoc = 1284;
@@ -5556,7 +5731,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1863;
 		vrLoc = 1209;
@@ -5596,7 +5771,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1863;
 		vrLoc = 1209;
@@ -5646,7 +5821,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 34";
 		rLen = 0;
-		rLoc = 1241;
+		rLoc = 1156;
 		rType = 0;
 		vrLen = 1198;
 		vrLoc = 0;
@@ -5656,7 +5831,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2581;
 		vrLoc = 1359;
@@ -5683,7 +5858,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1858;
 		vrLoc = 1214;
@@ -5703,7 +5878,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1858;
 		vrLoc = 1214;
@@ -5743,7 +5918,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1790;
 		vrLoc = 1284;
@@ -5823,7 +5998,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2581;
 		vrLoc = 1359;
@@ -5843,7 +6018,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 34";
 		rLen = 0;
-		rLoc = 1241;
+		rLoc = 1156;
 		rType = 0;
 		vrLen = 1198;
 		vrLoc = 0;
@@ -5853,7 +6028,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2581;
 		vrLoc = 1359;
@@ -5903,7 +6078,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 36";
 		rLen = 0;
-		rLoc = 1320;
+		rLoc = 1235;
 		rType = 0;
 		vrLen = 1295;
 		vrLoc = 0;
@@ -5913,7 +6088,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1808;
 		vrLoc = 1209;
@@ -5940,7 +6115,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2581;
 		vrLoc = 1359;
@@ -5960,7 +6135,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2581;
 		vrLoc = 1359;
@@ -6000,7 +6175,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 40";
 		rLen = 0;
-		rLoc = 1719;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1860;
 		vrLoc = 1214;
@@ -6010,7 +6185,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 34";
 		rLen = 0;
-		rLoc = 1241;
+		rLoc = 1156;
 		rType = 0;
 		vrLen = 1198;
 		vrLoc = 0;
@@ -6020,7 +6195,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 40";
 		rLen = 0;
-		rLoc = 1719;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1858;
 		vrLoc = 1214;
@@ -6040,7 +6215,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 38";
 		rLen = 0;
-		rLoc = 1607;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 3340;
 		vrLoc = 1411;
@@ -6210,7 +6385,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 37";
 		rLen = 0;
-		rLoc = 1604;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 3362;
 		vrLoc = 1411;
@@ -6240,7 +6415,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 59";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 3218;
 		vrLoc = 1383;
@@ -6270,7 +6445,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 34";
 		rLen = 0;
-		rLoc = 1241;
+		rLoc = 1156;
 		rType = 0;
 		vrLen = 1198;
 		vrLoc = 0;
@@ -6279,8 +6454,8 @@
 		isa = PBXTextBookmark;
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 37";
-		rLen = 77;
-		rLoc = 1527;
+		rLen = 0;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1875;
 		vrLoc = 1214;
@@ -6290,7 +6465,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 36";
 		rLen = 0;
-		rLoc = 1320;
+		rLoc = 1235;
 		rType = 0;
 		vrLen = 1295;
 		vrLoc = 0;
@@ -6309,8 +6484,8 @@
 		isa = PBXTextBookmark;
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 37";
-		rLen = 77;
-		rLoc = 1527;
+		rLen = 0;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1875;
 		vrLoc = 1214;
@@ -6320,7 +6495,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 36";
 		rLen = 0;
-		rLoc = 1320;
+		rLoc = 1235;
 		rType = 0;
 		vrLen = 1295;
 		vrLoc = 0;
@@ -6329,8 +6504,8 @@
 		isa = PBXTextBookmark;
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 37";
-		rLen = 77;
-		rLoc = 1527;
+		rLen = 0;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1852;
 		vrLoc = 1214;
@@ -6350,7 +6525,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 38";
 		rLen = 0;
-		rLoc = 1607;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1857;
 		vrLoc = 1209;
@@ -6370,7 +6545,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1808;
 		vrLoc = 1209;
@@ -6390,7 +6565,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1788;
 		vrLoc = 1284;
@@ -6417,7 +6592,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1857;
 		vrLoc = 1160;
@@ -6437,7 +6612,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1788;
 		vrLoc = 1284;
@@ -6487,7 +6662,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 36";
 		rLen = 0;
-		rLoc = 1320;
+		rLoc = 1235;
 		rType = 0;
 		vrLen = 1295;
 		vrLoc = 0;
@@ -6497,7 +6672,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1875;
 		vrLoc = 1214;
@@ -6527,7 +6702,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 36";
 		rLen = 0;
-		rLoc = 1320;
+		rLoc = 1235;
 		rType = 0;
 		vrLen = 1295;
 		vrLoc = 0;
@@ -6537,7 +6712,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1875;
 		vrLoc = 1214;
@@ -6597,7 +6772,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2576;
 		vrLoc = 1382;
@@ -6637,7 +6812,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1788;
 		vrLoc = 1284;
@@ -6657,7 +6832,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2576;
 		vrLoc = 1382;
@@ -6697,7 +6872,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1733;
 		vrLoc = 1359;
@@ -6737,7 +6912,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 38";
 		rLen = 0;
-		rLoc = 1607;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2574;
 		vrLoc = 1383;
@@ -6757,7 +6932,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 38";
 		rLen = 0;
-		rLoc = 1607;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1710;
 		vrLoc = 1382;
@@ -6777,7 +6952,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1733;
 		vrLoc = 1359;
@@ -6817,7 +6992,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 3267;
 		vrLoc = 1501;
@@ -6844,7 +7019,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1732;
 		vrLoc = 1359;
@@ -6884,7 +7059,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2574;
 		vrLoc = 1383;
@@ -6904,7 +7079,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 3190;
 		vrLoc = 1411;
@@ -6924,7 +7099,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 3267;
 		vrLoc = 1501;
@@ -6954,7 +7129,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 3267;
 		vrLoc = 1502;
@@ -6981,7 +7156,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 58";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 3267;
 		vrLoc = 1502;
@@ -7155,7 +7330,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 232";
 		rLen = 0;
-		rLoc = 6845;
+		rLoc = 7476;
 		rType = 0;
 		vrLen = 1895;
 		vrLoc = 5786;
@@ -7165,7 +7340,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 38";
 		rLen = 0;
-		rLoc = 1641;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2088;
 		vrLoc = 0;
@@ -7215,7 +7390,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 36";
 		rLen = 0;
-		rLoc = 1320;
+		rLoc = 1235;
 		rType = 0;
 		vrLen = 1295;
 		vrLoc = 0;
@@ -7235,7 +7410,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 36";
 		rLen = 0;
-		rLoc = 1320;
+		rLoc = 1235;
 		rType = 0;
 		vrLen = 1295;
 		vrLoc = 0;
@@ -7265,7 +7440,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 33";
 		rLen = 0;
-		rLoc = 1241;
+		rLoc = 1156;
 		rType = 0;
 		vrLen = 1247;
 		vrLoc = 0;
@@ -7274,7 +7449,7 @@
 		isa = PBXTextBookmark;
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 34";
-		rLen = 3062;
+		rLen = 2759;
 		rLoc = 1411;
 		rType = 0;
 		vrLen = 3332;
@@ -7304,7 +7479,7 @@
 		isa = PBXTextBookmark;
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 21";
-		rLen = 152;
+		rLen = 110;
 		rLoc = 765;
 		rType = 0;
 		vrLen = 1247;
@@ -7324,7 +7499,7 @@
 		isa = PBXTextBookmark;
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 34";
-		rLen = 3062;
+		rLen = 2759;
 		rLoc = 1411;
 		rType = 0;
 		vrLen = 1947;
@@ -7354,8 +7529,8 @@
 		isa = PBXTextBookmark;
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 28";
-		rLen = 399;
-		rLoc = 921;
+		rLen = 85;
+		rLoc = 1150;
 		rType = 0;
 		vrLen = 1247;
 		vrLoc = 0;
@@ -7384,8 +7559,8 @@
 		isa = PBXTextBookmark;
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 28";
-		rLen = 399;
-		rLoc = 921;
+		rLen = 85;
+		rLoc = 1150;
 		rType = 0;
 		vrLen = 1247;
 		vrLoc = 0;
@@ -7394,7 +7569,7 @@
 		isa = PBXTextBookmark;
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 34";
-		rLen = 3062;
+		rLen = 2759;
 		rLoc = 1411;
 		rType = 0;
 		vrLen = 1947;
@@ -7435,7 +7610,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 232";
 		rLen = 0;
-		rLoc = 6845;
+		rLoc = 7476;
 		rType = 0;
 		vrLen = 1895;
 		vrLoc = 5786;
@@ -7455,7 +7630,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 38";
 		rLen = 0;
-		rLoc = 1641;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2088;
 		vrLoc = 0;
@@ -7632,7 +7807,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 38";
 		rLen = 0;
-		rLoc = 1641;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1913;
 		vrLoc = 1472;
@@ -7672,7 +7847,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 38";
 		rLen = 0;
-		rLoc = 1641;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1918;
 		vrLoc = 1472;
@@ -7722,7 +7897,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 37";
 		rLen = 0;
-		rLoc = 1604;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2013;
 		vrLoc = 954;
@@ -7732,7 +7907,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 37";
 		rLen = 0;
-		rLoc = 1604;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1995;
 		vrLoc = 1027;
@@ -7752,7 +7927,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 37";
 		rLen = 0;
-		rLoc = 1604;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1995;
 		vrLoc = 1027;
@@ -7847,23 +8022,6 @@
 		vrLen = 1887;
 		vrLoc = 5436;
 	};
-	536763720FA51C1A0072F31C /* SecondViewController.m:175 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
-		functionName = "-tableView:cellForRowAtIndexPath:";
-		hitCount = 0;
-		ignoreCount = 0;
-		lineNumber = 175;
-		location = KATG.com;
-		modificationTime = 262481567.095463;
-		state = 2;
-	};
 	536763750FA51D4C0072F31C /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "error: CustomCellOdd.h: No such file or directory";
@@ -7887,7 +8045,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 35";
 		rLen = 0;
-		rLoc = 1500;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 3978;
@@ -7897,7 +8055,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 29";
 		rLen = 0;
-		rLoc = 920;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1312;
 		vrLoc = 0;
@@ -7907,7 +8065,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 207";
 		rLen = 0;
-		rLoc = 6844;
+		rLoc = 7475;
 		rType = 0;
 		vrLen = 1727;
 		vrLoc = 5288;
@@ -7917,7 +8075,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 207";
 		rLen = 0;
-		rLoc = 6844;
+		rLoc = 7475;
 		rType = 0;
 		vrLen = 1727;
 		vrLoc = 5288;
@@ -7927,7 +8085,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 29";
 		rLen = 0;
-		rLoc = 920;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1312;
 		vrLoc = 0;
@@ -7937,7 +8095,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 35";
 		rLen = 0;
-		rLoc = 1500;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 3978;
@@ -7947,7 +8105,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 29";
 		rLen = 0;
-		rLoc = 920;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1312;
 		vrLoc = 0;
@@ -7987,7 +8145,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 35";
 		rLen = 0;
-		rLoc = 1500;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1191;
 		vrLoc = 3978;
@@ -8007,7 +8165,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 105";
 		rLen = 0;
-		rLoc = 3606;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1268;
 		vrLoc = 3308;
@@ -8017,7 +8175,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 105";
 		rLen = 0;
-		rLoc = 3606;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1268;
 		vrLoc = 3308;
@@ -8027,7 +8185,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 105";
 		rLen = 0;
-		rLoc = 3606;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1268;
 		vrLoc = 3308;
@@ -8037,7 +8195,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 193";
 		rLen = 0;
-		rLoc = 6127;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1582;
 		vrLoc = 5446;
@@ -8047,7 +8205,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 193";
 		rLen = 0;
-		rLoc = 6127;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1582;
 		vrLoc = 5446;
@@ -8067,7 +8225,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 193";
 		rLen = 0;
-		rLoc = 6127;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1717;
 		vrLoc = 5081;
@@ -8077,7 +8235,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 186";
 		rLen = 0;
-		rLoc = 6127;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1808;
 		vrLoc = 5081;
@@ -8087,7 +8245,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 36";
 		rLen = 0;
-		rLoc = 1241;
+		rLoc = 1156;
 		rType = 0;
 		vrLen = 1341;
 		vrLoc = 0;
@@ -8097,7 +8255,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 105";
 		rLen = 0;
-		rLoc = 3606;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1323;
 		vrLoc = 3306;
@@ -8107,7 +8265,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 186";
 		rLen = 0;
-		rLoc = 6127;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1808;
 		vrLoc = 5081;
@@ -8117,7 +8275,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 36";
 		rLen = 0;
-		rLoc = 1241;
+		rLoc = 1156;
 		rType = 0;
 		vrLen = 1341;
 		vrLoc = 0;
@@ -8127,7 +8285,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 67";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1865;
 		vrLoc = 1509;
@@ -8137,7 +8295,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 67";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1865;
 		vrLoc = 1509;
@@ -8147,7 +8305,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 67";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1865;
 		vrLoc = 1509;
@@ -8157,34 +8315,17 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 186";
 		rLen = 0;
-		rLoc = 6127;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1766;
 		vrLoc = 5143;
-	};
-	536763A00FA51F850072F31C /* CustomCell.m:58 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = 537CDA550F8FF056002F86FA /* CustomCell.m */;
-		functionName = "-initWithFrame:reuseIdentifier:";
-		hitCount = 0;
-		ignoreCount = 0;
-		lineNumber = 58;
-		location = KATG.com;
-		modificationTime = 262481567.09668;
-		state = 2;
 	};
 	536763A20FA51F8D0072F31C /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 186";
 		rLen = 0;
-		rLoc = 6127;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1766;
 		vrLoc = 5143;
@@ -8194,7 +8335,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 186";
 		rLen = 0;
-		rLoc = 6127;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1766;
 		vrLoc = 5143;
@@ -8204,27 +8345,10 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 64";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1938;
 		vrLoc = 1410;
-	};
-	536763A80FA51FBD0072F31C /* CustomCell.m:58 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = 537CDA550F8FF056002F86FA /* CustomCell.m */;
-		functionName = "-initWithFrame:reuseIdentifier:";
-		hitCount = 0;
-		ignoreCount = 0;
-		lineNumber = 58;
-		location = KATG.com;
-		modificationTime = 262481567.097421;
-		state = 2;
 	};
 	536763AA0FA520140072F31C /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -8241,7 +8365,7 @@
 		comments = "warning: local declaration of 'row' hides instance variable";
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		rLen = 0;
-		rLoc = 57;
+		rLoc = 34;
 		rType = 1;
 	};
 	536763AC0FA520140072F31C /* PBXTextBookmark */ = {
@@ -8259,7 +8383,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 64";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1197;
 		vrLoc = 2167;
@@ -8279,7 +8403,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 38";
 		rLen = 0;
-		rLoc = 1319;
+		rLoc = 1234;
 		rType = 0;
 		vrLen = 1359;
 		vrLoc = 0;
@@ -8299,7 +8423,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 64";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1938;
 		vrLoc = 1410;
@@ -8319,7 +8443,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 63";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1937;
 		vrLoc = 1411;
@@ -8419,7 +8543,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 186";
 		rLen = 0;
-		rLoc = 6127;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1766;
 		vrLoc = 5143;
@@ -8439,7 +8563,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 187";
 		rLen = 0;
-		rLoc = 6127;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1766;
 		vrLoc = 5143;
@@ -8459,7 +8583,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 189";
 		rLen = 0;
-		rLoc = 6361;
+		rLoc = 6992;
 		rType = 0;
 		vrLen = 1766;
 		vrLoc = 5143;
@@ -8479,7 +8603,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 190";
 		rLen = 0;
-		rLoc = 6422;
+		rLoc = 7053;
 		rType = 0;
 		vrLen = 1766;
 		vrLoc = 5143;
@@ -8499,7 +8623,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 198";
 		rLen = 0;
-		rLoc = 6763;
+		rLoc = 7394;
 		rType = 0;
 		vrLen = 1766;
 		vrLoc = 5143;
@@ -8509,7 +8633,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 37";
 		rLen = 0;
-		rLoc = 1604;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2149;
 		vrLoc = 549;
@@ -8519,7 +8643,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 38";
 		rLen = 0;
-		rLoc = 1319;
+		rLoc = 1234;
 		rType = 0;
 		vrLen = 1359;
 		vrLoc = 0;
@@ -8539,7 +8663,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 64";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1696;
 		vrLoc = 1824;
@@ -8559,7 +8683,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 38";
 		rLen = 0;
-		rLoc = 1319;
+		rLoc = 1234;
 		rType = 0;
 		vrLen = 1341;
 		vrLoc = 0;
@@ -8569,7 +8693,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 37";
 		rLen = 0;
-		rLoc = 1604;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1941;
 		vrLoc = 1094;
@@ -8579,7 +8703,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 37";
 		rLen = 0;
-		rLoc = 1604;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1941;
 		vrLoc = 1094;
@@ -8599,7 +8723,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 38";
 		rLen = 0;
-		rLoc = 1319;
+		rLoc = 1234;
 		rType = 0;
 		vrLen = 1341;
 		vrLoc = 0;
@@ -8609,7 +8733,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 37";
 		rLen = 0;
-		rLoc = 1604;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2117;
 		vrLoc = 554;
@@ -8629,7 +8753,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 35";
 		rLen = 0;
-		rLoc = 1500;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1821;
 		vrLoc = 1359;
@@ -8639,7 +8763,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 35";
 		rLen = 0;
-		rLoc = 1241;
+		rLoc = 1156;
 		rType = 0;
 		vrLen = 1312;
 		vrLoc = 0;
@@ -8659,7 +8783,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 37";
 		rLen = 0;
-		rLoc = 1604;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1936;
 		vrLoc = 1410;
@@ -8699,7 +8823,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 35";
 		rLen = 0;
-		rLoc = 1500;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1821;
 		vrLoc = 1359;
@@ -8709,7 +8833,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 35";
 		rLen = 0;
-		rLoc = 1241;
+		rLoc = 1156;
 		rType = 0;
 		vrLen = 1312;
 		vrLoc = 0;
@@ -8719,7 +8843,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 187";
 		rLen = 0;
-		rLoc = 6127;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1775;
 		vrLoc = 5262;
@@ -8729,7 +8853,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 187";
 		rLen = 0;
-		rLoc = 6127;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1787;
 		vrLoc = 5262;
@@ -8739,7 +8863,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 187";
 		rLen = 0;
-		rLoc = 6127;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1904;
 		vrLoc = 5262;
@@ -8749,7 +8873,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 27";
 		rLen = 0;
-		rLoc = 920;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1244;
 		vrLoc = 0;
@@ -8759,7 +8883,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 35";
 		rLen = 0;
-		rLoc = 1500;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1822;
 		vrLoc = 1358;
@@ -8769,7 +8893,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 187";
 		rLen = 0;
-		rLoc = 6127;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1904;
 		vrLoc = 5262;
@@ -8779,7 +8903,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 27";
 		rLen = 0;
-		rLoc = 920;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1244;
 		vrLoc = 0;
@@ -8789,7 +8913,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 117";
 		rLen = 0;
-		rLoc = 4289;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2111;
 		vrLoc = 0;
@@ -8799,7 +8923,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 117";
 		rLen = 0;
-		rLoc = 4289;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1936;
 		vrLoc = 959;
@@ -8809,7 +8933,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 187";
 		rLen = 0;
-		rLoc = 6127;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1810;
 		vrLoc = 5356;
@@ -8819,7 +8943,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 117";
 		rLen = 0;
-		rLoc = 4289;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1936;
 		vrLoc = 959;
@@ -8829,7 +8953,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 186";
 		rLen = 0;
-		rLoc = 6127;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1713;
 		vrLoc = 5234;
@@ -8859,7 +8983,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 190";
 		rLen = 0;
-		rLoc = 6315;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1785;
 		vrLoc = 5143;
@@ -8879,7 +9003,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 117";
 		rLen = 0;
-		rLoc = 4289;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1800;
 		vrLoc = 1094;
@@ -8899,7 +9023,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 117";
 		rLen = 0;
-		rLoc = 4289;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1800;
 		vrLoc = 1094;
@@ -8909,7 +9033,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 32";
 		rLen = 0;
-		rLoc = 1219;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1238;
 		vrLoc = 0;
@@ -8919,7 +9043,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 34";
 		rLen = 0;
-		rLoc = 1500;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2001;
 		vrLoc = 0;
@@ -8929,7 +9053,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 25";
 		rLen = 0;
-		rLoc = 907;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1242;
 		vrLoc = 0;
@@ -8939,7 +9063,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 25";
 		rLen = 0;
-		rLoc = 907;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1242;
 		vrLoc = 0;
@@ -8949,7 +9073,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 34";
 		rLen = 0;
-		rLoc = 1500;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2001;
 		vrLoc = 0;
@@ -8959,7 +9083,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 25";
 		rLen = 0;
-		rLoc = 907;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1242;
 		vrLoc = 0;
@@ -8969,7 +9093,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 188";
 		rLen = 0;
-		rLoc = 6173;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1604;
 		vrLoc = 5234;
@@ -8979,7 +9103,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 190";
 		rLen = 0;
-		rLoc = 6315;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1752;
 		vrLoc = 5234;
@@ -8989,7 +9113,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 190";
 		rLen = 0;
-		rLoc = 6315;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1752;
 		vrLoc = 5234;
@@ -8999,7 +9123,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 25";
 		rLen = 0;
-		rLoc = 907;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1242;
 		vrLoc = 0;
@@ -9009,7 +9133,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 190";
 		rLen = 0;
-		rLoc = 6315;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1752;
 		vrLoc = 5234;
@@ -9019,7 +9143,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 25";
 		rLen = 0;
-		rLoc = 907;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1242;
 		vrLoc = 0;
@@ -9029,7 +9153,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 57";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1709;
 		vrLoc = 1358;
@@ -9039,7 +9163,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 57";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1791;
 		vrLoc = 1358;
@@ -9049,7 +9173,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 190";
 		rLen = 0;
-		rLoc = 6315;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1881;
 		vrLoc = 5143;
@@ -9059,7 +9183,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 57";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1791;
 		vrLoc = 1358;
@@ -9069,7 +9193,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 191";
 		rLen = 0;
-		rLoc = 6360;
+		rLoc = 6991;
 		rType = 0;
 		vrLen = 1787;
 		vrLoc = 5143;
@@ -9079,7 +9203,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 190";
 		rLen = 0;
-		rLoc = 6360;
+		rLoc = 6991;
 		rType = 0;
 		vrLen = 1859;
 		vrLoc = 5143;
@@ -9089,7 +9213,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 57";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1768;
 		vrLoc = 1358;
@@ -9099,7 +9223,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 190";
 		rLen = 0;
-		rLoc = 6360;
+		rLoc = 6991;
 		rType = 0;
 		vrLen = 1859;
 		vrLoc = 5143;
@@ -9109,7 +9233,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 59";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1774;
 		vrLoc = 1358;
@@ -9119,7 +9243,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 56";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1748;
 		vrLoc = 1358;
@@ -9129,7 +9253,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 56";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1748;
 		vrLoc = 1358;
@@ -9139,7 +9263,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 190";
 		rLen = 0;
-		rLoc = 6360;
+		rLoc = 6991;
 		rType = 0;
 		vrLen = 1814;
 		vrLoc = 5143;
@@ -9149,7 +9273,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 56";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1748;
 		vrLoc = 1358;
@@ -9159,7 +9283,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 190";
 		rLen = 0;
-		rLoc = 6358;
+		rLoc = 6770;
 		rType = 0;
 		vrLen = 1837;
 		vrLoc = 5234;
@@ -9169,7 +9293,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 190";
 		rLen = 0;
-		rLoc = 6358;
+		rLoc = 6770;
 		rType = 0;
 		vrLen = 1837;
 		vrLoc = 5234;
@@ -9179,7 +9303,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 25";
 		rLen = 0;
-		rLoc = 907;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1242;
 		vrLoc = 0;
@@ -9189,7 +9313,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 56";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2108;
 		vrLoc = 254;
@@ -9199,7 +9323,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 190";
 		rLen = 0;
-		rLoc = 6358;
+		rLoc = 6770;
 		rType = 0;
 		vrLen = 1837;
 		vrLoc = 5234;
@@ -9209,7 +9333,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 56";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2108;
 		vrLoc = 254;
@@ -9219,7 +9343,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 25";
 		rLen = 0;
-		rLoc = 907;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1242;
 		vrLoc = 0;
@@ -9229,7 +9353,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 56";
 		rLen = 0;
-		rLoc = 2608;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1740;
 		vrLoc = 1358;
@@ -9239,7 +9363,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 34";
 		rLen = 0;
-		rLoc = 1187;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1327;
 		vrLoc = 0;
@@ -9249,7 +9373,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 123";
 		rLen = 0;
-		rLoc = 4417;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1124;
 		vrLoc = 3349;
@@ -9259,7 +9383,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 186";
 		rLen = 0;
-		rLoc = 6128;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1923;
 		vrLoc = 4845;
@@ -9269,7 +9393,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 57";
 		rLen = 0;
-		rLoc = 2615;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1740;
 		vrLoc = 1358;
@@ -9279,7 +9403,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 186";
 		rLen = 0;
-		rLoc = 6128;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1923;
 		vrLoc = 4845;
@@ -9289,7 +9413,7 @@
 		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
 		name = "CustomCell.h: 34";
 		rLen = 0;
-		rLoc = 1187;
+		rLoc = 875;
 		rType = 0;
 		vrLen = 1327;
 		vrLoc = 0;
@@ -9299,7 +9423,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 123";
 		rLen = 0;
-		rLoc = 4417;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1124;
 		vrLoc = 3349;
@@ -9309,7 +9433,7 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 191";
 		rLen = 0;
-		rLoc = 6360;
+		rLoc = 6991;
 		rType = 0;
 		vrLen = 1685;
 		vrLoc = 4196;
@@ -9319,10 +9443,1790 @@
 		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
 		name = "SecondViewController.m: 189";
 		rLen = 0;
-		rLoc = 6315;
+		rLoc = 6126;
 		rType = 0;
 		vrLen = 1843;
 		vrLoc = 4989;
+	};
+	536764360FA529490072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 192";
+		rLen = 0;
+		rLoc = 6770;
+		rType = 0;
+		vrLen = 1849;
+		vrLoc = 4989;
+	};
+	536764370FA529490072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 34";
+		rLen = 0;
+		rLoc = 875;
+		rType = 0;
+		vrLen = 1327;
+		vrLoc = 0;
+	};
+	536764380FA529490072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 123";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1124;
+		vrLoc = 3349;
+	};
+	536764390FA529490072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 192";
+		rLen = 0;
+		rLoc = 6770;
+		rType = 0;
+		vrLen = 1849;
+		vrLoc = 4989;
+	};
+	5367643A0FA529490072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 34";
+		rLen = 0;
+		rLoc = 875;
+		rType = 0;
+		vrLen = 1327;
+		vrLoc = 0;
+	};
+	5367643B0FA529490072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 59";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1639;
+		vrLoc = 1358;
+	};
+	536764400FA529CC0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 192";
+		rLen = 0;
+		rLoc = 6770;
+		rType = 0;
+		vrLen = 1849;
+		vrLoc = 4989;
+	};
+	536764410FA529CC0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E1D2C40F904F9E005E78EC /* SecondViewController.h */;
+		name = "SecondViewController.h: 28";
+		rLen = 0;
+		rLoc = 1094;
+		rType = 0;
+		vrLen = 1100;
+		vrLoc = 0;
+	};
+	536764420FA529CC0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 59";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1686;
+		vrLoc = 1358;
+	};
+	536764430FA529CC0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 59";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1686;
+		vrLoc = 1358;
+	};
+	536764440FA529CC0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 192";
+		rLen = 0;
+		rLoc = 6770;
+		rType = 0;
+		vrLen = 1849;
+		vrLoc = 4989;
+	};
+	536764450FA529CC0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E1D2C40F904F9E005E78EC /* SecondViewController.h */;
+		name = "SecondViewController.h: 28";
+		rLen = 0;
+		rLoc = 1094;
+		rType = 0;
+		vrLen = 1100;
+		vrLoc = 0;
+	};
+	536764460FA529CC0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 60";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1719;
+		vrLoc = 1382;
+	};
+	536764480FA529E30072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 60";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1719;
+		vrLoc = 1382;
+	};
+	5367644A0FA52A050072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 60";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1719;
+		vrLoc = 1382;
+	};
+	5367644B0FA52A050072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 192";
+		rLen = 0;
+		rLoc = 6770;
+		rType = 0;
+		vrLen = 1809;
+		vrLoc = 5029;
+	};
+	5367644C0FA52A050072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 60";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1719;
+		vrLoc = 1382;
+	};
+	5367644D0FA52A050072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 194";
+		rLen = 0;
+		rLoc = 6767;
+		rType = 0;
+		vrLen = 1911;
+		vrLoc = 5029;
+	};
+	5367644F0FA52A7F0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 194";
+		rLen = 0;
+		rLoc = 6767;
+		rType = 0;
+		vrLen = 1980;
+		vrLoc = 5029;
+	};
+	536764500FA52A7F0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 36";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1422;
+		vrLoc = 0;
+	};
+	536764510FA52A7F0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 60";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1747;
+		vrLoc = 1359;
+	};
+	536764520FA52A7F0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 194";
+		rLen = 0;
+		rLoc = 6767;
+		rType = 0;
+		vrLen = 1980;
+		vrLoc = 5029;
+	};
+	536764530FA52A7F0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 36";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1422;
+		vrLoc = 0;
+	};
+	536764540FA52A7F0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 68";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1354;
+		vrLoc = 2875;
+	};
+	536764560FA52B2F0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 36";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1422;
+		vrLoc = 0;
+	};
+	536764570FA52B2F0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 68";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1851;
+		vrLoc = 1607;
+	};
+	536764580FA52B2F0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 68";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1851;
+		vrLoc = 1607;
+	};
+	536764590FA52B2F0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 36";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1422;
+		vrLoc = 0;
+	};
+	5367645A0FA52B2F0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 35";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1965;
+		vrLoc = 0;
+	};
+	5367645D0FA531EF0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 68";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1886;
+		vrLoc = 1383;
+	};
+	536764600FA5320B0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 68";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1348;
+		vrLoc = 1411;
+	};
+	536764610FA532860072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 175";
+		rLen = 0;
+		rLoc = 5609;
+		rType = 0;
+		vrLen = 1837;
+		vrLoc = 5356;
+	};
+	536764620FA532860072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 67";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1887;
+		vrLoc = 1383;
+	};
+	536764630FA532860072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 67";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1887;
+		vrLoc = 1383;
+	};
+	536764640FA532860072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 175";
+		rLen = 0;
+		rLoc = 5609;
+		rType = 0;
+		vrLen = 1837;
+		vrLoc = 5356;
+	};
+	536764650FA532860072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 61";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1886;
+		vrLoc = 1383;
+	};
+	536764670FA532F70072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 68";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1916;
+		vrLoc = 1383;
+	};
+	5367646A0FA533650072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E1D2760F90474F005E78EC /* DetailViewController.m */;
+		name = "DetailViewController.m: 60";
+		rLen = 0;
+		rLoc = 2293;
+		rType = 0;
+		vrLen = 1388;
+		vrLoc = 1298;
+	};
+	5367646B0FA533650072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 62";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1786;
+		vrLoc = 1965;
+	};
+	5367646C0FA533650072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 197";
+		rLen = 0;
+		rLoc = 6770;
+		rType = 0;
+		vrLen = 1956;
+		vrLoc = 5356;
+	};
+	5367646D0FA533650072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 132";
+		rLen = 0;
+		rLoc = 4140;
+		rType = 0;
+		vrLen = 1998;
+		vrLoc = 0;
+	};
+	5367646E0FA533650072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 197";
+		rLen = 0;
+		rLoc = 6770;
+		rType = 0;
+		vrLen = 1992;
+		vrLoc = 5320;
+	};
+	5367646F0FA533650072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E1D2760F90474F005E78EC /* DetailViewController.m */;
+		name = "DetailViewController.m: 60";
+		rLen = 0;
+		rLoc = 2293;
+		rType = 0;
+		vrLen = 1388;
+		vrLoc = 1298;
+	};
+	536764700FA533650072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 62";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1786;
+		vrLoc = 1965;
+	};
+	536764710FA533650072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 198";
+		rLen = 0;
+		rLoc = 6770;
+		rType = 0;
+		vrLen = 1930;
+		vrLoc = 5410;
+	};
+	536764730FA533F60072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 195";
+		rLen = 0;
+		rLoc = 6770;
+		rType = 0;
+		vrLen = 1943;
+		vrLoc = 5410;
+	};
+	536764740FA533F60072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 62";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1786;
+		vrLoc = 1965;
+	};
+	536764750FA533F60072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 195";
+		rLen = 0;
+		rLoc = 6770;
+		rType = 0;
+		vrLen = 1943;
+		vrLoc = 5410;
+	};
+	536764760FA533F60072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 63";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1721;
+		vrLoc = 1965;
+	};
+	536764790FA534500072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 36";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1422;
+		vrLoc = 0;
+	};
+	5367647A0FA534500072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 195";
+		rLen = 0;
+		rLoc = 6770;
+		rType = 0;
+		vrLen = 1853;
+		vrLoc = 5504;
+	};
+	5367647B0FA534500072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 63";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1806;
+		vrLoc = 1524;
+	};
+	5367647C0FA534500072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 63";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1920;
+		vrLoc = 1027;
+	};
+	5367647D0FA534500072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 36";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1422;
+		vrLoc = 0;
+	};
+	5367647E0FA534500072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 63";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1806;
+		vrLoc = 1524;
+	};
+	5367647F0FA534500072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 195";
+		rLen = 0;
+		rLoc = 6770;
+		rType = 0;
+		vrLen = 1853;
+		vrLoc = 5504;
+	};
+	536764800FA534500072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 68";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1884;
+		vrLoc = 1411;
+	};
+	536764810FA534A00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 68";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1886;
+		vrLoc = 1411;
+	};
+	536764820FA534A00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 36";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1422;
+		vrLoc = 0;
+	};
+	536764830FA534A00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 68";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1886;
+		vrLoc = 1411;
+	};
+	536764840FA534A00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 36";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1422;
+		vrLoc = 0;
+	};
+	536764880FA535110072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 36";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1422;
+		vrLoc = 0;
+	};
+	536764890FA535110072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 65";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1862;
+		vrLoc = 1410;
+	};
+	5367648A0FA535110072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 195";
+		rLen = 0;
+		rLoc = 6770;
+		rType = 0;
+		vrLen = 1748;
+		vrLoc = 5609;
+	};
+	5367648B0FA535110072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 36";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1422;
+		vrLoc = 0;
+	};
+	5367648C0FA535110072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 65";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1862;
+		vrLoc = 1410;
+	};
+	5367648D0FA535110072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 177";
+		rLen = 0;
+		rLoc = 5738;
+		rType = 0;
+		vrLen = 1691;
+		vrLoc = 5609;
+	};
+	536764910FA536D80072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 204";
+		rLen = 0;
+		rLoc = 7391;
+		rType = 0;
+		vrLen = 1900;
+		vrLoc = 5609;
+	};
+	536764930FA537F20072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 204";
+		rLen = 0;
+		rLoc = 7391;
+		rType = 0;
+		vrLen = 1900;
+		vrLoc = 5609;
+	};
+	536764940FA537F20072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 26";
+		rLen = 0;
+		rLoc = 875;
+		rType = 0;
+		vrLen = 1406;
+		vrLoc = 0;
+	};
+	536764950FA537F20072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 65";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1889;
+		vrLoc = 1383;
+	};
+	536764960FA537F20072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 204";
+		rLen = 0;
+		rLoc = 7391;
+		rType = 0;
+		vrLen = 1900;
+		vrLoc = 5609;
+	};
+	536764970FA537F20072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 26";
+		rLen = 0;
+		rLoc = 875;
+		rType = 0;
+		vrLen = 1406;
+		vrLoc = 0;
+	};
+	536764980FA537F20072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 45";
+		rLen = 0;
+		rLoc = 1485;
+		rType = 0;
+		vrLen = 1855;
+		vrLoc = 1382;
+	};
+	5367649A0FA5381D0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 131";
+		rLen = 0;
+		rLoc = 4129;
+		rType = 0;
+		vrLen = 1887;
+		vrLoc = 1382;
+	};
+	5367649B0FA5381D0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 26";
+		rLen = 0;
+		rLoc = 875;
+		rType = 0;
+		vrLen = 1406;
+		vrLoc = 0;
+	};
+	5367649C0FA5381D0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 131";
+		rLen = 0;
+		rLoc = 4129;
+		rType = 0;
+		vrLen = 1887;
+		vrLoc = 1382;
+	};
+	5367649D0FA5381D0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 15";
+		rLen = 0;
+		rLoc = 615;
+		rType = 0;
+		vrLen = 1422;
+		vrLoc = 0;
+	};
+	536764A00FA539E00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E1D2760F90474F005E78EC /* DetailViewController.m */;
+		name = "DetailViewController.m: 60";
+		rLen = 0;
+		rLoc = 2293;
+		rType = 0;
+		vrLen = 1347;
+		vrLoc = 1298;
+	};
+	536764A10FA539E00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E1D2C40F904F9E005E78EC /* SecondViewController.h */;
+		name = "SecondViewController.h: 28";
+		rLen = 0;
+		rLoc = 1094;
+		rType = 0;
+		vrLen = 1100;
+		vrLoc = 0;
+	};
+	536764A20FA539E00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 63";
+		rLen = 0;
+		rLoc = 2463;
+		rType = 0;
+		vrLen = 1784;
+		vrLoc = 1550;
+	};
+	536764A30FA539E00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 27";
+		rLen = 0;
+		rLoc = 890;
+		rType = 0;
+		vrLen = 1422;
+		vrLoc = 0;
+	};
+	536764A40FA539E00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 206";
+		rLen = 0;
+		rLoc = 7393;
+		rType = 0;
+		vrLen = 1690;
+		vrLoc = 5780;
+	};
+	536764A50FA539E00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 15";
+		rLen = 0;
+		rLoc = 615;
+		rType = 0;
+		vrLen = 1422;
+		vrLoc = 0;
+	};
+	536764A60FA539E00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 131";
+		rLen = 0;
+		rLoc = 4129;
+		rType = 0;
+		vrLen = 1806;
+		vrLoc = 1524;
+	};
+	536764A70FA539E00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 206";
+		rLen = 0;
+		rLoc = 7393;
+		rType = 0;
+		vrLen = 1912;
+		vrLoc = 5760;
+	};
+	536764A80FA539E00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E1D2760F90474F005E78EC /* DetailViewController.m */;
+		name = "DetailViewController.m: 60";
+		rLen = 0;
+		rLoc = 2293;
+		rType = 0;
+		vrLen = 1347;
+		vrLoc = 1298;
+	};
+	536764A90FA539E00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 131";
+		rLen = 0;
+		rLoc = 4129;
+		rType = 0;
+		vrLen = 1780;
+		vrLoc = 1550;
+	};
+	536764AA0FA539E00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 206";
+		rLen = 0;
+		rLoc = 7393;
+		rType = 0;
+		vrLen = 1690;
+		vrLoc = 5780;
+	};
+	536764AB0FA539E00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E1D2C40F904F9E005E78EC /* SecondViewController.h */;
+		name = "SecondViewController.h: 28";
+		rLen = 0;
+		rLoc = 1094;
+		rType = 0;
+		vrLen = 1100;
+		vrLoc = 0;
+	};
+	536764AC0FA539E00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 27";
+		rLen = 0;
+		rLoc = 890;
+		rType = 0;
+		vrLen = 1422;
+		vrLoc = 0;
+	};
+	536764AD0FA539E00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 63";
+		rLen = 0;
+		rLoc = 2463;
+		rType = 0;
+		vrLen = 1784;
+		vrLoc = 1550;
+	};
+	536764AE0FA539E00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 27";
+		rLen = 0;
+		rLoc = 890;
+		rType = 0;
+		vrLen = 1422;
+		vrLoc = 0;
+	};
+	536764AF0FA539E00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 209";
+		rLen = 0;
+		rLoc = 7476;
+		rType = 0;
+		vrLen = 1933;
+		vrLoc = 5780;
+	};
+	536764B40FA53A9E0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 36";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1426;
+		vrLoc = 0;
+	};
+	536764B50FA53A9E0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E1D2760F90474F005E78EC /* DetailViewController.m */;
+		name = "DetailViewController.m: 60";
+		rLen = 0;
+		rLoc = 2293;
+		rType = 0;
+		vrLen = 1457;
+		vrLoc = 1206;
+	};
+	536764B60FA53A9E0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 63";
+		rLen = 0;
+		rLoc = 2463;
+		rType = 0;
+		vrLen = 1947;
+		vrLoc = 1214;
+	};
+	536764B70FA53A9E0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 206";
+		rLen = 0;
+		rLoc = 7393;
+		rType = 0;
+		vrLen = 2066;
+		vrLoc = 5780;
+	};
+	536764B80FA53A9E0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 209";
+		rLen = 0;
+		rLoc = 7476;
+		rType = 0;
+		vrLen = 2082;
+		vrLoc = 5780;
+	};
+	536764B90FA53A9E0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 36";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1426;
+		vrLoc = 0;
+	};
+	536764BA0FA53A9E0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 36";
+		rLen = 0;
+		rLoc = 1502;
+		rType = 0;
+		vrLen = 2082;
+		vrLoc = 294;
+	};
+	536764BB0FA53A9E0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 36";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1426;
+		vrLoc = 0;
+	};
+	536764BC0FA53A9E0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 206";
+		rLen = 0;
+		rLoc = 7393;
+		rType = 0;
+		vrLen = 2066;
+		vrLoc = 5780;
+	};
+	536764BD0FA53A9E0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E1D2760F90474F005E78EC /* DetailViewController.m */;
+		name = "DetailViewController.m: 60";
+		rLen = 0;
+		rLoc = 2293;
+		rType = 0;
+		vrLen = 1457;
+		vrLoc = 1206;
+	};
+	536764BE0FA53A9E0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 63";
+		rLen = 0;
+		rLoc = 2463;
+		rType = 0;
+		vrLen = 1947;
+		vrLoc = 1214;
+	};
+	536764BF0FA53A9E0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 207";
+		rLen = 0;
+		rLoc = 7393;
+		rType = 0;
+		vrLen = 2007;
+		vrLoc = 5780;
+	};
+	536764C10FA53B030072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 198";
+		rLen = 0;
+		rLoc = 6967;
+		rType = 0;
+		vrLen = 1948;
+		vrLoc = 5780;
+	};
+	536764C20FA53B330072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 198";
+		rLen = 0;
+		rLoc = 6967;
+		rType = 0;
+		vrLen = 1948;
+		vrLoc = 5780;
+	};
+	536764C30FA53B330072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 51";
+		rLen = 0;
+		rLoc = 2134;
+		rType = 0;
+		vrLen = 1803;
+		vrLoc = 1358;
+	};
+	536764C40FA53B330072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E1D2760F90474F005E78EC /* DetailViewController.m */;
+		name = "DetailViewController.m: 60";
+		rLen = 0;
+		rLoc = 2293;
+		rType = 0;
+		vrLen = 1347;
+		vrLoc = 1297;
+	};
+	536764C50FA53B330072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 198";
+		rLen = 0;
+		rLoc = 6967;
+		rType = 0;
+		vrLen = 1948;
+		vrLoc = 5780;
+	};
+	536764C60FA53B330072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 51";
+		rLen = 0;
+		rLoc = 2134;
+		rType = 0;
+		vrLen = 1803;
+		vrLoc = 1358;
+	};
+	536764C70FA53B330072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E1D2760F90474F005E78EC /* DetailViewController.m */;
+		name = "DetailViewController.m: 60";
+		rLen = 0;
+		rLoc = 2293;
+		rType = 0;
+		vrLen = 1347;
+		vrLoc = 1297;
+	};
+	536764C90FA53B730072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E1D2760F90474F005E78EC /* DetailViewController.m */;
+		name = "DetailViewController.m: 60";
+		rLen = 0;
+		rLoc = 2293;
+		rType = 0;
+		vrLen = 1604;
+		vrLoc = 1037;
+	};
+	536764CA0FA53B730072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 36";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1426;
+		vrLoc = 0;
+	};
+	536764CB0FA53B730072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 51";
+		rLen = 0;
+		rLoc = 2134;
+		rType = 0;
+		vrLen = 1879;
+		vrLoc = 1410;
+	};
+	536764CC0FA53B730072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E1D2760F90474F005E78EC /* DetailViewController.m */;
+		name = "DetailViewController.m: 60";
+		rLen = 0;
+		rLoc = 2293;
+		rType = 0;
+		vrLen = 1604;
+		vrLoc = 1037;
+	};
+	536764CD0FA53B730072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 36";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1426;
+		vrLoc = 0;
+	};
+	536764CE0FA53B730072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 51";
+		rLen = 0;
+		rLoc = 2134;
+		rType = 0;
+		vrLen = 1879;
+		vrLoc = 1410;
+	};
+	536764CF0FA53B730072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 194";
+		rLen = 0;
+		rLoc = 6767;
+		rType = 0;
+		vrLen = 1984;
+		vrLoc = 5662;
+	};
+	536764D00FA53B8F0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 194";
+		rLen = 0;
+		rLoc = 6767;
+		rType = 0;
+		vrLen = 1985;
+		vrLoc = 5662;
+	};
+	536764D20FA53BB80072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 194";
+		rLen = 0;
+		rLoc = 6767;
+		rType = 0;
+		vrLen = 1986;
+		vrLoc = 5662;
+	};
+	536764D40FA53BF70072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 194";
+		rLen = 0;
+		rLoc = 6767;
+		rType = 0;
+		vrLen = 1986;
+		vrLoc = 5662;
+	};
+	536764D50FA53BF70072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 51";
+		rLen = 0;
+		rLoc = 2134;
+		rType = 0;
+		vrLen = 1877;
+		vrLoc = 1410;
+	};
+	536764D60FA53BF70072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 194";
+		rLen = 0;
+		rLoc = 6767;
+		rType = 0;
+		vrLen = 1986;
+		vrLoc = 5662;
+	};
+	536764D70FA53BF70072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 45";
+		rLen = 0;
+		rLoc = 1922;
+		rType = 0;
+		vrLen = 1885;
+		vrLoc = 1410;
+	};
+	536764DA0FA53CB40072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 45";
+		rLen = 0;
+		rLoc = 1922;
+		rType = 0;
+		vrLen = 1888;
+		vrLoc = 1410;
+	};
+	536764DB0FA53CB40072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 194";
+		rLen = 0;
+		rLoc = 6767;
+		rType = 0;
+		vrLen = 2043;
+		vrLoc = 5609;
+	};
+	536764DC0FA53CB40072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 45";
+		rLen = 0;
+		rLoc = 1922;
+		rType = 0;
+		vrLen = 1888;
+		vrLoc = 1410;
+	};
+	536764DD0FA53CB40072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 187";
+		rLen = 0;
+		rLoc = 6358;
+		rType = 0;
+		vrLen = 2117;
+		vrLoc = 5360;
+	};
+	536764E00FA53D210072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 187";
+		rLen = 0;
+		rLoc = 6358;
+		rType = 0;
+		vrLen = 2117;
+		vrLoc = 5360;
+	};
+	536764E10FA53D210072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 45";
+		rLen = 0;
+		rLoc = 1922;
+		rType = 0;
+		vrLen = 1885;
+		vrLoc = 1410;
+	};
+	536764E20FA53D210072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 187";
+		rLen = 0;
+		rLoc = 6358;
+		rType = 0;
+		vrLen = 2117;
+		vrLoc = 5360;
+	};
+	536764E30FA53D210072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 92";
+		rLen = 0;
+		rLoc = 3198;
+		rType = 0;
+		vrLen = 1120;
+		vrLoc = 3272;
+	};
+	536764E50FA53D360072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 91";
+		rLen = 0;
+		rLoc = 3171;
+		rType = 0;
+		vrLen = 1224;
+		vrLoc = 3272;
+	};
+	536764E70FA53D810072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 96";
+		rLen = 0;
+		rLoc = 3249;
+		rType = 0;
+		vrLen = 1175;
+		vrLoc = 3272;
+	};
+	536764EA0FA53DB30072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 93";
+		rLen = 0;
+		rLoc = 3198;
+		rType = 0;
+		vrLen = 1213;
+		vrLoc = 3272;
+	};
+	536764EC0FA53DDF0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 93";
+		rLen = 0;
+		rLoc = 3176;
+		rType = 0;
+		vrLen = 1215;
+		vrLoc = 3272;
+	};
+	536764EE0FA53DF40072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 91";
+		rLen = 0;
+		rLoc = 3149;
+		rType = 0;
+		vrLen = 1215;
+		vrLoc = 3272;
+	};
+	536764F00FA53E270072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 93";
+		rLen = 0;
+		rLoc = 3176;
+		rType = 0;
+		vrLen = 1371;
+		vrLoc = 3351;
+	};
+	536764F20FA53E350072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 92";
+		rLen = 0;
+		rLoc = 3171;
+		rType = 0;
+		vrLen = 1371;
+		vrLoc = 3351;
+	};
+	536764F40FA53E430072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 92";
+		rLen = 0;
+		rLoc = 3171;
+		rType = 0;
+		vrLen = 1371;
+		vrLoc = 3351;
+	};
+	536764F60FA53E730072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 92";
+		rLen = 0;
+		rLoc = 3171;
+		rType = 0;
+		vrLen = 1175;
+		vrLoc = 3272;
+	};
+	536764F80FA53E800072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 92";
+		rLen = 0;
+		rLoc = 3171;
+		rType = 0;
+		vrLen = 1175;
+		vrLoc = 3272;
+	};
+	536764F90FA53EFE0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 90";
+		rLen = 0;
+		rLoc = 3127;
+		rType = 0;
+		vrLen = 1247;
+		vrLoc = 3272;
+	};
+	536764FB0FA53F4F0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 93";
+		rLen = 0;
+		rLoc = 3198;
+		rType = 0;
+		vrLen = 1287;
+		vrLoc = 3272;
+	};
+	536764FD0FA53F600072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 91";
+		rLen = 0;
+		rLoc = 3149;
+		rType = 0;
+		vrLen = 1287;
+		vrLoc = 3272;
+	};
+	536764FF0FA53F790072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 96";
+		rLen = 0;
+		rLoc = 3249;
+		rType = 0;
+		vrLen = 1286;
+		vrLoc = 3272;
+	};
+	536765010FA53F900072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 91";
+		rLen = 0;
+		rLoc = 3150;
+		rType = 0;
+		vrLen = 1287;
+		vrLoc = 3272;
+	};
+	536765030FA53FA80072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 91";
+		rLen = 0;
+		rLoc = 3149;
+		rType = 0;
+		vrLen = 1287;
+		vrLoc = 3272;
+	};
+	536765050FA53FBD0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 96";
+		rLen = 0;
+		rLoc = 3248;
+		rType = 0;
+		vrLen = 1287;
+		vrLoc = 3272;
+	};
+	536765070FA53FD70072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 92";
+		rLen = 0;
+		rLoc = 3174;
+		rType = 0;
+		vrLen = 1287;
+		vrLoc = 3272;
+	};
+	536765090FA53FF60072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 91";
+		rLen = 0;
+		rLoc = 3151;
+		rType = 0;
+		vrLen = 1293;
+		vrLoc = 3272;
+	};
+	5367650B0FA540000072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 92";
+		rLen = 0;
+		rLoc = 3174;
+		rType = 0;
+		vrLen = 1139;
+		vrLoc = 3272;
+	};
+	5367650D0FA540130072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 92";
+		rLen = 0;
+		rLoc = 3172;
+		rType = 0;
+		vrLen = 1243;
+		vrLoc = 3272;
+	};
+	5367650F0FA540490072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 91";
+		rLen = 0;
+		rLoc = 3149;
+		rType = 0;
+		vrLen = 1180;
+		vrLoc = 3272;
+	};
+	536765110FA5405B0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 91";
+		rLen = 0;
+		rLoc = 3149;
+		rType = 0;
+		vrLen = 1181;
+		vrLoc = 3272;
+	};
+	536765130FA540D00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E1D2C40F904F9E005E78EC /* SecondViewController.h */;
+		name = "SecondViewController.h: 28";
+		rLen = 0;
+		rLoc = 1094;
+		rType = 0;
+		vrLen = 1100;
+		vrLoc = 0;
+	};
+	536765140FA540D00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 187";
+		rLen = 0;
+		rLoc = 6358;
+		rType = 0;
+		vrLen = 2133;
+		vrLoc = 5259;
+	};
+	536765150FA540D00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 117";
+		rLen = 0;
+		rLoc = 4140;
+		rType = 0;
+		vrLen = 1203;
+		vrLoc = 2973;
+	};
+	536765160FA540D00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 33";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1242;
+		vrLoc = 0;
+	};
+	536765170FA540D00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 117";
+		rLen = 0;
+		rLoc = 4140;
+		rType = 0;
+		vrLen = 1139;
+		vrLoc = 3037;
+	};
+	536765180FA540D00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 33";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1242;
+		vrLoc = 0;
+	};
+	536765190FA540D00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53E1D2C40F904F9E005E78EC /* SecondViewController.h */;
+		name = "SecondViewController.h: 28";
+		rLen = 0;
+		rLoc = 1094;
+		rType = 0;
+		vrLen = 1100;
+		vrLoc = 0;
+	};
+	5367651A0FA540D00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */;
+		name = "SecondViewController.m: 187";
+		rLen = 0;
+		rLoc = 6358;
+		rType = 0;
+		vrLen = 2133;
+		vrLoc = 5259;
+	};
+	5367651B0FA540D00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 33";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1242;
+		vrLoc = 0;
+	};
+	5367651C0FA540D00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 117";
+		rLen = 0;
+		rLoc = 4140;
+		rType = 0;
+		vrLen = 1203;
+		vrLoc = 2973;
+	};
+	5367651D0FA540D00072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 33";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1242;
+		vrLoc = 0;
+	};
+	5367651F0FA541120072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 33";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1242;
+		vrLoc = 0;
+	};
+	536765200FA541120072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA540F8FF056002F86FA /* CustomCell.h */;
+		name = "CustomCell.h: 33";
+		rLen = 0;
+		rLoc = 1156;
+		rType = 0;
+		vrLen = 1242;
+		vrLoc = 0;
+	};
+	536765210FA541120072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 85";
+		rLen = 0;
+		rLoc = 3249;
+		rType = 0;
+		vrLen = 1302;
+		vrLoc = 2515;
+	};
+	536765230FA541290072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 80";
+		rLen = 0;
+		rLoc = 3149;
+		rType = 0;
+		vrLen = 1302;
+		vrLoc = 2515;
+	};
+	536765250FA5413B0072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 80";
+		rLen = 0;
+		rLoc = 3150;
+		rType = 0;
+		vrLen = 1302;
+		vrLoc = 2515;
+	};
+	536765260FA541D50072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 80";
+		rLen = 0;
+		rLoc = 3150;
+		rType = 0;
+		vrLen = 1302;
+		vrLoc = 2515;
+	};
+	536765270FA541D50072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FB2BBA0FA0F09500623E3B /* Copyright */;
+		name = "Copyright: 4";
+		rLen = 0;
+		rLoc = 298;
+		rType = 0;
+		vrLen = 298;
+		vrLoc = 0;
+	};
+	536765280FA541D50072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
+		name = "CustomCell.m: 80";
+		rLen = 0;
+		rLoc = 3150;
+		rType = 0;
+		vrLen = 1302;
+		vrLoc = 2515;
+	};
+	536765290FA541D50072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 53FB2BBA0FA0F09500623E3B /* Copyright */;
+		name = "Copyright: 4";
+		rLen = 0;
+		rLoc = 298;
+		rType = 0;
+		vrLen = 298;
+		vrLoc = 0;
+	};
+	5367652A0FA541D50072F31C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5379EEE70FA1E5E900F1E9FD /* ChangeLog */;
+		name = "ChangeLog: 9";
+		rLen = 0;
+		rLoc = 247;
+		rType = 0;
+		vrLen = 247;
+		vrLoc = 0;
 	};
 	536AC4A30F91308200B55D50 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -9820,9 +11724,9 @@
 	};
 	5379EEE70FA1E5E900F1E9FD /* ChangeLog */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {962, 442}}";
-			sepNavSelRange = "{108, 0}";
-			sepNavVisRange = "{0, 166}";
+			sepNavIntBoundsRect = "{{0, 0}, {966, 639}}";
+			sepNavSelRange = "{247, 0}";
+			sepNavVisRange = "{0, 247}";
 		};
 	};
 	5379EEEA0FA1E61A00F1E9FD /* PlistBookmark */ = {
@@ -9927,16 +11831,16 @@
 	};
 	537CDA540F8FF056002F86FA /* CustomCell.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {966, 639}}";
-			sepNavSelRange = "{1187, 0}";
-			sepNavVisRange = "{0, 1327}";
+			sepNavIntBoundsRect = "{{0, 0}, {966, 616}}";
+			sepNavSelRange = "{1156, 0}";
+			sepNavVisRange = "{0, 1242}";
 		};
 	};
 	537CDA550F8FF056002F86FA /* CustomCell.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {966, 1806}}";
-			sepNavSelRange = "{4417, 0}";
-			sepNavVisRange = "{3349, 1124}";
+			sepNavIntBoundsRect = "{{0, 0}, {966, 1708}}";
+			sepNavSelRange = "{3150, 0}";
+			sepNavVisRange = "{2515, 1302}";
 			sepNavWindowFrame = "{{0, 0}, {1222, 778}}";
 		};
 	};
@@ -10029,7 +11933,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 76";
 		rLen = 0;
-		rLoc = 3550;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1174;
 		vrLoc = 2412;
@@ -10110,7 +12014,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 76";
 		rLen = 0;
-		rLoc = 3550;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1174;
 		vrLoc = 2412;
@@ -10233,7 +12137,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 75";
 		rLen = 0;
-		rLoc = 3491;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1231;
 		vrLoc = 2233;
@@ -10251,7 +12155,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 76";
 		rLen = 0;
-		rLoc = 3550;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1231;
 		vrLoc = 2233;
@@ -10269,7 +12173,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 64";
 		rLen = 0;
-		rLoc = 3083;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1231;
 		vrLoc = 2233;
@@ -10287,7 +12191,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 64";
 		rLen = 0;
-		rLoc = 3083;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1231;
 		vrLoc = 2233;
@@ -10305,7 +12209,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 65";
 		rLen = 0;
-		rLoc = 3107;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1231;
 		vrLoc = 2233;
@@ -10323,7 +12227,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 64";
 		rLen = 0;
-		rLoc = 3083;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1231;
 		vrLoc = 2233;
@@ -10341,7 +12245,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 65";
 		rLen = 0;
-		rLoc = 3107;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1230;
 		vrLoc = 2233;
@@ -10359,7 +12263,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 70";
 		rLen = 0;
-		rLoc = 3260;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1229;
 		vrLoc = 2233;
@@ -10377,7 +12281,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 77";
 		rLen = 0;
-		rLoc = 3559;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1230;
 		vrLoc = 2233;
@@ -10395,7 +12299,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 77";
 		rLen = 0;
-		rLoc = 3573;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1230;
 		vrLoc = 2233;
@@ -10413,7 +12317,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 77";
 		rLen = 0;
-		rLoc = 3573;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1230;
 		vrLoc = 2233;
@@ -10431,7 +12335,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 77";
 		rLen = 0;
-		rLoc = 3575;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1230;
 		vrLoc = 2233;
@@ -10449,7 +12353,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 77";
 		rLen = 0;
-		rLoc = 3575;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1230;
 		vrLoc = 2233;
@@ -10467,7 +12371,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 77";
 		rLen = 0;
-		rLoc = 3575;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2089;
 		vrLoc = 0;
@@ -10507,7 +12411,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 77";
 		rLen = 0;
-		rLoc = 3575;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2089;
 		vrLoc = 0;
@@ -10687,7 +12591,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 77";
 		rLen = 0;
-		rLoc = 3575;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2069;
 		vrLoc = 20;
@@ -10717,7 +12621,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 77";
 		rLen = 0;
-		rLoc = 3575;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2069;
 		vrLoc = 20;
@@ -11419,7 +13323,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 77";
 		rLen = 0;
-		rLoc = 3575;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 2069;
 		vrLoc = 20;
@@ -11439,7 +13343,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 64";
 		rLen = 0;
-		rLoc = 3083;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1410;
 		vrLoc = 1820;
@@ -11449,7 +13353,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 64";
 		rLen = 0;
-		rLoc = 3083;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1410;
 		vrLoc = 1820;
@@ -11459,7 +13363,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 64";
 		rLen = 0;
-		rLoc = 3083;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1980;
 		vrLoc = 434;
@@ -11499,7 +13403,7 @@
 		fRef = 537CDA550F8FF056002F86FA /* CustomCell.m */;
 		name = "CustomCell.m: 64";
 		rLen = 0;
-		rLoc = 3083;
+		rLoc = 1485;
 		rType = 0;
 		vrLen = 1980;
 		vrLoc = 434;
@@ -12570,16 +14474,17 @@
 	};
 	53E1D2750F90474F005E78EC /* DetailViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {857, 645}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1163, 683}}";
 			sepNavSelRange = "{916, 0}";
 			sepNavVisRange = "{0, 1623}";
+			sepNavWindowFrame = "{{1240, -229}, {1222, 778}}";
 		};
 	};
 	53E1D2760F90474F005E78EC /* DetailViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {717, 1120}}";
+			sepNavIntBoundsRect = "{{0, 0}, {966, 1120}}";
 			sepNavSelRange = "{2293, 0}";
-			sepNavVisRange = "{307, 1829}";
+			sepNavVisRange = "{1037, 1604}";
 		};
 	};
 	53E1D2870F9047BB005E78EC /* PBXTextBookmark */ = {
@@ -12610,7 +14515,7 @@
 		path = "/Users/hayroob/Documents/Dropbox/DEV/Objective-C/Github/katgiphone/KATG.com/Classes/SecondViewController.h";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {809, 622}}";
+			sepNavIntBoundsRect = "{{0, 0}, {966, 639}}";
 			sepNavSelRange = "{1094, 0}";
 			sepNavVisRange = "{0, 1100}";
 		};
@@ -12749,7 +14654,7 @@
 	};
 	53FB2BBA0FA0F09500623E3B /* Copyright */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {890, 645}}";
+			sepNavIntBoundsRect = "{{0, 0}, {966, 616}}";
 			sepNavSelRange = "{298, 0}";
 			sepNavVisRange = "{0, 298}";
 		};

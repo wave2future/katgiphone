@@ -183,11 +183,22 @@
 	cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
 	cell.lblPublish.text = [[list objectAtIndex:indexPath.row] publishTime];
 	cell.lblPublishDate.text = [[list objectAtIndex:indexPath.row] publishDate];
+	UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.92 green:(CGFloat).973 blue:(CGFloat)0.92 alpha:(CGFloat)1.0];
+	UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0];
 	if (indexPath.row%2 == 0) {
-		cell.backGround.backgroundColor = [UIColor colorWithRed:(CGFloat)0.92 green:(CGFloat).973 blue:(CGFloat)0.92 alpha:(CGFloat)1.0];
-	} else {
-		cell.backGround.backgroundColor = [UIColor clearColor];
-	}
+		cell.lblTitle.backgroundColor = color1;
+		cell.lblPublish.backgroundColor = color1;
+		cell.lblPublishDate.backgroundColor = color1;
+		cell.backgroundView.backgroundColor = color1;
+	 } else {
+		 cell.lblTitle.backgroundColor = color2;
+		 cell.lblPublish.backgroundColor = color2;
+		 cell.lblPublishDate.backgroundColor = color2;
+		 cell.backgroundView.backgroundColor = color2;
+	 }
+	
+	cell.selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+	cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
 	
 	NSString *type = [[list objectAtIndex:indexPath.row] type];
 	if ( [type isEqualToString:@"show"] ) {

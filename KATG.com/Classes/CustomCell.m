@@ -32,8 +32,9 @@
 @implementation CustomCell
 
 @synthesize lblTitle, lblPublish, lblPublishDate, imgSquare;
-//@synthesize backgroundView;
-@synthesize backGround;
+@synthesize backgroundView;
+//@synthesize selectedBackgroundView;
+//@synthesize backGround;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
@@ -41,24 +42,21 @@
 		lblTitle = [[UILabel alloc] initWithFrame:CGRectZero];
         lblTitle.textColor = [UIColor blackColor];
         lblTitle.font = [UIFont boldSystemFontOfSize:12.0];
-        lblTitle.backgroundColor = [UIColor clearColor];
 		lblTitle.numberOfLines = 4;
 		
         lblPublish = [[UILabel alloc] initWithFrame:CGRectZero];
         lblPublish.textColor = [UIColor darkGrayColor];
         lblPublish.font = [UIFont systemFontOfSize:12.0];
-        lblPublish.backgroundColor = [UIColor clearColor];
 		
 		lblPublishDate = [[UILabel alloc] initWithFrame:CGRectZero];
         lblPublishDate.textColor = [UIColor darkGrayColor];
         lblPublishDate.font = [UIFont systemFontOfSize:12.0];
-        lblPublishDate.backgroundColor = [UIColor clearColor];
         
         imgSquare = [[UIImageView alloc] initWithFrame:CGRectZero];
 		
-		backGround = [[UIImageView alloc] initWithFrame:CGRectZero];
+		backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
 		
-		[self.contentView addSubview:backGround];
+		[self.contentView addSubview:backgroundView];
 		[self.contentView addSubview:lblTitle];
         [self.contentView addSubview:lblPublish];
         [self.contentView addSubview:lblPublishDate];
@@ -72,17 +70,19 @@
     
     CGRect baseRect = CGRectInset(self.contentView.bounds, 10, 0);
     CGRect rect = baseRect;
+	
 	rect.origin.x = self.contentView.bounds.size.width - 190;
     rect.origin.y = 0;
     rect.size.width = self.contentView.bounds.size.width - 120;
     lblTitle.frame = rect;
     
 	rect.origin.x = self.contentView.bounds.size.width - 265;
-    rect.origin.y = 10;
-	rect.size.width = self.contentView.bounds.size.width - 200;
+    rect.origin.y = 45;
+	rect.size.width = 70;
+	rect.size.height = 20;
     lblPublish.frame = rect;
 	
-	rect.origin.y = -10;
+	rect.origin.y -= 30;
     lblPublishDate.frame = rect;
     
     rect.size.width = 20;
@@ -90,12 +90,6 @@
     rect.origin.x = self.contentView.bounds.size.width - 295;
     rect.origin.y = 30;
     imgSquare.frame = rect;
-	
-	rect.size.width = 320;
-    rect.size.height = 80;
-    rect.origin.x = 0;
-    rect.origin.y = 0;
-    backGround.frame = rect;
 	
 }
 
@@ -119,8 +113,7 @@
     [lblPublish release];
 	[lblPublishDate release];
     [imgSquare release];
-	[backGround release];
-	//[backgroundView release];
+	[backgroundView release];
     [super dealloc];
 }
 
