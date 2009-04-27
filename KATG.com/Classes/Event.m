@@ -20,24 +20,29 @@
 
 @implementation Event
 
-@synthesize title, publishDate, type, detail;
+@synthesize title, publishTime, publishDate, type, detail;
 
 // Creates the object with primary key and title is brought into memory.
-- (id)initWithTitle:(NSString *)theTitle publishDate:(NSString *)thePublishDate type:(NSString *)theType detail:(NSString *)theDetail {
+- (id)initWithTitle:(NSString *)theTitle publishTime:(NSString *)thePublishTime publishDate:(NSString *)thePublishDate type:(NSString *)theType detail:(NSString *)theDetail {
     MREntitiesConverter *converter = [[MREntitiesConverter alloc] init];
+	
 	if (self = [super init]) {
         title = [[NSString alloc] initWithString:theTitle];
-        publishDate = [[NSString alloc] initWithString:thePublishDate];
+        publishTime = [[NSString alloc] initWithString:thePublishTime];
+		publishDate = [[NSString alloc] initWithString:thePublishDate];
         type = [[NSString alloc] initWithString:theType];
 		detail = [converter convertEntitiesInString:[[NSString alloc] initWithString:theDetail]];
     }
+	
     return self;
 }
 
 - (void)dealloc {
     [title release];
-    [publishDate release];
+    [publishTime release];
+	[publishDate release];
     [type release];
+	[detail release];
     [super dealloc];
 }
 

@@ -72,6 +72,7 @@
 		53E9562B0F9D5F3E0071709B /* sanitizeField.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E9562A0F9D5F3E0071709B /* sanitizeField.m */; };
 		53F0BBE80F9F994900CCEEBF /* MREntitiesConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F0BBE70F9F994900CCEEBF /* MREntitiesConverter.m */; };
 		53FB2BBB0FA0F09500623E3B /* Copyright in Resources */ = {isa = PBXBuildFile; fileRef = 53FB2BBA0FA0F09500623E3B /* Copyright */; };
+		C54055A10FA1E561006B8414 /* ChangeLog in Resources */ = {isa = PBXBuildFile; fileRef = C54055A00FA1E561006B8414 /* ChangeLog */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -169,6 +170,7 @@
 		53F0BBE70F9F994900CCEEBF /* MREntitiesConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MREntitiesConverter.m; sourceTree = "<group>"; };
 		53FB2BBA0FA0F09500623E3B /* Copyright */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Copyright; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C54055A00FA1E561006B8414 /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ChangeLog; path = Projects/katgiphone/KATG.com/ChangeLog; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -382,6 +384,7 @@
 				536CD46E0F89E68A0063DED2 /* ToDo */,
 				53E8DE4D0F8E95C7006A52C6 /* RoadMap */,
 				53FB2BBA0FA0F09500623E3B /* Copyright */,
+				C54055A00FA1E561006B8414 /* ChangeLog */,
 			);
 			name = Documents;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				530231440F9476CF0051038E /* Default.png in Resources */,
 				53FB2BBB0FA0F09500623E3B /* Copyright in Resources */,
 				5303EAAD0FA187C600B3989C /* Entitlements.plist in Resources */,
+				C54055A10FA1E561006B8414 /* ChangeLog in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,7 +602,9 @@
 				ADDITIONAL_SDKS = "$HOME/Library/SDKs/JSON/$(PLATFORM_NAME).sdk";
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Doug Russell";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doug Russell";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -609,7 +615,9 @@
 					"-lxml2",
 				);
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.1;
+				PROVISIONING_PROFILE = "1C5B0456-76AF-4E45-8815-EC20492B4972";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1C5B0456-76AF-4E45-8815-EC20492B4972";
+				SDKROOT = iphoneos2.2;
 			};
 			name = "Distribution Ad Hoc";
 		};
@@ -630,7 +638,7 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = "$HOME/Library/SDKs/JSON/$(PLATFORM_NAME).sdk";
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Russell";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Don't Code Sign";
 				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -643,7 +651,7 @@
 					"-lxml2",
 				);
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator2.1;
+				SDKROOT = iphonesimulator2.2;
 			};
 			name = Debug;
 		};
@@ -666,8 +674,8 @@
 					"-lxml2",
 				);
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "38EC2828-368B-4AAC-A38A-4497110C9E56";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "38EC2828-368B-4AAC-A38A-4497110C9E56";
+				PROVISIONING_PROFILE = "4543900B-CC98-4204-B678-779F09DFFF0C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4543900B-CC98-4204-B678-779F09DFFF0C";
 				SDKROOT = iphoneos2.2;
 			};
 			name = Release;

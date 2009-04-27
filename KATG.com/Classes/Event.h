@@ -20,16 +20,18 @@
 
 @interface Event : NSObject {
     NSString *title;
-    NSString *publishDate;
+    NSString *publishTime;
+	NSString *publishDate;
     NSString *type;
 	NSString *detail;
 }
 
 @property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSString *publishTime;
 @property (nonatomic, retain) NSString *publishDate;
 @property (nonatomic, retain) NSString *type;
 @property (nonatomic, retain) NSString *detail;
 
-- (id)initWithTitle:(NSString *)theTitle publishDate:(NSString *)thePublishDate type:(NSString *)theType detail:(NSString *)theDetail;
+- (id)initWithTitle:(NSString *)theTitle publishTime:(NSString *)thePublishTime publishDate:(NSString *)thePublishDate type:(NSString *)theType detail:(NSString *)theDetail;
 
 @end

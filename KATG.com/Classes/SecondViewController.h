@@ -22,4 +22,7 @@
 	NSMutableArray *feedEntries;  // Child nodes of the feed being queried
 }
 
+@property (nonatomic, retain) NSMutableArray *list;
+@property (nonatomic, retain) NSMutableArray *feedEntries;
+
 @end
