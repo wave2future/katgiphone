@@ -10,3 +10,6 @@ Changed selected shading to events tab
 Added Date to events detail page
 changed events detail page layout
 changed shading on events layout page
+Version 1.0.4
+Added phone support
+Changed events detail page return button

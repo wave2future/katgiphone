@@ -34,8 +34,6 @@
 //* viewDidLoad
 //*
 //* Setup urladdress and make the request
-//* This needs to be converted into a method
-//* with error handling
 //*************************************************
 - (void)viewDidLoad {
 		

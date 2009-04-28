@@ -117,7 +117,7 @@
 															 NULL,
 															 NULL,
 															 kCFStringEncodingUTF8)
-		 autorelease];
+															 autorelease];
 		
 		NSURL *url = [NSURL URLWithString:escapedValue];
 		streamer = [[AudioStreamer alloc] initWithURL:url];
@@ -241,6 +241,21 @@
 	
 	// Set update timer for live feed xml
 	[self setTimer];
+	
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	if ([userDefaults boolForKey:@"StartStream"]) {
+		[userDefaults setBool:NO forKey:@"StartStream"];
+		[self buttonPressed:self]; //Replace with actual IBAction for button
+	}
+}
+
+- (IBAction)phoneButtonPressed:(id)sender {
+	if (streamer) {
+		NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+		[userDefaults setBool:YES forKey:@"StartStream"];
+		[userDefaults synchronize];
+	}
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:+16465028682"]];
 }
 
 //*******************************************************

@@ -41,19 +41,13 @@
     [super viewDidLoad];
 	
 	self.navigationItem.title = @"Event Details";
-	UIBarButtonItem *addButton = [[[UIBarButtonItem alloc]
-                                   initWithTitle:NSLocalizedString(@"Done", @"")
-                                   style:UIBarButtonItemStyleDone
-                                   target:self
-                                   action:@selector(dismissView:)] autorelease];
-    self.navigationItem.leftBarButtonItem = addButton;
 	
 	CGRect rect = CGRectMake(20, 90, 280, 240);
 	
 	detailBody = [[[UITextView alloc] initWithFrame:rect] autorelease];
 	detailBody.textColor = [UIColor blackColor];
 	detailBody.backgroundColor = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0]; 
-	detailBody.dataDetectorTypes = UIDataDetectorTypeAll; // Only works in 3.0
+	//detailBody.dataDetectorTypes = UIDataDetectorTypeAll; // Only works in 3.0
 	detailBody.editable = NO;
 	detailBody.font = [UIFont systemFontOfSize:15.0];
 	//detailBody.textAlignment = UITextAlignmentCenter;
@@ -65,18 +59,6 @@
 	detailDate.text = DateTemp;
 	detailBody.text = BodyTemp;
 }
-
-//*******************************************************
-//* dismissView
-//*
-//* Return to view from which this view was pushed
-//* in this case SecondView
-//*
-//*******************************************************
-- (void)dismissView:(id)sender{
-	[self.navigationController popViewControllerAnimated:YES];
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview

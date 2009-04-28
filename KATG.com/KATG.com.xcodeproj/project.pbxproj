@@ -22,12 +22,14 @@
 		5314D2B00F92A26A0098A81A /* TweetViewContoller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5314D2AE0F92A26A0098A81A /* TweetViewContoller.xib */; };
 		5314D4550F92C54E0098A81A /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5314D4540F92C54E0098A81A /* WebViewController.m */; };
 		5314D4570F92C56E0098A81A /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5314D4560F92C56E0098A81A /* WebView.xib */; };
+		531CBAB80FA6814B003AECC9 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 531CBAB70FA6814B003AECC9 /* MediaPlayer.framework */; };
 		532424E90F912490009C1C10 /* TweetViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 532424E60F912490009C1C10 /* TweetViewCell.m */; };
 		532424EA0F912490009C1C10 /* TweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532424E80F912490009C1C10 /* TweetViewController.m */; };
 		532424F10F912543009C1C10 /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 532424F00F912543009C1C10 /* SecondView.xib */; };
 		532425600F9127D0009C1C10 /* CellBg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5324255E0F9127D0009C1C10 /* CellBg.jpg */; };
 		532425610F9127D0009C1C10 /* twitTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 5324255F0F9127D0009C1C10 /* twitTab.png */; };
 		532C13B90F9556BB005879B1 /* grabRSSFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 532C13B80F9556BB005879B1 /* grabRSSFeed.m */; };
+		5341D3940FA6A00A00CA7A35 /* Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5341D3930FA6A00A00CA7A35 /* Phone.png */; };
 		535FE5500F89F71800F6AD75 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE54F0F89F71800F6AD75 /* SecondViewController.m */; };
 		535FE6080F89FF1700F6AD75 /* CXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE5F40F89FF1700F6AD75 /* CXMLDocument.m */; };
 		535FE6090F89FF1700F6AD75 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE5F60F89FF1700F6AD75 /* CXMLDocument_CreationExtensions.m */; };
@@ -97,6 +99,7 @@
 		5314D4530F92C54E0098A81A /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		5314D4540F92C54E0098A81A /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		5314D4560F92C56E0098A81A /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
+		531CBAB70FA6814B003AECC9 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		532424E50F912490009C1C10 /* TweetViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetViewCell.h; sourceTree = "<group>"; };
 		532424E60F912490009C1C10 /* TweetViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetViewCell.m; sourceTree = "<group>"; };
 		532424E70F912490009C1C10 /* TweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetViewController.h; sourceTree = "<group>"; };
@@ -106,6 +109,7 @@
 		5324255F0F9127D0009C1C10 /* twitTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitTab.png; sourceTree = "<group>"; };
 		532C13B70F9556BB005879B1 /* grabRSSFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grabRSSFeed.h; sourceTree = "<group>"; };
 		532C13B80F9556BB005879B1 /* grabRSSFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = grabRSSFeed.m; sourceTree = "<group>"; };
+		5341D3930FA6A00A00CA7A35 /* Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Phone.png; sourceTree = "<group>"; };
 		535FE54E0F89F71800F6AD75 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		535FE54F0F89F71800F6AD75 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		535FE5F30F89FF1700F6AD75 /* CXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument.h; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 				536CD4740F89E6C30063DED2 /* AudioToolbox.framework in Frameworks */,
 				536CD4780F89E6F50063DED2 /* CFNetwork.framework in Frameworks */,
 				536CD4EF0F89E73E0063DED2 /* QuartzCore.framework in Frameworks */,
+				531CBAB80FA6814B003AECC9 /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +242,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5341D3930FA6A00A00CA7A35 /* Phone.png */,
 				530231430F9476CF0051038E /* Default.png */,
 				53022FA60F9431980051038E /* OnAirBar.png */,
 				53022FA30F9431830051038E /* BG.png */,
@@ -255,6 +261,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				531CBAB70FA6814B003AECC9 /* MediaPlayer.framework */,
 				530230060F94412E0051038E /* MediaPlayer.framework */,
 				536CD4730F89E6C30063DED2 /* AudioToolbox.framework */,
 				536CD4770F89E6F50063DED2 /* CFNetwork.framework */,
@@ -529,6 +536,7 @@
 				5379EEE80FA1E5E900F1E9FD /* ChangeLog in Resources */,
 				538A169F0FA3BB1E006B06D9 /* eventSquare.png in Resources */,
 				538A16A00FA3BB1E006B06D9 /* showSquare.png in Resources */,
+				5341D3940FA6A00A00CA7A35 /* Phone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
