@@ -30,18 +30,17 @@
 @synthesize nameField;
 @synthesize locField;
 @synthesize comField;
+// Feedback Button
+@synthesize feedButton;
+// Volume Slider
+@synthesize volumeSliderContainer;
 
+#pragma mark System Stuff
 //*******************************************************
-//* UITextViewTextDidBeginEditingNotification
-//*
-//* When TextView send DidBeginEditing Notification
-//* set value of text to blank
-//* This is not currently working
+//* 
+//* 
+//* 
 //*******************************************************
-- (void)UITextViewTextDidBeginEditingNotification:(NSNotification*)aNotification {
-	comField.text = @"";
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
 		// Initialization code
@@ -49,6 +48,38 @@
 	return self;
 }
 
+//*******************************************************
+//* viewDidLoad
+//* 
+//* 
+//*******************************************************
+- (void)viewDidLoad {
+	[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: nil ];
+	
+	// Loads Play button for audioStream
+	UIImage *image = [UIImage imageNamed:@"playButton.png"];
+	[self setButtonImage:image];
+	
+	// Set update timer for live feed xml
+	[self setTimer];
+	
+	[self setDefaults];
+	
+	[self drawVolumeSlider];
+	
+	[self setFeedButtonImage];
+}
+
+//*******************************************************
+//* viewDidAppear
+//*
+//* 
+//*******************************************************
+- (void)viewDidAppear:(BOOL)animated {
+	
+}
+
+#pragma mark Audio Streamer
 //*******************************************************
 //* setButtonImage
 //*
@@ -99,7 +130,7 @@
 	{
 		[self spinButton];
 	}
-} // 
+}
 
 //*******************************************************
 //* buttonPressed
@@ -117,7 +148,7 @@
 															 NULL,
 															 NULL,
 															 kCFStringEncodingUTF8)
-															 autorelease];
+		 autorelease];
 		
 		NSURL *url = [NSURL URLWithString:escapedValue];
 		streamer = [[AudioStreamer alloc] initWithURL:url];
@@ -137,7 +168,7 @@
 		[button.layer removeAllAnimations];
 		[streamer stop];
 	}
-} //
+}
 
 //*******************************************************
 //* observeValueForKeyPath
@@ -176,8 +207,9 @@
 	
 	[super observeValueForKeyPath:keyPath ofObject:object change:change
 						  context:context];
-} //
+}
 
+#pragma mark Feedback
 //*******************************************************
 //* feedButtonPressed
 //*
@@ -218,53 +250,74 @@
 	
 	[ NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil ];
 	comField.text = @"";
-} // Submit Feedback
+}
 
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
+- (void)setFeedButtonImage {
+	UIImage *feedButtonImage = [UIImage imageNamed:@"feedButtonNormal.png"];
+	UIImage *normal = [feedButtonImage stretchableImageWithLeftCapWidth:12 topCapHeight:12];
+	
+	UIImage *feedButtonHighlightedImage = [UIImage imageNamed:@"feedButtonPressed.png"];
+	UIImage *highlight = [feedButtonHighlightedImage stretchableImageWithLeftCapWidth:12 topCapHeight:12];
+	
+	[feedButton setBackgroundImage:(UIImage *)normal forState:UIControlStateNormal];
+	[feedButton setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
+}
+
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
+- (IBAction)textFieldDoneEditing:(id)sender {
+	[sender resignFirstResponder];
+} // Dismiss keyboard when done is pressed
+
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
+- (IBAction)textViewDoneEditing:(id)sender {
+	[nameField resignFirstResponder];
+	[locField resignFirstResponder];
+	[comField resignFirstResponder];
+}// Dismiss keyboard when background is clicked
+
+//*******************************************************
+//* UITextViewTextDidBeginEditingNotification
+//*
+//* When TextView send DidBeginEditing Notification
+//* set value of text to blank
+//* This is not currently working, needs NSNotification Center
+//*******************************************************
+- (void)UITextViewTextDidBeginEditingNotification:(NSNotification*)aNotification {
+	comField.text = @"";
+}
+
+#pragma mark Live Show Feed Indicator
 //*******************************************************
 //* handleTimer
 //*
 //* Setup code to execute on timer
 //*******************************************************
 - (void) handleTimer: (NSTimer *) timer {
-	[self pollFeed];
-} // Code to execute on a timer
-
-//*******************************************************
-//* viewDidLoad
-//* 
-//* 
-//*******************************************************
-- (void)viewDidLoad {
-	// Loads Play button for audioStream
-	UIImage *image = [UIImage imageNamed:@"playButton.png"];
-	[self setButtonImage:image];
-	
-	// Set update timer for live feed xml
-	[self setTimer];
-	
-	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	if ([userDefaults boolForKey:@"StartStream"]) {
-		[userDefaults setBool:NO forKey:@"StartStream"];
-		[self buttonPressed:self]; //Replace with actual IBAction for button
-	}
-}
-
-- (IBAction)phoneButtonPressed:(id)sender {
-	if (streamer) {
-		NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-		[userDefaults setBool:YES forKey:@"StartStream"];
-		[userDefaults synchronize];
-	}
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:+16465028682"]];
+	[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: nil ];
 }
 
 //*******************************************************
-//* viewDidAppear
+//* autoPool
 //*
 //* 
 //*******************************************************
-- (void)viewDidAppear:(BOOL)animated {
-	
+- (void)autoPool {
+    NSAutoreleasePool *pool = [ [ NSAutoreleasePool alloc ] init ];
+    [self pollFeed];
+	[ pool release ];
 }
 
 //*******************************************************
@@ -279,7 +332,7 @@
 	
 	// Select the xPath to parse against
 	NSString *xPath = @"//root";
-
+	
 	// Call the grabRSSFeed function with the feedAddress
 	// string as a parameter
 	grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:xPath];
@@ -302,7 +355,7 @@
 	} else {
 		feedStatus = @"????";
 	}
-
+	
 	statusText.text = feedStatus;
 }
 
@@ -320,35 +373,88 @@
 										   selector: @selector(handleTimer:)
 										   userInfo: nil
 											repeats: YES];
-	// One Time timer to set up feed status when app launches
-	NSTimer *shortTimer; // This is almost definitely the wrong way to do this
-	shortTimer = [NSTimer scheduledTimerWithTimeInterval: 3.0
-											 target: self
-										   selector: @selector(handleTimer:)
-										   userInfo: nil
-											repeats: NO];
 }
 
-- (IBAction)textFieldDoneEditing:(id)sender {
-	[sender resignFirstResponder];
-} // Dismiss keyboard when done is pressed
+#pragma mark Volume Slider
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
+- (void)drawVolumeSlider {
+	MPVolumeView *volumeView = [[MPVolumeView alloc] initWithFrame:volumeSliderContainer.bounds];
+	UIView *volumeViewSlider;
+	
+	[volumeSliderContainer addSubview:volumeView];
+	
+	for (UIView *view in [volumeView subviews]) if ([[[view class] description] isEqualToString:@"MPVolumeSlider"]) volumeViewSlider = view;
+	
+	[(UISlider *)volumeViewSlider setMinimumTrackImage:[[UIImage imageNamed:@"leftslide.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+	[(UISlider *)volumeViewSlider setMaximumTrackImage:[[UIImage imageNamed:@"rightslide.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
+	
+	for (UIView *view in [volumeSliderContainer subviews]) [view removeFromSuperview];
+	
+	volumeView.backgroundColor = [UIColor clearColor];
+	volumeSliderContainer.backgroundColor = [UIColor clearColor];
+	[volumeSliderContainer addSubview:volumeView];
+	
+	[volumeView release];
+}
 
-- (IBAction)textViewDoneEditing:(id)sender {
-	[nameField resignFirstResponder];
-	[locField resignFirstResponder];
-	[comField resignFirstResponder];
-}// Dismiss keyboard when background is clicked
+#pragma mark Phone Button
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
+- (void)setDefaults {
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	if ([userDefaults boolForKey:@"StartStream"]) {
+		[userDefaults setBool:NO forKey:@"StartStream"];
+		[self buttonPressed:self];
+	}
+}
 
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
+- (IBAction)phoneButtonPressed:(id)sender {
+	if (streamer) {
+		NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+		[userDefaults setBool:YES forKey:@"StartStream"];
+		[userDefaults synchronize];
+	}
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:+16465028682"]];
+}
+
+#pragma mark More System Stuff
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	// Return YES for supported orientations
 	return (interfaceOrientation == UIInterfaceOrientationPortrait);
 } // Sets up autorotate support (in this case none)
 
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
 	// Release anything that's not essential, such as cached data
 } // Does something I'm sure
 
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
 - (void)dealloc {
 	[super dealloc];
 } // Release objects to save memory

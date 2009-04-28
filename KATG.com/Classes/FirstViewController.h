@@ -21,6 +21,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @class AudioStreamer; // This is the shoutcast radio class
 
@@ -30,6 +31,9 @@
 	
 	// Instantiate radio object
 	AudioStreamer			*streamer;
+	
+	// Volume Slider
+	IBOutlet UIView			*volumeSliderContainer;
 	
 	// Call Button
 	IBOutlet UIButton		*callButton;
@@ -50,6 +54,8 @@
 @property (nonatomic, retain) IBOutlet UITextField	*nameField;
 @property (nonatomic, retain) IBOutlet UITextField	*locField;
 @property (nonatomic, retain) IBOutlet UITextView	*comField;
+@property (nonatomic, retain) IBOutlet UIView		*volumeSliderContainer;
+@property (nonatomic, retain) IBOutlet UIButton		*feedButton;
 
 // Set up actions for GUI to perform
 // Play Button
@@ -66,5 +72,15 @@
 - (void)setTimer;
 // Call Button
 - (IBAction)phoneButtonPressed:(id)sender;
+// System Volume Slider
+- (void)drawVolumeSlider;
+// Set up user default to automatically launch audiostreamer
+- (void)setDefaults;
+// Custom feedback button image
+- (void)setFeedButtonImage;
+
+- (void)setButtonImage:(UIImage *)image;
+
+- (void)autoPool;
 
 @end
