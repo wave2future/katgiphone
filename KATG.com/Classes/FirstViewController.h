@@ -31,6 +31,9 @@
 	// Instantiate radio object
 	AudioStreamer			*streamer;
 	
+	// Call Button
+	IBOutlet UIButton		*callButton;
+	
 	// Feed status
 	NSMutableArray			*feedEntries;
 	IBOutlet UILabel		*statusText;
@@ -48,7 +51,6 @@
 @property (nonatomic, retain) IBOutlet UITextField	*locField;
 @property (nonatomic, retain) IBOutlet UITextView	*comField;
 
-
 // Set up actions for GUI to perform
 // Play Button
 - (IBAction)buttonPressed:(id)sender;
@@ -62,5 +64,7 @@
 - (void)pollFeed;
 // Establish timer to update feed status
 - (void)setTimer;
+// Call Button
+- (IBAction)phoneButtonPressed:(id)sender;
 
 @end

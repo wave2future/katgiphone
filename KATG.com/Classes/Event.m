@@ -31,7 +31,21 @@
         publishTime = [[NSString alloc] initWithString:thePublishTime];
 		publishDate = [[NSString alloc] initWithString:thePublishDate];
         type = [[NSString alloc] initWithString:theType];
-		detail = [converter convertEntitiesInString:[[[NSString alloc] initWithString:theDetail] stringByReplacingOccurrencesOfString:(NSString *)@"<p>" withString:(NSString *)@"<p>\n"]];
+		
+		//***********************************************************************************************************************************************
+		//* detail converter
+		//*
+		//* Creates a string from the raw events detail from the feed
+		//* Replaces <p> with <p>\n so that text formats on the page correctly
+		//* Replaces "Here's how to listen: http://www.keithandthegirl.com/Live/HowToListen.aspx" with "Check out the On Air tab to listen"
+		//* Passes conditioned string to converter convertEntitiesInString (an implementation using NSXMLParser) to strip out anything wrapped in <>
+		//***********************************************************************************************************************************************
+		detail = [converter convertEntitiesInString:
+					[[[[NSString alloc] initWithString:theDetail] 
+					  stringByReplacingOccurrencesOfString:(NSString *)@"<p>" 
+					  withString:(NSString *)@"<p>\n"]
+						stringByReplacingOccurrencesOfString:(NSString *)@"<p>\nHere's how to listen: <a href=\"../Live/HowToListen.aspx\" target=\"_blank\"><font face=\"Arial\" size=\"2\">http://www.keithandthegirl.com/Live/HowToListen.aspx</font></a></p>"
+						withString:(NSString *)@"<p>\nCheck out the On Air tab to listen</p>"]];
     }
 	
     return self;
