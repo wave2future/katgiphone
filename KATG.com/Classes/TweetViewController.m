@@ -65,12 +65,16 @@
     self.navigationItem.leftBarButtonItem = refButton;
 	refButton.enabled = NO;
 	addButton.enabled = NO;
+	tv.scrollEnabled = NO;
+	//
 	// End Added Code
 }
 
 - (void)refTweets:(id)sender{
 	refButton.enabled = NO;
 	addButton.enabled = NO;
+	tv.scrollEnabled = NO;
+	//
 	tweets = [[NSMutableArray alloc] initWithCapacity: 100];
 	iconDict = [[NSMutableDictionary alloc] init];
 	
@@ -85,6 +89,8 @@
 - (void)otherTweets:(id)sender{
 	addButton.enabled = NO;
 	refButton.enabled = NO;
+	tv.scrollEnabled = NO;
+	//
 	if (otherTweets == @"YES") {
 		otherTweets = @"NO";
 	} else {
@@ -264,6 +270,8 @@
 		// Added Code
 		refButton.enabled = YES;
 		addButton.enabled = YES;
+		tv.scrollEnabled = YES;
+		//tv.userInteractionEnabled = YES;
 		// End Added Code
 	}
 }
@@ -480,7 +488,8 @@
 	NSString *index = [NSString stringWithFormat:@"%d", indexPath.row]; // Added Code This Line
 	if ([cell.tweetText rangeOfString: @"www" options:1].location != NSNotFound ||
 		[cell.tweetText rangeOfString: @"http:" options:1].location != NSNotFound ||
-		[cell.tweetText rangeOfString: @".com" options:1].location != NSNotFound) {
+		[cell.tweetText rangeOfString: @".com" options:1].location != NSNotFound ||
+		[cell.tweetText rangeOfString: @"@" options:1].location != NSNotFound) {
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		// Added Code
 		[isURL setObject: @"YES" forKey: index];
@@ -500,7 +509,6 @@
 	return (UITableViewCell *)cell;
 }
 
-
 //*************************************************
 //* tableView:heightForRowAtIndexPath:
 //*
@@ -508,8 +516,7 @@
 //* tweet text, and add 20 to that height for the 
 //* cell height. Minimum height is 46.
 //*************************************************
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSString * text = [[tweets objectAtIndex: indexPath.row] objectForKey: @"text"];
 	CGSize maxTextSize = CGSizeMake(220.0, 200.0);
 	CGSize textSize = [text sizeWithFont: [UIFont systemFontOfSize: 12] constrainedToSize: maxTextSize];
@@ -521,8 +528,7 @@
 //* createNewTweetCellFromNib
 //*
 //*************************************************
-- (TweetViewCell *) createNewTweetCellFromNib
-{
+- (TweetViewCell *) createNewTweetCellFromNib {
 	NSArray * nibContents = [[NSBundle mainBundle] loadNibNamed: @"TweetViewCell"
 														  owner: self options: nil];
 	TweetViewCell * tweetCell = nil;
@@ -592,6 +598,26 @@
 			urlAddress = @"http://";
 			NSString *urlStub = [tweetURL substringWithRange:NSMakeRange( urlStart, urlLength ) ];
 			urlAddress = [urlAddress stringByAppendingString:urlStub];
+		} else if ( [tweetURL rangeOfString: @"@" options:1].location != NSNotFound ) {
+			int tweetLength = tweetURL.length;
+			int comStart = [tweetURL rangeOfString: @"@" options:1].location + 1;
+			NSRange startRange = {0, comStart};
+			NSRange endRange = {comStart, tweetLength - comStart};
+			NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
+			NSRange urlStartRange = [tweetURL rangeOfCharacterFromSet:charSet options:5 range:startRange];
+			NSRange urlEndRange = [tweetURL rangeOfCharacterFromSet:charSet options:1 range:endRange];
+			int urlStart = urlStartRange.location + 1;
+			if (urlStart < 0) {
+				urlStart = 1;
+			}
+			int urlEnd = urlEndRange.location;
+			if (urlEnd > tweetLength) {
+				urlEnd = tweetLength;
+			}
+			int urlLength = urlEnd - urlStart;
+			urlAddress = @"http://m.twitter.com/";
+			NSString *urlStub = [tweetURL substringWithRange:NSMakeRange( urlStart, urlLength ) ];
+			urlAddress = [urlAddress stringByAppendingString:urlStub];
 		}
 		
 		viewController.urlAddress = urlAddress;
@@ -600,7 +626,6 @@
 	}
 	// End Added Code
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; 

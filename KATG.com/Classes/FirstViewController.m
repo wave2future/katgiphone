@@ -249,6 +249,7 @@
 	[ request setHTTPBody: myRequestData ];
 	
 	[ NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil ];
+	
 	comField.text = @"";
 }
 
