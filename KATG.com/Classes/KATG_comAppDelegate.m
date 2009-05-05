@@ -26,7 +26,26 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	// Add the tab bar controller's current view as a subview of the window
 	[window addSubview:tabBarController.view];
+	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:-(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge)];
+	//[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge)];
 }
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+	application.applicationIconBadgeNumber = 0;
+}
+
+- (void)application:didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {	
+    NSLog(@"deviceToken: %@", deviceToken);
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
+	NSLog(@"deviceToken: %@", devToken);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {	
+    NSLog(@"Error in registration. Error: %@", error);
+} 
+
 
 - (void)dealloc {
 	[tabBarController release];

@@ -483,7 +483,6 @@
 //* 
 //*******************************************************
 - (void)viewDidDisappear:(BOOL)animated {
-	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	[userDefaults setObject:(NSString *)nameField.text forKey:@"nameField"];
 	[userDefaults setObject:(NSString *)locField.text forKey:@"locField"];
 	[userDefaults setObject:(NSString *)comField.text forKey:@"comField"];
