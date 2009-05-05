@@ -16,7 +16,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import "DetailViewController.h"
-#import "KATG_comAppDelegate.h" // This gives access to the navigation controller
+
 
 @implementation DetailViewController
 

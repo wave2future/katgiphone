@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  OnAirViewController.h
 //  KATG.com
 //
 //  Live Show Tab with: 
@@ -23,9 +23,10 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 
+
 @class AudioStreamer; // This is the shoutcast radio class
 
-@interface FirstViewController : UIViewController {
+@interface OnAirViewController : UIViewController {
 	// Live Feed Play Button
 	IBOutlet UIButton		*button;
 	
@@ -38,49 +39,61 @@
 	// Call Button
 	IBOutlet UIButton		*callButton;
 	
+	// Check reachability
+	BOOL _isDataSourceAvailable;
+	
 	// Feed status
 	NSMutableArray			*feedEntries;
 	IBOutlet UILabel		*statusText;
 	
 	// Feedback fields and button
-	IBOutlet UIButton		*feedButton;
+	IBOutlet UIButton		*feedBack;
 	IBOutlet UITextField	*nameField;
 	IBOutlet UITextField	*locField;
 	IBOutlet UITextView		*comField;
+	NSNotificationCenter	*myNotficationCenter;
+	NSUserDefaults			*userDefaults;
 }
 
 // Ensures textFields and Labels will persist in memory until they've been used
+@property (nonatomic, retain) IBOutlet UIButton		*button;
+@property (nonatomic, retain) IBOutlet UIView		*volumeSliderContainer;
+@property (nonatomic, retain) IBOutlet UIButton		*callButton;
 @property (nonatomic, retain) IBOutlet UILabel		*statusText;
+@property (nonatomic, retain) IBOutlet UIButton		*feedBack;
 @property (nonatomic, retain) IBOutlet UITextField	*nameField;
 @property (nonatomic, retain) IBOutlet UITextField	*locField;
 @property (nonatomic, retain) IBOutlet UITextView	*comField;
-@property (nonatomic, retain) IBOutlet UIView		*volumeSliderContainer;
-@property (nonatomic, retain) IBOutlet UIButton		*feedButton;
 
 // Set up actions for GUI to perform
 // Play Button
 - (IBAction)buttonPressed:(id)sender;
+- (void)setButtonImage:(UIImage *)image;
+- (void)spinButton;
+// System Volume Slider
+- (void)drawVolumeSlider;
+
+// Set up user default to automatically launch audiostreamer
+- (void)setDefaults;
+// Call Button
+- (IBAction)phoneButtonPressed:(id)sender;
+
+// Autorelease pool for pollFeed
+- (void)autoPool;
+// Establish timer to update feed status
+- (void)setTimer;
+// Check Reachability
+- (BOOL)isDataSourceAvailable;
+// Poll live show status feed
+- (void)pollFeed;
+
 // Submit feedback
-- (IBAction)feedButtonPressed:(id)sender;
+- (IBAction)feedBackPressed:(id)sender;
+// Custom feedback button image
+- (void)setFeedBackImage;
 // Dismiss keyboard when DONE is pressed
 - (IBAction)textFieldDoneEditing:(id)sender;
 // Dismiss keyboard when user clicks outside Comment textView (big invisible button in background)
 - (IBAction)textViewDoneEditing:(id)sender;
-// Poll live show status feed
-- (void)pollFeed;
-// Establish timer to update feed status
-- (void)setTimer;
-// Call Button
-- (IBAction)phoneButtonPressed:(id)sender;
-// System Volume Slider
-- (void)drawVolumeSlider;
-// Set up user default to automatically launch audiostreamer
-- (void)setDefaults;
-// Custom feedback button image
-- (void)setFeedButtonImage;
-
-- (void)setButtonImage:(UIImage *)image;
-
-- (void)autoPool;
 
 @end

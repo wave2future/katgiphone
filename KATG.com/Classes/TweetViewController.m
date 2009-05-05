@@ -25,6 +25,8 @@
 
 @implementation TweetViewController
 
+@synthesize navigationController;
+
 #pragma mark UIView methods
 //*******************************************************
 //* viewDidLoad:
@@ -632,6 +634,7 @@
 }
 
 - (void)dealloc {
+	[navigationController release];
 	[iconDict release];
 	[tweets release];
 	CFRelease(connections);

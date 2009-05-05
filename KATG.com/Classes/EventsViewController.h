@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  EventsViewController.h
 //  KATG.com
 //  
 //  This program is free software: you can redistribute it and/or modify
@@ -17,11 +17,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UITableViewController {
+
+@interface EventsViewController : UITableViewController {
+	IBOutlet UINavigationController	*navigationController; // 
     NSMutableArray *list;         // Adds formmated contents of each cell in an array
 	NSMutableArray *feedEntries;  // Child nodes of the feed being queried
 }
 
+@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) NSMutableArray *list;
 @property (nonatomic, retain) NSMutableArray *feedEntries;
 

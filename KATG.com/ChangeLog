@@ -13,3 +13,9 @@ changed shading on events layout page
 Version 1.0.4
 Added phone support
 Changed events detail page return button
+Version 1.0.5
+Changed Navigation Controller
+Graphical changes to OnAir Tab
+Renamed several files
+Added Notification center to clear textview for feedback
+Added persistance for name, location and textview contents

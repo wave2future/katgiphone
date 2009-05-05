@@ -24,6 +24,8 @@
 @class TweetViewCell;
 
 @interface TweetViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
+	IBOutlet UINavigationController	*navigationController; //
+	
 	IBOutlet UIActivityIndicatorView *activity;
 	IBOutlet UITableView *tv;
 	
@@ -42,6 +44,8 @@
 	UIBarButtonItem *addButton;
 	// End Added code
 }
+
+@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
 - (void) loadData;
 - (void) saveData;

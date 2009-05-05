@@ -16,23 +16,20 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import "KATG_comAppDelegate.h"
-#import "SecondViewController.h"
+
 
 @implementation KATG_comAppDelegate
 
 @synthesize window;
 @synthesize tabBarController;
-@synthesize navigationController;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-	
 	// Add the tab bar controller's current view as a subview of the window
 	[window addSubview:tabBarController.view];
 }
 
 - (void)dealloc {
 	[tabBarController release];
-	[navigationController release];
 	[window release];
 	[super dealloc];
 }

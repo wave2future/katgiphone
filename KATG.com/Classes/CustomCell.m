@@ -29,6 +29,7 @@
 
 #import "CustomCell.h"
 
+
 @implementation CustomCell
 
 @synthesize lblTitle, lblPublish, lblPublishDate, imgSquare;
