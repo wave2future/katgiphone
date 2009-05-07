@@ -85,6 +85,13 @@
 	 object:nil];
 	
 	if ([self isDataSourceAvailable] == NO) {
+		UIAlertView *alert = [[UIAlertView alloc] 
+							  initWithTitle:@"NO INTERNET CONNECTION"
+							  message:@"This Application requires an active internet connection. Please connect to wifi or cellular data network for full application functionality." 
+							  delegate:nil
+							  cancelButtonTitle:@"Continue" 
+							  otherButtonTitles:nil];
+		[alert show];
 		return;
 	}
 	

@@ -196,12 +196,14 @@
 //*******************************************************
 - (void) loadURL
 {
-	NSString * searchString = @"http://search.twitter.com/search.json?q=from%3Akeithandthegirl+OR+from%3AKeithMalley";
+	//NSString * searchString = @"http://search.twitter.com/search.json?q=from%3Akeithandthegirl+OR+from%3AKeithMalley+OR+from%3AKaTGShowAlert";
+	NSString * searchString = @"http://keithandthegirl.com/app/twitterFeed";
 	
 	if ( otherTweets == @"YES" ) // Changed Code this line
-		searchString = [searchString stringByAppendingString: @"+OR+keithandthegirl+OR+katg+OR+%22keith+and+the+girl%22"];
+		searchString = [searchString stringByAppendingString: @"?other=True"];
+		//searchString = [searchString stringByAppendingString: @"+OR+keithandthegirl+OR+katg+OR+%22keith+and+the+girl%22"];
 	
-	searchString = [searchString stringByAppendingFormat: @"&rpp=%i", 20]; // Changed Code this line
+	//searchString = [searchString stringByAppendingFormat: @"&rpp=%i", 20]; // Changed Code this line
 	
 	NSURL *url = [NSURL URLWithString: searchString];
 	
