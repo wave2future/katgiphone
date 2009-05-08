@@ -32,6 +32,8 @@
 @synthesize volumeSliderContainer;
 // Call in button
 @synthesize callButton;
+// Launch KATG in iTunes
+@synthesize iButton;
 // Feed Status
 @synthesize statusText;
 // Feedback Button
@@ -67,6 +69,12 @@
 	
 	// Draw Volume Slider
 	[self drawVolumeSlider];
+	
+	// Set Phone Button Image
+	[self setPhoneButtonImage];
+	
+	// Set iTunes Button Image
+	[self setiTunesImage];
 	
 	// Set Feedback Button Image
 	[self setFeedBackImage];
@@ -287,6 +295,48 @@
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:+16465028682"]];
 }
 
+//*******************************************************
+//* setPhoneButtonImage
+//* 
+//* 
+//*******************************************************
+- (void)setPhoneButtonImage {
+	UIImage *feedButtonImage = [UIImage imageNamed:@"feedButtonNormal.png"];
+	UIImage *normal = [feedButtonImage stretchableImageWithLeftCapWidth:12 topCapHeight:12];
+	
+	UIImage *feedButtonHighlightedImage = [UIImage imageNamed:@"feedButtonPressed.png"];
+	UIImage *highlight = [feedButtonHighlightedImage stretchableImageWithLeftCapWidth:12 topCapHeight:12];
+	
+	[callButton setBackgroundImage:(UIImage *)normal forState:UIControlStateNormal];
+	[callButton setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
+}
+
+#pragma mark iTunes
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
+- (IBAction)itunesButtonPressed:(id)sender {
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=253167631"]];
+}
+
+//*******************************************************
+//* setiTunesImage
+//* 
+//* 
+//*******************************************************
+- (void)setiTunesImage {
+	UIImage *feedButtonImage = [UIImage imageNamed:@"rssNormal.png"];
+	UIImage *normal = [feedButtonImage stretchableImageWithLeftCapWidth:12 topCapHeight:12];
+	
+	UIImage *feedButtonHighlightedImage = [UIImage imageNamed:@"rssPressed.png"];
+	UIImage *highlight = [feedButtonHighlightedImage stretchableImageWithLeftCapWidth:12 topCapHeight:12];
+	
+	[iButton setBackgroundImage:(UIImage *)normal forState:UIControlStateNormal];
+	[iButton setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
+}
+
 #pragma mark Live Show Feed Indicator
 //*******************************************************
 //* autoPool
@@ -376,10 +426,10 @@
 		} else if(feedStatusInt == 1) {
 			feedStatus = @"Live";
 		} else {
-			feedStatus = @"????";
+			feedStatus = @"Unknown";
 		}
 	} else {
-		feedStatus = @"????";
+		feedStatus = @"Unknown";
 	}
 	
 	statusText.text = feedStatus;

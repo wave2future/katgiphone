@@ -122,8 +122,9 @@
 		
 		feedEntryIndex = feedEntryIndex - 1;
 	}
+	
 	if ([list count] == 0) {
-		Event *Ev = [[Event alloc] initWithTitle:@"No Internet Connection" publishTime:@"12:00 AM" publishDate:@"WED 04/15" type:@"The Show" detail:@"Without an internet this app will not function normally. Connect to wifi or a cellular data service."];
+		Event *Ev = [[Event alloc] initWithTitle:@"No Internet Connection" publishTime:@"12:00 AM" publishDate:@"WED 04/15" type:@"The Show" detail:@"Without an internet connection this app will not function normally. Connect to wifi or a cellular data service."];
 		[list addObject:Ev];
 	}
 }

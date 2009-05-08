@@ -39,6 +39,9 @@
 	// Call Button
 	IBOutlet UIButton		*callButton;
 	
+	// iTunes Button
+	IBOutlet UIButton		*iButton;
+	
 	// Check reachability
 	BOOL _isDataSourceAvailable;
 	
@@ -59,6 +62,7 @@
 @property (nonatomic, retain) IBOutlet UIButton		*button;
 @property (nonatomic, retain) IBOutlet UIView		*volumeSliderContainer;
 @property (nonatomic, retain) IBOutlet UIButton		*callButton;
+@property (nonatomic, retain) IBOutlet UIButton		*iButton;
 @property (nonatomic, retain) IBOutlet UILabel		*statusText;
 @property (nonatomic, retain) IBOutlet UIButton		*feedBack;
 @property (nonatomic, retain) IBOutlet UITextField	*nameField;
@@ -77,6 +81,13 @@
 - (void)setDefaults;
 // Call Button
 - (IBAction)phoneButtonPressed:(id)sender;
+// Custom Phone Button Image
+- (void)setPhoneButtonImage;
+
+// Launch KATG podcast in iTunes app
+- (IBAction)itunesButtonPressed:(id)sender;
+// Custom iTunes button image
+- (void)setiTunesImage;
 
 // Autorelease pool for pollFeed
 - (void)autoPool;

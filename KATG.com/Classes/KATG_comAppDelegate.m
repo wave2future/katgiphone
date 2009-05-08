@@ -41,12 +41,13 @@
 
 - (void)application:didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {	
     NSLog(@"deviceToken: %@", deviceToken);
+	//NSString *token = [[NSString alloc] initWithFormat: @"%@", deviceToken];
+	//[self sendProviderDeviceToken:token];
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
 	NSLog(@"deviceToken: %@", devToken);
 	NSString *token = [[NSString alloc] initWithFormat: @"%@", devToken];
-	//const void *deviceTokenBytes = [devToken bytes];
 	[self sendProviderDeviceToken:token];
 }
 
