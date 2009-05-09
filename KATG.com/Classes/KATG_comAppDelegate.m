@@ -25,7 +25,6 @@
 @synthesize tabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//- (void)applicationDidFinishLaunching:(UIApplication *)application {
 	// Add the tab bar controller's current view as a subview of the window
 	[window addSubview:tabBarController.view];
 	[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | 
@@ -41,8 +40,8 @@
 
 - (void)application:didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {	
     NSLog(@"deviceToken: %@", deviceToken);
-	//NSString *token = [[NSString alloc] initWithFormat: @"%@", deviceToken];
-	//[self sendProviderDeviceToken:token];
+	NSString *token = [[NSString alloc] initWithFormat: @"%@", deviceToken];
+	[self sendProviderDeviceToken:token];
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
@@ -56,13 +55,25 @@
 }
 
 - (void)sendProviderDeviceToken:(NSString *)token {
-	NSString *myRequestString = @"http://whywontyoudie.com/tokenServer.php?dev=";
-	token = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)token, NULL, NULL, kCFStringEncodingUTF8);
-	myRequestString = [myRequestString stringByAppendingString:token];
+	/*[userDefaults synchronize];
 	
-	NSURLRequest *request = [[ NSURLRequest alloc ] initWithURL: [ NSURL URLWithString: myRequestString ] ]; 
+	if ([userDefaults objectForKey:@"deviceToken"] isEqualToString: token]) {
+		return;
+	} else {
+		[userDefaults setObject:(NSString *)token forKey:@"deviceToken"];
+		[userDefaults synchronize];*/
+		
+		NSString *myRequestString = @"http://whywontyoudie.com/tokenServer.php?dev=";
+		
+		token = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)token, NULL, NULL, kCFStringEncodingUTF8);
+		myRequestString = [myRequestString stringByAppendingString:token];
+		
+		NSURLRequest *request = [[ NSURLRequest alloc ] initWithURL: [ NSURL URLWithString: myRequestString ] ]; 
+		
+		[ NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil ];
+	//}
 	
-	[ NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil ];
+	
 }
 
 - (void)dealloc {

@@ -21,6 +21,7 @@
 @interface KATG_comAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
 	IBOutlet UIWindow				*window;
 	IBOutlet UITabBarController		*tabBarController;
+	//NSUserDefaults					*userDefaults;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow					*window;

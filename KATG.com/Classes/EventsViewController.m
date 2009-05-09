@@ -210,11 +210,9 @@
 	
 	NSString *type = [[list objectAtIndex:indexPath.row] type];
 	if ( [type isEqualToString:@"show"] ) {
-		cell.imgSquare.image = [UIImage imageNamed:@"showSquare.png"];
+		cell.imgSquare.image = [UIImage imageNamed:@"LiveShowIconTrans.png"];
 	} else if ( [type isEqualToString:@"event"] ) {
-		cell.imgSquare.image = [UIImage imageNamed:@"eventSquare.png"];
-	} else if ( [type isEqualToString:@"other"] ) {
-		cell.imgSquare.image = [UIImage imageNamed:@"otherSquare.png"];
+		cell.imgSquare.image = [UIImage imageNamed:@"EventIconTrans.png"];
 	}
 	
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
