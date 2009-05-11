@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="106"/>
+			<integer value="289"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -51,7 +51,11 @@
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<object class="IBUINavigationController" key="IBUISelectedViewController" id="995084141">
 					<object class="IBUITabBarItem" key="IBUITabBarItem" id="361391275">
-						<string key="IBUITitle">Item</string>
+						<string key="IBUITitle"/>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">PastShowsTab.png</string>
+						</object>
 						<reference key="IBUITabBar"/>
 					</object>
 					<reference key="IBUIParentViewController" ref="1034742383"/>
@@ -76,7 +80,7 @@
 								<string key="IBUITitle">Root View Controller</string>
 							</object>
 							<reference key="IBUIParentViewController" ref="995084141"/>
-							<string key="IBUINibName">EventsView</string>
+							<string key="IBUINibName">TableView</string>
 						</object>
 					</object>
 				</object>
@@ -376,7 +380,7 @@
 									<string key="IBUITitle">Item</string>
 								</object>
 								<reference key="IBUIParentViewController" ref="602478440"/>
-								<string key="IBUINibName">EventsView</string>
+								<string key="IBUINibName">TableView</string>
 								<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 							</object>
 						</object>
@@ -400,7 +404,7 @@
 									<bool key="IBUIUserInteractionEnabled">NO</bool>
 									<object class="NSCustomResource" key="IBUIImage">
 										<string key="NSClassName">NSImage</string>
-										<string key="NSResourceName">BG2.png</string>
+										<string key="NSResourceName">LinkBG.png</string>
 									</object>
 								</object>
 								<object class="IBUIButton" id="988107625">
@@ -1065,7 +1069,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIApplication</string>
 					<string>UIResponder</string>
-					<string>{{316, 78}, {320, 480}}</string>
+					<string>{{249, 139}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<boolean value="NO"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
