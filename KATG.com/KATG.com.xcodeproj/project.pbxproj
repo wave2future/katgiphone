@@ -50,7 +50,6 @@
 		536BFF170FB89F2E00DA7720 /* ShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 536BFF120FB89F2E00DA7720 /* ShowCell.m */; };
 		536BFF180FB89F2E00DA7720 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 536BFF140FB89F2E00DA7720 /* XMLReader.m */; };
 		536BFF200FB8A08800DA7720 /* PastShowsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 536BFF1F0FB8A08800DA7720 /* PastShowsController.m */; };
-		536CD45D0F89E6240063DED2 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 536CD45C0F89E6240063DED2 /* AudioStreamer.m */; };
 		536CD46F0F89E68A0063DED2 /* Credits in Resources */ = {isa = PBXBuildFile; fileRef = 536CD46B0F89E68A0063DED2 /* Credits */; };
 		536CD4700F89E68A0063DED2 /* gpl-3.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 536CD46C0F89E68A0063DED2 /* gpl-3.0.txt */; };
 		536CD4710F89E68A0063DED2 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 536CD46D0F89E68A0063DED2 /* README */; };
@@ -137,8 +136,6 @@
 		536BFF140FB89F2E00DA7720 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		536BFF1E0FB8A08800DA7720 /* PastShowsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PastShowsController.h; sourceTree = "<group>"; };
 		536BFF1F0FB8A08800DA7720 /* PastShowsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PastShowsController.m; sourceTree = "<group>"; };
-		536CD45B0F89E6240063DED2 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
-		536CD45C0F89E6240063DED2 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		536CD46B0F89E68A0063DED2 /* Credits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Credits; sourceTree = "<group>"; };
 		536CD46C0F89E68A0063DED2 /* gpl-3.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "gpl-3.0.txt"; sourceTree = "<group>"; };
 		536CD46D0F89E68A0063DED2 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
@@ -194,7 +191,6 @@
 				537CD8850F8FBADE002F86FA /* Events */,
 				53B8CE820FB4235B00C8C71B /* LinkList */,
 				536BFF0C0FB89EF600DA7720 /* PastShows */,
-				536CD4570F89E5EC0063DED2 /* Streamer */,
 				535FE5F20F89FEF300F6AD75 /* Parser */,
 			);
 			path = Classes;
@@ -355,15 +351,6 @@
 				536BFF140FB89F2E00DA7720 /* XMLReader.m */,
 			);
 			name = PastShows;
-			sourceTree = "<group>";
-		};
-		536CD4570F89E5EC0063DED2 /* Streamer */ = {
-			isa = PBXGroup;
-			children = (
-				536CD45B0F89E6240063DED2 /* AudioStreamer.h */,
-				536CD45C0F89E6240063DED2 /* AudioStreamer.m */,
-			);
-			name = Streamer;
 			sourceTree = "<group>";
 		};
 		536CD4590F89E5F20063DED2 /* Delegate */ = {
@@ -553,7 +540,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* KATG_comAppDelegate.m in Sources */,
 				28216C970DB411BC00E5133A /* OnAirViewController.m in Sources */,
-				536CD45D0F89E6240063DED2 /* AudioStreamer.m in Sources */,
 				535FE5500F89F71800F6AD75 /* EventsViewController.m in Sources */,
 				535FE6080F89FF1700F6AD75 /* CXMLDocument.m in Sources */,
 				535FE6090F89FF1700F6AD75 /* CXMLDocument_CreationExtensions.m in Sources */,

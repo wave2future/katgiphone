@@ -18,22 +18,22 @@
 #import "OnAirViewController.h"
 #import <QuartzCore/CoreAnimation.h>
 #import <SystemConfiguration/SystemConfiguration.h>
-#import "AudioStreamer.h"
 #import "grabRSSFeed.h"
 #import "sanitizeField.h"
 
+static BOOL streaming;
 
 @implementation OnAirViewController
 
 // Set up interface for sending and receiving data from fields and labels
 // Audio Streamer Play Button
 @synthesize button;
+// 
+@synthesize moviePlayer;
 // Volume Slider
 @synthesize volumeSliderContainer;
 // Call in button
 @synthesize callButton;
-// Launch KATG in iTunes
-@synthesize iButton;
 // Feed Status
 @synthesize statusText;
 // Feedback Button
@@ -73,9 +73,6 @@
 	// Set Phone Button Image
 	[self setPhoneButtonImage];
 	
-	// Set iTunes Button Image
-	[self setiTunesImage];
-	
 	// Set Feedback Button Image
 	[self setFeedBackImage];
 	
@@ -92,6 +89,15 @@
 	 name:@"UITextViewTextDidBeginEditingNotification" 
 	 object:nil];
 	
+	// Register to receive a notification that the movie is now in memory and ready to play
+	[[NSNotificationCenter defaultCenter] 
+	 addObserver:self 
+	 selector:@selector(moviePreloadDidFinish:) 
+	 name:MPMoviePlayerContentPreloadDidFinishNotification 
+	 object:nil];
+	
+	streaming = NO;
+	
 	if ([self isDataSourceAvailable] == NO) {
 		UIAlertView *alert = [[UIAlertView alloc] 
 							  initWithTitle:@"NO INTERNET CONNECTION"
@@ -107,42 +113,51 @@
 }
 
 #pragma mark Audio Streamer
+
 //*******************************************************
 //* buttonPressed
 //* 
 //* 
 //*******************************************************
 - (IBAction)buttonPressed:(id)sender {
-	if (!streamer) // If the streamer is not active, activate stream and iniate button spin and image change
-	{
-		
-		NSString *escapedValue =
-		[(NSString *)CFURLCreateStringByAddingPercentEscapes(
-															 nil,
-															 (CFStringRef)@"http://liveshow.keithandthegirl.com:8004",
-															 NULL,
-															 NULL,
-															 kCFStringEncodingUTF8)
-		 autorelease];
-		
-		NSURL *url = [NSURL URLWithString:escapedValue];
-		streamer = [[AudioStreamer alloc] initWithURL:url];
-		[streamer
-		 addObserver:self
-		 forKeyPath:@"isPlaying"
-		 options:0
-		 context:nil];
-		[streamer start];
-		
-		[self setButtonImage:[UIImage imageNamed:@"loadingButton.png"]];
-		
-		[self spinButton];
+	NSString *urlString = @"http://liveshow.keithandthegirl.com:8004/";
+	NSURL *movieURL = [[NSURL alloc] initWithString:urlString];
+	[self playMovie:movieURL];
+}
+
+-(void)playMovie:(NSURL *)movieURL
+{
+	if (streaming) {
+		self.moviePlayer = nil;
+		streaming = NO;
+		[self setButtonImage:[UIImage imageNamed:@"playButton.png"]];
+	} else {
+		// Initialize a movie player object with the specified URL
+		MPMoviePlayerController *mp = [[MPMoviePlayerController alloc] initWithContentURL:movieURL];
+		if (mp)
+		{
+			// save the movie player object
+			self.moviePlayer = mp;
+			[mp release];
+			
+			streaming = YES;
+			
+			[self setButtonImage:[UIImage imageNamed:@"loadingButton.png"]];
+			
+			[self spinButton];
+		}
 	}
-	else // If the streamer is active, deactivate stream and change button image
-	{
-		[button.layer removeAllAnimations];
-		[streamer stop];
-	}
+}
+
+//  Notification called when the movie finished preloading.
+- (void) moviePreloadDidFinish:(NSNotification*)notification
+{
+	
+	NSLog(@"Movie Preload Notification");
+	
+	[self setButtonImage:[UIImage imageNamed:@"stopButton.png"]];
+	
+	[button.layer removeAllAnimations];
 }
 
 //*******************************************************
@@ -197,45 +212,6 @@
 	}
 }
 
-//*******************************************************
-//* observeValueForKeyPath
-//* 
-//* 
-//*******************************************************
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if ([keyPath isEqual:@"isPlaying"])
-	{
-		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-		
-		if ([(AudioStreamer *)object isPlaying])
-		{
-			[self
-			 performSelector:@selector(setButtonImage:)
-			 onThread:[NSThread mainThread]
-			 withObject:[UIImage imageNamed:@"stopButton.png"]
-			 waitUntilDone:NO];
-		}
-		else
-		{
-			[streamer removeObserver:self forKeyPath:@"isPlaying"];
-			[streamer release];
-			streamer = nil;
-			
-			[self
-			 performSelector:@selector(setButtonImage:)
-			 onThread:[NSThread mainThread]
-			 withObject:[UIImage imageNamed:@"playButton.png"]
-			 waitUntilDone:NO];
-		}
-		
-		[pool release];
-		return;
-	}
-	
-	[super observeValueForKeyPath:keyPath ofObject:object change:change
-						  context:context];
-}
-
 #pragma mark Volume Slider
 //*******************************************************
 //* 
@@ -288,10 +264,7 @@
 //* 
 //*******************************************************
 - (IBAction)phoneButtonPressed:(id)sender {
-	if (streamer) {
-		[userDefaults setBool:YES forKey:@"StartStream"];
-		[userDefaults synchronize];
-	}
+	
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:+16465028682"]];
 }
 
@@ -309,32 +282,6 @@
 	
 	[callButton setBackgroundImage:(UIImage *)normal forState:UIControlStateNormal];
 	[callButton setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
-}
-
-#pragma mark iTunes
-//*******************************************************
-//* 
-//* 
-//* 
-//*******************************************************
-- (IBAction)itunesButtonPressed:(id)sender {
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=253167631"]];
-}
-
-//*******************************************************
-//* setiTunesImage
-//* 
-//* 
-//*******************************************************
-- (void)setiTunesImage {
-	UIImage *feedButtonImage = [UIImage imageNamed:@"rssNormal.png"];
-	UIImage *normal = [feedButtonImage stretchableImageWithLeftCapWidth:12 topCapHeight:12];
-	
-	UIImage *feedButtonHighlightedImage = [UIImage imageNamed:@"rssPressed.png"];
-	UIImage *highlight = [feedButtonHighlightedImage stretchableImageWithLeftCapWidth:12 topCapHeight:12];
-	
-	[iButton setBackgroundImage:(UIImage *)normal forState:UIControlStateNormal];
-	[iButton setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
 }
 
 #pragma mark Live Show Feed Indicator
@@ -543,9 +490,6 @@
 	[userDefaults setObject:(NSString *)nameField.text forKey:@"nameField"];
 	[userDefaults setObject:(NSString *)locField.text forKey:@"locField"];
 	[userDefaults setObject:(NSString *)comField.text forKey:@"comField"];
-	if (streamer) {
-		[userDefaults setBool:YES forKey:@"StartStream"];
-	}
 	[userDefaults synchronize];
 }
 

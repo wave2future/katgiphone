@@ -20,13 +20,9 @@
 
 @interface ShowCell : UITableViewCell {
 	UILabel *lblTitle;
-    UILabel *lblDescription;
-	UILabel *lblLink;
 }
 
 @property (nonatomic, retain) UILabel *lblTitle;
-@property (nonatomic, retain) UILabel *lblDescription;
-@property (nonatomic, retain) UILabel *lblLink;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier;
 

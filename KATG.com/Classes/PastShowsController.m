@@ -10,7 +10,7 @@
 #import "XMLReader.h"
 #import "ShowCell.h"
 
-#define ROW_HEIGHT 80.0
+#define ROW_HEIGHT 60.0
 
 @implementation PastShowsController
 
@@ -24,6 +24,8 @@
 	 [super viewDidLoad];
 	 
 	 self.navigationItem.title = @"Past Shows";
+	 
+	 self.tableView.rowHeight = ROW_HEIGHT;
 	 
 	 list = [[NSMutableArray alloc] init];
 	 
