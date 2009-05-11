@@ -1,5 +1,5 @@
 //
-//  WebViewController.h
+//  ShowCell.h
 //  KATG.com
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -17,12 +17,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WebViewController : UIViewController {
-	IBOutlet UIWebView *webView; // Set up webview for TweetViewController to pass too
-	NSString *urlAddress;        // Variable for TweetViewController to pass URL address
+
+@interface ShowCell : UITableViewCell {
+	UILabel *lblTitle;
+    UILabel *lblDescription;
+	UILabel *lblLink;
 }
 
-@property (nonatomic, retain) UIWebView *webView;
-@property (nonatomic, retain) NSString *urlAddress;
+@property (nonatomic, retain) UILabel *lblTitle;
+@property (nonatomic, retain) UILabel *lblDescription;
+@property (nonatomic, retain) UILabel *lblLink;
+
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier;
 
 @end

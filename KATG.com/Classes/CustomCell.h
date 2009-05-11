@@ -17,6 +17,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface CustomCell : UITableViewCell {
 	UILabel *lblTitle;
     UILabel *lblPublish;
