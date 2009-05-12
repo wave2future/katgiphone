@@ -9,13 +9,14 @@
 #import "PastShowsController.h"
 #import "XMLReader.h"
 #import "ShowCell.h"
+#import "ShowDetailController.h"
+
 
 #define ROW_HEIGHT 60.0
 
 @implementation PastShowsController
 
 @synthesize navigationController;
-//@synthesize tableView;
 @synthesize list;
 @synthesize activityIndicator;
 
@@ -60,8 +61,8 @@
 - (void) pollFeed {
 	NSError *parseError = nil;
 	
-	//NSString *feedURLString = @"http://keithandthegirl.com/rss";
-	NSString *feedURLString = @"http://whywontyoudie.com/feed.xml";
+	NSString *feedURLString = @"http://keithandthegirl.com/rss";
+	//NSString *feedURLString = @"http://whywontyoudie.com/feed.xml";
 	
 	XMLReader *streamingParser = [[XMLReader alloc] init];
     self.list = [streamingParser parseXMLFileAtURL:[NSURL URLWithString:feedURLString] parseError:&parseError];
@@ -76,6 +77,8 @@
 	
 	[self.tableView reloadData];
 }
+
+
 
 #pragma mark System
 
@@ -141,11 +144,12 @@
 
  // Override to support row selection in the table view.
  - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
- 
- // Navigation logic may go here -- for example, create and push another view controller.
- // AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
- // [self.navigationController pushViewController:anotherViewController animated:YES];
- // [anotherViewController release];
+	 ShowDetailController *viewController = [[ShowDetailController alloc] initWithNibName:@"ShowView" bundle:[NSBundle mainBundle]];
+	 viewController.TitleTemp = [[list objectAtIndex:indexPath.row] title];
+	 viewController.LinkTemp = [[list objectAtIndex:indexPath.row] link];
+	 viewController.BodyTemp = [[list objectAtIndex:indexPath.row] detail];
+	 [[self navigationController] pushViewController:viewController animated:YES];
+	 [viewController release];
  }
 
 

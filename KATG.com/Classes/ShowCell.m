@@ -31,7 +31,7 @@
     CGRect baseRect = CGRectInset(self.contentView.bounds, 10, 0);
     CGRect rect = baseRect;
 	
-	rect.origin.x = self.contentView.bounds.size.width - 190;
+	rect.origin.x = self.contentView.bounds.size.width - 240;
     rect.origin.y = 0;
     rect.size.width = self.contentView.bounds.size.width - 120;
     lblTitle.frame = rect;

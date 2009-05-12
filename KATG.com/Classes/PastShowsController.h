@@ -11,13 +11,11 @@
 
 @interface PastShowsController : UITableViewController <UITableViewDelegate> {
 	IBOutlet UINavigationController	*navigationController;
-	//IBOutlet UITableView			*tableView;
     NSMutableArray					*list;
 	UIActivityIndicatorView			*activityIndicator;
 }
 
 @property (nonatomic, retain) IBOutlet UINavigationController	*navigationController;
-//@property (nonatomic, retain) IBOutlet UITableView				*tableView;
 @property (nonatomic, retain) NSMutableArray					*list;
 @property (nonatomic, retain) UIActivityIndicatorView			*activityIndicator;
 
