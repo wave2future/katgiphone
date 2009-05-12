@@ -113,18 +113,21 @@ static BOOL streaming;
 }
 
 #pragma mark Audio Streamer
-
 //*******************************************************
 //* buttonPressed
 //* 
 //* 
 //*******************************************************
 - (IBAction)buttonPressed:(id)sender {
-	NSString *urlString = @"http://liveshow.keithandthegirl.com:8004/";
-	NSURL *movieURL = [[NSURL alloc] initWithString:urlString];
+	NSURL *movieURL = [[NSURL alloc] initWithString: @"http://141.217.119.35:8005/"];
 	[self playMovie:movieURL];
 }
 
+//*******************************************************
+//* playMovie
+//* 
+//* 
+//*******************************************************
 -(void)playMovie:(NSURL *)movieURL
 {
 	if (streaming) {
@@ -156,8 +159,6 @@ static BOOL streaming;
 	NSLog(@"Movie Preload Notification");
 	
 	[self setButtonImage:[UIImage imageNamed:@"stopButton.png"]];
-	
-	[button.layer removeAllAnimations];
 }
 
 //*******************************************************
