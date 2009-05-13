@@ -119,6 +119,7 @@ static BOOL streaming;
 //* 
 //*******************************************************
 - (IBAction)buttonPressed:(id)sender {
+	//NSURL *movieURL = [[NSURL alloc] initWithString: @"http://liveshow.keithandthegirl.com:8004/"];
 	NSURL *movieURL = [[NSURL alloc] initWithString: @"http://141.217.119.35:8005/"];
 	[self playMovie:movieURL];
 }
@@ -128,8 +129,7 @@ static BOOL streaming;
 //* 
 //* 
 //*******************************************************
--(void)playMovie:(NSURL *)movieURL
-{
+-(void)playMovie:(NSURL *)movieURL {
 	if (streaming) {
 		self.moviePlayer = nil;
 		streaming = NO;
@@ -265,7 +265,10 @@ static BOOL streaming;
 //* 
 //*******************************************************
 - (IBAction)phoneButtonPressed:(id)sender {
-	
+	if (streaming) {
+		[userDefaults setBool:YES forKey:@"StartStream"];
+		[userDefaults synchronize];
+	}
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:+16465028682"]];
 }
 
@@ -488,6 +491,9 @@ static BOOL streaming;
 //* 
 //*******************************************************
 - (void)viewDidDisappear:(BOOL)animated {
+	if (streaming) {
+		[userDefaults setBool:YES forKey:@"StartStream"];
+	}
 	[userDefaults setObject:(NSString *)nameField.text forKey:@"nameField"];
 	[userDefaults setObject:(NSString *)locField.text forKey:@"locField"];
 	[userDefaults setObject:(NSString *)comField.text forKey:@"comField"];

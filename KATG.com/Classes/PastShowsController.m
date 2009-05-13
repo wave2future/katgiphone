@@ -61,8 +61,8 @@
 - (void) pollFeed {
 	NSError *parseError = nil;
 	
-	NSString *feedURLString = @"http://keithandthegirl.com/rss";
-	//NSString *feedURLString = @"http://whywontyoudie.com/feed.xml";
+	//NSString *feedURLString = @"http://keithandthegirl.com/rss";
+	NSString *feedURLString = @"http://whywontyoudie.com/feed.xml";
 	
 	XMLReader *streamingParser = [[XMLReader alloc] init];
     self.list = [streamingParser parseXMLFileAtURL:[NSURL URLWithString:feedURLString] parseError:&parseError];
