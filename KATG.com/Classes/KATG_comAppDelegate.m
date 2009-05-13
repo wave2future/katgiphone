@@ -63,7 +63,8 @@
 		[userDefaults setObject:(NSString *)token forKey:@"deviceToken"];
 		[userDefaults synchronize];*/
 		
-		NSString *myRequestString = @"http://whywontyoudie.com/tokenServer.php?dev=";
+		NSString *myRequestString = @"http://app.keithandthegirl.com/app/tokenserver/tokenserver.php?dev=";
+		//NSString *myRequestString = @"http://whywontyoudie.com/tokenServer.php?dev=";
 		
 		token = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)token, NULL, NULL, kCFStringEncodingUTF8);
 		myRequestString = [myRequestString stringByAppendingString:token];

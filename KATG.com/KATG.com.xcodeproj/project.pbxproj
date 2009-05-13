@@ -35,6 +35,7 @@
 		534CA0CE0FB3881600206F91 /* stopButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 534CA0CB0FB3881600206F91 /* stopButton.png */; };
 		534CA0FF0FB3900E00206F91 /* loadingButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 534CA0FE0FB3900E00206F91 /* loadingButton.png */; };
 		534CA1550FB39A3A00206F91 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 534CA1540FB39A3A00206F91 /* Icon.png */; };
+		534EA7E10FBB796F00A0354C /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 534EA7E00FBB796F00A0354C /* AudioStreamer.m */; };
 		535FE5500F89F71800F6AD75 /* EventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE54F0F89F71800F6AD75 /* EventsViewController.m */; };
 		535FE6080F89FF1700F6AD75 /* CXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE5F40F89FF1700F6AD75 /* CXMLDocument.m */; };
 		535FE6090F89FF1700F6AD75 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE5F60F89FF1700F6AD75 /* CXMLDocument_CreationExtensions.m */; };
@@ -108,6 +109,8 @@
 		534CA0CB0FB3881600206F91 /* stopButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stopButton.png; sourceTree = "<group>"; };
 		534CA0FE0FB3900E00206F91 /* loadingButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadingButton.png; sourceTree = "<group>"; };
 		534CA1540FB39A3A00206F91 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		534EA7DF0FBB796F00A0354C /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
+		534EA7E00FBB796F00A0354C /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		535FE54E0F89F71800F6AD75 /* EventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsViewController.h; sourceTree = "<group>"; };
 		535FE54F0F89F71800F6AD75 /* EventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsViewController.m; sourceTree = "<group>"; };
 		535FE5F30F89FF1700F6AD75 /* CXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument.h; sourceTree = "<group>"; };
@@ -197,6 +200,7 @@
 				53B8CE820FB4235B00C8C71B /* LinkList */,
 				536BFF0C0FB89EF600DA7720 /* PastShows */,
 				535FE5F20F89FEF300F6AD75 /* Parser */,
+				534EA7DE0FBB779A00A0354C /* Streamer */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -311,6 +315,15 @@
 				534CA0CB0FB3881600206F91 /* stopButton.png */,
 			);
 			name = playButton;
+			sourceTree = "<group>";
+		};
+		534EA7DE0FBB779A00A0354C /* Streamer */ = {
+			isa = PBXGroup;
+			children = (
+				534EA7DF0FBB796F00A0354C /* AudioStreamer.h */,
+				534EA7E00FBB796F00A0354C /* AudioStreamer.m */,
+			);
+			name = Streamer;
 			sourceTree = "<group>";
 		};
 		535FE5F20F89FEF300F6AD75 /* Parser */ = {
@@ -572,6 +585,7 @@
 				536BFF180FB89F2E00DA7720 /* XMLReader.m in Sources */,
 				536BFF200FB8A08800DA7720 /* PastShowsController.m in Sources */,
 				5310E8300FB90AE60065A4BC /* ShowDetailController.m in Sources */,
+				534EA7E10FBB796F00A0354C /* AudioStreamer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

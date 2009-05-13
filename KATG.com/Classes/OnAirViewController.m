@@ -119,8 +119,8 @@ static BOOL streaming;
 //* 
 //*******************************************************
 - (IBAction)buttonPressed:(id)sender {
-	//NSURL *movieURL = [[NSURL alloc] initWithString: @"http://liveshow.keithandthegirl.com:8004/"];
-	NSURL *movieURL = [[NSURL alloc] initWithString: @"http://141.217.119.35:8005/"];
+	NSURL *movieURL = [[NSURL alloc] initWithString: @"http://liveshow.keithandthegirl.com:8004/"];
+	//NSURL *movieURL = [[NSURL alloc] initWithString: @"http://141.217.119.35:8005/"];
 	[self playMovie:movieURL];
 }
 
