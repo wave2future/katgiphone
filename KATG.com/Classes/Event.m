@@ -18,6 +18,7 @@
 #import "Event.h"
 #import "MREntitiesConverter.h"
 
+
 @implementation Event
 
 @synthesize title, publishTime, publishDate, type, detail;

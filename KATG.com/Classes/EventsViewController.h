@@ -1,7 +1,7 @@
 //
-//  WebViewController.h
+//  EventsViewController.h
 //  KATG.com
-//
+//  
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
@@ -17,12 +17,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WebViewController : UIViewController {
-	IBOutlet UIWebView *webView; // Set up webview for TweetViewController to pass too
-	NSString *urlAddress;        // Variable for TweetViewController to pass URL address
+
+@interface EventsViewController : UITableViewController {
+	IBOutlet UINavigationController	*navigationController; // 
+    NSMutableArray *list;         // Adds formmated contents of each cell in an array
+	NSMutableArray *feedEntries;  // Child nodes of the feed being queried
 }
 
-@property (nonatomic, retain) UIWebView *webView;
-@property (nonatomic, retain) NSString *urlAddress;
+@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+@property (nonatomic, retain) NSMutableArray *list;
+@property (nonatomic, retain) NSMutableArray *feedEntries;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  SecondViewController.m
+//  EventsViewController.m
 //  KATG.com
 //  
 //  This program is free software: you can redistribute it and/or modify
@@ -15,8 +15,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#import "SecondViewController.h"
-#import "KATG_comAppDelegate.h"
+#import "EventsViewController.h"
 #import "Event.h"
 #import "CustomCell.h"
 #import "TouchXML.h"
@@ -25,9 +24,12 @@
 
 #define ROW_HEIGHT 80.0
 
-@implementation SecondViewController
 
-@synthesize list, feedEntries;
+@implementation EventsViewController
+
+@synthesize navigationController;
+@synthesize list;
+@synthesize feedEntries;
 
 //*******************************************************
 //* awakeFromNib:
@@ -63,7 +65,7 @@
 	
 	// Evaluate the contents of feed for classification and add results into list
 	NSString *eventType = nil;
-		
+	
 	NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateStyle: NSDateFormatterLongStyle];
 	[formatter setFormatterBehavior: NSDateFormatterBehavior10_4];
@@ -80,7 +82,7 @@
 	[reFormatterator setDateStyle: NSDateFormatterLongStyle];
 	[reFormatterator setFormatterBehavior: NSDateFormatterBehavior10_4];
 	[reFormatterator setDateFormat: @"EEE, MM/dd"];
-	 
+	
 	while ( 0 <= feedEntryIndex ) {
 		
 		NSString *feedTitle = [[feedEntries objectAtIndex: feedEntryIndex] 
@@ -103,7 +105,7 @@
 			feedTimeString = @"Unknown";
 			feedTimeString = @"Unknown";
 		}
-						
+		
 		// Determines if event is live show
 		BOOL match = ([feedTitle rangeOfString:@"Live Show" options:NSCaseInsensitiveSearch].location != NSNotFound);
 		
@@ -119,6 +121,11 @@
 		[Ev release];
 		
 		feedEntryIndex = feedEntryIndex - 1;
+	}
+	
+	if ([list count] == 0) {
+		Event *Ev = [[Event alloc] initWithTitle:@"No Internet Connection" publishTime:@"12:00 AM" publishDate:@"WED 04/15" type:@"The Show" detail:@"Without an internet connection this app will not function normally. Connect to wifi or a cellular data service."];
+		[list addObject:Ev];
 	}
 }
 
@@ -191,23 +198,21 @@
 		cell.lblPublish.backgroundColor = color1;
 		cell.lblPublishDate.backgroundColor = color1;
 		cell.backgroundView.backgroundColor = color1;
-	 } else {
-		 cell.lblTitle.backgroundColor = color2;
-		 cell.lblPublish.backgroundColor = color2;
-		 cell.lblPublishDate.backgroundColor = color2;
-		 cell.backgroundView.backgroundColor = color2;
-	 }
+	} else {
+		cell.lblTitle.backgroundColor = color2;
+		cell.lblPublish.backgroundColor = color2;
+		cell.lblPublishDate.backgroundColor = color2;
+		cell.backgroundView.backgroundColor = color2;
+	}
 	
 	cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
 	cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
 	
 	NSString *type = [[list objectAtIndex:indexPath.row] type];
 	if ( [type isEqualToString:@"show"] ) {
-		cell.imgSquare.image = [UIImage imageNamed:@"showSquare.png"];
+		cell.imgSquare.image = [UIImage imageNamed:@"LiveShowIconTrans.png"];
 	} else if ( [type isEqualToString:@"event"] ) {
-		cell.imgSquare.image = [UIImage imageNamed:@"eventSquare.png"];
-	} else if ( [type isEqualToString:@"other"] ) {
-		cell.imgSquare.image = [UIImage imageNamed:@"otherSquare.png"];
+		cell.imgSquare.image = [UIImage imageNamed:@"EventIconTrans.png"];
 	}
 	
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -235,6 +240,7 @@
 }
 
 - (void)dealloc {
+	[navigationController release];
     [list release];
     [super dealloc];
 }

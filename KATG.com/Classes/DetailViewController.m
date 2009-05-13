@@ -16,7 +16,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import "DetailViewController.h"
-#import "KATG_comAppDelegate.h" // This gives access to the navigation controller
+
 
 @implementation DetailViewController
 
@@ -47,7 +47,6 @@
 	detailBody = [[[UITextView alloc] initWithFrame:rect] autorelease];
 	detailBody.textColor = [UIColor blackColor];
 	detailBody.backgroundColor = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0]; 
-	//detailBody.dataDetectorTypes = UIDataDetectorTypeAll; // Only works in 3.0
 	detailBody.editable = NO;
 	detailBody.font = [UIFont systemFontOfSize:15.0];
 	//detailBody.textAlignment = UITextAlignmentCenter;
