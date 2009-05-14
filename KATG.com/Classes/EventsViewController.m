@@ -30,20 +30,7 @@
 @synthesize navigationController;
 @synthesize list;
 @synthesize feedEntries;
-
-//*******************************************************
-//* awakeFromNib:
-//*
-//* Set title in navigation bar, establish list array for
-//* events and poll xml feed
-//*
-//*******************************************************
-- (void)awakeFromNib {
-	
-	self.navigationItem.title = @"Events";
-	
-    list = [[NSMutableArray alloc] init];
-}
+@synthesize activityIndicator;
 
 //*******************************************************
 //* pollFeed
@@ -127,6 +114,10 @@
 		Event *Ev = [[Event alloc] initWithTitle:@"No Internet Connection" publishTime:@"12:00 AM" publishDate:@"WED 04/15" type:@"The Show" detail:@"Without an internet connection this app will not function normally. Connect to wifi or a cellular data service."];
 		[list addObject:Ev];
 	}
+	
+	[self.activityIndicator stopAnimating];
+	
+	[self.tableView reloadData];
 }
 
 //*******************************************************
@@ -138,11 +129,38 @@
 //*******************************************************
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	self.navigationItem.title = @"Events";
+	
+    list = [[NSMutableArray alloc] init];
     
     self.tableView.rowHeight = ROW_HEIGHT;
 	
-	[self pollFeed];
+	// Create a 'right hand button' that is a activity Indicator
+	CGRect frame = CGRectMake(0.0, 0.0, 25.0, 25.0);
+	self.activityIndicator = [[UIActivityIndicatorView alloc]
+							  initWithFrame:frame];
+	[self.activityIndicator sizeToFit];
+	self.activityIndicator.autoresizingMask =
+	(UIViewAutoresizingFlexibleLeftMargin |
+	 UIViewAutoresizingFlexibleRightMargin |
+	 UIViewAutoresizingFlexibleTopMargin |
+	 UIViewAutoresizingFlexibleBottomMargin);
 	
+	UIBarButtonItem *loadingView = [[UIBarButtonItem alloc] 
+									initWithCustomView:self.activityIndicator];
+	loadingView.target = self;
+	self.navigationItem.rightBarButtonItem = loadingView;
+	
+	[self.activityIndicator startAnimating];
+	[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: nil ];
+	//[self pollFeed];
+}
+
+- (void)autoPool {
+    NSAutoreleasePool *pool = [ [ NSAutoreleasePool alloc ] init ];
+    [self pollFeed];
+	[ pool release ];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

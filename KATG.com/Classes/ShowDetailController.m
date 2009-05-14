@@ -28,11 +28,11 @@
 	
 	self.setButtonImage;
 	
-	CGRect rect = CGRectMake(20, 140, 280, 190);
+	CGRect rect = CGRectMake(5, 125, 315, 230);
 	
 	detailBody = [[[UITextView alloc] initWithFrame:rect] autorelease];
 	detailBody.textColor = [UIColor blackColor];
-	detailBody.backgroundColor = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0]; 
+	detailBody.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0]; 
 	detailBody.dataDetectorTypes = UIDataDetectorTypeAll; // Only works in 3.0
 	detailBody.editable = NO;
 	detailBody.font = [UIFont systemFontOfSize:15.0];

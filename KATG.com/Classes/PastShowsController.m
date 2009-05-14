@@ -16,18 +16,21 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import "PastShowsController.h"
-#import "XMLReader.h"
+#import "grabRSSFeed.h"
 #import "ShowCell.h"
 #import "ShowDetailController.h"
-
+#import	"Show.h"
 
 #define ROW_HEIGHT 60.0
+
 
 @implementation PastShowsController
 
 @synthesize navigationController;
 @synthesize list;
 @synthesize activityIndicator;
+@synthesize feedEntries;
+@synthesize feedAddress;
 
 #pragma mark View
  - (void)viewDidLoad {
@@ -55,9 +58,10 @@
 	 loadingView.target = self;
 	 self.navigationItem.rightBarButtonItem = loadingView;
 	 
+	 feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?records=25";
+	 
 	 [self.activityIndicator startAnimating];
 	 [ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: nil ];
-	 
 }
 
 #pragma mark Feed
@@ -68,19 +72,59 @@
 }
 
 - (void) pollFeed {
-	NSError *parseError = nil;
+	// Create the feed string
+	NSString *xPath = @"//Show";
+    // Call the grabRSSFeed function with the above
+    // string as a parameter
+	grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:(NSString *)xPath];
+	feedEntries = [feed entries];
+	[feed release];
 	
-	NSString *feedURLString = @"http://keithandthegirl.com/rss";
-	//NSString *feedURLString = @"http://whywontyoudie.com/feed.xml";
+	//[feedEntries count]
+	int feedEntryIndex = [feedEntries count] - 1;
 	
-	XMLReader *streamingParser = [[XMLReader alloc] init];
-    self.list = [streamingParser parseXMLFileAtURL:[NSURL URLWithString:feedURLString] parseError:&parseError];
-    [streamingParser release];
+	int i = 0;
+		
+	while ( i < feedEntryIndex ) {
+		
+		NSString *showNumber = [[feedEntries objectAtIndex: i] 
+							   objectForKey: @"Number"];
+		
+		NSString *showDate = [[feedEntries objectAtIndex: i] 
+							   objectForKey: @"PostedDate"];
+		
+		NSString *showTitle = [[feedEntries objectAtIndex: i] 
+							  objectForKey: @"Title"];
+		
+		//NSString *showDescription = [[feedEntries objectAtIndex: i] 
+		//					  objectForKey: @"Description"];
+		
+		//NSString *showThread = [[feedEntries objectAtIndex: i] 
+		//						 objectForKey: @"ForumThread"];
+		
+		NSString *showURL = [[feedEntries objectAtIndex: i] 
+								 objectForKey: @"FileUrl"];
+		
+		NSString *showDetails = [[feedEntries objectAtIndex: i] 
+								 objectForKey: @"Detail"];
+		
+		NSString *show = [ [showNumber stringByAppendingString:@" "] stringByAppendingString:showTitle];
+		
+		Show *Sh = [[Show alloc] initWithTitle:show publishDate:showDate link:showURL detail:showDetails];
+		[list addObject:Sh];
+		
+		[Sh release];
+		
+		i += 1;
+	}
 	
 	if ([list count] == 0) {
-		//Event *Ev = [[Event alloc] initWithTitle:@"No Internet Connection" publishTime:@"12:00 AM" publishDate:@"WED 04/15" type:@"The Show" detail:@"Without an internet connection this app will not function normally. Connect to wifi or a cellular data service."];
-		//[list addObject:Ev];
+		Show *Sh = [[Show alloc] initWithTitle:@"No Internet Connection" publishDate:@"April 15th" link:@"" detail:@""];
+		[list addObject:Sh];
 	}
+	
+	Show *Sh = [[Show alloc] initWithTitle:@"Load More Episodes" publishDate:@"April 15th" link:@"" detail:@""];
+	[list addObject:Sh];
 	
 	[self.activityIndicator stopAnimating];
 	
@@ -116,46 +160,82 @@
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"ShowCell";
-	
-	ShowCell *cell = (ShowCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	if (cell == nil) {
-		cell = [[[ShowCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-	}
-	
-	// Set up the cell...
-	cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
-	
-	cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-	UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.92 green:(CGFloat).973 blue:(CGFloat)0.92 alpha:(CGFloat)1.0];
-	UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0];
-	if (indexPath.row%2 == 0) {
-		cell.lblTitle.backgroundColor = color1;
+    if (![[[list objectAtIndex:indexPath.row] title] isEqualToString:@"Load More Episodes"]) {
+		static NSString *CellIdentifier = @"ShowCell";
 		
-		cell.backgroundView.backgroundColor = color1;
+		ShowCell *cell = (ShowCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		if (cell == nil) {
+			cell = [[[ShowCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+		}
+		
+		// Set up the cell...
+		cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
+		
+		cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
+		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.92 green:(CGFloat).973 blue:(CGFloat)0.92 alpha:(CGFloat)1.0];
+		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0];
+		if (indexPath.row%2 == 0) {
+			cell.lblTitle.backgroundColor = color1;
+			
+			cell.backgroundView.backgroundColor = color1;
+		} else {
+			cell.lblTitle.backgroundColor = color2;
+			
+			cell.backgroundView.backgroundColor = color2;
+		}
+		
+		cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
+		cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
+		
+		
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		
+		return cell;
 	} else {
-		cell.lblTitle.backgroundColor = color2;
+		static NSString *CellIdentifier = @"ShowCell";
 		
-		cell.backgroundView.backgroundColor = color2;
+		ShowCell *cell = (ShowCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		if (cell == nil) {
+			cell = [[[ShowCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+		}
+		
+		// Set up the cell...
+		cell.lblTitle.text = @"TEST";
+		
+		cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
+		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.00 green:(CGFloat).973 blue:(CGFloat)0.92 alpha:(CGFloat)1.0];
+		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.00 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0];
+		if (indexPath.row%2 == 0) {
+			cell.lblTitle.backgroundColor = color1;
+			
+			cell.backgroundView.backgroundColor = color1;
+		} else {
+			cell.lblTitle.backgroundColor = color2;
+			
+			cell.backgroundView.backgroundColor = color2;
+		}
+		
+		cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
+		cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
+		
+		return cell;
 	}
-	
-	cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-	cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
-	
-	
-	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	
-	return cell;
 }
 
  // Override to support row selection in the table view.
  - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	 ShowDetailController *viewController = [[ShowDetailController alloc] initWithNibName:@"ShowView" bundle:[NSBundle mainBundle]];
-	 viewController.TitleTemp = [[list objectAtIndex:indexPath.row] title];
-	 viewController.LinkTemp = [[list objectAtIndex:indexPath.row] link];
-	 viewController.BodyTemp = [[list objectAtIndex:indexPath.row] detail];
-	 [[self navigationController] pushViewController:viewController animated:YES];
-	 [viewController release];
+	 if (![[[list objectAtIndex:indexPath.row] title] isEqualToString:@"Load More Episodes"]) {
+		 ShowDetailController *viewController = [[ShowDetailController alloc] initWithNibName:@"ShowView" bundle:[NSBundle mainBundle]];
+		 viewController.TitleTemp = [[list objectAtIndex:indexPath.row] title];
+		 viewController.LinkTemp = [[list objectAtIndex:indexPath.row] link];
+		 viewController.BodyTemp = [[list objectAtIndex:indexPath.row] detail];
+		 [[self navigationController] pushViewController:viewController animated:YES];
+		 [viewController release];
+	 } else {
+		 feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?startnumber=933&records=25";
+		 [self.activityIndicator startAnimating];
+		 [ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: nil ];
+	 }
  }
 
 

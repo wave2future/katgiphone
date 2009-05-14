@@ -22,10 +22,12 @@
 	IBOutlet UINavigationController	*navigationController; // 
     NSMutableArray *list;         // Adds formmated contents of each cell in an array
 	NSMutableArray *feedEntries;  // Child nodes of the feed being queried
+	UIActivityIndicatorView			*activityIndicator;
 }
 
-@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
-@property (nonatomic, retain) NSMutableArray *list;
-@property (nonatomic, retain) NSMutableArray *feedEntries;
+@property (nonatomic, retain) IBOutlet UINavigationController	*navigationController;
+@property (nonatomic, retain) NSMutableArray					*list;
+@property (nonatomic, retain) NSMutableArray					*feedEntries;
+@property (nonatomic, retain) UIActivityIndicatorView			*activityIndicator;
 
 @end

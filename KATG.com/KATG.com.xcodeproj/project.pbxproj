@@ -11,6 +11,8 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		28216C970DB411BC00E5133A /* OnAirViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28216C960DB411BC00E5133A /* OnAirViewController.m */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
+		530015E90FBBB97300A9078D /* BG3.png in Resources */ = {isa = PBXBuildFile; fileRef = 530015E80FBBB97300A9078D /* BG3.png */; };
+		530015EB0FBBBA5E00A9078D /* TextView.png in Resources */ = {isa = PBXBuildFile; fileRef = 530015EA0FBBBA5E00A9078D /* TextView.png */; };
 		5310E7410FB8D7E50065A4BC /* PastShowsTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 5310E73F0FB8D7E50065A4BC /* PastShowsTab.png */; };
 		5310E8300FB90AE60065A4BC /* ShowDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5310E82F0FB90AE60065A4BC /* ShowDetailController.m */; };
 		531B21E30FB50A4E00A06878 /* calTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 531B21E20FB50A4E00A06878 /* calTab.png */; };
@@ -50,7 +52,6 @@
 		536AC5370F91428900B55D50 /* onAirTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 536AC5360F91428900B55D50 /* onAirTab.png */; };
 		536BFF160FB89F2E00DA7720 /* Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 536BFF100FB89F2E00DA7720 /* Show.m */; };
 		536BFF170FB89F2E00DA7720 /* ShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 536BFF120FB89F2E00DA7720 /* ShowCell.m */; };
-		536BFF180FB89F2E00DA7720 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 536BFF140FB89F2E00DA7720 /* XMLReader.m */; };
 		536BFF200FB8A08800DA7720 /* PastShowsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 536BFF1F0FB8A08800DA7720 /* PastShowsController.m */; };
 		536CD46F0F89E68A0063DED2 /* Credits in Resources */ = {isa = PBXBuildFile; fileRef = 536CD46B0F89E68A0063DED2 /* Credits */; };
 		536CD4700F89E68A0063DED2 /* gpl-3.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 536CD46C0F89E68A0063DED2 /* gpl-3.0.txt */; };
@@ -83,6 +84,8 @@
 		28A0AB4B0D9B1048005BE974 /* KATG_com_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KATG_com_Prefix.pch; sourceTree = "<group>"; };
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		530015E80FBBB97300A9078D /* BG3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BG3.png; sourceTree = "<group>"; };
+		530015EA0FBBBA5E00A9078D /* TextView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TextView.png; sourceTree = "<group>"; };
 		5310E73F0FB8D7E50065A4BC /* PastShowsTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PastShowsTab.png; sourceTree = "<group>"; };
 		5310E82E0FB90AE60065A4BC /* ShowDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowDetailController.h; sourceTree = "<group>"; };
 		5310E82F0FB90AE60065A4BC /* ShowDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowDetailController.m; sourceTree = "<group>"; };
@@ -139,8 +142,6 @@
 		536BFF100FB89F2E00DA7720 /* Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Show.m; sourceTree = "<group>"; };
 		536BFF110FB89F2E00DA7720 /* ShowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowCell.h; sourceTree = "<group>"; };
 		536BFF120FB89F2E00DA7720 /* ShowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowCell.m; sourceTree = "<group>"; };
-		536BFF130FB89F2E00DA7720 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
-		536BFF140FB89F2E00DA7720 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		536BFF1E0FB8A08800DA7720 /* PastShowsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PastShowsController.h; sourceTree = "<group>"; };
 		536BFF1F0FB8A08800DA7720 /* PastShowsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PastShowsController.m; sourceTree = "<group>"; };
 		536CD46B0F89E68A0063DED2 /* Credits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Credits; sourceTree = "<group>"; };
@@ -238,6 +239,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				530015EA0FBBBA5E00A9078D /* TextView.png */,
+				530015E80FBBB97300A9078D /* BG3.png */,
 				531B221B0FB50D6A00A06878 /* Default.PNG */,
 				534CA1540FB39A3A00206F91 /* Icon.png */,
 				536AC5480F91495A00B55D50 /* Tab Icons */,
@@ -367,8 +370,6 @@
 				536BFF100FB89F2E00DA7720 /* Show.m */,
 				536BFF110FB89F2E00DA7720 /* ShowCell.h */,
 				536BFF120FB89F2E00DA7720 /* ShowCell.m */,
-				536BFF130FB89F2E00DA7720 /* XMLReader.h */,
-				536BFF140FB89F2E00DA7720 /* XMLReader.m */,
 			);
 			name = PastShows;
 			sourceTree = "<group>";
@@ -549,6 +550,8 @@
 				531B221C0FB50D6A00A06878 /* Default.PNG in Resources */,
 				5310E7410FB8D7E50065A4BC /* PastShowsTab.png in Resources */,
 				53C2B02D0FB9204B00C9770A /* ShowView.xib in Resources */,
+				530015E90FBBB97300A9078D /* BG3.png in Resources */,
+				530015EB0FBBBA5E00A9078D /* TextView.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,7 +585,6 @@
 				53B8CE850FB4238900C8C71B /* linkList.m in Sources */,
 				536BFF160FB89F2E00DA7720 /* Show.m in Sources */,
 				536BFF170FB89F2E00DA7720 /* ShowCell.m in Sources */,
-				536BFF180FB89F2E00DA7720 /* XMLReader.m in Sources */,
 				536BFF200FB8A08800DA7720 /* PastShowsController.m in Sources */,
 				5310E8300FB90AE60065A4BC /* ShowDetailController.m in Sources */,
 				534EA7E10FBB796F00A0354C /* AudioStreamer.m in Sources */,
