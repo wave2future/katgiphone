@@ -24,6 +24,7 @@
 	UIActivityIndicatorView			*activityIndicator;
 	NSMutableArray					*feedEntries;
 	NSString						*feedAddress;
+	NSArray							*indexPaths;
 }
 
 @property (nonatomic, retain) IBOutlet UINavigationController	*navigationController;
@@ -31,6 +32,7 @@
 @property (nonatomic, retain) UIActivityIndicatorView			*activityIndicator;
 @property (nonatomic, retain) NSMutableArray					*feedEntries;
 @property (nonatomic, retain) NSString							*feedAddress;
+@property (nonatomic, retain) NSArray							*indexPaths;
 
 - (void) pollFeed;
 

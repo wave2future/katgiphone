@@ -290,8 +290,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>7</integer>
-									<integer>6</integer>
+									<integer>25</integer>
+									<integer>23</integer>
 									<integer>2</integer>
 									<integer>0</integer>
 								</array>
@@ -316,7 +316,7 @@
 							<real>322</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>2 55 1276 723 0 0 1280 778 </string>
+						<string>1 53 1276 723 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -334,7 +334,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>OnAirViewController.h</string>
+								<string>PastShowsController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -342,11 +342,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>OnAirViewController.h</string>
+										<string>PastShowsController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>5300175B0FBD1EF100A9078D</string>
+										<string>5300181D0FBD3CCD00A9078D</string>
 										<key>history</key>
 										<array>
 											<string>5332364C0F8C7AD700B385E5</string>
@@ -410,7 +410,6 @@
 											<string>5310E7C10FB8E3200065A4BC</string>
 											<string>5310E7C20FB8E3200065A4BC</string>
 											<string>53C2B0FF0FB9C77600C9770A</string>
-											<string>53C2B1010FB9C77600C9770A</string>
 											<string>53C2B1030FB9C77600C9770A</string>
 											<string>53C2B1040FB9C77600C9770A</string>
 											<string>53C2B15E0FBA53ED00C9770A</string>
@@ -418,22 +417,23 @@
 											<string>530014EE0FBBA4AB00A9078D</string>
 											<string>530015840FBBA96100A9078D</string>
 											<string>530015850FBBA96100A9078D</string>
-											<string>530015A80FBBAB8100A9078D</string>
-											<string>530015C10FBBAD2500A9078D</string>
 											<string>530015F70FBBBC1200A9078D</string>
-											<string>5300160D0FBBBF8D00A9078D</string>
-											<string>5300160E0FBBBF8D00A9078D</string>
-											<string>5300160F0FBBBF8D00A9078D</string>
-											<string>5300165A0FBCC0CD00A9078D</string>
 											<string>530016850FBCC22F00A9078D</string>
 											<string>5300169C0FBCC33F00A9078D</string>
 											<string>5300169D0FBCC33F00A9078D</string>
 											<string>530016CC0FBCC6AB00A9078D</string>
-											<string>530016DA0FBCC82300A9078D</string>
-											<string>530017410FBD18B200A9078D</string>
 											<string>530017460FBD193300A9078D</string>
-											<string>530017560FBD1EF100A9078D</string>
-											<string>530017570FBD1EF100A9078D</string>
+											<string>5300175F0FBD205C00A9078D</string>
+											<string>530017600FBD205C00A9078D</string>
+											<string>530017610FBD205C00A9078D</string>
+											<string>530017680FBD22C900A9078D</string>
+											<string>5300176A0FBD22C900A9078D</string>
+											<string>5300176B0FBD22C900A9078D</string>
+											<string>530017730FBD233400A9078D</string>
+											<string>530017820FBD25EE00A9078D</string>
+											<string>530017D80FBD35AF00A9078D</string>
+											<string>530018050FBD3A6B00A9078D</string>
+											<string>530018060FBD3A6B00A9078D</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -637,6 +637,25 @@
 											<string>530017580FBD1EF100A9078D</string>
 											<string>530017590FBD1EF100A9078D</string>
 											<string>5300175A0FBD1EF100A9078D</string>
+											<string>530017630FBD205C00A9078D</string>
+											<string>530017640FBD205C00A9078D</string>
+											<string>530017650FBD205C00A9078D</string>
+											<string>530017660FBD205C00A9078D</string>
+											<string>5300176C0FBD22C900A9078D</string>
+											<string>5300176D0FBD22C900A9078D</string>
+											<string>5300176E0FBD22C900A9078D</string>
+											<string>5300176F0FBD22C900A9078D</string>
+											<string>530017700FBD22C900A9078D</string>
+											<string>530017750FBD233400A9078D</string>
+											<string>530017840FBD25EE00A9078D</string>
+											<string>530017A90FBD2AD400A9078D</string>
+											<string>530017AA0FBD2AD400A9078D</string>
+											<string>530017AB0FBD2AD400A9078D</string>
+											<string>530017AC0FBD2AD400A9078D</string>
+											<string>530017DA0FBD35AF00A9078D</string>
+											<string>530017DB0FBD35AF00A9078D</string>
+											<string>530018070FBD3A6B00A9078D</string>
+											<string>530018080FBD3A6B00A9078D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -650,7 +669,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {932, 677}}</string>
 								<key>RubberWindowFrame</key>
-								<string>2 55 1276 723 0 0 1280 778 </string>
+								<string>1 53 1276 723 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -670,7 +689,7 @@
 								<key>Frame</key>
 								<string>{{0, 682}, {932, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>2 55 1276 723 0 0 1280 778 </string>
+								<string>1 53 1276 723 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -830,7 +849,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>5300175C0FBD1EF100A9078D</string>
+		<string>5300181E0FBD3CCD00A9078D</string>
+		<string>5300181F0FBD3CCD00A9078D</string>
+		<string>530018200FBD3CCD00A9078D</string>
+		<string>530017FD0FBD396F00A9078D</string>
+		<string>530017FF0FBD396F00A9078D</string>
+		<string>530017DE0FBD35AF00A9078D</string>
 		<string>530016CA0FBCC68B00A9078D</string>
 		<string>5300162A0FBBC54D00A9078D</string>
 		<string>5300156D0FBBA83700A9078D</string>
@@ -842,7 +866,7 @@
 		<string>/Users/hayroob/Documents/Dropbox/DEV/Objective-C/Github/katgiphone/KATG.com/KATG.com.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>2 55 1276 723 0 0 1280 778 </string>
+	<string>1 53 1276 723 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

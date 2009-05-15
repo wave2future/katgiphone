@@ -31,6 +31,7 @@
 @synthesize activityIndicator;
 @synthesize feedEntries;
 @synthesize feedAddress;
+@synthesize indexPaths;
 
 #pragma mark View
  - (void)viewDidLoad {
@@ -61,7 +62,7 @@
 	 feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?records=25";
 	 
 	 [self.activityIndicator startAnimating];
-	 [ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: nil ];
+	 [ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: feedAddress ];
 }
 
 #pragma mark Feed
@@ -77,6 +78,7 @@
     // Call the grabRSSFeed function with the above
     // string as a parameter
 	grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:(NSString *)xPath];
+	[feedEntries removeAllObjects];
 	feedEntries = [feed entries];
 	[feed release];
 	
@@ -200,7 +202,7 @@
 		}
 		
 		// Set up the cell...
-		cell.lblTitle.text = @"TEST";
+		cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
 		
 		cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
 		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.00 green:(CGFloat).973 blue:(CGFloat)0.92 alpha:(CGFloat)1.0];
@@ -233,16 +235,21 @@
 		 [viewController release];
 	 } else {
 		 [self.activityIndicator startAnimating];
-		 NSNumber *offset = @"26";
-		 NSNumber *lowestNumber = [[feedEntries objectAtIndex: [feedEntries count] - 1] objectForKey: @"Number"];
+		 //NSNumber *offset = @"26";
+		 //NSNumber *lowestNumber = [[feedEntries objectAtIndex: [feedEntries count] - 1] objectForKey: @"Number"];
 		 NSNumber *showNumber = [[feedEntries objectAtIndex: [feedEntries count] - 1] objectForKey: @"Number"];
-		 feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?startnumber=";
+		 feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?startlist=";
 		 feedAddress = [feedAddress stringByAppendingString:[NSString stringWithFormat: @"%@", showNumber]];
 		 feedAddress = [feedAddress stringByAppendingString:@"&records=25"];
-		 [self.activityIndicator stopAnimating];
+		 indexPaths = [NSArray arrayWithObject:indexPath];
+		 //[feedEntries removeAllObjects];
+		 //[self.tableView beginUpdates];
+		 //[self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+		 //[self.tableView endUpdates];
+		 [ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: feedAddress ];
+		 //[self.activityIndicator stopAnimating];
 	 }
  }
-
 
 - (void)dealloc {
     [super dealloc];

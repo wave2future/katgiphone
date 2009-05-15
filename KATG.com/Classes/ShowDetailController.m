@@ -91,8 +91,6 @@
 	
 	[activityIndicator stopAnimating];
 	
-	//[[UIApplication sharedApplication] setStatusBarHidden:YES animated:NO];
-	//[[UIApplication sharedApplication] setStatusBarOrientation: UIInterfaceOrientationPortrait animated: NO];
 	[self.moviePlayer play];
 }
 
