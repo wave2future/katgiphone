@@ -24,12 +24,14 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 
+@class AudioStreamer; // This is the shoutcast radio class
+
 @interface OnAirViewController : UIViewController {
 	// Live Feed Play Button
 	IBOutlet UIButton		*button;
 	
 	// Instantiate radio object
-	MPMoviePlayerController *moviePlayer;
+	AudioStreamer			*streamer;
 	
 	// Volume Slider
 	IBOutlet UIView			*volumeSliderContainer;
@@ -55,7 +57,6 @@
 
 // Ensures textFields and Labels will persist in memory until they've been used
 @property (nonatomic, retain) IBOutlet UIButton		*button;
-@property (readwrite, retain) MPMoviePlayerController *moviePlayer;
 @property (nonatomic, retain) IBOutlet UIView		*volumeSliderContainer;
 @property (nonatomic, retain) IBOutlet UIButton		*callButton;
 @property (nonatomic, retain) IBOutlet UILabel		*statusText;
@@ -67,7 +68,6 @@
 // Set up actions for GUI to perform
 // Play Button
 - (IBAction)buttonPressed:(id)sender;
-- (void)playMovie:(NSURL *)movieURL;
 - (void)setButtonImage:(UIImage *)image;
 - (void)spinButton;
 // System Volume Slider

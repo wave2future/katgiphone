@@ -16,20 +16,18 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import "OnAirViewController.h"
+#import "AudioStreamer.h"
 #import <QuartzCore/CoreAnimation.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 #import "grabRSSFeed.h"
 #import "sanitizeField.h"
 
-static BOOL streaming;
 
 @implementation OnAirViewController
 
 // Set up interface for sending and receiving data from fields and labels
 // Audio Streamer Play Button
 @synthesize button;
-// 
-@synthesize moviePlayer;
 // Volume Slider
 @synthesize volumeSliderContainer;
 // Call in button
@@ -88,16 +86,7 @@ static BOOL streaming;
 	 selector:@selector(handleNotification:) 
 	 name:@"UITextViewTextDidBeginEditingNotification" 
 	 object:nil];
-	
-	// Register to receive a notification that the movie is now in memory and ready to play
-	[[NSNotificationCenter defaultCenter] 
-	 addObserver:self 
-	 selector:@selector(moviePreloadDidFinish:) 
-	 name:MPMoviePlayerContentPreloadDidFinishNotification 
-	 object:nil];
-	
-	streaming = NO;
-	
+		
 	if ([self isDataSourceAvailable] == NO) {
 		UIAlertView *alert = [[UIAlertView alloc] 
 							  initWithTitle:@"NO INTERNET CONNECTION"
@@ -119,46 +108,36 @@ static BOOL streaming;
 //* 
 //*******************************************************
 - (IBAction)buttonPressed:(id)sender {
-	NSURL *movieURL = [[NSURL alloc] initWithString: @"http://liveshow.keithandthegirl.com:8004/"];
-	//NSURL *movieURL = [[NSURL alloc] initWithString: @"http://141.217.119.35:8005/"];
-	[self playMovie:movieURL];
-}
-
-//*******************************************************
-//* playMovie
-//* 
-//* 
-//*******************************************************
--(void)playMovie:(NSURL *)movieURL {
-	if (streaming) {
-		self.moviePlayer = nil;
-		streaming = NO;
-		[self setButtonImage:[UIImage imageNamed:@"playButton.png"]];
-	} else {
-		// Initialize a movie player object with the specified URL
-		MPMoviePlayerController *mp = [[MPMoviePlayerController alloc] initWithContentURL:movieURL];
-		if (mp)
-		{
-			// save the movie player object
-			self.moviePlayer = mp;
-			[mp release];
-			
-			streaming = YES;
-			
-			[self setButtonImage:[UIImage imageNamed:@"loadingButton.png"]];
-			
-			[self spinButton];
-		}
+	if (!streamer) // If the streamer is not active, activate stream and iniate button spin and image change
+	{
+		
+		NSString *escapedValue =
+		[(NSString *)CFURLCreateStringByAddingPercentEscapes(
+															 nil,
+															 (CFStringRef)@"http://liveshow.keithandthegirl.com:8004",
+															 NULL,
+															 NULL,
+															 kCFStringEncodingUTF8)
+		 autorelease];
+		
+		NSURL *url = [NSURL URLWithString:escapedValue];
+		streamer = [[AudioStreamer alloc] initWithURL:url];
+		[streamer
+		 addObserver:self
+		 forKeyPath:@"isPlaying"
+		 options:0
+		 context:nil];
+		[streamer start];
+		
+		[self setButtonImage:[UIImage imageNamed:@"loadingButton.png"]];
+		
+		[self spinButton];
 	}
-}
-
-//  Notification called when the movie finished preloading.
-- (void) moviePreloadDidFinish:(NSNotification*)notification
-{
-	
-	NSLog(@"Movie Preload Notification");
-	
-	[self setButtonImage:[UIImage imageNamed:@"stopButton.png"]];
+	else // If the streamer is active, deactivate stream and change button image
+	{
+		[button.layer removeAllAnimations];
+		[streamer stop];
+	}
 }
 
 //*******************************************************
@@ -213,6 +192,45 @@ static BOOL streaming;
 	}
 }
 
+//*******************************************************
+//* observeValueForKeyPath
+//* 
+//* 
+//*******************************************************
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if ([keyPath isEqual:@"isPlaying"])
+	{
+		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+		
+		if ([(AudioStreamer *)object isPlaying])
+		{
+			[self
+			 performSelector:@selector(setButtonImage:)
+			 onThread:[NSThread mainThread]
+			 withObject:[UIImage imageNamed:@"stopButton.png"]
+			 waitUntilDone:NO];
+		}
+		else
+		{
+			[streamer removeObserver:self forKeyPath:@"isPlaying"];
+			[streamer release];
+			streamer = nil;
+			
+			[self
+			 performSelector:@selector(setButtonImage:)
+			 onThread:[NSThread mainThread]
+			 withObject:[UIImage imageNamed:@"playButton.png"]
+			 waitUntilDone:NO];
+		}
+		
+		[pool release];
+		return;
+	}
+	
+	[super observeValueForKeyPath:keyPath ofObject:object change:change
+						  context:context];
+}
+
 #pragma mark Volume Slider
 //*******************************************************
 //* 
@@ -265,7 +283,7 @@ static BOOL streaming;
 //* 
 //*******************************************************
 - (IBAction)phoneButtonPressed:(id)sender {
-	if (streaming) {
+	if (streamer) {
 		[userDefaults setBool:YES forKey:@"StartStream"];
 		[userDefaults synchronize];
 	}
@@ -491,7 +509,7 @@ static BOOL streaming;
 //* 
 //*******************************************************
 - (void)viewDidDisappear:(BOOL)animated {
-	if (streaming) {
+	if (streamer) {
 		[userDefaults setBool:YES forKey:@"StartStream"];
 	}
 	[userDefaults setObject:(NSString *)nameField.text forKey:@"nameField"];

@@ -56,8 +56,14 @@
 		// Loop through the children of the current  node
 		for(counter = 0; counter < [resultElement childCount]; counter++) {
 			
+			NSString *strVal = [[resultElement childAtIndex:counter] stringValue];
+			
+			if (strVal == nil) {
+				strVal = @"NULL";
+			}
+			
 			// Add each field to the feedItem Dictionary with the node name as key and node value as the value
-			[feedItem setObject:[[resultElement childAtIndex:counter] stringValue] forKey:[[resultElement childAtIndex:counter] name]];
+			[feedItem setObject:strVal forKey:[[resultElement childAtIndex:counter] name]];
 	}
 	
 	// Add the feedItem to the global feedEntries Array so that the view can access it.

@@ -232,9 +232,14 @@
 		 [[self navigationController] pushViewController:viewController animated:YES];
 		 [viewController release];
 	 } else {
-		 feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?startnumber=933&records=25";
 		 [self.activityIndicator startAnimating];
-		 [ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: nil ];
+		 NSNumber *offset = @"26";
+		 NSNumber *lowestNumber = [[feedEntries objectAtIndex: [feedEntries count] - 1] objectForKey: @"Number"];
+		 NSNumber *showNumber = [[feedEntries objectAtIndex: [feedEntries count] - 1] objectForKey: @"Number"];
+		 feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?startnumber=";
+		 feedAddress = [feedAddress stringByAppendingString:[NSString stringWithFormat: @"%@", showNumber]];
+		 feedAddress = [feedAddress stringByAppendingString:@"&records=25"];
+		 [self.activityIndicator stopAnimating];
 	 }
  }
 
