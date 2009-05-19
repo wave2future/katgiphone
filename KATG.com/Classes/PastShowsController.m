@@ -235,19 +235,15 @@
 		 [viewController release];
 	 } else {
 		 [self.activityIndicator startAnimating];
-		 //NSNumber *offset = @"26";
-		 //NSNumber *lowestNumber = [[feedEntries objectAtIndex: [feedEntries count] - 1] objectForKey: @"Number"];
 		 NSNumber *showNumber = [[feedEntries objectAtIndex: [feedEntries count] - 1] objectForKey: @"Number"];
 		 feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?startlist=";
 		 feedAddress = [feedAddress stringByAppendingString:[NSString stringWithFormat: @"%@", showNumber]];
-		 feedAddress = [feedAddress stringByAppendingString:@"&records=25"];
+		 feedAddress = [feedAddress stringByAppendingString:@"&records=100"];
 		 indexPaths = [NSArray arrayWithObject:indexPath];
-		 //[feedEntries removeAllObjects];
+		 [ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: feedAddress ];
 		 //[self.tableView beginUpdates];
 		 //[self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
 		 //[self.tableView endUpdates];
-		 [ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: feedAddress ];
-		 //[self.activityIndicator stopAnimating];
 	 }
  }
 
