@@ -23,6 +23,12 @@
 #import "sanitizeField.h"
 
 
+static int timeSince;
+static int s;
+static int m;
+static int h;
+static int d;
+
 @implementation OnAirViewController
 
 // Set up interface for sending and receiving data from fields and labels
@@ -34,6 +40,11 @@
 @synthesize callButton;
 // Feed Status
 @synthesize statusText;
+// Next Live Show
+@synthesize days;
+@synthesize hours;
+@synthesize minutes;
+@synthesize seconds;
 // Feedback Button
 @synthesize feedBack;
 // Feedback Fields
@@ -75,6 +86,7 @@
 	[self setFeedBackImage];
 	
 	// Set update timer for live feed xml
+	timeSince = 0;
 	[self setTimer];
 	
 	// Auto start audiostreamer when returning from phone call
@@ -382,7 +394,6 @@
 	// string as a parameter
 	grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:xPath];
 	feedEntries = [feed entries];
-	[feed release];
 	
 	int feedEntryIndex = 0;
 	NSString *feedStatusString;
@@ -402,6 +413,125 @@
 	}
 	
 	statusText.text = feedStatus;
+	
+	if (timeSince > 0) {
+		[feed release];
+		if (timeSince >= 180) {
+			timeSince = timeSince - 180;
+		}
+		s = 0;
+		m = 0;
+		h = 0;
+		d = 0;
+		
+		int temp = timeSince;
+		
+		if (timeSince > 60) {
+			s = timeSince % 60;
+			timeSince /= 60;
+			
+			if (timeSince > 60) {
+				m = timeSince % 60;
+				timeSince /= 60;
+				
+				if (timeSince > 24) {
+					h = timeSince % 24;
+					timeSince /= 24;
+					d = timeSince;
+				} else {
+					h = timeSince;
+				}
+			}
+		}
+		
+		timeSince = temp;
+		
+		days.text = [[NSString alloc] initWithFormat:@"%d",d];
+		hours.text = [[NSString alloc] initWithFormat:@"%d",h];
+		minutes.text = [[NSString alloc] initWithFormat:@"%d",m];
+	} else {
+		// Change the feed string
+		feedAddress = @"http://www.keithandthegirl.com/feed/event/?order=datereverse";
+		xPath = @"//Event";
+		// Call the grabRSSFeed function with the above
+		// string as a parameter
+		feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:(NSString *)xPath];
+		feedEntries = [feed entries];
+		[feed release];
+		
+		// Evaluate the contents of feed for classification and add results into list
+		
+		NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+		[formatter setDateStyle: NSDateFormatterLongStyle];
+		[formatter setFormatterBehavior: NSDateFormatterBehavior10_4];
+		[formatter setDateFormat: @"MM/dd/yyyy HH:mm zzz"];
+		
+		feedEntryIndex = [feedEntries count] - 1;
+		
+		NSString *feedTitle = [[feedEntries objectAtIndex: feedEntryIndex] 
+							   objectForKey: @"Title"];
+		
+		timeSince = -1;
+		
+		BOOL match1 = [feedTitle rangeOfString:@"Live Show" options:NSCaseInsensitiveSearch].location != NSNotFound;
+		BOOL match2 = timeSince > 0;
+		
+		while ( !(match1 && match2) ) {
+			feedTitle = [[feedEntries objectAtIndex: feedEntryIndex] 
+						 objectForKey: @"Title"];
+			
+			NSString *feedTime = [[feedEntries objectAtIndex: feedEntryIndex] 
+								  objectForKey: @"StartDate"];
+			
+			NSTimeZone *EST = [NSTimeZone timeZoneWithName:(NSString *)@"America/New_York"];
+			
+			if ([EST isDaylightSavingTime]) {
+				feedTime = [feedTime stringByAppendingString:@" EDT"];
+			} else {
+				feedTime = [feedTime stringByAppendingString:@" EST"];
+			}
+						
+			NSDate *eventTime = [formatter dateFromString: feedTime];
+			
+			timeSince = [eventTime timeIntervalSinceNow];
+			
+			match1 = [feedTitle rangeOfString:@"Live Show" options:NSCaseInsensitiveSearch].location != NSNotFound;
+			match2 = timeSince > 0;
+			
+			feedEntryIndex = feedEntryIndex - 1;
+		}
+		
+		s = 0;
+		m = 0;
+		h = 0;
+		d = 0;
+		
+		int temp = timeSince;
+		
+		if (timeSince > 60) {
+			s = timeSince % 60;
+			timeSince /= 60;
+			
+			if (timeSince > 60) {
+				m = timeSince % 60;
+				timeSince /= 60;
+				
+				if (timeSince > 24) {
+					h = timeSince % 24;
+					timeSince /= 24;
+					d = timeSince;
+				} else {
+					h = timeSince;
+				}
+			}
+		}
+		
+		timeSince = temp;
+		
+		days.text = [[NSString alloc] initWithFormat:@"%d",d];
+		hours.text = [[NSString alloc] initWithFormat:@"%d",h];
+		minutes.text = [[NSString alloc] initWithFormat:@"%d",m];
+	}
 }
 
 #pragma mark Feedback

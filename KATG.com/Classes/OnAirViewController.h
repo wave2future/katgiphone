@@ -46,6 +46,12 @@
 	NSMutableArray			*feedEntries;
 	IBOutlet UILabel		*statusText;
 	
+	//Next Live Show
+	IBOutlet UILabel		*days;
+	IBOutlet UILabel		*hours;
+	IBOutlet UILabel		*minutes;
+	IBOutlet UILabel		*seconds;
+	
 	// Feedback fields and button
 	IBOutlet UIButton		*feedBack;
 	IBOutlet UITextField	*nameField;
@@ -60,6 +66,10 @@
 @property (nonatomic, retain) IBOutlet UIView		*volumeSliderContainer;
 @property (nonatomic, retain) IBOutlet UIButton		*callButton;
 @property (nonatomic, retain) IBOutlet UILabel		*statusText;
+@property (nonatomic, retain) IBOutlet UILabel		*days;
+@property (nonatomic, retain) IBOutlet UILabel		*hours;
+@property (nonatomic, retain) IBOutlet UILabel		*minutes;
+@property (nonatomic, retain) IBOutlet UILabel		*seconds;
 @property (nonatomic, retain) IBOutlet UIButton		*feedBack;
 @property (nonatomic, retain) IBOutlet UITextField	*nameField;
 @property (nonatomic, retain) IBOutlet UITextField	*locField;
