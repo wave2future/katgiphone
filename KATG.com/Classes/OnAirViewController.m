@@ -24,10 +24,6 @@
 
 
 static int timeSince;
-static int s;
-static int m;
-static int h;
-static int d;
 
 @implementation OnAirViewController
 
@@ -54,18 +50,6 @@ static int d;
 
 
 #pragma mark System Stuff
-//*******************************************************
-//* initWithNibName
-//* 
-//* 
-//*******************************************************
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-		// Initialization code
-	}
-	return self;
-}
-
 //*******************************************************
 //* viewDidLoad
 //* 
@@ -419,10 +403,10 @@ static int d;
 		if (timeSince >= 180) {
 			timeSince = timeSince - 180;
 		}
-		s = 0;
-		m = 0;
-		h = 0;
-		d = 0;
+		int s = 0;
+		int m = 0;
+		int h = 0;
+		int d = 0;
 		
 		int temp = timeSince;
 		
@@ -441,6 +425,8 @@ static int d;
 				} else {
 					h = timeSince;
 				}
+			} else {
+				m = timeSince;
 			}
 		}
 		
@@ -501,10 +487,10 @@ static int d;
 			feedEntryIndex = feedEntryIndex - 1;
 		}
 		
-		s = 0;
-		m = 0;
-		h = 0;
-		d = 0;
+		int s = 0;
+		int m = 0;
+		int h = 0;
+		int d = 0;
 		
 		int temp = timeSince;
 		
@@ -523,6 +509,8 @@ static int d;
 				} else {
 					h = timeSince;
 				}
+			} else {
+				m = timeSince;
 			}
 		}
 		

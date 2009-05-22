@@ -669,7 +669,7 @@ void ReadStreamCallBack
 			UIAlertView *alert =
 			[[UIAlertView alloc]
 			 initWithTitle:NSLocalizedStringFromTable(@"Audio Error", @"Errors", nil)
-			 message:NSLocalizedStringFromTable(@"Attempt to play streaming audio failed. \nStream is not currently Live. Check events tab for next live show.", @"Errors", nil)
+			 message:NSLocalizedStringFromTable(@"Attempt to play streaming audio failed. \nStream is not currently Live. Refer to Time Until Next Live Show.", @"Errors", nil)
 			 delegate:self
 			 cancelButtonTitle:@"OK"
 			 otherButtonTitles: nil];
@@ -686,7 +686,7 @@ void ReadStreamCallBack
 			 defaultButton:NSLocalizedString(@"OK", @"")
 			 alternateButton:nil
 			 otherButton:nil
-			 informativeTextWithFormat:@"Attempt to play streaming audio failed. Stream is not currently Live. Check events tab for next live show."];
+			 informativeTextWithFormat:@"Attempt to play streaming audio failed. Stream is not currently Live. Refer to Time Until Next Live Show."];
 			[alert
 			 performSelector:@selector(runModal)
 			 onThread:[NSThread mainThread]
