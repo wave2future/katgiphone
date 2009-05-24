@@ -34,7 +34,7 @@
 @synthesize indexPaths;
 
 #pragma mark View
- - (void)viewDidLoad {
+- (void)viewDidLoad {
 	 [super viewDidLoad];
 	 
 	 self.navigationItem.title = @"Past Shows";
@@ -205,8 +205,8 @@
 		cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
 		
 		cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.00 green:(CGFloat).973 blue:(CGFloat)0.92 alpha:(CGFloat)1.0];
-		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.00 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0];
+		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.70 green:(CGFloat).70 blue:(CGFloat)0.70 alpha:(CGFloat)1.0];
+		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.70 green:(CGFloat).70 blue:(CGFloat)0.70 alpha:(CGFloat)1.0];
 		if (indexPath.row%2 == 0) {
 			cell.lblTitle.backgroundColor = color1;
 			
@@ -250,7 +250,6 @@
 - (void)dealloc {
     [super dealloc];
 }
-
 
 @end
 
