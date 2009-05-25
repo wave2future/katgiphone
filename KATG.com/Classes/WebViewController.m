@@ -17,9 +17,12 @@
 
 #import "WebViewController.h"
 
+
 @implementation WebViewController
 
+@synthesize navigationController;
 @synthesize webView;    // Set up webview for TweetViewController to pass too
+@synthesize toolBar;
 @synthesize urlAddress; // Variable for TweetViewController to pass URL address
 
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -38,7 +41,30 @@
 //* with error handling
 //*************************************************
 - (void)viewDidLoad {
-		
+	self.navigationItem.title = urlAddress;
+	
+	/*// Create a 'right hand button' that is a activity Indicator
+	CGRect frame = CGRectMake(0.0, 0.0, 25.0, 25.0);
+	self.activityIndicator = [[UIActivityIndicatorView alloc]
+							  initWithFrame:frame];
+	[self.activityIndicator sizeToFit];
+	self.activityIndicator.autoresizingMask =
+	(UIViewAutoresizingFlexibleLeftMargin |
+	 UIViewAutoresizingFlexibleRightMargin |
+	 UIViewAutoresizingFlexibleTopMargin |
+	 UIViewAutoresizingFlexibleBottomMargin);
+	
+	UIBarButtonItem *loadingView = [[UIBarButtonItem alloc] 
+									initWithCustomView:self.activityIndicator];
+	loadingView.target = self;
+	self.navigationItem.rightBarButtonItem = loadingView;*/
+	
+	[[NSNotificationCenter defaultCenter] 
+	 addObserver:self 
+	 selector:@selector(handleUITextViewTextDidBeginEditingNotification:) 
+	 name:@"UITextViewTextDidBeginEditingNotification" 
+	 object:nil];
+	
 	//Create a URL object.
 	NSURL *url = [NSURL URLWithString:urlAddress];
 	

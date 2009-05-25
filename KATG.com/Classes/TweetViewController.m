@@ -3,15 +3,17 @@
 //  KATG.com
 //  
 
-#import "TweetViewController.h"
 #import <JSON/JSON.h>
-#import "TweetCell.h"
+#import "TweetViewController.h"
 #import "WebViewController.h"
+#import "TableViewController.h"
+#import "TweetCell.h"
 #import "grabRSSFeed.h"
 #import "MREntitiesConverter.h"
+#import "extractURL.h"
+
 
 static BOOL otherTweets;
-
 
 @implementation TweetViewController
 
@@ -56,15 +58,15 @@ static BOOL otherTweets;
 	[self.activityIndicator startAnimating];
 	[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: nil ];
 	
-	/*refButton = [[[UIBarButtonItem alloc]
-				  initWithTitle:NSLocalizedString(@"Update", @"On")
+	refButton = [[[UIBarButtonItem alloc]
+				  initWithTitle:NSLocalizedString(@"R", @"On")
 				  style:UIBarButtonItemStyleBordered
 				  target:self
 				  action:@selector(refTweets:)] autorelease];
-    self.navigationItem.leftBarButtonItem = refButton;*/
+    self.navigationItem.leftBarButtonItem = refButton;
 	
 	othButton = [[[UIBarButtonItem alloc]
-				  initWithTitle:NSLocalizedString(@"Other Tweets", @"On")
+				  initWithTitle:NSLocalizedString(@"O", @"On")
 				  style:UIBarButtonItemStyleBordered
 				  target:self
 				  action:@selector(othTweets:)] autorelease];
@@ -72,24 +74,33 @@ static BOOL otherTweets;
 }
 
 - (void)refTweets:(id)sender{
-	otherTweets = YES;
+	[isURL removeAllObjects];
+	[urlDict removeAllObjects];
+	[self.activityIndicator startAnimating];
 	[self pollFeed];
 }
 
 - (void)othTweets:(id)sender{
+	[isURL removeAllObjects];
+	[urlDict removeAllObjects];
 	if ( otherTweets ) {
 		otherTweets = NO;
 	} else {
 		otherTweets = YES;
 	}
-	[self.activityIndicator startAnimating];
+	[ NSThread detachNewThreadSelector: @selector(activityPool) toTarget: self withObject: nil ];
 	[self pollFeed];
-	//[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: nil ];
 }
 
 - (void)autoPool {
     NSAutoreleasePool *pool = [ [ NSAutoreleasePool alloc ] init ];
     [self pollFeed];
+	[ pool release ];
+}
+
+- (void)activityPool {
+    NSAutoreleasePool *pool = [ [ NSAutoreleasePool alloc ] init ];
+    [self.activityIndicator startAnimating];
 	[ pool release ];
 }
 
@@ -235,6 +246,8 @@ static BOOL otherTweets;
 		cell = [[[TweetCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
 	}
 	
+	cell.accessoryType = UITableViewCellAccessoryNone;
+	
 	// Set up the cell...
 	cell.lblTitle.text = [converter convertEntitiesInString:[[tweets objectAtIndex: indexPath.row] objectForKey: @"text"]];
 	cell.lblSince.text = [[tweets objectAtIndex: indexPath.row] objectForKey: @"since"];
@@ -275,7 +288,8 @@ static BOOL otherTweets;
 	NSString *index = [NSString stringWithFormat:@"%d", indexPath.row]; // Added Code This Line
 	if ([cell.lblTitle.text rangeOfString: @"www" options:1].location != NSNotFound ||
 		[cell.lblTitle.text rangeOfString: @"http:" options:1].location != NSNotFound ||
-		[cell.lblTitle.text rangeOfString: @".com" options:1].location != NSNotFound) {
+		[cell.lblTitle.text rangeOfString: @".com" options:1].location != NSNotFound ||
+		[cell.lblTitle.text rangeOfString: @"@" options:1].location != NSNotFound) {
 		
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		
@@ -303,69 +317,24 @@ static BOOL otherTweets;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSString *index = [NSString stringWithFormat:@"%d", indexPath.row];
-	NSString *temp1 = [isURL objectForKey: index];
-	NSString *temp2 = [urlDict objectForKey: index];
 	if ( [[isURL objectForKey: index] isEqualToString:@"YES"] ) {
-		WebViewController *viewController = [[WebViewController alloc] initWithNibName:@"WebView" bundle:[NSBundle mainBundle]];
-		
 		NSString *tweetURL = [urlDict objectForKey: [NSString stringWithFormat:@"%d", indexPath.row]];
-		
-		NSString *urlAddress = nil;
-		
-		if ([tweetURL rangeOfString: @"http:" options:1].location != NSNotFound) {
-			int tweetLength = tweetURL.length;
-			int urlStart = [tweetURL rangeOfString: @"http:" options:1].location;
-			NSRange tweetRange = {urlStart, tweetLength-urlStart};
-			NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
-			NSRange urlEndRange = [tweetURL rangeOfCharacterFromSet:charSet options:1 range:tweetRange];
-			int urlEnd = urlEndRange.location;
-			if (urlEnd > tweetLength ) {
-				urlEnd = tweetLength;
-			}
-			int urlLength = urlEnd - urlStart;
-			urlAddress = [tweetURL substringWithRange:NSMakeRange( urlStart, urlLength ) ];
-		} else if ( [tweetURL rangeOfString: @"www." options:1].location != NSNotFound ) {
-			int tweetLength = tweetURL.length;
-			int urlStart = [tweetURL rangeOfString: @"www." options:1].location;
-			NSRange tweetRange = {urlStart, tweetLength-urlStart};
-			NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
-			NSRange urlEndRange = [tweetURL rangeOfCharacterFromSet:charSet options:1 range:tweetRange];
-			int urlEnd = urlEndRange.location;
-			if (urlEnd > tweetLength ) {
-				urlEnd = tweetLength;
-			}
-			int urlLength = urlEnd - urlStart;
-			urlAddress = @"http://";
-			NSString *urlStub = [tweetURL substringWithRange:NSMakeRange( urlStart, urlLength ) ];
-			urlAddress = [urlAddress stringByAppendingString:urlStub];
-		} else if ( [tweetURL rangeOfString: @".com" options:1].location != NSNotFound ) {
-			int tweetLength = tweetURL.length;
-			int comStart = [tweetURL rangeOfString: @".com" options:1].location;
-			NSRange startRange = {0, comStart};
-			NSRange endRange = {comStart, tweetLength - comStart};
-			NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
-			NSRange urlStartRange = [tweetURL rangeOfCharacterFromSet:charSet options:5 range:startRange];
-			NSRange urlEndRange = [tweetURL rangeOfCharacterFromSet:charSet options:1 range:endRange];
-			int urlStart = urlStartRange.location + 1;
-			if (urlStart < 0) {
-				urlStart = 0;
-			}
-			int urlEnd = urlEndRange.location;
-			if (urlEnd > tweetLength) {
-				urlEnd = tweetLength;
-			}
-			int urlLength = urlEnd - urlStart;
-			urlAddress = @"http://";
-			NSString *urlStub = [tweetURL substringWithRange:NSMakeRange( urlStart, urlLength ) ];
-			urlAddress = [urlAddress stringByAppendingString:urlStub];
+		extractURL *extractor = [[extractURL alloc] init];
+		NSMutableArray *urls = [extractor makeURLList:tweetURL];
+		if ([urls count] > 1) {
+			TableViewController *viewController = [[TableViewController alloc] initWithNibName:@"TableView" bundle:[NSBundle mainBundle]];
+			viewController.list = urls;
+			[[self navigationController] pushViewController:viewController animated:YES];
+			[viewController release];
+		} else {		
+			WebViewController *viewController = [[WebViewController alloc] initWithNibName:@"WebView" bundle:[NSBundle mainBundle]];
+			NSString *urlAddress = [urls objectAtIndex:0];
+			viewController.urlAddress = urlAddress;
+			[[self navigationController] pushViewController:viewController animated:YES];
+			[viewController release];
 		}
-		
-		viewController.urlAddress = urlAddress;
-		[[self navigationController] pushViewController:viewController animated:YES];
-		[viewController release];
 	}
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; 

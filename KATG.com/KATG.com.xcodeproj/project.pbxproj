@@ -16,7 +16,7 @@
 		5310E7410FB8D7E50065A4BC /* PastShowsTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 5310E73F0FB8D7E50065A4BC /* PastShowsTab.png */; };
 		5310E8300FB90AE60065A4BC /* ShowDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5310E82F0FB90AE60065A4BC /* ShowDetailController.m */; };
 		531B21E30FB50A4E00A06878 /* calTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 531B21E20FB50A4E00A06878 /* calTab.png */; };
-		531B221C0FB50D6A00A06878 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 531B221B0FB50D6A00A06878 /* Default.png */; };
+		531B221C0FB50D6A00A06878 /* DefaultOld.png in Resources */ = {isa = PBXBuildFile; fileRef = 531B221B0FB50D6A00A06878 /* DefaultOld.png */; };
 		532424F10F912543009C1C10 /* TableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 532424F00F912543009C1C10 /* TableView.xib */; };
 		532C13B90F9556BB005879B1 /* grabRSSFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 532C13B80F9556BB005879B1 /* grabRSSFeed.m */; };
 		5341D3940FA6A00A00CA7A35 /* Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 5341D3930FA6A00A00CA7A35 /* Phone.png */; };
@@ -72,6 +72,9 @@
 		53CD2FFF0FC8A01400D9FE00 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CD2FFE0FC8A01400D9FE00 /* TweetCell.m */; };
 		53DDC8A20FC90E2D00A34D85 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DDC8A10FC90E2D00A34D85 /* WebViewController.m */; };
 		53DDC8CB0FC9159200A34D85 /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53DDC8CA0FC9159200A34D85 /* WebView.xib */; };
+		53DDC8E60FC91C2100A34D85 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DDC8E50FC91C2100A34D85 /* Default.png */; };
+		53DDC94B0FC9FAF800A34D85 /* extractURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DDC94A0FC9FAF800A34D85 /* extractURL.m */; };
+		53DDCB980FCA8BDB00A34D85 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DDCB970FCA8BDB00A34D85 /* TableViewController.m */; };
 		53E1D2770F90474F005E78EC /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E1D2760F90474F005E78EC /* DetailViewController.m */; };
 		53E1D2BB0F904D97005E78EC /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53E1D2B90F904D97005E78EC /* DetailView.xib */; };
 		53E8DE4E0F8E95C7006A52C6 /* RoadMap in Resources */ = {isa = PBXBuildFile; fileRef = 53E8DE4D0F8E95C7006A52C6 /* RoadMap */; };
@@ -95,7 +98,7 @@
 		5310E82E0FB90AE60065A4BC /* ShowDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowDetailController.h; sourceTree = "<group>"; };
 		5310E82F0FB90AE60065A4BC /* ShowDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowDetailController.m; sourceTree = "<group>"; };
 		531B21E20FB50A4E00A06878 /* calTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calTab.png; sourceTree = "<group>"; };
-		531B221B0FB50D6A00A06878 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		531B221B0FB50D6A00A06878 /* DefaultOld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultOld.png; sourceTree = "<group>"; };
 		532424F00F912543009C1C10 /* TableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableView.xib; sourceTree = "<group>"; };
 		532C13B70F9556BB005879B1 /* grabRSSFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grabRSSFeed.h; sourceTree = "<group>"; };
 		532C13B80F9556BB005879B1 /* grabRSSFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = grabRSSFeed.m; sourceTree = "<group>"; };
@@ -174,6 +177,11 @@
 		53DDC8A00FC90E2D00A34D85 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		53DDC8A10FC90E2D00A34D85 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		53DDC8CA0FC9159200A34D85 /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
+		53DDC8E50FC91C2100A34D85 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		53DDC9490FC9FAF800A34D85 /* extractURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = extractURL.h; sourceTree = "<group>"; };
+		53DDC94A0FC9FAF800A34D85 /* extractURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = extractURL.m; sourceTree = "<group>"; };
+		53DDCB960FCA8BDB00A34D85 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		53DDCB970FCA8BDB00A34D85 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		53E1D2750F90474F005E78EC /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		53E1D2760F90474F005E78EC /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		53E1D2B90F904D97005E78EC /* DetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
@@ -253,7 +261,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				531B221B0FB50D6A00A06878 /* Default.png */,
+				53DDC8E50FC91C2100A34D85 /* Default.png */,
+				531B221B0FB50D6A00A06878 /* DefaultOld.png */,
 				534CA1540FB39A3A00206F91 /* Icon.png */,
 				530015E80FBBB97300A9078D /* BG3.png */,
 				530015EA0FBBBA5E00A9078D /* TextView.png */,
@@ -347,6 +356,7 @@
 		535FE5F20F89FEF300F6AD75 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				53DDCBED0FCA9AD400A34D85 /* ExtractURL */,
 				536AC7DD0FA0A8D70064B31E /* MREntitiesConverter */,
 				53E955CF0F9D58BA0071709B /* grabRSSFeed */,
 				53E955C00F9D58AC0071709B /* TouchXML */,
@@ -455,6 +465,8 @@
 				53CD2FFE0FC8A01400D9FE00 /* TweetCell.m */,
 				53DDC8A00FC90E2D00A34D85 /* WebViewController.h */,
 				53DDC8A10FC90E2D00A34D85 /* WebViewController.m */,
+				53DDCB960FCA8BDB00A34D85 /* TableViewController.h */,
+				53DDCB970FCA8BDB00A34D85 /* TableViewController.m */,
 			);
 			name = Twitter;
 			sourceTree = "<group>";
@@ -468,6 +480,15 @@
 				53E9562A0F9D5F3E0071709B /* sanitizeField.m */,
 			);
 			name = OnAir;
+			sourceTree = "<group>";
+		};
+		53DDCBED0FCA9AD400A34D85 /* ExtractURL */ = {
+			isa = PBXGroup;
+			children = (
+				53DDC9490FC9FAF800A34D85 /* extractURL.h */,
+				53DDC94A0FC9FAF800A34D85 /* extractURL.m */,
+			);
+			name = ExtractURL;
 			sourceTree = "<group>";
 		};
 		53E955C00F9D58AC0071709B /* TouchXML */ = {
@@ -576,13 +597,14 @@
 				53B8CF060FB4C0A900C8C71B /* EventIconTrans.png in Resources */,
 				53B8CF070FB4C0A900C8C71B /* LiveShowIconTrans.png in Resources */,
 				531B21E30FB50A4E00A06878 /* calTab.png in Resources */,
-				531B221C0FB50D6A00A06878 /* Default.png in Resources */,
+				531B221C0FB50D6A00A06878 /* DefaultOld.png in Resources */,
 				5310E7410FB8D7E50065A4BC /* PastShowsTab.png in Resources */,
 				53C2B02D0FB9204B00C9770A /* ShowView.xib in Resources */,
 				530015E90FBBB97300A9078D /* BG3.png in Resources */,
 				530015EB0FBBBA5E00A9078D /* TextView.png in Resources */,
 				53CD2F0D0FC851ED00D9FE00 /* twitTab.png in Resources */,
 				53DDC8CB0FC9159200A34D85 /* WebView.xib in Resources */,
+				53DDC8E60FC91C2100A34D85 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,6 +644,8 @@
 				53CD2FEF0FC89FAF00D9FE00 /* TweetViewController.m in Sources */,
 				53CD2FFF0FC8A01400D9FE00 /* TweetCell.m in Sources */,
 				53DDC8A20FC90E2D00A34D85 /* WebViewController.m in Sources */,
+				53DDC94B0FC9FAF800A34D85 /* extractURL.m in Sources */,
+				53DDCB980FCA8BDB00A34D85 /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
