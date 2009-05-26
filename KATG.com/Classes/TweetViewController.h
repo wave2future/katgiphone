@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-
-@interface TweetViewController : UITableViewController <UITableViewDelegate> {
+@interface TweetViewController : UITableViewController <UITableViewDelegate, UIAccelerometerDelegate> {
 	IBOutlet UINavigationController	*navigationController; // 
 	UIActivityIndicatorView			*activityIndicator;
     
@@ -20,6 +19,7 @@
 	NSMutableDictionary *urlDict;
 	
 	UIBarButtonItem *refButton;
+	UIButton *button;
 	UIBarButtonItem *othButton;
 }
 

@@ -75,6 +75,10 @@
 		53DDC8E60FC91C2100A34D85 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DDC8E50FC91C2100A34D85 /* Default.png */; };
 		53DDC94B0FC9FAF800A34D85 /* extractURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DDC94A0FC9FAF800A34D85 /* extractURL.m */; };
 		53DDCB980FCA8BDB00A34D85 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DDCB970FCA8BDB00A34D85 /* TableViewController.m */; };
+		53DDCC340FCB0DD800A34D85 /* othButPlus.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DDCC330FCB0DD800A34D85 /* othButPlus.png */; };
+		53DDCC390FCB0E9C00A34D85 /* othButMinus.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DDCC380FCB0E9C00A34D85 /* othButMinus.png */; };
+		53DDCC620FCB13FB00A34D85 /* othButMinusHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DDCC600FCB13FB00A34D85 /* othButMinusHighlighted.png */; };
+		53DDCC630FCB13FB00A34D85 /* othButPlusHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DDCC610FCB13FB00A34D85 /* othButPlusHighlighted.png */; };
 		53E1D2770F90474F005E78EC /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E1D2760F90474F005E78EC /* DetailViewController.m */; };
 		53E1D2BB0F904D97005E78EC /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53E1D2B90F904D97005E78EC /* DetailView.xib */; };
 		53E8DE4E0F8E95C7006A52C6 /* RoadMap in Resources */ = {isa = PBXBuildFile; fileRef = 53E8DE4D0F8E95C7006A52C6 /* RoadMap */; };
@@ -182,6 +186,10 @@
 		53DDC94A0FC9FAF800A34D85 /* extractURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = extractURL.m; sourceTree = "<group>"; };
 		53DDCB960FCA8BDB00A34D85 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		53DDCB970FCA8BDB00A34D85 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		53DDCC330FCB0DD800A34D85 /* othButPlus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = othButPlus.png; sourceTree = "<group>"; };
+		53DDCC380FCB0E9C00A34D85 /* othButMinus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = othButMinus.png; sourceTree = "<group>"; };
+		53DDCC600FCB13FB00A34D85 /* othButMinusHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = othButMinusHighlighted.png; sourceTree = "<group>"; };
+		53DDCC610FCB13FB00A34D85 /* othButPlusHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = othButPlusHighlighted.png; sourceTree = "<group>"; };
 		53E1D2750F90474F005E78EC /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		53E1D2760F90474F005E78EC /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		53E1D2B90F904D97005E78EC /* DetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
@@ -261,6 +269,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				53DDCC330FCB0DD800A34D85 /* othButPlus.png */,
+				53DDCC610FCB13FB00A34D85 /* othButPlusHighlighted.png */,
+				53DDCC380FCB0E9C00A34D85 /* othButMinus.png */,
+				53DDCC600FCB13FB00A34D85 /* othButMinusHighlighted.png */,
 				53DDC8E50FC91C2100A34D85 /* Default.png */,
 				531B221B0FB50D6A00A06878 /* DefaultOld.png */,
 				534CA1540FB39A3A00206F91 /* Icon.png */,
@@ -605,6 +617,10 @@
 				53CD2F0D0FC851ED00D9FE00 /* twitTab.png in Resources */,
 				53DDC8CB0FC9159200A34D85 /* WebView.xib in Resources */,
 				53DDC8E60FC91C2100A34D85 /* Default.png in Resources */,
+				53DDCC340FCB0DD800A34D85 /* othButPlus.png in Resources */,
+				53DDCC390FCB0E9C00A34D85 /* othButMinus.png in Resources */,
+				53DDCC620FCB13FB00A34D85 /* othButMinusHighlighted.png in Resources */,
+				53DDCC630FCB13FB00A34D85 /* othButPlusHighlighted.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

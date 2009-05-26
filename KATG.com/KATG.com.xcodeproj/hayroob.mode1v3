@@ -233,6 +233,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -316,8 +318,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -335,7 +335,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>53DDCC280FCB03DB00A34D85</string>
+										<string>53DDCCC80FCB329300A34D85</string>
 										<key>history</key>
 										<array>
 											<string>5332364C0F8C7AD700B385E5</string>
@@ -431,7 +431,6 @@
 											<string>53DDC9510FCA243E00A34D85</string>
 											<string>53DDC9530FCA243E00A34D85</string>
 											<string>53DDC9540FCA243E00A34D85</string>
-											<string>53DDC9E60FCA40B200A34D85</string>
 											<string>53DDCB5E0FCA856A00A34D85</string>
 											<string>53DDCB9E0FCA914E00A34D85</string>
 											<string>53DDCBBB0FCA926300A34D85</string>
@@ -439,7 +438,12 @@
 											<string>53DDCC030FCA9D9D00A34D85</string>
 											<string>53DDCC050FCA9D9D00A34D85</string>
 											<string>53DDCC170FCB00C600A34D85</string>
-											<string>53DDCC180FCB00C600A34D85</string>
+											<string>53DDCC590FCB12DA00A34D85</string>
+											<string>53DDCC5A0FCB12DA00A34D85</string>
+											<string>53DDCC650FCB148200A34D85</string>
+											<string>53DDCC660FCB148200A34D85</string>
+											<string>53DDCCC40FCB329000A34D85</string>
+											<string>53DDCCC50FCB329000A34D85</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -838,6 +842,24 @@
 											<string>53DDCC0A0FCA9D9D00A34D85</string>
 											<string>53DDCC0B0FCA9D9D00A34D85</string>
 											<string>53DDCC190FCB00C600A34D85</string>
+											<string>53DDCC3D0FCB108C00A34D85</string>
+											<string>53DDCC3E0FCB108C00A34D85</string>
+											<string>53DDCC5C0FCB12DA00A34D85</string>
+											<string>53DDCC5D0FCB12DA00A34D85</string>
+											<string>53DDCC5E0FCB12DA00A34D85</string>
+											<string>53DDCC680FCB148200A34D85</string>
+											<string>53DDCC690FCB148200A34D85</string>
+											<string>53DDCC6A0FCB148200A34D85</string>
+											<string>53DDCCBA0FCB325300A34D85</string>
+											<string>53DDCCBB0FCB325300A34D85</string>
+											<string>53DDCCBC0FCB325300A34D85</string>
+											<string>53DDCCBD0FCB325300A34D85</string>
+											<string>53DDCCBE0FCB325300A34D85</string>
+											<string>53DDCCBF0FCB325300A34D85</string>
+											<string>53DDCCC00FCB325300A34D85</string>
+											<string>53DDCCC10FCB325300A34D85</string>
+											<string>53DDCCC20FCB325300A34D85</string>
+											<string>53DDCCC60FCB329000A34D85</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -1034,10 +1056,10 @@
 		<string>53DDC89D0FC90CC300A34D85</string>
 		<string>53DDC6670FC8DF4E00A34D85</string>
 		<string>53DDC6650FC8DF4600A34D85</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>536CD60D0F89E9270063DED2</string>
 		<string>/Users/hayroob/Documents/Dropbox/DEV/Objective-C/Github/katgiphone/KATG.com/KATG.com.xcodeproj</string>
-		<string>1C78EAAD065D492600B07095</string>
 	</array>
 	<key>WindowString</key>
 	<string>1 55 1276 723 0 0 1280 778 </string>

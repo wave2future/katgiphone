@@ -18,7 +18,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface KATG_comAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
+@interface KATG_comAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UIAccelerometerDelegate> {
 	IBOutlet UIWindow				*window;
 	IBOutlet UITabBarController		*tabBarController;
 	//NSUserDefaults					*userDefaults;

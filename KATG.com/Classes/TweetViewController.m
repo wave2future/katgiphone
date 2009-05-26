@@ -14,6 +14,7 @@
 
 
 static BOOL otherTweets;
+#define kAccelerometerFrequency 15
 
 @implementation TweetViewController
 
@@ -58,19 +59,26 @@ static BOOL otherTweets;
 	[self.activityIndicator startAnimating];
 	[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: nil ];
 	
-	refButton = [[[UIBarButtonItem alloc]
-				  initWithTitle:NSLocalizedString(@"R", @"On")
-				  style:UIBarButtonItemStyleBordered
+	/*refButton = [[[UIBarButtonItem alloc]
+				  initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
 				  target:self
 				  action:@selector(refTweets:)] autorelease];
-    self.navigationItem.leftBarButtonItem = refButton;
+    self.navigationItem.rightBarButtonItem = refButton;*/
 	
-	othButton = [[[UIBarButtonItem alloc]
-				  initWithTitle:NSLocalizedString(@"O", @"On")
-				  style:UIBarButtonItemStyleBordered
-				  target:self
-				  action:@selector(othTweets:)] autorelease];
-    self.navigationItem.leftBarButtonItem = othButton;
+	button = [UIButton buttonWithType:UIButtonTypeCustom];
+	button.bounds = CGRectMake(0, 0, 33.0, 29.0);
+	[button setImage:[UIImage imageNamed:@"othButPlus.png"] forState:UIControlStateNormal];
+	[button setImage:[UIImage imageNamed:@"othButPlusHighlighted.png"] forState:UIControlStateHighlighted];
+	[button addTarget:self action:@selector(othTweets) forControlEvents:UIControlEventTouchUpInside];
+	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] 
+											  initWithCustomView:button]
+											  autorelease];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	NSLog(@"ViewDidAppear");
+	[[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
+    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
 }
 
 - (void)refTweets:(id)sender{
@@ -80,13 +88,17 @@ static BOOL otherTweets;
 	[self pollFeed];
 }
 
-- (void)othTweets:(id)sender{
+- (void)othTweets {
 	[isURL removeAllObjects];
 	[urlDict removeAllObjects];
 	if ( otherTweets ) {
 		otherTweets = NO;
+		[button setImage:[UIImage imageNamed:@"othButPlus.png"] forState:UIControlStateNormal];
+		[button setImage:[UIImage imageNamed:@"othButPlusHighlighted.png"] forState:UIControlStateHighlighted];
 	} else {
 		otherTweets = YES;
+		[button setImage:[UIImage imageNamed:@"othButMinus.png"] forState:UIControlStateNormal];
+		[button setImage:[UIImage imageNamed:@"othButMinusHighlighted.png"] forState:UIControlStateHighlighted];
 	}
 	[ NSThread detachNewThreadSelector: @selector(activityPool) toTarget: self withObject: nil ];
 	[self pollFeed];
@@ -199,11 +211,21 @@ static BOOL otherTweets;
 									text, @"text", 
 									since, @"since",
 									imageURLString, @"profile_image_url", nil];
-		
-		
 		[tweets addObject: tweetDict];
 		
 	}
+	
+	/*if (tweets.count == 0) {
+		NSString * from = @"KATGAPP";
+		NSString * text = @"No Internet Connection";
+		NSString * since = @"1";
+		NSString * imageURLString = @"http";
+		NSDictionary * tweetDict = [NSDictionary dictionaryWithObjectsAndKeys: from, @"from_user", 
+									text, @"text", 
+									since, @"since",
+									imageURLString, @"profile_image_url", nil];
+		[tweets addObject:tweetDict];
+	} */
 	
 	[jsonParser release];
 	[formatter release];
@@ -212,6 +234,40 @@ static BOOL otherTweets;
 	[self.activityIndicator stopAnimating];
 	
 	[self.tableView reloadData];
+}
+
+- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
+    CGFloat shakeThreshold = 1.0;
+    static NSInteger shakeCount = 0;
+    static NSInteger shakeTimer = 0;
+	
+    // If we detect a large enough motion in any direction, we increment the shakeCount.
+	if (([acceleration x] > shakeThreshold || [acceleration x] < (-1 * shakeThreshold)) || ([acceleration y] > shakeThreshold || [acceleration y] < (-1 * shakeThreshold)) || ([acceleration z] > shakeThreshold || [acceleration z] < (-1 * shakeThreshold))) {
+        shakeCount++;
+    }
+	
+    // shakeTimer gets incremented as long as their is a running shakeCount
+    if (shakeCount) shakeTimer++;
+	
+    // If it exceeds 9 (a little more than half a second), the current shake is thrown away.
+    if (shakeTimer > 10) {
+		NSLog(@"No SHAKER");
+		NSLog(@"%d", shakeCount);
+        shakeCount = 0;
+        shakeTimer = 0;
+    }
+	
+    // If shakeCount reaches 5 within our time limit we consider that a shake.
+	if (shakeCount > 6 && shakeTimer < 10 && ![self.activityIndicator isAnimating]) {
+		NSLog(@"SHAKER");
+		NSLog(@"%d", shakeCount);
+		shakeCount = 0; 
+        shakeTimer = 0;
+        [isURL removeAllObjects];
+		[urlDict removeAllObjects];
+		[ NSThread detachNewThreadSelector: @selector(activityPool) toTarget: self withObject: nil ];
+		[self pollFeed];
+    }
 }
 
 #pragma mark Table view methodss
@@ -337,7 +393,8 @@ static BOOL otherTweets;
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning]; 
+    [super didReceiveMemoryWarning];
+	[[UIAccelerometer sharedAccelerometer] release];
 }
 
 - (void)dealloc {
