@@ -1,7 +1,3 @@
 Reconnection Structure
 
-Replace FourthView with Webview (use same webview in twitter and youtube)
-
 Add linking from events details	page to webview for URLs
-
-Add linking from twitter to do searches for hash tags and @ tags

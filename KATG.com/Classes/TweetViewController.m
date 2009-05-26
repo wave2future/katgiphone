@@ -2,6 +2,18 @@
 //  TweetViewController.m
 //  KATG.com
 //  
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//  
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//  
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import <JSON/JSON.h>
 #import "TweetViewController.h"
@@ -12,9 +24,9 @@
 #import "MREntitiesConverter.h"
 #import "extractURL.h"
 
+#define kAccelerometerFrequency 15
 
 static BOOL otherTweets;
-#define kAccelerometerFrequency 15
 
 @implementation TweetViewController
 
@@ -59,12 +71,6 @@ static BOOL otherTweets;
 	[self.activityIndicator startAnimating];
 	[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: nil ];
 	
-	/*refButton = [[[UIBarButtonItem alloc]
-				  initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-				  target:self
-				  action:@selector(refTweets:)] autorelease];
-    self.navigationItem.rightBarButtonItem = refButton;*/
-	
 	button = [UIButton buttonWithType:UIButtonTypeCustom];
 	button.bounds = CGRectMake(0, 0, 33.0, 29.0);
 	[button setImage:[UIImage imageNamed:@"othButPlus.png"] forState:UIControlStateNormal];
@@ -73,14 +79,25 @@ static BOOL otherTweets;
 	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] 
 											  initWithCustomView:button]
 											  autorelease];
+	self.navigationItem.leftBarButtonItem.enabled = NO;
 }
 
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
 - (void)viewDidAppear:(BOOL)animated {
-	NSLog(@"ViewDidAppear");
+	//NSLog(@"ViewDidAppear");
 	[[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
 }
 
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
 - (void)refTweets:(id)sender{
 	[isURL removeAllObjects];
 	[urlDict removeAllObjects];
@@ -88,6 +105,11 @@ static BOOL otherTweets;
 	[self pollFeed];
 }
 
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
 - (void)othTweets {
 	[isURL removeAllObjects];
 	[urlDict removeAllObjects];
@@ -104,12 +126,22 @@ static BOOL otherTweets;
 	[self pollFeed];
 }
 
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
 - (void)autoPool {
     NSAutoreleasePool *pool = [ [ NSAutoreleasePool alloc ] init ];
     [self pollFeed];
 	[ pool release ];
 }
 
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
 - (void)activityPool {
     NSAutoreleasePool *pool = [ [ NSAutoreleasePool alloc ] init ];
     [self.activityIndicator startAnimating];
@@ -234,8 +266,14 @@ static BOOL otherTweets;
 	[self.activityIndicator stopAnimating];
 	
 	[self.tableView reloadData];
+	self.navigationItem.leftBarButtonItem.enabled = YES;
 }
 
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
     CGFloat shakeThreshold = 1.0;
     static NSInteger shakeCount = 0;
@@ -251,16 +289,16 @@ static BOOL otherTweets;
 	
     // If it exceeds 9 (a little more than half a second), the current shake is thrown away.
     if (shakeTimer > 10) {
-		NSLog(@"No SHAKER");
-		NSLog(@"%d", shakeCount);
+		//NSLog(@"No SHAKER");
+		//NSLog(@"%d", shakeCount);
         shakeCount = 0;
         shakeTimer = 0;
     }
 	
     // If shakeCount reaches 5 within our time limit we consider that a shake.
 	if (shakeCount > 6 && shakeTimer < 10 && ![self.activityIndicator isAnimating]) {
-		NSLog(@"SHAKER");
-		NSLog(@"%d", shakeCount);
+		//NSLog(@"SHAKER");
+		//NSLog(@"%d", shakeCount);
 		shakeCount = 0; 
         shakeTimer = 0;
         [isURL removeAllObjects];
@@ -371,6 +409,11 @@ static BOOL otherTweets;
 	return height;
 }
 
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSString *index = [NSString stringWithFormat:@"%d", indexPath.row];
 	if ( [[isURL objectForKey: index] isEqualToString:@"YES"] ) {
