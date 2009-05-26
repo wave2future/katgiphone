@@ -30,7 +30,7 @@ Jam on the buttons with your marshmallow pig fingers.
 
 To install the JSON parser:
 
-Download JSNO_2.1.1.dmg from 
+Download JSON_2.1.1.dmg from 
 Copy the content of the 'SDKs' folder to ~/Library/SDKs. (You may have to create that directory.)
 In the target build options, add
 Additional SDKs

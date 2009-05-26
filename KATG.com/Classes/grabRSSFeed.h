@@ -20,8 +20,7 @@
 
 @interface grabRSSFeed : NSObject {
 	NSMutableArray *feedEntries;  // Child nodes of the feed being queried
-	NSString	   *xPath;        // XPath to parse at
-	NSMutableData  *receivedData;
+	//NSMutableData  *receivedData;
 }
 
 - (id)initWithFeed:(NSString *)feedAddress XPath:(NSString *)xPath;

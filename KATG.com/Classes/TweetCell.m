@@ -1,7 +1,7 @@
 //
-//  CustomCell.m
+//  TweetCell.m
 //  KATG.com
-//  
+//
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
@@ -11,13 +11,16 @@
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
+//  
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#import "CustomCell.h"
+#import "TweetCell.h"
 
 
-@implementation CustomCell
+@implementation TweetCell
 
-@synthesize lblTitle, lblPublish, lblPublishDate, imgSquare;
+@synthesize lblTitle, lblSince, lblFrom, imgSquare;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
@@ -26,20 +29,20 @@
         lblTitle.textColor = [UIColor blackColor];
         lblTitle.font = [UIFont boldSystemFontOfSize:12.0];
 		lblTitle.numberOfLines = 4;
-		
-        lblPublish = [[UILabel alloc] initWithFrame:CGRectZero];
-        lblPublish.textColor = [UIColor darkGrayColor];
-        lblPublish.font = [UIFont systemFontOfSize:12.0];
-		
-		lblPublishDate = [[UILabel alloc] initWithFrame:CGRectZero];
-        lblPublishDate.textColor = [UIColor darkGrayColor];
-        lblPublishDate.font = [UIFont systemFontOfSize:12.0];
         
+		lblSince = [[UILabel alloc] initWithFrame:CGRectZero];
+        lblSince.textColor = [UIColor blackColor];
+        lblSince.font = [UIFont boldSystemFontOfSize:12.0];
+		
+		lblFrom = [[UILabel alloc] initWithFrame:CGRectZero];
+        lblFrom.textColor = [UIColor blackColor];
+        lblFrom.font = [UIFont boldSystemFontOfSize:12.0];
+		
         imgSquare = [[UIImageView alloc] initWithFrame:CGRectZero];
-				
+		
 		[self.contentView addSubview:lblTitle];
-        [self.contentView addSubview:lblPublish];
-        [self.contentView addSubview:lblPublishDate];
+		[self.contentView addSubview:lblSince];
+		[self.contentView addSubview:lblFrom];
         [self.contentView addSubview:imgSquare];
     }
     return self;
@@ -51,24 +54,28 @@
     CGRect baseRect = CGRectInset(self.contentView.bounds, 10, 0);
     CGRect rect = baseRect;
 	
-	rect.origin.x = self.contentView.bounds.size.width - 190;
-    rect.origin.y = 0;
-    rect.size.width = self.contentView.bounds.size.width - 120;
+	rect.origin.x = 60;
+    rect.origin.y = 20;
+    rect.size.width = self.contentView.bounds.size.width - 90;
+	rect.size.height = self.contentView.bounds.size.height - 30;
     lblTitle.frame = rect;
     
-	rect.origin.x = self.contentView.bounds.size.width - 265;
-    rect.origin.y = 45;
-	rect.size.width = 70;
+	rect.origin.x = self.contentView.bounds.size.width - 20;
+    rect.origin.y = 60;
+    rect.size.width = 30;
 	rect.size.height = 20;
-    lblPublish.frame = rect;
+    lblSince.frame = rect;
 	
-	rect.origin.y -= 30;
-    lblPublishDate.frame = rect;
-    
-    rect.size.width = 20;
-    rect.size.height = 20;
-    rect.origin.x = self.contentView.bounds.size.width - 295;
-    rect.origin.y = 30;
+	rect.origin.x = 10;
+    rect.origin.y = 0;
+    rect.size.width = 100;
+	rect.size.height = 20;
+    lblFrom.frame = rect;
+	
+    rect.size.width = 48;
+    rect.size.height = 48;
+    rect.origin.x = 8;
+    rect.origin.y = 20;
     imgSquare.frame = rect;
 	
 }
@@ -78,19 +85,15 @@
     // Configure the view for the selected state
     if (selected) {
         lblTitle.textColor = [UIColor whiteColor];
-        lblPublish.textColor = [UIColor whiteColor];
-		lblPublishDate.textColor = [UIColor whiteColor];
     } else {
         lblTitle.textColor = [UIColor blackColor];
-        lblPublish.textColor = [UIColor darkGrayColor];
-        lblPublishDate.textColor = [UIColor darkGrayColor];
     }
 }
 
 - (void)dealloc {
     [lblTitle release];
-    [lblPublish release];
-	[lblPublishDate release];
+	[lblSince release];
+	[lblFrom release];
     [imgSquare release];
     [super dealloc];
 }

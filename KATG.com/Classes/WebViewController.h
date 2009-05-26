@@ -1,7 +1,7 @@
 //
-//  KATG_comAppDelegate.h
+//  WebViewController.h
 //  KATG.com
-//  
+//
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
@@ -17,14 +17,16 @@
 
 #import <UIKit/UIKit.h>
 
-
-@interface KATG_comAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UIAccelerometerDelegate> {
-	IBOutlet UIWindow				*window;
-	IBOutlet UITabBarController		*tabBarController;
-	//NSUserDefaults					*userDefaults;
+@interface WebViewController : UIViewController {
+	UINavigationController	*navigationController;
+	IBOutlet UIWebView *webView; // Set up webview for TweetViewController to pass too
+	IBOutlet UIToolbar *toolBar;
+	NSString *urlAddress;        // Variable for TweetViewController to pass URL address
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow					*window;
-@property (nonatomic, retain) IBOutlet UITabBarController		*tabBarController;
+@property (nonatomic, retain) UINavigationController *navigationController;
+@property (nonatomic, retain) IBOutlet UIWebView *webView;
+@property (nonatomic, retain) IBOutlet UIToolbar *toolBar;
+@property (nonatomic, retain) NSString *urlAddress;
 
 @end

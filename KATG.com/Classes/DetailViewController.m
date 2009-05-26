@@ -42,14 +42,13 @@
 	
 	self.navigationItem.title = @"Event Details";
 	
-	CGRect rect = CGRectMake(20, 90, 280, 240);
+	CGRect rect = CGRectMake(5, 125, 315, 230);
 	
 	detailBody = [[[UITextView alloc] initWithFrame:rect] autorelease];
 	detailBody.textColor = [UIColor blackColor];
-	detailBody.backgroundColor = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0]; 
+	detailBody.backgroundColor = [UIColor clearColor];// [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0]; 
 	detailBody.editable = NO;
 	detailBody.font = [UIFont systemFontOfSize:15.0];
-	//detailBody.textAlignment = UITextAlignmentCenter;
 	
 	[self.view addSubview:detailBody];
 	

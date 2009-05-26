@@ -1,7 +1,7 @@
 //
-//  EventsViewController.h
+//  PastShowsController.h
 //  KATG.com
-//  
+//
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
@@ -18,16 +18,22 @@
 #import <UIKit/UIKit.h>
 
 
-@interface EventsViewController : UITableViewController {
-	IBOutlet UINavigationController	*navigationController; // 
-    NSMutableArray *list;         // Adds formmated contents of each cell in an array
-	NSMutableArray *feedEntries;  // Child nodes of the feed being queried
+@interface PastShowsController : UITableViewController <UITableViewDelegate> {
+	IBOutlet UINavigationController	*navigationController;
+    NSMutableArray					*list;
 	UIActivityIndicatorView			*activityIndicator;
+	NSMutableArray					*feedEntries;
+	NSString						*feedAddress;
+	NSArray							*indexPaths;
 }
 
 @property (nonatomic, retain) IBOutlet UINavigationController	*navigationController;
 @property (nonatomic, retain) NSMutableArray					*list;
-@property (nonatomic, retain) NSMutableArray					*feedEntries;
 @property (nonatomic, retain) UIActivityIndicatorView			*activityIndicator;
+@property (nonatomic, retain) NSMutableArray					*feedEntries;
+@property (nonatomic, retain) NSString							*feedAddress;
+@property (nonatomic, retain) NSArray							*indexPaths;
+
+- (void) pollFeed;
 
 @end

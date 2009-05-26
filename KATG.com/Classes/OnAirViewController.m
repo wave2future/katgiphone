@@ -16,47 +16,36 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import "OnAirViewController.h"
+#import "EventsViewController.h"
+#import "AudioStreamer.h"
 #import <QuartzCore/CoreAnimation.h>
 #import <SystemConfiguration/SystemConfiguration.h>
-#import "AudioStreamer.h"
 #import "grabRSSFeed.h"
 #import "sanitizeField.h"
 
 
+// Integer value for countdown to next live show
+static int timeSince;
+
 @implementation OnAirViewController
 
 // Set up interface for sending and receiving data from fields and labels
-// Audio Streamer Play Button
-@synthesize button;
-// Volume Slider
+// Audio Streamer Play/Stop Button
+@synthesize audioButton;
+// Volume Slider, this view contains the actual MPVolumeView as a subview
 @synthesize volumeSliderContainer;
 // Call in button
 @synthesize callButton;
-// Launch KATG in iTunes
-@synthesize iButton;
-// Feed Status
+// Live Show Feed Status Indicator
 @synthesize statusText;
-// Feedback Button
-@synthesize feedBack;
+// Next Live Show Countdown
+@synthesize days, hours, minutes;
+// Submit Feedback Button
+@synthesize feedbackButton;
 // Feedback Fields
-@synthesize nameField;
-@synthesize locField;
-@synthesize comField;
-
+@synthesize nameField, locField, comField;
 
 #pragma mark System Stuff
-//*******************************************************
-//* initWithNibName
-//* 
-//* 
-//*******************************************************
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-		// Initialization code
-	}
-	return self;
-}
-
 //*******************************************************
 //* viewDidLoad
 //* 
@@ -65,7 +54,7 @@
 - (void)viewDidLoad {
 	// Loads Play button for audioStream
 	UIImage *image = [UIImage imageNamed:@"playButton.png"];
-	[self setButtonImage:image];
+	[self setAudioButtonImage:image];
 	
 	// Draw Volume Slider
 	[self drawVolumeSlider];
@@ -73,22 +62,19 @@
 	// Set Phone Button Image
 	[self setPhoneButtonImage];
 	
-	// Set iTunes Button Image
-	[self setiTunesImage];
-	
 	// Set Feedback Button Image
-	[self setFeedBackImage];
+	[self setFeedbackButtonImage];
 	
-	// Set update timer for live feed xml
-	[self setTimer];
-	
-	// Auto start audiostreamer when returning from phone call
+	// Auto start audiostreamer if it was playing when the app last exited
 	userDefaults = [NSUserDefaults standardUserDefaults];
 	[self setDefaults];
 	
+	// Notification Center for handling Text View Did Begin Editing. 
+	// In this case it clears the Text View when editing begins unless it is
+	// saved text from a previous session.
 	[[NSNotificationCenter defaultCenter] 
 	 addObserver:self 
-	 selector:@selector(handleNotification:) 
+	 selector:@selector(handleUITextViewTextDidBeginEditingNotification:) 
 	 name:@"UITextViewTextDidBeginEditingNotification" 
 	 object:nil];
 	
@@ -103,18 +89,53 @@
 		return;
 	}
 	
-	[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: nil ];
+	//
+	[ NSThread detachNewThreadSelector: @selector(feedStatusAutoPool) toTarget: self withObject: nil ];
+	
+	// Set update timer for live feed xml
+	[self setFeedStatusTimer];
+	
+	//
+	[ NSThread detachNewThreadSelector: @selector(nextShowAutoPool) toTarget: self withObject: nil ];
+	
+	// Set update timer for for Countdown to next live show
+	timeSince = 0;
+	[self setNextShowTimer];
+}
+
+#pragma mark Connectivity
+//*******************************************************
+//* isDataSourceAvailable
+//* 
+//* 
+//*******************************************************
+- (BOOL)isDataSourceAvailable {
+    static BOOL checkNetwork = YES;
+    if (checkNetwork) { // Since checking the reachability of a host can be expensive, cache the result and perform the reachability check once.
+        checkNetwork = NO;
+        
+        Boolean success;    
+        const char *host_name = "keithandthegirl.com";
+		
+        SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, host_name);
+        SCNetworkReachabilityFlags flags;
+        success = SCNetworkReachabilityGetFlags(reachability, &flags);
+        _isDataSourceAvailable = success && (flags & kSCNetworkFlagsReachable) && !(flags & kSCNetworkFlagsConnectionRequired);
+        CFRelease(reachability);
+    }
+    return _isDataSourceAvailable;
 }
 
 #pragma mark Audio Streamer
 //*******************************************************
-//* buttonPressed
-//* 
-//* 
+//* audioButtonPressed
+//* If the streamer is not active, activate stream and 
+//* iniate button spin and image change
+//* If the streamer is active, 
+//* deactivate stream and change button image
 //*******************************************************
-- (IBAction)buttonPressed:(id)sender {
-	if (!streamer) // If the streamer is not active, activate stream and iniate button spin and image change
-	{
+- (IBAction)audioButtonPressed:(id)sender {
+	if (!streamer) {
 		
 		NSString *escapedValue =
 		[(NSString *)CFURLCreateStringByAddingPercentEscapes(
@@ -134,25 +155,24 @@
 		 context:nil];
 		[streamer start];
 		
-		[self setButtonImage:[UIImage imageNamed:@"loadingButton.png"]];
+		[self setAudioButtonImage:[UIImage imageNamed:@"loadingButton.png"]];
 		
 		[self spinButton];
 	}
-	else // If the streamer is active, deactivate stream and change button image
-	{
-		[button.layer removeAllAnimations];
+	else {
+		[audioButton.layer removeAllAnimations];
 		[streamer stop];
 	}
 }
 
 //*******************************************************
-//* setButtonImage
+//* setAudioButtonImage
 //* 
 //* Sets image for AudioStreamer play button
 //*******************************************************
-- (void)setButtonImage:(UIImage *)image {
-	[button.layer removeAllAnimations];
-	[button
+- (void)setAudioButtonImage:(UIImage *)image {
+	[audioButton.layer removeAllAnimations];
+	[audioButton
 	 setImage:image
 	 forState:0];
 }
@@ -165,9 +185,9 @@
 - (void)spinButton {
 	[CATransaction begin];
 	[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
-	CGRect frame = [button frame];
-	button.layer.anchorPoint = CGPointMake(0.5, 0.5);
-	button.layer.position = CGPointMake(frame.origin.x + 0.5 * frame.size.width, frame.origin.y + 0.5 * frame.size.height);
+	CGRect frame = [audioButton frame];
+	audioButton.layer.anchorPoint = CGPointMake(0.5, 0.5);
+	audioButton.layer.position = CGPointMake(frame.origin.x + 0.5 * frame.size.width, frame.origin.y + 0.5 * frame.size.height);
 	[CATransaction commit];
 	
 	[CATransaction begin];
@@ -180,7 +200,7 @@
 	animation.toValue = [NSNumber numberWithFloat:2 * M_PI];
 	animation.timingFunction = [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionLinear];
 	animation.delegate = self;
-	[button.layer addAnimation:animation forKey:@"rotationAnimation"];
+	[audioButton.layer addAnimation:animation forKey:@"rotationAnimation"];
 	
 	[CATransaction commit];
 }
@@ -210,7 +230,7 @@
 		if ([(AudioStreamer *)object isPlaying])
 		{
 			[self
-			 performSelector:@selector(setButtonImage:)
+			 performSelector:@selector(setAudioButtonImage:)
 			 onThread:[NSThread mainThread]
 			 withObject:[UIImage imageNamed:@"stopButton.png"]
 			 waitUntilDone:NO];
@@ -222,7 +242,7 @@
 			streamer = nil;
 			
 			[self
-			 performSelector:@selector(setButtonImage:)
+			 performSelector:@selector(setAudioButtonImage:)
 			 onThread:[NSThread mainThread]
 			 withObject:[UIImage imageNamed:@"playButton.png"]
 			 waitUntilDone:NO];
@@ -238,7 +258,7 @@
 
 #pragma mark Volume Slider
 //*******************************************************
-//* 
+//* drawVolumeSlider
 //* 
 //* 
 //*******************************************************
@@ -262,16 +282,16 @@
 	[volumeView release];
 }
 
-#pragma mark Phone Button
+#pragma mark Set User Defaults
 //*******************************************************
-//* 
+//* setDefaults
 //* 
 //* 
 //*******************************************************
 - (void)setDefaults {
 	if ([userDefaults boolForKey:@"StartStream"]) {
 		[userDefaults setBool:NO forKey:@"StartStream"];
-		[self buttonPressed:self];
+		[self audioButtonPressed:self];
 	}
 	nameField.text = [userDefaults objectForKey:@"nameField"];
 	locField.text = [userDefaults objectForKey:@"locField"];
@@ -282,10 +302,12 @@
 	}
 }
 
+#pragma mark Phone Button
 //*******************************************************
-//* 
-//* 
-//* 
+//* phoneButtonPressed
+//* Launch phone app to call show
+//* Sets user defaults to restart stream when call
+//* is complete
 //*******************************************************
 - (IBAction)phoneButtonPressed:(id)sender {
 	if (streamer) {
@@ -311,130 +333,6 @@
 	[callButton setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
 }
 
-#pragma mark iTunes
-//*******************************************************
-//* 
-//* 
-//* 
-//*******************************************************
-- (IBAction)itunesButtonPressed:(id)sender {
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=253167631"]];
-}
-
-//*******************************************************
-//* setiTunesImage
-//* 
-//* 
-//*******************************************************
-- (void)setiTunesImage {
-	UIImage *feedButtonImage = [UIImage imageNamed:@"rssNormal.png"];
-	UIImage *normal = [feedButtonImage stretchableImageWithLeftCapWidth:12 topCapHeight:12];
-	
-	UIImage *feedButtonHighlightedImage = [UIImage imageNamed:@"rssPressed.png"];
-	UIImage *highlight = [feedButtonHighlightedImage stretchableImageWithLeftCapWidth:12 topCapHeight:12];
-	
-	[iButton setBackgroundImage:(UIImage *)normal forState:UIControlStateNormal];
-	[iButton setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
-}
-
-#pragma mark Live Show Feed Indicator
-//*******************************************************
-//* autoPool
-//*
-//* 
-//*******************************************************
-- (void)autoPool {
-    NSAutoreleasePool *pool = [ [ NSAutoreleasePool alloc ] init ];
-    [self pollFeed];
-	[ pool release ];
-}
-
-//*******************************************************
-//* setTimer
-//*
-//* Create and start timer 
-//* for updating live feed indicator
-//*******************************************************
-- (void)setTimer {
-	// Repeating timer to update feed
-	NSTimer *timer;
-	timer = [NSTimer scheduledTimerWithTimeInterval: 180.0
-											 target: self
-										   selector: @selector(handleTimer:)
-										   userInfo: nil
-											repeats: YES];
-}
-
-//*******************************************************
-//* handleTimer
-//*
-//* Setup code to execute on timer
-//*******************************************************
-- (void)handleTimer: (NSTimer *) timer {
-	[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: nil ];
-}
-
-//*******************************************************
-//* isDataSourceAvailable
-//* 
-//* 
-//*******************************************************
-- (BOOL)isDataSourceAvailable {
-    static BOOL checkNetwork = YES;
-    if (checkNetwork) { // Since checking the reachability of a host can be expensive, cache the result and perform the reachability check once.
-        checkNetwork = NO;
-        
-        Boolean success;    
-        const char *host_name = "keithandthegirl.com";
-		
-        SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, host_name);
-        SCNetworkReachabilityFlags flags;
-        success = SCNetworkReachabilityGetFlags(reachability, &flags);
-        _isDataSourceAvailable = success && (flags & kSCNetworkFlagsReachable) && !(flags & kSCNetworkFlagsConnectionRequired);
-        CFRelease(reachability);
-    }
-    return _isDataSourceAvailable;
-}
-
-//*******************************************************
-//* pollFeed
-//*
-//* Create and run live feed xml
-//*******************************************************
-- (void)pollFeed {
-	// Create the feed string
-	NSString *feedAddress = @"http://www.keithandthegirl.com/feed/show/live";
-    //NSString *feedAddress = @"http://www.thegrundleonline.com/xml/KATGGadget.xml";
-	
-	// Select the xPath to parse against
-	NSString *xPath = @"//root";
-	
-	// Call the grabRSSFeed function with the feedAddress
-	// string as a parameter
-	grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:xPath];
-	feedEntries = [feed entries];
-	[feed release];
-	
-	int feedEntryIndex = 0;
-	NSString *feedStatusString;
-	NSString *feedStatus = nil;
-	if ([feedEntries count] > 0) {
-		feedStatusString = [[feedEntries objectAtIndex: feedEntryIndex] objectForKey: @"OnAir"];
-		int feedStatusInt = [feedStatusString intValue];
-		if(feedStatusInt == 0) {
-			feedStatus = @"Not Live";
-		} else if(feedStatusInt == 1) {
-			feedStatus = @"Live";
-		} else {
-			feedStatus = @"Unknown";
-		}
-	} else {
-		feedStatus = @"Unknown";
-	}
-	
-	statusText.text = feedStatus;
-}
-
 #pragma mark Feedback
 //*******************************************************
 //* feedBackPressed
@@ -449,13 +347,28 @@
 //* After comment is submitted comField.text is
 //* blanked
 //*******************************************************
-- (IBAction)feedBackPressed:(id)sender {
+- (IBAction)feedbackButtonPressed:(id)sender {
 	sanitizeField *cleaner = [[sanitizeField alloc] init];
 	NSString *namePrefix = @"Name=";
-	NSString *name = [cleaner stringCleaner:nameField.text];
+	NSString *name = nil;
+	if ([cleaner stringCleaner:nameField.text] != nil) {
+		name = [cleaner stringCleaner:nameField.text];
+	} else {
+		name = @"";
+	}
 	NSString *locPrefix = @"&Location=";
-	NSString *location = [cleaner stringCleaner:locField.text];
-	NSString *comment = [cleaner stringCleaner:comField.text];
+	NSString *location = nil;
+	if ([cleaner stringCleaner:locField.text] != nil) {
+		location = [cleaner stringCleaner:locField.text];
+	} else {
+		location = @"";
+	}
+	NSString *comment = nil;
+	if ([cleaner stringCleaner:comField.text] != nil) {
+		comment = [cleaner stringCleaner:comField.text];
+	} else {
+		comment = @"";
+	}
 	NSString *comPrefix = @"&Comment=";
 	NSString *submitButton = @"&ButtonSubmit=Send+Comment";
 	NSString *hiddenVoxbackId = @"&HiddenVoxbackId=3&HiddenMixerCode=IEOSE";
@@ -480,29 +393,29 @@
 }
 
 //*******************************************************
-//* setFeedBackImage
+//* setFeedbackButtonImage
 //* 
 //* 
 //*******************************************************
-- (void)setFeedBackImage {
+- (void)setFeedbackButtonImage {
 	UIImage *feedButtonImage = [UIImage imageNamed:@"feedButtonNormal.png"];
 	UIImage *normal = [feedButtonImage stretchableImageWithLeftCapWidth:12 topCapHeight:12];
 	
 	UIImage *feedButtonHighlightedImage = [UIImage imageNamed:@"feedButtonPressed.png"];
 	UIImage *highlight = [feedButtonHighlightedImage stretchableImageWithLeftCapWidth:12 topCapHeight:12];
 	
-	[feedBack setBackgroundImage:(UIImage *)normal forState:UIControlStateNormal];
-	[feedBack setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
+	[feedbackButton setBackgroundImage:(UIImage *)normal forState:UIControlStateNormal];
+	[feedbackButton setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
 }
 
 //*******************************************************
 //* textFieldDoneEditing
 //* 
-//* 
+//* Dismiss keyboard when done is pressed
 //*******************************************************
 - (IBAction)textFieldDoneEditing:(id)sender {
 	[sender resignFirstResponder];
-} // Dismiss keyboard when done is pressed
+}
 
 //*******************************************************
 //* textViewDoneEditing
@@ -516,12 +429,15 @@
 }
 
 //*******************************************************
-//* UITextViewTextDidBeginEditingNotification
+//* handleUITextViewTextDidBeginEditingNotification
 //*
 //* When TextView sends DidBeginEditing Notification
 //* set value of text to blank
+//* If string in comField matches the comField 
+//* value stored in userDefaults and is not
+//* "Comment" do not clear
 //*******************************************************
-- (void)handleNotification:(NSNotification *)aNotification {
+- (void)handleUITextViewTextDidBeginEditingNotification:(NSNotification *)aNotification {
 	if ([comField.text isEqualToString: [userDefaults objectForKey:@"comField"]]) {
 		if ([comField.text isEqualToString: @"Comment"] ) {
 			comField.text = @"";
@@ -533,6 +449,216 @@
 	}
 }
 
+#pragma mark Live Show Feed Indicator
+//*******************************************************
+//* setTimer
+//*
+//* Create and start timer 
+//* for updating live feed indicator
+//*******************************************************
+- (void)setFeedStatusTimer {
+	// Repeating timer to update feed
+	NSTimer *timer;
+	timer = [NSTimer scheduledTimerWithTimeInterval: 180.0
+											 target: self
+										   selector: @selector(feedTimer:)
+										   userInfo: nil
+											repeats: YES];
+}
+
+//*******************************************************
+//* feedStatusAutoPool
+//*
+//* 
+//*******************************************************
+- (void)feedStatusAutoPool {
+    NSAutoreleasePool *pool = [ [ NSAutoreleasePool alloc ] init ];
+    [self pollFeedStatus];
+	[ pool release ];
+}
+
+//*******************************************************
+//* handleTimer
+//*
+//* Setup code to execute on timer
+//*******************************************************
+- (void)feedTimer: (NSTimer *) timer {
+	[ NSThread detachNewThreadSelector: @selector(feedStatusAutoPool) toTarget: self withObject: nil ];
+}
+
+//*******************************************************
+//* pollFeedStatus
+//*
+//* Create and run live feed xml
+//*******************************************************
+- (void)pollFeedStatus {
+	// Create the feed string
+	NSString *feedAddress = @"http://www.keithandthegirl.com/feed/show/live";
+    //NSString *feedAddress = @"http://www.thegrundleonline.com/xml/KATGGadget.xml";
+	
+	// Select the xPath to parse against
+	NSString *xPath = @"//root";
+	
+	// Call the grabRSSFeed function with the feedAddress
+	// string as a parameter
+	grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:xPath];
+	feedEntries = [feed entries];
+	
+	int feedEntryIndex = 0;
+	NSString *feedStatusString;
+	NSString *feedStatus = nil;
+	if ([feedEntries count] > 0) {
+		feedStatusString = [[feedEntries objectAtIndex: feedEntryIndex] objectForKey: @"OnAir"];
+		int feedStatusInt = [feedStatusString intValue];
+		if(feedStatusInt == 0) {
+			feedStatus = @"Not Live";
+		} else if(feedStatusInt == 1) {
+			feedStatus = @"Live";
+		} else {
+			feedStatus = @"Unknown";
+		}
+	} else {
+		feedStatus = @"Unknown";
+	}
+	
+	statusText.text = feedStatus;
+}
+
+#pragma mark Next Live Show Indicator
+//*******************************************************
+//* setNextShowTimer
+//*
+//* Create and start timer 
+//* for updating next show countdown
+//*******************************************************
+- (void)setNextShowTimer {
+	// Repeating timer to update feed
+	NSTimer *timer;
+	timer = [NSTimer scheduledTimerWithTimeInterval: 60.0
+											 target: self
+										   selector: @selector(showTimer:)
+										   userInfo: nil
+											repeats: YES];
+}
+
+//*******************************************************
+//* nextShowAutoPool
+//*
+//* 
+//*******************************************************
+- (void)nextShowAutoPool {
+    NSAutoreleasePool *pool = [ [ NSAutoreleasePool alloc ] init ];
+    [self pollNextShow];
+	[ pool release ];
+}
+
+//*******************************************************
+//* handleTimer
+//*
+//* Setup code to execute on timer
+//*******************************************************
+- (void)showTimer: (NSTimer *) timer {
+	[ NSThread detachNewThreadSelector: @selector(nextShowAutoPool) toTarget: self withObject: nil ];
+}
+
+//*******************************************************
+//* pollNextShow
+//*
+//* Create and run live feed xml
+//*******************************************************
+- (void)pollNextShow {
+	if (timeSince > 0) {
+		if (timeSince >= 60) {
+			timeSince = timeSince - 60;
+		}
+		
+		int d = timeSince / 86400;
+		int h = timeSince / 3600 - d * 24;
+		int m = timeSince / 60 - d * 1440 - h * 60;
+		//int s = timeSince % 60;
+		
+		days.text = [[NSString alloc] initWithFormat:@"%d",d];
+		hours.text = [[NSString alloc] initWithFormat:@"%d",h];
+		minutes.text = [[NSString alloc] initWithFormat:@"%d",m];
+	} else {
+		// Change the feed string
+		NSString *feedAddress = @"http://www.keithandthegirl.com/feed/event/?order=datereverse";
+		NSString *xPath = @"//Event";
+		// Call the grabRSSFeed function with the above
+		// string as a parameter
+		grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:(NSString *)xPath];
+		feedEntries = [feed entries];
+		[feed release];
+		
+		// Evaluate the contents of feed for classification and add results into list
+		
+		NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+		[formatter setDateStyle: NSDateFormatterLongStyle];
+		[formatter setFormatterBehavior: NSDateFormatterBehavior10_4];
+		[formatter setDateFormat: @"MM/dd/yyyy HH:mm zzz"];
+		
+		int feedEntryIndex = [feedEntries count] - 1;
+		
+		NSString *feedTitle = [[feedEntries objectAtIndex: feedEntryIndex] 
+							   objectForKey: @"Title"];
+		
+		timeSince = -1;
+		
+		BOOL match1 = [feedTitle rangeOfString:@"Live Show" options:NSCaseInsensitiveSearch].location != NSNotFound;
+		BOOL match2 = timeSince > 0;
+		BOOL match3 = [feedTitle rangeOfString:@"No Live Show" options:NSCaseInsensitiveSearch].location != NSNotFound;
+
+		while ( !(match1 && match2) || match3 ) {
+			feedTitle = [[feedEntries objectAtIndex: feedEntryIndex] 
+						 objectForKey: @"Title"];
+			
+			NSString *feedTime = [[feedEntries objectAtIndex: feedEntryIndex] 
+								  objectForKey: @"StartDate"];
+			
+			NSTimeZone *EST = [NSTimeZone timeZoneWithName:(NSString *)@"America/New_York"];
+			
+			if ([EST isDaylightSavingTime]) {
+				feedTime = [feedTime stringByAppendingString:@" EDT"];
+			} else {
+				feedTime = [feedTime stringByAppendingString:@" EST"];
+			}
+			
+			NSDate *eventTime = [formatter dateFromString: feedTime];
+			
+			timeSince = [eventTime timeIntervalSinceNow];
+			
+			match1 = [feedTitle rangeOfString:@"Live Show" options:NSCaseInsensitiveSearch].location != NSNotFound;
+			match2 = timeSince > 0;
+			match3 = [feedTitle rangeOfString:@"No Live Show" options:NSCaseInsensitiveSearch].location != NSNotFound;
+			
+			feedEntryIndex = feedEntryIndex - 1;
+		}
+		
+		int d = timeSince / 86400;
+		int h = timeSince / 3600 - d * 24;
+		int m = timeSince / 60 - d * 1440 - h * 60;
+		//int s = timeSince % 60;
+		
+		days.text = [[NSString alloc] initWithFormat:@"%d",d];
+		hours.text = [[NSString alloc] initWithFormat:@"%d",h];
+		minutes.text = [[NSString alloc] initWithFormat:@"%d",m];
+		
+		NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+		NSString * feedFilePath = [documentsPath stringByAppendingPathComponent: @"feed.save"];
+		
+		NSMutableArray *feedPack = [[NSMutableArray alloc] initWithCapacity:2];
+		NSDate *now = [NSDate date];
+		[feedPack addObject:feedEntries];
+		[feedPack addObject:now];
+		
+		NSFileManager *fm = [NSFileManager defaultManager];
+		if ([fm fileExistsAtPath: feedFilePath]) 
+			[fm removeItemAtPath: feedFilePath error: NULL];
+		
+		[feedPack writeToFile: feedFilePath atomically: YES];
+	}
+}
+
 #pragma mark More System Stuff
 //*******************************************************
 //* 
@@ -540,12 +666,12 @@
 //* 
 //*******************************************************
 - (void)viewDidDisappear:(BOOL)animated {
-	[userDefaults setObject:(NSString *)nameField.text forKey:@"nameField"];
-	[userDefaults setObject:(NSString *)locField.text forKey:@"locField"];
-	[userDefaults setObject:(NSString *)comField.text forKey:@"comField"];
 	if (streamer) {
 		[userDefaults setBool:YES forKey:@"StartStream"];
 	}
+	[userDefaults setObject:(NSString *)nameField.text forKey:@"nameField"];
+	[userDefaults setObject:(NSString *)locField.text forKey:@"locField"];
+	[userDefaults setObject:(NSString *)comField.text forKey:@"comField"];
 	[userDefaults synchronize];
 }
 

@@ -1,7 +1,7 @@
 //
-//  KATG_comAppDelegate.h
+//  TableViewController.h
 //  KATG.com
-//  
+//
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
@@ -18,13 +18,10 @@
 #import <UIKit/UIKit.h>
 
 
-@interface KATG_comAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UIAccelerometerDelegate> {
-	IBOutlet UIWindow				*window;
-	IBOutlet UITabBarController		*tabBarController;
-	//NSUserDefaults					*userDefaults;
+@interface TableViewController : UITableViewController {
+	NSMutableArray *list;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow					*window;
-@property (nonatomic, retain) IBOutlet UITabBarController		*tabBarController;
+@property (nonatomic, retain) NSMutableArray *list;
 
 @end

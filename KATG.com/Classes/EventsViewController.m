@@ -30,20 +30,7 @@
 @synthesize navigationController;
 @synthesize list;
 @synthesize feedEntries;
-
-//*******************************************************
-//* awakeFromNib:
-//*
-//* Set title in navigation bar, establish list array for
-//* events and poll xml feed
-//*
-//*******************************************************
-- (void)awakeFromNib {
-	
-	self.navigationItem.title = @"Events";
-	
-    list = [[NSMutableArray alloc] init];
-}
+@synthesize activityIndicator;
 
 //*******************************************************
 //* pollFeed
@@ -51,14 +38,16 @@
 //* Create and run live show feed xml
 //*******************************************************
 - (void) pollFeed {
-	// Create the feed string
-    NSString *feedAddress = @"http://www.keithandthegirl.com/feed/event/?order=datereverse";
-	NSString *xPath = @"//Event";
-    // Call the grabRSSFeed function with the above
-    // string as a parameter
-	grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:(NSString *)xPath];
-	feedEntries = [feed entries];
-	[feed release];
+	if (feedEntries.count == 0) {
+		// Create the feed string
+		NSString *feedAddress = @"http://www.keithandthegirl.com/feed/event/?order=datereverse";
+		NSString *xPath = @"//Event";
+		// Call the grabRSSFeed function with the above
+		// string as a parameter
+		grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:(NSString *)xPath];
+		feedEntries = [feed entries];
+		[feed release];
+	}
 	
 	//[feedEntries count]
 	int feedEntryIndex = [feedEntries count] - 1;
@@ -69,18 +58,19 @@
 	NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateStyle: NSDateFormatterLongStyle];
 	[formatter setFormatterBehavior: NSDateFormatterBehavior10_4];
-	[formatter setDateFormat: @"MM/dd/yyyy HH:mm"];
-	NSTimeZone *EST = [NSTimeZone timeZoneWithName:(NSString *)@"America/New_York"];
-	[formatter setTimeZone:(NSTimeZone *)EST];
+	[formatter setDateFormat: @"MM/dd/yyyy HH:mm zzz"];
 	
 	NSDateFormatter * reFormatter = [[NSDateFormatter alloc] init];
 	[reFormatter setDateStyle: NSDateFormatterLongStyle];
 	[reFormatter setFormatterBehavior: NSDateFormatterBehavior10_4];
+	NSTimeZone *local = [NSTimeZone localTimeZone];
+	[reFormatter setTimeZone:local];
 	[reFormatter setDateFormat: @"hh:mm aa"];
 	
 	NSDateFormatter * reFormatterator = [[NSDateFormatter alloc] init];
 	[reFormatterator setDateStyle: NSDateFormatterLongStyle];
 	[reFormatterator setFormatterBehavior: NSDateFormatterBehavior10_4];
+	[reFormatterator setTimeZone:local];
 	[reFormatterator setDateFormat: @"EEE, MM/dd"];
 	
 	while ( 0 <= feedEntryIndex ) {
@@ -93,6 +83,14 @@
 		
 		NSString *feedTime = [[feedEntries objectAtIndex: feedEntryIndex] 
 							  objectForKey: @"StartDate"];
+		
+		NSTimeZone *EST = [NSTimeZone timeZoneWithName:(NSString *)@"America/New_York"];
+		
+		if ([EST isDaylightSavingTime]) {
+			feedTime = [feedTime stringByAppendingString:@" EDT"];
+		} else {
+			feedTime = [feedTime stringByAppendingString:@" EST"];
+		}
 		
 		NSDate *eventTime = [formatter dateFromString: feedTime];
 		
@@ -127,6 +125,10 @@
 		Event *Ev = [[Event alloc] initWithTitle:@"No Internet Connection" publishTime:@"12:00 AM" publishDate:@"WED 04/15" type:@"The Show" detail:@"Without an internet connection this app will not function normally. Connect to wifi or a cellular data service."];
 		[list addObject:Ev];
 	}
+	
+	[self.activityIndicator stopAnimating];
+	
+	[self.tableView reloadData];
 }
 
 //*******************************************************
@@ -138,11 +140,51 @@
 //*******************************************************
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+	
+	self.navigationItem.title = @"Events";
+	
+	NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+	NSString * feedFilePath = [documentsPath stringByAppendingPathComponent: @"feed.save"];
+	NSMutableArray *feedPack = [[NSMutableArray alloc] initWithCapacity:2];
+	
+	NSFileManager *fm = [NSFileManager defaultManager];
+	if ([fm fileExistsAtPath: feedFilePath]) 
+		[feedPack addObjectsFromArray: [NSMutableArray arrayWithContentsOfFile: feedFilePath]];
+	
+	NSDate *then = [feedPack objectAtIndex:1];
+	int timeSince = -[then timeIntervalSinceNow];
+	if (timeSince < 600) {
+		feedEntries = [feedPack objectAtIndex:0];
+	}
+	
     self.tableView.rowHeight = ROW_HEIGHT;
 	
-	[self pollFeed];
+	// Create a 'right hand button' that is a activity Indicator
+	CGRect frame = CGRectMake(0.0, 0.0, 25.0, 25.0);
+	self.activityIndicator = [[UIActivityIndicatorView alloc]
+							  initWithFrame:frame];
+	[self.activityIndicator sizeToFit];
+	self.activityIndicator.autoresizingMask =
+	(UIViewAutoresizingFlexibleLeftMargin |
+	 UIViewAutoresizingFlexibleRightMargin |
+	 UIViewAutoresizingFlexibleTopMargin |
+	 UIViewAutoresizingFlexibleBottomMargin);
 	
+	UIBarButtonItem *loadingView = [[UIBarButtonItem alloc] 
+									initWithCustomView:self.activityIndicator];
+	loadingView.target = self;
+	self.navigationItem.rightBarButtonItem = loadingView;
+	
+	list = [[NSMutableArray alloc] init];
+	
+	[self.activityIndicator startAnimating];
+	[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: nil ];
+}
+
+- (void)autoPool {
+    NSAutoreleasePool *pool = [ [ NSAutoreleasePool alloc ] init ];
+    [self pollFeed];
+	[ pool release ];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

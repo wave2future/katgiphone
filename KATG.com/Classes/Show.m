@@ -1,7 +1,7 @@
 //
-//  KATG_comAppDelegate.m
+//  Show.m
 //  KATG.com
-//  
+//
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
@@ -15,27 +15,31 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#import "KATG_comAppDelegate.h"
-#include <sys/socket.h>
-#include <netinet/in.h>
+#import "Show.h"
 
 
-@implementation KATG_comAppDelegate
+@implementation Show
 
-@synthesize window;
-@synthesize tabBarController;
+@synthesize title, publishDate, link, detail;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	// Add the tab bar controller's current view as a subview of the window
-	[window addSubview:tabBarController.view];
-	return YES;
+// Creates the object with primary key and title is brought into memory.
+- (id)initWithTitle:(NSString *)theTitle publishDate:(NSString *)thePublishDate link:(NSString *)theLink detail:(NSString *)theDetail {	
+	if (self = [super init]) {
+        title = [[NSString alloc] initWithString:theTitle];
+		publishDate = [[NSString alloc] initWithString:thePublishDate];
+        link = [[NSString alloc] initWithString:theLink];
+		detail = [[NSString alloc] initWithString:theDetail];
+    }
+	
+    return self;
 }
 
 - (void)dealloc {
-	[tabBarController release];
-	[window release];
-	[super dealloc];
+    [title release];
+	[publishDate release];
+    [link release];
+	[detail release];
+    [super dealloc];
 }
 
 @end
-

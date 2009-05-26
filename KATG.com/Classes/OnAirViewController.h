@@ -28,7 +28,7 @@
 
 @interface OnAirViewController : UIViewController {
 	// Live Feed Play Button
-	IBOutlet UIButton		*button;
+	IBOutlet UIButton		*audioButton;
 	
 	// Instantiate radio object
 	AudioStreamer			*streamer;
@@ -39,9 +39,6 @@
 	// Call Button
 	IBOutlet UIButton		*callButton;
 	
-	// iTunes Button
-	IBOutlet UIButton		*iButton;
-	
 	// Check reachability
 	BOOL _isDataSourceAvailable;
 	
@@ -49,8 +46,13 @@
 	NSMutableArray			*feedEntries;
 	IBOutlet UILabel		*statusText;
 	
+	// Next Live Show
+	IBOutlet UILabel		*days;
+	IBOutlet UILabel		*hours;
+	IBOutlet UILabel		*minutes;
+	
 	// Feedback fields and button
-	IBOutlet UIButton		*feedBack;
+	IBOutlet UIButton		*feedbackButton;
 	IBOutlet UITextField	*nameField;
 	IBOutlet UITextField	*locField;
 	IBOutlet UITextView		*comField;
@@ -59,20 +61,23 @@
 }
 
 // Ensures textFields and Labels will persist in memory until they've been used
-@property (nonatomic, retain) IBOutlet UIButton		*button;
+@property (nonatomic, retain) IBOutlet UIButton		*audioButton;
 @property (nonatomic, retain) IBOutlet UIView		*volumeSliderContainer;
 @property (nonatomic, retain) IBOutlet UIButton		*callButton;
-@property (nonatomic, retain) IBOutlet UIButton		*iButton;
 @property (nonatomic, retain) IBOutlet UILabel		*statusText;
-@property (nonatomic, retain) IBOutlet UIButton		*feedBack;
+@property (nonatomic, retain) IBOutlet UILabel		*days;
+@property (nonatomic, retain) IBOutlet UILabel		*hours;
+@property (nonatomic, retain) IBOutlet UILabel		*minutes;
+@property (nonatomic, retain) IBOutlet UIButton		*feedbackButton;
 @property (nonatomic, retain) IBOutlet UITextField	*nameField;
 @property (nonatomic, retain) IBOutlet UITextField	*locField;
 @property (nonatomic, retain) IBOutlet UITextView	*comField;
 
-// Set up actions for GUI to perform
+// Check Reachability
+- (BOOL)isDataSourceAvailable;
 // Play Button
-- (IBAction)buttonPressed:(id)sender;
-- (void)setButtonImage:(UIImage *)image;
+- (IBAction)audioButtonPressed:(id)sender;
+- (void)setAudioButtonImage:(UIImage *)image;
 - (void)spinButton;
 // System Volume Slider
 - (void)drawVolumeSlider;
@@ -84,27 +89,27 @@
 // Custom Phone Button Image
 - (void)setPhoneButtonImage;
 
-// Launch KATG podcast in iTunes app
-- (IBAction)itunesButtonPressed:(id)sender;
-// Custom iTunes button image
-- (void)setiTunesImage;
-
-// Autorelease pool for pollFeed
-- (void)autoPool;
-// Establish timer to update feed status
-- (void)setTimer;
-// Check Reachability
-- (BOOL)isDataSourceAvailable;
-// Poll live show status feed
-- (void)pollFeed;
-
 // Submit feedback
-- (IBAction)feedBackPressed:(id)sender;
+- (IBAction)feedbackButtonPressed:(id)sender;
 // Custom feedback button image
-- (void)setFeedBackImage;
+- (void)setFeedbackButtonImage;
 // Dismiss keyboard when DONE is pressed
 - (IBAction)textFieldDoneEditing:(id)sender;
 // Dismiss keyboard when user clicks outside Comment textView (big invisible button in background)
 - (IBAction)textViewDoneEditing:(id)sender;
+
+// Establish timer to update feed status
+- (void)setFeedStatusTimer;
+// Autorelease pool for pollFeed
+- (void)feedStatusAutoPool;
+// Poll live show status feed
+- (void)pollFeedStatus;
+
+// 
+- (void)setNextShowTimer;
+// 
+- (void)nextShowAutoPool;
+// 
+- (void)pollNextShow;
 
 @end
