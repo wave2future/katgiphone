@@ -38,14 +38,16 @@
 //* Create and run live show feed xml
 //*******************************************************
 - (void) pollFeed {
-	// Create the feed string
-    NSString *feedAddress = @"http://www.keithandthegirl.com/feed/event/?order=datereverse";
-	NSString *xPath = @"//Event";
-    // Call the grabRSSFeed function with the above
-    // string as a parameter
-	grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:(NSString *)xPath];
-	feedEntries = [feed entries];
-	[feed release];
+	if (feedEntries.count == 0) {
+		// Create the feed string
+		NSString *feedAddress = @"http://www.keithandthegirl.com/feed/event/?order=datereverse";
+		NSString *xPath = @"//Event";
+		// Call the grabRSSFeed function with the above
+		// string as a parameter
+		grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:(NSString *)xPath];
+		feedEntries = [feed entries];
+		[feed release];
+	}
 	
 	//[feedEntries count]
 	int feedEntryIndex = [feedEntries count] - 1;
@@ -141,8 +143,21 @@
 	
 	self.navigationItem.title = @"Events";
 	
-    list = [[NSMutableArray alloc] init];
-    
+	NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+	NSString * feedFilePath = [documentsPath stringByAppendingPathComponent: @"feed.save"];
+	NSMutableArray *feedPack = [[NSMutableArray alloc] initWithCapacity:2];
+	
+	NSFileManager *fm = [NSFileManager defaultManager];
+	if ([fm fileExistsAtPath: feedFilePath]) {
+		[feedPack addObjectsFromArray: [NSMutableArray arrayWithContentsOfFile: feedFilePath]];
+	
+		NSDate *then = [feedPack objectAtIndex:1];
+		int timeSince = -[then timeIntervalSinceNow];
+		if (timeSince < 600) {
+			feedEntries = [feedPack objectAtIndex:0];
+		}
+	}
+	
     self.tableView.rowHeight = ROW_HEIGHT;
 	
 	// Create a 'right hand button' that is a activity Indicator
@@ -161,9 +176,10 @@
 	loadingView.target = self;
 	self.navigationItem.rightBarButtonItem = loadingView;
 	
+	list = [[NSMutableArray alloc] init];
+	
 	[self.activityIndicator startAnimating];
 	[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: nil ];
-	//[self pollFeed];
 }
 
 - (void)autoPool {

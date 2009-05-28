@@ -16,6 +16,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import "extractURL.h"
+#import "RegexKitLite.h"
 
 
 @implementation extractURL
@@ -70,6 +71,17 @@
 //* 
 //*******************************************************
 - (id)makeURL:(NSString *)tweetString {
+	NSString *searchString = @"This is neat. ahttp://Digg.com. http://google.com"; 
+	NSString *regexString = @"\\b(?:[a-zA-Z0-9][a-zA-Z0-9\\-]{0,61}?[a-zA-Z0-9]\\.)+[a-zA-Z]{2,6}\\b"; 
+	NSRange matchedRange = NSMakeRange(NSNotFound, 0UL); 
+	NSError *error = NULL; 
+	matchedRange = [searchString rangeOfRegex:regexString options:RKLNoOptions inRange:NSMakeRange(0, searchString.length) capture:1L error:&error]; 
+	NSLog(@"matchedRange: %@", NSStringFromRange(matchedRange)); 
+	NSString *matchedString = [searchString substringWithRange:matchedRange]; 
+	NSLog(@"matchedString: '%@'", matchedString); 
+	
+	
+	
 	[urlArray removeAllObjects];
 	int tweetLength = tweetString.length;
 	int urlStart = 0;

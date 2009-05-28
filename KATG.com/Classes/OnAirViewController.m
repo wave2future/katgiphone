@@ -16,6 +16,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import "OnAirViewController.h"
+#import "EventsViewController.h"
 #import "AudioStreamer.h"
 #import <QuartzCore/CoreAnimation.h>
 #import <SystemConfiguration/SystemConfiguration.h>
@@ -641,6 +642,20 @@ static int timeSince;
 		days.text = [[NSString alloc] initWithFormat:@"%d",d];
 		hours.text = [[NSString alloc] initWithFormat:@"%d",h];
 		minutes.text = [[NSString alloc] initWithFormat:@"%d",m];
+		
+		NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+		NSString * feedFilePath = [documentsPath stringByAppendingPathComponent: @"feed.save"];
+		
+		NSMutableArray *feedPack = [[NSMutableArray alloc] initWithCapacity:2];
+		NSDate *now = [NSDate date];
+		[feedPack addObject:feedEntries];
+		[feedPack addObject:now];
+		
+		NSFileManager *fm = [NSFileManager defaultManager];
+		if ([fm fileExistsAtPath: feedFilePath]) 
+			[fm removeItemAtPath: feedFilePath error: NULL];
+		
+		[feedPack writeToFile: feedFilePath atomically: YES];
 	}
 }
 

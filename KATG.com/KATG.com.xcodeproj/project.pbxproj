@@ -57,6 +57,7 @@
 		536CD4700F89E68A0063DED2 /* gpl-3.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 536CD46C0F89E68A0063DED2 /* gpl-3.0.txt */; };
 		536CD4710F89E68A0063DED2 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 536CD46D0F89E68A0063DED2 /* README */; };
 		536CD4720F89E68A0063DED2 /* ToDo in Resources */ = {isa = PBXBuildFile; fileRef = 536CD46E0F89E68A0063DED2 /* ToDo */; };
+		5377B54F0FCD2E2B00CB9F2F /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 5377B54E0FCD2E2B00CB9F2F /* RegexKitLite.m */; };
 		5379EEE80FA1E5E900F1E9FD /* ChangeLog in Resources */ = {isa = PBXBuildFile; fileRef = 5379EEE70FA1E5E900F1E9FD /* ChangeLog */; };
 		537CDA580F8FF056002F86FA /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 537CDA550F8FF056002F86FA /* CustomCell.m */; };
 		537CDA590F8FF056002F86FA /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 537CDA570F8FF056002F86FA /* Event.m */; };
@@ -160,6 +161,8 @@
 		536CD46C0F89E68A0063DED2 /* gpl-3.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "gpl-3.0.txt"; sourceTree = "<group>"; };
 		536CD46D0F89E68A0063DED2 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		536CD46E0F89E68A0063DED2 /* ToDo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ToDo; sourceTree = "<group>"; };
+		5377B54D0FCD2E2B00CB9F2F /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		5377B54E0FCD2E2B00CB9F2F /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		5379EEE70FA1E5E900F1E9FD /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
 		537CDA540F8FF056002F86FA /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		537CDA550F8FF056002F86FA /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
@@ -224,6 +227,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5377B54D0FCD2E2B00CB9F2F /* RegexKitLite.h */,
+				5377B54E0FCD2E2B00CB9F2F /* RegexKitLite.m */,
 				536CD4590F89E5F20063DED2 /* Delegate */,
 				53D696630F9308A400FDBD0C /* OnAir */,
 				537CD8850F8FBADE002F86FA /* Events */,
@@ -662,6 +667,7 @@
 				53DDC8A20FC90E2D00A34D85 /* WebViewController.m in Sources */,
 				53DDC94B0FC9FAF800A34D85 /* extractURL.m in Sources */,
 				53DDCB980FCA8BDB00A34D85 /* TableViewController.m in Sources */,
+				5377B54F0FCD2E2B00CB9F2F /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -787,6 +793,7 @@
 					"-ObjC",
 					"-ljson",
 					"-lxml2",
+					"-licucore",
 				);
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "137694EE-B732-425C-84AF-E29034B74F80";
