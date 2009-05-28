@@ -58,19 +58,18 @@
 	NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateStyle: NSDateFormatterLongStyle];
 	[formatter setFormatterBehavior: NSDateFormatterBehavior10_4];
-	[formatter setDateFormat: @"MM/dd/yyyy HH:mm zzz"];
+	[formatter setDateFormat: @"MM/dd/yyyy HH:mm"];
+	NSTimeZone *EST = [NSTimeZone timeZoneWithName:(NSString *)@"America/New_York"];
+	[formatter setTimeZone:(NSTimeZone *)EST];
 	
 	NSDateFormatter * reFormatter = [[NSDateFormatter alloc] init];
 	[reFormatter setDateStyle: NSDateFormatterLongStyle];
 	[reFormatter setFormatterBehavior: NSDateFormatterBehavior10_4];
-	NSTimeZone *local = [NSTimeZone localTimeZone];
-	[reFormatter setTimeZone:local];
 	[reFormatter setDateFormat: @"hh:mm aa"];
 	
 	NSDateFormatter * reFormatterator = [[NSDateFormatter alloc] init];
 	[reFormatterator setDateStyle: NSDateFormatterLongStyle];
 	[reFormatterator setFormatterBehavior: NSDateFormatterBehavior10_4];
-	[reFormatterator setTimeZone:local];
 	[reFormatterator setDateFormat: @"EEE, MM/dd"];
 	
 	while ( 0 <= feedEntryIndex ) {
@@ -83,14 +82,6 @@
 		
 		NSString *feedTime = [[feedEntries objectAtIndex: feedEntryIndex] 
 							  objectForKey: @"StartDate"];
-		
-		NSTimeZone *EST = [NSTimeZone timeZoneWithName:(NSString *)@"America/New_York"];
-		
-		if ([EST isDaylightSavingTime]) {
-			feedTime = [feedTime stringByAppendingString:@" EDT"];
-		} else {
-			feedTime = [feedTime stringByAppendingString:@" EST"];
-		}
 		
 		NSDate *eventTime = [formatter dateFromString: feedTime];
 		
@@ -148,13 +139,14 @@
 	NSMutableArray *feedPack = [[NSMutableArray alloc] initWithCapacity:2];
 	
 	NSFileManager *fm = [NSFileManager defaultManager];
-	if ([fm fileExistsAtPath: feedFilePath]) 
+	if ([fm fileExistsAtPath: feedFilePath]) {
 		[feedPack addObjectsFromArray: [NSMutableArray arrayWithContentsOfFile: feedFilePath]];
 	
-	NSDate *then = [feedPack objectAtIndex:1];
-	int timeSince = -[then timeIntervalSinceNow];
-	if (timeSince < 600) {
-		feedEntries = [feedPack objectAtIndex:0];
+		NSDate *then = [feedPack objectAtIndex:1];
+		int timeSince = -[then timeIntervalSinceNow];
+		if (timeSince < 600) {
+			feedEntries = [feedPack objectAtIndex:0];
+		}
 	}
 	
     self.tableView.rowHeight = ROW_HEIGHT;
