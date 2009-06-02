@@ -1,5 +1,5 @@
 //
-//  TableViewController.h
+//  TwtViewController.h
 //  KATG.com
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -17,15 +17,21 @@
 
 #import <UIKit/UIKit.h>
 
-
-@interface TableViewController : UITableViewController {
-	NSArray *urlList;
-	NSArray *twtList;
-	NSMutableArray *list;
+@interface TwtViewController : UITableViewController <UITableViewDelegate> {
+	UIActivityIndicatorView			*activityIndicator;
+    
+	NSMutableArray					*tweets;
+	NSMutableDictionary				*iconDict;
+	
+	NSMutableDictionary *isURL;
+	NSMutableDictionary *urlDict;
+	
+	NSString *searchString;
 }
 
-@property (nonatomic, retain) NSArray *urlList;
-@property (nonatomic, retain) NSArray *twtList;
-@property (nonatomic, retain) NSMutableArray *list;
+@property (nonatomic, retain) UIActivityIndicatorView			*activityIndicator;
+@property (nonatomic, retain) NSString							*searchString;
+
+- (void) pollFeed;
 
 @end
