@@ -1,5 +1,5 @@
 //
-//  TweetViewController.m
+//  TwtViewController.m
 //  KATG.com
 //  
 //  This program is free software: you can redistribute it and/or modify
@@ -16,25 +16,20 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import <JSON/JSON.h>
-#import "TweetViewController.h"
 #import "TwtViewController.h"
-#import "WebViewController.h"
-#import "TableViewController.h"
 #import "TweetCell.h"
 #import "grabRSSFeed.h"
 #import "MREntitiesConverter.h"
-#import "extractURL.h"
-#import "RegexKitLite.h"
 
 
 #define kAccelerometerFrequency 15
 
 static BOOL otherTweets;
 
-@implementation TweetViewController
+@implementation TwtViewController
 
-@synthesize navigationController;
 @synthesize activityIndicator;
+@synthesize searchString;
 
 //*******************************************************
 //* viewDidLoad:
@@ -46,8 +41,6 @@ static BOOL otherTweets;
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	self.navigationItem.title = @"The Twitters";
-		
 	tweets = [[NSMutableArray alloc] initWithCapacity: 100];
 	iconDict = [[NSMutableDictionary alloc] init];
 	isURL = [[NSMutableDictionary alloc] init];
@@ -73,60 +66,6 @@ static BOOL otherTweets;
 	
 	[self.activityIndicator startAnimating];
 	[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: nil ];
-	
-	button = [UIButton buttonWithType:UIButtonTypeCustom];
-	button.bounds = CGRectMake(0, 0, 33.0, 29.0);
-	[button setImage:[UIImage imageNamed:@"othButPlus.png"] forState:UIControlStateNormal];
-	[button setImage:[UIImage imageNamed:@"othButPlusHighlighted.png"] forState:UIControlStateHighlighted];
-	[button addTarget:self action:@selector(othTweets) forControlEvents:UIControlEventTouchUpInside];
-	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] 
-											  initWithCustomView:button]
-											  autorelease];
-	self.navigationItem.leftBarButtonItem.enabled = NO;
-}
-
-//*******************************************************
-//* 
-//* 
-//* 
-//*******************************************************
-- (void)viewDidAppear:(BOOL)animated {
-	//NSLog(@"ViewDidAppear");
-	[[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
-    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
-}
-
-//*******************************************************
-//* 
-//* 
-//* 
-//*******************************************************
-- (void)refTweets:(id)sender{
-	[isURL removeAllObjects];
-	[urlDict removeAllObjects];
-	[self.activityIndicator startAnimating];
-	[self pollFeed];
-}
-
-//*******************************************************
-//* 
-//* 
-//* 
-//*******************************************************
-- (void)othTweets {
-	[isURL removeAllObjects];
-	[urlDict removeAllObjects];
-	if ( otherTweets ) {
-		otherTweets = NO;
-		[button setImage:[UIImage imageNamed:@"othButPlus.png"] forState:UIControlStateNormal];
-		[button setImage:[UIImage imageNamed:@"othButPlusHighlighted.png"] forState:UIControlStateHighlighted];
-	} else {
-		otherTweets = YES;
-		[button setImage:[UIImage imageNamed:@"othButMinus.png"] forState:UIControlStateNormal];
-		[button setImage:[UIImage imageNamed:@"othButMinusHighlighted.png"] forState:UIControlStateHighlighted];
-	}
-	[ NSThread detachNewThreadSelector: @selector(activityPool) toTarget: self withObject: nil ];
-	[self pollFeed];
 }
 
 //*******************************************************
@@ -141,30 +80,11 @@ static BOOL otherTweets;
 }
 
 //*******************************************************
-//* 
-//* 
-//* 
-//*******************************************************
-- (void)activityPool {
-    NSAutoreleasePool *pool = [ [ NSAutoreleasePool alloc ] init ];
-    [self.activityIndicator startAnimating];
-	[ pool release ];
-}
-
-//*******************************************************
 //* pollFeed
 //*
 //* Get Tweets
 //*******************************************************
-- (void) pollFeed {
-	NSString *searchString = @"http://search.twitter.com/search.json?q=from%3Akeithandthegirl+OR+from%3AKeithMalley";
-	
-	if ( otherTweets ) {
-		searchString = [searchString stringByAppendingString: @"+OR+keithandthegirl+OR+katg+OR+%22keith+and+the+girl%22"];
-	}
-	
-	searchString = [searchString stringByAppendingFormat: @"&rpp=%i", 20]; // Changed Code this line
-	
+- (void) pollFeed {	
 	NSURL *url = [NSURL URLWithString:searchString];
 	NSString *queryResult = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];	
 	
@@ -252,16 +172,16 @@ static BOOL otherTweets;
 	}
 	
 	/*if (tweets.count == 0) {
-		NSString * from = @"KATGAPP";
-		NSString * text = @"No Internet Connection";
-		NSString * since = @"1";
-		NSString * imageURLString = @"http";
-		NSDictionary * tweetDict = [NSDictionary dictionaryWithObjectsAndKeys: from, @"from_user", 
-									text, @"text", 
-									since, @"since",
-									imageURLString, @"profile_image_url", nil];
-		[tweets addObject:tweetDict];
-	} */
+	 NSString * from = @"KATGAPP";
+	 NSString * text = @"No Internet Connection";
+	 NSString * since = @"1";
+	 NSString * imageURLString = @"http";
+	 NSDictionary * tweetDict = [NSDictionary dictionaryWithObjectsAndKeys: from, @"from_user", 
+	 text, @"text", 
+	 since, @"since",
+	 imageURLString, @"profile_image_url", nil];
+	 [tweets addObject:tweetDict];
+	 } */
 	
 	[jsonParser release];
 	[formatter release];
@@ -383,7 +303,7 @@ static BOOL otherTweets;
 	//***************************************************
 	//* Add a disclosure indicator if the text contains web stuff
 	//***************************************************
-	
+	/*
 	NSString *regexString1 = @"\\b(https?://)(?:(\\S+?)(?::(\\S+?))?@)?([a-zA-Z0-9\\-.]+)(?::(\\d+))?((?:/[a-zA-Z0-9\\-._?,'+\\&%$=~*!():@\\\\]*)+)?";
 	NSString *regexString2 = @"@([0-9a-zA-Z_]+)";
 	NSString *index = [NSString stringWithFormat:@"%d", indexPath.row];
@@ -394,7 +314,7 @@ static BOOL otherTweets;
 		
 		[isURL setObject:@"YES" forKey: index];
 		[urlDict setObject:cell.lblTitle.text forKey: index];
-	}
+	}*/
 	
 	return cell;
 }
@@ -414,11 +334,7 @@ static BOOL otherTweets;
 	return height;
 }
 
-//*******************************************************
-//* 
-//* 
-//* 
-//*******************************************************
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSString *index = [NSString stringWithFormat:@"%d", indexPath.row];
 	if ( [[isURL objectForKey: index] isEqualToString:@"YES"] ) {
@@ -439,14 +355,10 @@ static BOOL otherTweets;
 			[[self navigationController] pushViewController:viewController animated:YES];
 			[viewController release];
 		} else if ([urls count] == 0 && [twts count] == 1) {
-			TwtViewController *viewController = [[TwtViewController alloc] initWithNibName:@"TableView" bundle:[NSBundle mainBundle]];
-			NSString *urlAddress = [[twts objectAtIndex:0] objectForKey:@"url"];
-			viewController.searchString = urlAddress;
-			[[self navigationController] pushViewController:viewController animated:YES];
-			[viewController release];
+			NSLog(@"TWEET");
 		}
 	}
-}
+}*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

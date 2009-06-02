@@ -85,6 +85,9 @@
 		C5AF7F180FCE209B008EA7A6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5AF7F100FCE209B008EA7A6 /* QuartzCore.framework */; };
 		C5AF7F190FCE209B008EA7A6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5AF7F110FCE209B008EA7A6 /* SystemConfiguration.framework */; };
 		C5AF7F1A0FCE209B008EA7A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5AF7F120FCE209B008EA7A6 /* UIKit.framework */; };
+		C5DE10630FD50EB100FB93A8 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = C5DE105F0FD50EB100FB93A8 /* RegexKitLite.m */; };
+		C5DE10640FD50EB100FB93A8 /* RegexKitLiteLicense.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C5DE10600FD50EB100FB93A8 /* RegexKitLiteLicense.rtf */; };
+		C5DE10650FD50EB100FB93A8 /* TwtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5DE10620FD50EB100FB93A8 /* TwtViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -200,6 +203,11 @@
 		C5AF7F100FCE209B008EA7A6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C5AF7F110FCE209B008EA7A6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C5AF7F120FCE209B008EA7A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C5DE105E0FD50EB100FB93A8 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegexKitLite.h; path = Projects/katgiphone/KATG.com/Classes/RegexKitLite.h; sourceTree = DEVELOPER_DIR; };
+		C5DE105F0FD50EB100FB93A8 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegexKitLite.m; path = Projects/katgiphone/KATG.com/Classes/RegexKitLite.m; sourceTree = DEVELOPER_DIR; };
+		C5DE10600FD50EB100FB93A8 /* RegexKitLiteLicense.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = RegexKitLiteLicense.rtf; path = Projects/katgiphone/KATG.com/Classes/RegexKitLiteLicense.rtf; sourceTree = DEVELOPER_DIR; };
+		C5DE10610FD50EB100FB93A8 /* TwtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TwtViewController.h; path = Projects/katgiphone/KATG.com/Classes/TwtViewController.h; sourceTree = DEVELOPER_DIR; };
+		C5DE10620FD50EB100FB93A8 /* TwtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TwtViewController.m; path = Projects/katgiphone/KATG.com/Classes/TwtViewController.m; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -368,6 +376,9 @@
 		535FE5F20F89FEF300F6AD75 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				C5DE105E0FD50EB100FB93A8 /* RegexKitLite.h */,
+				C5DE105F0FD50EB100FB93A8 /* RegexKitLite.m */,
+				C5DE10600FD50EB100FB93A8 /* RegexKitLiteLicense.rtf */,
 				53DDCBED0FCA9AD400A34D85 /* ExtractURL */,
 				536AC7DD0FA0A8D70064B31E /* MREntitiesConverter */,
 				53E955CF0F9D58BA0071709B /* grabRSSFeed */,
@@ -473,12 +484,14 @@
 			children = (
 				53CD2FED0FC89FAF00D9FE00 /* TweetViewController.h */,
 				53CD2FEE0FC89FAF00D9FE00 /* TweetViewController.m */,
-				53CD2FFD0FC8A01400D9FE00 /* TweetCell.h */,
-				53CD2FFE0FC8A01400D9FE00 /* TweetCell.m */,
-				53DDC8A00FC90E2D00A34D85 /* WebViewController.h */,
-				53DDC8A10FC90E2D00A34D85 /* WebViewController.m */,
 				53DDCB960FCA8BDB00A34D85 /* TableViewController.h */,
 				53DDCB970FCA8BDB00A34D85 /* TableViewController.m */,
+				C5DE10610FD50EB100FB93A8 /* TwtViewController.h */,
+				C5DE10620FD50EB100FB93A8 /* TwtViewController.m */,
+				53DDC8A00FC90E2D00A34D85 /* WebViewController.h */,
+				53DDC8A10FC90E2D00A34D85 /* WebViewController.m */,
+				53CD2FFD0FC8A01400D9FE00 /* TweetCell.h */,
+				53CD2FFE0FC8A01400D9FE00 /* TweetCell.m */,
 			);
 			name = Twitter;
 			sourceTree = "<group>";
@@ -621,6 +634,7 @@
 				53DDCC390FCB0E9C00A34D85 /* othButMinus.png in Resources */,
 				53DDCC620FCB13FB00A34D85 /* othButMinusHighlighted.png in Resources */,
 				53DDCC630FCB13FB00A34D85 /* othButPlusHighlighted.png in Resources */,
+				C5DE10640FD50EB100FB93A8 /* RegexKitLiteLicense.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,6 +676,8 @@
 				53DDC8A20FC90E2D00A34D85 /* WebViewController.m in Sources */,
 				53DDC94B0FC9FAF800A34D85 /* extractURL.m in Sources */,
 				53DDCB980FCA8BDB00A34D85 /* TableViewController.m in Sources */,
+				C5DE10630FD50EB100FB93A8 /* RegexKitLite.m in Sources */,
+				C5DE10650FD50EB100FB93A8 /* TwtViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,6 +763,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				OTHER_LDFLAGS = (
+					"-licucore",
 					"-ObjC",
 					"-ljson",
 					"-lxml2",

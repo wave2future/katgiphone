@@ -17,11 +17,14 @@
 
 #import "TableViewController.h"
 #import "WebViewController.h"
+#import "TwtViewController.h"
 #import "TweetCell.h"
 
 
 @implementation TableViewController
 
+@synthesize urlList;
+@synthesize twtList;
 @synthesize list;
 
 - (void)didReceiveMemoryWarning {
@@ -46,7 +49,7 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [list count];;
+	return [urlList count] + [twtList count];
 }
 
 
@@ -60,7 +63,11 @@
 	}
 	
 	// Set up the cell...
-	cell.lblTitle.text = [list objectAtIndex:indexPath.row];
+	if (indexPath.row < [urlList count]) {
+		cell.lblTitle.text = [urlList objectAtIndex:indexPath.row];
+	} else if (indexPath.row >= [urlList count]) {
+		cell.lblTitle.text = [[twtList objectAtIndex:indexPath.row - [urlList count]] objectForKey:@"user"];
+	}
 	
 	cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
 	UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.92 green:(CGFloat).973 blue:(CGFloat)0.92 alpha:(CGFloat)1.0];
@@ -82,19 +89,27 @@
 	
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
-	return cell;	
+	return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	WebViewController *viewController = [[WebViewController alloc] initWithNibName:@"WebView" bundle:[NSBundle mainBundle]];
-	NSString *urlAddress = [list objectAtIndex:indexPath.row];
-	viewController.urlAddress = urlAddress;
-	[[self navigationController] pushViewController:viewController animated:YES];
-	[viewController release];
+	if (indexPath.row < [urlList count]) {
+		WebViewController *viewController = [[WebViewController alloc] initWithNibName:@"WebView" bundle:[NSBundle mainBundle]];
+		NSString *urlAddress = [urlList objectAtIndex:indexPath.row];
+		viewController.urlAddress = urlAddress;
+		[[self navigationController] pushViewController:viewController animated:YES];
+		[viewController release];
+	} else if (indexPath.row >= [urlList count]) {
+		TwtViewController *viewController = [[TwtViewController alloc] initWithNibName:@"TableView" bundle:[NSBundle mainBundle]];
+		NSString *urlAddress = [[twtList objectAtIndex:indexPath.row - [urlList count]] objectForKey:@"url"];
+		viewController.searchString = urlAddress;
+		[[self navigationController] pushViewController:viewController animated:YES];
+		[viewController release];
+	}
 }
 
 - (void)dealloc {
-	[list release];
+	[urlList release];
     [super dealloc];
 }
 

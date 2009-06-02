@@ -16,48 +16,57 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import "extractURL.h"
+#import "RegexKitLite.h"
 
 
 @implementation extractURL
 
-@synthesize urlList;
-@synthesize urlArray;
-@synthesize urlAddress;
-
 //*******************************************************
+//* init
 //* 
-//* 
-//* 
+//* Set up object
 //*******************************************************
 - (id)init {
-	urlList = [[NSMutableArray alloc] initWithCapacity:12];
-	urlArray = [[NSMutableArray alloc] initWithCapacity:3];
-	urlAddress = [[NSString alloc] init];
 	return self;
 }
 
 //*******************************************************
+//* makeURLList:(NSString *)stringWithURLs
 //* 
-//* 
-//* 
+//* Create an array of URL strings
 //*******************************************************
-- (id)makeURLList:(NSString *)tweetString {
-	NSMutableArray *temp1 = [self makeURL:tweetString];
+- (id)makeURLList:(NSString *)stringWithURLs {
+	NSMutableArray *urlList = [[NSMutableArray alloc] initWithCapacity:12];
+	NSMutableDictionary *urlDict = [NSMutableDictionary dictionary];
 	
-	NSString *temp2 = [temp1 objectAtIndex:0];
+	urlDict = [self makeURL:stringWithURLs];
+	if (urlDict != nil) {
+		NSString *protocolString = [urlDict objectForKey:@"protocol"];
+		NSString *hostString = [urlDict objectForKey:@"host"];
+		NSString *pathString = [urlDict objectForKey:@"path"];
+		NSString *url = [protocolString stringByAppendingString:hostString]; 
+		if (pathString != nil) {
+			url = [url stringByAppendingString:pathString];
+		}
+		
+		[urlList addObject:url];
+	}
 	
-	//[tweetString substringWithRange:NSMakeRange( urlStart, urlLength ) ];
-	
-	[urlList addObject:temp2];
-	
-	int temp5 = 0;
-	
-	while (urlAddress != nil) {
-		temp5 += [[temp1 objectAtIndex:1] intValue] - 1;
-		temp1 = [self makeURL:[tweetString substringWithRange:NSMakeRange( temp5, tweetString.length - temp5 ) ]];
-		if (urlAddress != nil) {
-			NSString *temp2 = [temp1 objectAtIndex:0];
-			[urlList addObject:temp2];
+	int offset = 0;
+	while (urlDict != nil) {
+		offset += [[urlDict objectForKey:@"location"] intValue] + [[urlDict objectForKey:@"length"] intValue] - 1;
+		int length = stringWithURLs.length - offset;
+		urlDict = [self makeURL:[stringWithURLs substringWithRange:NSMakeRange( offset, length ) ]];		
+		if (urlDict != nil) {
+			NSString *protocolString = [urlDict objectForKey:@"protocol"];
+			NSString *hostString = [urlDict objectForKey:@"host"];
+			NSString *pathString = [urlDict objectForKey:@"path"];
+			NSString *url = [protocolString stringByAppendingString:hostString]; 
+			if (pathString != nil) {
+				url = [url stringByAppendingString:pathString];
+			}
+			
+			[urlList addObject:url];
 		}
 	}
 	
@@ -65,128 +74,130 @@
 }
 
 //*******************************************************
+//* makeURL:(NSString *)searchString
 //* 
-//* 
-//* 
+//* Create an array of tweet user dictionaries
 //*******************************************************
-- (id)makeURL:(NSString *)tweetString {
-	[urlArray removeAllObjects];
-	int tweetLength = tweetString.length;
-	int urlStart = 0;
-	int urlLength = tweetLength;
+- (id)makeURL:(NSString *)searchString {
+	NSString *regexString = @"\\b(https?://)(?:(\\S+?)(?::(\\S+?))?@)?([a-zA-Z0-9\\-.]+)(?::(\\d+))?((?:/[a-zA-Z0-9\\-._?,'+\\&%$=~*!():@\\\\]*)+)?";
+	NSMutableDictionary *urlDictionary = [NSMutableDictionary dictionary];
+	NSRange matchedRange = NSMakeRange(NSNotFound, 0UL); 
 	
-	int a = tweetLength;
-	int b = tweetLength;
-	int c = tweetLength;
-	int d = tweetLength;
-	if ([tweetString rangeOfString: @"http:" options:1].location != NSNotFound) {
-		a = [tweetString rangeOfString: @"http:" options:1].location;
-	}
-	if ([tweetString rangeOfString: @"www." options:1].location != NSNotFound) {
-		b = [tweetString rangeOfString: @"www." options:1].location;
-	}
-	if ([tweetString rangeOfString: @".com" options:1].location != NSNotFound) {
-		c = [tweetString rangeOfString: @".com" options:1].location;
-	}
-	if ([tweetString rangeOfString: @"@" options:1].location != NSNotFound) {
-		d = [tweetString rangeOfString: @"@" options:1].location;
-	}
-	
-	int min = a;
-	int mode = 1;
-	if ( b < min ) {
-		min = b;
-		mode = 2;
-	}
-	if( c < min ) {
-		min = c;
-		mode = 3;
-	}
-	if ( d < min ) {
-		min = d;
-		mode = 4;
-	}
-	
-	if (min == tweetLength) {
-		mode = 0;
-	}
-	
-	if ( mode == 1 ) {
-		urlStart = min;
-		NSRange tweetRange = {urlStart, tweetLength-urlStart};
-		NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
-		NSRange urlEndRange = [tweetString rangeOfCharacterFromSet:charSet options:1 range:tweetRange];
-		int urlEnd = urlEndRange.location;
-		if (urlEnd > tweetLength ) {
-			urlEnd = tweetLength;
+	if ([searchString isMatchedByRegex:regexString]) {
+		matchedRange = [searchString rangeOfRegex:regexString];
+		int Location = matchedRange.location;
+		int Length = matchedRange.length;
+		NSNumber *location = [[NSNumber alloc] initWithInt:Location];
+		NSNumber *length = [[NSNumber alloc] initWithInt:Length];
+		NSString *protocolString = [searchString stringByMatching:regexString capture:1L];
+		//NSString *userString = [searchString stringByMatching:regexString capture:2L];
+		//NSString *passwordString = [searchString stringByMatching:regexString capture:3L];
+		NSString *hostString = [searchString stringByMatching:regexString capture:4L];
+		//NSString *portString = [searchString stringByMatching:regexString capture:5L];
+		NSString *pathString = [searchString stringByMatching:regexString capture:6L];
+		
+		regexString = @"\\.$|\\?$|\\!$";
+		matchedRange = NSMakeRange(NSNotFound, 0UL);
+		matchedRange = [pathString rangeOfRegex:regexString];
+		if (matchedRange.location != NSNotFound) {
+			pathString = [pathString substringWithRange:NSMakeRange(0, pathString.length - 1)];
 		}
-		urlLength = urlEnd - urlStart;
-		urlAddress = [tweetString substringWithRange:NSMakeRange( urlStart, urlLength ) ];
-	} else if ( mode == 2 ) {
-		urlStart = min;
-		NSRange tweetRange = {urlStart, tweetLength-urlStart};
-		NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
-		NSRange urlEndRange = [tweetString rangeOfCharacterFromSet:charSet options:1 range:tweetRange];
-		int urlEnd = urlEndRange.location;
-		if (urlEnd > tweetLength ) {
-			urlEnd = tweetLength;
-		}
-		urlLength = urlEnd - urlStart;
-		urlAddress = @"http://";
-		NSString *urlStub = [tweetString substringWithRange:NSMakeRange( urlStart, urlLength ) ];
-		urlAddress = [urlAddress stringByAppendingString:urlStub];
-	} else if ( mode == 3 ) {
-		int comStart = min;
-		NSRange startRange = {0, comStart};
-		NSRange endRange = {comStart, tweetLength - comStart};
-		NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
-		NSRange urlStartRange = [tweetString rangeOfCharacterFromSet:charSet options:5 range:startRange];
-		NSRange urlEndRange = [tweetString rangeOfCharacterFromSet:charSet options:1 range:endRange];
-		urlStart = urlStartRange.location + 1;
-		if (urlStart < 0) {
-			urlStart = 0;
-		}
-		int urlEnd = urlEndRange.location;
-		if (urlEnd > tweetLength) {
-			urlEnd = tweetLength;
-		}
-		urlLength = urlEnd - urlStart;
-		urlAddress = @"http://";
-		NSString *urlStub = [tweetString substringWithRange:NSMakeRange( urlStart, urlLength ) ];
-		urlAddress = [urlAddress stringByAppendingString:urlStub];
-	} else if ( mode == 4 ) {
-		urlStart = min;
-		urlStart += 1;
-		NSRange tweetRange = {urlStart, tweetLength-urlStart};
-		NSCharacterSet *charSet = [NSCharacterSet characterSetWithCharactersInString:@" "];
-		NSRange atEndRange = [tweetString rangeOfCharacterFromSet:charSet options:1 range:tweetRange];
-		int atEnd = atEndRange.location;
-		if (atEnd > tweetLength ) {
-			atEnd = tweetLength;
-		}
-		urlLength = atEnd - urlStart;
-		urlAddress = @"http://m.twitter.com/";
-		NSString *urlStub = [tweetString substringWithRange:NSMakeRange( urlStart, urlLength ) ];
-		urlAddress = [urlAddress stringByAppendingString:urlStub];
+		
+		if (location)       {[urlDictionary setObject:location forKey:@"location"];}
+		if (length)         {[urlDictionary setObject:length forKey:@"length"];}
+		if (protocolString) {[urlDictionary setObject:protocolString forKey:@"protocol"];} 
+		//if (userString)     {[urlDictionary setObject:userString forKey:@"user"];} 
+		//if (passwordString) {[urlDictionary setObject:passwordString forKey:@"password"];}
+		if (hostString)     {[urlDictionary setObject:hostString forKey:@"host"];}
+		//if (portString)     {[urlDictionary setObject:portString forKey:@"port"];}
+		if (pathString)     {[urlDictionary setObject:pathString forKey:@"path"];}
+		NSLog(@"urlDictionary: %@", urlDictionary);
+		
+		return urlDictionary;
 	} else {
-		urlAddress = nil;
+		return nil;
+	}
+}
+
+//*******************************************************
+//* makeTWTList:(NSString *)stringWithTWTs
+//* 
+//* Extract, using regular expressions,
+//* the first URL that occurs in a string
+//* Results are compiled in an array
+//*******************************************************
+
+- (id)makeTWTList:(NSString *)stringWithTWTs {
+	NSMutableArray *twtList = [[NSMutableArray alloc] initWithCapacity:12];
+	NSMutableDictionary *twtDict = [NSMutableDictionary dictionary];
+	
+	twtDict = [self makeTwitterSearchURL:stringWithTWTs];
+	if (twtDict != nil) {
+		NSMutableDictionary *url = [NSMutableDictionary dictionary];
+		
+		[url setObject:[twtDict objectForKey:@"user"] forKey:@"user"];
+		[url setObject:[twtDict objectForKey:@"url"] forKey:@"url"];
+		
+		[twtList addObject:url];
 	}
 	
-	if (urlAddress != nil) {
-		[urlArray addObject:urlAddress];
-		int offset = urlStart + urlLength;
-		NSNumber *offSet = [[NSNumber alloc] initWithInt:offset];
-		[urlArray addObject:offSet];
-		return urlArray;	
+	int offset = 0;
+	while (twtDict != nil) {
+		offset += [[twtDict objectForKey:@"location"] intValue] + [[twtDict objectForKey:@"length"] intValue] - 1;
+		int length = stringWithTWTs.length - offset;
+		twtDict = [self makeTwitterSearchURL:[stringWithTWTs substringWithRange:NSMakeRange( offset, length ) ]];		
+		if (twtDict != nil) {
+			NSMutableDictionary *url = [NSMutableDictionary dictionary];
+			
+			[url setObject:[twtDict objectForKey:@"user"] forKey:@"user"];
+			[url setObject:[twtDict objectForKey:@"url"] forKey:@"url"];
+			
+			[twtList addObject:url];
+		}
+	}
+	
+	return twtList;
+}
+
+//*******************************************************
+//* makeTwitterSearchURL:(NSString *)searchString
+//* 
+//* Extract, using regular expressions,
+//* the first twitter user name that
+//* occurs in a string
+//* Results are compiled in a dictionary as
+//* the the user name and the json library
+//* URL
+//*******************************************************
+- (id)makeTwitterSearchURL:(NSString *)searchString {
+	NSString *regexString = @"@([0-9a-zA-Z_]+)";
+	NSMutableDictionary *urlDictionary = [NSMutableDictionary dictionary];
+	NSRange matchedRange = NSMakeRange(NSNotFound, 0UL); 
+	
+	if ([searchString isMatchedByRegex:regexString]) {
+		matchedRange = [searchString rangeOfRegex:regexString];
+		int Location = matchedRange.location;
+		int Length = matchedRange.length;
+		NSNumber *location = [[NSNumber alloc] initWithInt:Location];
+		NSNumber *length = [[NSNumber alloc] initWithInt:Length];
+		NSString *twtUser = [searchString stringByMatching:regexString capture:1L];
+		NSString *twtUserSearchUrl = @"http://search.twitter.com/search.json?q=from%3A";
+		twtUserSearchUrl = [[twtUserSearchUrl stringByAppendingString:twtUser] stringByAppendingString:@"&rpp=10"];
+		
+		if (location)         {[urlDictionary setObject:location forKey:@"location"];}
+		if (length)           {[urlDictionary setObject:length forKey:@"length"];}
+		if (twtUser)          {[urlDictionary setObject:twtUser forKey:@"user"];} 
+		if (twtUserSearchUrl) {[urlDictionary setObject:twtUserSearchUrl forKey:@"url"];} 
+
+		NSLog(@"urlDictionary: %@", urlDictionary);
+		
+		return urlDictionary;
 	} else {
-		return urlAddress;
+		return nil;
 	}
 }
 
 - (void)dealloc {
-	[urlList release];
-	[urlArray release];
-	[urlAddress release];
     [super dealloc];
 }
 

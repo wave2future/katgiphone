@@ -26,7 +26,6 @@
 @synthesize tabBarController;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-	
 	// Add the tab bar controller's current view as a subview of the window
 	[window addSubview:tabBarController.view];
 }

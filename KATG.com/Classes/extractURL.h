@@ -19,16 +19,12 @@
 
 
 @interface extractURL : NSObject {
-	NSMutableArray	*urlList;
-	NSMutableArray	*urlArray;
-	NSString		*urlAddress;
+
 }
 
-@property (nonatomic, retain) NSMutableArray	*urlList;
-@property (nonatomic, retain) NSMutableArray	*urlArray;
-@property (nonatomic, retain) NSString			*urlAddress;
-
-- (id)makeURLList:(NSString *)tweetString;
-- (id)makeURL:(NSString *)tweetString;
+- (id)makeURLList:(NSString *)stringWithURLs;
+- (id)makeURL:(NSString *)searchString;
+- (id)makeTWTList:(NSString *)stringWithTWTs;
+- (id)makeTwitterSearchURL:(NSString *)searchString;
 
 @end
