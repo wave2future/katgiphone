@@ -56,16 +56,8 @@
 }
 
 - (void)sendProviderDeviceToken:(NSString *)token {
-	/*[userDefaults synchronize];
-	
-	if ([userDefaults objectForKey:@"deviceToken"] isEqualToString: token]) {
-		return;
-	} else {
-		[userDefaults setObject:(NSString *)token forKey:@"deviceToken"];
-		[userDefaults synchronize];*/
 		
 		NSString *myRequestString = @"http://app.keithandthegirl.com/app/tokenserver/tokenserver.php?dev=";
-		//NSString *myRequestString = @"http://whywontyoudie.com/tokenServer.php?dev=";
 		
 		token = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)token, NULL, NULL, kCFStringEncodingUTF8);
 		myRequestString = [myRequestString stringByAppendingString:token];
@@ -73,9 +65,6 @@
 		NSURLRequest *request = [[ NSURLRequest alloc ] initWithURL: [ NSURL URLWithString: myRequestString ] ]; 
 		
 		[ NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil ];
-	//}
-	
-	
 }
 
 - (void)dealloc {

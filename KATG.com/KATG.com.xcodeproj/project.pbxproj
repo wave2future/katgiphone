@@ -71,6 +71,7 @@
 		53CD2FEF0FC89FAF00D9FE00 /* TweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CD2FEE0FC89FAF00D9FE00 /* TweetViewController.m */; };
 		53CD2FFF0FC8A01400D9FE00 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CD2FFE0FC8A01400D9FE00 /* TweetCell.m */; };
 		53D01E460FD4EED900959050 /* TwtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D01E450FD4EED900959050 /* TwtViewController.m */; };
+		53D01ED60FD5068500959050 /* RegexKitLiteLicense.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 53D01ED50FD5068500959050 /* RegexKitLiteLicense.rtf */; };
 		53DDC8A20FC90E2D00A34D85 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DDC8A10FC90E2D00A34D85 /* WebViewController.m */; };
 		53DDC8CB0FC9159200A34D85 /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53DDC8CA0FC9159200A34D85 /* WebView.xib */; };
 		53DDC8E60FC91C2100A34D85 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DDC8E50FC91C2100A34D85 /* Default.png */; };
@@ -182,6 +183,7 @@
 		53CD2FFE0FC8A01400D9FE00 /* TweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
 		53D01E440FD4EED900959050 /* TwtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwtViewController.h; sourceTree = "<group>"; };
 		53D01E450FD4EED900959050 /* TwtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwtViewController.m; sourceTree = "<group>"; };
+		53D01ED50FD5068500959050 /* RegexKitLiteLicense.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = RegexKitLiteLicense.rtf; path = Classes/RegexKitLiteLicense.rtf; sourceTree = "<group>"; };
 		53DDC8A00FC90E2D00A34D85 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		53DDC8A10FC90E2D00A34D85 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		53DDC8CA0FC9159200A34D85 /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
@@ -371,8 +373,7 @@
 		535FE5F20F89FEF300F6AD75 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				5377B54D0FCD2E2B00CB9F2F /* RegexKitLite.h */,
-				5377B54E0FCD2E2B00CB9F2F /* RegexKitLite.m */,
+				53D01ED20FD500C000959050 /* RegEx */,
 				53DDCBED0FCA9AD400A34D85 /* ExtractURL */,
 				536AC7DD0FA0A8D70064B31E /* MREntitiesConverter */,
 				53E955CF0F9D58BA0071709B /* grabRSSFeed */,
@@ -429,6 +430,7 @@
 		536CD46A0F89E6680063DED2 /* Documents */ = {
 			isa = PBXGroup;
 			children = (
+				53D01ED50FD5068500959050 /* RegexKitLiteLicense.rtf */,
 				536CD46B0F89E68A0063DED2 /* Credits */,
 				536CD46C0F89E68A0063DED2 /* gpl-3.0.txt */,
 				536CD46D0F89E68A0063DED2 /* README */,
@@ -488,6 +490,15 @@
 				53CD2FFE0FC8A01400D9FE00 /* TweetCell.m */,
 			);
 			name = Twitter;
+			sourceTree = "<group>";
+		};
+		53D01ED20FD500C000959050 /* RegEx */ = {
+			isa = PBXGroup;
+			children = (
+				5377B54D0FCD2E2B00CB9F2F /* RegexKitLite.h */,
+				5377B54E0FCD2E2B00CB9F2F /* RegexKitLite.m */,
+			);
+			name = RegEx;
 			sourceTree = "<group>";
 		};
 		53D696630F9308A400FDBD0C /* OnAir */ = {
@@ -627,6 +638,7 @@
 				53DDCC390FCB0E9C00A34D85 /* othButMinus.png in Resources */,
 				53DDCC620FCB13FB00A34D85 /* othButMinusHighlighted.png in Resources */,
 				53DDCC630FCB13FB00A34D85 /* othButPlusHighlighted.png in Resources */,
+				53D01ED60FD5068500959050 /* RegexKitLiteLicense.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -755,13 +767,14 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				OTHER_LDFLAGS = (
+					"-licucore",
 					"-ObjC",
 					"-ljson",
 					"-lxml2",
 				);
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "982A9B46-3314-49D3-A1D4-6CDE32FFFBA8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "982A9B46-3314-49D3-A1D4-6CDE32FFFBA8";
+				PROVISIONING_PROFILE = "CAE13E7D-394D-40C8-975C-B417C200CC86";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CAE13E7D-394D-40C8-975C-B417C200CC86";
 				SDKROOT = iphoneos3.0;
 			};
 			name = "Distribution Ad Hoc";
