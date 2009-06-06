@@ -714,46 +714,6 @@
 			};
 			name = Release;
 		};
-		53AB73EB0FA8967000876151 /* Debug Push */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ADDITIONAL_SDKS = "$HOME/Library/SDKs/JSON/$(PLATFORM_NAME).sdk";
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Russell";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Russell";
-				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-ljson",
-					"-lxml2",
-				);
-				PREBINDING = NO;
-				PROVISIONING_PROFILE = "69D8E7F3-A55E-40CD-8300-27AF70834128";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "69D8E7F3-A55E-40CD-8300-27AF70834128";
-				SDKROOT = iphoneos3.0;
-			};
-			name = "Debug Push";
-		};
-		53AB73EC0FA8967000876151 /* Debug Push */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = KATG_com_Prefix.pch;
-				INFOPLIST_FILE = Info.plist;
-				PRODUCT_NAME = KATG.com;
-			};
-			name = "Debug Push";
-		};
 		53DAF5300F8AFAA300D13F05 /* Distribution Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -813,7 +773,7 @@
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "137694EE-B732-425C-84AF-E29034B74F80";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "137694EE-B732-425C-84AF-E29034B74F80";
-				SDKROOT = iphonesimulator3.0;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Debug;
 		};
@@ -849,7 +809,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
-				53AB73EC0FA8967000876151 /* Debug Push */,
 				1D6058950D05DD3E006BFB54 /* Release */,
 				53DAF5310F8AFAA300D13F05 /* Distribution Ad Hoc */,
 			);
@@ -860,7 +819,6 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
-				53AB73EB0FA8967000876151 /* Debug Push */,
 				C01FCF5008A954540054247B /* Release */,
 				53DAF5300F8AFAA300D13F05 /* Distribution Ad Hoc */,
 			);

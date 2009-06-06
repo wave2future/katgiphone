@@ -592,10 +592,23 @@ static int timeSince;
 		
 		// Evaluate the contents of feed for classification and add results into list
 		
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_3_0
+		
 		NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 		[formatter setDateStyle: NSDateFormatterLongStyle];
 		[formatter setFormatterBehavior: NSDateFormatterBehavior10_4];
 		[formatter setDateFormat: @"MM/dd/yyyy HH:mm zzz"];
+		
+#elif __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_3_0
+		
+		NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+		[formatter setDateStyle: NSDateFormatterLongStyle];
+		[formatter setFormatterBehavior: NSDateFormatterBehavior10_4];
+		[formatter setDateFormat: @"MM/dd/yyyy HH:mm"];
+		NSTimeZone *EST = [NSTimeZone timeZoneWithName:(NSString *)@"America/New_York"];
+		[formatter setTimeZone:(NSTimeZone *)EST];
+		
+#endif
 		
 		int feedEntryIndex = [feedEntries count] - 1;
 		
@@ -615,6 +628,8 @@ static int timeSince;
 			NSString *feedTime = [[feedEntries objectAtIndex: feedEntryIndex] 
 								  objectForKey: @"StartDate"];
 			
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_3_0
+			
 			NSTimeZone *EST = [NSTimeZone timeZoneWithName:(NSString *)@"America/New_York"];
 			
 			if ([EST isDaylightSavingTime]) {
@@ -622,6 +637,8 @@ static int timeSince;
 			} else {
 				feedTime = [feedTime stringByAppendingString:@" EST"];
 			}
+			
+#endif
 			
 			NSDate *eventTime = [formatter dateFromString: feedTime];
 			

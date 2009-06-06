@@ -47,7 +47,7 @@ static BOOL otherTweets;
     [super viewDidLoad];
 	
 	self.navigationItem.title = @"The Twitters";
-		
+	
 	tweets = [[NSMutableArray alloc] initWithCapacity: 100];
 	iconDict = [[NSMutableDictionary alloc] init];
 	isURL = [[NSMutableDictionary alloc] init];

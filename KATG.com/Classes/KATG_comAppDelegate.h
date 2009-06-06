@@ -17,6 +17,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define __IPHONE_OS_VERSION_MIN_REQUIRED __IPHONE_3_0
+
 
 @interface KATG_comAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UIAccelerometerDelegate> {
 	IBOutlet UIWindow				*window;
@@ -26,6 +28,8 @@
 @property (nonatomic, retain) IBOutlet UIWindow					*window;
 @property (nonatomic, retain) IBOutlet UITabBarController		*tabBarController;
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED == __IPHONE_3_0
 - (void)sendProviderDeviceToken:(id)deviceTokenBytes;
+#endif
 
 @end

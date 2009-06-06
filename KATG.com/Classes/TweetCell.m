@@ -20,7 +20,7 @@
 
 @implementation TweetCell
 
-@synthesize lblTitle, lblSince, lblFrom, imgSquare;
+@synthesize lblTitle, webView, lblSince, lblFrom, imgSquare;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
@@ -48,6 +48,14 @@
     return self;
 }
 
+- (void)drawRect:(CGRect)Rect {	
+	CGContextRef ref = UIGraphicsGetCurrentContext();
+	[super drawRect:Rect];
+	CGContextSetRGBFillColor(ref, 0.0f, 0.0f, 0.0f, 1.0f); // set color to black again after super.
+	CGRect writeInHere = CGRectMake(0,0,100,20);
+	[@"teststring" drawInRect:writeInHere withFont:[UIFont systemFontOfSize:12]];
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     
@@ -59,6 +67,8 @@
     rect.size.width = self.contentView.bounds.size.width - 90;
 	rect.size.height = self.contentView.bounds.size.height - 30;
     lblTitle.frame = rect;
+	
+	webView.frame = rect;
     
 	rect.origin.x = self.contentView.bounds.size.width - 20;
     rect.origin.y = 60;

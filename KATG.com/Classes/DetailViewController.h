@@ -16,6 +16,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #import <UIKit/UIKit.h>
 
+#define __IPHONE_OS_VERSION_MIN_REQUIRED __IPHONE_3_0
+
 
 @interface DetailViewController : UIViewController {
 	IBOutlet UILabel *detailTitle;    // Label to display event title

@@ -20,12 +20,14 @@
 
 @interface TweetCell : UITableViewCell {
 	UILabel *lblTitle;
+	UIWebView *webView;
 	UILabel *lblSince;
 	UILabel *lblFrom;
     UIImageView *imgSquare;
 }
 
 @property (nonatomic, retain) UILabel *lblTitle;
+@property (nonatomic, retain) UIWebView *webView;
 @property (nonatomic, retain) UILabel *lblSince;
 @property (nonatomic, retain) UILabel *lblFrom;
 @property (nonatomic, retain) UIImageView *imgSquare;

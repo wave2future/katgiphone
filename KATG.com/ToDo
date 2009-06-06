@@ -1,3 +1,12 @@
 Reconnection Structure
 
 Add linking from events details	page to webview for URLs
+	Improve extractURL and figure out context highlighting or how do draw button under text.
+
+Save events feed
+
+Save past shows feed
+
+Save tweet feed
+
+Add a credits sheet to the last tab

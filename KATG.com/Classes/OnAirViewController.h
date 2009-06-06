@@ -23,6 +23,8 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 
+#define __IPHONE_OS_VERSION_MIN_REQUIRED __IPHONE_3_0
+
 
 @class AudioStreamer; // This is the shoutcast radio class
 

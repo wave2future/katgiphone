@@ -17,6 +17,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define __IPHONE_OS_VERSION_MIN_REQUIRED __IPHONE_3_0
+
 
 @interface EventsViewController : UITableViewController {
 	IBOutlet UINavigationController	*navigationController; // 

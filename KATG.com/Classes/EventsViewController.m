@@ -55,6 +55,38 @@
 	// Evaluate the contents of feed for classification and add results into list
 	NSString *eventType = nil;
 	
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_3_0
+	
+	NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+	[formatter setDateStyle: NSDateFormatterLongStyle];
+	[formatter setFormatterBehavior: NSDateFormatterBehavior10_4];
+	[formatter setDateFormat: @"MM/dd/yyyy HH:mm"];
+	NSTimeZone *EST = [NSTimeZone timeZoneWithName:(NSString *)@"America/New_York"];
+	[formatter setTimeZone:(NSTimeZone *)EST];
+	
+	NSDateFormatter * reFormatter = [[NSDateFormatter alloc] init];
+	[reFormatter setDateStyle: NSDateFormatterLongStyle];
+	[reFormatter setFormatterBehavior: NSDateFormatterBehavior10_4];
+	[reFormatter setDateFormat: @"hh:mm aa"];
+	
+	NSDateFormatter * reFormatterator = [[NSDateFormatter alloc] init];
+	[reFormatterator setDateStyle: NSDateFormatterLongStyle];
+	[reFormatterator setFormatterBehavior: NSDateFormatterBehavior10_4];
+	[reFormatterator setDateFormat: @"EEE, MM/dd"];
+	
+	while ( 0 <= feedEntryIndex ) {
+		
+		NSString *feedTitle = [[feedEntries objectAtIndex: feedEntryIndex] 
+							   objectForKey: @"Title"];
+		
+		NSString *feedDetails = [[feedEntries objectAtIndex: feedEntryIndex] 
+								 objectForKey: @"Details"];
+		
+		NSString *feedTime = [[feedEntries objectAtIndex: feedEntryIndex] 
+							  objectForKey: @"StartDate"];
+		
+#elif __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_3_0
+		
 	NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateStyle: NSDateFormatterLongStyle];
 	[formatter setFormatterBehavior: NSDateFormatterBehavior10_4];
@@ -91,6 +123,8 @@
 		} else {
 			feedTime = [feedTime stringByAppendingString:@" EST"];
 		}
+		
+#endif
 		
 		NSDate *eventTime = [formatter dateFromString: feedTime];
 		
