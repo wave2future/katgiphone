@@ -23,10 +23,16 @@
 - (id)init {
 	return self;
 }
+
 - (id)stringCleaner:(NSString *)dirtString {
 	cleanString = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)dirtString, NULL, NULL, kCFStringEncodingUTF8);
 	cleanString = [cleanString stringByReplacingOccurrencesOfString:(NSString *)@"&" withString:(NSString *)@"and"];
 	return cleanString;
+}
+
+- (void)dealloc {
+	cleanString = nil;
+	[super dealloc];
 }
 
 @end

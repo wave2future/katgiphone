@@ -35,6 +35,7 @@
 
 #pragma mark View
 - (void)viewDidLoad {
+	NSLog(@"Past Show View Did Load");
 	 [super viewDidLoad];
 	 
 	 self.navigationItem.title = @"Past Shows";
@@ -79,11 +80,14 @@
     // string as a parameter
 	grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:(NSString *)xPath];
 	[feedEntries removeAllObjects];
-	feedEntries = [feed entries];
+	feedEntries = [[NSMutableArray alloc] initWithArray:[feed entries]];
 	[feed release];
 	
-	//[feedEntries count]
 	int feedEntryIndex = [feedEntries count] - 1;
+	
+	if (list.count != 0) {
+		[list removeLastObject];
+	}
 	
 	int i = 0;
 		
@@ -131,20 +135,6 @@
 	[self.activityIndicator stopAnimating];
 	
 	[self.tableView reloadData];
-}
-
-#pragma mark System
-
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-	// Release anything that can be recreated in viewDidLoad or on demand.
-	// e.g. self.myOutlet = nil;
 }
 
 #pragma mark Table view methods
@@ -246,6 +236,31 @@
 		 //[self.tableView endUpdates];
 	 }
  }
+
+#pragma mark System
+
+- (void)viewDidDisappear:(BOOL)animated {
+	NSLog(@"Past Shows View Did Dissapear");
+}
+
+- (void)viewDidUnload {
+	// Release anything that can be recreated in viewDidLoad or on demand.
+	// e.g. self.myOutlet = nil;
+	NSLog(@"Past Shows View Did Unload");
+}
+
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	[list removeAllObjects];
+	
+	Show *Sh = [[Show alloc] initWithTitle:@"Low Memory Warning" publishDate:@"April 15th" link:@"" detail:@"This view has been released to free up memory."];
+	[list addObject:Sh];
+	[Sh release];
+	[self.tableView reloadData];
+	
+	NSLog(@"Past Shows View Did Receive Memory Warning");
+}
 
 - (void)dealloc {
     [super dealloc];

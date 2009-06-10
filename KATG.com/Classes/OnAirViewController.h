@@ -45,7 +45,7 @@
 	BOOL _isDataSourceAvailable;
 	
 	// Feed status
-	NSMutableArray			*feedEntries;
+	//NSMutableArray			*feedEntries;
 	IBOutlet UILabel		*statusText;
 	
 	// Next Live Show
@@ -60,6 +60,10 @@
 	IBOutlet UITextView		*comField;
 	NSNotificationCenter	*myNotficationCenter;
 	NSUserDefaults			*userDefaults;
+	
+	// Timers
+	NSTimer *feedTimer;
+	NSTimer *showTimer;
 }
 
 // Ensures textFields and Labels will persist in memory until they've been used
@@ -74,6 +78,8 @@
 @property (nonatomic, retain) IBOutlet UITextField	*nameField;
 @property (nonatomic, retain) IBOutlet UITextField	*locField;
 @property (nonatomic, retain) IBOutlet UITextView	*comField;
+@property (nonatomic, retain) NSTimer *feedTimer;
+@property (nonatomic, retain) NSTimer *showTimer;
 
 // Check Reachability
 - (BOOL)isDataSourceAvailable;
@@ -113,5 +119,7 @@
 - (void)nextShowAutoPool;
 // 
 - (void)pollNextShow;
+
+- (void)createNotificationForTermination; 
 
 @end

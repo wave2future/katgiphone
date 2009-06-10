@@ -44,6 +44,7 @@ static BOOL otherTweets;
 //*
 //*******************************************************
 - (void)viewDidLoad {
+	NSLog(@"Tweet View Did Load");
     [super viewDidLoad];
 	
 	self.navigationItem.title = @"The Twitters";
@@ -91,9 +92,9 @@ static BOOL otherTweets;
 //* 
 //*******************************************************
 - (void)viewDidAppear:(BOOL)animated {
-	//NSLog(@"ViewDidAppear");
-	[[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
-    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
+	NSLog(@"Tweet View Did Appear");
+	//[[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
+    //[[UIAccelerometer sharedAccelerometer] setDelegate:self];
 }
 
 //*******************************************************
@@ -450,7 +451,21 @@ static BOOL otherTweets;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-	[[UIAccelerometer sharedAccelerometer] release];
+	[tweets removeAllObjects];
+	NSString * from = @"KATGAPP";
+	NSString * text = @"Low Memory Warnings";
+	NSString * since = @"1";
+	NSString * imageURLString = @"http";
+	NSDictionary * tweetDict = [NSDictionary dictionaryWithObjectsAndKeys: from, @"from_user", 
+								text, @"text", 
+								since, @"since",
+								imageURLString, @"profile_image_url", nil];
+	[tweets addObject:tweetDict];
+	UIImage * tweetIcon = [UIImage imageNamed:@"othButPlus.png"];
+	[iconDict setObject: tweetIcon forKey: @"http"];
+	[tweetIcon release];
+	[self.tableView reloadData];
+	//[[UIAccelerometer sharedAccelerometer] release];
 }
 
 - (void)dealloc {

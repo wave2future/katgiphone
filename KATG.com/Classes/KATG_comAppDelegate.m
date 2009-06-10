@@ -37,15 +37,22 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Add the tab bar controller's current view as a subview of the window
 	[window addSubview:tabBarController.view];
-	[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | 
+	/*[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | 
 													 UIRemoteNotificationTypeSound | 
-													 UIRemoteNotificationTypeBadge)];
+													 UIRemoteNotificationTypeBadge)];*/
 	return YES;
+}
+
+- (void)talkToOnAirView { 
+	[[NSNotificationCenter defaultCenter] 
+	 postNotificationName:@"ApplicationWillTerminate" 
+	 object:@"Terminate"]; 
 }
 
 // Delegation methods 
 - (void)applicationWillTerminate:(UIApplication *)application {
 	application.applicationIconBadgeNumber = 0;
+	[self talkToOnAirView];
 }
 
 - (void)application:didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {	

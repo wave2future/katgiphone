@@ -722,6 +722,7 @@
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Doug Russell";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Doug Russell";
+				CODE_SIGN_RESOURCE_RULES_PATH = "$(SDKROOT)/ResourceRules.plist";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -733,8 +734,8 @@
 					"-lxml2",
 				);
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "CAE13E7D-394D-40C8-975C-B417C200CC86";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CAE13E7D-394D-40C8-975C-B417C200CC86";
+				PROVISIONING_PROFILE = "57184E10-BD90-41B4-96DC-5B82D61760B5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "57184E10-BD90-41B4-96DC-5B82D61760B5";
 				SDKROOT = iphoneos3.0;
 			};
 			name = "Distribution Ad Hoc";
