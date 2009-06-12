@@ -20,7 +20,7 @@
 
 @implementation linkList
 
-@synthesize button1, button2, button3;
+@synthesize button1, button2, button3, infoButton;
 
 - (void)viewDidLoad {
 	[self setButtonImages];
@@ -53,6 +53,16 @@
 	[button3 setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
 }
 
+- (IBAction)infoSheet {
+	UIAlertView *alert = [[UIAlertView alloc] 
+						  initWithTitle:@"Thanks and Credit"
+						  message:@"The following people contributed directly or through content:\nKeith Malley\nChemda Khalili\nMichael Khalili\nThe Grundle (?)\nLondan Ash (Ashley Mills)\nPicard (John Leschinski)\nSubsonix (Marcus Newman)\nMapes (?)\nAptmunich (?)\nRegexKitLite Copyright © 2008-2009, John Engelhart" 
+						  delegate:nil
+						  cancelButtonTitle:@"Continue" 
+						  otherButtonTitles:nil];
+	[alert show];
+}
+
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -71,6 +81,7 @@
 	[button1 release];
 	[button2 release];
 	[button3 release];
+	[infoButton release];
     [super dealloc];
 }
 

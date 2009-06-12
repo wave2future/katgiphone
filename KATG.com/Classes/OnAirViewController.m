@@ -45,6 +45,8 @@ static int timeSince;
 @synthesize nameField, locField, comField;
 // Timers
 @synthesize feedTimer, showTimer;
+// Info Alert Sheet
+@synthesize infoButton;
 
 #pragma mark System Stuff
 //*******************************************************
@@ -729,6 +731,21 @@ static int timeSince;
 	}
 	
 	[feedEntries release];
+}
+
+//*******************************************************
+//* pollNextShow
+//*
+//* Create and run live feed xml
+//*******************************************************
+- (IBAction)infoSheet {
+	UIAlertView *alert = [[UIAlertView alloc] 
+						  initWithTitle:@"Keith and The Girl"
+						  message:@"This Application is for anyone interested in The Keith and The Girl Show. You can use it to listen to the live show, check upcoming events and read Keith and Chemda's tweets. Also links are available to the KATG Store and Donation Page." 
+						  delegate:nil
+						  cancelButtonTitle:@"Continue" 
+						  otherButtonTitles:nil];
+	[alert show];
 }
 
 #pragma mark More System Stuff

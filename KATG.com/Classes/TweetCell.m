@@ -48,14 +48,6 @@
     return self;
 }
 
-- (void)drawRect:(CGRect)Rect {	
-	CGContextRef ref = UIGraphicsGetCurrentContext();
-	[super drawRect:Rect];
-	CGContextSetRGBFillColor(ref, 0.0f, 0.0f, 0.0f, 1.0f); // set color to black again after super.
-	CGRect writeInHere = CGRectMake(0,0,100,20);
-	[@"teststring" drawInRect:writeInHere withFont:[UIFont systemFontOfSize:12]];
-}
-
 - (void)layoutSubviews {
     [super layoutSubviews];
     

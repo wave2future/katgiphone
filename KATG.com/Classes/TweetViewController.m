@@ -93,8 +93,8 @@ static BOOL otherTweets;
 //*******************************************************
 - (void)viewDidAppear:(BOOL)animated {
 	NSLog(@"Tweet View Did Appear");
-	//[[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
-    //[[UIAccelerometer sharedAccelerometer] setDelegate:self];
+	[[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
+    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
 }
 
 //*******************************************************
@@ -252,17 +252,20 @@ static BOOL otherTweets;
 		
 	}
 	
-	/*if (tweets.count == 0) {
-		NSString * from = @"KATGAPP";
-		NSString * text = @"No Internet Connection";
-		NSString * since = @"1";
-		NSString * imageURLString = @"http";
-		NSDictionary * tweetDict = [NSDictionary dictionaryWithObjectsAndKeys: from, @"from_user", 
-									text, @"text", 
-									since, @"since",
-									imageURLString, @"profile_image_url", nil];
-		[tweets addObject:tweetDict];
-	} */
+	if (tweets.count == 0) {
+	 NSString * from = @"KATGAPP";
+	 NSString * text = @"No Internet Connection";
+	 NSString * since = @"1";
+	 NSString * imageURLString = @"http";
+	 NSDictionary * tweetDict = [NSDictionary dictionaryWithObjectsAndKeys: from, @"from_user", 
+	 text, @"text", 
+	 since, @"since",
+	 imageURLString, @"profile_image_url", nil];
+	 [tweets addObject:tweetDict];
+	 UIImage * tweetIcon = [UIImage imageNamed:@"othButPlus.png"];
+	 [iconDict setObject: tweetIcon forKey: @"http"];
+	 [tweetIcon release];
+	}
 	
 	[jsonParser release];
 	[formatter release];
@@ -352,7 +355,7 @@ static BOOL otherTweets;
 	cell.lblSince.text = [[tweets objectAtIndex: indexPath.row] objectForKey: @"since"];
 	cell.lblFrom.text =  [[tweets objectAtIndex: indexPath.row] objectForKey: @"from_user"];
 	
-	cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
+	/*cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
 	UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.92 green:(CGFloat).973 blue:(CGFloat)0.92 alpha:(CGFloat)1.0];
 	UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0];
 	if (indexPath.row%2 == 0) {
@@ -369,6 +372,29 @@ static BOOL otherTweets;
 	
 	cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
 	cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
+	*/
+	
+	UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.776 green:(CGFloat).875 blue:(CGFloat)0.776 alpha:(CGFloat)1.0];
+	UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.627 alpha:(CGFloat)1.0];
+	
+	cell.lblTitle.backgroundColor = [UIColor clearColor];
+	cell.lblSince.backgroundColor = [UIColor clearColor];
+	
+	if (indexPath.row%2 == 0) {
+		//cell.lblTitle.backgroundColor = color1;
+		//cell.lblSince.backgroundColor = color1;
+		cell.lblFrom.backgroundColor = color1;
+		cell.backgroundView.backgroundColor = color1;
+		cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground60.png"]];
+	} else {
+		//cell.lblTitle.backgroundColor = color2;
+		//cell.lblSince.backgroundColor = color2;
+		cell.lblFrom.backgroundColor = color2;
+		cell.backgroundView.backgroundColor = color2;
+		cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundDark60.png"]];
+	}
+	
+	cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundSelected60.png"]];
 	
 	if ([iconDict objectForKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]] == nil) {
 		
@@ -453,7 +479,7 @@ static BOOL otherTweets;
     [super didReceiveMemoryWarning];
 	[tweets removeAllObjects];
 	NSString * from = @"KATGAPP";
-	NSString * text = @"Low Memory Warnings";
+	NSString * text = @"Low Memory Warning";
 	NSString * since = @"1";
 	NSString * imageURLString = @"http";
 	NSDictionary * tweetDict = [NSDictionary dictionaryWithObjectsAndKeys: from, @"from_user", 
@@ -465,7 +491,6 @@ static BOOL otherTweets;
 	[iconDict setObject: tweetIcon forKey: @"http"];
 	[tweetIcon release];
 	[self.tableView reloadData];
-	//[[UIAccelerometer sharedAccelerometer] release];
 }
 
 - (void)dealloc {

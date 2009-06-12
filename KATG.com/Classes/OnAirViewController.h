@@ -23,8 +23,6 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-#define __IPHONE_OS_VERSION_MIN_REQUIRED __IPHONE_3_0
-
 
 @class AudioStreamer; // This is the shoutcast radio class
 
@@ -64,6 +62,8 @@
 	// Timers
 	NSTimer *feedTimer;
 	NSTimer *showTimer;
+	
+	IBOutlet UIButton		*infoButton;
 }
 
 // Ensures textFields and Labels will persist in memory until they've been used
@@ -80,6 +80,7 @@
 @property (nonatomic, retain) IBOutlet UITextView	*comField;
 @property (nonatomic, retain) NSTimer *feedTimer;
 @property (nonatomic, retain) NSTimer *showTimer;
+@property (nonatomic, retain) IBOutlet UIButton		*infoButton;
 
 // Check Reachability
 - (BOOL)isDataSourceAvailable;
@@ -120,6 +121,8 @@
 // 
 - (void)pollNextShow;
 
-- (void)createNotificationForTermination; 
+- (void)createNotificationForTermination;
+
+- (IBAction)infoSheet;
 
 @end

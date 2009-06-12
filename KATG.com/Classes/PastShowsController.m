@@ -127,10 +127,10 @@
 	if ([list count] == 0) {
 		Show *Sh = [[Show alloc] initWithTitle:@"No Internet Connection" publishDate:@"April 15th" link:@"" detail:@""];
 		[list addObject:Sh];
+	} else {
+		Show *Sh = [[Show alloc] initWithTitle:@"Load More Episodes" publishDate:@"April 15th" link:@"" detail:@""];
+		[list addObject:Sh];
 	}
-	
-	Show *Sh = [[Show alloc] initWithTitle:@"Load More Episodes" publishDate:@"April 15th" link:@"" detail:@""];
-	[list addObject:Sh];
 	
 	[self.activityIndicator stopAnimating];
 	
@@ -162,7 +162,7 @@
 		
 		// Set up the cell...
 		cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
-		
+		/*
 		cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
 		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.92 green:(CGFloat).973 blue:(CGFloat)0.92 alpha:(CGFloat)1.0];
 		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0];
@@ -178,7 +178,20 @@
 		
 		cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
 		cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
+		*/
 		
+		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.776 green:(CGFloat).875 blue:(CGFloat)0.776 alpha:(CGFloat)1.0];
+		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.627 alpha:(CGFloat)1.0];
+		
+		if (indexPath.row%2 == 0) {
+			cell.lblTitle.backgroundColor = color1;
+			cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground60.png"]];
+		} else {
+			cell.lblTitle.backgroundColor = color2;
+			cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundDark60.png"]];
+		}
+		
+		cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundSelected60.png"]];
 		
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		
@@ -194,21 +207,35 @@
 		// Set up the cell...
 		cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
 		
-		cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
+		/*cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
 		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.70 green:(CGFloat).70 blue:(CGFloat)0.70 alpha:(CGFloat)1.0];
 		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.70 green:(CGFloat).70 blue:(CGFloat)0.70 alpha:(CGFloat)1.0];
 		if (indexPath.row%2 == 0) {
 			cell.lblTitle.backgroundColor = color1;
-			
 			cell.backgroundView.backgroundColor = color1;
 		} else {
 			cell.lblTitle.backgroundColor = color2;
-			
 			cell.backgroundView.backgroundColor = color2;
 		}
 		
 		cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
 		cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
+		*/
+		
+		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.776 green:(CGFloat).875 blue:(CGFloat)0.776 alpha:(CGFloat)1.0];
+		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0];
+		
+		if (indexPath.row%2 == 0) {
+			cell.lblTitle.backgroundColor = color1;
+			//cell.backgroundView.backgroundColor = color1;
+			cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground60.png"]];
+		} else {
+			cell.lblTitle.backgroundColor = color2;
+			//cell.backgroundView.backgroundColor = color2;
+			cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundDark60.png"]];
+		}
+		
+		cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundSelected60.png"]];
 		
 		return cell;
 	}
@@ -216,14 +243,15 @@
 
  // Override to support row selection in the table view.
  - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	 if (![[[list objectAtIndex:indexPath.row] title] isEqualToString:@"Load More Episodes"]) {
+	 if (![[[list objectAtIndex:indexPath.row] title] isEqualToString:@"Load More Episodes"] &&
+		 ![[[list objectAtIndex:indexPath.row] title] isEqualToString:@"No Internet Connection"]) {
 		 ShowDetailController *viewController = [[ShowDetailController alloc] initWithNibName:@"ShowView" bundle:[NSBundle mainBundle]];
 		 viewController.TitleTemp = [[list objectAtIndex:indexPath.row] title];
 		 viewController.LinkTemp = [[list objectAtIndex:indexPath.row] link];
 		 viewController.BodyTemp = [[list objectAtIndex:indexPath.row] detail];
 		 [[self navigationController] pushViewController:viewController animated:YES];
 		 [viewController release];
-	 } else {
+	 } else if ([[[list objectAtIndex:indexPath.row] title] isEqualToString:@"Load More Episodes"]) {
 		 [self.activityIndicator startAnimating];
 		 NSNumber *showNumber = [[feedEntries objectAtIndex: [feedEntries count] - 1] objectForKey: @"Number"];
 		 feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?startlist=";
@@ -231,9 +259,6 @@
 		 feedAddress = [feedAddress stringByAppendingString:@"&records=100"];
 		 indexPaths = [NSArray arrayWithObject:indexPath];
 		 [ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: feedAddress ];
-		 //[self.tableView beginUpdates];
-		 //[self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
-		 //[self.tableView endUpdates];
 	 }
  }
 

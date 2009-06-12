@@ -25,21 +25,11 @@
 @synthesize window;
 @synthesize tabBarController;
 
-
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_3_0
-// pre OS 3.0
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
-	// Add the tab bar controller's current view as a subview of the window
-	[window addSubview:tabBarController.view];
-}
-#elif __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_3_0
 // OS 3.0 and later
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Add the tab bar controller's current view as a subview of the window
 	[window addSubview:tabBarController.view];
-	/*[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | 
-													 UIRemoteNotificationTypeSound | 
-													 UIRemoteNotificationTypeBadge)];*/
+	//[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
 	return YES;
 }
 
@@ -51,11 +41,11 @@
 
 // Delegation methods 
 - (void)applicationWillTerminate:(UIApplication *)application {
-	application.applicationIconBadgeNumber = 0;
+	//application.applicationIconBadgeNumber = 0;
 	[self talkToOnAirView];
 }
 
-- (void)application:didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {	
+/*- (void)application:didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {	
     NSLog(@"deviceToken: %@", deviceToken);
 	NSString *token = [[NSString alloc] initWithFormat: @"%@", deviceToken];
 	[self sendProviderDeviceToken:token];
@@ -81,8 +71,7 @@
 		NSURLRequest *request = [[ NSURLRequest alloc ] initWithURL: [ NSURL URLWithString: myRequestString ] ]; 
 		
 		[ NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil ];
-}
-#endif
+}*/
 
 - (void)dealloc {
 	[tabBarController release];
