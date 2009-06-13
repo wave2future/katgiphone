@@ -67,6 +67,10 @@
 		53A476890FE2309F00A2E3C5 /* postCellBackground60.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A476860FE2309F00A2E3C5 /* postCellBackground60.png */; };
 		53A4768A0FE2309F00A2E3C5 /* postCellBackgroundDark60.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A476870FE2309F00A2E3C5 /* postCellBackgroundDark60.png */; };
 		53A4768B0FE2309F00A2E3C5 /* postCellBackgroundSelected60.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A476880FE2309F00A2E3C5 /* postCellBackgroundSelected60.png */; };
+		53A4776C0FE2F42500A2E3C5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A4776B0FE2F42500A2E3C5 /* Default.png */; };
+		53A4776E0FE2F47200A2E3C5 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A4776D0FE2F47200A2E3C5 /* iTunesArtwork.png */; };
+		53A477910FE2F98500A2E3C5 /* postCellBackground30.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A477900FE2F98500A2E3C5 /* postCellBackground30.png */; };
+		53A478020FE304C900A2E3C5 /* TweetIconSub.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A478010FE304C900A2E3C5 /* TweetIconSub.png */; };
 		53B8CE850FB4238900C8C71B /* linkList.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B8CE840FB4238900C8C71B /* linkList.m */; };
 		53B8CED30FB4B56100C8C71B /* LinkBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 53B8CED20FB4B56100C8C71B /* LinkBG.png */; };
 		53B8CF010FB4BC0300C8C71B /* KaTGTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 53B8CF000FB4BC0300C8C71B /* KaTGTab.png */; };
@@ -80,7 +84,6 @@
 		53D01ED60FD5068500959050 /* RegexKitLiteLicense.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 53D01ED50FD5068500959050 /* RegexKitLiteLicense.rtf */; };
 		53DDC8A20FC90E2D00A34D85 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DDC8A10FC90E2D00A34D85 /* WebViewController.m */; };
 		53DDC8CB0FC9159200A34D85 /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53DDC8CA0FC9159200A34D85 /* WebView.xib */; };
-		53DDC8E60FC91C2100A34D85 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DDC8E50FC91C2100A34D85 /* Default.png */; };
 		53DDC94B0FC9FAF800A34D85 /* extractURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DDC94A0FC9FAF800A34D85 /* extractURL.m */; };
 		53DDCB980FCA8BDB00A34D85 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DDCB970FCA8BDB00A34D85 /* TableViewController.m */; };
 		53DDCC340FCB0DD800A34D85 /* othButPlus.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DDCC330FCB0DD800A34D85 /* othButPlus.png */; };
@@ -181,6 +184,10 @@
 		53A476860FE2309F00A2E3C5 /* postCellBackground60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postCellBackground60.png; sourceTree = "<group>"; };
 		53A476870FE2309F00A2E3C5 /* postCellBackgroundDark60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postCellBackgroundDark60.png; sourceTree = "<group>"; };
 		53A476880FE2309F00A2E3C5 /* postCellBackgroundSelected60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postCellBackgroundSelected60.png; sourceTree = "<group>"; };
+		53A4776B0FE2F42500A2E3C5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		53A4776D0FE2F47200A2E3C5 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
+		53A477900FE2F98500A2E3C5 /* postCellBackground30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postCellBackground30.png; sourceTree = "<group>"; };
+		53A478010FE304C900A2E3C5 /* TweetIconSub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TweetIconSub.png; sourceTree = "<group>"; };
 		53B8CE830FB4238900C8C71B /* linkList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = linkList.h; sourceTree = "<group>"; };
 		53B8CE840FB4238900C8C71B /* linkList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = linkList.m; sourceTree = "<group>"; };
 		53B8CED20FB4B56100C8C71B /* LinkBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LinkBG.png; sourceTree = "<group>"; };
@@ -199,7 +206,6 @@
 		53DDC8A00FC90E2D00A34D85 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		53DDC8A10FC90E2D00A34D85 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		53DDC8CA0FC9159200A34D85 /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
-		53DDC8E50FC91C2100A34D85 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		53DDC9490FC9FAF800A34D85 /* extractURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = extractURL.h; sourceTree = "<group>"; };
 		53DDC94A0FC9FAF800A34D85 /* extractURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = extractURL.m; sourceTree = "<group>"; };
 		53DDCB960FCA8BDB00A34D85 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
@@ -287,7 +293,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				53DDC8E50FC91C2100A34D85 /* Default.png */,
+				53A4776D0FE2F47200A2E3C5 /* iTunesArtwork.png */,
+				53A4776B0FE2F42500A2E3C5 /* Default.png */,
 				534CA1540FB39A3A00206F91 /* Icon.png */,
 				530015E80FBBB97300A9078D /* BG3.png */,
 				530015EA0FBBBA5E00A9078D /* TextView.png */,
@@ -483,6 +490,8 @@
 		53A476960FE2C51300A2E3C5 /* TweetView */ = {
 			isa = PBXGroup;
 			children = (
+				53A478010FE304C900A2E3C5 /* TweetIconSub.png */,
+				53A477900FE2F98500A2E3C5 /* postCellBackground30.png */,
 				53DDCC330FCB0DD800A34D85 /* othButPlus.png */,
 				53DDCC610FCB13FB00A34D85 /* othButPlusHighlighted.png */,
 				53DDCC380FCB0E9C00A34D85 /* othButMinus.png */,
@@ -667,7 +676,6 @@
 				530015EB0FBBBA5E00A9078D /* TextView.png in Resources */,
 				53CD2F0D0FC851ED00D9FE00 /* twitTab.png in Resources */,
 				53DDC8CB0FC9159200A34D85 /* WebView.xib in Resources */,
-				53DDC8E60FC91C2100A34D85 /* Default.png in Resources */,
 				53DDCC340FCB0DD800A34D85 /* othButPlus.png in Resources */,
 				53DDCC390FCB0E9C00A34D85 /* othButMinus.png in Resources */,
 				53DDCC620FCB13FB00A34D85 /* othButMinusHighlighted.png in Resources */,
@@ -679,6 +687,10 @@
 				53A476890FE2309F00A2E3C5 /* postCellBackground60.png in Resources */,
 				53A4768A0FE2309F00A2E3C5 /* postCellBackgroundDark60.png in Resources */,
 				53A4768B0FE2309F00A2E3C5 /* postCellBackgroundSelected60.png in Resources */,
+				53A4776C0FE2F42500A2E3C5 /* Default.png in Resources */,
+				53A4776E0FE2F47200A2E3C5 /* iTunesArtwork.png in Resources */,
+				53A477910FE2F98500A2E3C5 /* postCellBackground30.png in Resources */,
+				53A478020FE304C900A2E3C5 /* TweetIconSub.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,13 +844,14 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				OTHER_LDFLAGS = (
+					"-licucore",
 					"-ObjC",
 					"-ljson",
 					"-lxml2",
 				);
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "38EC2828-368B-4AAC-A38A-4497110C9E56";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "38EC2828-368B-4AAC-A38A-4497110C9E56";
+				PROVISIONING_PROFILE = "989F7F01-B5A7-4248-8A12-C2070B0CCCAE";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "989F7F01-B5A7-4248-8A12-C2070B0CCCAE";
 				SDKROOT = iphoneos3.0;
 			};
 			name = Release;

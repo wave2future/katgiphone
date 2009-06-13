@@ -20,14 +20,14 @@
 
 @implementation TweetCell
 
-@synthesize lblTitle, webView, lblSince, lblFrom, imgSquare;
+@synthesize lblTitle, lblSince, lblFrom, imgSquare;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
         // Initialization code
 		lblTitle = [[UILabel alloc] initWithFrame:CGRectZero];
         lblTitle.textColor = [UIColor blackColor];
-        lblTitle.font = [UIFont boldSystemFontOfSize:12.0];
+        lblTitle.font = [UIFont boldSystemFontOfSize:10.0];
 		lblTitle.numberOfLines = 4;
         
 		lblSince = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -55,14 +55,12 @@
     CGRect rect = baseRect;
 	
 	rect.origin.x = 60;
-    rect.origin.y = 20;
+    rect.origin.y = 15;
     rect.size.width = self.contentView.bounds.size.width - 90;
-	rect.size.height = self.contentView.bounds.size.height - 30;
+	rect.size.height = self.contentView.bounds.size.height - 50;
     lblTitle.frame = rect;
-	
-	webView.frame = rect;
-    
-	rect.origin.x = self.contentView.bounds.size.width - 20;
+	    
+	rect.origin.x = 280;
     rect.origin.y = 60;
     rect.size.width = 30;
 	rect.size.height = 20;

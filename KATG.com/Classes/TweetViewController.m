@@ -54,6 +54,13 @@ static BOOL otherTweets;
 	isURL = [[NSMutableDictionary alloc] init];
 	urlDict = [[NSMutableDictionary alloc] init];
 	
+	/*NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+	NSString *iconDictFilePath = [documentsPath stringByAppendingPathComponent: @"icons.save"];
+	NSFileManager *fm = [NSFileManager defaultManager];
+	if ([fm fileExistsAtPath: iconDictFilePath]) {
+		[iconDict addEntriesFromDictionary: [NSDictionary dictionaryWithContentsOfFile: iconDictFilePath]];
+	}*/
+	
 	// Create a 'right hand button' that is a activity Indicator
 	CGRect frame = CGRectMake(0.0, 0.0, 25.0, 25.0);
 	self.activityIndicator = [[UIActivityIndicatorView alloc]
@@ -84,6 +91,8 @@ static BOOL otherTweets;
 											  initWithCustomView:button]
 											  autorelease];
 	self.navigationItem.leftBarButtonItem.enabled = NO;
+	
+	[self createNotificationForTermination];
 }
 
 //*******************************************************
@@ -93,8 +102,8 @@ static BOOL otherTweets;
 //*******************************************************
 - (void)viewDidAppear:(BOOL)animated {
 	NSLog(@"Tweet View Did Appear");
-	[[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
-    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
+	//[[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
+    //[[UIAccelerometer sharedAccelerometer] setDelegate:self];
 }
 
 //*******************************************************
@@ -262,7 +271,7 @@ static BOOL otherTweets;
 	 since, @"since",
 	 imageURLString, @"profile_image_url", nil];
 	 [tweets addObject:tweetDict];
-	 UIImage * tweetIcon = [UIImage imageNamed:@"othButPlus.png"];
+	 UIImage * tweetIcon = [UIImage imageNamed:@"TweetIconSub.png"];
 	 [iconDict setObject: tweetIcon forKey: @"http"];
 	 [tweetIcon release];
 	}
@@ -355,39 +364,20 @@ static BOOL otherTweets;
 	cell.lblSince.text = [[tweets objectAtIndex: indexPath.row] objectForKey: @"since"];
 	cell.lblFrom.text =  [[tweets objectAtIndex: indexPath.row] objectForKey: @"from_user"];
 	
-	/*cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-	UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.92 green:(CGFloat).973 blue:(CGFloat)0.92 alpha:(CGFloat)1.0];
-	UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0];
-	if (indexPath.row%2 == 0) {
-		cell.lblTitle.backgroundColor = color1;
-		cell.lblSince.backgroundColor = color1;
-		cell.lblFrom.backgroundColor = color1;
-		cell.backgroundView.backgroundColor = color1;
-	} else {
-		cell.lblTitle.backgroundColor = color2;
-		cell.lblSince.backgroundColor = color2;
-		cell.lblFrom.backgroundColor = color2;
-		cell.backgroundView.backgroundColor = color2;
-	}
-	
-	cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-	cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
-	*/
-	
 	UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.776 green:(CGFloat).875 blue:(CGFloat)0.776 alpha:(CGFloat)1.0];
 	UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.627 alpha:(CGFloat)1.0];
 	
-	cell.lblTitle.backgroundColor = [UIColor clearColor];
+	//cell.lblTitle.backgroundColor = [UIColor clearColor];
 	cell.lblSince.backgroundColor = [UIColor clearColor];
 	
 	if (indexPath.row%2 == 0) {
-		//cell.lblTitle.backgroundColor = color1;
+		cell.lblTitle.backgroundColor = color1;
 		//cell.lblSince.backgroundColor = color1;
 		cell.lblFrom.backgroundColor = color1;
 		cell.backgroundView.backgroundColor = color1;
 		cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground60.png"]];
 	} else {
-		//cell.lblTitle.backgroundColor = color2;
+		cell.lblTitle.backgroundColor = color2;
 		//cell.lblSince.backgroundColor = color2;
 		cell.lblFrom.backgroundColor = color2;
 		cell.backgroundView.backgroundColor = color2;
@@ -400,9 +390,13 @@ static BOOL otherTweets;
 		
 		NSURL *url = [[NSURL alloc] initWithString:[[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
 		NSData *data = [NSData dataWithContentsOfURL:url];
-		UIImage * tweetIcon = [UIImage imageWithData:data];
-		
-		[iconDict setObject: tweetIcon forKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
+		if ([data length] != 0) {
+			UIImage * tweetIcon = [UIImage imageWithData:data];
+			[iconDict setObject: tweetIcon forKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
+		} else {
+			UIImage * tweetIcon = [UIImage imageNamed:@"TweetIconSub.png"];
+			[iconDict setObject: tweetIcon forKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
+		}
 	}
 	
 	cell.imgSquare.image = [iconDict objectForKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
@@ -434,10 +428,10 @@ static BOOL otherTweets;
 //* cell height. Minimum height is 46.
 //*************************************************
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSString * text = [[tweets objectAtIndex: indexPath.row] objectForKey: @"text"];
+	NSString *text = [[tweets objectAtIndex: indexPath.row] objectForKey: @"text"];
 	CGSize maxTextSize = CGSizeMake(120.0, 200.0);
 	CGSize textSize = [text sizeWithFont: [UIFont systemFontOfSize: 12] constrainedToSize: maxTextSize];
-	CGFloat height = MAX((textSize.height + 20.0f), 80.0f);
+	CGFloat height = MAX((textSize.height + 10.0f), 80.0f);
 	return height;
 }
 
@@ -473,6 +467,30 @@ static BOOL otherTweets;
 			[viewController release];
 		}
 	}
+}
+
+- (void)createNotificationForTermination { 
+	NSLog(@"createNotificationTwo"); 
+	[[NSNotificationCenter defaultCenter] 
+	 addObserver:self 
+	 selector:@selector(handleTerminationNotification:) 
+	 name:@"ApplicationWillTerminate" 
+	 object:nil]; 
+}
+
+- (void)handleTerminationNotification:(NSNotification *)pNotification { 
+	NSLog(@"Tweet View received message = %@",(NSString*)[pNotification object]);
+	NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+	NSString * iconsFilePath = [documentsPath stringByAppendingPathComponent: @"icons.save"];	
+	NSFileManager *fm = [NSFileManager defaultManager];
+	if ([fm fileExistsAtPath: iconsFilePath]) {
+		[fm removeItemAtPath: iconsFilePath error: NULL];
+	}
+	BOOL didWrite = [iconDict writeToFile: iconsFilePath atomically: YES];	
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+	NSLog(@"Events Table Did Dissapear");
 }
 
 - (void)didReceiveMemoryWarning {

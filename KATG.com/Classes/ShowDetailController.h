@@ -18,8 +18,6 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-#define __IPHONE_OS_VERSION_MIN_REQUIRED __IPHONE_3_0
-
 
 @interface ShowDetailController : UIViewController {
 	IBOutlet UILabel *detailTitle;    // Label to display event title

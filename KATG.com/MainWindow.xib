@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="119"/>
+			<integer value="316"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -94,7 +94,7 @@
 							<object class="IBUIButton" id="680828609">
 								<reference key="NSNextResponder" ref="434903890"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrameSize">{275, 49}</string>
+								<string key="NSFrameSize">{257, 49}</string>
 								<reference key="NSSuperview" ref="434903890"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -118,7 +118,7 @@
 							<object class="IBUIButton" id="851772647">
 								<reference key="NSNextResponder" ref="434903890"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{0, 47}, {322, 190}}</string>
+								<string key="NSFrame">{{0, 54}, {322, 183}}</string>
 								<reference key="NSSuperview" ref="434903890"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -1142,7 +1142,6 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="242893435"/>
 							<reference ref="67698249"/>
-							<reference ref="851772647"/>
 							<reference ref="93950614"/>
 							<reference ref="806996842"/>
 							<reference ref="214926209"/>
@@ -1160,8 +1159,9 @@
 							<reference ref="264038428"/>
 							<reference ref="881147329"/>
 							<reference ref="227006446"/>
-							<reference ref="62965308"/>
 							<reference ref="43252310"/>
+							<reference ref="62965308"/>
+							<reference ref="851772647"/>
 							<reference ref="680828609"/>
 						</object>
 						<reference key="parent" ref="1024858337"/>
@@ -1525,7 +1525,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIApplication</string>
 					<string>UIResponder</string>
-					<string>{{1550, 232}, {320, 480}}</string>
+					<string>{{672, 156}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<boolean value="NO" id="6"/>
 					<reference ref="6"/>

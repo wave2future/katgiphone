@@ -728,6 +728,7 @@ static int timeSince;
 			[fm removeItemAtPath: feedFilePath error: NULL];
 		
 		[feedPack writeToFile: feedFilePath atomically: YES];
+		[fm release];
 	}
 	
 	[feedEntries release];
@@ -741,7 +742,7 @@ static int timeSince;
 - (IBAction)infoSheet {
 	UIAlertView *alert = [[UIAlertView alloc] 
 						  initWithTitle:@"Keith and The Girl"
-						  message:@"This Application is for anyone interested in The Keith and The Girl Show. You can use it to listen to the live show, check upcoming events and read Keith and Chemda's tweets. Also links are available to the KATG Store and Donation Page." 
+						  message:@"This application is for anyone interested in the Keith and The Girl Show. You can use it to listen to the live show, check upcoming events and read Keith and Chemda's tweets. Links are also available to the KATG Store and Donation Page." 
 						  delegate:nil
 						  cancelButtonTitle:@"Continue" 
 						  otherButtonTitles:nil];

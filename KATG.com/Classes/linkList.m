@@ -56,7 +56,7 @@
 - (IBAction)infoSheet {
 	UIAlertView *alert = [[UIAlertView alloc] 
 						  initWithTitle:@"Thanks and Credit"
-						  message:@"The following people contributed directly or through content:\nKeith Malley\nChemda Khalili\nMichael Khalili\nThe Grundle (?)\nLondan Ash (Ashley Mills)\nPicard (John Leschinski)\nSubsonix (Marcus Newman)\nMapes (?)\nAptmunich (?)\nRegexKitLite Copyright © 2008-2009, John Engelhart" 
+						  message:@"The following people contributed directly or through content:\n • Keith Malley\n • Chemda Khalili\n • Michael Khalili\n • The Grundle (Barry Mendelson)\n • Londan Ash (Ashley Mills)\n • Picard (John Leschinski)\n • Subsonix (Marcus Newman)\n • Mapes (?)\n • Aptmunich (?)\n • RegexKitLite Copyright © 2008-2009, John Engelhart" 
 						  delegate:nil
 						  cancelButtonTitle:@"Continue" 
 						  otherButtonTitles:nil];

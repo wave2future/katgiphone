@@ -41,11 +41,9 @@
 	
 	detailBody = [[[UITextView alloc] initWithFrame:rect] autorelease];
 	detailBody.textColor = [UIColor blackColor];
-	detailBody.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0]; 
+	detailBody.backgroundColor = [UIColor clearColor]; 
 	
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_3_0
 	detailBody.dataDetectorTypes = UIDataDetectorTypeAll;
-#endif
 	
 	detailBody.editable = NO;
 	detailBody.font = [UIFont systemFontOfSize:15.0];
@@ -53,9 +51,17 @@
 	[self.view addSubview:detailBody];
 	
 	detailTitle.text = TitleTemp;
-	MREntitiesConverter *cleaner = [[MREntitiesConverter alloc] init];
-	detailBody.text = [cleaner convertEntitiesInString:BodyTemp];
-
+	
+	if (![BodyTemp isEqualToString:@"NULL"]) {
+		MREntitiesConverter *cleaner = [[MREntitiesConverter alloc] init];
+		NSString *body = @" • ";
+		body = [body stringByAppendingString:[BodyTemp stringByReplacingOccurrencesOfString:@"\n" withString:@"\n • "]];
+		detailBody.text = [cleaner convertEntitiesInString:body];
+		[cleaner release];
+	} else {
+		detailBody.text = @" • No Show Notes";
+	}
+	
 	[[NSNotificationCenter defaultCenter] 
 	 addObserver:self 
 	 selector:@selector(moviePreloadDidFinish:) 
@@ -124,11 +130,10 @@
 	[button setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
 }
 
-
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-	
+	[self.moviePlayer stop];
 	// Release any cached data, images, etc that aren't in use.
 }
 
@@ -137,10 +142,8 @@
 	// e.g. self.myOutlet = nil;
 }
 
-
 - (void)dealloc {
-    [super dealloc];
+	[super dealloc];
 }
-
 
 @end

@@ -162,23 +162,6 @@
 		
 		// Set up the cell...
 		cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
-		/*
-		cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.92 green:(CGFloat).973 blue:(CGFloat)0.92 alpha:(CGFloat)1.0];
-		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0];
-		if (indexPath.row%2 == 0) {
-			cell.lblTitle.backgroundColor = color1;
-			
-			cell.backgroundView.backgroundColor = color1;
-		} else {
-			cell.lblTitle.backgroundColor = color2;
-			
-			cell.backgroundView.backgroundColor = color2;
-		}
-		
-		cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-		cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
-		*/
 		
 		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.776 green:(CGFloat).875 blue:(CGFloat)0.776 alpha:(CGFloat)1.0];
 		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.627 alpha:(CGFloat)1.0];
@@ -207,31 +190,14 @@
 		// Set up the cell...
 		cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
 		
-		/*cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.70 green:(CGFloat).70 blue:(CGFloat)0.70 alpha:(CGFloat)1.0];
-		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.70 green:(CGFloat).70 blue:(CGFloat)0.70 alpha:(CGFloat)1.0];
-		if (indexPath.row%2 == 0) {
-			cell.lblTitle.backgroundColor = color1;
-			cell.backgroundView.backgroundColor = color1;
-		} else {
-			cell.lblTitle.backgroundColor = color2;
-			cell.backgroundView.backgroundColor = color2;
-		}
-		
-		cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-		cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
-		*/
-		
 		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.776 green:(CGFloat).875 blue:(CGFloat)0.776 alpha:(CGFloat)1.0];
 		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0];
 		
 		if (indexPath.row%2 == 0) {
 			cell.lblTitle.backgroundColor = color1;
-			//cell.backgroundView.backgroundColor = color1;
 			cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground60.png"]];
 		} else {
 			cell.lblTitle.backgroundColor = color2;
-			//cell.backgroundView.backgroundColor = color2;
 			cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundDark60.png"]];
 		}
 		
