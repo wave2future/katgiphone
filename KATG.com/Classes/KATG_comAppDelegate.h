@@ -26,7 +26,9 @@
 @property (nonatomic, retain) IBOutlet UIWindow					*window;
 @property (nonatomic, retain) IBOutlet UITabBarController		*tabBarController;
 
+// Send notifcation that app is about to be terminated.
 - (void)talkToOnAirView;
-//- (void)sendProviderDeviceToken:(id)deviceTokenBytes;
+// Send device token to token server
+- (void)sendProviderDeviceToken:(id)deviceTokenBytes;
 
 @end

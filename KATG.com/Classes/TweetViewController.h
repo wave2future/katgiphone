@@ -36,6 +36,6 @@
 @property (nonatomic, retain) UIActivityIndicatorView			*activityIndicator;
 
 - (void) pollFeed;
-- (void)createNotificationForTermination;
+//- (void)createNotificationForTermination;
 
 @end

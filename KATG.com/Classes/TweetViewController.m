@@ -92,7 +92,7 @@ static BOOL otherTweets;
 											  autorelease];
 	self.navigationItem.leftBarButtonItem.enabled = NO;
 	
-	[self createNotificationForTermination];
+	//[self createNotificationForTermination];
 }
 
 //*******************************************************
@@ -469,7 +469,7 @@ static BOOL otherTweets;
 	}
 }
 
-- (void)createNotificationForTermination { 
+/*- (void)createNotificationForTermination { 
 	NSLog(@"createNotificationTwo"); 
 	[[NSNotificationCenter defaultCenter] 
 	 addObserver:self 
@@ -487,7 +487,7 @@ static BOOL otherTweets;
 		[fm removeItemAtPath: iconsFilePath error: NULL];
 	}
 	BOOL didWrite = [iconDict writeToFile: iconsFilePath atomically: YES];	
-}
+}*/
 
 - (void)viewDidDisappear:(BOOL)animated {
 	NSLog(@"Events Table Did Dissapear");

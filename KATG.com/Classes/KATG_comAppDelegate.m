@@ -25,14 +25,15 @@
 @synthesize window;
 @synthesize tabBarController;
 
-// OS 3.0 and later
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Add the tab bar controller's current view as a subview of the window
 	[window addSubview:tabBarController.view];
-	//[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+	[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
 	return YES;
 }
 
+#pragma mark Termination Notification
+// Post notification triggered by app termination, used by On Air View and Tweet View to save data
 - (void)talkToOnAirView { 
 	[[NSNotificationCenter defaultCenter] 
 	 postNotificationName:@"ApplicationWillTerminate" 
@@ -41,11 +42,12 @@
 
 // Delegation methods 
 - (void)applicationWillTerminate:(UIApplication *)application {
-	//application.applicationIconBadgeNumber = 0;
+	 application.applicationIconBadgeNumber = 0;
 	[self talkToOnAirView];
 }
 
-/*- (void)application:didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {	
+#pragma mark Push Notification
+- (void)application:didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {	
     NSLog(@"deviceToken: %@", deviceToken);
 	NSString *token = [[NSString alloc] initWithFormat: @"%@", deviceToken];
 	[self sendProviderDeviceToken:token];
@@ -71,8 +73,9 @@
 		NSURLRequest *request = [[ NSURLRequest alloc ] initWithURL: [ NSURL URLWithString: myRequestString ] ]; 
 		
 		[ NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil ];
-}*/
+}
 
+#pragma mark System Stuff
 - (void)dealloc {
 	[tabBarController release];
 	[window release];
