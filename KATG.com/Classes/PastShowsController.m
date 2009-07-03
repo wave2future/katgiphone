@@ -32,38 +32,54 @@
 @synthesize feedEntries;
 @synthesize feedAddress;
 @synthesize indexPaths;
+@synthesize localWiFiConnectionStatus;
 
 #pragma mark View
 - (void)viewDidLoad {
 	NSLog(@"Past Show View Did Load");
-	 [super viewDidLoad];
-	 
-	 self.navigationItem.title = @"Past Shows";
-	 
-	 self.tableView.rowHeight = ROW_HEIGHT;
-	 
-	 list = [[NSMutableArray alloc] init];
-	 
-	 // Create a 'right hand button' that is a activity Indicator
-	 CGRect frame = CGRectMake(0.0, 0.0, 25.0, 25.0);
-	 self.activityIndicator = [[UIActivityIndicatorView alloc]
+	[super viewDidLoad];
+	
+	self.navigationItem.title = @"Past Shows";
+	
+	self.tableView.rowHeight = ROW_HEIGHT;
+	
+	list = [[NSMutableArray alloc] init];
+	
+	// Create a 'right hand button' that is a activity Indicator
+	CGRect frame = CGRectMake(0.0, 0.0, 25.0, 25.0);
+	self.activityIndicator = [[UIActivityIndicatorView alloc]
 							   initWithFrame:frame];
-	 [self.activityIndicator sizeToFit];
-	 self.activityIndicator.autoresizingMask =
-	 (UIViewAutoresizingFlexibleLeftMargin |
-	  UIViewAutoresizingFlexibleRightMargin |
-	  UIViewAutoresizingFlexibleTopMargin |
-	  UIViewAutoresizingFlexibleBottomMargin);
-	 
-	 UIBarButtonItem *loadingView = [[UIBarButtonItem alloc] 
+	[self.activityIndicator sizeToFit];
+	self.activityIndicator.autoresizingMask =
+	(UIViewAutoresizingFlexibleLeftMargin |
+	 UIViewAutoresizingFlexibleRightMargin |
+	 UIViewAutoresizingFlexibleTopMargin |
+	 UIViewAutoresizingFlexibleBottomMargin);
+	
+	UIBarButtonItem *loadingView = [[UIBarButtonItem alloc] 
 									 initWithCustomView:self.activityIndicator];
-	 loadingView.target = self;
-	 self.navigationItem.rightBarButtonItem = loadingView;
-	 
-	 feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?records=25";
-	 
-	 [self.activityIndicator startAnimating];
-	 [ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: feedAddress ];
+	loadingView.target = self;
+	self.navigationItem.rightBarButtonItem = loadingView;
+	
+	userDefaults = [NSUserDefaults standardUserDefaults];
+	
+	[[Reachability sharedReachability] setHostName:@"keithandthegirl.com"];
+	self.localWiFiConnectionStatus	= [[Reachability sharedReachability] localWiFiConnectionStatus];
+	
+	if (self.localWiFiConnectionStatus == NotReachable) {
+		if ([userDefaults boolForKey:@"StreamPSOverCell"]) {
+			feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?records=25";
+			[self.activityIndicator startAnimating];
+			[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: feedAddress ];
+		} else {
+			Show *Sh = [[Show alloc] initWithTitle:@"Past Shows Disabled" publishDate:@"April 15th" link:@"" detail:@""];
+			[list addObject:Sh];
+		}
+	} else if (self.localWiFiConnectionStatus == ReachableViaWiFiNetwork) {
+		feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?records=25";
+		[self.activityIndicator startAnimating];
+		[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: feedAddress ];
+	}
 }
 
 #pragma mark Feed

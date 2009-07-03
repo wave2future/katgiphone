@@ -29,6 +29,16 @@
 	// Add the tab bar controller's current view as a subview of the window
 	[window addSubview:tabBarController.view];
 	[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+	if ([launchOptions count] > 0) {
+		NSString *alertMessage = [[[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] objectForKey:@"aps"] objectForKey:@"alert"];
+		UIAlertView *alert = [[UIAlertView alloc] 
+							  initWithTitle:@"Notification"
+							  message:alertMessage 
+							  delegate:nil
+							  cancelButtonTitle:@"Continue" 
+							  otherButtonTitles:nil];
+		[alert show];
+	}
 	return YES;
 }
 

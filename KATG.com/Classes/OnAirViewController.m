@@ -359,6 +359,9 @@ static int timeSince;
 	
 	[callButton setBackgroundImage:(UIImage *)normal forState:UIControlStateNormal];
 	[callButton setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
+	if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel:+1..."]] == NO) {
+		callButton.enabled = NO;
+	}
 }
 
 #pragma mark Feedback
