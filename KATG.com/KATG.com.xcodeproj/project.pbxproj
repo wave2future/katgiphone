@@ -72,7 +72,7 @@
 		53A4768A0FE2309F00A2E3C5 /* postCellBackgroundDark60.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A476870FE2309F00A2E3C5 /* postCellBackgroundDark60.png */; };
 		53A4768B0FE2309F00A2E3C5 /* postCellBackgroundSelected60.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A476880FE2309F00A2E3C5 /* postCellBackgroundSelected60.png */; };
 		53A4776C0FE2F42500A2E3C5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A4776B0FE2F42500A2E3C5 /* Default.png */; };
-		53A4776E0FE2F47200A2E3C5 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A4776D0FE2F47200A2E3C5 /* iTunesArtwork.png */; };
+		53A4776E0FE2F47200A2E3C5 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 53A4776D0FE2F47200A2E3C5 /* iTunesArtwork */; };
 		53A477910FE2F98500A2E3C5 /* postCellBackground30.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A477900FE2F98500A2E3C5 /* postCellBackground30.png */; };
 		53A478020FE304C900A2E3C5 /* TweetIconSub.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A478010FE304C900A2E3C5 /* TweetIconSub.png */; };
 		53B8CE850FB4238900C8C71B /* linkList.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B8CE840FB4238900C8C71B /* linkList.m */; };
@@ -195,7 +195,7 @@
 		53A476870FE2309F00A2E3C5 /* postCellBackgroundDark60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postCellBackgroundDark60.png; sourceTree = "<group>"; };
 		53A476880FE2309F00A2E3C5 /* postCellBackgroundSelected60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postCellBackgroundSelected60.png; sourceTree = "<group>"; };
 		53A4776B0FE2F42500A2E3C5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		53A4776D0FE2F47200A2E3C5 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
+		53A4776D0FE2F47200A2E3C5 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		53A477900FE2F98500A2E3C5 /* postCellBackground30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postCellBackground30.png; sourceTree = "<group>"; };
 		53A478010FE304C900A2E3C5 /* TweetIconSub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TweetIconSub.png; sourceTree = "<group>"; };
 		53B8CE830FB4238900C8C71B /* linkList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = linkList.h; sourceTree = "<group>"; };
@@ -261,8 +261,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				53FF0F1D0FFDC92400353C64 /* Reachability.h */,
-				53FF0F1E0FFDC92400353C64 /* Reachability.m */,
+				53FF0F870FFEB5CD00353C64 /* Reachability */,
 				536CD4590F89E5F20063DED2 /* Delegate */,
 				53D696630F9308A400FDBD0C /* OnAir */,
 				537CD8850F8FBADE002F86FA /* Events */,
@@ -313,7 +312,7 @@
 				532EEBAC0FE5695000DF7585 /* phen.caf */,
 				532EEBA70FE4C8CB00DF7585 /* haha.caf */,
 				532EEB830FE4B8BD00DF7585 /* keithandthegirl.com.caf */,
-				53A4776D0FE2F47200A2E3C5 /* iTunesArtwork.png */,
+				53A4776D0FE2F47200A2E3C5 /* iTunesArtwork */,
 				53A4776B0FE2F42500A2E3C5 /* Default.png */,
 				534CA1540FB39A3A00206F91 /* Icon.png */,
 				530015E80FBBB97300A9078D /* BG3.png */,
@@ -621,6 +620,15 @@
 			name = grabRSSFeed;
 			sourceTree = "<group>";
 		};
+		53FF0F870FFEB5CD00353C64 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				53FF0F1D0FFDC92400353C64 /* Reachability.h */,
+				53FF0F1E0FFDC92400353C64 /* Reachability.m */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -708,7 +716,7 @@
 				53A4768A0FE2309F00A2E3C5 /* postCellBackgroundDark60.png in Resources */,
 				53A4768B0FE2309F00A2E3C5 /* postCellBackgroundSelected60.png in Resources */,
 				53A4776C0FE2F42500A2E3C5 /* Default.png in Resources */,
-				53A4776E0FE2F47200A2E3C5 /* iTunesArtwork.png in Resources */,
+				53A4776E0FE2F47200A2E3C5 /* iTunesArtwork in Resources */,
 				53A477910FE2F98500A2E3C5 /* postCellBackground30.png in Resources */,
 				53A478020FE304C900A2E3C5 /* TweetIconSub.png in Resources */,
 				532EEB840FE4B8BD00DF7585 /* keithandthegirl.com.caf in Resources */,

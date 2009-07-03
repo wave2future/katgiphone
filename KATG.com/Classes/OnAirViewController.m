@@ -25,6 +25,8 @@
 
 // Integer value for countdown to next live show
 static int timeSince;
+// 
+static BOOL ShouldStream;
 
 @implementation OnAirViewController
 
@@ -47,6 +49,11 @@ static int timeSince;
 @synthesize feedTimer, showTimer;
 // Info Alert Sheet
 @synthesize infoButton;
+// 
+@synthesize remoteHostStatus;
+// 
+@synthesize localWiFiConnectionStatus;
+
 
 #pragma mark System Stuff
 //*******************************************************
@@ -86,9 +93,12 @@ static int timeSince;
 	 name:@"UITextViewTextDidBeginEditingNotification" 
 	 object:nil];
 	
-	// I would like to move this into app delegate and make it available to all views
+	[[Reachability sharedReachability] setHostName:@"keithandthegirl.com"];
+	self.remoteHostStatus = [[Reachability sharedReachability] remoteHostStatus];
+	//[[Reachability sharedReachability] localWiFiConnectionStatus];
+	
 	// Is a connection to KATG available 
-	if ([self isDataSourceAvailable] == NO) {
+	if (self.remoteHostStatus == NotReachable) {
 		UIAlertView *alert = [[UIAlertView alloc] 
 							  initWithTitle:@"NO INTERNET CONNECTION"
 							  message:@"This Application requires an active internet connection. Please connect to wifi or cellular data network for full application functionality." 
@@ -97,8 +107,26 @@ static int timeSince;
 							  otherButtonTitles:nil];
 		[alert show];
 		return;
+	} else if (self.remoteHostStatus == ReachableViaCarrierDataNetwork) {
+		if ([userDefaults boolForKey:@"StreamLSOverCell"]) {
+			ShouldStream = YES;
+		} else {
+			ShouldStream = NO;
+		}
+		[self finishInit];
+	} else if (self.remoteHostStatus == ReachableViaWiFiNetwork) {
+		[self finishInit];
+		ShouldStream = YES;
 	}
 	
+}
+
+//*******************************************************
+//* finishInit
+//* 
+//* 
+//*******************************************************
+- (void)finishInit {
 	//
 	[ NSThread detachNewThreadSelector: @selector(feedStatusAutoPool) toTarget: self withObject: nil ];
 	
@@ -125,31 +153,6 @@ static int timeSince;
 	NSLog(@"On Air View Will Appear");
 }*/
 
-#pragma mark Connectivity
-//*******************************************************
-//* isDataSourceAvailable
-//* 
-//* 
-//*******************************************************
-- (BOOL)isDataSourceAvailable {
-	//NSLog(@"isDataSourceAvailable executed");
-	
-    static BOOL checkNetwork = YES;
-    if (checkNetwork) { // Since checking the reachability of a host can be expensive, cache the result and perform the reachability check once.
-        checkNetwork = NO;
-        
-        Boolean success;    
-        const char *host_name = "keithandthegirl.com";
-		
-        SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, host_name);
-        SCNetworkReachabilityFlags flags;
-        success = SCNetworkReachabilityGetFlags(reachability, &flags);
-        _isDataSourceAvailable = success && (flags & kSCNetworkFlagsReachable) && !(flags & kSCNetworkFlagsConnectionRequired);
-        CFRelease(reachability);
-    }
-    return _isDataSourceAvailable;
-}
-
 #pragma mark Audio Streamer
 //*******************************************************
 //* audioButtonPressed
@@ -159,34 +162,47 @@ static int timeSince;
 //* deactivate stream and change button image
 //*******************************************************
 - (IBAction)audioButtonPressed:(id)sender {
-	if (!streamer) {
+	if (ShouldStream) {
+		if (!streamer) {
+			
+			NSString *escapedValue =
+			[(NSString *)CFURLCreateStringByAddingPercentEscapes(
+																 nil,
+																 (CFStringRef)@"http://liveshow.keithandthegirl.com:8004",
+																 NULL,
+																 NULL,
+																 kCFStringEncodingUTF8)
+			 autorelease];
+			
+			NSURL *url = [NSURL URLWithString:escapedValue];
+			streamer = [[AudioStreamer alloc] initWithURL:url];
+			[streamer
+			 addObserver:self
+			 forKeyPath:@"isPlaying"
+			 options:0
+			 context:nil];
+			[streamer start];
+			
+			[self setAudioButtonImage:[UIImage imageNamed:@"loadingButton.png"]];
+			
+			[self spinButton];
+		}
+		else {
+			[audioButton.layer removeAllAnimations];
+			[streamer stop];
+		}
 		
-		NSString *escapedValue =
-		[(NSString *)CFURLCreateStringByAddingPercentEscapes(
-															 nil,
-															 (CFStringRef)@"http://liveshow.keithandthegirl.com:8004",
-															 NULL,
-															 NULL,
-															 kCFStringEncodingUTF8)
-		 autorelease];
-		
-		NSURL *url = [NSURL URLWithString:escapedValue];
-		streamer = [[AudioStreamer alloc] initWithURL:url];
-		[streamer
-		 addObserver:self
-		 forKeyPath:@"isPlaying"
-		 options:0
-		 context:nil];
-		[streamer start];
-		
-		[self setAudioButtonImage:[UIImage imageNamed:@"loadingButton.png"]];
-		
-		[self spinButton];
+	} else {
+		NSString *alertMessage = @"Streaming shows over cellular network is disabled, enable Wifi to stream";
+		UIAlertView *alert = [[UIAlertView alloc] 
+							  initWithTitle:@"Live Shows Streaming Disabled"
+							  message:alertMessage 
+							  delegate:nil
+							  cancelButtonTitle:@"Continue" 
+							  otherButtonTitles:nil];
+		[alert show];
 	}
-	else {
-		[audioButton.layer removeAllAnimations];
-		[streamer stop];
-	}
+	
 }
 
 //*******************************************************
