@@ -25,16 +25,16 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {862, 1736}}";
 			sepNavSelRange = "{1663, 33}";
-			sepNavVisRange = "{1348, 1687}";
+			sepNavVisRange = "{1314, 1624}";
 			sepNavWindowFrame = "{{58, 0}, {1222, 1002}}";
 		};
 	};
 	28216C960DB411BC00E5133A /* OnAirViewController.m */ = {
 		uiCtxt = {
-			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{4347, 769}\";\n            s = 0;\n        },\n                {\n            r = \"{5503, 692}\";\n            s = 0;\n        },\n                {\n            r = \"{6434, 89}\";\n            s = 0;\n        },\n                {\n            r = \"{6736, 1008}\";\n            s = 0;\n        },\n                {\n            r = \"{7972, 43}\";\n            s = 0;\n        },\n                {\n            r = \"{8297, 754}\";\n            s = 0;\n        },\n                {\n            r = \"{9254, 950}\";\n            s = 0;\n        },\n                {\n            r = \"{12846, 1953}\";\n            s = 0;\n        },\n                {\n            r = \"{14987, 606}\";\n            s = 0;\n        },\n                {\n            r = \"{15829, 33}\";\n            s = 0;\n        },\n                {\n            r = \"{16102, 104}\";\n            s = 0;\n        },\n                {\n            r = \"{16673, 222}\";\n            s = 0;\n        },\n                {\n            r = \"{17162, 219}\";\n            s = 0;\n        },\n                {\n            r = \"{17560, 115}\";\n            s = 0;\n        },\n                {\n            r = \"{17887, 102}\";\n            s = 0;\n        },\n                {\n            r = \"{19587, 209}\";\n            s = 0;\n        },\n                {\n            r = \"{20296, 100}\";\n            s = 0;\n        },\n                {\n            r = \"{25616, 109}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 27550}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {1104, 8302}}";
-			sepNavSelRange = "{6130, 162}";
-			sepNavVisRange = "{1627, 1746}";
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{1938, 1864}\";\n            s = 0;\n        },\n                {\n            r = \"{4347, 769}\";\n            s = 0;\n        },\n                {\n            r = \"{5503, 692}\";\n            s = 0;\n        },\n                {\n            r = \"{6434, 89}\";\n            s = 0;\n        },\n                {\n            r = \"{6736, 1008}\";\n            s = 0;\n        },\n                {\n            r = \"{7972, 43}\";\n            s = 0;\n        },\n                {\n            r = \"{8297, 754}\";\n            s = 0;\n        },\n                {\n            r = \"{9254, 950}\";\n            s = 0;\n        },\n                {\n            r = \"{10401, 481}\";\n            s = 0;\n        },\n                {\n            r = \"{11194, 191}\";\n            s = 0;\n        },\n                {\n            r = \"{11567, 724}\";\n            s = 0;\n        },\n                {\n            r = \"{12846, 1953}\";\n            s = 0;\n        },\n                {\n            r = \"{14987, 606}\";\n            s = 0;\n        },\n                {\n            r = \"{15829, 33}\";\n            s = 0;\n        },\n                {\n            r = \"{16102, 104}\";\n            s = 0;\n        },\n                {\n            r = \"{16673, 222}\";\n            s = 0;\n        },\n                {\n            r = \"{17162, 219}\";\n            s = 0;\n        },\n                {\n            r = \"{17560, 115}\";\n            s = 0;\n        },\n                {\n            r = \"{17887, 102}\";\n            s = 0;\n        },\n                {\n            r = \"{18188, 1126}\";\n            s = 0;\n        },\n                {\n            r = \"{19587, 209}\";\n            s = 0;\n        },\n                {\n            r = \"{19971, 113}\";\n            s = 0;\n        },\n                {\n            r = \"{20296, 100}\";\n            s = 0;\n        },\n                {\n            r = \"{20591, 4118}\";\n            s = 0;\n        },\n                {\n            r = \"{24905, 453}\";\n            s = 0;\n        },\n                {\n            r = \"{25616, 109}\";\n            s = 0;\n        },\n                {\n            r = \"{25950, 34}\";\n            s = 0;\n        },\n                {\n            r = \"{26141, 36}\";\n            s = 0;\n        },\n                {\n            r = \"{26222, 203}\";\n            s = 0;\n        },\n                {\n            r = \"{26498, 401}\";\n            s = 0;\n        },\n                {\n            r = \"{27066, 271}\";\n            s = 0;\n        },\n                {\n            r = \"{27488, 21}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 27550}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {862, 4074}}";
+			sepNavSelRange = "{4372, 0}";
+			sepNavVisRange = "{558, 1384}";
 			sepNavWindowFrame = "{{543, 0}, {737, 778}}";
 		};
 	};
@@ -737,16 +737,16 @@
 	};
 	5310E82E0FB90AE60065A4BC /* ShowDetailController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {858, 686}}";
-			sepNavSelRange = "{822, 614}";
-			sepNavVisRange = "{30, 2051}";
+			sepNavIntBoundsRect = "{{0, 0}, {862, 714}}";
+			sepNavSelRange = "{1842, 0}";
+			sepNavVisRange = "{46, 2113}";
 		};
 	};
 	5310E82F0FB90AE60065A4BC /* ShowDetailController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {858, 2100}}";
-			sepNavSelRange = "{2309, 0}";
-			sepNavVisRange = "{1419, 1353}";
+			sepNavIntBoundsRect = "{{0, 0}, {862, 2002}}";
+			sepNavSelRange = "{1266, 0}";
+			sepNavVisRange = "{43, 1848}";
 		};
 	};
 	5310E8580FB90F3A0065A4BC /* PBXTextBookmark */ = {
@@ -1293,9 +1293,10 @@
 	};
 	536BFF1F0FB8A08800DA7720 /* PastShowsController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {862, 3808}}";
-			sepNavSelRange = "{3194, 0}";
-			sepNavVisRange = "{1134, 1971}";
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{1160, 1560}\";\n            s = 0;\n        },\n                {\n            r = \"{2759, 109}\";\n            s = 0;\n        },\n                {\n            r = \"{2890, 1854}\";\n            s = 0;\n        },\n                {\n            r = \"{4847, 15}\";\n            s = 0;\n        },\n                {\n            r = \"{5007, 26}\";\n            s = 0;\n        },\n                {\n            r = \"{5190, 2400}\";\n            s = 0;\n        },\n                {\n            r = \"{9191, 43}\";\n            s = 0;\n        },\n                {\n            r = \"{9260, 142}\";\n            s = 0;\n        },\n                {\n            r = \"{9438, 400}\";\n            s = 0;\n        },\n                {\n            r = \"{9858, 22}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 9890}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {862, 1344}}";
+			sepNavSelRange = "{2383, 0}";
+			sepNavVisRange = "{1259, 2069}";
 		};
 	};
 	536BFF300FB8A09B00DA7720 /* PBXBookmark */ = {
@@ -1317,7 +1318,7 @@
 		fRef = 536BFF1F0FB8A08800DA7720 /* PastShowsController.m */;
 		name = "PastShowsController.m: 13";
 		rLen = 0;
-		rLoc = 893;
+		rLoc = 920;
 		rType = 0;
 		vrLen = 569;
 		vrLoc = 0;
@@ -2007,7 +2008,7 @@
 		isa = PBXTextBookmark;
 		fRef = 5310E82E0FB90AE60065A4BC /* ShowDetailController.h */;
 		name = "ShowDetailController.h: 23";
-		rLen = 614;
+		rLen = 644;
 		rLoc = 822;
 		rType = 0;
 		vrLen = 2081;
@@ -2066,7 +2067,7 @@
 		fRef = 536BFF1F0FB8A08800DA7720 /* PastShowsController.m */;
 		name = "PastShowsController.m: 166";
 		rLen = 0;
-		rLoc = 5966;
+		rLoc = 5689;
 		rType = 0;
 		vrLen = 2098;
 		vrLoc = 4329;
@@ -2076,7 +2077,7 @@
 		fRef = 5310E82F0FB90AE60065A4BC /* ShowDetailController.m */;
 		name = "ShowDetailController.m: 62";
 		rLen = 0;
-		rLoc = 2309;
+		rLoc = 2335;
 		rType = 0;
 		vrLen = 1348;
 		vrLoc = 3422;
@@ -2973,7 +2974,7 @@
 		fRef = 5310E82F0FB90AE60065A4BC /* ShowDetailController.m */;
 		name = "ShowDetailController.m: 62";
 		rLen = 0;
-		rLoc = 2309;
+		rLoc = 2335;
 		rType = 0;
 		vrLen = 1353;
 		vrLoc = 1419;
@@ -2982,7 +2983,7 @@
 		isa = PBXTextBookmark;
 		fRef = 5310E82E0FB90AE60065A4BC /* ShowDetailController.h */;
 		name = "ShowDetailController.h: 23";
-		rLen = 614;
+		rLen = 644;
 		rLoc = 822;
 		rType = 0;
 		vrLen = 2051;
@@ -3033,7 +3034,7 @@
 		fRef = 5310E82F0FB90AE60065A4BC /* ShowDetailController.m */;
 		name = "ShowDetailController.m: 62";
 		rLen = 0;
-		rLoc = 2309;
+		rLoc = 2335;
 		rType = 0;
 		vrLen = 1353;
 		vrLoc = 1419;
@@ -3042,7 +3043,7 @@
 		isa = PBXTextBookmark;
 		fRef = 5310E82E0FB90AE60065A4BC /* ShowDetailController.h */;
 		name = "ShowDetailController.h: 23";
-		rLen = 614;
+		rLen = 644;
 		rLoc = 822;
 		rType = 0;
 		vrLen = 2051;
@@ -3384,7 +3385,7 @@
 	};
 	53E9562A0F9D5F3E0071709B /* sanitizeField.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {828, 667}}";
+			sepNavIntBoundsRect = "{{0, 0}, {862, 645}}";
 			sepNavSelRange = "{1143, 0}";
 			sepNavVisRange = "{0, 1169}";
 			sepNavWindowFrame = "{{118, -134}, {1222, 778}}";
@@ -3839,7 +3840,7 @@
 		fRef = 536BFF1F0FB8A08800DA7720 /* PastShowsController.m */;
 		name = "PastShowsController.m: 66";
 		rLen = 0;
-		rLoc = 2996;
+		rLoc = 2719;
 		rType = 0;
 		vrLen = 1421;
 		vrLoc = 860;
@@ -3859,7 +3860,7 @@
 		fRef = 536BFF1F0FB8A08800DA7720 /* PastShowsController.m */;
 		name = "PastShowsController.m: 73";
 		rLen = 0;
-		rLoc = 2996;
+		rLoc = 2719;
 		rType = 0;
 		vrLen = 1444;
 		vrLoc = 1282;
@@ -3899,7 +3900,7 @@
 		fRef = 536BFF1F0FB8A08800DA7720 /* PastShowsController.m */;
 		name = "PastShowsController.m: 64";
 		rLen = 0;
-		rLoc = 2996;
+		rLoc = 2719;
 		rType = 0;
 		vrLen = 1665;
 		vrLoc = 1282;
@@ -3953,7 +3954,7 @@
 		fRef = 536BFF1F0FB8A08800DA7720 /* PastShowsController.m */;
 		name = "PastShowsController.m: 64";
 		rLen = 0;
-		rLoc = 2996;
+		rLoc = 2719;
 		rType = 0;
 		vrLen = 1706;
 		vrLoc = 1243;
@@ -3973,7 +3974,7 @@
 		fRef = 536BFF1F0FB8A08800DA7720 /* PastShowsController.m */;
 		name = "PastShowsController.m: 66";
 		rLen = 0;
-		rLoc = 2097;
+		rLoc = 2124;
 		rType = 0;
 		vrLen = 1594;
 		vrLoc = 1079;
@@ -3993,7 +3994,7 @@
 		fRef = 536BFF1F0FB8A08800DA7720 /* PastShowsController.m */;
 		name = "PastShowsController.m: 82";
 		rLen = 0;
-		rLoc = 2993;
+		rLoc = 2491;
 		rType = 0;
 		vrLen = 1263;
 		vrLoc = 0;
@@ -4013,7 +4014,7 @@
 		fRef = 536BFF1F0FB8A08800DA7720 /* PastShowsController.m */;
 		name = "PastShowsController.m: 82";
 		rLen = 0;
-		rLoc = 2993;
+		rLoc = 2491;
 		rType = 0;
 		vrLen = 1263;
 		vrLoc = 0;
@@ -4053,7 +4054,7 @@
 		fRef = 536BFF1F0FB8A08800DA7720 /* PastShowsController.m */;
 		name = "PastShowsController.m: 93";
 		rLen = 0;
-		rLoc = 3194;
+		rLoc = 2917;
 		rType = 0;
 		vrLen = 1971;
 		vrLoc = 1134;

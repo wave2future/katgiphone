@@ -27,6 +27,7 @@
 @synthesize TitleTemp;   // Variable to store title passed from SecondViewController
 @synthesize LinkTemp;    // Variable to store time passed from SecondViewController
 @synthesize BodyTemp;    // Variable to store description passed from SecondViewController
+@synthesize Stream;		 // 
 @synthesize button;
 @synthesize moviePlayer;
 @synthesize activityIndicator;
@@ -81,8 +82,19 @@
 //* 
 //*******************************************************
 - (IBAction)buttonPressed:(id)sender {
-	NSURL *movieURL = [[NSURL alloc] initWithString: LinkTemp];
-	[self playMovie:movieURL];
+	if ([Stream isEqualToString:@"NO"]) {
+		NSString *alertMessage = @"Streaming shows over cellular network is disabled, enable Wifi to stream";
+		UIAlertView *alert = [[UIAlertView alloc] 
+							  initWithTitle:@"Past Shows Streaming Disabled"
+							  message:alertMessage 
+							  delegate:nil
+							  cancelButtonTitle:@"Continue" 
+							  otherButtonTitles:nil];
+		[alert show];
+	} else {
+		NSURL *movieURL = [[NSURL alloc] initWithString: LinkTemp];
+		[self playMovie:movieURL];
+	}
 }
 
 //*******************************************************
@@ -128,6 +140,7 @@
 	
 	[button setBackgroundImage:(UIImage *)normal forState:UIControlStateNormal];
 	[button setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
+	
 }
 
 - (void)didReceiveMemoryWarning {

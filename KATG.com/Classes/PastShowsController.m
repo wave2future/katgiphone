@@ -23,6 +23,8 @@
 
 #define ROW_HEIGHT 60.0
 
+static BOOL ShouldStream;
+
 
 @implementation PastShowsController
 
@@ -68,18 +70,16 @@
 	
 	if (self.localWiFiConnectionStatus == NotReachable) {
 		if ([userDefaults boolForKey:@"StreamPSOverCell"]) {
-			feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?records=25";
-			[self.activityIndicator startAnimating];
-			[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: feedAddress ];
+			ShouldStream = YES;
 		} else {
-			Show *Sh = [[Show alloc] initWithTitle:@"Past Shows Disabled" publishDate:@"April 15th" link:@"" detail:@""];
-			[list addObject:Sh];
+			ShouldStream = NO;
 		}
 	} else if (self.localWiFiConnectionStatus == ReachableViaWiFiNetwork) {
-		feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?records=25";
-		[self.activityIndicator startAnimating];
-		[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: feedAddress ];
+		ShouldStream = YES;
 	}
+	feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?records=25";
+	[self.activityIndicator startAnimating];
+	[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: feedAddress ];
 }
 
 #pragma mark Feed
@@ -231,6 +231,9 @@
 		 viewController.TitleTemp = [[list objectAtIndex:indexPath.row] title];
 		 viewController.LinkTemp = [[list objectAtIndex:indexPath.row] link];
 		 viewController.BodyTemp = [[list objectAtIndex:indexPath.row] detail];
+		 if (!ShouldStream) {
+			 viewController.Stream = @"NO";
+		 }
 		 [[self navigationController] pushViewController:viewController animated:YES];
 		 [viewController release];
 	 } else if ([[[list objectAtIndex:indexPath.row] title] isEqualToString:@"Load More Episodes"]) {
