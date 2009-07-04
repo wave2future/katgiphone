@@ -412,10 +412,16 @@
 		535FE5F20F89FEF300F6AD75 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				53D01ED20FD500C000959050 /* RegEx */,
-				53DDCBED0FCA9AD400A34D85 /* ExtractURL */,
-				536AC7DD0FA0A8D70064B31E /* MREntitiesConverter */,
-				53E955CF0F9D58BA0071709B /* grabRSSFeed */,
+				53E956290F9D5F3E0071709B /* sanitizeField.h */,
+				53E9562A0F9D5F3E0071709B /* sanitizeField.m */,
+				5377B54D0FCD2E2B00CB9F2F /* RegexKitLite.h */,
+				5377B54E0FCD2E2B00CB9F2F /* RegexKitLite.m */,
+				53DDC9490FC9FAF800A34D85 /* extractURL.h */,
+				53DDC94A0FC9FAF800A34D85 /* extractURL.m */,
+				53F0BBE60F9F994900CCEEBF /* MREntitiesConverter.h */,
+				53F0BBE70F9F994900CCEEBF /* MREntitiesConverter.m */,
+				532C13B70F9556BB005879B1 /* grabRSSFeed.h */,
+				532C13B80F9556BB005879B1 /* grabRSSFeed.m */,
 				53E955C00F9D58AC0071709B /* TouchXML */,
 			);
 			name = Parser;
@@ -431,15 +437,6 @@
 				53B8CF000FB4BC0300C8C71B /* KaTGTab.png */,
 			);
 			name = "Tab Icons";
-			sourceTree = "<group>";
-		};
-		536AC7DD0FA0A8D70064B31E /* MREntitiesConverter */ = {
-			isa = PBXGroup;
-			children = (
-				53F0BBE60F9F994900CCEEBF /* MREntitiesConverter.h */,
-				53F0BBE70F9F994900CCEEBF /* MREntitiesConverter.m */,
-			);
-			name = MREntitiesConverter;
 			sourceTree = "<group>";
 		};
 		536BFF0C0FB89EF600DA7720 /* PastShows */ = {
@@ -554,33 +551,13 @@
 			name = Twitter;
 			sourceTree = "<group>";
 		};
-		53D01ED20FD500C000959050 /* RegEx */ = {
-			isa = PBXGroup;
-			children = (
-				5377B54D0FCD2E2B00CB9F2F /* RegexKitLite.h */,
-				5377B54E0FCD2E2B00CB9F2F /* RegexKitLite.m */,
-			);
-			name = RegEx;
-			sourceTree = "<group>";
-		};
 		53D696630F9308A400FDBD0C /* OnAir */ = {
 			isa = PBXGroup;
 			children = (
 				28216C950DB411BC00E5133A /* OnAirViewController.h */,
 				28216C960DB411BC00E5133A /* OnAirViewController.m */,
-				53E956290F9D5F3E0071709B /* sanitizeField.h */,
-				53E9562A0F9D5F3E0071709B /* sanitizeField.m */,
 			);
 			name = OnAir;
-			sourceTree = "<group>";
-		};
-		53DDCBED0FCA9AD400A34D85 /* ExtractURL */ = {
-			isa = PBXGroup;
-			children = (
-				53DDC9490FC9FAF800A34D85 /* extractURL.h */,
-				53DDC94A0FC9FAF800A34D85 /* extractURL.m */,
-			);
-			name = ExtractURL;
 			sourceTree = "<group>";
 		};
 		53E955C00F9D58AC0071709B /* TouchXML */ = {
@@ -609,15 +586,6 @@
 				535FE6070F89FF1700F6AD75 /* TouchXML.h */,
 			);
 			name = TouchXML;
-			sourceTree = "<group>";
-		};
-		53E955CF0F9D58BA0071709B /* grabRSSFeed */ = {
-			isa = PBXGroup;
-			children = (
-				532C13B70F9556BB005879B1 /* grabRSSFeed.h */,
-				532C13B80F9556BB005879B1 /* grabRSSFeed.m */,
-			);
-			name = grabRSSFeed;
 			sourceTree = "<group>";
 		};
 		53FF0F870FFEB5CD00353C64 /* Reachability */ = {

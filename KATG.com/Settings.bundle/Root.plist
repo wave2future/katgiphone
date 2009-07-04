@@ -36,6 +36,46 @@
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>FYI: Bear in mind that streaming</string>
+			<key>Key</key>
+			<string>Stream1</string>
+			<key>DefaultValue</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>over your cellular network</string>
+			<key>Key</key>
+			<string>Stream2</string>
+			<key>DefaultValue</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>without an unlimited data</string>
+			<key>Key</key>
+			<string>Stream3</string>
+			<key>DefaultValue</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>plan can be very costly</string>
+			<key>Key</key>
+			<string>Stream4</string>
+			<key>DefaultValue</key>
+			<string></string>
+		</dict>
 	</array>
 </dict>
 </plist>
