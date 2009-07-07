@@ -45,8 +45,8 @@
 	
 	self.navigationItem.title = @"Events";
 	
-	NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-	NSString *feedFilePath = [documentsPath stringByAppendingPathComponent: @"feed.save"];
+	NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+	NSString *feedFilePath = [documentsPath stringByAppendingPathComponent: @"feed.plist"];
 	
 	NSMutableArray *feedPack = [[NSMutableArray alloc] initWithCapacity:2];
 	

@@ -54,12 +54,16 @@ static BOOL otherTweets;
 	isURL = [[NSMutableDictionary alloc] init];
 	urlDict = [[NSMutableDictionary alloc] init];
 	
-	/*NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-	NSString *iconDictFilePath = [documentsPath stringByAppendingPathComponent: @"icons.save"];
+	NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+	NSString *iconDictFilePath = [documentsPath stringByAppendingPathComponent: @"icons.plist"];
 	NSFileManager *fm = [NSFileManager defaultManager];
 	if ([fm fileExistsAtPath: iconDictFilePath]) {
 		[iconDict addEntriesFromDictionary: [NSDictionary dictionaryWithContentsOfFile: iconDictFilePath]];
-	}*/
+	}
+	
+	if (iconDict.count >= 1000) {
+		[iconDict removeAllObjects];
+	}
 	
 	// Create a 'right hand button' that is a activity Indicator
 	CGRect frame = CGRectMake(0.0, 0.0, 25.0, 25.0);
@@ -92,7 +96,7 @@ static BOOL otherTweets;
 											  autorelease];
 	self.navigationItem.leftBarButtonItem.enabled = NO;
 	
-	//[self createNotificationForTermination];
+	[self createNotificationForTermination];
 }
 
 //*******************************************************
@@ -183,12 +187,9 @@ static BOOL otherTweets;
 	NSDictionary *queryDict = [jsonParser objectWithString: queryResult error: &error];
 	NSArray *results = [queryDict objectForKey: @"results"];
 	//*******************************************************
-	//* Clear out the old tweets and icons
+	//* Clear out the old tweets
 	//*******************************************************
 	[tweets removeAllObjects];
-	
-	if (iconDict.count >= 1000)
-		[iconDict removeAllObjects];
 	
 	//*******************************************************
 	//* Set up the date formatter - has to use 10.4 format for iPhone
@@ -291,7 +292,7 @@ static BOOL otherTweets;
 //* 
 //* 
 //*******************************************************
-- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
+/*- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
     CGFloat shakeThreshold = 1.0;
     static NSInteger shakeCount = 0;
     static NSInteger shakeTimer = 0;
@@ -323,7 +324,7 @@ static BOOL otherTweets;
 		[ NSThread detachNewThreadSelector: @selector(activityPool) toTarget: self withObject: nil ];
 		[self pollFeed];
     }
-}
+}*/
 
 #pragma mark Table view methodss
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -391,15 +392,17 @@ static BOOL otherTweets;
 		NSURL *url = [[NSURL alloc] initWithString:[[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
 		NSData *data = [NSData dataWithContentsOfURL:url];
 		if ([data length] != 0) {
-			UIImage * tweetIcon = [UIImage imageWithData:data];
-			[iconDict setObject: tweetIcon forKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
+			[iconDict setObject: data forKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
 		} else {
-			UIImage * tweetIcon = [UIImage imageNamed:@"TweetIconSub.png"];
-			[iconDict setObject: tweetIcon forKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
+			data = [NSData dataWithContentsOfFile:@"TweetIconSub.png"];
+			[iconDict setObject: data forKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
 		}
 	}
 	
-	cell.imgSquare.image = [iconDict objectForKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
+	UIImage *tweetIcon = [UIImage imageWithData:[iconDict objectForKey: 
+												 [[tweets objectAtIndex: indexPath.row] 
+												  objectForKey: @"profile_image_url"]]];
+	cell.imgSquare.image = tweetIcon;
 	
 	//***************************************************
 	//* Add a disclosure indicator if the text contains web stuff
@@ -469,7 +472,7 @@ static BOOL otherTweets;
 	}
 }
 
-/*- (void)createNotificationForTermination { 
+- (void)createNotificationForTermination { 
 	NSLog(@"createNotificationTwo"); 
 	[[NSNotificationCenter defaultCenter] 
 	 addObserver:self 
@@ -480,17 +483,23 @@ static BOOL otherTweets;
 
 - (void)handleTerminationNotification:(NSNotification *)pNotification { 
 	NSLog(@"Tweet View received message = %@",(NSString*)[pNotification object]);
-	NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-	NSString * iconsFilePath = [documentsPath stringByAppendingPathComponent: @"icons.save"];	
+	[self saveData];
+}
+
+- (void) saveData {
+	//NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+	NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+	NSString *iconsFilePath = [documentsPath stringByAppendingPathComponent: @"icons.plist"];
 	NSFileManager *fm = [NSFileManager defaultManager];
-	if ([fm fileExistsAtPath: iconsFilePath]) {
+	if ([fm fileExistsAtPath: iconsFilePath]) 
 		[fm removeItemAtPath: iconsFilePath error: NULL];
-	}
-	BOOL didWrite = [iconDict writeToFile: iconsFilePath atomically: YES];	
-}*/
+	[iconDict writeToFile: iconsFilePath atomically: YES];
+}
 
 - (void)viewDidDisappear:(BOOL)animated {
-	NSLog(@"Events Table Did Dissapear");
+	[super viewDidDisappear: animated];
+	NSLog(@"Tweet View Did Dissapear");
+	//[self saveData];
 }
 
 - (void)didReceiveMemoryWarning {

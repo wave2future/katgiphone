@@ -100,7 +100,6 @@ static BOOL ShouldStream;
 	
 	[[Reachability sharedReachability] setHostName:@"keithandthegirl.com"];
 	self.remoteHostStatus = [[Reachability sharedReachability] remoteHostStatus];
-	//[[Reachability sharedReachability] localWiFiConnectionStatus];
 	
 	// Is a connection to KATG available 
 	if (self.remoteHostStatus == NotReachable) {
@@ -670,24 +669,11 @@ static BOOL ShouldStream;
 		[feed release];
 		
 		// Evaluate the contents of feed for classification and add results into list
-		
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_3_0
-		
+				
 		NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 		[formatter setDateStyle: NSDateFormatterLongStyle];
 		[formatter setFormatterBehavior: NSDateFormatterBehavior10_4];
 		[formatter setDateFormat: @"MM/dd/yyyy HH:mm zzz"];
-		
-#elif __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_3_0
-		
-		NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-		[formatter setDateStyle: NSDateFormatterLongStyle];
-		[formatter setFormatterBehavior: NSDateFormatterBehavior10_4];
-		[formatter setDateFormat: @"MM/dd/yyyy HH:mm"];
-		NSTimeZone *EST = [NSTimeZone timeZoneWithName:(NSString *)@"America/New_York"];
-		[formatter setTimeZone:(NSTimeZone *)EST];
-		
-#endif
 		
 		int feedEntryIndex = [feedEntries count] - 1;
 		
@@ -706,9 +692,7 @@ static BOOL ShouldStream;
 			
 			NSString *feedTime = [[feedEntries objectAtIndex: feedEntryIndex] 
 								  objectForKey: @"StartDate"];
-			
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_3_0
-			
+						
 			NSTimeZone *EST = [NSTimeZone timeZoneWithName:(NSString *)@"America/New_York"];
 			
 			if ([EST isDaylightSavingTime]) {
@@ -716,9 +700,7 @@ static BOOL ShouldStream;
 			} else {
 				feedTime = [feedTime stringByAppendingString:@" EST"];
 			}
-			
-#endif
-			
+						
 			NSDate *eventTime = [formatter dateFromString: feedTime];
 			
 			timeSince = [eventTime timeIntervalSinceNow];
@@ -739,8 +721,8 @@ static BOOL ShouldStream;
 		hours.text = [[NSString alloc] initWithFormat:@"%d",h];
 		minutes.text = [[NSString alloc] initWithFormat:@"%d",m];
 		
-		NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-		NSString * feedFilePath = [documentsPath stringByAppendingPathComponent: @"feed.save"];
+		NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+		NSString * feedFilePath = [documentsPath stringByAppendingPathComponent: @"feed.plist"];
 		
 		NSMutableArray *feedPack = [[NSMutableArray alloc] initWithCapacity:2];
 		NSDate *now = [NSDate date];
@@ -748,8 +730,9 @@ static BOOL ShouldStream;
 		[feedPack addObject:now];
 		
 		NSFileManager *fm = [NSFileManager defaultManager];
-		if ([fm fileExistsAtPath: feedFilePath]) 
+		if ([fm fileExistsAtPath: feedFilePath]) {
 			[fm removeItemAtPath: feedFilePath error: NULL];
+		}
 		
 		[feedPack writeToFile: feedFilePath atomically: YES];
 		[fm release];
