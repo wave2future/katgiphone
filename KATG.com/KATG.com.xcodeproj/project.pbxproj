@@ -828,7 +828,7 @@
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "7AADAB0A-F983-4AEF-8B4A-5C9C5E447403";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7AADAB0A-F983-4AEF-8B4A-5C9C5E447403";
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphonesimulator3.0;
 			};
 			name = Debug;
 		};

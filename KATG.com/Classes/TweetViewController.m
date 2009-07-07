@@ -39,8 +39,8 @@ static BOOL otherTweets;
 //*******************************************************
 //* viewDidLoad:
 //*
-//* Set row height, you could add buttons to the
-//* navigation controller here.
+//* 
+//* 
 //*
 //*******************************************************
 - (void)viewDidLoad {
@@ -167,10 +167,10 @@ static BOOL otherTweets;
 //* Get Tweets
 //*******************************************************
 - (void) pollFeed {
-	NSString *searchString = @"http://search.twitter.com/search.json?q=from%3Akeithandthegirl+OR+from%3AKeithMalley";
+	NSString *searchString = @"http://search.twitter.com/search.json?q=from%3Akeithandthegirl+OR+from%3AKeithMalley+OR+from%3AKaTGShowAlert";
 	
 	if ( otherTweets ) {
-		searchString = [searchString stringByAppendingString: @"+OR+keithandthegirl+OR+katg+OR+%22keith+and+the+girl%22"];
+		searchString = [searchString stringByAppendingString: @"+OR+%3Akeithmalley+OR+keithandthegirl+OR+katg+OR+%22keith+and+the+girl%22"];
 	}
 	
 	searchString = [searchString stringByAppendingFormat: @"&rpp=%i", 20]; // Changed Code this line
@@ -424,12 +424,12 @@ static BOOL otherTweets;
 //* tableView:heightForRowAtIndexPath:
 //*
 //* Get the size of the bounding rectangle for the 
-//* tweet text, and add 20 to that height for the 
-//* cell height. Minimum height is 46.
+//* tweet text, and add 10 to that height for the 
+//* cell height. Minimum height is 80.
 //*************************************************
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSString *text = [[tweets objectAtIndex: indexPath.row] objectForKey: @"text"];
-	CGSize maxTextSize = CGSizeMake(120.0, 200.0);
+	CGSize maxTextSize = CGSizeMake(220.0, 200.0);
 	CGSize textSize = [text sizeWithFont: [UIFont systemFontOfSize: 12] constrainedToSize: maxTextSize];
 	CGFloat height = MAX((textSize.height + 10.0f), 80.0f);
 	return height;

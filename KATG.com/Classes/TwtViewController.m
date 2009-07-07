@@ -97,8 +97,9 @@ static BOOL otherTweets;
 	//*******************************************************
 	[tweets removeAllObjects];
 	
-	if (iconDict.count >= 1000)
+	if (iconDict.count >= 1000) {
 		[iconDict removeAllObjects];
+	}
 	
 	//*******************************************************
 	//* Set up the date formatter - has to use 10.4 format for iPhone
@@ -170,18 +171,6 @@ static BOOL otherTweets;
 		[tweets addObject: tweetDict];
 		
 	}
-	
-	/*if (tweets.count == 0) {
-	 NSString * from = @"KATGAPP";
-	 NSString * text = @"No Internet Connection";
-	 NSString * since = @"1";
-	 NSString * imageURLString = @"http";
-	 NSDictionary * tweetDict = [NSDictionary dictionaryWithObjectsAndKeys: from, @"from_user", 
-	 text, @"text", 
-	 since, @"since",
-	 imageURLString, @"profile_image_url", nil];
-	 [tweets addObject:tweetDict];
-	 } */
 	
 	[jsonParser release];
 	[formatter release];
@@ -300,22 +289,6 @@ static BOOL otherTweets;
 	
 	cell.imgSquare.image = [iconDict objectForKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
 	
-	//***************************************************
-	//* Add a disclosure indicator if the text contains web stuff
-	//***************************************************
-	/*
-	NSString *regexString1 = @"\\b(https?://)(?:(\\S+?)(?::(\\S+?))?@)?([a-zA-Z0-9\\-.]+)(?::(\\d+))?((?:/[a-zA-Z0-9\\-._?,'+\\&%$=~*!():@\\\\]*)+)?";
-	NSString *regexString2 = @"@([0-9a-zA-Z_]+)";
-	NSString *index = [NSString stringWithFormat:@"%d", indexPath.row];
-	if ([cell.lblTitle.text isMatchedByRegex:regexString1] ||
-		[cell.lblTitle.text isMatchedByRegex:regexString2]) {
-		
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		
-		[isURL setObject:@"YES" forKey: index];
-		[urlDict setObject:cell.lblTitle.text forKey: index];
-	}*/
-	
 	return cell;
 }
 
@@ -327,38 +300,12 @@ static BOOL otherTweets;
 //* cell height. Minimum height is 46.
 //*************************************************
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSString * text = [[tweets objectAtIndex: indexPath.row] objectForKey: @"text"];
-	CGSize maxTextSize = CGSizeMake(120.0, 200.0);
+	NSString *text = [[tweets objectAtIndex: indexPath.row] objectForKey: @"text"];
+	CGSize maxTextSize = CGSizeMake(220.0, 200.0);
 	CGSize textSize = [text sizeWithFont: [UIFont systemFontOfSize: 12] constrainedToSize: maxTextSize];
-	CGFloat height = MAX((textSize.height + 20.0f), 80.0f);
+	CGFloat height = MAX((textSize.height + 10.0f), 80.0f);
 	return height;
 }
-
-/*
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSString *index = [NSString stringWithFormat:@"%d", indexPath.row];
-	if ( [[isURL objectForKey: index] isEqualToString:@"YES"] ) {
-		NSString *tweetURL = [urlDict objectForKey: [NSString stringWithFormat:@"%d", indexPath.row]];
-		extractURL *extractor = [[extractURL alloc] init];
-		NSArray *urls = [extractor makeURLList:tweetURL];
-		NSArray *twts = [extractor makeTWTList:tweetURL];
-		if ([urls count] + [twts count] > 1) {
-			TableViewController *viewController = [[TableViewController alloc] initWithNibName:@"TableView" bundle:[NSBundle mainBundle]];
-			viewController.urlList = urls;
-			viewController.twtList = twts;
-			[[self navigationController] pushViewController:viewController animated:YES];
-			[viewController release];
-		} else if ([urls count] == 1 && [twts count] == 0) {		
-			WebViewController *viewController = [[WebViewController alloc] initWithNibName:@"WebView" bundle:[NSBundle mainBundle]];
-			NSString *urlAddress = [urls objectAtIndex:0];
-			viewController.urlAddress = urlAddress;
-			[[self navigationController] pushViewController:viewController animated:YES];
-			[viewController release];
-		} else if ([urls count] == 0 && [twts count] == 1) {
-			NSLog(@"TWEET");
-		}
-	}
-}*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
