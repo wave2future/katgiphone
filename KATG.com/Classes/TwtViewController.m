@@ -260,34 +260,44 @@ static BOOL otherTweets;
 	cell.lblSince.text = [[tweets objectAtIndex: indexPath.row] objectForKey: @"since"];
 	cell.lblFrom.text =  [[tweets objectAtIndex: indexPath.row] objectForKey: @"from_user"];
 	
-	cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-	UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.92 green:(CGFloat).973 blue:(CGFloat)0.92 alpha:(CGFloat)1.0];
-	UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0];
+	UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.776 green:(CGFloat).875 blue:(CGFloat)0.776 alpha:(CGFloat)1.0];
+	UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.627 alpha:(CGFloat)1.0];
+	
+	//cell.lblTitle.backgroundColor = [UIColor clearColor];
+	cell.lblSince.backgroundColor = [UIColor clearColor];
+	
 	if (indexPath.row%2 == 0) {
 		cell.lblTitle.backgroundColor = color1;
-		cell.lblSince.backgroundColor = color1;
+		//cell.lblSince.backgroundColor = color1;
 		cell.lblFrom.backgroundColor = color1;
 		cell.backgroundView.backgroundColor = color1;
+		cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground60.png"]];
 	} else {
 		cell.lblTitle.backgroundColor = color2;
-		cell.lblSince.backgroundColor = color2;
+		//cell.lblSince.backgroundColor = color2;
 		cell.lblFrom.backgroundColor = color2;
 		cell.backgroundView.backgroundColor = color2;
+		cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundDark60.png"]];
 	}
 	
-	cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-	cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
+	cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundSelected60.png"]];
 	
 	if ([iconDict objectForKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]] == nil) {
 		
 		NSURL *url = [[NSURL alloc] initWithString:[[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
 		NSData *data = [NSData dataWithContentsOfURL:url];
-		UIImage * tweetIcon = [UIImage imageWithData:data];
-		
-		[iconDict setObject: tweetIcon forKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
+		if ([data length] != 0) {
+			[iconDict setObject: data forKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
+		} else {
+			data = [NSData dataWithContentsOfFile:@"TweetIconSub.png"];
+			[iconDict setObject: data forKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
+		}
 	}
 	
-	cell.imgSquare.image = [iconDict objectForKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
+	UIImage *tweetIcon = [UIImage imageWithData:[iconDict objectForKey: 
+												 [[tweets objectAtIndex: indexPath.row] 
+												  objectForKey: @"profile_image_url"]]];
+	cell.imgSquare.image = tweetIcon;
 	
 	return cell;
 }

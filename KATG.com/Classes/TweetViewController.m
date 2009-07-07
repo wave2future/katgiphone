@@ -44,7 +44,7 @@ static BOOL otherTweets;
 //*
 //*******************************************************
 - (void)viewDidLoad {
-	NSLog(@"Tweet View Did Load");
+	//NSLog(@"Tweet View Did Load");
     [super viewDidLoad];
 	
 	self.navigationItem.title = @"The Twitters";
@@ -105,7 +105,7 @@ static BOOL otherTweets;
 //* 
 //*******************************************************
 - (void)viewDidAppear:(BOOL)animated {
-	NSLog(@"Tweet View Did Appear");
+	//NSLog(@"Tweet View Did Appear");
 	//[[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
     //[[UIAccelerometer sharedAccelerometer] setDelegate:self];
 }
@@ -439,7 +439,7 @@ static BOOL otherTweets;
 }
 
 //*******************************************************
-//* 
+//* tableView:didSelectRowAtIndexPath
 //* 
 //* 
 //*******************************************************

@@ -280,7 +280,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>22</integer>
+									<integer>24</integer>
 									<integer>20</integer>
 									<integer>2</integer>
 									<integer>0</integer>
@@ -324,7 +324,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>TweetViewController.m</string>
+								<string>TableViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -332,11 +332,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>TweetViewController.m</string>
+										<string>TableViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>53839C4F100383FF0022ACEA</string>
+										<string>53839C5B1003908A0022ACEA</string>
 										<key>history</key>
 										<array>
 											<string>5332364C0F8C7AD700B385E5</string>
@@ -452,7 +452,6 @@
 											<string>53839B031002BED50022ACEA</string>
 											<string>53839B431002DE0E0022ACEA</string>
 											<string>53839B441002DE0E0022ACEA</string>
-											<string>53839B451002DE0E0022ACEA</string>
 											<string>53839B461002DE0E0022ACEA</string>
 											<string>53839B5E1002E00D0022ACEA</string>
 											<string>53839B5F1002E00D0022ACEA</string>
@@ -462,7 +461,8 @@
 											<string>53839C4010037E900022ACEA</string>
 											<string>53839C4110037E900022ACEA</string>
 											<string>53839C4C100383FF0022ACEA</string>
-											<string>53839C4D100383FF0022ACEA</string>
+											<string>53839C591003908A0022ACEA</string>
+											<string>53839B451002DE0E0022ACEA</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -639,6 +639,7 @@
 											<string>53839C4710037E900022ACEA</string>
 											<string>53839C4810037E900022ACEA</string>
 											<string>53839C4E100383FF0022ACEA</string>
+											<string>53839C5A1003908A0022ACEA</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
