@@ -71,6 +71,9 @@ static BOOL ShouldStream;
 - (void)viewDidLoad {
 	NSLog(@"On Air View Did Load");
 	
+	// Auto start audiostreamer if it was playing when the app last exited
+	userDefaults = [NSUserDefaults standardUserDefaults];
+	
 	// Loads Play button for audioStream
 	UIImage *image = [UIImage imageNamed:@"playButton.png"];
 	[self setAudioButtonImage:image];
@@ -84,10 +87,6 @@ static BOOL ShouldStream;
 	
 	// Set Feedback Button Image
 	[self setFeedbackButtonImage];
-	
-	// Auto start audiostreamer if it was playing when the app last exited
-	userDefaults = [NSUserDefaults standardUserDefaults];
-	[self setDefaults];
 	
 	// Notification Center for handling Text View Did Begin Editing. 
 	// In this case it clears the Text View when editing begins unless it is
@@ -112,15 +111,20 @@ static BOOL ShouldStream;
 		[alert show];
 		return;
 	} else if (self.remoteHostStatus == ReachableViaCarrierDataNetwork) {
+		NSLog(@"ReachableVIaCarrierDataNetwork");
 		if ([userDefaults boolForKey:@"StreamLSOverCell"]) {
 			ShouldStream = YES;
 		} else {
 			ShouldStream = NO;
 		}
+		[self setDefaults];
 		[self finishInit];
 	} else if (self.remoteHostStatus == ReachableViaWiFiNetwork) {
-		[self finishInit];
+		NSLog(@"ReachableViaWiFiNetwork");
 		ShouldStream = YES;
+		// Auto start audiostreamer if it was playing when the app last exited
+		[self setDefaults];
+		[self finishInit];
 	}
 	
 }
@@ -131,6 +135,7 @@ static BOOL ShouldStream;
 //* 
 //*******************************************************
 - (void)finishInit {
+	
 	//
 	[ NSThread detachNewThreadSelector: @selector(feedStatusAutoPool) toTarget: self withObject: nil ];
 	
@@ -173,6 +178,7 @@ static BOOL ShouldStream;
 			[(NSString *)CFURLCreateStringByAddingPercentEscapes(
 																 nil,
 																 (CFStringRef)@"http://liveshow.keithandthegirl.com:8004",
+																 //(CFStringRef)@"http://scfire-mtc-aa05.stream.aol.com:80/stream/1010",
 																 NULL,
 																 NULL,
 																 kCFStringEncodingUTF8)

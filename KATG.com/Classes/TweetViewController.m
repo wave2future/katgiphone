@@ -171,10 +171,10 @@ static BOOL otherTweets;
 //* Get Tweets
 //*******************************************************
 - (void) pollFeed {
-	NSString *searchString = @"http://search.twitter.com/search.json?q=from%3Akeithandthegirl+OR+from%3AKeithMalley+OR+from%3AKaTGShowAlert";
+	NSString *searchString = @"http://search.twitter.com/search.json?q=from%3Akeithandthegirl+OR+from%3AKeithMalley";
 	
 	if ( otherTweets ) {
-		searchString = [searchString stringByAppendingString: @"+OR+%3Akeithmalley+OR+keithandthegirl+OR+katg+OR+%22keith+and+the+girl%22"];
+		searchString = [searchString stringByAppendingString: @"+OR+from%3AKaTGShowAlert+OR+%3Akeithmalley+OR+keithandthegirl+OR+katg+OR+%22keith+and+the+girl%22"];
 	}
 	
 	searchString = [searchString stringByAppendingFormat: @"&rpp=%i", 20]; // Changed Code this line
