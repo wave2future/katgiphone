@@ -21,28 +21,28 @@
 
 #pragma mark CFReadStream Callback Function Prototypes
 
-void ReadStreamCallBack(
-						CFReadStreamRef stream,
+void ReadStreamCallBack(CFReadStreamRef stream,
 						CFStreamEventType eventType,
 						void* dataIn);
 
 #pragma mark Audio Callback Function Prototypes
 
-void MyAudioQueueOutputCallback(void* inClientData, AudioQueueRef inAQ, AudioQueueBufferRef inBuffer);
+void MyAudioQueueOutputCallback(void *inClientData, AudioQueueRef inAQ, AudioQueueBufferRef inBuffer);
 void MyAudioQueueIsRunningCallback(void *inUserData, AudioQueueRef inAQ, AudioQueuePropertyID inID);
-void MyPropertyListenerProc(	void *							inClientData,
-							AudioFileStreamID				inAudioFileStream,
-							AudioFileStreamPropertyID		inPropertyID,
-							UInt32 *						ioFlags);
-void MyPacketsProc(				void *							inClientData,
-				   UInt32							inNumberBytes,
-				   UInt32							inNumberPackets,
-				   const void *					inInputData,
+void MyPropertyListenerProc(void						*inClientData,
+							AudioFileStreamID			inAudioFileStream,
+							AudioFileStreamPropertyID	inPropertyID,
+							UInt32						*ioFlags);
+void MyPacketsProc(void							*inClientData,
+				   UInt32						inNumberBytes,
+				   UInt32						inNumberPackets,
+				   const void					*inInputData,
 				   AudioStreamPacketDescription	*inPacketDescriptions);
-OSStatus MyEnqueueBuffer(AudioStreamer* myData);
+OSStatus MyEnqueueBuffer(AudioStreamer *myData);
 
 #ifdef TARGET_OS_IPHONE			
-void MyAudioSessionInterruptionListener(void *inClientData, UInt32 inInterruptionState);
+void MyAudioSessionInterruptionListener(void	*inClientData, 
+										UInt32	inInterruptionState);
 #endif
 
 #pragma mark Audio Callback Function Implementations
@@ -58,13 +58,13 @@ void MyAudioSessionInterruptionListener(void *inClientData, UInt32 inInterruptio
 // This function is adapted from Apple's example in AudioFileStreamExample with
 // kAudioQueueProperty_IsRunning listening added.
 //
-void MyPropertyListenerProc(	void *							inClientData,
+void MyPropertyListenerProc(void							*inClientData,
 							AudioFileStreamID				inAudioFileStream,
 							AudioFileStreamPropertyID		inPropertyID,
-							UInt32 *						ioFlags)
+							UInt32							*ioFlags)
 {	
 	// this is called by audio file stream when it finds property values
-	AudioStreamer* myData = (AudioStreamer*)inClientData;
+	AudioStreamer *myData = (AudioStreamer*)inClientData;
 	OSStatus err = noErr;
 	
 	switch (inPropertyID) {
@@ -124,14 +124,14 @@ void MyPropertyListenerProc(	void *							inClientData,
 // This function is adapted from Apple's example in AudioFileStreamExample with
 // CBR functionality added.
 //
-void MyPacketsProc(				void *							inClientData,
+void MyPacketsProc(void								*inClientData,
 				   UInt32							inNumberBytes,
 				   UInt32							inNumberPackets,
-				   const void *					inInputData,
-				   AudioStreamPacketDescription	*inPacketDescriptions)
+				   const void						*inInputData,
+				   AudioStreamPacketDescription		*inPacketDescriptions)
 {
 	// this is called by audio file stream when it finds packets of audio
-	AudioStreamer* myData = (AudioStreamer*)inClientData;
+	AudioStreamer *myData = (AudioStreamer*)inClientData;
 	
 	// we have successfully read the first packests from the audio stream, so
 	// clear the "discontinuous" flag

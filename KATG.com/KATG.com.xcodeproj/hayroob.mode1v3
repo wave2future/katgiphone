@@ -233,8 +233,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -259,7 +257,7 @@
 						<dict>
 							<key>PBXSmartGroupTreeModuleColumnWidthsKey</key>
 							<array>
-								<real>335</real>
+								<real>204</real>
 							</array>
 							<key>PBXSmartGroupTreeModuleColumnsKey_v4</key>
 							<array>
@@ -272,8 +270,7 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>080E96DDFE201D6D7F000001</string>
-								<string>536CD4590F89E5F20063DED2</string>
-								<string>53D696630F9308A400FDBD0C</string>
+								<string>534EA7DE0FBB779A00A0354C</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
@@ -281,13 +278,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>20</integer>
-									<integer>19</integer>
+									<integer>13</integer>
+									<integer>11</integer>
+									<integer>2</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {335, 664}}</string>
+							<string>{{0, 0}, {204, 664}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -299,30 +297,32 @@
 					<key>GeometryConfiguration</key>
 					<dict>
 						<key>Frame</key>
-						<string>{{0, 0}, {352, 682}}</string>
+						<string>{{0, 0}, {221, 682}}</string>
 						<key>GroupTreeTableConfiguration</key>
 						<array>
 							<string>MainColumn</string>
-							<real>335</real>
+							<real>204</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>11 55 1093 723 0 0 1280 778 </string>
+						<string>11 55 1185 723 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
 					<key>Proportion</key>
-					<string>352pt</string>
+					<string>221pt</string>
 				</dict>
 				<dict>
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>OnAirViewController.h</string>
+								<string>AudioStreamer.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -330,11 +330,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>OnAirViewController.h</string>
+										<string>AudioStreamer.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>5375EB59100658F200E0E85F</string>
+										<string>5375EB7910069D6500E0E85F</string>
 										<key>history</key>
 										<array>
 											<string>5332364C0F8C7AD700B385E5</string>
@@ -400,8 +400,6 @@
 											<string>53711A9D0FD5D1C2001D9641</string>
 											<string>53E45DFF0FD9BBA30052093B</string>
 											<string>53E45E260FD9C0EF0052093B</string>
-											<string>53E45E8A0FD9D4450052093B</string>
-											<string>53E45E8B0FD9D4450052093B</string>
 											<string>53E45EB80FD9DA0D0052093B</string>
 											<string>53E45ED80FD9DD980052093B</string>
 											<string>53E45ED90FD9DD980052093B</string>
@@ -460,7 +458,9 @@
 											<string>5375EB4A1005AF0B00E0E85F</string>
 											<string>5375EB54100658F200E0E85F</string>
 											<string>5375EB55100658F200E0E85F</string>
-											<string>5375EAFB1005519E00E0E85F</string>
+											<string>5375EB7310069D6500E0E85F</string>
+											<string>5375EB7410069D6500E0E85F</string>
+											<string>5375EB7510069D6500E0E85F</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -603,6 +603,9 @@
 											<string>5375EB56100658F200E0E85F</string>
 											<string>5375EB57100658F200E0E85F</string>
 											<string>5375EB58100658F200E0E85F</string>
+											<string>5375EB7610069D6500E0E85F</string>
+											<string>5375EB7710069D6500E0E85F</string>
+											<string>5375EB7810069D6500E0E85F</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -614,14 +617,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {736, 604}}</string>
+								<string>{{0, 0}, {959, 677}}</string>
 								<key>RubberWindowFrame</key>
-								<string>11 55 1093 723 0 0 1280 778 </string>
+								<string>11 55 1185 723 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>604pt</string>
+							<string>677pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -634,18 +637,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 609}, {736, 73}}</string>
+								<string>{{0, 682}, {959, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>11 55 1093 723 0 0 1280 778 </string>
+								<string>11 55 1185 723 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>73pt</string>
+							<string>0pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>736pt</string>
+					<string>959pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -796,6 +799,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>5375EB7A10069D6500E0E85F</string>
 		<string>5375EB091005530400E0E85F</string>
 		<string>5375EAE5100527A900E0E85F</string>
 		<string>5375EAE6100527A900E0E85F</string>
@@ -805,7 +809,7 @@
 		<string>/Users/hayroob/Documents/Dropbox/DEV/Objective-C/Github/katgiphone/KATG.com/KATG.com.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>11 55 1093 723 0 0 1280 778 </string>
+	<string>11 55 1185 723 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
