@@ -40,7 +40,6 @@
 		534CA0CE0FB3881600206F91 /* stopButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 534CA0CB0FB3881600206F91 /* stopButton.png */; };
 		534CA0FF0FB3900E00206F91 /* loadingButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 534CA0FE0FB3900E00206F91 /* loadingButton.png */; };
 		534CA1550FB39A3A00206F91 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 534CA1540FB39A3A00206F91 /* Icon.png */; };
-		534EA7E10FBB796F00A0354C /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 534EA7E00FBB796F00A0354C /* AudioStreamer.m */; };
 		535FE5500F89F71800F6AD75 /* EventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE54F0F89F71800F6AD75 /* EventsViewController.m */; };
 		535FE6080F89FF1700F6AD75 /* CXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE5F40F89FF1700F6AD75 /* CXMLDocument.m */; };
 		535FE6090F89FF1700F6AD75 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 535FE5F60F89FF1700F6AD75 /* CXMLDocument_CreationExtensions.m */; };
@@ -75,6 +74,7 @@
 		53A4776E0FE2F47200A2E3C5 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 53A4776D0FE2F47200A2E3C5 /* iTunesArtwork */; };
 		53A477910FE2F98500A2E3C5 /* postCellBackground30.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A477900FE2F98500A2E3C5 /* postCellBackground30.png */; };
 		53A478020FE304C900A2E3C5 /* TweetIconSub.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A478010FE304C900A2E3C5 /* TweetIconSub.png */; };
+		53AE92B11006E21100E4BC06 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 53AE92B01006E21100E4BC06 /* AudioStreamer.m */; };
 		53B8CE850FB4238900C8C71B /* linkList.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B8CE840FB4238900C8C71B /* linkList.m */; };
 		53B8CED30FB4B56100C8C71B /* LinkBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 53B8CED20FB4B56100C8C71B /* LinkBG.png */; };
 		53B8CF010FB4BC0300C8C71B /* KaTGTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 53B8CF000FB4BC0300C8C71B /* KaTGTab.png */; };
@@ -144,8 +144,6 @@
 		534CA0CB0FB3881600206F91 /* stopButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stopButton.png; sourceTree = "<group>"; };
 		534CA0FE0FB3900E00206F91 /* loadingButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadingButton.png; sourceTree = "<group>"; };
 		534CA1540FB39A3A00206F91 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		534EA7DF0FBB796F00A0354C /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
-		534EA7E00FBB796F00A0354C /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		535FE54E0F89F71800F6AD75 /* EventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsViewController.h; sourceTree = "<group>"; };
 		535FE54F0F89F71800F6AD75 /* EventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsViewController.m; sourceTree = "<group>"; };
 		535FE5F30F89FF1700F6AD75 /* CXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument.h; sourceTree = "<group>"; };
@@ -198,6 +196,8 @@
 		53A4776D0FE2F47200A2E3C5 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		53A477900FE2F98500A2E3C5 /* postCellBackground30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postCellBackground30.png; sourceTree = "<group>"; };
 		53A478010FE304C900A2E3C5 /* TweetIconSub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TweetIconSub.png; sourceTree = "<group>"; };
+		53AE92AF1006E21100E4BC06 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
+		53AE92B01006E21100E4BC06 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		53B8CE830FB4238900C8C71B /* linkList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = linkList.h; sourceTree = "<group>"; };
 		53B8CE840FB4238900C8C71B /* linkList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = linkList.m; sourceTree = "<group>"; };
 		53B8CED20FB4B56100C8C71B /* LinkBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LinkBG.png; sourceTree = "<group>"; };
@@ -403,8 +403,8 @@
 		534EA7DE0FBB779A00A0354C /* Streamer */ = {
 			isa = PBXGroup;
 			children = (
-				534EA7DF0FBB796F00A0354C /* AudioStreamer.h */,
-				534EA7E00FBB796F00A0354C /* AudioStreamer.m */,
+				53AE92AF1006E21100E4BC06 /* AudioStreamer.h */,
+				53AE92B01006E21100E4BC06 /* AudioStreamer.m */,
 			);
 			name = Streamer;
 			sourceTree = "<group>";
@@ -727,7 +727,6 @@
 				536BFF170FB89F2E00DA7720 /* ShowCell.m in Sources */,
 				536BFF200FB8A08800DA7720 /* PastShowsController.m in Sources */,
 				5310E8300FB90AE60065A4BC /* ShowDetailController.m in Sources */,
-				534EA7E10FBB796F00A0354C /* AudioStreamer.m in Sources */,
 				53CD2FEF0FC89FAF00D9FE00 /* TweetViewController.m in Sources */,
 				53CD2FFF0FC8A01400D9FE00 /* TweetCell.m in Sources */,
 				53DDC8A20FC90E2D00A34D85 /* WebViewController.m in Sources */,
@@ -736,6 +735,7 @@
 				5377B54F0FCD2E2B00CB9F2F /* RegexKitLite.m in Sources */,
 				53D01E460FD4EED900959050 /* TwtViewController.m in Sources */,
 				53FF0F1F0FFDC92400353C64 /* Reachability.m in Sources */,
+				53AE92B11006E21100E4BC06 /* AudioStreamer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
