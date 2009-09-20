@@ -22,9 +22,9 @@
 
 }
 
-- (id)makeURLList:(NSString *)stringWithURLs;
+- (id)newURLList:(NSString *)stringWithURLs;
 - (id)makeURL:(NSString *)searchString;
-- (id)makeTWTList:(NSString *)stringWithTWTs;
+- (id)newTWTList:(NSString *)stringWithTWTs;
 - (id)makeTwitterSearchURL:(NSString *)searchString;
 
 @end

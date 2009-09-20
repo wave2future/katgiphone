@@ -16,6 +16,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import "DetailViewController.h"
+//#import "EventsViewController.h"
 
 
 @implementation DetailViewController
@@ -26,7 +27,7 @@
 @synthesize TitleTemp;   // Variable to store title passed from SecondViewController
 @synthesize TimeTemp;    // Variable to store time passed from SecondViewController
 @synthesize DateTemp;    // Variable to store date passed from SecondViewController
-@synthesize BodyTemp;    // Variable to store description passed from SecondViewController
+@synthesize BodyTemp;     // Variable to store description passed from SecondViewController
 
 
 //*******************************************************
@@ -47,6 +48,8 @@
 	detailBody = [[[UITextView alloc] initWithFrame:rect] autorelease];
 	detailBody.textColor = [UIColor blackColor];
 	detailBody.backgroundColor = [UIColor clearColor];// [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0]; 
+	detailBody.dataDetectorTypes = UIDataDetectorTypeAll; // Only works in 3.0
+	
 	detailBody.editable = NO;
 	detailBody.font = [UIFont systemFontOfSize:15.0];
 	
@@ -58,9 +61,19 @@
 	detailBody.text = BodyTemp;
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+	NSLog(@"Event Details View Did Dissapear");
+}
+
+- (void)viewDidUnload {
+	// Release anything that can be recreated in viewDidLoad or on demand.
+	// e.g. self.myOutlet = nil;
+	NSLog(@"Event Details View Did Unload");
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-    // Release anything that's not essential, such as cached data
+    NSLog(@"Event Details View Did Receive Memory Warning");
 }
 
 

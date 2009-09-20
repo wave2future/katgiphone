@@ -17,7 +17,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface EventsViewController : UITableViewController {
 	IBOutlet UINavigationController	*navigationController; // 
     NSMutableArray *list;         // Adds formmated contents of each cell in an array

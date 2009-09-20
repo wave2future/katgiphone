@@ -27,8 +27,8 @@
         // Initialization code
 		lblTitle = [[UILabel alloc] initWithFrame:CGRectZero];
         lblTitle.textColor = [UIColor blackColor];
-        lblTitle.font = [UIFont boldSystemFontOfSize:12.0];
-		lblTitle.numberOfLines = 4;
+        lblTitle.font = [UIFont boldSystemFontOfSize:10.0];
+		lblTitle.numberOfLines = 5;
         
 		lblSince = [[UILabel alloc] initWithFrame:CGRectZero];
         lblSince.textColor = [UIColor blackColor];
@@ -54,30 +54,33 @@
     CGRect baseRect = CGRectInset(self.contentView.bounds, 10, 0);
     CGRect rect = baseRect;
 	
-	rect.origin.x = 60;
-    rect.origin.y = 20;
-    rect.size.width = self.contentView.bounds.size.width - 90;
-	rect.size.height = self.contentView.bounds.size.height - 30;
-    lblTitle.frame = rect;
-    
-	rect.origin.x = self.contentView.bounds.size.width - 20;
-    rect.origin.y = 60;
-    rect.size.width = 30;
-	rect.size.height = 20;
-    lblSince.frame = rect;
-	
-	rect.origin.x = 10;
-    rect.origin.y = 0;
-    rect.size.width = 100;
-	rect.size.height = 20;
-    lblFrom.frame = rect;
-	
-    rect.size.width = 48;
-    rect.size.height = 48;
-    rect.origin.x = 8;
-    rect.origin.y = 20;
+	// Icon
+    rect.size.width = 60;
+    rect.size.height = 60;
+    rect.origin.x = 5;
+    rect.origin.y = 5;
     imgSquare.frame = rect;
 	
+	// Name of Tweeter
+	rect.origin.x = 70;
+    rect.origin.y = 5;
+    rect.size.width = 110;
+	rect.size.height = 15;
+    lblFrom.frame = rect;
+	
+	// Time Since Tweet
+	rect.origin.x = 280;
+    rect.origin.y = 5;
+    rect.size.width = 40;
+	rect.size.height = 15;
+    lblSince.frame = rect;
+	
+	// Body Of Tweet
+	rect.origin.x = 70;
+    rect.origin.y = 20;
+    rect.size.width = 220;
+	rect.size.height = self.contentView.bounds.size.height - 30;
+    lblTitle.frame = rect;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

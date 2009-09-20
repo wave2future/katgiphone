@@ -23,6 +23,8 @@
 
 #define ROW_HEIGHT 60.0
 
+static BOOL ShouldStream;
+
 
 @implementation PastShowsController
 
@@ -32,37 +34,52 @@
 @synthesize feedEntries;
 @synthesize feedAddress;
 @synthesize indexPaths;
+@synthesize localWiFiConnectionStatus;
 
 #pragma mark View
 - (void)viewDidLoad {
-	 [super viewDidLoad];
-	 
-	 self.navigationItem.title = @"Past Shows";
-	 
-	 self.tableView.rowHeight = ROW_HEIGHT;
-	 
-	 list = [[NSMutableArray alloc] init];
-	 
-	 // Create a 'right hand button' that is a activity Indicator
-	 CGRect frame = CGRectMake(0.0, 0.0, 25.0, 25.0);
-	 self.activityIndicator = [[UIActivityIndicatorView alloc]
+	NSLog(@"Past Show View Did Load");
+	[super viewDidLoad];
+	
+	self.navigationItem.title = @"Past Shows";
+	
+	self.tableView.rowHeight = ROW_HEIGHT;
+	
+	list = [[NSMutableArray alloc] init];
+	
+	// Create a 'right hand button' that is a activity Indicator
+	CGRect frame = CGRectMake(0.0, 0.0, 25.0, 25.0);
+	self.activityIndicator = [[UIActivityIndicatorView alloc]
 							   initWithFrame:frame];
-	 [self.activityIndicator sizeToFit];
-	 self.activityIndicator.autoresizingMask =
-	 (UIViewAutoresizingFlexibleLeftMargin |
-	  UIViewAutoresizingFlexibleRightMargin |
-	  UIViewAutoresizingFlexibleTopMargin |
-	  UIViewAutoresizingFlexibleBottomMargin);
-	 
-	 UIBarButtonItem *loadingView = [[UIBarButtonItem alloc] 
+	[self.activityIndicator sizeToFit];
+	self.activityIndicator.autoresizingMask =
+	(UIViewAutoresizingFlexibleLeftMargin |
+	 UIViewAutoresizingFlexibleRightMargin |
+	 UIViewAutoresizingFlexibleTopMargin |
+	 UIViewAutoresizingFlexibleBottomMargin);
+	
+	UIBarButtonItem *loadingView = [[UIBarButtonItem alloc] 
 									 initWithCustomView:self.activityIndicator];
-	 loadingView.target = self;
-	 self.navigationItem.rightBarButtonItem = loadingView;
-	 
-	 feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?records=25";
-	 
-	 [self.activityIndicator startAnimating];
-	 [ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: feedAddress ];
+	loadingView.target = self;
+	self.navigationItem.rightBarButtonItem = loadingView;
+	
+	userDefaults = [NSUserDefaults standardUserDefaults];
+	
+	[[Reachability sharedReachability] setHostName:@"keithandthegirl.com"];
+	self.localWiFiConnectionStatus	= [[Reachability sharedReachability] localWiFiConnectionStatus];
+	
+	if (self.localWiFiConnectionStatus == NotReachable) {
+		if ([userDefaults boolForKey:@"StreamPSOverCell"]) {
+			ShouldStream = YES;
+		} else {
+			ShouldStream = NO;
+		}
+	} else if (self.localWiFiConnectionStatus == ReachableViaWiFiNetwork) {
+		ShouldStream = YES;
+	}
+	feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?records=25";
+	[self.activityIndicator startAnimating];
+	[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: feedAddress ];
 }
 
 #pragma mark Feed
@@ -79,11 +96,14 @@
     // string as a parameter
 	grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:(NSString *)xPath];
 	[feedEntries removeAllObjects];
-	feedEntries = [feed entries];
+	feedEntries = [[NSMutableArray alloc] initWithArray:[feed entries]];
 	[feed release];
 	
-	//[feedEntries count]
 	int feedEntryIndex = [feedEntries count] - 1;
+	
+	if (list.count != 0) {
+		[list removeLastObject];
+	}
 	
 	int i = 0;
 		
@@ -114,7 +134,6 @@
 		
 		Show *Sh = [[Show alloc] initWithTitle:show publishDate:showDate link:showURL detail:showDetails];
 		[list addObject:Sh];
-		
 		[Sh release];
 		
 		i += 1;
@@ -123,28 +142,16 @@
 	if ([list count] == 0) {
 		Show *Sh = [[Show alloc] initWithTitle:@"No Internet Connection" publishDate:@"April 15th" link:@"" detail:@""];
 		[list addObject:Sh];
+		[Sh release];
+	} else {
+		Show *Sh = [[Show alloc] initWithTitle:@"Load More Episodes" publishDate:@"April 15th" link:@"" detail:@""];
+		[list addObject:Sh];
+		[Sh release];
 	}
-	
-	Show *Sh = [[Show alloc] initWithTitle:@"Load More Episodes" publishDate:@"April 15th" link:@"" detail:@""];
-	[list addObject:Sh];
 	
 	[self.activityIndicator stopAnimating];
 	
 	[self.tableView reloadData];
-}
-
-#pragma mark System
-
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-	// Release anything that can be recreated in viewDidLoad or on demand.
-	// e.g. self.myOutlet = nil;
 }
 
 #pragma mark Table view methods
@@ -173,22 +180,18 @@
 		// Set up the cell...
 		cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
 		
-		cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.92 green:(CGFloat).973 blue:(CGFloat)0.92 alpha:(CGFloat)1.0];
-		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0];
+		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.776 green:(CGFloat).875 blue:(CGFloat)0.776 alpha:(CGFloat)1.0];
+		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.627 alpha:(CGFloat)1.0];
+		
 		if (indexPath.row%2 == 0) {
 			cell.lblTitle.backgroundColor = color1;
-			
-			cell.backgroundView.backgroundColor = color1;
+			cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground60.png"]];
 		} else {
 			cell.lblTitle.backgroundColor = color2;
-			
-			cell.backgroundView.backgroundColor = color2;
+			cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundDark60.png"]];
 		}
 		
-		cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-		cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
-		
+		cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundSelected60.png"]];
 		
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		
@@ -204,21 +207,18 @@
 		// Set up the cell...
 		cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
 		
-		cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.70 green:(CGFloat).70 blue:(CGFloat)0.70 alpha:(CGFloat)1.0];
-		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.70 green:(CGFloat).70 blue:(CGFloat)0.70 alpha:(CGFloat)1.0];
+		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.776 green:(CGFloat).875 blue:(CGFloat)0.776 alpha:(CGFloat)1.0];
+		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0];
+		
 		if (indexPath.row%2 == 0) {
 			cell.lblTitle.backgroundColor = color1;
-			
-			cell.backgroundView.backgroundColor = color1;
+			cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground60.png"]];
 		} else {
 			cell.lblTitle.backgroundColor = color2;
-			
-			cell.backgroundView.backgroundColor = color2;
+			cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundDark60.png"]];
 		}
 		
-		cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-		cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
+		cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundSelected60.png"]];
 		
 		return cell;
 	}
@@ -226,14 +226,18 @@
 
  // Override to support row selection in the table view.
  - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	 if (![[[list objectAtIndex:indexPath.row] title] isEqualToString:@"Load More Episodes"]) {
+	 if (![[[list objectAtIndex:indexPath.row] title] isEqualToString:@"Load More Episodes"] &&
+		 ![[[list objectAtIndex:indexPath.row] title] isEqualToString:@"No Internet Connection"]) {
 		 ShowDetailController *viewController = [[ShowDetailController alloc] initWithNibName:@"ShowView" bundle:[NSBundle mainBundle]];
 		 viewController.TitleTemp = [[list objectAtIndex:indexPath.row] title];
 		 viewController.LinkTemp = [[list objectAtIndex:indexPath.row] link];
 		 viewController.BodyTemp = [[list objectAtIndex:indexPath.row] detail];
+		 if (!ShouldStream) {
+			 viewController.Stream = @"NO";
+		 }
 		 [[self navigationController] pushViewController:viewController animated:YES];
 		 [viewController release];
-	 } else {
+	 } else if ([[[list objectAtIndex:indexPath.row] title] isEqualToString:@"Load More Episodes"]) {
 		 [self.activityIndicator startAnimating];
 		 NSNumber *showNumber = [[feedEntries objectAtIndex: [feedEntries count] - 1] objectForKey: @"Number"];
 		 feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?startlist=";
@@ -241,11 +245,33 @@
 		 feedAddress = [feedAddress stringByAppendingString:@"&records=100"];
 		 indexPaths = [NSArray arrayWithObject:indexPath];
 		 [ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: feedAddress ];
-		 //[self.tableView beginUpdates];
-		 //[self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
-		 //[self.tableView endUpdates];
 	 }
  }
+
+#pragma mark System
+
+- (void)viewDidDisappear:(BOOL)animated {
+	NSLog(@"Past Shows View Did Dissapear");
+}
+
+- (void)viewDidUnload {
+	// Release anything that can be recreated in viewDidLoad or on demand.
+	// e.g. self.myOutlet = nil;
+	NSLog(@"Past Shows View Did Unload");
+}
+
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	[list removeAllObjects];
+	
+	Show *Sh = [[Show alloc] initWithTitle:@"Low Memory Warning" publishDate:@"April 15th" link:@"" detail:@"This view has been released to free up memory."];
+	[list addObject:Sh];
+	[Sh release];
+	[self.tableView reloadData];
+	
+	NSLog(@"Past Shows View Did Receive Memory Warning");
+}
 
 - (void)dealloc {
     [super dealloc];

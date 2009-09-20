@@ -41,8 +41,9 @@
     CGRect rect = baseRect;
 	
 	rect.origin.x = self.contentView.bounds.size.width - 240;
-    rect.origin.y = 0;
+    rect.origin.y = 10;
     rect.size.width = self.contentView.bounds.size.width - 120;
+	rect.size.height = 40;
     lblTitle.frame = rect;
 }
 

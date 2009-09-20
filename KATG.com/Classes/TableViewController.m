@@ -66,26 +66,20 @@
 	if (indexPath.row < [urlList count]) {
 		cell.lblTitle.text = [urlList objectAtIndex:indexPath.row];
 	} else if (indexPath.row >= [urlList count]) {
-		cell.lblTitle.text = [[twtList objectAtIndex:indexPath.row - [urlList count]] objectForKey:@"user"];
+		cell.lblTitle.text = [twtList objectAtIndex:indexPath.row - [urlList count]];
 	}
 	
-	cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-	UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.92 green:(CGFloat).973 blue:(CGFloat)0.92 alpha:(CGFloat)1.0];
-	UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0];
+	cell.lblTitle.backgroundColor = [UIColor clearColor];
+	cell.lblFrom.backgroundColor = [UIColor clearColor];
+	cell.lblSince.backgroundColor = [UIColor clearColor];
+	
 	if (indexPath.row%2 == 0) {
-		cell.lblTitle.backgroundColor = color1;
-		cell.lblFrom.backgroundColor = color1;
-		cell.lblSince.backgroundColor = color1;
-		cell.backgroundView.backgroundColor = color1;
+		cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground60.png"]];
 	} else {
-		cell.lblTitle.backgroundColor = color2;
-		cell.lblFrom.backgroundColor = color2;
-		cell.lblSince.backgroundColor = color2;
-		cell.backgroundView.backgroundColor = color2;
+		cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundDark60.png"]];
 	}
 	
-	cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-	cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
+	cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundSelected60.png"]];
 	
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
@@ -100,9 +94,9 @@
 		[[self navigationController] pushViewController:viewController animated:YES];
 		[viewController release];
 	} else if (indexPath.row >= [urlList count]) {
-		TwtViewController *viewController = [[TwtViewController alloc] initWithNibName:@"TableView" bundle:[NSBundle mainBundle]];
-		NSString *urlAddress = [[twtList objectAtIndex:indexPath.row - [urlList count]] objectForKey:@"url"];
-		viewController.searchString = urlAddress;
+		TwtViewController *viewController = [[TwtViewController alloc] initWithNibName:@"TableView" bundle:[NSBundle mainBundle]];		
+		NSString *user = [NSString stringWithFormat:@"http://twitter.com/statuses/user_timeline/%@.json", [twtList objectAtIndex:indexPath.row - [urlList count]]];
+		viewController.searchString = user;
 		[[self navigationController] pushViewController:viewController animated:YES];
 		[viewController release];
 	}

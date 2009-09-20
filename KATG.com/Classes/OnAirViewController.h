@@ -22,6 +22,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "Reachability.h"
 
 
 @class AudioStreamer; // This is the shoutcast radio class
@@ -43,7 +44,7 @@
 	BOOL _isDataSourceAvailable;
 	
 	// Feed status
-	NSMutableArray			*feedEntries;
+	//NSMutableArray		*feedEntries;
 	IBOutlet UILabel		*statusText;
 	
 	// Next Live Show
@@ -58,6 +59,15 @@
 	IBOutlet UITextView		*comField;
 	NSNotificationCenter	*myNotficationCenter;
 	NSUserDefaults			*userDefaults;
+	
+	// Timers
+	NSTimer					*feedTimer;
+	NSTimer					*showTimer;
+	
+	IBOutlet UIButton		*infoButton;
+	
+	NetworkStatus			remoteHostStatus;
+	NetworkStatus			localWiFiConnectionStatus;
 }
 
 // Ensures textFields and Labels will persist in memory until they've been used
@@ -72,9 +82,16 @@
 @property (nonatomic, retain) IBOutlet UITextField	*nameField;
 @property (nonatomic, retain) IBOutlet UITextField	*locField;
 @property (nonatomic, retain) IBOutlet UITextView	*comField;
+@property (nonatomic, retain) NSTimer				*feedTimer;
+@property (nonatomic, retain) NSTimer				*showTimer;
+@property (nonatomic, retain) IBOutlet UIButton		*infoButton;
+@property NetworkStatus remoteHostStatus;
+@property NetworkStatus localWiFiConnectionStatus;
 
 // Check Reachability
-- (BOOL)isDataSourceAvailable;
+
+// 
+- (void)finishInit;
 // Play Button
 - (IBAction)audioButtonPressed:(id)sender;
 - (void)setAudioButtonImage:(UIImage *)image;
@@ -111,5 +128,9 @@
 - (void)nextShowAutoPool;
 // 
 - (void)pollNextShow;
+
+- (void)createNotificationForTermination;
+
+- (IBAction)infoSheet;
 
 @end

@@ -85,50 +85,53 @@ static BOOL otherTweets;
 //* Get Tweets
 //*******************************************************
 - (void) pollFeed {	
-	NSURL *url = [NSURL URLWithString:searchString];
-	NSString *queryResult = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];	
-	
-	SBJSON *jsonParser = [[SBJSON alloc] init];
-	NSError *error;
-	NSDictionary *queryDict = [jsonParser objectWithString: queryResult error: &error];
-	NSArray *results = [queryDict objectForKey: @"results"];
-	//*******************************************************
-	//* Clear out the old tweets and icons
-	//*******************************************************
-	[tweets removeAllObjects];
-	
-	if (iconDict.count >= 1000)
-		[iconDict removeAllObjects];
-	
 	//*******************************************************
 	//* Set up the date formatter - has to use 10.4 format for iPhone
 	//*******************************************************
 	NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateStyle: NSDateFormatterLongStyle];
 	[formatter setFormatterBehavior: NSDateFormatterBehavior10_4];
-	[formatter setDateFormat: @"EEE, dd MMM yyyy HH:mm:ss +0000"];
+	[formatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"US"] autorelease]];
+	
+	//*******************************************************
+	//* Clear out the old tweets
+	//*******************************************************
+	[tweets removeAllObjects];
+		
+	[formatter setDateFormat: @"EEE MMM dd HH:mm:ss +0000 yyyy"];
+	NSURL *url = [NSURL URLWithString:searchString];
+	NSString *queryResult = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];	
+	
+	SBJSON *jsonParser = [[SBJSON alloc] init];
+	NSError *error;
+	NSArray *queryDict = [jsonParser objectWithString: queryResult error: &error];
 	
 	//*******************************************************
 	//* Process the results 1 tweet at a time
 	//*******************************************************
-	NSDictionary * tweet;
-	
-	for (tweet in results) {
-		NSString * from = [tweet objectForKey: @"from_user"];
-		NSString * text = [tweet objectForKey: @"text"];
+	NSDictionary *tweet;
+	for (tweet in queryDict) {
+		NSDictionary *user = [tweet objectForKey:@"user"];
+		NSString * from = [user objectForKey: @"screen_name"];
+		NSString *text = [tweet objectForKey: @"text"];
+		
 		NSDate * createdAt = [formatter dateFromString: [tweet objectForKey: @"created_at"]];
-		
-		//*******************************************************
-		//* Calculate the time & units since creation
-		//*******************************************************
-		NSString * interval = @"s";
-		int timeSince = -[createdAt timeIntervalSinceNow];
-		
-		//*******************************************************
-		//* Convert from GMT to local time
-		//*******************************************************
-		NSInteger seconds = [[NSTimeZone defaultTimeZone] secondsFromGMT];
-		timeSince -= seconds;
+		int timeSince;
+		NSString *interval = @"s";
+		if (createdAt != nil) {
+			//*******************************************************
+			//* Calculate the time & units since creation
+			//*******************************************************
+			timeSince = -[createdAt timeIntervalSinceNow];
+			
+			//*******************************************************
+			//* Convert from GMT to local time
+			//*******************************************************
+			NSInteger seconds = [[NSTimeZone defaultTimeZone] secondsFromGMT];
+			timeSince -= seconds;
+		} else {
+			timeSince = 0;
+		}
 		
 		if (timeSince > 60) {
 			interval = @"m";
@@ -158,7 +161,7 @@ static BOOL otherTweets;
 		//* image, and store the necessary info in a CFDictionary with connection
 		//* as the key, so we can find it again when the data is received.
 		//*******************************************************
-		NSString * imageURLString = [tweet objectForKey: @"profile_image_url"];
+		NSString *imageURLString = [user objectForKey: @"profile_image_url"];
 		
 		//*******************************************************
 		//* Put everything in a dictionary and add to tweet array
@@ -168,24 +171,24 @@ static BOOL otherTweets;
 									since, @"since",
 									imageURLString, @"profile_image_url", nil];
 		[tweets addObject: tweetDict];
-		
 	}
 	
-	/*if (tweets.count == 0) {
-	 NSString * from = @"KATGAPP";
-	 NSString * text = @"No Internet Connection";
-	 NSString * since = @"1";
-	 NSString * imageURLString = @"http";
-	 NSDictionary * tweetDict = [NSDictionary dictionaryWithObjectsAndKeys: from, @"from_user", 
-	 text, @"text", 
-	 since, @"since",
-	 imageURLString, @"profile_image_url", nil];
-	 [tweets addObject:tweetDict];
-	 } */
+	if (tweets.count == 0) {
+		NSString * from = @"No Tweets";
+		NSString * text = @"No Tweets";
+		NSString * since = @"";
+		NSString * imageURLString = @"http";
+		NSDictionary * tweetDict = [NSDictionary dictionaryWithObjectsAndKeys: from, @"from_user", 
+									text, @"text", 
+									since, @"since",
+									imageURLString, @"profile_image_url", nil];
+		[tweets addObject:tweetDict];
+		NSData *tweetIcon = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TweetIconSub" ofType:@"png"]];
+		[iconDict setObject: tweetIcon forKey: @"http"];
+	}
 	
 	[jsonParser release];
 	[formatter release];
-	[queryResult release];
 	
 	[self.activityIndicator stopAnimating];
 	
@@ -271,50 +274,48 @@ static BOOL otherTweets;
 	cell.lblSince.text = [[tweets objectAtIndex: indexPath.row] objectForKey: @"since"];
 	cell.lblFrom.text =  [[tweets objectAtIndex: indexPath.row] objectForKey: @"from_user"];
 	
-	cell.backgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-	UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.92 green:(CGFloat).973 blue:(CGFloat)0.92 alpha:(CGFloat)1.0];
-	UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0];
+	[converter release];
+	
+	UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.776 green:(CGFloat).875 blue:(CGFloat)0.776 alpha:(CGFloat)1.0];
+	UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.627 alpha:(CGFloat)1.0];
+	
+	//cell.lblTitle.backgroundColor = [UIColor clearColor];
+	cell.lblSince.backgroundColor = [UIColor clearColor];
+	
 	if (indexPath.row%2 == 0) {
 		cell.lblTitle.backgroundColor = color1;
-		cell.lblSince.backgroundColor = color1;
+		//cell.lblSince.backgroundColor = color1;
 		cell.lblFrom.backgroundColor = color1;
 		cell.backgroundView.backgroundColor = color1;
+		cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground60.png"]];
 	} else {
 		cell.lblTitle.backgroundColor = color2;
-		cell.lblSince.backgroundColor = color2;
+		//cell.lblSince.backgroundColor = color2;
 		cell.lblFrom.backgroundColor = color2;
 		cell.backgroundView.backgroundColor = color2;
+		cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundDark60.png"]];
 	}
 	
-	cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-	cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
+	cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundSelected60.png"]];
 	
 	if ([iconDict objectForKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]] == nil) {
 		
 		NSURL *url = [[NSURL alloc] initWithString:[[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
 		NSData *data = [NSData dataWithContentsOfURL:url];
-		UIImage * tweetIcon = [UIImage imageWithData:data];
+		if ([data length] != 0) {
+			[iconDict setObject: data forKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
+		} else {
+			data = [NSData dataWithContentsOfFile:@"TweetIconSub.png"];
+			[iconDict setObject: data forKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
+		}
 		
-		[iconDict setObject: tweetIcon forKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
+		[url release];
 	}
 	
-	cell.imgSquare.image = [iconDict objectForKey: [[tweets objectAtIndex: indexPath.row] objectForKey: @"profile_image_url"]];
-	
-	//***************************************************
-	//* Add a disclosure indicator if the text contains web stuff
-	//***************************************************
-	/*
-	NSString *regexString1 = @"\\b(https?://)(?:(\\S+?)(?::(\\S+?))?@)?([a-zA-Z0-9\\-.]+)(?::(\\d+))?((?:/[a-zA-Z0-9\\-._?,'+\\&%$=~*!():@\\\\]*)+)?";
-	NSString *regexString2 = @"@([0-9a-zA-Z_]+)";
-	NSString *index = [NSString stringWithFormat:@"%d", indexPath.row];
-	if ([cell.lblTitle.text isMatchedByRegex:regexString1] ||
-		[cell.lblTitle.text isMatchedByRegex:regexString2]) {
-		
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		
-		[isURL setObject:@"YES" forKey: index];
-		[urlDict setObject:cell.lblTitle.text forKey: index];
-	}*/
+	UIImage *tweetIcon = [UIImage imageWithData:[iconDict objectForKey: 
+												 [[tweets objectAtIndex: indexPath.row] 
+												  objectForKey: @"profile_image_url"]]];
+	cell.imgSquare.image = tweetIcon;
 	
 	return cell;
 }
@@ -327,42 +328,16 @@ static BOOL otherTweets;
 //* cell height. Minimum height is 46.
 //*************************************************
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSString * text = [[tweets objectAtIndex: indexPath.row] objectForKey: @"text"];
-	CGSize maxTextSize = CGSizeMake(120.0, 200.0);
+	NSString *text = [[tweets objectAtIndex: indexPath.row] objectForKey: @"text"];
+	CGSize maxTextSize = CGSizeMake(220.0, 200.0);
 	CGSize textSize = [text sizeWithFont: [UIFont systemFontOfSize: 12] constrainedToSize: maxTextSize];
-	CGFloat height = MAX((textSize.height + 20.0f), 80.0f);
+	CGFloat height = MAX((textSize.height + 10.0f), 80.0f);
 	return height;
 }
 
-/*
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSString *index = [NSString stringWithFormat:@"%d", indexPath.row];
-	if ( [[isURL objectForKey: index] isEqualToString:@"YES"] ) {
-		NSString *tweetURL = [urlDict objectForKey: [NSString stringWithFormat:@"%d", indexPath.row]];
-		extractURL *extractor = [[extractURL alloc] init];
-		NSArray *urls = [extractor makeURLList:tweetURL];
-		NSArray *twts = [extractor makeTWTList:tweetURL];
-		if ([urls count] + [twts count] > 1) {
-			TableViewController *viewController = [[TableViewController alloc] initWithNibName:@"TableView" bundle:[NSBundle mainBundle]];
-			viewController.urlList = urls;
-			viewController.twtList = twts;
-			[[self navigationController] pushViewController:viewController animated:YES];
-			[viewController release];
-		} else if ([urls count] == 1 && [twts count] == 0) {		
-			WebViewController *viewController = [[WebViewController alloc] initWithNibName:@"WebView" bundle:[NSBundle mainBundle]];
-			NSString *urlAddress = [urls objectAtIndex:0];
-			viewController.urlAddress = urlAddress;
-			[[self navigationController] pushViewController:viewController animated:YES];
-			[viewController release];
-		} else if ([urls count] == 0 && [twts count] == 1) {
-			NSLog(@"TWEET");
-		}
-	}
-}*/
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-	[[UIAccelerometer sharedAccelerometer] release];
+	//[[UIAccelerometer sharedAccelerometer] release];
 }
 
 - (void)dealloc {

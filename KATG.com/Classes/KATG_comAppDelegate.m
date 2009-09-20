@@ -25,11 +25,64 @@
 @synthesize window;
 @synthesize tabBarController;
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Add the tab bar controller's current view as a subview of the window
 	[window addSubview:tabBarController.view];
+	[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | 
+													 UIRemoteNotificationTypeBadge | 
+													 UIRemoteNotificationTypeSound)];
+	if ([launchOptions count] > 0) {
+		NSString *alertMessage = [[[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] 
+								   objectForKey:@"aps"] 
+								   objectForKey:@"alert"];
+		UIAlertView *alert = [[UIAlertView alloc] 
+							  initWithTitle:@"Notification"
+							  message:alertMessage 
+							  delegate:nil
+							  cancelButtonTitle:@"Continue" 
+							  otherButtonTitles:nil];
+		[alert show];
+		[alert autorelease];
+	}
+	return YES;
 }
 
+#pragma mark Termination Notification
+// Post notification triggered by app termination, used by On Air View and Tweet View to save data
+- (void)talkToOnAirView { 
+	[[NSNotificationCenter defaultCenter] 
+	 postNotificationName:@"ApplicationWillTerminate" 
+	 object:@"Terminate"]; 
+}
+
+// Delegation methods 
+- (void)applicationWillTerminate:(UIApplication *)application {
+	 application.applicationIconBadgeNumber = 0;
+	[self talkToOnAirView];
+}
+
+#pragma mark Push Notification
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
+	NSLog(@"deviceToken: %@", devToken);
+	NSString *token = [[NSString alloc] initWithFormat: @"%@", devToken];
+	[self sendProviderDeviceToken:token];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {	
+    NSLog(@"Error in registration. Error: %@", error);
+}
+
+- (void)sendProviderDeviceToken:(NSString *)token {		
+	NSString *myRequestString = @"http://app.keithandthegirl.com/app/tokenserver/tokenserver.php?dev=";
+	token = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)token, NULL, NULL, kCFStringEncodingUTF8);
+	myRequestString = [myRequestString stringByAppendingString:token];
+	NSURLRequest *request = [[ NSURLRequest alloc ] initWithURL: [ NSURL URLWithString: myRequestString ] ]; 
+	[ NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil ];
+	[request autorelease];
+	[token release];
+}
+
+#pragma mark System Stuff
 - (void)dealloc {
 	[tabBarController release];
 	[window release];

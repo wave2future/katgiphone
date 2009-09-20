@@ -1,6 +1,11 @@
-//
+//  
 //  OnAirViewController.m
 //  KATG.com
+//  
+//  Live Show Tab with: 
+//  Live Feed Playback
+//  Submit Feedback
+//  Live Feed Status
 //  
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -16,7 +21,6 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import "OnAirViewController.h"
-#import "EventsViewController.h"
 #import "AudioStreamer.h"
 #import <QuartzCore/CoreAnimation.h>
 #import <SystemConfiguration/SystemConfiguration.h>
@@ -26,6 +30,8 @@
 
 // Integer value for countdown to next live show
 static int timeSince;
+// 
+static BOOL ShouldStream;
 
 @implementation OnAirViewController
 
@@ -44,17 +50,34 @@ static int timeSince;
 @synthesize feedbackButton;
 // Feedback Fields
 @synthesize nameField, locField, comField;
+// Timers
+@synthesize feedTimer, showTimer;
+// Info Alert Sheet
+@synthesize infoButton;
+// 
+@synthesize remoteHostStatus;
+// 
+@synthesize localWiFiConnectionStatus;
+
 
 #pragma mark System Stuff
 //*******************************************************
 //* viewDidLoad
 //* 
-//* 
+//* Set up view and launch view logic
+//* Executes once when view is first launched
+//* or relaunched after a low memory event
 //*******************************************************
 - (void)viewDidLoad {
+	NSLog(@"On Air View Did Load");
+	
+	// Auto start audiostreamer if it was playing when the app last exited
+	userDefaults = [NSUserDefaults standardUserDefaults];
+	
 	// Loads Play button for audioStream
 	UIImage *image = [UIImage imageNamed:@"playButton.png"];
 	[self setAudioButtonImage:image];
+	[image release];
 	
 	// Draw Volume Slider
 	[self drawVolumeSlider];
@@ -65,10 +88,6 @@ static int timeSince;
 	// Set Feedback Button Image
 	[self setFeedbackButtonImage];
 	
-	// Auto start audiostreamer if it was playing when the app last exited
-	userDefaults = [NSUserDefaults standardUserDefaults];
-	[self setDefaults];
-	
 	// Notification Center for handling Text View Did Begin Editing. 
 	// In this case it clears the Text View when editing begins unless it is
 	// saved text from a previous session.
@@ -78,7 +97,11 @@ static int timeSince;
 	 name:@"UITextViewTextDidBeginEditingNotification" 
 	 object:nil];
 	
-	if ([self isDataSourceAvailable] == NO) {
+	[[Reachability sharedReachability] setHostName:@"keithandthegirl.com"];
+	self.remoteHostStatus = [[Reachability sharedReachability] remoteHostStatus];
+	
+	// Is a connection to KATG available 
+	if (self.remoteHostStatus == NotReachable) {
 		UIAlertView *alert = [[UIAlertView alloc] 
 							  initWithTitle:@"NO INTERNET CONNECTION"
 							  message:@"This Application requires an active internet connection. Please connect to wifi or cellular data network for full application functionality." 
@@ -86,9 +109,32 @@ static int timeSince;
 							  cancelButtonTitle:@"Continue" 
 							  otherButtonTitles:nil];
 		[alert show];
+		[alert autorelease];
 		return;
+	} else if (self.remoteHostStatus == ReachableViaCarrierDataNetwork) {
+		NSLog(@"ReachableVIaCarrierDataNetwork");
+		if ([userDefaults boolForKey:@"StreamLSOverCell"]) {
+			ShouldStream = YES;
+		} else {
+			ShouldStream = NO;
+		}
+		[self setDefaults];
+		[self finishInit];
+	} else if (self.remoteHostStatus == ReachableViaWiFiNetwork) {
+		NSLog(@"ReachableViaWiFiNetwork");
+		ShouldStream = YES;
+		// Auto start audiostreamer if it was playing when the app last exited
+		[self setDefaults];
+		[self finishInit];
 	}
-	
+}
+
+//*******************************************************
+//* finishInit
+//* 
+//* 
+//*******************************************************
+- (void)finishInit {	
 	//
 	[ NSThread detachNewThreadSelector: @selector(feedStatusAutoPool) toTarget: self withObject: nil ];
 	
@@ -101,30 +147,19 @@ static int timeSince;
 	// Set update timer for for Countdown to next live show
 	timeSince = 0;
 	[self setNextShowTimer];
+	
+	[self createNotificationForTermination];
 }
 
-#pragma mark Connectivity
 //*******************************************************
-//* isDataSourceAvailable
+//* viewWillAppear:(BOOL)animated
 //* 
-//* 
+//* Launch logic relevant to this view appearing
+//* Executes each time a view becomes visible
 //*******************************************************
-- (BOOL)isDataSourceAvailable {
-    static BOOL checkNetwork = YES;
-    if (checkNetwork) { // Since checking the reachability of a host can be expensive, cache the result and perform the reachability check once.
-        checkNetwork = NO;
-        
-        Boolean success;    
-        const char *host_name = "keithandthegirl.com";
-		
-        SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, host_name);
-        SCNetworkReachabilityFlags flags;
-        success = SCNetworkReachabilityGetFlags(reachability, &flags);
-        _isDataSourceAvailable = success && (flags & kSCNetworkFlagsReachable) && !(flags & kSCNetworkFlagsConnectionRequired);
-        CFRelease(reachability);
-    }
-    return _isDataSourceAvailable;
-}
+/*- (void)viewWillAppear:(BOOL)animated {
+	NSLog(@"On Air View Will Appear");
+}*/
 
 #pragma mark Audio Streamer
 //*******************************************************
@@ -135,34 +170,49 @@ static int timeSince;
 //* deactivate stream and change button image
 //*******************************************************
 - (IBAction)audioButtonPressed:(id)sender {
-	if (!streamer) {
+	if (ShouldStream) {
+		if (!streamer) {
+			
+			NSString *escapedValue =
+			[(NSString *)CFURLCreateStringByAddingPercentEscapes(
+																 nil,
+																 (CFStringRef)@"http://liveshow.keithandthegirl.com:8004",
+																 //(CFStringRef)@"http://scfire-mtc-aa05.stream.aol.com:80/stream/1010",
+																 NULL,
+																 NULL,
+																 kCFStringEncodingUTF8)
+			 autorelease];
+			
+			NSURL *url = [NSURL URLWithString:escapedValue];
+			streamer = [[AudioStreamer alloc] initWithURL:url];
+			[streamer
+			 addObserver:self
+			 forKeyPath:@"isPlaying"
+			 options:0
+			 context:nil];
+			[streamer start];
+			
+			[self setAudioButtonImage:[UIImage imageNamed:@"loadingButton.png"]];
+			
+			[self spinButton];
+		}
+		else {
+			[audioButton.layer removeAllAnimations];
+			[streamer stop];
+		}
 		
-		NSString *escapedValue =
-		[(NSString *)CFURLCreateStringByAddingPercentEscapes(
-															 nil,
-															 (CFStringRef)@"http://liveshow.keithandthegirl.com:8004",
-															 NULL,
-															 NULL,
-															 kCFStringEncodingUTF8)
-		 autorelease];
-		
-		NSURL *url = [NSURL URLWithString:escapedValue];
-		streamer = [[AudioStreamer alloc] initWithURL:url];
-		[streamer
-		 addObserver:self
-		 forKeyPath:@"isPlaying"
-		 options:0
-		 context:nil];
-		[streamer start];
-		
-		[self setAudioButtonImage:[UIImage imageNamed:@"loadingButton.png"]];
-		
-		[self spinButton];
+	} else {
+		NSString *alertMessage = @"Streaming shows over cellular network is disabled, enable Wifi to stream";
+		UIAlertView *alert = [[UIAlertView alloc] 
+							  initWithTitle:@"Live Shows Streaming Disabled"
+							  message:alertMessage 
+							  delegate:nil
+							  cancelButtonTitle:@"Continue" 
+							  otherButtonTitles:nil];
+		[alert show];
+		[alert autorelease];
 	}
-	else {
-		[audioButton.layer removeAllAnimations];
-		[streamer stop];
-	}
+	
 }
 
 //*******************************************************
@@ -289,7 +339,9 @@ static int timeSince;
 //* 
 //*******************************************************
 - (void)setDefaults {
+	NSLog(@"Defaults Set");
 	if ([userDefaults boolForKey:@"StartStream"]) {
+		NSLog(@"Launch Stream");
 		[userDefaults setBool:NO forKey:@"StartStream"];
 		[self audioButtonPressed:self];
 	}
@@ -324,13 +376,17 @@ static int timeSince;
 //*******************************************************
 - (void)setPhoneButtonImage {
 	UIImage *feedButtonImage = [UIImage imageNamed:@"feedButtonNormal.png"];
-	UIImage *normal = [feedButtonImage stretchableImageWithLeftCapWidth:12 topCapHeight:12];
 	
+	UIImage *normal = [feedButtonImage stretchableImageWithLeftCapWidth:12 topCapHeight:12];
+		
 	UIImage *feedButtonHighlightedImage = [UIImage imageNamed:@"feedButtonPressed.png"];
 	UIImage *highlight = [feedButtonHighlightedImage stretchableImageWithLeftCapWidth:12 topCapHeight:12];
 	
 	[callButton setBackgroundImage:(UIImage *)normal forState:UIControlStateNormal];
 	[callButton setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
+	if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel:+1..."]] == NO) {
+		callButton.enabled = NO;
+	}
 }
 
 #pragma mark Feedback
@@ -382,6 +438,15 @@ static int timeSince;
 	myRequestString = [myRequestString stringByAppendingString:submitButton];	
 	myRequestString = [myRequestString stringByAppendingString:hiddenVoxbackId];
 	
+	namePrefix = nil;
+	name = nil;
+	locPrefix = nil;
+	location = nil;
+	comPrefix = nil;
+	comment = nil;
+	submitButton = nil;
+	hiddenVoxbackId = nil;
+	
 	NSData *myRequestData = [NSData dataWithBytes:[myRequestString UTF8String] length:[ myRequestString length]];
 	NSMutableURLRequest *request = [[ NSMutableURLRequest alloc ] initWithURL: [ NSURL URLWithString: @"http://www.attackwork.com/Voxback/Comment-Form-Iframe.aspx" ] ]; 
 	[ request setHTTPMethod: @"POST" ];
@@ -389,7 +454,11 @@ static int timeSince;
 	
 	[ NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil ];
 	
+	myRequestString = nil;
+	
 	comField.text = @"";
+	
+	[request release];
 }
 
 //*******************************************************
@@ -458,8 +527,7 @@ static int timeSince;
 //*******************************************************
 - (void)setFeedStatusTimer {
 	// Repeating timer to update feed
-	NSTimer *timer;
-	timer = [NSTimer scheduledTimerWithTimeInterval: 180.0
+	feedTimer = [NSTimer scheduledTimerWithTimeInterval: 180.0
 											 target: self
 										   selector: @selector(feedTimer:)
 										   userInfo: nil
@@ -502,7 +570,13 @@ static int timeSince;
 	// Call the grabRSSFeed function with the feedAddress
 	// string as a parameter
 	grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:xPath];
-	feedEntries = [feed entries];
+	
+	feedAddress = nil;
+	xPath = nil;
+	
+	NSMutableArray *feedEntries = [[NSMutableArray alloc] initWithArray:[feed entries]];
+	
+	[feed release];
 	
 	int feedEntryIndex = 0;
 	NSString *feedStatusString;
@@ -510,6 +584,7 @@ static int timeSince;
 	if ([feedEntries count] > 0) {
 		feedStatusString = [[feedEntries objectAtIndex: feedEntryIndex] objectForKey: @"OnAir"];
 		int feedStatusInt = [feedStatusString intValue];
+		feedStatusString = nil;
 		if(feedStatusInt == 0) {
 			feedStatus = @"Not Live";
 		} else if(feedStatusInt == 1) {
@@ -522,6 +597,9 @@ static int timeSince;
 	}
 	
 	statusText.text = feedStatus;
+	feedStatus = nil;
+	
+	[feedEntries release];
 }
 
 #pragma mark Next Live Show Indicator
@@ -533,12 +611,11 @@ static int timeSince;
 //*******************************************************
 - (void)setNextShowTimer {
 	// Repeating timer to update feed
-	NSTimer *timer;
-	timer = [NSTimer scheduledTimerWithTimeInterval: 60.0
-											 target: self
-										   selector: @selector(showTimer:)
-										   userInfo: nil
-											repeats: YES];
+	showTimer = [NSTimer scheduledTimerWithTimeInterval: 60.0
+										target: self
+										selector: @selector(showTimer:)
+										userInfo: nil
+										repeats: YES];
 }
 
 //*******************************************************
@@ -567,6 +644,7 @@ static int timeSince;
 //* Create and run live feed xml
 //*******************************************************
 - (void)pollNextShow {
+	NSMutableArray *feedEntries = nil;
 	if (timeSince > 0) {
 		if (timeSince >= 60) {
 			timeSince = timeSince - 60;
@@ -587,17 +665,21 @@ static int timeSince;
 		// Call the grabRSSFeed function with the above
 		// string as a parameter
 		grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:(NSString *)xPath];
-		feedEntries = [feed entries];
+		
+		feedAddress = nil;
+		xPath = nil;
+		
+		feedEntries = [[NSMutableArray alloc] initWithArray:[feed entries]];
+		
 		[feed release];
 		
 		// Evaluate the contents of feed for classification and add results into list
-		
+				
 		NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 		[formatter setDateStyle: NSDateFormatterLongStyle];
 		[formatter setFormatterBehavior: NSDateFormatterBehavior10_4];
-		[formatter setDateFormat: @"MM/dd/yyyy HH:mm"];
-		NSTimeZone *EST = [NSTimeZone timeZoneWithName:(NSString *)@"America/New_York"];
-		[formatter setTimeZone:(NSTimeZone *)EST];
+		[formatter setDateFormat: @"MM/dd/yyyy HH:mm zzz"];
+		[formatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"US"] autorelease]];
 		
 		int feedEntryIndex = [feedEntries count] - 1;
 		
@@ -616,7 +698,15 @@ static int timeSince;
 			
 			NSString *feedTime = [[feedEntries objectAtIndex: feedEntryIndex] 
 								  objectForKey: @"StartDate"];
+						
+			NSTimeZone *EST = [NSTimeZone timeZoneWithName:(NSString *)@"America/New_York"];
 			
+			if ([EST isDaylightSavingTime]) {
+				feedTime = [feedTime stringByAppendingString:@" EDT"];
+			} else {
+				feedTime = [feedTime stringByAppendingString:@" EST"];
+			}
+						
 			NSDate *eventTime = [formatter dateFromString: feedTime];
 			
 			timeSince = [eventTime timeIntervalSinceNow];
@@ -628,6 +718,8 @@ static int timeSince;
 			feedEntryIndex = feedEntryIndex - 1;
 		}
 		
+		[formatter release];
+		
 		int d = timeSince / 86400;
 		int h = timeSince / 3600 - d * 24;
 		int m = timeSince / 60 - d * 1440 - h * 60;
@@ -637,8 +729,8 @@ static int timeSince;
 		hours.text = [[NSString alloc] initWithFormat:@"%d",h];
 		minutes.text = [[NSString alloc] initWithFormat:@"%d",m];
 		
-		NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-		NSString * feedFilePath = [documentsPath stringByAppendingPathComponent: @"feed.save"];
+		NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+		NSString * feedFilePath = [documentsPath stringByAppendingPathComponent: @"feed.plist"];
 		
 		NSMutableArray *feedPack = [[NSMutableArray alloc] initWithCapacity:2];
 		NSDate *now = [NSDate date];
@@ -646,29 +738,34 @@ static int timeSince;
 		[feedPack addObject:now];
 		
 		NSFileManager *fm = [NSFileManager defaultManager];
-		if ([fm fileExistsAtPath: feedFilePath]) 
+		if ([fm fileExistsAtPath: feedFilePath]) {
 			[fm removeItemAtPath: feedFilePath error: NULL];
+		}
 		
 		[feedPack writeToFile: feedFilePath atomically: YES];
+		[feedPack release];
 	}
+	
+	[feedEntries release];
+}
+
+//*******************************************************
+//* pollNextShow
+//*
+//* Create and run live feed xml
+//*******************************************************
+- (IBAction)infoSheet {
+	UIAlertView *alert = [[UIAlertView alloc] 
+						  initWithTitle:@"Keith and The Girl"
+						  message:@"This application is for anyone interested in the Keith and The Girl Show. You can use it to listen to the live show, check upcoming events and read Keith and Chemda's tweets. Links are also available to the KATG Store and Donation Page." 
+						  delegate:nil
+						  cancelButtonTitle:@"Continue" 
+						  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
 #pragma mark More System Stuff
-//*******************************************************
-//* 
-//* 
-//* 
-//*******************************************************
-- (void)viewDidDisappear:(BOOL)animated {
-	if (streamer) {
-		[userDefaults setBool:YES forKey:@"StartStream"];
-	}
-	[userDefaults setObject:(NSString *)nameField.text forKey:@"nameField"];
-	[userDefaults setObject:(NSString *)locField.text forKey:@"locField"];
-	[userDefaults setObject:(NSString *)comField.text forKey:@"comField"];
-	[userDefaults synchronize];
-}
-
 //*******************************************************
 //* 
 //* 
@@ -684,10 +781,53 @@ static int timeSince;
 //* 
 //* 
 //*******************************************************
+- (void)viewDidDisappear:(BOOL)animated {
+	NSLog(@"On Air Did Dissapear");
+}
+
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
+- (void)viewDidUnload {
+	NSLog(@"On Air View Did Unload");
+}
+
+- (void)createNotificationForTermination { 
+	NSLog(@"createNotificationTwo"); 
+	[[NSNotificationCenter defaultCenter] 
+	 addObserver:self 
+	 selector:@selector(handleTerminationNotification:) 
+	 name:@"ApplicationWillTerminate" 
+	 object:nil]; 
+}
+
+-(void)handleTerminationNotification:(NSNotification *)pNotification { 
+	NSLog(@"On Air View received message = %@",(NSString*)[pNotification object]);
+	if (streamer) {
+		[userDefaults setBool:YES forKey:@"StartStream"];
+	}
+	[userDefaults setObject:(NSString *)nameField.text forKey:@"nameField"];
+	[userDefaults setObject:(NSString *)locField.text forKey:@"locField"];
+	[userDefaults setObject:(NSString *)comField.text forKey:@"comField"];
+	[userDefaults synchronize];
+}
+
+//*******************************************************
+//* 
+//* 
+//* 
+//*******************************************************
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
 	// Release anything that's not essential, such as cached data
-} // Does something I'm sure
+	NSLog(@"Did Receive Memory Warning");
+	if (streamer) {
+		[audioButton.layer removeAllAnimations];
+		[streamer stop];
+	}
+}
 
 //*******************************************************
 //* 
@@ -696,6 +836,7 @@ static int timeSince;
 //*******************************************************
 - (void)dealloc {
 	[super dealloc];
+	
 } // Release objects to save memory
 
 @end

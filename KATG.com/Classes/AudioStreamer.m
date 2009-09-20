@@ -13,37 +13,39 @@
 //
 
 #import "AudioStreamer.h"
-#ifdef TARGET_OS_IPHONE			
 #import <CFNetwork/CFNetwork.h>
-#endif
 
-#define PRINTERROR(LABEL)	printf("%s err %4.4s %d\n", LABEL, (char *)&err, (int)err)
+#define PRINTERROR(LABEL) printf("%s err %4.4s %d\n", LABEL, (char *)&err, (int)err)
+
+//static int reconnect = 3;
 
 #pragma mark CFReadStream Callback Function Prototypes
 
-void ReadStreamCallBack(
-						CFReadStreamRef stream,
-						CFStreamEventType eventType,
-						void* dataIn);
+void ReadStreamCallBack(CFReadStreamRef		stream,
+						CFStreamEventType	eventType,
+						void				*dataIn);
 
 #pragma mark Audio Callback Function Prototypes
 
-void MyAudioQueueOutputCallback(void* inClientData, AudioQueueRef inAQ, AudioQueueBufferRef inBuffer);
-void MyAudioQueueIsRunningCallback(void *inUserData, AudioQueueRef inAQ, AudioQueuePropertyID inID);
-void MyPropertyListenerProc(	void *							inClientData,
+void MyAudioQueueOutputCallback(void						*inClientData, 
+								AudioQueueRef				inAQ, 
+								AudioQueueBufferRef			inBuffer);
+void MyAudioQueueIsRunningCallback(void						*inUserData, 
+								   AudioQueueRef			inAQ, 
+								   AudioQueuePropertyID		inID);
+void MyPropertyListenerProc(void							*inClientData,
 							AudioFileStreamID				inAudioFileStream,
 							AudioFileStreamPropertyID		inPropertyID,
-							UInt32 *						ioFlags);
-void MyPacketsProc(				void *							inClientData,
-				   UInt32							inNumberBytes,
-				   UInt32							inNumberPackets,
-				   const void *					inInputData,
-				   AudioStreamPacketDescription	*inPacketDescriptions);
+							UInt32							*ioFlags);
+void MyPacketsProc(void										*inClientData,
+				   UInt32									inNumberBytes,
+				   UInt32									inNumberPackets,
+				   const void								*inInputData,
+				   AudioStreamPacketDescription				*inPacketDescriptions);
+
 OSStatus MyEnqueueBuffer(AudioStreamer* myData);
 
-#ifdef TARGET_OS_IPHONE			
 void MyAudioSessionInterruptionListener(void *inClientData, UInt32 inInterruptionState);
-#endif
 
 #pragma mark Audio Callback Function Implementations
 
@@ -58,13 +60,13 @@ void MyAudioSessionInterruptionListener(void *inClientData, UInt32 inInterruptio
 // This function is adapted from Apple's example in AudioFileStreamExample with
 // kAudioQueueProperty_IsRunning listening added.
 //
-void MyPropertyListenerProc(	void *							inClientData,
+void MyPropertyListenerProc(void							*inClientData,
 							AudioFileStreamID				inAudioFileStream,
 							AudioFileStreamPropertyID		inPropertyID,
-							UInt32 *						ioFlags)
+							UInt32							*ioFlags)
 {	
 	// this is called by audio file stream when it finds property values
-	AudioStreamer* myData = (AudioStreamer*)inClientData;
+	AudioStreamer *myData = (AudioStreamer*)inClientData;
 	OSStatus err = noErr;
 	
 	switch (inPropertyID) {
@@ -124,9 +126,9 @@ void MyPropertyListenerProc(	void *							inClientData,
 // This function is adapted from Apple's example in AudioFileStreamExample with
 // CBR functionality added.
 //
-void MyPacketsProc(				void *							inClientData,
-				   UInt32							inNumberBytes,
-				   UInt32							inNumberPackets,
+void MyPacketsProc(void *						inClientData,
+				   UInt32						inNumberBytes,
+				   UInt32						inNumberPackets,
 				   const void *					inInputData,
 				   AudioStreamPacketDescription	*inPacketDescriptions)
 {
@@ -556,7 +558,6 @@ void ReadStreamCallBack
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
-#ifdef TARGET_OS_IPHONE			
 	//
 	// Set the audio session category so that we continue to play if the
 	// iPhone/iPod auto-locks.
@@ -574,7 +575,6 @@ void ReadStreamCallBack
 							 &sessionCategory
 							 );
 	AudioSessionSetActive(true);
-#endif
 	
 	//
 	// Attempt to guess the file type from the URL. Reading the MIME type
@@ -584,39 +584,6 @@ void ReadStreamCallBack
 	// If you have a fixed file-type, you may want to hardcode this.
 	//
 	AudioFileTypeID fileTypeHint = kAudioFileMP3Type;
-	NSString *fileExtension = [[url path] pathExtension];
-	if ([fileExtension isEqual:@"mp3"])
-	{
-		fileTypeHint = kAudioFileMP3Type;
-	}
-	else if ([fileExtension isEqual:@"wav"])
-	{
-		fileTypeHint = kAudioFileWAVEType;
-	}
-	else if ([fileExtension isEqual:@"aifc"])
-	{
-		fileTypeHint = kAudioFileAIFCType;
-	}
-	else if ([fileExtension isEqual:@"aiff"])
-	{
-		fileTypeHint = kAudioFileAIFFType;
-	}
-	else if ([fileExtension isEqual:@"m4a"])
-	{
-		fileTypeHint = kAudioFileM4AType;
-	}
-	else if ([fileExtension isEqual:@"mp4"])
-	{
-		fileTypeHint = kAudioFileMPEG4Type;
-	}
-	else if ([fileExtension isEqual:@"caf"])
-	{
-		fileTypeHint = kAudioFileCAFType;
-	}
-	else if ([fileExtension isEqual:@"aac"])
-	{
-		fileTypeHint = kAudioFileAAC_ADTSType;
-	}
 	
 	// initialize a mutex and condition so that we can block on buffers in use.
 	pthread_mutex_init(&mutex, NULL);
@@ -665,35 +632,27 @@ void ReadStreamCallBack
 		{
 			[self stop];
 			
-#ifdef TARGET_OS_IPHONE			
-			UIAlertView *alert =
-			[[UIAlertView alloc]
-			 initWithTitle:NSLocalizedStringFromTable(@"Audio Error", @"Errors", nil)
-			 message:NSLocalizedStringFromTable(@"Attempt to play streaming audio failed. \nStream is not currently Live. Refer to Time Until Next Live Show.", @"Errors", nil)
-			 delegate:self
-			 cancelButtonTitle:@"OK"
-			 otherButtonTitles: nil];
-			[alert
-			 performSelector:@selector(show)
-			 onThread:[NSThread mainThread]
-			 withObject:nil
-			 waitUntilDone:YES];
-			[alert release];
-#else
-			NSAlert *alert =
-			[NSAlert
-			 alertWithMessageText:NSLocalizedString(@"Audio Error", @"")
-			 defaultButton:NSLocalizedString(@"OK", @"")
-			 alternateButton:nil
-			 otherButton:nil
-			 informativeTextWithFormat:@"Attempt to play streaming audio failed. Stream is not currently Live. Refer to Time Until Next Live Show."];
-			[alert
-			 performSelector:@selector(runModal)
-			 onThread:[NSThread mainThread]
-			 withObject:nil waitUntilDone:NO];
-#endif
-			
-			break;
+			/*if (reconnect < 3) {
+				reconnect += 1;
+				NSLog(@"Reconnect attempt # %d", reconnect);
+				[self start];
+			} else {*/
+				UIAlertView *alert =
+				[[UIAlertView alloc]
+				 initWithTitle:NSLocalizedStringFromTable(@"Audio Error", @"Errors", nil)
+				 message:NSLocalizedStringFromTable(@"Attempt to play streaming audio failed. Stream is not currently Live. Refer to Time Until Next Live Show.", @"Errors", nil)
+				 delegate:self
+				 cancelButtonTitle:@"OK"
+				 otherButtonTitles: nil];
+				[alert
+				 performSelector:@selector(show)
+				 onThread:[NSThread mainThread]
+				 withObject:nil
+				 waitUntilDone:YES];
+				[alert release];
+				
+				break;
+			//}
 		}
 	} while (isPlaying || !finished);
 	
@@ -705,12 +664,12 @@ cleanup:
 	if (stream)
 	{
 		CFReadStreamClose(stream);
-        CFRelease(stream);
+		CFRelease(stream);
 		stream = nil;
 	}
 	
 	//
-	// Close the audio file strea,
+	// Close the audio file stream,
 	//
 	err = AudioFileStreamClose(audioFileStream);
 	if (err) { PRINTERROR("AudioFileStreamClose"); goto cleanup; }

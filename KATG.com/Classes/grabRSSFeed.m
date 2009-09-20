@@ -35,9 +35,6 @@
 	
 	CXMLDocument *rssParser = [[[CXMLDocument alloc] initWithContentsOfURL:url options:0 error:nil] autorelease];
 	
-	//CXMLDocument *rssParser = [[[CXMLDocument alloc] initWithData:receivedData options:0 error:nil] autorelease];
-
-	
 	// Create a new Array object to be used with the looping of the results from the rssParser
 	NSArray *resultNodes = NULL;
 	
@@ -64,18 +61,24 @@
 			
 			// Add each field to the feedItem Dictionary with the node name as key and node value as the value
 			[feedItem setObject:strVal forKey:[[resultElement childAtIndex:counter] name]];
-	}
+		}
 	
-	// Add the feedItem to the global feedEntries Array so that the view can access it.
-	[feedEntries addObject:[feedItem copy]];
+		// Add the feedItem to the global feedEntries Array so that the view can access it.
+		[feedEntries addObject:feedItem];
+		
+		[feedItem release];
 	}
 	
 	return self;
-
 }
 
 - (id)entries {
 	return feedEntries;
+}
+
+- (void)dealloc {
+	[feedEntries release];
+	[super dealloc];
 }
 
 @end

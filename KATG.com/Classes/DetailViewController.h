@@ -16,7 +16,6 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #import <UIKit/UIKit.h>
 
-
 @interface DetailViewController : UIViewController {
 	IBOutlet UILabel *detailTitle;    // Label to display event title
 	IBOutlet UILabel *detailTime;     // Label to display event date

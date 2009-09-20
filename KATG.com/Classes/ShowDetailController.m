@@ -27,6 +27,7 @@
 @synthesize TitleTemp;   // Variable to store title passed from SecondViewController
 @synthesize LinkTemp;    // Variable to store time passed from SecondViewController
 @synthesize BodyTemp;    // Variable to store description passed from SecondViewController
+@synthesize Stream;		 // 
 @synthesize button;
 @synthesize moviePlayer;
 @synthesize activityIndicator;
@@ -41,16 +42,27 @@
 	
 	detailBody = [[[UITextView alloc] initWithFrame:rect] autorelease];
 	detailBody.textColor = [UIColor blackColor];
-	detailBody.backgroundColor = [UIColor clearColor];//[UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0]; 
+	detailBody.backgroundColor = [UIColor clearColor]; 
+	
+	detailBody.dataDetectorTypes = UIDataDetectorTypeAll;
+	
 	detailBody.editable = NO;
 	detailBody.font = [UIFont systemFontOfSize:15.0];
 	
 	[self.view addSubview:detailBody];
 	
 	detailTitle.text = TitleTemp;
-	MREntitiesConverter *cleaner = [[MREntitiesConverter alloc] init];
-	detailBody.text = [cleaner convertEntitiesInString:BodyTemp];
-
+	
+	if (![BodyTemp isEqualToString:@"NULL"]) {
+		MREntitiesConverter *cleaner = [[MREntitiesConverter alloc] init];
+		NSString *body = @" • ";
+		body = [body stringByAppendingString:[BodyTemp stringByReplacingOccurrencesOfString:@"\n" withString:@"\n • "]];
+		detailBody.text = [cleaner convertEntitiesInString:body];
+		[cleaner release];
+	} else {
+		detailBody.text = @" • No Show Notes";
+	}
+	
 	[[NSNotificationCenter defaultCenter] 
 	 addObserver:self 
 	 selector:@selector(moviePreloadDidFinish:) 
@@ -70,8 +82,20 @@
 //* 
 //*******************************************************
 - (IBAction)buttonPressed:(id)sender {
-	NSURL *movieURL = [[NSURL alloc] initWithString: LinkTemp];
-	[self playMovie:movieURL];
+	if ([Stream isEqualToString:@"NO"]) {
+		NSString *alertMessage = @"Streaming shows over cellular network is disabled, enable Wifi to stream";
+		UIAlertView *alert = [[UIAlertView alloc] 
+							  initWithTitle:@"Past Shows Streaming Disabled"
+							  message:alertMessage 
+							  delegate:nil
+							  cancelButtonTitle:@"Continue" 
+							  otherButtonTitles:nil];
+		[alert show];
+		[alert autorelease];
+	} else {
+		NSURL *movieURL = [[NSURL alloc] initWithString: LinkTemp];
+		[self playMovie:movieURL];
+	}
 }
 
 //*******************************************************
@@ -117,13 +141,13 @@
 	
 	[button setBackgroundImage:(UIImage *)normal forState:UIControlStateNormal];
 	[button setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
+	
 }
-
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-	
+	[self.moviePlayer stop];
 	// Release any cached data, images, etc that aren't in use.
 }
 
@@ -132,10 +156,8 @@
 	// e.g. self.myOutlet = nil;
 }
 
-
 - (void)dealloc {
-    [super dealloc];
+	[super dealloc];
 }
-
 
 @end

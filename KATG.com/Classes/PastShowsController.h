@@ -16,7 +16,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import <UIKit/UIKit.h>
-
+#import "Reachability.h"
 
 @interface PastShowsController : UITableViewController <UITableViewDelegate> {
 	IBOutlet UINavigationController	*navigationController;
@@ -25,6 +25,8 @@
 	NSMutableArray					*feedEntries;
 	NSString						*feedAddress;
 	NSArray							*indexPaths;
+	NSUserDefaults					*userDefaults;
+	NetworkStatus					localWiFiConnectionStatus;
 }
 
 @property (nonatomic, retain) IBOutlet UINavigationController	*navigationController;
@@ -33,6 +35,7 @@
 @property (nonatomic, retain) NSMutableArray					*feedEntries;
 @property (nonatomic, retain) NSString							*feedAddress;
 @property (nonatomic, retain) NSArray							*indexPaths;
+@property NetworkStatus localWiFiConnectionStatus;
 
 - (void) pollFeed;
 

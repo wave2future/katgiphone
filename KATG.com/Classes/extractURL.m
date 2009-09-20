@@ -27,15 +27,16 @@
 //* Set up object
 //*******************************************************
 - (id)init {
+	self = [super init];
 	return self;
 }
 
 //*******************************************************
-//* makeURLList:(NSString *)stringWithURLs
+//* newURLList:(NSString *)stringWithURLs
 //* 
 //* Create an array of URL strings
 //*******************************************************
-- (id)makeURLList:(NSString *)stringWithURLs {
+- (id)newURLList:(NSString *)stringWithURLs {
 	NSMutableArray *urlList = [[NSMutableArray alloc] initWithCapacity:12];
 	NSMutableDictionary *urlDict = [NSMutableDictionary dictionary];
 	
@@ -113,6 +114,9 @@
 		if (pathString)     {[urlDictionary setObject:pathString forKey:@"path"];}
 		NSLog(@"urlDictionary: %@", urlDictionary);
 		
+		[location release];
+		[length release];
+		
 		return urlDictionary;
 	} else {
 		return nil;
@@ -120,25 +124,20 @@
 }
 
 //*******************************************************
-//* makeTWTList:(NSString *)stringWithTWTs
+//* newTWTList:(NSString *)stringWithTWTs
 //* 
 //* Extract, using regular expressions,
 //* the first URL that occurs in a string
 //* Results are compiled in an array
 //*******************************************************
 
-- (id)makeTWTList:(NSString *)stringWithTWTs {
+- (id)newTWTList:(NSString *)stringWithTWTs {
 	NSMutableArray *twtList = [[NSMutableArray alloc] initWithCapacity:12];
 	NSMutableDictionary *twtDict = [NSMutableDictionary dictionary];
 	
 	twtDict = [self makeTwitterSearchURL:stringWithTWTs];
 	if (twtDict != nil) {
-		NSMutableDictionary *url = [NSMutableDictionary dictionary];
-		
-		[url setObject:[twtDict objectForKey:@"user"] forKey:@"user"];
-		[url setObject:[twtDict objectForKey:@"url"] forKey:@"url"];
-		
-		[twtList addObject:url];
+		[twtList addObject:[twtDict objectForKey:@"user"]];
 	}
 	
 	int offset = 0;
@@ -147,12 +146,7 @@
 		int length = stringWithTWTs.length - offset;
 		twtDict = [self makeTwitterSearchURL:[stringWithTWTs substringWithRange:NSMakeRange( offset, length ) ]];		
 		if (twtDict != nil) {
-			NSMutableDictionary *url = [NSMutableDictionary dictionary];
-			
-			[url setObject:[twtDict objectForKey:@"user"] forKey:@"user"];
-			[url setObject:[twtDict objectForKey:@"url"] forKey:@"url"];
-			
-			[twtList addObject:url];
+			[twtList addObject:[twtDict objectForKey:@"user"]];
 		}
 	}
 	
@@ -181,15 +175,13 @@
 		NSNumber *location = [[NSNumber alloc] initWithInt:Location];
 		NSNumber *length = [[NSNumber alloc] initWithInt:Length];
 		NSString *twtUser = [searchString stringByMatching:regexString capture:1L];
-		NSString *twtUserSearchUrl = @"http://search.twitter.com/search.json?q=from%3A";
-		twtUserSearchUrl = [[twtUserSearchUrl stringByAppendingString:twtUser] stringByAppendingString:@"&rpp=10"];
 		
 		if (location)         {[urlDictionary setObject:location forKey:@"location"];}
 		if (length)           {[urlDictionary setObject:length forKey:@"length"];}
 		if (twtUser)          {[urlDictionary setObject:twtUser forKey:@"user"];} 
-		if (twtUserSearchUrl) {[urlDictionary setObject:twtUserSearchUrl forKey:@"url"];} 
-
-		NSLog(@"urlDictionary: %@", urlDictionary);
+		
+		[location release];
+		[length release];
 		
 		return urlDictionary;
 	} else {

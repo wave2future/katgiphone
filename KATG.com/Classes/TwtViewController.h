@@ -23,10 +23,10 @@
 	NSMutableArray					*tweets;
 	NSMutableDictionary				*iconDict;
 	
-	NSMutableDictionary *isURL;
-	NSMutableDictionary *urlDict;
+	NSMutableDictionary				*isURL;
+	NSMutableDictionary				*urlDict;
 	
-	NSString *searchString;
+	NSString						*searchString;
 }
 
 @property (nonatomic, retain) UIActivityIndicatorView			*activityIndicator;
