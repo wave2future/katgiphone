@@ -20,15 +20,14 @@
 
 @implementation Show
 
-@synthesize title, publishDate, link, detail;
+@synthesize title, number, guests;
 
 // Creates the object with primary key and title is brought into memory.
-- (id)initWithTitle:(NSString *)theTitle publishDate:(NSString *)thePublishDate link:(NSString *)theLink detail:(NSString *)theDetail {	
+- (id)initWithTitle:(NSString *)theTitle withNumber:(NSString *)theNumber withGuests:(NSString *)theGuests {	
 	if (self = [super init]) {
         title = [[NSString alloc] initWithString:theTitle];
-		publishDate = [[NSString alloc] initWithString:thePublishDate];
-        link = [[NSString alloc] initWithString:theLink];
-		detail = [[NSString alloc] initWithString:theDetail];
+		number = [[NSString alloc] initWithString:theNumber];
+		guests = [[NSString alloc] initWithString:theGuests];
     }
 	
     return self;
@@ -36,9 +35,8 @@
 
 - (void)dealloc {
     [title release];
-	[publishDate release];
-    [link release];
-	[detail release];
+	[number release];
+	[guests release];
     [super dealloc];
 }
 

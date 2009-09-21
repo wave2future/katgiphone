@@ -20,16 +20,14 @@
 
 @interface Show : NSObject {
     NSString *title;
-	NSString *publishDate;
-    NSString *link;
-	NSString *detail;
+	NSString *number;
+	NSString *guests;
 }
 
 @property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSString *publishDate;
-@property (nonatomic, retain) NSString *link;
-@property (nonatomic, retain) NSString *detail;
+@property (nonatomic, retain) NSString *number;
+@property (nonatomic, retain) NSString *guests;
 
-- (id)initWithTitle:(NSString *)theTitle publishDate:(NSString *)thePublishDate link:(NSString *)theLink detail:(NSString *)theDetail;
+- (id)initWithTitle:(NSString *)theTitle withNumber:(NSString *)theNumber withGuests:(NSString *)theGuests;
 
 @end

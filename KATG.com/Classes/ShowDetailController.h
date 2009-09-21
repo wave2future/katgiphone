@@ -18,33 +18,36 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-
 @interface ShowDetailController : UIViewController {
-	IBOutlet UILabel					*detailTitle;			// Label to display event title
-	IBOutlet UILabel					*detailLink;			// Label to display event date
-	UITextView							*detailBody;			// TextView to display event description
-	NSString							*TitleTemp;				// Variable to store title passed from PastShowsController
-	NSString							*LinkTemp;				// Variable to store time passed from PastShowsController
-	NSString							*BodyTemp;				// Variable to store description passed from PastShowsController
-	NSString							*Stream;				// 
 	IBOutlet UIButton					*button;
-	MPMoviePlayerController				*moviePlayer;
 	IBOutlet UIActivityIndicatorView	*activityIndicator;
+	IBOutlet UILabel					*lblTitle;			// Label to display event title
+	IBOutlet UILabel					*lblLink;			// Label to display event date
+	UITextView							*txtNotes;			// TextView to display event description
+	NSString							*showTitle;			// Variable to store title passed from PastShowsController
+	NSString							*showLink;			// Variable to store time passed from PastShowsController
+	NSString							*showNotes;			// Variable to store description passed from PastShowsController
+	NSString							*feedAddress;
+	MPMoviePlayerController				*moviePlayer;
 }
 
-@property (nonatomic, retain) IBOutlet UILabel *detailTitle;
-@property (nonatomic, retain) IBOutlet UILabel *detailLink;
-@property (nonatomic, retain) UITextView *detailBody;
-@property (nonatomic, retain) NSString *TitleTemp;
-@property (nonatomic, retain) NSString *LinkTemp;
-@property (nonatomic, retain) NSString *BodyTemp;
-@property (nonatomic, retain) NSString *Stream;
-@property (nonatomic, retain) IBOutlet UIButton		*button;
-@property (readwrite, retain) MPMoviePlayerController *moviePlayer;
+@property (nonatomic, retain) IBOutlet UIButton *button;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, retain) IBOutlet UILabel *lblTitle;
+@property (nonatomic, retain) IBOutlet UILabel *lblLink;
+@property (nonatomic, retain) UITextView *txtNotes;
+@property (nonatomic, retain) NSString *showTitle;
+@property (nonatomic, retain) NSString *showLink;
+@property (nonatomic, retain) NSString *showNotes;
+@property (nonatomic, retain) NSString *feedAddress;
+@property (readwrite, retain) MPMoviePlayerController *moviePlayer;
 
 - (IBAction)buttonPressed:(id)sender;
 - (void)playMovie:(NSURL *)movieURL;
 - (void)setButtonImage;
+- (void)pollFeed;
+- (void)updateView;
+- (BOOL)Stream;
+- (void)setStream:(BOOL)stream;
 
 @end

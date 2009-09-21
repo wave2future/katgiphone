@@ -17,51 +17,20 @@
 
 #import "ShowDetailController.h"
 #import "MREntitiesConverter.h"
-
+#import "grabRSSFeed.h"
 
 @implementation ShowDetailController
 
-@synthesize detailTitle; // Label to display event title
-@synthesize detailLink;  // Label to display event date
-@synthesize detailBody;  // Label to display event description
-@synthesize TitleTemp;   // Variable to store title passed from SecondViewController
-@synthesize LinkTemp;    // Variable to store time passed from SecondViewController
-@synthesize BodyTemp;    // Variable to store description passed from SecondViewController
-@synthesize Stream;		 // 
-@synthesize button;
-@synthesize moviePlayer;
-@synthesize activityIndicator;
+BOOL Stream = NO;
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+@synthesize button, activityIndicator, lblTitle, lblLink, txtNotes, showTitle, showLink, showNotes, feedAddress, moviePlayer;
+
 - (void)viewDidLoad {
+	showLink = @"";
+	
 	self.navigationItem.title = @"Show Details";
 	
 	self.setButtonImage;
-	
-	CGRect rect = CGRectMake(5, 125, 315, 230);
-	
-	detailBody = [[[UITextView alloc] initWithFrame:rect] autorelease];
-	detailBody.textColor = [UIColor blackColor];
-	detailBody.backgroundColor = [UIColor clearColor]; 
-	
-	detailBody.dataDetectorTypes = UIDataDetectorTypeAll;
-	
-	detailBody.editable = NO;
-	detailBody.font = [UIFont systemFontOfSize:15.0];
-	
-	[self.view addSubview:detailBody];
-	
-	detailTitle.text = TitleTemp;
-	
-	if (![BodyTemp isEqualToString:@"NULL"]) {
-		MREntitiesConverter *cleaner = [[MREntitiesConverter alloc] init];
-		NSString *body = @" • ";
-		body = [body stringByAppendingString:[BodyTemp stringByReplacingOccurrencesOfString:@"\n" withString:@"\n • "]];
-		detailBody.text = [cleaner convertEntitiesInString:body];
-		[cleaner release];
-	} else {
-		detailBody.text = @" • No Show Notes";
-	}
 	
 	[[NSNotificationCenter defaultCenter] 
 	 addObserver:self 
@@ -74,62 +43,9 @@
 	 selector:@selector(moviePlayBackDidFinish:) 
 	 name:MPMoviePlayerPlaybackDidFinishNotification 
 	 object:nil];
-}
-
-//*******************************************************
-//* buttonPressed
-//* 
-//* 
-//*******************************************************
-- (IBAction)buttonPressed:(id)sender {
-	if ([Stream isEqualToString:@"NO"]) {
-		NSString *alertMessage = @"Streaming shows over cellular network is disabled, enable Wifi to stream";
-		UIAlertView *alert = [[UIAlertView alloc] 
-							  initWithTitle:@"Past Shows Streaming Disabled"
-							  message:alertMessage 
-							  delegate:nil
-							  cancelButtonTitle:@"Continue" 
-							  otherButtonTitles:nil];
-		[alert show];
-		[alert autorelease];
-	} else {
-		NSURL *movieURL = [[NSURL alloc] initWithString: LinkTemp];
-		[self playMovie:movieURL];
-	}
-}
-
-//*******************************************************
-//* playMovie
-//* 
-//* 
-//*******************************************************
--(void)playMovie:(NSURL *)movieURL {
-	// Initialize a movie player object with the specified URL
-	MPMoviePlayerController *mp = [[MPMoviePlayerController alloc] initWithContentURL:movieURL];
-	if (mp) {
-		// save the movie player object
-		self.moviePlayer = mp;
-		[mp release];
 		
-		[activityIndicator startAnimating];
-	}
-}
-
-//  Notification called when the movie finished preloading.
-- (void) moviePreloadDidFinish:(NSNotification*)notification
-{
-	
-	NSLog(@"Movie Preload Notification");
-	
-	[activityIndicator stopAnimating];
-	
-	[self.moviePlayer play];
-}
-
-//  Notification called when the movie finished playing.
-- (void) moviePlayBackDidFinish:(NSNotification*)notification
-{
-    [[UIApplication sharedApplication] setStatusBarHidden:NO animated:NO]; 
+	[self pollFeed];
+	[self updateView];
 }
 
 - (void)setButtonImage {
@@ -144,19 +60,132 @@
 	
 }
 
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	[self.moviePlayer stop];
-	// Release any cached data, images, etc that aren't in use.
+#pragma mark Feed
+- (void)pollFeed {
+	// Create the feed string
+	NSString *xPath = @"//Show";
+	// Call the grabRSSFeed function with the above string as a parameter
+	grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:xPath];
+	// Fill feedEntries with the results of parsing the show feed
+	NSArray *feedEntries = [NSArray arrayWithArray:[feed entries]];
+	[feed release];
+	
+	NSDictionary *feedEntry = [feedEntries objectAtIndex:0];
+	
+	showTitle  = [feedEntry objectForKey: @"Title"];
+	
+	showLink = [[feedEntry objectForKey: @"FileUrl"] retain];
+	
+	showNotes = [feedEntry objectForKey: @"Detail"];
+	
+	[self.activityIndicator stopAnimating];
 }
 
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
+- (void)updateView {
+	CGRect rect = CGRectMake(5, 125, 315, 230);
+	
+	txtNotes = [[[UITextView alloc] initWithFrame:rect] autorelease];
+	txtNotes.textColor = [UIColor blackColor];
+	txtNotes.backgroundColor = [UIColor clearColor]; 
+	
+	txtNotes.dataDetectorTypes = UIDataDetectorTypeAll;
+	
+	txtNotes.editable = NO;
+	txtNotes.font = [UIFont systemFontOfSize:15.0];
+	
+	[self.view addSubview:txtNotes];
+	
+	lblTitle.text = showTitle;
+	
+	if (![showNotes isEqualToString:@"NULL"]) {
+		MREntitiesConverter *cleaner = [[MREntitiesConverter alloc] init];
+		NSString *body = @" • ";
+		body = [body stringByAppendingString:[showNotes stringByReplacingOccurrencesOfString:@"\n" withString:@"\n • "]];
+		txtNotes.text = [cleaner convertEntitiesInString:body];
+		[cleaner release];
+	} else {
+		txtNotes.text = @" • No Show Notes";
+	}
+}
+
+//*******************************************************
+//* buttonPressed
+//* 
+//* 
+//*******************************************************
+- (IBAction)buttonPressed:(id)sender {
+	if (Stream) {
+		NSURL *movieURL = [[NSURL alloc] initWithString:[self showLink]];
+		[self playMovie:(NSURL *)movieURL];
+	} else {
+		NSString *alertMessage = @"Streaming shows over cellular network is disabled, enable Wifi to stream";
+		UIAlertView *alert = [[UIAlertView alloc] 
+							  initWithTitle:@"Past Shows Streaming Disabled"
+							  message:alertMessage 
+							  delegate:nil
+							  cancelButtonTitle:@"Continue" 
+							  otherButtonTitles:nil];
+		[alert show];
+		[alert autorelease];
+	}
+}
+
+- (BOOL)Stream {
+	return Stream;
+}
+
+- (void)setStream:(BOOL)stream {
+	Stream = stream;
+}
+
+//*******************************************************
+//* playMovie
+//* 
+//* 
+//*******************************************************
+-(void)playMovie:(NSURL *)movieURL {
+	// Initialize a movie player object with the specified URL
+	MPMoviePlayerController *mp = [[MPMoviePlayerController alloc] initWithContentURL:movieURL];
+	if (mp) {
+		// save the movie player object
+		self.moviePlayer = mp;
+		[mp release];
+		[activityIndicator startAnimating];
+	}
+}
+
+//  Notification called when the movie finished preloading.
+- (void) moviePreloadDidFinish:(NSNotification*)notification
+{
+	//NSLog(@"Movie Preload Notification");
+	
+	[activityIndicator stopAnimating];
+	
+	[self.moviePlayer play];
+}
+
+//  Notification called when the movie finished playing.
+- (void) moviePlayBackDidFinish:(NSNotification*)notification
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:NO animated:NO]; 
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+	[self.moviePlayer stop];
 }
 
 - (void)dealloc {
+	[showLink release];
+	/*[button release];
+	[activityIndicator release];
+	[lblTitle release];
+	[lblLink release];
+	[txtNotes release];
+	[showTitle release]; 
+	[showLink release];
+	[showNotes release];
+	[moviePlayer release];*/
 	[super dealloc];
 }
 

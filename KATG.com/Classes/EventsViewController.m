@@ -40,7 +40,7 @@
 //*
 //*******************************************************
 - (void)viewDidLoad {
-	NSLog(@"Events View Did Load");
+	//NSLog(@"Events View Did Load");
     [super viewDidLoad];
 	
 	self.navigationItem.title = @"Events";
@@ -49,6 +49,8 @@
 	NSString *feedFilePath = [documentsPath stringByAppendingPathComponent: @"feed.plist"];
 	
 	NSMutableArray *feedPack = [[NSMutableArray alloc] initWithCapacity:2];
+	
+	feedEntries = [[NSMutableArray alloc] init];
 	
 	NSFileManager *fm = [NSFileManager defaultManager];
 	if ([fm fileExistsAtPath: feedFilePath]) {
@@ -82,7 +84,13 @@
 	list = [[NSMutableArray alloc] init];
 	
 	[self.activityIndicator startAnimating];
-	[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: nil ];
+	[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: feedEntries ];
+}
+
+- (void)autoPool {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	[self pollFeed];
+	[pool release];
 }
 
 - (void) pollFeed {
@@ -185,12 +193,6 @@
 	
 	[self.tableView reloadData];
 }
-	
-- (void)autoPool {
-	NSAutoreleasePool *pool = [ [ NSAutoreleasePool alloc ] init ];
-	[self pollFeed];
-	[ pool release ];
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	// Return YES for supported orientations
@@ -213,111 +215,110 @@
 	return [list count];
 }
 
-	//*******************************************************
-	//* tableView:cellForRowAtIndexPath
-	//*
-	//* Customize the appearance of table view cells.
-	//* Assign icons to event types
-	//*
-	//*******************************************************
-	- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-		static NSString *CellIdentifier = @"CustomCell";
-		
-		CustomCell *cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-		if (cell == nil) {
-			cell = [[[CustomCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-		}
-		
-		// Set up the cell...
-		cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
-		cell.lblPublish.text = [[list objectAtIndex:indexPath.row] publishTime];
-		cell.lblPublishDate.text = [[list objectAtIndex:indexPath.row] publishDate];
-		
-		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.776 green:(CGFloat).875 blue:(CGFloat)0.776 alpha:(CGFloat)1.0];
-		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.627 alpha:(CGFloat)1.0];
-		
-		if (indexPath.row%2 == 0) {
-			
-			cell.lblTitle.backgroundColor = color1;
-			cell.lblPublish.backgroundColor = color1;
-			cell.lblPublishDate.backgroundColor = color1;
-			//cell.backgroundView.backgroundColor = color1;
-			cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground80.png"]];
-		} else {
-			cell.lblTitle.backgroundColor = color2;
-			cell.lblPublish.backgroundColor = color2;
-			cell.lblPublishDate.backgroundColor = color2;
-			//cell.backgroundView.backgroundColor = color2;
-			cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundDark80.png"]];
-		}
-		
-		cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundSelected80.png"]];
-		
-		 /*
-		cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-		cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
-		*/
-		
-		NSString *type = [[list objectAtIndex:indexPath.row] type];
-		if ( [type isEqualToString:@"show"] ) {
-			cell.imgSquare.image = [UIImage imageNamed:@"LiveShowIconTrans.png"];
-		} else if ( [type isEqualToString:@"event"] ) {
-			cell.imgSquare.image = [UIImage imageNamed:@"EventIconTrans.png"];
-		}
-		
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		
-		return cell;
+//*******************************************************
+//* tableView:cellForRowAtIndexPath
+//*
+//* Customize the appearance of table view cells.
+//* Assign icons to event types
+//*
+//*******************************************************
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	static NSString *CellIdentifier = @"CustomCell";
+	
+	CustomCell *cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[CustomCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
 	}
 	
-	//*******************************************************
-	//* tableView:didSelectRowAtIndexPath
-	//*
-	//*  Establishes a view controller using the
-	//*  DetailViewController and passes it variable.
-	//*  When a row is selected the DetailView.xib is
-	//*  pushed.
-	//*
-	//*******************************************************
-	- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-		DetailViewController *viewController = [[DetailViewController alloc] initWithNibName:@"DetailView" bundle:[NSBundle mainBundle]];
-		viewController.TitleTemp = [[list objectAtIndex:indexPath.row] title];
-		viewController.TimeTemp = [[list objectAtIndex:indexPath.row] publishTime];
-		viewController.DateTemp = [[list objectAtIndex:indexPath.row] publishDate];
-		viewController.BodyTemp = [[list objectAtIndex:indexPath.row] detail];
-		[[self navigationController] pushViewController:viewController animated:YES];
-		[viewController release];
-	}
+	// Set up the cell...
+	cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
+	cell.lblPublish.text = [[list objectAtIndex:indexPath.row] publishTime];
+	cell.lblPublishDate.text = [[list objectAtIndex:indexPath.row] publishDate];
 	
-	- (void)viewDidDisappear:(BOOL)animated {
-		NSLog(@"Events Table Did Dissapear");
-	}
+	UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.776 green:(CGFloat).875 blue:(CGFloat)0.776 alpha:(CGFloat)1.0];
+	UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.627 alpha:(CGFloat)1.0];
 	
-	- (void)viewDidUnload {
-		// Release anything that can be recreated in viewDidLoad or on demand.
-		// e.g. self.myOutlet = nil;
-		NSLog(@"Events Table Did Unload");
-	}
-	
-	- (void)didReceiveMemoryWarning {
-		[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-		// Release anything that's not essential, such as cached data
-		[list removeAllObjects];
+	if (indexPath.row%2 == 0) {
 		
-		Event *Ev = [[Event alloc] initWithTitle:@"Low Memory" publishTime:@"12:00 AM" publishDate:@"WED 04/15" type:@"The Show" detail:@"Events Page released to Conserve Memory."];
-		[list addObject:Ev];
-		[Ev release];
-		[self.tableView reloadData];
-		
-		NSLog(@"Events Table Did Receive Memory Warning");
+		cell.lblTitle.backgroundColor = color1;
+		cell.lblPublish.backgroundColor = color1;
+		cell.lblPublishDate.backgroundColor = color1;
+		//cell.backgroundView.backgroundColor = color1;
+		cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground80.png"]];
+	} else {
+		cell.lblTitle.backgroundColor = color2;
+		cell.lblPublish.backgroundColor = color2;
+		cell.lblPublishDate.backgroundColor = color2;
+		//cell.backgroundView.backgroundColor = color2;
+		cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundDark80.png"]];
 	}
 	
-	- (void)dealloc {
-		[navigationController release];
-		[list release];
-		[feedEntries release];
-		[super dealloc];
+	cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundSelected80.png"]];
+	
+	 /*
+	cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
+	cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
+	*/
+	
+	NSString *type = [[list objectAtIndex:indexPath.row] type];
+	if ( [type isEqualToString:@"show"] ) {
+		cell.imgSquare.image = [UIImage imageNamed:@"LiveShowIconTrans.png"];
+	} else if ( [type isEqualToString:@"event"] ) {
+		cell.imgSquare.image = [UIImage imageNamed:@"EventIconTrans.png"];
 	}
 	
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
+	return cell;
+}
+
+//*******************************************************
+//* tableView:didSelectRowAtIndexPath
+//*
+//*  Establishes a view controller using the
+//*  DetailViewController and passes it variable.
+//*  When a row is selected the DetailView.xib is
+//*  pushed.
+//*
+//*******************************************************
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	DetailViewController *viewController = [[DetailViewController alloc] initWithNibName:@"DetailView" bundle:[NSBundle mainBundle]];
+	viewController.TitleTemp = [[list objectAtIndex:indexPath.row] title];
+	viewController.TimeTemp = [[list objectAtIndex:indexPath.row] publishTime];
+	viewController.DateTemp = [[list objectAtIndex:indexPath.row] publishDate];
+	viewController.BodyTemp = [[list objectAtIndex:indexPath.row] detail];
+	[[self navigationController] pushViewController:viewController animated:YES];
+	[viewController release];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+	NSLog(@"Events Table Did Dissapear");
+}
+
+- (void)viewDidUnload {
+	// Release anything that can be recreated in viewDidLoad or on demand.
+	// e.g. self.myOutlet = nil;
+	NSLog(@"Events Table Did Unload");
+}
+
+- (void)didReceiveMemoryWarning {
+	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
+	// Release anything that's not essential, such as cached data
+	[list removeAllObjects];
+	
+	Event *Ev = [[Event alloc] initWithTitle:@"Low Memory" publishTime:@"12:00 AM" publishDate:@"WED 04/15" type:@"The Show" detail:@"Events Page released to Conserve Memory."];
+	[list addObject:Ev];
+	[Ev release];
+	[self.tableView reloadData];
+	
+	NSLog(@"Events Table Did Receive Memory Warning");
+}
+
+- (void)dealloc {
+	[navigationController release];
+	[list release];
+	[feedEntries release];
+	[super dealloc];
+}
+
 @end
