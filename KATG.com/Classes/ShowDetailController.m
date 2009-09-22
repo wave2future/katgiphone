@@ -22,8 +22,11 @@
 @implementation ShowDetailController
 
 BOOL Stream = NO;
+int imageNumber = 0;
 
-@synthesize button, activityIndicator, lblTitle, lblLink, txtNotes, showTitle, showLink, showNotes, feedAddress, moviePlayer;
+NSMutableArray *imageArray;
+
+@synthesize button, segmentedControl, imageView, imageButton, activityIndicator, imageActivityIndicator, lblTitle, lblImage, txtNotes, showTitle, showLink, showNotes, feedAddress, moviePlayer;
 
 - (void)viewDidLoad {
 	showLink = @"";
@@ -43,7 +46,9 @@ BOOL Stream = NO;
 	 selector:@selector(moviePlayBackDidFinish:) 
 	 name:MPMoviePlayerPlaybackDidFinishNotification 
 	 object:nil];
-		
+	
+	imageArray = [[NSMutableArray alloc] initWithCapacity:10];
+					
 	[self pollFeed];
 	[self updateView];
 }
@@ -69,14 +74,17 @@ BOOL Stream = NO;
 	// Fill feedEntries with the results of parsing the show feed
 	NSArray *feedEntries = [NSArray arrayWithArray:[feed entries]];
 	[feed release];
-	
-	NSDictionary *feedEntry = [feedEntries objectAtIndex:0];
-	
-	showTitle  = [feedEntry objectForKey: @"Title"];
-	
-	showLink = [[feedEntry objectForKey: @"FileUrl"] retain];
-	
-	showNotes = [feedEntry objectForKey: @"Detail"];
+		
+	if (feedEntries.count != 0) {
+		NSDictionary *feedEntry = [feedEntries objectAtIndex:0];
+		showTitle = [feedEntry objectForKey: @"Title"];
+		showLink = [[feedEntry objectForKey: @"FileUrl"] retain];
+		showNotes = [feedEntry objectForKey: @"Detail"];
+	} else {
+		showTitle = @"Unable To Download Show";
+		showLink = @"NULL";
+		showNotes = @"NULL";
+	}
 	
 	[self.activityIndicator stopAnimating];
 }
@@ -106,6 +114,11 @@ BOOL Stream = NO;
 	} else {
 		txtNotes.text = @" • No Show Notes";
 	}
+	
+	if ([showLink isEqualToString:@"NULL"]) {
+		[button setHidden:YES];
+		[button setEnabled:NO];
+	}
 }
 
 //*******************************************************
@@ -127,6 +140,65 @@ BOOL Stream = NO;
 							  otherButtonTitles:nil];
 		[alert show];
 		[alert autorelease];
+	}
+}
+
+- (IBAction)segmentedController:(id)sender {
+	if ([segmentedControl selectedSegmentIndex] == 0) {
+		[imageView setHidden:YES];
+		[txtNotes setHidden:NO];
+		[imageButton setEnabled:NO];
+		[imageButton setHidden:YES];
+	} else if ([segmentedControl selectedSegmentIndex] == 1) {
+		[imageActivityIndicator startAnimating];
+		[NSThread detachNewThreadSelector:@selector(autoPool) toTarget:self withObject:nil];
+		[imageView setHidden:NO];
+		[txtNotes setHidden:YES];
+	}
+}
+
+#pragma mark Feed
+- (void)autoPool {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    [self pollImageFeed];
+	[pool release];
+}
+
+- (void)pollImageFeed {
+	// Create the feed string
+	NSString *imageFeedAddress = @"http://getitdownonpaper.com/katg/Pics.xml";
+	NSString *xPath = @"//Picture";
+	// Call the grabRSSFeed function with the above string as a parameter
+	grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:imageFeedAddress XPath:xPath];
+	// Fill feedEntries with the results of parsing the show feed
+	NSArray *feedEntries = [NSArray arrayWithArray:[feed entries]];
+	[feed release];
+	
+	for (NSDictionary *entry in feedEntries) {
+		NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[entry objectForKey:@"URL"]]];
+		UIImage *im = [UIImage imageWithData:imageData];
+		NSDictionary *imDic = [NSDictionary dictionaryWithObjectsAndKeys:im, @"image", 
+										[entry objectForKey:@"Description"], @"description", nil];
+		[imageArray addObject:imDic];
+	}
+	[imageActivityIndicator stopAnimating];
+	[imageButton setEnabled:YES];
+	[imageButton setHidden:NO];
+	if (imageArray.count > 0) {
+		[imageView setImage:[[imageArray objectAtIndex:0] objectForKey:@"image"]];
+		[lblImage setText:[[imageArray objectAtIndex:0] objectForKey:@"description"]];
+	}
+}
+
+- (IBAction)imageButton:(id)sender {
+	if (imageArray.count > 0) {
+		if (imageNumber != [imageArray count] - 1) {
+			imageNumber += 1;
+		} else {
+			imageNumber = 0;
+		}
+		[imageView setImage:[[imageArray objectAtIndex:imageNumber] objectForKey:@"image"]];
+		[lblImage setText:[[imageArray objectAtIndex:imageNumber] objectForKey:@"description"]];
 	}
 }
 
@@ -177,15 +249,7 @@ BOOL Stream = NO;
 
 - (void)dealloc {
 	[showLink release];
-	/*[button release];
-	[activityIndicator release];
-	[lblTitle release];
-	[lblLink release];
-	[txtNotes release];
-	[showTitle release]; 
-	[showLink release];
-	[showNotes release];
-	[moviePlayer release];*/
+	[imageArray release];
 	[super dealloc];
 }
 

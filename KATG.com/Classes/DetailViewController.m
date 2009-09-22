@@ -61,19 +61,17 @@
 	detailBody.text = BodyTemp;
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+/*- (void)viewDidDisappear:(BOOL)animated {
 	NSLog(@"Event Details View Did Dissapear");
 }
 
 - (void)viewDidUnload {
-	// Release anything that can be recreated in viewDidLoad or on demand.
-	// e.g. self.myOutlet = nil;
 	NSLog(@"Event Details View Did Unload");
-}
+}*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-    NSLog(@"Event Details View Did Receive Memory Warning");
+    //NSLog(@"Event Details View Did Receive Memory Warning");
 }
 
 

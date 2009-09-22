@@ -490,7 +490,7 @@ static BOOL otherTweets;
 }
 
 - (void)createNotificationForTermination { 
-	NSLog(@"createNotificationTwo"); 
+	//NSLog(@"createNotificationTwo"); 
 	[[NSNotificationCenter defaultCenter] 
 	 addObserver:self 
 	 selector:@selector(handleTerminationNotification:) 
@@ -499,7 +499,7 @@ static BOOL otherTweets;
 }
 
 - (void)handleTerminationNotification:(NSNotification *)pNotification { 
-	NSLog(@"Tweet View received message = %@",(NSString*)[pNotification object]);
+	//NSLog(@"Tweet View received message = %@",(NSString*)[pNotification object]);
 	[self saveData];
 }
 
@@ -513,11 +513,11 @@ static BOOL otherTweets;
 	[iconDict writeToFile: iconsFilePath atomically: YES];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+/*- (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear: animated];
 	NSLog(@"Tweet View Did Dissapear");
 	//[self saveData];
-}
+}*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -112,7 +112,7 @@
 		if (hostString)     {[urlDictionary setObject:hostString forKey:@"host"];}
 		//if (portString)     {[urlDictionary setObject:portString forKey:@"port"];}
 		if (pathString)     {[urlDictionary setObject:pathString forKey:@"path"];}
-		NSLog(@"urlDictionary: %@", urlDictionary);
+		//NSLog(@"urlDictionary: %@", urlDictionary);
 		
 		[location release];
 		[length release];

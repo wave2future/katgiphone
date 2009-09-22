@@ -76,7 +76,7 @@
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-	NSLog(@"Web View Did Dissapear");
+	//NSLog(@"Web View Did Dissapear");
 	[navigationController popToRootViewControllerAnimated:NO];
 }
 

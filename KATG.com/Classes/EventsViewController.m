@@ -291,15 +291,13 @@
 	[viewController release];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+/*- (void)viewDidDisappear:(BOOL)animated {
 	NSLog(@"Events Table Did Dissapear");
 }
 
 - (void)viewDidUnload {
-	// Release anything that can be recreated in viewDidLoad or on demand.
-	// e.g. self.myOutlet = nil;
 	NSLog(@"Events Table Did Unload");
-}
+}*/
 
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
@@ -311,7 +309,7 @@
 	[Ev release];
 	[self.tableView reloadData];
 	
-	NSLog(@"Events Table Did Receive Memory Warning");
+	//NSLog(@"Events Table Did Receive Memory Warning");
 }
 
 - (void)dealloc {

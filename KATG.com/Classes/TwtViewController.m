@@ -105,6 +105,7 @@ static BOOL otherTweets;
 	SBJSON *jsonParser = [[SBJSON alloc] init];
 	NSError *error;
 	NSArray *queryDict = [jsonParser objectWithString: queryResult error: &error];
+	[queryResult release];
 	
 	//*******************************************************
 	//* Process the results 1 tweet at a time

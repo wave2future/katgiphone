@@ -69,7 +69,7 @@ static BOOL ShouldStream;
 //* or relaunched after a low memory event
 //*******************************************************
 - (void)viewDidLoad {
-	NSLog(@"On Air View Did Load");
+	//NSLog(@"On Air View Did Load");
 	
 	// Auto start audiostreamer if it was playing when the app last exited
 	userDefaults = [NSUserDefaults standardUserDefaults];
@@ -112,7 +112,7 @@ static BOOL ShouldStream;
 		[alert autorelease];
 		return;
 	} else if (self.remoteHostStatus == ReachableViaCarrierDataNetwork) {
-		NSLog(@"ReachableVIaCarrierDataNetwork");
+		//NSLog(@"ReachableVIaCarrierDataNetwork");
 		if ([userDefaults boolForKey:@"StreamLSOverCell"]) {
 			ShouldStream = YES;
 		} else {
@@ -121,7 +121,7 @@ static BOOL ShouldStream;
 		[self setDefaults];
 		[self finishInit];
 	} else if (self.remoteHostStatus == ReachableViaWiFiNetwork) {
-		NSLog(@"ReachableViaWiFiNetwork");
+		//NSLog(@"ReachableViaWiFiNetwork");
 		ShouldStream = YES;
 		// Auto start audiostreamer if it was playing when the app last exited
 		[self setDefaults];
@@ -339,9 +339,9 @@ static BOOL ShouldStream;
 //* 
 //*******************************************************
 - (void)setDefaults {
-	NSLog(@"Defaults Set");
+	//NSLog(@"Defaults Set");
 	if ([userDefaults boolForKey:@"StartStream"]) {
-		NSLog(@"Launch Stream");
+		//NSLog(@"Launch Stream");
 		[userDefaults setBool:NO forKey:@"StartStream"];
 		[self audioButtonPressed:self];
 	}
@@ -776,7 +776,7 @@ static BOOL ShouldStream;
 	return (interfaceOrientation == UIInterfaceOrientationPortrait);
 } // Sets up autorotate support (in this case none)
 
-//*******************************************************
+/*//*******************************************************
 //* 
 //* 
 //* 
@@ -792,10 +792,10 @@ static BOOL ShouldStream;
 //*******************************************************
 - (void)viewDidUnload {
 	NSLog(@"On Air View Did Unload");
-}
+}*/
 
 - (void)createNotificationForTermination { 
-	NSLog(@"createNotificationTwo"); 
+	//NSLog(@"createNotificationTwo"); 
 	[[NSNotificationCenter defaultCenter] 
 	 addObserver:self 
 	 selector:@selector(handleTerminationNotification:) 
@@ -804,7 +804,7 @@ static BOOL ShouldStream;
 }
 
 -(void)handleTerminationNotification:(NSNotification *)pNotification { 
-	NSLog(@"On Air View received message = %@",(NSString*)[pNotification object]);
+	//NSLog(@"On Air View received message = %@",(NSString*)[pNotification object]);
 	if (streamer) {
 		[userDefaults setBool:YES forKey:@"StartStream"];
 	}
@@ -822,7 +822,7 @@ static BOOL ShouldStream;
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
 	// Release anything that's not essential, such as cached data
-	NSLog(@"Did Receive Memory Warning");
+	//NSLog(@"Did Receive Memory Warning");
 	if (streamer) {
 		[audioButton.layer removeAllAnimations];
 		[streamer stop];

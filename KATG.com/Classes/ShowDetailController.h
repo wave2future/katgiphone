@@ -20,9 +20,13 @@
 
 @interface ShowDetailController : UIViewController {
 	IBOutlet UIButton					*button;
+	IBOutlet UISegmentedControl			*segmentedControl;
+	IBOutlet UIImageView				*imageView;
+	IBOutlet UIButton					*imageButton;
 	IBOutlet UIActivityIndicatorView	*activityIndicator;
+	IBOutlet UIActivityIndicatorView	*imageActivityIndicator;
 	IBOutlet UILabel					*lblTitle;			// Label to display event title
-	IBOutlet UILabel					*lblLink;			// Label to display event date
+	IBOutlet UILabel					*lblImage;			// Label to display event date
 	UITextView							*txtNotes;			// TextView to display event description
 	NSString							*showTitle;			// Variable to store title passed from PastShowsController
 	NSString							*showLink;			// Variable to store time passed from PastShowsController
@@ -32,9 +36,13 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIButton *button;
+@property (nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
+@property (nonatomic, retain) IBOutlet UIImageView *imageView;
+@property (nonatomic, retain) IBOutlet UIButton *imageButton;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *imageActivityIndicator;
 @property (nonatomic, retain) IBOutlet UILabel *lblTitle;
-@property (nonatomic, retain) IBOutlet UILabel *lblLink;
+@property (nonatomic, retain) IBOutlet UILabel *lblImage;
 @property (nonatomic, retain) UITextView *txtNotes;
 @property (nonatomic, retain) NSString *showTitle;
 @property (nonatomic, retain) NSString *showLink;
@@ -46,8 +54,11 @@
 - (void)playMovie:(NSURL *)movieURL;
 - (void)setButtonImage;
 - (void)pollFeed;
+- (void)pollImageFeed;
 - (void)updateView;
 - (BOOL)Stream;
 - (void)setStream:(BOOL)stream;
+- (IBAction)segmentedController:(id)sender;
+- (IBAction)imageButton:(id)sender;
 
 @end

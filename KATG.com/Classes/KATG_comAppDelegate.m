@@ -63,13 +63,13 @@
 
 #pragma mark Push Notification
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
-	NSLog(@"deviceToken: %@", devToken);
+	//NSLog(@"deviceToken: %@", devToken);
 	NSString *token = [[NSString alloc] initWithFormat: @"%@", devToken];
 	[self sendProviderDeviceToken:token];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {	
-    NSLog(@"Error in registration. Error: %@", error);
+    //NSLog(@"Error in registration. Error: %@", error);
 }
 
 - (void)sendProviderDeviceToken:(NSString *)token {		

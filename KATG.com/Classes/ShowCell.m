@@ -49,13 +49,13 @@
 	
 	rect.origin.x = self.contentView.bounds.size.width - 240;
     rect.origin.y = 23;
-    rect.size.width = self.contentView.bounds.size.width - 120;
+    rect.size.width = self.contentView.bounds.size.width - 80;
 	rect.size.height = 14;
     lblTitle.frame = rect;
 	
 	rect.origin.x = self.contentView.bounds.size.width - 290;
     rect.origin.y = 37;
-    rect.size.width = self.contentView.bounds.size.width - 100;
+    rect.size.width = self.contentView.bounds.size.width - 30;
 	rect.size.height = 14;
     lblGuests.frame = rect;
 }

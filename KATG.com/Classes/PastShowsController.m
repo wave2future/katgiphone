@@ -37,6 +37,7 @@ static BOOL ShouldStream;
 	self.navigationItem.title = @"Past Shows";
 	// Set individual cell height
 	self.tableView.rowHeight = ROW_HEIGHT;
+	self.searchDisplayController.searchResultsTableView.rowHeight = ROW_HEIGHT;
 	// Create a 'right hand button' that is a activity Indicator
 	CGRect frame = CGRectMake(0.0, 0.0, 25.0, 25.0);
 	self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:frame];
@@ -109,7 +110,7 @@ static BOOL ShouldStream;
 		NSString *showTitle  = [feedEntry objectForKey: @"T"];
 		NSString *showGuests = [feedEntry objectForKey: @"G"];
 		
-		NSString *show = [NSString stringWithFormat:@"%@ %@", showNumber, showTitle];
+		NSString *show = [NSString stringWithFormat:@"%@ - %@", showNumber, showTitle];
 		
 		Show *Sh = [[Show alloc] initWithTitle:show withNumber:showNumber withGuests:showGuests];
 		[list addObject:Sh];
@@ -135,80 +136,117 @@ static BOOL ShouldStream;
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [list count];
+	if (tableView == self.searchDisplayController.searchResultsTableView)
+	{
+        return [filteredList count];
+    }
+	else
+	{
+        return [list count];
+    }
 }
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (![[[list objectAtIndex:indexPath.row] title] isEqualToString:@"Load More Episodes"]) {
-		static NSString *CellIdentifier = @"ShowCell";
-		
-		ShowCell *cell = (ShowCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-		if (cell == nil) {
-			cell = [[[ShowCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-		}
-		
-		// Set up the cell...
-		cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
-		cell.lblGuests.text = [[list objectAtIndex:indexPath.row] guests];
-		
-		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.776 green:(CGFloat).875 blue:(CGFloat)0.776 alpha:(CGFloat)1.0];
-		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.627 alpha:(CGFloat)1.0];
-		
-		if (indexPath.row%2 == 0) {
-			cell.lblTitle.backgroundColor = color1;
-			cell.lblGuests.backgroundColor = color1;
-			cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground60.png"]];
-		} else {
-			cell.lblTitle.backgroundColor = color2;
-			cell.lblGuests.backgroundColor = color2;
-			cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundDark60.png"]];
-		}
-		
-		cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundSelected60.png"]];
-		
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		
-		return cell;
-	} else {
-		static NSString *CellIdentifier = @"ShowCell";
-		
-		ShowCell *cell = (ShowCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-		if (cell == nil) {
-			cell = [[[ShowCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-		}
-		
-		// Set up the cell...
-		cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
-		
-		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.776 green:(CGFloat).875 blue:(CGFloat)0.776 alpha:(CGFloat)1.0];
-		UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0];
-		
-		if (indexPath.row%2 == 0) {
-			cell.lblTitle.backgroundColor = color1;
-			cell.lblGuests.backgroundColor = color1;
-			cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground60.png"]];
-		} else {
-			cell.lblTitle.backgroundColor = color2;
-			cell.lblGuests.backgroundColor = color2;
-			cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundDark60.png"]];
-		}
-		
-		cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundSelected60.png"]];
-		
-		return cell;
+	static NSString *CellIdentifier = @"ShowCell";
+	
+	ShowCell *cell = (ShowCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[ShowCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
 	}
+	
+	// Set up the cell...
+	if (tableView == self.searchDisplayController.searchResultsTableView)
+	{
+		cell.lblTitle.text = [[filteredList objectAtIndex:indexPath.row] title];
+		cell.lblGuests.text = [[filteredList objectAtIndex:indexPath.row] guests];
+	}
+	else
+	{
+        cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
+		cell.lblGuests.text = [[list objectAtIndex:indexPath.row] guests];
+    }
+	
+	UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.776 green:(CGFloat).875 blue:(CGFloat)0.776 alpha:(CGFloat)1.0];
+	UIColor *color2 = [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.627 alpha:(CGFloat)1.0];
+	
+	if (indexPath.row%2 == 0) {
+		cell.lblTitle.backgroundColor = color1;
+		cell.lblGuests.backgroundColor = color1;
+		cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground60.png"]];
+	} else {
+		cell.lblTitle.backgroundColor = color2;
+		cell.lblGuests.backgroundColor = color2;
+		cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundDark60.png"]];
+	}
+	
+	cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundSelected60.png"]];
+	
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	
+	return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	ShowDetailController *viewController = [[ShowDetailController alloc] initWithNibName:@"ShowView" bundle:[NSBundle mainBundle]];
-	viewController.feedAddress = [NSString stringWithFormat:@"http://app.keithandthegirl.com/Feed/Show/Default.ashx?Number=%@", [[list objectAtIndex:indexPath.row] number]];
+	if (tableView == self.searchDisplayController.searchResultsTableView)
+	{
+		viewController.feedAddress = [NSString stringWithFormat:@"http://app.keithandthegirl.com/Feed/Show/Default.ashx?Number=%@", [[filteredList objectAtIndex:indexPath.row] number]];
+	}
+	else
+	{
+		viewController.feedAddress = [NSString stringWithFormat:@"http://app.keithandthegirl.com/Feed/Show/Default.ashx?Number=%@", [[list objectAtIndex:indexPath.row] number]];
+    }
 	if (ShouldStream) {
 		[viewController setStream:YES];
 	}
 	[[self navigationController] pushViewController:viewController animated:YES];
 	[viewController release];
 }
+
+- (void)filterContentForSearchText:(NSString*)searchText
+{
+	/*
+	 Update the filtered array based on the search text and scope.
+	 */
+	
+	[self.filteredList removeAllObjects]; // First clear the filtered array.
+	
+	/*
+	 Search the main list for products whose type matches the scope (if selected) and whose name matches searchText; add items that match to the filtered array.
+	 */
+	for (Show *sh in list)
+	{
+		NSRange result1 = [sh.title rangeOfString:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch)];
+		NSRange result2 = [sh.guests rangeOfString:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch)];
+
+		if ((result1.location != NSNotFound && result1.length != 0) || (result2.location != NSNotFound && result2.length != 0)) {
+			[self.filteredList addObject:sh];
+		}
+	}
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+	self.searchDisplayController.searchResultsTableView.rowHeight = ROW_HEIGHT;
+	
+    [self filterContentForSearchText:searchString];
+    
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
+{
+	self.searchDisplayController.searchResultsTableView.rowHeight = ROW_HEIGHT;
+	
+    [self filterContentForSearchText:[self.searchDisplayController.searchBar text]];
+    
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
 
 - (void)dealloc {
 	[list release];

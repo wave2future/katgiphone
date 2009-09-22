@@ -36,7 +36,7 @@
 
 - (NSString*)convertEntitiesInString:(NSString*)s {
     if(s == nil) {
-        NSLog(@"ERROR : Parameter string is nil");
+        //NSLog(@"ERROR : Parameter string is nil");
     }
     NSString *xmlStr = [NSString stringWithFormat:@"<d>%@</d>", s];
     NSData *data = [xmlStr dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
