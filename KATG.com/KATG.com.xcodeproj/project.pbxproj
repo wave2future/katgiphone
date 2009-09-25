@@ -70,7 +70,7 @@
 		53A476890FE2309F00A2E3C5 /* postCellBackground60.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A476860FE2309F00A2E3C5 /* postCellBackground60.png */; };
 		53A4768A0FE2309F00A2E3C5 /* postCellBackgroundDark60.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A476870FE2309F00A2E3C5 /* postCellBackgroundDark60.png */; };
 		53A4768B0FE2309F00A2E3C5 /* postCellBackgroundSelected60.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A476880FE2309F00A2E3C5 /* postCellBackgroundSelected60.png */; };
-		53A4776C0FE2F42500A2E3C5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A4776B0FE2F42500A2E3C5 /* Default.png */; };
+		53A4776C0FE2F42500A2E3C5 /* DefaultOld.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A4776B0FE2F42500A2E3C5 /* DefaultOld.png */; };
 		53A4776E0FE2F47200A2E3C5 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 53A4776D0FE2F47200A2E3C5 /* iTunesArtwork */; };
 		53A477910FE2F98500A2E3C5 /* postCellBackground30.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A477900FE2F98500A2E3C5 /* postCellBackground30.png */; };
 		53A478020FE304C900A2E3C5 /* TweetIconSub.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A478010FE304C900A2E3C5 /* TweetIconSub.png */; };
@@ -100,6 +100,8 @@
 		53FF0EF40FFDC17500353C64 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 53FF0EF30FFDC17500353C64 /* Settings.bundle */; };
 		53FF0F1F0FFDC92400353C64 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FF0F1E0FFDC92400353C64 /* Reachability.m */; };
 		8B9CF9A4106716F300EA7A0C /* ShowTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B9CF9A3106716F300EA7A0C /* ShowTable.xib */; };
+		8BAD95D4106C49FB000DE116 /* BG1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BAD95D3106C49FB000DE116 /* BG1.png */; };
+		8BAD95D9106C4AA4000DE116 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BAD95D8106C4AA4000DE116 /* Default.png */; };
 		8BBA1565106432080004217F /* extractURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA1560106432080004217F /* extractURL.m */; };
 		8BBA1566106432080004217F /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA1562106432080004217F /* TableViewController.m */; };
 		8BBA1567106432080004217F /* TwtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA1564106432080004217F /* TwtViewController.m */; };
@@ -193,7 +195,7 @@
 		53A476860FE2309F00A2E3C5 /* postCellBackground60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postCellBackground60.png; sourceTree = "<group>"; };
 		53A476870FE2309F00A2E3C5 /* postCellBackgroundDark60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postCellBackgroundDark60.png; sourceTree = "<group>"; };
 		53A476880FE2309F00A2E3C5 /* postCellBackgroundSelected60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postCellBackgroundSelected60.png; sourceTree = "<group>"; };
-		53A4776B0FE2F42500A2E3C5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		53A4776B0FE2F42500A2E3C5 /* DefaultOld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultOld.png; sourceTree = "<group>"; };
 		53A4776D0FE2F47200A2E3C5 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		53A477900FE2F98500A2E3C5 /* postCellBackground30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postCellBackground30.png; sourceTree = "<group>"; };
 		53A478010FE304C900A2E3C5 /* TweetIconSub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TweetIconSub.png; sourceTree = "<group>"; };
@@ -232,6 +234,8 @@
 		53FF0F1D0FFDC92400353C64 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		53FF0F1E0FFDC92400353C64 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		8B9CF9A3106716F300EA7A0C /* ShowTable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowTable.xib; sourceTree = "<group>"; };
+		8BAD95D3106C49FB000DE116 /* BG1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BG1.png; sourceTree = "<group>"; };
+		8BAD95D8106C4AA4000DE116 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8BBA155F106432080004217F /* extractURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = extractURL.h; sourceTree = "<group>"; };
 		8BBA1560106432080004217F /* extractURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = extractURL.m; sourceTree = "<group>"; };
 		8BBA1561106432080004217F /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
@@ -323,7 +327,8 @@
 				532EEBA70FE4C8CB00DF7585 /* haha.caf */,
 				532EEB830FE4B8BD00DF7585 /* keithandthegirl.com.caf */,
 				53A4776D0FE2F47200A2E3C5 /* iTunesArtwork */,
-				53A4776B0FE2F42500A2E3C5 /* Default.png */,
+				8BAD95D8106C4AA4000DE116 /* Default.png */,
+				53A4776B0FE2F42500A2E3C5 /* DefaultOld.png */,
 				534CA1540FB39A3A00206F91 /* Icon.png */,
 				530015E80FBBB97300A9078D /* BG3.png */,
 				530015EA0FBBBA5E00A9078D /* TextView.png */,
@@ -364,6 +369,7 @@
 		532424DC0F9123FF009C1C10 /* OnAir */ = {
 			isa = PBXGroup;
 			children = (
+				8BAD95D3106C49FB000DE116 /* BG1.png */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 				534CA0020FB3736400206F91 /* BG.png */,
 				5341D3930FA6A00A00CA7A35 /* Phone.png */,
@@ -686,7 +692,7 @@
 				53A476890FE2309F00A2E3C5 /* postCellBackground60.png in Resources */,
 				53A4768A0FE2309F00A2E3C5 /* postCellBackgroundDark60.png in Resources */,
 				53A4768B0FE2309F00A2E3C5 /* postCellBackgroundSelected60.png in Resources */,
-				53A4776C0FE2F42500A2E3C5 /* Default.png in Resources */,
+				53A4776C0FE2F42500A2E3C5 /* DefaultOld.png in Resources */,
 				53A4776E0FE2F47200A2E3C5 /* iTunesArtwork in Resources */,
 				53A477910FE2F98500A2E3C5 /* postCellBackground30.png in Resources */,
 				53A478020FE304C900A2E3C5 /* TweetIconSub.png in Resources */,
@@ -696,6 +702,8 @@
 				532EEBB80FE5875500DF7585 /* brumski.caf in Resources */,
 				53FF0EF40FFDC17500353C64 /* Settings.bundle in Resources */,
 				8B9CF9A4106716F300EA7A0C /* ShowTable.xib in Resources */,
+				8BAD95D4106C49FB000DE116 /* BG1.png in Resources */,
+				8BAD95D9106C4AA4000DE116 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

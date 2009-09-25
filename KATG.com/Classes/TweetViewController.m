@@ -104,17 +104,6 @@ static BOOL otherTweets;
 //* 
 //* 
 //*******************************************************
-- (void)viewDidAppear:(BOOL)animated {
-	//NSLog(@"Tweet View Did Appear");
-	//[[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
-    //[[UIAccelerometer sharedAccelerometer] setDelegate:self];
-}
-
-//*******************************************************
-//* 
-//* 
-//* 
-//*******************************************************
 - (void)refTweets:(id)sender{
 	[isURL removeAllObjects];
 	[urlDict removeAllObjects];
@@ -291,45 +280,6 @@ static BOOL otherTweets;
 	[self.tableView reloadData];
 	self.navigationItem.leftBarButtonItem.enabled = YES;
 }
-
-//*******************************************************
-//* 
-//* 
-//* 
-//*******************************************************
-/*- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
-    CGFloat shakeThreshold = 1.0;
-    static NSInteger shakeCount = 0;
-    static NSInteger shakeTimer = 0;
-	
-    // If we detect a large enough motion in any direction, we increment the shakeCount.
-	if (([acceleration x] > shakeThreshold || [acceleration x] < (-1 * shakeThreshold)) || ([acceleration y] > shakeThreshold || [acceleration y] < (-1 * shakeThreshold)) || ([acceleration z] > shakeThreshold || [acceleration z] < (-1 * shakeThreshold))) {
-        shakeCount++;
-    }
-	
-    // shakeTimer gets incremented as long as their is a running shakeCount
-    if (shakeCount) shakeTimer++;
-	
-    // If it exceeds 9 (a little more than half a second), the current shake is thrown away.
-    if (shakeTimer > 10) {
-		//NSLog(@"No SHAKER");
-		//NSLog(@"%d", shakeCount);
-        shakeCount = 0;
-        shakeTimer = 0;
-    }
-	
-    // If shakeCount reaches 5 within our time limit we consider that a shake.
-	if (shakeCount > 6 && shakeTimer < 10 && ![self.activityIndicator isAnimating]) {
-		//NSLog(@"SHAKER");
-		//NSLog(@"%d", shakeCount);
-		shakeCount = 0; 
-        shakeTimer = 0;
-        [isURL removeAllObjects];
-		[urlDict removeAllObjects];
-		[ NSThread detachNewThreadSelector: @selector(activityPool) toTarget: self withObject: nil ];
-		[self pollFeed];
-    }
-}*/
 
 #pragma mark Table view methodss
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -512,12 +462,6 @@ static BOOL otherTweets;
 		[fm removeItemAtPath: iconsFilePath error: NULL];
 	[iconDict writeToFile: iconsFilePath atomically: YES];
 }
-
-/*- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear: animated];
-	NSLog(@"Tweet View Did Dissapear");
-	//[self saveData];
-}*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
