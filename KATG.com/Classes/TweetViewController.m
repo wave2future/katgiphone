@@ -411,6 +411,7 @@ static BOOL otherTweets;
 		if (otherTweets) {
 			NSMutableArray *TWTS = [[NSMutableArray alloc] initWithArray:twts];
 			[TWTS addObject:[[tweets objectAtIndex: indexPath.row] objectForKey: @"from_user"]];
+			[twts release];
 			twts = [[NSArray alloc] initWithArray:TWTS];
 			[TWTS release];
 		}

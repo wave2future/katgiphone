@@ -68,17 +68,58 @@ static BOOL ShouldStream;
 	filteredList = [[NSMutableArray alloc] initWithCapacity:1000];
 	feedEntries = [[NSMutableArray alloc] initWithCapacity:1000];
 	
+	feedAddress = @"http://app.keithandthegirl.com/Api/Feed/Show-List-Everything-Compact/";
+	
+	[self createNotificationForTermination];
+	
+	[self.activityIndicator startAnimating];
+	[NSThread detachNewThreadSelector:@selector(autoPool) toTarget:self withObject:feedAddress];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
 	Show *Sh = [[Show alloc] initWithTitle:@"Episode list loading ..." withNumber:@"" withGuests:@"Click Here for most recent episode"];
 	[list addObject:Sh];
 	[Sh release];
 	
+	NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+	NSString * feedFilePath = [documentsPath stringByAppendingPathComponent: @"pastshowsfeed.plist"];
+	
+	NSFileManager *fm = [NSFileManager defaultManager];
+	if ([fm fileExistsAtPath: feedFilePath]) {
+		[feedEntries addObjectsFromArray:[NSArray arrayWithContentsOfFile:feedFilePath]];
+		
+		for (NSDictionary *feedEntry in feedEntries) {
+			NSString *showNumber = [feedEntry objectForKey: @"N"];
+			NSString *showTitle  = [feedEntry objectForKey: @"T"];
+			NSString *showGuests = [feedEntry objectForKey: @"G"];
+			if ([showGuests isEqualToString:@"NULL"]) { showGuests = @"No Guests"; }
+			NSString *showID	 = [feedEntry objectForKey: @"I"];
+			
+			NSString *show = [NSString stringWithFormat:@"%@ - %@", showNumber, showTitle];
+			
+			Show *Sh = [[Show alloc] initWithTitle:show withNumber:showID withGuests:showGuests];
+			[list addObject:Sh];
+			[Sh release];
+		}
+	}
+	
+	[fm release];
+	
 	[self.tableView reloadData];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+	NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+	NSString * feedFilePath = [documentsPath stringByAppendingPathComponent: @"pastshowsfeed.plist"];
 	
-	//feedAddress = @"http://app.keithandthegirl.com/Feed/Show/Default.ashx?records=25";
-	feedAddress = @"http://getitdownonpaper.com/katg/Shows.xml";
+	NSFileManager *fm = [NSFileManager defaultManager];
+	if ([fm fileExistsAtPath: feedFilePath]) {
+		[fm removeItemAtPath: feedFilePath error:NULL];
+	}
 	
-	[self.activityIndicator startAnimating];
-	[NSThread detachNewThreadSelector:@selector(autoPool) toTarget:self withObject:feedAddress];
+	[feedEntries writeToFile:feedFilePath atomically:YES];
+	 
+	[fm release];
 }
 
 #pragma mark Feed
@@ -100,19 +141,21 @@ static BOOL ShouldStream;
 	// Fill feedEntries with the results of parsing the show feed
 	[feedEntries addObjectsFromArray:[feed entries]];
 	[feed release];
-		
+	
 	if (list.count != 0) {
-		[list removeLastObject];
+		[list removeAllObjects];
 	}
 	
 	for (NSDictionary *feedEntry in feedEntries) {
 		NSString *showNumber = [feedEntry objectForKey: @"N"];
 		NSString *showTitle  = [feedEntry objectForKey: @"T"];
 		NSString *showGuests = [feedEntry objectForKey: @"G"];
+		if ([showGuests isEqualToString:@"NULL"]) { showGuests = @"No Guests"; }
+		NSString *showID	 = [feedEntry objectForKey: @"I"];
 		
 		NSString *show = [NSString stringWithFormat:@"%@ - %@", showNumber, showTitle];
 		
-		Show *Sh = [[Show alloc] initWithTitle:show withNumber:showNumber withGuests:showGuests];
+		Show *Sh = [[Show alloc] initWithTitle:show withNumber:showID withGuests:showGuests];
 		[list addObject:Sh];
 		[Sh release];
 	}
@@ -191,11 +234,11 @@ static BOOL ShouldStream;
 	ShowDetailController *viewController = [[ShowDetailController alloc] initWithNibName:@"ShowView" bundle:[NSBundle mainBundle]];
 	if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
-		viewController.feedAddress = [NSString stringWithFormat:@"http://app.keithandthegirl.com/Feed/Show/Default.ashx?Number=%@", [[filteredList objectAtIndex:indexPath.row] number]];
+		viewController.showNumber = [[filteredList objectAtIndex:indexPath.row] number];
 	}
 	else
 	{
-		viewController.feedAddress = [NSString stringWithFormat:@"http://app.keithandthegirl.com/Feed/Show/Default.ashx?Number=%@", [[list objectAtIndex:indexPath.row] number]];
+		viewController.showNumber = [[list objectAtIndex:indexPath.row] number];
     }
 	if (ShouldStream) {
 		[viewController setStream:YES];
@@ -219,7 +262,7 @@ static BOOL ShouldStream;
 	{
 		NSRange result1 = [sh.title rangeOfString:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch)];
 		NSRange result2 = [sh.guests rangeOfString:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch)];
-
+		
 		if ((result1.location != NSNotFound && result1.length != 0) || (result2.location != NSNotFound && result2.length != 0)) {
 			[self.filteredList addObject:sh];
 		}
@@ -247,6 +290,27 @@ static BOOL ShouldStream;
     return YES;
 }
 
+- (void)createNotificationForTermination { 
+	//NSLog(@"createNotificationTwo"); 
+	[[NSNotificationCenter defaultCenter] 
+	 addObserver:self 
+	 selector:@selector(handleTerminationNotification:) 
+	 name:@"ApplicationWillTerminate" 
+	 object:nil]; 
+}
+
+-(void)handleTerminationNotification:(NSNotification *)pNotification {
+	NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+	NSString * feedFilePath = [documentsPath stringByAppendingPathComponent: @"pastshowsfeed.plist"];
+	
+	NSFileManager *fm = [NSFileManager defaultManager];
+	if ([fm fileExistsAtPath: feedFilePath]) {
+		[fm removeItemAtPath: feedFilePath error:NULL];
+	}
+	
+	BOOL success = [feedEntries writeToFile:feedFilePath atomically:YES];
+	[fm release];
+}
 
 - (void)dealloc {
 	[list release];

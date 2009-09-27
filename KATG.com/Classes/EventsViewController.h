@@ -29,4 +29,6 @@
 @property (nonatomic, retain) NSMutableArray					*feedEntries;
 @property (nonatomic, retain) UIActivityIndicatorView			*activityIndicator;
 
+- (void)pollFeed;
+
 @end

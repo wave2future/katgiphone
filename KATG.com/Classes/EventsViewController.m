@@ -93,7 +93,7 @@
 	[pool release];
 }
 
-- (void) pollFeed {
+- (void)pollFeed {
 	if (feedEntries.count == 0) {
 		// Create the feed string
 		NSString *feedAddress = @"http://www.keithandthegirl.com/feed/event/?order=datereverse";

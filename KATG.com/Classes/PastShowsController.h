@@ -40,5 +40,6 @@
 @property NetworkStatus localWiFiConnectionStatus;
 
 - (void) pollFeed;
+- (void)createNotificationForTermination;
 
 @end
