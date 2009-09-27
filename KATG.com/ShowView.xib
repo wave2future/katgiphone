@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="56"/>
+			<integer value="1"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -137,7 +137,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">BlackBox.png</string>
+							<string key="NSResourceName">GreenBox.png</string>
 						</object>
 					</object>
 					<object class="IBUISegmentedControl" id="321223658">
@@ -451,7 +451,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>ShowDetailController</string>
 					<string>UIResponder</string>
-					<string>{{52, 101}, {320, 480}}</string>
+					<string>{{40, 33}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
