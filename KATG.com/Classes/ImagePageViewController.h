@@ -13,6 +13,7 @@
 	UIImage *image;
 	NSString *title;
 	NSString *description;
+	UIView *view;
 }
 
 - (id)initWithImage:(UIImage *)im withTitle:(NSString *)t withDescription:(NSString *)d;

@@ -99,16 +99,13 @@
 		53FB2BBB0FA0F09500623E3B /* Copyright in Resources */ = {isa = PBXBuildFile; fileRef = 53FB2BBA0FA0F09500623E3B /* Copyright */; };
 		53FF0EF40FFDC17500353C64 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 53FF0EF30FFDC17500353C64 /* Settings.bundle */; };
 		53FF0F1F0FFDC92400353C64 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 53FF0F1E0FFDC92400353C64 /* Reachability.m */; };
-		8B169B06106FCADA007DCA98 /* TapDetectingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B169B05106FCADA007DCA98 /* TapDetectingImageView.m */; };
 		8B9CF9A4106716F300EA7A0C /* ShowTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B9CF9A3106716F300EA7A0C /* ShowTable.xib */; };
 		8BAD95D4106C49FB000DE116 /* BG1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BAD95D3106C49FB000DE116 /* BG1.png */; };
 		8BAD95D9106C4AA4000DE116 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BAD95D8106C4AA4000DE116 /* Default.png */; };
 		8BBA1565106432080004217F /* extractURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA1560106432080004217F /* extractURL.m */; };
 		8BBA1566106432080004217F /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA1562106432080004217F /* TableViewController.m */; };
 		8BBA1567106432080004217F /* TwtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA1564106432080004217F /* TwtViewController.m */; };
-		8BBF4AC5106EB43500A19594 /* Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BBF4AC4106EB43500A19594 /* Arrow.png */; };
 		8BBF4B38106ECA5F00A19594 /* ImagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBF4B37106ECA5F00A19594 /* ImagePageViewController.m */; };
-		8BBF4C4A106F064300A19594 /* BlackBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BBF4C49106F064300A19594 /* BlackBox.png */; };
 		8BBF4EAB106FBCD600A19594 /* GreenBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BBF4EAA106FBCD600A19594 /* GreenBox.png */; };
 /* End PBXBuildFile section */
 
@@ -238,8 +235,6 @@
 		53FF0EF30FFDC17500353C64 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		53FF0F1D0FFDC92400353C64 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		53FF0F1E0FFDC92400353C64 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		8B169B04106FCADA007DCA98 /* TapDetectingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapDetectingImageView.h; sourceTree = "<group>"; };
-		8B169B05106FCADA007DCA98 /* TapDetectingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapDetectingImageView.m; sourceTree = "<group>"; };
 		8B9CF9A3106716F300EA7A0C /* ShowTable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowTable.xib; sourceTree = "<group>"; };
 		8BAD95D3106C49FB000DE116 /* BG1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BG1.png; sourceTree = "<group>"; };
 		8BAD95D8106C4AA4000DE116 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -249,10 +244,8 @@
 		8BBA1562106432080004217F /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		8BBA1563106432080004217F /* TwtViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwtViewController.h; sourceTree = "<group>"; };
 		8BBA1564106432080004217F /* TwtViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwtViewController.m; sourceTree = "<group>"; };
-		8BBF4AC4106EB43500A19594 /* Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Arrow.png; sourceTree = "<group>"; };
 		8BBF4B36106ECA5F00A19594 /* ImagePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePageViewController.h; sourceTree = "<group>"; };
 		8BBF4B37106ECA5F00A19594 /* ImagePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePageViewController.m; sourceTree = "<group>"; };
-		8BBF4C49106F064300A19594 /* BlackBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackBox.png; sourceTree = "<group>"; };
 		8BBF4EAA106FBCD600A19594 /* GreenBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenBox.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -466,8 +459,6 @@
 				5310E82F0FB90AE60065A4BC /* ShowDetailController.m */,
 				8BBF4B36106ECA5F00A19594 /* ImagePageViewController.h */,
 				8BBF4B37106ECA5F00A19594 /* ImagePageViewController.m */,
-				8B169B04106FCADA007DCA98 /* TapDetectingImageView.h */,
-				8B169B05106FCADA007DCA98 /* TapDetectingImageView.m */,
 				536BFF110FB89F2E00DA7720 /* ShowCell.h */,
 				536BFF120FB89F2E00DA7720 /* ShowCell.m */,
 				536BFF0F0FB89F2E00DA7720 /* Show.h */,
@@ -519,8 +510,6 @@
 			isa = PBXGroup;
 			children = (
 				8BBF4EAA106FBCD600A19594 /* GreenBox.png */,
-				8BBF4C49106F064300A19594 /* BlackBox.png */,
-				8BBF4AC4106EB43500A19594 /* Arrow.png */,
 				8B9CF9A3106716F300EA7A0C /* ShowTable.xib */,
 				53C2B02C0FB9204B00C9770A /* ShowView.xib */,
 				53A476860FE2309F00A2E3C5 /* postCellBackground60.png */,
@@ -730,8 +719,6 @@
 				8B9CF9A4106716F300EA7A0C /* ShowTable.xib in Resources */,
 				8BAD95D4106C49FB000DE116 /* BG1.png in Resources */,
 				8BAD95D9106C4AA4000DE116 /* Default.png in Resources */,
-				8BBF4AC5106EB43500A19594 /* Arrow.png in Resources */,
-				8BBF4C4A106F064300A19594 /* BlackBox.png in Resources */,
 				8BBF4EAB106FBCD600A19594 /* GreenBox.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -778,7 +765,6 @@
 				8BBA1566106432080004217F /* TableViewController.m in Sources */,
 				8BBA1567106432080004217F /* TwtViewController.m in Sources */,
 				8BBF4B38106ECA5F00A19594 /* ImagePageViewController.m in Sources */,
-				8B169B06106FCADA007DCA98 /* TapDetectingImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,22 +7,36 @@
 //
 
 #import "ImagePageViewController.h"
-#import "TapDetectingImageView.h"
+
+#define ZOOM_VIEW_TAG 100
+#define ZOOM_STEP 1.5
 
 @implementation ImagePageViewController
 
-- (void)loadView {
-	// Create a UIView that will fit in the UIScrollView this will be added to and assign it to self.view
-	CGRect rect = CGRectMake(0, 0, 270, 190);
-	self.view = [[UIView alloc] initWithFrame:rect];
+- (id)initWithImage:(UIImage *)im withTitle:(NSString *)t withDescription:(NSString *)d {
+    if (self = [super init]) {
+        image = im;
+		title = [NSString stringWithString:t];
+		if (![d isEqualToString:@"NULL"]) {
+			description = [NSString stringWithString:d];
+		} else {
+			description = @"";
+		}
+    }
+    return self;
 }
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)loadView {
+	[super loadView];
+	
+	// Create a UIView that will fit in the UIScrollView this will be added to and assign it to self.view
+	CGRect rect = CGRectMake(0, 0, 270, 190);
+	view = [[UIView alloc] initWithFrame:rect];
+	self.view = view;
+	[view setBackgroundColor:[UIColor clearColor]];
 	
 	// Make a label for the image title and  add it to self.view
-	CGRect rect = CGRectMake(10, 5, 250, 35);
+	rect = CGRectMake(10, 5, 250, 35);
 	UILabel *lblTitle = [[UILabel alloc] initWithFrame:rect];
 	[lblTitle setTextAlignment:UITextAlignmentCenter];
 	[lblTitle setTextColor:[UIColor whiteColor]];
@@ -30,7 +44,7 @@
 	lblTitle.font = [UIFont systemFontOfSize: 12];
 	lblTitle.numberOfLines = 3;
 	[lblTitle setText:title];
-	[self.view addSubview:lblTitle];
+	[view addSubview:lblTitle];
 	[lblTitle release];
 	
 	// Calculate the image size and the x offset that will center it
@@ -40,10 +54,10 @@
 	
 	// Make a UIImageView that is the exact size of the image and centered and add it to self.view
 	rect = CGRectMake(x, 40, size.width, size.height);
-	UIImageView *imView = [[UIImageView alloc] initWithFrame:rect];
-	[imView setImage:image];
-	[self.view addSubview:imView];
-	[imView release];
+	UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];
+	[imageView setImage:image];
+	[view addSubview:imageView];
+	[imageView release];
 	
 	// Make a label for the image description and add it to self.view
 	rect = CGRectMake(15, 140, 250, 40);
@@ -54,26 +68,12 @@
 	lblDescription.font = [UIFont systemFontOfSize: 12];
 	lblDescription.numberOfLines = 3;
 	[lblDescription setText:description];
-	[self.view addSubview:lblDescription];
+	[view addSubview:lblDescription];
 	[lblDescription release];
-	
-	[self.view setBackgroundColor:[UIColor clearColor]];
-}
-
-- (id)initWithImage:(UIImage *)im withTitle:(NSString *)t withDescription:(NSString *)d {
-    if (self = [super init]) {
-        image = im;
-		title = [NSString stringWithString:t];
-		if (![d isEqualToString:@"NULL"]) {
-			description = [NSString stringWithString:d];
-		} else {
-			description = @"No Description";
-		}
-    }
-    return self;
 }
 
 - (void)didReceiveMemoryWarning {
+	[view release];
 	[title release];
 	[description release];
 	[image release];
