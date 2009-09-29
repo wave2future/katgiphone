@@ -86,7 +86,6 @@
 		53CD2FFF0FC8A01400D9FE00 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53CD2FFE0FC8A01400D9FE00 /* TweetCell.m */; };
 		53D01ED60FD5068500959050 /* RegexKitLiteLicense.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 53D01ED50FD5068500959050 /* RegexKitLiteLicense.rtf */; };
 		53DDC8A20FC90E2D00A34D85 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DDC8A10FC90E2D00A34D85 /* WebViewController.m */; };
-		53DDC8CB0FC9159200A34D85 /* WebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53DDC8CA0FC9159200A34D85 /* WebView.xib */; };
 		53DDCC340FCB0DD800A34D85 /* othButPlus.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DDCC330FCB0DD800A34D85 /* othButPlus.png */; };
 		53DDCC390FCB0E9C00A34D85 /* othButMinus.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DDCC380FCB0E9C00A34D85 /* othButMinus.png */; };
 		53DDCC620FCB13FB00A34D85 /* othButMinusHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 53DDCC600FCB13FB00A34D85 /* othButMinusHighlighted.png */; };
@@ -107,6 +106,7 @@
 		8BBA1567106432080004217F /* TwtViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA1564106432080004217F /* TwtViewController.m */; };
 		8BBF4B38106ECA5F00A19594 /* ImagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBF4B37106ECA5F00A19594 /* ImagePageViewController.m */; };
 		8BBF4EAB106FBCD600A19594 /* GreenBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BBF4EAA106FBCD600A19594 /* GreenBox.png */; };
+		8BCEE1061071896500CCDDE1 /* TinyBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCEE1051071896500CCDDE1 /* TinyBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -218,7 +218,6 @@
 		53D01ED50FD5068500959050 /* RegexKitLiteLicense.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = RegexKitLiteLicense.rtf; path = Classes/RegexKitLiteLicense.rtf; sourceTree = "<group>"; };
 		53DDC8A00FC90E2D00A34D85 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		53DDC8A10FC90E2D00A34D85 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
-		53DDC8CA0FC9159200A34D85 /* WebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebView.xib; sourceTree = "<group>"; };
 		53DDCC330FCB0DD800A34D85 /* othButPlus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = othButPlus.png; sourceTree = "<group>"; };
 		53DDCC380FCB0E9C00A34D85 /* othButMinus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = othButMinus.png; sourceTree = "<group>"; };
 		53DDCC600FCB13FB00A34D85 /* othButMinusHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = othButMinusHighlighted.png; sourceTree = "<group>"; };
@@ -247,6 +246,8 @@
 		8BBF4B36106ECA5F00A19594 /* ImagePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePageViewController.h; sourceTree = "<group>"; };
 		8BBF4B37106ECA5F00A19594 /* ImagePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePageViewController.m; sourceTree = "<group>"; };
 		8BBF4EAA106FBCD600A19594 /* GreenBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenBox.png; sourceTree = "<group>"; };
+		8BCEE1041071896500CCDDE1 /* TinyBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyBrowser.h; sourceTree = "<group>"; };
+		8BCEE1051071896500CCDDE1 /* TinyBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TinyBrowser.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -325,7 +326,6 @@
 				53B8CE880FB425CA00C8C71B /* LinkList */,
 				53A476960FE2C51300A2E3C5 /* TweetView */,
 				532424F00F912543009C1C10 /* TableView.xib */,
-				53DDC8CA0FC9159200A34D85 /* WebView.xib */,
 				53FF0EF30FFDC17500353C64 /* Settings.bundle */,
 				532EEBB70FE5875500DF7585 /* brumski.caf */,
 				532EEBAC0FE5695000DF7585 /* phen.caf */,
@@ -425,12 +425,12 @@
 		535FE5F20F89FEF300F6AD75 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				53F0BBE60F9F994900CCEEBF /* MREntitiesConverter.h */,
+				53F0BBE70F9F994900CCEEBF /* MREntitiesConverter.m */,
 				53E956290F9D5F3E0071709B /* sanitizeField.h */,
 				53E9562A0F9D5F3E0071709B /* sanitizeField.m */,
 				5377B54D0FCD2E2B00CB9F2F /* RegexKitLite.h */,
 				5377B54E0FCD2E2B00CB9F2F /* RegexKitLite.m */,
-				53F0BBE60F9F994900CCEEBF /* MREntitiesConverter.h */,
-				53F0BBE70F9F994900CCEEBF /* MREntitiesConverter.m */,
 				532C13B70F9556BB005879B1 /* grabRSSFeed.h */,
 				532C13B80F9556BB005879B1 /* grabRSSFeed.m */,
 				53E955C00F9D58AC0071709B /* TouchXML */,
@@ -537,6 +537,8 @@
 			children = (
 				53B8CE830FB4238900C8C71B /* linkList.h */,
 				53B8CE840FB4238900C8C71B /* linkList.m */,
+				8BCEE1041071896500CCDDE1 /* TinyBrowser.h */,
+				8BCEE1051071896500CCDDE1 /* TinyBrowser.m */,
 			);
 			name = LinkList;
 			sourceTree = "<group>";
@@ -695,7 +697,6 @@
 				530015E90FBBB97300A9078D /* BG3.png in Resources */,
 				530015EB0FBBBA5E00A9078D /* TextView.png in Resources */,
 				53CD2F0D0FC851ED00D9FE00 /* twitTab.png in Resources */,
-				53DDC8CB0FC9159200A34D85 /* WebView.xib in Resources */,
 				53DDCC340FCB0DD800A34D85 /* othButPlus.png in Resources */,
 				53DDCC390FCB0E9C00A34D85 /* othButMinus.png in Resources */,
 				53DDCC620FCB13FB00A34D85 /* othButMinusHighlighted.png in Resources */,
@@ -765,6 +766,7 @@
 				8BBA1566106432080004217F /* TableViewController.m in Sources */,
 				8BBA1567106432080004217F /* TwtViewController.m in Sources */,
 				8BBF4B38106ECA5F00A19594 /* ImagePageViewController.m in Sources */,
+				8BCEE1061071896500CCDDE1 /* TinyBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

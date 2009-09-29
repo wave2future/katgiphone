@@ -38,7 +38,7 @@
 //*******************************************************
 - (id)newURLList:(NSString *)stringWithURLs {
 	NSMutableArray *urlList = [[NSMutableArray alloc] initWithCapacity:12];
-	NSMutableDictionary *urlDict = [NSMutableDictionary dictionary];
+	NSMutableDictionary *urlDict;
 	
 	urlDict = [self makeURL:stringWithURLs];
 	if (urlDict != nil) {
@@ -82,7 +82,8 @@
 - (id)makeURL:(NSString *)searchString {
 	NSString *regexString = @"\\b(https?://)(?:(\\S+?)(?::(\\S+?))?@)?([a-zA-Z0-9\\-.]+)(?::(\\d+))?((?:/[a-zA-Z0-9\\-._?,'+\\&%$=~*!():@\\\\]*)+)?";
 	NSMutableDictionary *urlDictionary = [NSMutableDictionary dictionary];
-	NSRange matchedRange = NSMakeRange(NSNotFound, 0UL); 
+	//NSRange matchedRange = NSMakeRange(NSNotFound, 0UL); 
+	NSRange matchedRange;
 	
 	if ([searchString isMatchedByRegex:regexString]) {
 		matchedRange = [searchString rangeOfRegex:regexString];
@@ -98,7 +99,7 @@
 		NSString *pathString = [searchString stringByMatching:regexString capture:6L];
 		
 		regexString = @"\\.$|\\?$|\\!$";
-		matchedRange = NSMakeRange(NSNotFound, 0UL);
+		//matchedRange = NSMakeRange(NSNotFound, 0UL);
 		matchedRange = [pathString rangeOfRegex:regexString];
 		if (matchedRange.location != NSNotFound) {
 			pathString = [pathString substringWithRange:NSMakeRange(0, pathString.length - 1)];
@@ -133,7 +134,7 @@
 
 - (id)newTWTList:(NSString *)stringWithTWTs {
 	NSMutableArray *twtList = [[NSMutableArray alloc] initWithCapacity:12];
-	NSMutableDictionary *twtDict = [NSMutableDictionary dictionary];
+	NSMutableDictionary *twtDict;
 	
 	twtDict = [self makeTwitterSearchURL:stringWithTWTs];
 	if (twtDict != nil) {
@@ -166,7 +167,8 @@
 - (id)makeTwitterSearchURL:(NSString *)searchString {
 	NSString *regexString = @"@([0-9a-zA-Z_]+)";
 	NSMutableDictionary *urlDictionary = [NSMutableDictionary dictionary];
-	NSRange matchedRange = NSMakeRange(NSNotFound, 0UL); 
+	//NSRange matchedRange = NSMakeRange(NSNotFound, 0UL); 
+	NSRange matchedRange;
 	
 	if ([searchString isMatchedByRegex:regexString]) {
 		matchedRange = [searchString rangeOfRegex:regexString];

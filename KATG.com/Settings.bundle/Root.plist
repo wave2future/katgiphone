@@ -28,16 +28,6 @@
 		</dict>
 		<dict>
 			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Live Show</string>
-			<key>Key</key>
-			<string>StreamLSOverCell</string>
-			<key>DefaultValue</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>Type</key>
 			<string>PSTitleValueSpecifier</string>
 			<key>Title</key>
 			<string>Streaming over cellular network</string>

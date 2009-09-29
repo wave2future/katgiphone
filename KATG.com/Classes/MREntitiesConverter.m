@@ -36,14 +36,14 @@
 
 - (NSString*)convertEntitiesInString:(NSString*)s {
     if(s == nil) {
-        //NSLog(@"ERROR : Parameter string is nil");
+        NSLog(@"ERROR : Parameter string is nil");
     }
     NSString *xmlStr = [NSString stringWithFormat:@"<d>%@</d>", s];
     NSData *data = [xmlStr dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     NSXMLParser* xmlParse = [[NSXMLParser alloc] initWithData:data];
     [xmlParse setDelegate:self];
     [xmlParse parse];
-    NSString* returnStr = [NSString stringWithFormat:@"%@", resultString];
+    NSString* returnStr = [[NSString alloc] initWithFormat:@"%@", resultString];
 	[xmlParse release];
     return returnStr;
 }

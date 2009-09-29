@@ -77,6 +77,13 @@ static BOOL ShouldStream;
 }
 
 -(void)viewDidAppear:(BOOL)animated {
+	// This prevents repeatedly adding Episode List Loading when there's no internet connection
+	if (list.count > 0) {
+		if ([[[list objectAtIndex:0] title] isEqualToString:@"No Internet Connection"]) {
+			return;
+		}
+	}
+	
 	Show *Sh = [[Show alloc] initWithTitle:@"Episode list loading ..." withNumber:@"" withGuests:@"Click Here for most recent episode"];
 	[list addObject:Sh];
 	[Sh release];
@@ -102,24 +109,8 @@ static BOOL ShouldStream;
 			[Sh release];
 		}
 	}
-	
-	[fm release];
-	
+		
 	[self.tableView reloadData];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-	NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-	NSString * feedFilePath = [documentsPath stringByAppendingPathComponent: @"pastshowsfeed.plist"];
-	
-	NSFileManager *fm = [NSFileManager defaultManager];
-	if ([fm fileExistsAtPath: feedFilePath]) {
-		[fm removeItemAtPath: feedFilePath error:NULL];
-	}
-	
-	[feedEntries writeToFile:feedFilePath atomically:YES];
-	 
-	[fm release];
 }
 
 #pragma mark Feed
@@ -308,8 +299,7 @@ static BOOL ShouldStream;
 		[fm removeItemAtPath: feedFilePath error:NULL];
 	}
 	
-	BOOL success = [feedEntries writeToFile:feedFilePath atomically:YES];
-	[fm release];
+	[feedEntries writeToFile:feedFilePath atomically:YES];
 }
 
 - (void)dealloc {

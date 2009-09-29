@@ -88,7 +88,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (indexPath.row < [urlList count]) {
-		WebViewController *viewController = [[WebViewController alloc] initWithNibName:@"WebView" bundle:[NSBundle mainBundle]];
+		//WebViewController *viewController = [[WebViewController alloc] initWithNibName:@"WebView" bundle:[NSBundle mainBundle]];
+		WebViewController *viewController = [[WebViewController alloc] init];
 		NSString *urlAddress = [urlList objectAtIndex:indexPath.row];
 		viewController.urlAddress = urlAddress;
 		[[self navigationController] pushViewController:viewController animated:YES];

@@ -102,138 +102,89 @@ static BOOL otherTweets;
 	NSURL *url = [NSURL URLWithString:searchString];
 	NSString *queryResult = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];	
 	
-	SBJSON *jsonParser = [[SBJSON alloc] init];
-	NSError *error;
-	NSArray *queryDict = [jsonParser objectWithString: queryResult error: &error];
-	[queryResult release];
-	
-	//*******************************************************
-	//* Process the results 1 tweet at a time
-	//*******************************************************
-	NSDictionary *tweet;
-	for (tweet in queryDict) {
-		NSDictionary *user = [tweet objectForKey:@"user"];
-		NSString * from = [user objectForKey: @"screen_name"];
-		NSString *text = [tweet objectForKey: @"text"];
+	NSRange range = [queryResult rangeOfString:@"\"error\":\"Not authorized\""];
+	if (range.location == NSNotFound) {
+		SBJSON *jsonParser = [[SBJSON alloc] init];
+		NSError *error;
+		NSArray *queryDict = [jsonParser objectWithString: queryResult error: &error];
 		
-		NSDate * createdAt = [formatter dateFromString: [tweet objectForKey: @"created_at"]];
-		int timeSince;
-		NSString *interval = @"s";
-		if (createdAt != nil) {
-			//*******************************************************
-			//* Calculate the time & units since creation
-			//*******************************************************
-			timeSince = -[createdAt timeIntervalSinceNow];
+		//*******************************************************
+		//* Process the results 1 tweet at a time
+		//*******************************************************
+		NSDictionary *tweet;
+		for (tweet in queryDict) {
+			NSDictionary *user = [tweet objectForKey:@"user"];
+			NSString * from = [user objectForKey: @"screen_name"];
+			NSString *text = [tweet objectForKey: @"text"];
 			
-			//*******************************************************
-			//* Convert from GMT to local time
-			//*******************************************************
-			NSInteger seconds = [[NSTimeZone defaultTimeZone] secondsFromGMT];
-			timeSince -= seconds;
-		} else {
-			timeSince = 0;
-		}
-		
-		if (timeSince > 60) {
-			interval = @"m";
-			timeSince /= 60;
+			NSDate * createdAt = [formatter dateFromString: [tweet objectForKey: @"created_at"]];
+			int timeSince;
+			NSString *interval = @"s";
+			if (createdAt != nil) {
+				//*******************************************************
+				//* Calculate the time & units since creation
+				//*******************************************************
+				timeSince = -[createdAt timeIntervalSinceNow];
+				
+				//*******************************************************
+				//* Convert from GMT to local time
+				//*******************************************************
+				NSInteger seconds = [[NSTimeZone defaultTimeZone] secondsFromGMT];
+				timeSince -= seconds;
+			} else {
+				timeSince = 0;
+			}
 			
 			if (timeSince > 60) {
-				interval = @"h";
+				interval = @"m";
 				timeSince /= 60;
 				
-				if (timeSince > 24) {
-					interval = @"d";
-					timeSince /= 24;
+				if (timeSince > 60) {
+					interval = @"h";
+					timeSince /= 60;
 					
-					if (timeSince > 7) {
-						interval = @"w";
-						timeSince /= 7;
+					if (timeSince > 24) {
+						interval = @"d";
+						timeSince /= 24;
+						
+						if (timeSince > 7) {
+							interval = @"w";
+							timeSince /= 7;
+						}
 					}
 				}
 			}
+			
+			
+			NSString * since = [NSString stringWithFormat:@"%i%@", timeSince, interval];
+			
+			//*******************************************************
+			//* Check to see if this image URL has been seen (and stored)
+			//* already. If not, send an asychronous request for the 
+			//* image, and store the necessary info in a CFDictionary with connection
+			//* as the key, so we can find it again when the data is received.
+			//*******************************************************
+			NSString *imageURLString = [user objectForKey: @"profile_image_url"];
+			
+			//*******************************************************
+			//* Put everything in a dictionary and add to tweet array
+			//*******************************************************
+			NSDictionary * tweetDict = [NSDictionary dictionaryWithObjectsAndKeys: from, @"from_user", 
+																				   text, @"text", 
+																				  since, @"since",
+																		 imageURLString, @"profile_image_url", nil];
+			[tweets addObject: tweetDict];
 		}
-		
-		NSString * since = [NSString stringWithFormat:@"%i%@", timeSince, interval];
-		
-		//*******************************************************
-		//* Check to see if this image URL has been seen (and stored)
-		//* already. If not, send an asychronous request for the 
-		//* image, and store the necessary info in a CFDictionary with connection
-		//* as the key, so we can find it again when the data is received.
-		//*******************************************************
-		NSString *imageURLString = [user objectForKey: @"profile_image_url"];
-		
-		//*******************************************************
-		//* Put everything in a dictionary and add to tweet array
-		//*******************************************************
-		NSDictionary * tweetDict = [NSDictionary dictionaryWithObjectsAndKeys: from, @"from_user", 
-									text, @"text", 
-									since, @"since",
-									imageURLString, @"profile_image_url", nil];
-		[tweets addObject: tweetDict];
+		[jsonParser release];
 	}
 	
-	if (tweets.count == 0) {
-		NSString * from = @"No Tweets";
-		NSString * text = @"No Tweets";
-		NSString * since = @"";
-		NSString * imageURLString = @"http";
-		NSDictionary * tweetDict = [NSDictionary dictionaryWithObjectsAndKeys: from, @"from_user", 
-									text, @"text", 
-									since, @"since",
-									imageURLString, @"profile_image_url", nil];
-		[tweets addObject:tweetDict];
-		NSData *tweetIcon = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"TweetIconSub" ofType:@"png"]];
-		[iconDict setObject: tweetIcon forKey: @"http"];
-	}
-	
-	[jsonParser release];
+	[queryResult release];
 	[formatter release];
 	
 	[self.activityIndicator stopAnimating];
 	
 	[self.tableView reloadData];
 	self.navigationItem.leftBarButtonItem.enabled = YES;
-}
-
-//*******************************************************
-//* 
-//* 
-//* 
-//*******************************************************
-- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
-    CGFloat shakeThreshold = 1.0;
-    static NSInteger shakeCount = 0;
-    static NSInteger shakeTimer = 0;
-	
-    // If we detect a large enough motion in any direction, we increment the shakeCount.
-	if (([acceleration x] > shakeThreshold || [acceleration x] < (-1 * shakeThreshold)) || ([acceleration y] > shakeThreshold || [acceleration y] < (-1 * shakeThreshold)) || ([acceleration z] > shakeThreshold || [acceleration z] < (-1 * shakeThreshold))) {
-        shakeCount++;
-    }
-	
-    // shakeTimer gets incremented as long as their is a running shakeCount
-    if (shakeCount) shakeTimer++;
-	
-    // If it exceeds 9 (a little more than half a second), the current shake is thrown away.
-    if (shakeTimer > 10) {
-		//NSLog(@"No SHAKER");
-		//NSLog(@"%d", shakeCount);
-        shakeCount = 0;
-        shakeTimer = 0;
-    }
-	
-    // If shakeCount reaches 5 within our time limit we consider that a shake.
-	if (shakeCount > 6 && shakeTimer < 10 && ![self.activityIndicator isAnimating]) {
-		//NSLog(@"SHAKER");
-		//NSLog(@"%d", shakeCount);
-		shakeCount = 0; 
-        shakeTimer = 0;
-        [isURL removeAllObjects];
-		[urlDict removeAllObjects];
-		[ NSThread detachNewThreadSelector: @selector(activityPool) toTarget: self withObject: nil ];
-		[self pollFeed];
-    }
 }
 
 #pragma mark Table view methodss
@@ -259,6 +210,25 @@ static BOOL otherTweets;
 //*
 //*******************************************************
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	if (tweets.count == 0) {
+		static NSString *CellIdentifier = @"TweetCell";
+		TweetCell *cell = (TweetCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		if (cell == nil) {
+			cell = [[[TweetCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+		}
+		cell.lblTitle.text = @"No Tweets Here";
+		cell.lblSince.text = @"";
+		cell.lblFrom.text  = @"";
+		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.776 green:(CGFloat).875 blue:(CGFloat)0.776 alpha:(CGFloat)1.0];
+		cell.lblTitle.backgroundColor = color1;
+		cell.lblSince.backgroundColor = color1;
+		cell.lblFrom.backgroundColor = color1;
+		cell.backgroundView.backgroundColor = color1;
+		cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground60.png"]];
+		return cell;
+	}
+	
     static NSString *CellIdentifier = @"TweetCell";
 	
 	MREntitiesConverter *converter = [[MREntitiesConverter alloc] init];

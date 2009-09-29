@@ -226,11 +226,24 @@ static int timeSince;
 //* 
 //*******************************************************
 - (void)setDefaults {
-	//NSLog(@"Defaults Set");
-	if ([userDefaults boolForKey:@"StartStream"]) {
-		//NSLog(@"Launch Stream");
+	NSString *one = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://www.keithandthegirl.com/1.txt"] encoding:NSASCIIStringEncoding error:nil];
+	
+	if (one.intValue == 1) {
+		//NSLog(@"Defaults Set");
+		if ([userDefaults boolForKey:@"StartStream"]) {
+			//NSLog(@"Launch Stream");
+			[self audioButtonPressed:self];
+		}
+	} else {
 		[userDefaults setBool:NO forKey:@"StartStream"];
-		[self audioButtonPressed:self];
+		UIAlertView *alert = [[UIAlertView alloc] 
+							  initWithTitle:@"NO INTERNET CONNECTION"
+							  message:@"This Application requires an active internet connection. Please connect to wifi or cellular data network for full application functionality." 
+							  delegate:nil
+							  cancelButtonTitle:@"Continue" 
+							  otherButtonTitles:nil];
+		[alert show];
+		[alert autorelease];
 	}
 	nameField.text = [userDefaults objectForKey:@"nameField"];
 	locField.text = [userDefaults objectForKey:@"locField"];
@@ -529,14 +542,6 @@ static int timeSince;
 			feedStatus = @"Unknown";
 		}
 	} else {
-		UIAlertView *alert = [[UIAlertView alloc] 
-							  initWithTitle:@"NO INTERNET CONNECTION"
-							  message:@"This Application requires an active internet connection. Please connect to wifi or cellular data network for full application functionality." 
-							  delegate:nil
-							  cancelButtonTitle:@"Continue" 
-							  otherButtonTitles:nil];
-		[alert show];
-		[alert autorelease];
 		[feedEntries release];
 		return;
 	}

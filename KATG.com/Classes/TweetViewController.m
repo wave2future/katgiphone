@@ -33,8 +33,7 @@ static BOOL otherTweets;
 
 @implementation TweetViewController
 
-@synthesize navigationController;
-@synthesize activityIndicator;
+@synthesize navigationController, activityIndicator;
 
 //*******************************************************
 //* viewDidLoad:
@@ -166,7 +165,7 @@ static BOOL otherTweets;
 		searchString = [searchString stringByAppendingString: @"+OR+from%3AKaTGShowAlert+OR+%3Akeithmalley+OR+keithandthegirl+OR+katg+OR+%22keith+and+the+girl%22"];
 	}
 	
-	searchString = [searchString stringByAppendingFormat: @"&rpp=%i", 20]; // Changed Code this line
+	searchString = [searchString stringByAppendingFormat: @"&rpp=%i", 20];
 	
 	NSURL *url = [NSURL URLWithString:searchString];
 	NSString *queryResult = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];	
@@ -257,20 +256,6 @@ static BOOL otherTweets;
 		
 	}
 	
-	if (tweets.count == 0) {
-	 NSString * from = @"KATGAPP";
-	 NSString * text = @"No Internet Connection";
-	 NSString * since = @"1";
-	 NSString * imageURLString = @"http";
-	 NSDictionary * tweetDict = [NSDictionary dictionaryWithObjectsAndKeys: from, @"from_user", 
-	 text, @"text", 
-	 since, @"since",
-	 imageURLString, @"profile_image_url", nil];
-	 [tweets addObject:tweetDict];
-	 UIImage * tweetIcon = [UIImage imageNamed:@"TweetIconSub.png"];
-	 [iconDict setObject: tweetIcon forKey: @"http"];
-	}
-	
 	[jsonParser release];
 	[formatter release];
 	[queryResult release];
@@ -304,6 +289,25 @@ static BOOL otherTweets;
 //*
 //*******************************************************
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	if (tweets.count == 0) {
+		static NSString *CellIdentifier = @"TweetCell";
+		TweetCell *cell = (TweetCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		if (cell == nil) {
+			cell = [[[TweetCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+		}
+		cell.lblTitle.text = @"No Tweets Here";
+		cell.lblSince.text = @"";
+		cell.lblFrom.text  = @"";
+		UIColor *color1 = [UIColor colorWithRed:(CGFloat)0.776 green:(CGFloat).875 blue:(CGFloat)0.776 alpha:(CGFloat)1.0];
+		cell.lblTitle.backgroundColor = color1;
+		cell.lblSince.backgroundColor = color1;
+		cell.lblFrom.backgroundColor = color1;
+		cell.backgroundView.backgroundColor = color1;
+		cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground60.png"]];
+		return cell;
+	}
+	
     static NSString *CellIdentifier = @"TweetCell";
 	
 	MREntitiesConverter *converter = [[MREntitiesConverter alloc] init];
@@ -423,7 +427,8 @@ static BOOL otherTweets;
 			[[self navigationController] pushViewController:viewController animated:YES];
 			[viewController release];
 		} else if ([urls count] == 1 && [twts count] == 0) {		
-			WebViewController *viewController = [[WebViewController alloc] initWithNibName:@"WebView" bundle:[NSBundle mainBundle]];
+			//WebViewController *viewController = [[WebViewController alloc] initWithNibName:@"WebView" bundle:[NSBundle mainBundle]];
+			WebViewController *viewController = [[WebViewController alloc] init];
 			NSString *urlAddress = [urls objectAtIndex:0];
 			viewController.urlAddress = urlAddress;
 			[[self navigationController] pushViewController:viewController animated:YES];
@@ -442,7 +447,7 @@ static BOOL otherTweets;
 
 - (void)createNotificationForTermination { 
 	//NSLog(@"createNotificationTwo"); 
-	[[NSNotificationCenter defaultCenter] 
+	[[NSNotificationCenter defaultCenter]
 	 addObserver:self 
 	 selector:@selector(handleTerminationNotification:) 
 	 name:@"ApplicationWillTerminate" 

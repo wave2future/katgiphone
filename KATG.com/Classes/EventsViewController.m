@@ -22,21 +22,18 @@
 #import "DetailViewController.h"
 #import "grabRSSFeed.h"
 
+
 #define ROW_HEIGHT 80.0
 
 
 @implementation EventsViewController
 
-@synthesize navigationController;
-@synthesize activityIndicator;
-@synthesize feedEntries;
-@synthesize list;
+@synthesize navigationController, activityIndicator, feedEntries, list;
 
 //*******************************************************
 //* viewDidLoad:
 //*
-//* Set row height, you could add buttons to the
-//* navigation controller here.
+//* Set row height
 //*
 //*******************************************************
 - (void)viewDidLoad {
@@ -157,7 +154,7 @@
 			feedDateString = [reFormatterator stringFromDate:eventTime];
 		} else {
 			feedTimeString = @"Unknown";
-			feedTimeString = @"Unknown";
+			feedDateString = @"Unknown";
 		}
 		
 		// Determines if event is live show
@@ -200,7 +197,7 @@
 }
 
 #pragma mark Table view methods
-	
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
 }
@@ -243,22 +240,15 @@
 		cell.lblTitle.backgroundColor = color1;
 		cell.lblPublish.backgroundColor = color1;
 		cell.lblPublishDate.backgroundColor = color1;
-		//cell.backgroundView.backgroundColor = color1;
 		cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackground80.png"]];
 	} else {
 		cell.lblTitle.backgroundColor = color2;
 		cell.lblPublish.backgroundColor = color2;
 		cell.lblPublishDate.backgroundColor = color2;
-		//cell.backgroundView.backgroundColor = color2;
 		cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundDark80.png"]];
 	}
 	
 	cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"postCellBackgroundSelected80.png"]];
-	
-	 /*
-	cell.selectedBackgroundView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-	cell.selectedBackgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)0.72 green:(CGFloat).773 blue:(CGFloat)0.72 alpha:(CGFloat)1.0];
-	*/
 	
 	NSString *type = [[list objectAtIndex:indexPath.row] type];
 	if ( [type isEqualToString:@"show"] ) {
@@ -282,22 +272,20 @@
 //*
 //*******************************************************
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if ([[[list objectAtIndex:indexPath.row] title] isEqualToString:@"No Internet Connection"]) {
+		return;
+	}
+	
 	DetailViewController *viewController = [[DetailViewController alloc] initWithNibName:@"DetailView" bundle:[NSBundle mainBundle]];
 	viewController.TitleTemp = [[list objectAtIndex:indexPath.row] title];
 	viewController.TimeTemp = [[list objectAtIndex:indexPath.row] publishTime];
 	viewController.DateTemp = [[list objectAtIndex:indexPath.row] publishDate];
+		
 	viewController.BodyTemp = [[list objectAtIndex:indexPath.row] detail];
+	
 	[[self navigationController] pushViewController:viewController animated:YES];
 	[viewController release];
 }
-
-/*- (void)viewDidDisappear:(BOOL)animated {
-	NSLog(@"Events Table Did Dissapear");
-}
-
-- (void)viewDidUnload {
-	NSLog(@"Events Table Did Unload");
-}*/
 
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview

@@ -47,8 +47,8 @@
 	
 	detailBody = [[[UITextView alloc] initWithFrame:rect] autorelease];
 	detailBody.textColor = [UIColor blackColor];
-	detailBody.backgroundColor = [UIColor clearColor];// [UIColor colorWithRed:(CGFloat)0.627 green:(CGFloat).745 blue:(CGFloat)0.667 alpha:(CGFloat)1.0]; 
-	detailBody.dataDetectorTypes = UIDataDetectorTypeAll; // Only works in 3.0
+	detailBody.backgroundColor = [UIColor clearColor]; 
+	detailBody.dataDetectorTypes = UIDataDetectorTypeAll;
 	
 	detailBody.editable = NO;
 	detailBody.font = [UIFont systemFontOfSize:15.0];
@@ -60,14 +60,6 @@
 	detailDate.text = DateTemp;
 	detailBody.text = BodyTemp;
 }
-
-/*- (void)viewDidDisappear:(BOOL)animated {
-	NSLog(@"Event Details View Did Dissapear");
-}
-
-- (void)viewDidUnload {
-	NSLog(@"Event Details View Did Unload");
-}*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview

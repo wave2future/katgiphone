@@ -17,16 +17,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WebViewController : UIViewController {
-	UINavigationController	*navigationController;
-	IBOutlet UIWebView *webView; // Set up webview for TweetViewController to pass too
-	IBOutlet UIToolbar *toolBar;
-	NSString *urlAddress;        // Variable for TweetViewController to pass URL address
+@interface WebViewController : UIViewController <UIWebViewDelegate> {
+//	UINavigationController	*navigationController;
+	UIView *view;
+	UIWebView *webView;
+	UIToolbar *toolBar;
+	NSString *urlAddress;
 }
 
-@property (nonatomic, retain) UINavigationController *navigationController;
-@property (nonatomic, retain) IBOutlet UIWebView *webView;
-@property (nonatomic, retain) IBOutlet UIToolbar *toolBar;
+//@property (nonatomic, retain) UINavigationController *navigationController;
+@property (nonatomic, retain) UIWebView *webView;
+@property (nonatomic, retain) UIToolbar *toolBar;
 @property (nonatomic, retain) NSString *urlAddress;
 
 @end

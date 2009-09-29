@@ -75,8 +75,6 @@ NSMutableArray *imageArray;
 	if (imageDictionary.count >= 1000) {
 		[imageDictionary removeAllObjects];
 	}
-	
-	[fm release];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -90,8 +88,6 @@ NSMutableArray *imageArray;
 	
 	[imageDictionary writeToFile:imageFilePath atomically:YES];
 	[imageDictionary release];
-	
-	[fm release];
 }
 
 - (void)setButtonImage {
@@ -376,8 +372,6 @@ NSMutableArray *imageArray;
 	
 	[imageDictionary writeToFile:imageFilePath atomically:YES];
 	[imageDictionary release];
-	
-	[fm release];
 }
 
 - (void)didReceiveMemoryWarning {
