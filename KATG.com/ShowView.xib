@@ -216,7 +216,7 @@
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<bool key="IBUIHidesForSinglePage">YES</bool>
-						<int key="IBUINumberOfPages">3</int>
+						<int key="IBUINumberOfPages">1</int>
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 367}</string>
@@ -451,7 +451,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>ShowDetailController</string>
 					<string>UIResponder</string>
-					<string>{{40, 33}, {320, 480}}</string>
+					<string>{{267, 111}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

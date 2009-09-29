@@ -204,6 +204,10 @@ NSMutableArray *imageArray;
 }
 
 - (void)pollImageFeed {
+	if (imageArray.count != 0) {
+		[imageActivityIndicator stopAnimating];
+		return;
+	}
 	// Create the feed string
 	NSString *imageFeedAddress = [NSString stringWithFormat:@"http://app.keithandthegirl.com/Api/Feed/Pictures-By-Show/?ShowId=%@", showNumber];
 	NSString *xPath = @"//picture";
@@ -218,9 +222,22 @@ NSMutableArray *imageArray;
 			[imageArray addObject:[imageDictionary objectForKey:[entry objectForKey:@"url"]]];
 		} else {
 		NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[entry objectForKey:@"url"]]];
+		if (imageData == nil || [imageData length] == 0) {
+			imageData = [NSData dataWithContentsOfFile:@"BG3.png"];
+		}
+		NSString *imageTitle = [entry objectForKey:@"title"];
+		if (imageTitle == nil || [imageTitle length] == 0 || [imageTitle isEqualToString:@"NULL"]) {
+			imageTitle = @"";
+		}
+		MREntitiesConverter *converter = [[MREntitiesConverter alloc] init];
+		NSString *imageDesc = [converter convertEntitiesInString:[entry objectForKey:@"description"]];
+		if (imageDesc == nil || [imageDesc length] == 0 || [imageDesc isEqualToString:@"NULL"]) {
+			imageDesc = @"";
+		}
 		NSDictionary *imDic = [NSDictionary dictionaryWithObjectsAndKeys:imageData, @"imagedata", 
-													 [entry objectForKey:@"title"], @"title", 
-											   [entry objectForKey:@"description"], @"description", nil];
+																		imageTitle, @"title", 
+																		 imageDesc, @"description", nil];
+		[converter release];
 		[imageDictionary setObject:imDic forKey:[entry objectForKey:@"url"]];
 		[imageArray addObject:imDic];
 		}
