@@ -2,9 +2,18 @@
 //  TinyBrowser.m
 //  KATG.com
 //
-//  Created by Doug Russell on 9/28/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
-//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//  
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//  
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import "TinyBrowser.h"
 
@@ -17,9 +26,7 @@
 
 - (void)loadView {
 	[super loadView];
-	
-	self.navigationItem.title = urlAddress;
-	
+		
 	CGRect rect = CGRectMake(0, 0, 320, 460);
 	view = [[UIView alloc] initWithFrame:rect];
 	self.view = view;

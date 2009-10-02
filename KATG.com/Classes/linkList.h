@@ -17,33 +17,17 @@
 
 #import <UIKit/UIKit.h>
 
-
-@interface linkList : UIViewController {
-	IBOutlet UIButton *button1;
-	IBOutlet UIButton *button2;
-	IBOutlet UIButton *button3;
-	IBOutlet UIButton *button4;
+@interface linkList : UIViewController <UITableViewDelegate> {
 	IBOutlet UIButton *infoButton;
+	IBOutlet UITableView *tblView;
 	NSMutableArray *feedEntries;
 	NSMutableArray *list;
-	NSString *url1;
-	NSString *url2;
-	NSString *url3;
-	NSString *url4;
 }
 
-@property(nonatomic, retain) IBOutlet UIButton *button1;
-@property(nonatomic, retain) IBOutlet UIButton *button2;
-@property(nonatomic, retain) IBOutlet UIButton *button3;
-@property(nonatomic, retain) IBOutlet UIButton *button4;
 @property(nonatomic, retain) IBOutlet UIButton *infoButton;
+@property(nonatomic, retain) IBOutlet UITableView *tblView;
 
 - (void)pollFeed;
-- (IBAction)pressedButton1:(id)sender;
-- (IBAction)pressedButton2:(id)sender;
-- (IBAction)pressedButton3:(id)sender;
-- (IBAction)pressedButton4:(id)sender;
-- (void)setButtonImages;
 - (IBAction)infoSheet;
 
 @end

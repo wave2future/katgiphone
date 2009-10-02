@@ -1,5 +1,5 @@
 //
-//  TinyBrowser.h
+//  LinkCell.h
 //  KATG.com
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -15,20 +15,17 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#import <UIKit/UIKit.h>
-#import "linkList.h"
+#import <Foundation/Foundation.h>
 
-@interface TinyBrowser : UIViewController <UIWebViewDelegate> {
-	linkList *delegate;
-	UIView *view;
-	UIWebView *webView;
-	UIToolbar *toolBar;
-	NSString *urlAddress;
+
+@interface LinkCell : UITableViewCell {
+	UILabel *lblTitle;
+	UIImageView *imgSquare;
 }
 
-@property (nonatomic, retain) linkList *delegate;
-@property (nonatomic, retain) UIWebView *webView;
-@property (nonatomic, retain) UIToolbar *toolBar;
-@property (nonatomic, retain) NSString *urlAddress;
+@property (nonatomic, retain) UILabel *lblTitle;
+@property (nonatomic, retain) UIImageView *imgSquare;
+
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier;
 
 @end

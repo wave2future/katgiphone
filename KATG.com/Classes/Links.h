@@ -1,5 +1,5 @@
 //
-//  TinyBrowser.h
+//  Links.h
 //  KATG.com
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -15,20 +15,20 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#import <UIKit/UIKit.h>
-#import "linkList.h"
+#import <Foundation/Foundation.h>
 
-@interface TinyBrowser : UIViewController <UIWebViewDelegate> {
-	linkList *delegate;
-	UIView *view;
-	UIWebView *webView;
-	UIToolbar *toolBar;
-	NSString *urlAddress;
+
+@interface Links : NSObject {
+    NSString *title;
+    NSString *url;
+	BOOL inApp;
 }
 
-@property (nonatomic, retain) linkList *delegate;
-@property (nonatomic, retain) UIWebView *webView;
-@property (nonatomic, retain) UIToolbar *toolBar;
-@property (nonatomic, retain) NSString *urlAddress;
+@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSString *url;
+
+- (id)initWithTitle:(NSString *)theTitle withURL:(NSString *)theURL withInApp:(BOOL)theInApp;
+-(BOOL)inApp;
+-(void)setInApp:(BOOL)inAppValue;
 
 @end

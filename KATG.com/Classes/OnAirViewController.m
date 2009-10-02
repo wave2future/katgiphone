@@ -231,12 +231,13 @@ static int timeSince;
 	if (one.intValue == 1) {
 		//NSLog(@"Defaults Set");
 		if ([userDefaults boolForKey:@"StartStream"]) {
+			[userDefaults setBool:NO forKey:@"StartStream"];
 			//NSLog(@"Launch Stream");
 			[self audioButtonPressed:self];
 		}
 	} else {
 		[userDefaults setBool:NO forKey:@"StartStream"];
-		UIAlertView *alert = [[UIAlertView alloc] 
+		UIAlertView *alert = [[UIAlertView alloc]
 							  initWithTitle:@"NO INTERNET CONNECTION"
 							  message:@"This Application requires an active internet connection. Please connect to wifi or cellular data network for full application functionality." 
 							  delegate:nil

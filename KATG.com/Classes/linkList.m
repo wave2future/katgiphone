@@ -17,135 +17,56 @@
 
 #import "linkList.h"
 #import "TinyBrowser.h"
+#import "LinkCell.h"
+#import "Links.h"
 #import "grabRSSFeed.h"
-
-BOOL inApp1, inApp2, inApp3, inApp4;
+#import "MREntitiesConverter.h"
 
 @implementation linkList
 
-@synthesize button1, button2, button3, button4, infoButton;
+@synthesize infoButton, tblView;
 
 - (void)viewDidLoad {
-	list = [[NSMutableArray alloc] initWithCapacity:4];
 	feedEntries = [[NSMutableArray alloc] initWithCapacity:4];
+	list = [[NSMutableArray alloc] initWithCapacity:4];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[tblView setDelegate:self];
+	tblView.rowHeight = 80;
 	[self pollFeed];
-	[self setButtonImages];
 }
 
 - (void) pollFeed {
-	NSString *feedAddress = @"http://keithandthegirl.com/API/App/Links.xml";
-	// Create the feed string
-	NSString *xPath = @"//Button";
-	// Call the grabRSSFeed function with the above string as a parameter
-	grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:xPath];
-	// if feedEntries is not empty, empty it
-	if (feedEntries.count != 0) {
-		[feedEntries removeAllObjects];
-	}
-	// Fill feedEntries with the results of parsing the show feed
-	[feedEntries addObjectsFromArray:[feed entries]];
-	[feed release];
-	
-	if (list.count != 0) {
-		[list removeAllObjects];
-	}
-	
-	NSDictionary *feedEntry = [feedEntries objectAtIndex:0];
-	[button1 setTitle:[feedEntry objectForKey:@"Title"] forState:UIControlStateNormal];
-	url1 = [feedEntry objectForKey:@"URL"];
-	if ([[feedEntry objectForKey:@"InApp"] isEqualToString:@"YES"]) {
-		inApp1 = YES;
-	}
-	
-	feedEntry = [feedEntries objectAtIndex:1];
-	[button2 setTitle:[feedEntry objectForKey:@"Title"] forState:UIControlStateNormal];
-	url2 = [feedEntry objectForKey:@"URL"];
-	if ([[feedEntry objectForKey:@"InApp"] isEqualToString:@"YES"]) {
-		inApp2 = YES;
-	}
-	
-	feedEntry = [feedEntries objectAtIndex:2];
-	[button3 setTitle:[feedEntry objectForKey:@"Title"] forState:UIControlStateNormal];
-	url3 = [feedEntry objectForKey:@"URL"];
-	if ([[feedEntry objectForKey:@"InApp"] isEqualToString:@"YES"]) {
-		inApp3 = YES;
-	}
-	
-	feedEntry = [feedEntries objectAtIndex:3];
-	[button4 setTitle:[feedEntry objectForKey:@"Title"] forState:UIControlStateNormal];
-	url4 = [feedEntry objectForKey:@"URL"];
-	if ([[feedEntry objectForKey:@"InApp"] isEqualToString:@"YES"]) {
-		inApp4 = YES;
-	}
-}
-
-- (IBAction)pressedButton1:(id)sender {
-	if (inApp1) {
-		TinyBrowser *viewController = [[TinyBrowser alloc] init];
-		viewController.urlAddress = url1;
-		viewController.delegate = self;
-		viewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-		[self presentModalViewController:viewController animated:YES];
-		[viewController release];
+	if ([list count] == 0) {
+		//NSString *feedAddress = @"http://keithandthegirl.com/API/App/Links.xml";
+		NSString *feedAddress = @"http://getitdownonpaper.com/katg/Buttons.xml";
+		// Create the feed string
+		NSString *xPath = @"//Button";
+		// Call the grabRSSFeed function with the above string as a parameter
+		grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:xPath];
+		// if feedEntries is not empty, empty it
+		if (feedEntries.count != 0) {
+			[feedEntries removeAllObjects];
+		}
+		// Fill feedEntries with the results of parsing the show feed
+		[feedEntries addObjectsFromArray:[feed entries]];
+		[feed release];
+		
+		for (NSDictionary *entry in feedEntries) {
+			BOOL iA = NO;
+			if ([[entry objectForKey:@"InApp"] isEqualToString:@"YES"]) {
+				iA = YES;
+			}
+			Links *lnk = [[Links alloc] initWithTitle:[entry objectForKey:@"Title"] withURL:[entry objectForKey:@"URL"] withInApp:iA];
+			[list addObject:lnk];
+			[lnk release];
+		}
+		
+		[tblView reloadData];
 	} else {
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:url1]];
+		[tblView reloadData];
 	}
-}
-
-- (IBAction)pressedButton2:(id)sender {
-	if (inApp2) {
-		TinyBrowser *viewController = [[TinyBrowser alloc] init];
-		viewController.urlAddress = url2;
-		viewController.delegate = self;
-		viewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-		[self presentModalViewController:viewController animated:YES];
-		[viewController release];
-	} else {
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:url1]];
-	}
-}
-
-- (IBAction)pressedButton3:(id)sender {
-	if (inApp3) {
-		TinyBrowser *viewController = [[TinyBrowser alloc] init];
-		viewController.urlAddress = url3;
-		viewController.delegate = self;
-		viewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-		[self presentModalViewController:viewController animated:YES];
-		[viewController release];
-	} else {
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:url1]];
-	}
-}
-
-- (IBAction)pressedButton4:(id)sender {
-	if (inApp4) {
-		TinyBrowser *viewController = [[TinyBrowser alloc] init];
-		viewController.urlAddress = url4;
-		viewController.delegate = self;
-		viewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-		[self presentModalViewController:viewController animated:YES];
-		[viewController release];
-	} else {
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:url1]];
-	}
-}
-
-- (void)setButtonImages {
-	UIImage *feedButtonImage = [UIImage imageNamed:@"feedButtonNormal.png"];
-	UIImage *normal = [feedButtonImage stretchableImageWithLeftCapWidth:12 topCapHeight:12];
-	
-	UIImage *feedButtonHighlightedImage = [UIImage imageNamed:@"feedButtonPressed.png"];
-	UIImage *highlight = [feedButtonHighlightedImage stretchableImageWithLeftCapWidth:12 topCapHeight:12];
-	
-	[button1 setBackgroundImage:(UIImage *)normal forState:UIControlStateNormal];
-	[button1 setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
-	[button2 setBackgroundImage:(UIImage *)normal forState:UIControlStateNormal];
-	[button2 setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
-	[button3 setBackgroundImage:(UIImage *)normal forState:UIControlStateNormal];
-	[button3 setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
-	[button4 setBackgroundImage:(UIImage *)normal forState:UIControlStateNormal];
-	[button4 setBackgroundImage:(UIImage *)highlight forState:UIControlStateHighlighted];
 }
 
 - (IBAction)infoSheet {
@@ -163,18 +84,62 @@ BOOL inApp1, inApp2, inApp3, inApp4;
 	[self dismissModalViewControllerAnimated:YES];
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+	return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return [list count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	static NSString *CellIdentifier = @"LinkCell";
+	
+	LinkCell *cell = (LinkCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[LinkCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+	}
+	
+	cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"GreyLinkCell.png"]];
+	
+	cell.imgSquare.image = [UIImage imageNamed:@"LinkButton.png"];
+	
+	cell.lblTitle.text = [[list objectAtIndex:indexPath.row] title];
+	cell.lblTitle.backgroundColor = [UIColor clearColor];
+		
+	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	BOOL inApp = [[list objectAtIndex:indexPath.row] inApp];
+	if (inApp) {
+		TinyBrowser *viewController = [[TinyBrowser alloc] init];
+		viewController.urlAddress = [[list objectAtIndex:indexPath.row] url];
+		viewController.delegate = self;
+		viewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+		[self presentModalViewController:viewController animated:YES];
+		[viewController release];
+	} else {
+		NSString *URL = [[list objectAtIndex:indexPath.row] url];
+		URL = [URL stringByReplacingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy];
+		URL = [URL stringByAddingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy];
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:URL]];
+	}
+}
+
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];	
+    [super didReceiveMemoryWarning];
+	[list removeAllObjects];
+	[tblView reloadData];
 }
 
 - (void)dealloc {
-	[button1 release];
-	[button2 release];
-	[button3 release];
 	[infoButton release];
+	[tblView release];
+	[feedEntries release];
+	[list release];
     [super dealloc];
 }
-
 
 @end
