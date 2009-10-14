@@ -234,9 +234,14 @@ NSMutableArray *imageArray;
 		if (imageDesc == nil || [imageDesc length] == 0 || [imageDesc isEqualToString:@"NULL"]) {
 			imageDesc = @"";
 		}
+		NSString *hiResURLString = [[entry objectForKey:@"url"] stringByReplacingOccurrencesOfString:@"-Thumb" withString:@""];
+		if (hiResURLString == nil || [hiResURLString length] == 0 || [hiResURLString isEqualToString:@"NULL"]) {
+			hiResURLString = @"";
+		}
 		NSDictionary *imDic = [NSDictionary dictionaryWithObjectsAndKeys:imageData, @"imagedata", 
 																		imageTitle, @"title", 
-																		 imageDesc, @"description", nil];
+																		 imageDesc, @"description", 
+																	hiResURLString, @"hiresurl", nil];
 		[converter release];
 		[imageDictionary setObject:imDic forKey:[entry objectForKey:@"url"]];
 		[imageArray addObject:imDic];
@@ -273,8 +278,21 @@ NSMutableArray *imageArray;
     
 	ImagePageViewController *controller = [viewControllers objectAtIndex:page];
     if ((NSNull *)controller == [NSNull null]) {
-        controller = [[ImagePageViewController alloc] initWithImage:[UIImage imageWithData:[[imageArray objectAtIndex:page] objectForKey:@"imagedata"]] withTitle:[[imageArray objectAtIndex:page] objectForKey:@"title"] withDescription:[[imageArray objectAtIndex:page] objectForKey:@"description"]];
-        [viewControllers replaceObjectAtIndex:page withObject:controller];
+        controller = [[ImagePageViewController alloc] init];
+		[controller loadView];
+		// Calculate the image size and the x offset that will center it
+		UIImage *imageLo = [UIImage imageWithData:[[imageArray objectAtIndex:page] objectForKey:@"imagedata"]];
+		CGSize size = imageLo.size;
+		CGFloat x = 270 - size.width;
+		x = x / 2;
+		CGRect rect = CGRectMake(x, 40, size.width, size.height);
+		controller.imageView.frame = rect;
+		[controller.imageView setImage:imageLo];
+	    controller.lblTitle.text = [[imageArray objectAtIndex:page] objectForKey:@"title"];
+		controller.lblDescription = [[imageArray objectAtIndex:page] objectForKey:@"description"];
+	
+		controller.hiResURL = [NSURL URLWithString:[[imageArray objectAtIndex:page] objectForKey:@"hiresurl"]];
+		[viewControllers replaceObjectAtIndex:page withObject:controller];
         [controller release];
     }
 	
@@ -286,6 +304,22 @@ NSMutableArray *imageArray;
         controller.view.frame = frame;
         [scrollView addSubview:controller.view];
     }
+}
+
+- (void)removeViewsBeforePage:(int)page {
+	if (page < 1) return;
+    if (page >= imageArray.count) return;
+	for (int i = 0; i < page; i++) {
+		[viewControllers replaceObjectAtIndex:i withObject:[NSNull null]];
+	}
+}
+
+- (void)removeViewsAfterPage:(int)page {
+	if (page < 1) return;
+    if (page >= imageArray.count) return;
+	for (int i = 0; i < page; i++) {
+		[viewControllers replaceObjectAtIndex:i withObject:[NSNull null]];
+	}
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender {
@@ -302,6 +336,7 @@ NSMutableArray *imageArray;
     pageControl.currentPage = page;
 	
     // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
+	[self removeViewsBeforePage:page - 1];
     [self loadScrollViewWithPage:page - 1];
     [self loadScrollViewWithPage:page];
     [self loadScrollViewWithPage:page + 1];
@@ -394,6 +429,7 @@ NSMutableArray *imageArray;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 	[self.moviePlayer stop];
+	[scrollView removeFromSuperview];
 }
 
 - (void)dealloc {
@@ -401,7 +437,6 @@ NSMutableArray *imageArray;
     [scrollView release];
     [pageControl release];
 	[blackBox release];
-	
 	[showLink release];
 	[imageArray release];
 	[super dealloc];

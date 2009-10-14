@@ -27,7 +27,6 @@
 @synthesize infoButton, tblView;
 
 - (void)viewDidLoad {
-	feedEntries = [[NSMutableArray alloc] initWithCapacity:4];
 	list = [[NSMutableArray alloc] initWithCapacity:4];
 }
 
@@ -41,14 +40,12 @@
 	if ([list count] == 0) {
 		//NSString *feedAddress = @"http://keithandthegirl.com/API/App/Links.xml";
 		NSString *feedAddress = @"http://getitdownonpaper.com/katg/Buttons.xml";
-		// Create the feed string
+		
 		NSString *xPath = @"//Button";
 		// Call the grabRSSFeed function with the above string as a parameter
 		grabRSSFeed *feed = [[grabRSSFeed alloc] initWithFeed:feedAddress XPath:xPath];
-		// if feedEntries is not empty, empty it
-		if (feedEntries.count != 0) {
-			[feedEntries removeAllObjects];
-		}
+		// 
+		NSMutableArray *feedEntries = [[NSMutableArray alloc] initWithCapacity:4];
 		// Fill feedEntries with the results of parsing the show feed
 		[feedEntries addObjectsFromArray:[feed entries]];
 		[feed release];
@@ -121,8 +118,10 @@
 		[viewController release];
 	} else {
 		NSString *URL = [[list objectAtIndex:indexPath.row] url];
-		URL = [URL stringByReplacingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy];
-		URL = [URL stringByAddingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy];
+		if ([URL rangeOfString:@"mailto:"].location != NSNotFound) {
+			URL = [URL stringByReplacingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy];
+			URL = [URL stringByAddingPercentEscapesUsingEncoding:NSStringEncodingConversionAllowLossy];
+		}
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:URL]];
 	}
 }
@@ -137,7 +136,6 @@
 - (void)dealloc {
 	[infoButton release];
 	[tblView release];
-	[feedEntries release];
 	[list release];
     [super dealloc];
 }

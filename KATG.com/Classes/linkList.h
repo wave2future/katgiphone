@@ -20,7 +20,6 @@
 @interface linkList : UIViewController <UITableViewDelegate> {
 	IBOutlet UIButton *infoButton;
 	IBOutlet UITableView *tblView;
-	NSMutableArray *feedEntries;
 	NSMutableArray *list;
 }
 

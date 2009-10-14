@@ -20,11 +20,19 @@
 
 @interface ImagePageViewController : UIViewController {
 	UIView *view;
-	UIImage *image;
-	NSString *title;
-	NSString *description;
+	UIActivityIndicatorView *activityIndicator;
+	UIImageView *imageView;
+	UILabel *lblTitle;
+	UILabel *lblDescription;
+	NSURL *hiResURL;
 }
 
-- (id)initWithImage:(UIImage *)im withTitle:(NSString *)t withDescription:(NSString *)d;
+@property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, retain) UIImageView *imageView;
+@property (nonatomic, retain) UILabel *lblTitle;
+@property (nonatomic, retain) UILabel *lblDescription;
+@property (nonatomic, retain) NSURL *hiResURL;
+
+- (void)getHiRes;
 
 @end

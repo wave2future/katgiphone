@@ -83,34 +83,35 @@ static BOOL ShouldStream;
 			return;
 		}
 	}
-	
-	Show *Sh = [[Show alloc] initWithTitle:@"Episode list loading ..." withNumber:@"" withGuests:@"Click Here for most recent episode"];
-	[list addObject:Sh];
-	[Sh release];
-	
-	NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-	NSString * feedFilePath = [documentsPath stringByAppendingPathComponent: @"pastshowsfeed.plist"];
-	
-	NSFileManager *fm = [NSFileManager defaultManager];
-	if ([fm fileExistsAtPath: feedFilePath]) {
-		[feedEntries addObjectsFromArray:[NSArray arrayWithContentsOfFile:feedFilePath]];
+	if (list.count == 0) {
+		Show *Sh = [[Show alloc] initWithTitle:@"Episode list loading ..." withNumber:@"" withGuests:@"Click Here for most recent episode"];
+		[list addObject:Sh];
+		[Sh release];
 		
-		for (NSDictionary *feedEntry in feedEntries) {
-			NSString *showNumber = [feedEntry objectForKey: @"N"];
-			NSString *showTitle  = [feedEntry objectForKey: @"T"];
-			NSString *showGuests = [feedEntry objectForKey: @"G"];
-			if ([showGuests isEqualToString:@"NULL"]) { showGuests = @"No Guests"; }
-			NSString *showID	 = [feedEntry objectForKey: @"I"];
+		NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+		NSString * feedFilePath = [documentsPath stringByAppendingPathComponent: @"pastshowsfeed.plist"];
+		
+		NSFileManager *fm = [NSFileManager defaultManager];
+		if ([fm fileExistsAtPath: feedFilePath]) {
+			[feedEntries addObjectsFromArray:[NSArray arrayWithContentsOfFile:feedFilePath]];
 			
-			NSString *show = [NSString stringWithFormat:@"%@ - %@", showNumber, showTitle];
-			
-			Show *Sh = [[Show alloc] initWithTitle:show withNumber:showID withGuests:showGuests];
-			[list addObject:Sh];
-			[Sh release];
+			for (NSDictionary *feedEntry in feedEntries) {
+				NSString *showNumber = [feedEntry objectForKey: @"N"];
+				NSString *showTitle  = [feedEntry objectForKey: @"T"];
+				NSString *showGuests = [feedEntry objectForKey: @"G"];
+				if ([showGuests isEqualToString:@"NULL"]) { showGuests = @"No Guests"; }
+				NSString *showID	 = [feedEntry objectForKey: @"I"];
+				
+				NSString *show = [NSString stringWithFormat:@"%@ - %@", showNumber, showTitle];
+				
+				Show *Sh = [[Show alloc] initWithTitle:show withNumber:showID withGuests:showGuests];
+				[list addObject:Sh];
+				[Sh release];
+			}
 		}
-	}
 		
-	[self.tableView reloadData];
+		[self.tableView reloadData];
+	}
 }
 
 #pragma mark Feed

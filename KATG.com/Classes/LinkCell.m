@@ -66,6 +66,7 @@
 
 - (void)dealloc {
     [lblTitle release];
+	[imgSquare release];
     [super dealloc];
 }
 

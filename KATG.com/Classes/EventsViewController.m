@@ -22,9 +22,7 @@
 #import "DetailViewController.h"
 #import "grabRSSFeed.h"
 
-
 #define ROW_HEIGHT 80.0
-
 
 @implementation EventsViewController
 
@@ -39,7 +37,7 @@
 - (void)viewDidLoad {
 	//NSLog(@"Events View Did Load");
     [super viewDidLoad];
-	
+
 	self.navigationItem.title = @"Events";
 	
 	NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];

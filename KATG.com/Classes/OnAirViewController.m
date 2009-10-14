@@ -25,6 +25,7 @@
 #import <QuartzCore/CoreAnimation.h>
 #import "sanitizeField.h"
 #import "grabRSSFeed.h"
+//#import "Beacon.h"
 
 // Integer value for countdown to next live show
 static int timeSince;
