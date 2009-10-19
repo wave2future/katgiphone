@@ -25,7 +25,7 @@
 #import <QuartzCore/CoreAnimation.h>
 #import "sanitizeField.h"
 #import "grabRSSFeed.h"
-//#import "Beacon.h"
+#import "Beacon.h"
 
 // Integer value for countdown to next live show
 static int timeSince;
@@ -102,7 +102,7 @@ static int timeSince;
 //*******************************************************
 - (IBAction)audioButtonPressed:(id)sender {
 	if (!streamer) {
-		
+		[[Beacon shared] startSubBeaconWithName:@"audioButtonPressed" timeSession:NO];
 		NSString *escapedValue =
 		[(NSString *)CFURLCreateStringByAddingPercentEscapes(nil,
 															 (CFStringRef)@"http://liveshow.keithandthegirl.com:8004",
@@ -235,6 +235,7 @@ static int timeSince;
 			[userDefaults setBool:NO forKey:@"StartStream"];
 			//NSLog(@"Launch Stream");
 			[self audioButtonPressed:self];
+			[[Beacon shared] startSubBeaconWithName:@"streaming autoresumed" timeSession:NO];
 		}
 	} else {
 		[userDefaults setBool:NO forKey:@"StartStream"];
@@ -317,6 +318,7 @@ static int timeSince;
 //* blanked
 //*******************************************************
 - (IBAction)feedbackButtonPressed:(id)sender {
+	[[Beacon shared] startSubBeaconWithName:@"feedback sent" timeSession:NO];
 	sanitizeField *cleaner = [[sanitizeField alloc] init];
 	NSString *namePrefix = @"Name=";
 	NSString *name;
@@ -446,6 +448,7 @@ static int timeSince;
 //* is complete
 //*******************************************************
 - (IBAction)phoneButtonPressed:(id)sender {
+	[[Beacon shared] startSubBeaconWithName:@"phone in" timeSession:NO];
 	if (streamer) {
 		[userDefaults setBool:YES forKey:@"StartStream"];
 		[userDefaults synchronize];

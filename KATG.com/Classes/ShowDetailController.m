@@ -316,8 +316,8 @@ NSMutableArray *imageArray;
 
 - (void)removeViewsAfterPage:(int)page {
 	if (page < 1) return;
-    if (page >= imageArray.count) return;
-	for (int i = 0; i < page; i++) {
+    if (page > imageArray.count) return;
+	for (int i = imageArray.count; i > page; i--) {
 		[viewControllers replaceObjectAtIndex:i withObject:[NSNull null]];
 	}
 }
@@ -340,6 +340,7 @@ NSMutableArray *imageArray;
     [self loadScrollViewWithPage:page - 1];
     [self loadScrollViewWithPage:page];
     [self loadScrollViewWithPage:page + 1];
+	//[self removeViewsAfterPage:page + 1];
 	
     // A possible optimization would be to unload the views+controllers which are no longer visible
 }

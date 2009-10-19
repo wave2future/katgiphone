@@ -16,6 +16,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #import "KATG_comAppDelegate.h"
+#import "Beacon.h"
 #include <sys/socket.h>
 #include <netinet/in.h>
 
@@ -44,6 +45,8 @@
 		[alert show];
 		[alert autorelease];
 	}
+	NSString *applicationCode = @"a38a2cbef55901a33781c4b41d9c1a2b";
+	[Beacon initAndStartBeaconWithApplicationCode:applicationCode useCoreLocation:YES useOnlyWiFi:NO];
 	return YES;
 }
 
@@ -59,6 +62,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 	 application.applicationIconBadgeNumber = 0;
 	[self talkToOnAirView];
+	[Beacon endBeacon];
 }
 
 #pragma mark Push Notification

@@ -8,13 +8,9 @@
 	<array>
 		<dict>
 			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
+			<string>PSGroupSpecifier</string>
 			<key>Title</key>
 			<string>Stream Over Cellular Network:</string>
-			<key>Key</key>
-			<string>Stream</string>
-			<key>DefaultValue</key>
-			<string></string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -28,23 +24,32 @@
 		</dict>
 		<dict>
 			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
+			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>Streaming over cellular network</string>
-			<key>Key</key>
-			<string>Stream1</string>
-			<key>DefaultValue</key>
-			<string></string>
+			<string>Streaming over cellular network w/o unlimited data may be costly</string>
 		</dict>
 		<dict>
 			<key>Type</key>
-			<string>PSTitleValueSpecifier</string>
+			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>w/o unlimited data may be costly</string>
+			<string>Anonymous Usage Statistics</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Send Statistics</string>
 			<key>Key</key>
-			<string>Stream2</string>
+			<string>kEnablePinchMediaStatsCollection</string>
 			<key>DefaultValue</key>
-			<string></string>
+			<true/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>This anonymous information is used by this application&apos;s developers to help understand their applications and make them better.
+		    </string>
 		</dict>
 	</array>
 </dict>
