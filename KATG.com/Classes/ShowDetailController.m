@@ -317,7 +317,7 @@ NSMutableArray *imageArray;
 - (void)removeViewsAfterPage:(int)page {
 	if (page < 1) return;
     if (page > imageArray.count) return;
-	for (int i = imageArray.count; i > page; i--) {
+	for (int i = page; i < imageArray.count; i++) {
 		[viewControllers replaceObjectAtIndex:i withObject:[NSNull null]];
 	}
 }
@@ -340,9 +340,7 @@ NSMutableArray *imageArray;
     [self loadScrollViewWithPage:page - 1];
     [self loadScrollViewWithPage:page];
     [self loadScrollViewWithPage:page + 1];
-	//[self removeViewsAfterPage:page + 1];
-	
-    // A possible optimization would be to unload the views+controllers which are no longer visible
+	[self removeViewsAfterPage:page + 2];
 }
 
 // At the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
