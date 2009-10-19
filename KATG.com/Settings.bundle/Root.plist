@@ -28,29 +28,6 @@
 			<key>Title</key>
 			<string>Streaming over cellular network w/o unlimited data may be costly</string>
 		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-			<key>Title</key>
-			<string>Anonymous Usage Statistics</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Send Statistics</string>
-			<key>Key</key>
-			<string>kEnablePinchMediaStatsCollection</string>
-			<key>DefaultValue</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-			<key>Title</key>
-			<string>This anonymous information is used by this application&apos;s developers to help understand their applications and make them better.
-		    </string>
-		</dict>
 	</array>
 </dict>
 </plist>

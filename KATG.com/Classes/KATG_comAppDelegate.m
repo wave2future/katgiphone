@@ -46,7 +46,7 @@
 		[alert autorelease];
 	}
 	NSString *applicationCode = @"a38a2cbef55901a33781c4b41d9c1a2b";
-	[Beacon initAndStartBeaconWithApplicationCode:applicationCode useCoreLocation:YES useOnlyWiFi:NO];
+	[Beacon initAndStartBeaconWithApplicationCode:applicationCode useCoreLocation:NO useOnlyWiFi:NO];
 	return YES;
 }
 
