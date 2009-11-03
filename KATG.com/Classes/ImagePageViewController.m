@@ -29,7 +29,7 @@ BOOL hiRes;
 	// Create a UIView that will fit in the UIScrollView this will be added to and assign it to self.view
 	CGRect rect = CGRectMake(0, 0, 270, 190);
 	view = [[UIView alloc] initWithFrame:rect];
-	[self.view addSubview:view];
+	self.view = view;
 	[view setBackgroundColor:[UIColor clearColor]];
 	
 	// Make a label for the image title and  add it to self.view
@@ -73,16 +73,21 @@ BOOL hiRes;
 	if (touch.tapCount == 2) {
 		imageView.multipleTouchEnabled = NO;
 		imageView.userInteractionEnabled = NO;
+		view.multipleTouchEnabled = NO;
+		view.userInteractionEnabled = NO;
 		[activityIndicator startAnimating];
-		[NSThread detachNewThreadSelector:@selector(hiResPool) toTarget:self withObject:nil];
+		hiResThread = [[NSThread alloc] initWithTarget:self selector:@selector(hiResPool) object:nil];
+		[hiResThread start];
 	}
 }
 
 - (void)hiResPool {
+	NSLog(@"thread started");
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	[self getHiRes];
 	hiRes = NO;
 	[pool release];
+	NSLog(@"thread finished");
 }
 
 - (void)getHiRes {
@@ -92,10 +97,10 @@ BOOL hiRes;
 	}
 	hiRes = YES;
 	
-	NSData *imData = [self readPlist:[hiResURL absoluteString]];
+	NSData *imData = [self readImageData:[[hiResURL absoluteString] lastPathComponent]];
 	if (imData == nil) {
 		imData = [[NSData alloc] initWithContentsOfURL:hiResURL];
-		[self writeToPlist:[hiResURL absoluteString] withValue:imData];
+		[self writeImageData:[[hiResURL absoluteString] lastPathComponent] withValue:imData];
 	}
 	
 	UIImage *imageHi = [[UIImage alloc] initWithData:imData];
@@ -103,7 +108,6 @@ BOOL hiRes;
 	
 	CGSize size = imageHi.size;
 	CGRect rect;
-	
 	if (size.height > size.width) {
 		CGFloat scalingFactor = size.height / 190;
 		CGFloat y = size.width / scalingFactor;
@@ -120,52 +124,53 @@ BOOL hiRes;
 		rect = CGRectMake(40, 0, 190, 190);
 	}
 	
-	imageView.contentMode = UIViewContentModeScaleAspectFit;
-	imageView.frame = rect;
-	[imageView setImage:imageHi];
-	[activityIndicator stopAnimating];
+	//imageHi = [imageHi _imageScaledToSize:rect.size interpolationQuality:3.0];
+	//imageHi = [imageHi scaleImageToSize:rect.size];
+	
+	if (imageView != nil) {
+		imageView.contentMode = UIViewContentModeScaleAspectFit;
+		imageView.frame = rect;
+		[imageView setImage:imageHi];
+		
+		[activityIndicator stopAnimating];
+	}
 }
 
-- (id)readPlist:(NSString *)key {
+- (id)readImageData:(NSString *)fileName {
 	NSFileManager *fileManager = [[NSFileManager alloc] init];
 	
-	NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-	NSString * imageFilePath = [documentsPath stringByAppendingPathComponent: @"hires.plist"];
+	NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+	NSString *imageFilePath = [documentsPath stringByAppendingPathComponent: fileName];
 	
 	if ([fileManager fileExistsAtPath:imageFilePath]) {
-		NSMutableDictionary *plistDict = [[NSMutableDictionary alloc] initWithContentsOfFile:imageFilePath];
+		NSData *data = [[NSData alloc] initWithContentsOfFile:imageFilePath];
 		[fileManager release];
-		return [plistDict objectForKey:key];
+		return data;
 	} else {
 		[fileManager release];
 		return nil;
 	}
 }
 
-- (BOOL)writeToPlist:(NSString *)key withValue:(id)value {
+- (BOOL)writeImageData:(NSString *)filename withValue:(NSData *)data {
 	NSFileManager *fileManager = [[NSFileManager alloc] init];
 	
 	NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-	NSString * imageFilePath = [documentsPath stringByAppendingPathComponent: @"hires.plist"];
+	NSString * imageFilePath = [documentsPath stringByAppendingPathComponent: filename];
 	
-	NSMutableDictionary *plistDict;
+	BOOL success = [data writeToFile:imageFilePath atomically:YES];
 	
-	if ([fileManager fileExistsAtPath:imageFilePath]) {
-		plistDict = [[NSMutableDictionary alloc] initWithContentsOfFile:imageFilePath];
-	} else {
-		plistDict = [[NSMutableDictionary alloc] init];
-	}
-	
-	[plistDict setValue:value forKey:key];
-	BOOL success = [plistDict writeToFile:imageFilePath atomically:YES];
-	[plistDict release];
 	[fileManager release];
 	return success;
 }
 
 - (void)didReceiveMemoryWarning {
+	if ([hiResThread isExecuting]) {
+		[hiResThread cancel];
+	}
 	[view removeFromSuperview];
 	[imageView removeFromSuperview];
+	imageView = nil;
 	[activityIndicator removeFromSuperview];
 	[lblTitle release];
 	[lblDescription release];
@@ -174,8 +179,12 @@ BOOL hiRes;
 }
 
 - (void)dealloc {
+	if ([hiResThread isExecuting]) {
+		[hiResThread cancel];
+	}
 	[view removeFromSuperview];
 	[imageView removeFromSuperview];
+	imageView = nil;
 	[activityIndicator removeFromSuperview];
 	[lblTitle release];
 	[lblDescription release];
@@ -184,4 +193,21 @@ BOOL hiRes;
 }
 
 
+@end
+
+@implementation UIImage (INResizeImageAllocator)
++ (UIImage*)imageWithImage:(UIImage*)image 
+			  scaledToSize:(CGSize)newSize;
+{
+	UIGraphicsBeginImageContext( newSize );
+	[image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+	UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+	
+	return newImage;
+}
+- (UIImage*)scaleImageToSize:(CGSize)newSize
+{
+	return [UIImage imageWithImage:self scaledToSize:newSize];
+}
 @end

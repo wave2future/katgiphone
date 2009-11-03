@@ -50,11 +50,6 @@ static int timeSince;
 	[self setAudioButtonImage:image];
 	[image release];
 	
-	// Auto start audiostreamer if it was playing when the app last exited
-	userDefaults = [NSUserDefaults standardUserDefaults];
-	
-	[self setDefaults];
-	
 	// Draw Volume Slider
 	[self drawVolumeSlider];
 	
@@ -76,6 +71,15 @@ static int timeSince;
 	 name:@"UITextViewTextDidBeginEditingNotification" 
 	 object:nil];
 	
+	[self createNotificationForTermination];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	// Auto start audiostreamer if it was playing when the app last exited
+	userDefaults = [NSUserDefaults standardUserDefaults];
+	
+	[self setDefaults];
+	
 	//
 	[ NSThread detachNewThreadSelector: @selector(feedStatusAutoPool) toTarget: self withObject: nil ];
 	
@@ -88,8 +92,6 @@ static int timeSince;
 	// Set update timer for for Countdown to next live show
 	timeSince = 0;
 	[self setNextShowTimer];
-	
-	[self createNotificationForTermination];
 }
 
 #pragma mark Audio Streamer

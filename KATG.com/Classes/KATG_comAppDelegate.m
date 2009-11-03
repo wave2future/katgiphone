@@ -66,9 +66,9 @@
 }
 
 #pragma mark Push Notification
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
-	//NSLog(@"deviceToken: %@", devToken);
-	NSString *token = [[NSString alloc] initWithFormat: @"%@", devToken];
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+	//NSLog(@"deviceToken: %@", deviceToken);
+	NSString *token = [[NSString alloc] initWithFormat: @"%@", deviceToken];
 	[self sendProviderDeviceToken:token];
 }
 

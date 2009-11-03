@@ -234,7 +234,7 @@ NSMutableArray *imageArray;
 		if (imageDesc == nil || [imageDesc length] == 0 || [imageDesc isEqualToString:@"NULL"]) {
 			imageDesc = @"";
 		}
-		NSString *hiResURLString = [[entry objectForKey:@"url"] stringByReplacingOccurrencesOfString:@"-Thumb" withString:@""];
+		NSString *hiResURLString = [[entry objectForKey:@"url"] stringByReplacingOccurrencesOfString:@"-Thumb" withString:@"-Display"];
 		if (hiResURLString == nil || [hiResURLString length] == 0 || [hiResURLString isEqualToString:@"NULL"]) {
 			hiResURLString = @"";
 		}

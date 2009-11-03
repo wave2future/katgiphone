@@ -24,7 +24,8 @@
 	UIImageView *imageView;
 	UILabel *lblTitle;
 	UILabel *lblDescription;
-	NSURL *hiResURL;
+	NSURL *hiResURL;	
+	NSThread *hiResThread;
 }
 
 @property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
@@ -34,5 +35,13 @@
 @property (nonatomic, retain) NSURL *hiResURL;
 
 - (void)getHiRes;
+- (id)readImageData:(NSString *)fileName;
+- (BOOL)writeImageData:(NSString *)filename withValue:(NSData *)data;
 
+@end
+
+@interface UIImage (INResizeImageAllocator)
++ (UIImage*)imageWithImage:(UIImage*)image
+              scaledToSize:(CGSize)newSize;
+- (UIImage*)scaleImageToSize:(CGSize)newSize;
 @end

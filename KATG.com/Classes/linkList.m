@@ -38,8 +38,8 @@
 
 - (void) pollFeed {
 	if ([list count] == 0) {
-		//NSString *feedAddress = @"http://keithandthegirl.com/API/App/Links.xml";
-		NSString *feedAddress = @"http://getitdownonpaper.com/katg/Buttons.xml";
+		NSString *feedAddress = @"http://keithandthegirl.com/API/App/Links.xml";
+		//NSString *feedAddress = @"http://getitdownonpaper.com/katg/Buttons.xml";
 		
 		NSString *xPath = @"//Button";
 		// Call the grabRSSFeed function with the above string as a parameter
@@ -69,7 +69,7 @@
 - (IBAction)infoSheet {
 	UIAlertView *alert = [[UIAlertView alloc] 
 						  initWithTitle:@"Thanks and Credit"
-						  message:@"The following people contributed directly or through content:\n • Keith Malley\n • Chemda\n • Michael Khalili\n • Hypercrypt (Klaus Dudas, Assistant Developer)\n • The Grundle (Barry Mendelson)\n • Londan Ash (Ashley Mills)\n • Picard (John Leschinski)\n • Subsonix (Marcus Newman)\n • Mapes\n • Aptmunich\n • RegexKitLite Copyright © 2008-2009, John Engelhart" 
+						  message:@"The following people contributed directly or through content:\n • Keith Malley\n • Chemda\n • Michael Khalili\n • Hypercrypt (Klaus Dudas, Assistant Developer)\n • The Grundle (Barry Mendelson)\n • Londan Ash (Ashley Mills)\n • Picard (John Leschinski)\n • Subsonix (Marcus Newman)\n • Mapes\n • Aptmunich\n • Elmacgato\n • RegexKitLite Copyright © 2008-2009, John Engelhart" 
 						  delegate:nil
 						  cancelButtonTitle:@"Continue" 
 						  otherButtonTitles:nil];
