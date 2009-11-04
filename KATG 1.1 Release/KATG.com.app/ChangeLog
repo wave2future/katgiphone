@@ -1,0 +1,25 @@
+Version 1.0.1
+Added support for persistent WiFi connections
+Fixed button issues in Twitter tab
+Version 1.0.2
+Date formatting in events tab
+Changed events tab graphics
+Version 1.0.3
+Added shading to events tab
+Changed selected shading to events tab
+Added Date to events detail page
+changed events detail page layout
+changed shading on events layout page
+Version 1.0.4
+Added phone support
+Changed events detail page return button
+Version 1.0.5
+Changed Navigation Controller
+Graphical changes to OnAir Tab
+Renamed several files
+Added Notification center to clear textview for feedback
+Added persistance for name, location and textview contents
+Version 1.0.6
+Push Notification
+Version 1.0.7
+The Twitters
