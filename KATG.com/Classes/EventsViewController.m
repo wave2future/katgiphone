@@ -26,7 +26,7 @@
 
 @implementation EventsViewController
 
-@synthesize navigationController, activityIndicator, feedEntries, list;
+@synthesize navigationController, activityIndicator, feedEntries, list, listProxy;
 
 //*******************************************************
 //* viewDidLoad:
@@ -46,6 +46,8 @@
 	NSMutableArray *feedPack = [[NSMutableArray alloc] initWithCapacity:2];
 	
 	feedEntries = [[NSMutableArray alloc] init];
+	list = [[NSMutableArray alloc] init];
+	listProxy = [[NSMutableArray alloc] init];
 	
 	NSFileManager *fm = [NSFileManager defaultManager];
 	if ([fm fileExistsAtPath: feedFilePath]) {
@@ -75,9 +77,7 @@
 									initWithCustomView:self.activityIndicator];
 	loadingView.target = self;
 	self.navigationItem.rightBarButtonItem = loadingView;
-	
-	list = [[NSMutableArray alloc] init];
-	
+		
 	[self.activityIndicator startAnimating];
 	[ NSThread detachNewThreadSelector: @selector(autoPool) toTarget: self withObject: feedEntries ];
 }
@@ -165,7 +165,7 @@
 		}
 		
 		Event *Ev = [[Event alloc] initWithTitle:feedTitle publishTime:feedTimeString publishDate:feedDateString type:eventType detail:feedDetails];
-		[list addObject:Ev];
+		[listProxy addObject:Ev];
 		
 		[Ev release];
 		
@@ -178,14 +178,22 @@
 	
 	[feedEntries removeAllObjects];
 	
-	if ([list count] == 0) {
+	if ([listProxy count] == 0) {
 		Event *Ev = [[Event alloc] initWithTitle:@"No Internet Connection" publishTime:@"12:00 AM" publishDate:@"WED 04/15" type:@"The Show" detail:@"Without an internet connection this app will not function normally. Connect to wifi or a cellular data service."];
-		[list addObject:Ev];
+		[listProxy addObject:Ev];
 		[Ev release];
 	}
 	
+	[list removeAllObjects];
+	[list addObjectsFromArray:listProxy];
+	[listProxy removeAllObjects];
+	
 	[self.activityIndicator stopAnimating];
 	
+	[self performSelectorOnMainThread:@selector(reloadTableView) withObject:nil waitUntilDone:NO];
+}
+
+- (void)reloadTableView {
 	[self.tableView reloadData];
 }
 
@@ -301,6 +309,7 @@
 - (void)dealloc {
 	[navigationController release];
 	[list release];
+	[listProxy release];
 	[feedEntries release];
 	[super dealloc];
 }

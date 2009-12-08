@@ -21,6 +21,7 @@
 @interface PastShowsController : UITableViewController <UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate> {
 	IBOutlet UINavigationController	*navigationController;
     NSMutableArray					*list;
+	NSMutableArray					*listProxy;
 	NSMutableArray					*filteredList;
 	UIActivityIndicatorView			*activityIndicator;
 	NSMutableArray					*feedEntries;
@@ -32,6 +33,7 @@
 
 @property (nonatomic, retain) IBOutlet UINavigationController	*navigationController;
 @property (nonatomic, retain) NSMutableArray					*list;
+@property (nonatomic, retain) NSMutableArray					*listProxy;
 @property (nonatomic, retain) NSMutableArray					*filteredList;
 @property (nonatomic, retain) UIActivityIndicatorView			*activityIndicator;
 @property (nonatomic, retain) NSMutableArray					*feedEntries;

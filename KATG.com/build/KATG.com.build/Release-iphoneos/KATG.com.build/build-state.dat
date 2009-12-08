@@ -110,9 +110,9 @@ cProcessProductPackaging /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/
 cCodeSign /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Release-iphoneos/KATG.com.app
 
 N/System/Library/Frameworks/CoreLocation.framework/CoreLocation
-c000000004A63FB5D000000000003B9E0
-t1248066397
-s244192
+c000000004AD86580000000000003C8C0
+t1255695744
+s248000
 
 N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/BG.png
 c000000004AC5496A00000000000045B2
@@ -342,15 +342,15 @@ i"Event.h"
 i"MREntitiesConverter.h"
 
 N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/EventsViewController.h
-c000000004AC1479E00000000000004E9
-t1254180766
-s1257
+c000000004B19502D0000000000000542
+t1259950125
+s1346
 i<UIKit/UIKit.h>
 
 N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/EventsViewController.m
-c000000004AC943C80000000000002AE8
-t1254704072
-s10984
+c000000004B1950BA0000000000002C22
+t1259950266
+s11298
 i"EventsViewController.h"
 i"Event.h"
 i"CustomCell.h"
@@ -445,16 +445,16 @@ i"grabRSSFeed.h"
 i"Beacon.h"
 
 N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/PastShowsController.h
-c000000004ABEE945000000000000070B
-t1254025541
-s1803
+c000000004B1950CA0000000000000768
+t1259950282
+s1896
 i<UIKit/UIKit.h>
 i"Reachability.h"
 
 N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/PastShowsController.m
-c000000004ACA3B6B0000000000002CAF
-t1254767467
-s11439
+c000000004B1950D10000000000002E75
+t1259950289
+s11893
 i"PastShowsController.h"
 i"ShowCell.h"
 i"Show.h"
@@ -551,16 +551,16 @@ s2528
 i"ShowCell.h"
 
 N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/ShowDetailController.h
-c000000004AD49D920000000000000C72
-t1255447954
-s3186
+c000000004B1830440000000000000CA5
+t1259876420
+s3237
 i<UIKit/UIKit.h>
 i<MediaPlayer/MediaPlayer.h>
 
 N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/ShowDetailController.m
-c000000004AE787020000000000003C85
-t1256687362
-s15493
+c000000004B194E7E0000000000003FE3
+t1259949694
+s16355
 i"ShowDetailController.h"
 i"MREntitiesConverter.h"
 i"grabRSSFeed.h"
@@ -626,9 +626,9 @@ s1403
 i<UIKit/UIKit.h>
 
 N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/TweetViewController.m
-c000000004AC14B3D0000000000004A1A
-t1254181693
-s18970
+c000000004B194D730000000000004A99
+t1259949427
+s19097
 i<JSON/JSON.h>
 i"TweetViewController.h"
 i"TwtViewController.h"
@@ -647,9 +647,9 @@ s1186
 i<UIKit/UIKit.h>
 
 N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/TwtViewController.m
-c000000004AC134AD0000000000002DD7
-t1254175917
-s11735
+c000000004B194E1D0000000000002E56
+t1259949597
+s11862
 i<JSON/JSON.h>
 i"TwtViewController.h"
 i"TweetCell.h"
@@ -5150,8 +5150,8 @@ t1257349055
 s7663744
 
 NInfo.plist
-c000000004AF1A108000000000000039C
-t1257349384
+c000000004B194C9B000000000000039C
+t1259949211
 s924
 
 CCheck dependencies

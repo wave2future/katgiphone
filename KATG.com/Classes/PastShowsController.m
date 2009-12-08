@@ -27,7 +27,7 @@ static BOOL ShouldStream;
 
 @implementation PastShowsController
 
-@synthesize navigationController, list, filteredList, activityIndicator, feedEntries, feedAddress, indexPaths, localWiFiConnectionStatus;
+@synthesize navigationController, list, listProxy, filteredList, activityIndicator, feedEntries, feedAddress, indexPaths, localWiFiConnectionStatus;
 
 #pragma mark View
 - (void)viewDidLoad {
@@ -65,6 +65,7 @@ static BOOL ShouldStream;
 	}
 	// Iniate list to hold show data, set feed address, start activity indicator and break off thread to poll show feed
 	list = [[NSMutableArray alloc] initWithCapacity:1000];
+	listProxy = [[NSMutableArray alloc] initWithCapacity:1000];
 	filteredList = [[NSMutableArray alloc] initWithCapacity:1000];
 	feedEntries = [[NSMutableArray alloc] initWithCapacity:1000];
 	
@@ -85,7 +86,7 @@ static BOOL ShouldStream;
 	}
 	if (list.count == 0) {
 		Show *Sh = [[Show alloc] initWithTitle:@"Episode list loading ..." withNumber:@"" withGuests:@"Click Here for most recent episode"];
-		[list addObject:Sh];
+		[listProxy addObject:Sh];
 		[Sh release];
 		
 		NSString * documentsPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
@@ -105,10 +106,14 @@ static BOOL ShouldStream;
 				NSString *show = [NSString stringWithFormat:@"%@ - %@", showNumber, showTitle];
 				
 				Show *Sh = [[Show alloc] initWithTitle:show withNumber:showID withGuests:showGuests];
-				[list addObject:Sh];
+				[listProxy addObject:Sh];
 				[Sh release];
 			}
 		}
+		
+		[list removeAllObjects];
+		[list addObjectsFromArray:listProxy];
+		[listProxy removeAllObjects];
 		
 		[self.tableView reloadData];
 	}
@@ -134,8 +139,8 @@ static BOOL ShouldStream;
 	[feedEntries addObjectsFromArray:[feed entries]];
 	[feed release];
 	
-	if (list.count != 0) {
-		[list removeAllObjects];
+	if (listProxy.count != 0) {
+		[listProxy removeAllObjects];
 	}
 	
 	for (NSDictionary *feedEntry in feedEntries) {
@@ -148,18 +153,26 @@ static BOOL ShouldStream;
 		NSString *show = [NSString stringWithFormat:@"%@ - %@", showNumber, showTitle];
 		
 		Show *Sh = [[Show alloc] initWithTitle:show withNumber:showID withGuests:showGuests];
-		[list addObject:Sh];
+		[listProxy addObject:Sh];
 		[Sh release];
 	}
 	
-	if ([list count] == 0) {
+	if ([listProxy count] == 0) {
 		Show *Sh = [[Show alloc] initWithTitle:@"No Internet Connection" withNumber:@"" withGuests:@""];
-		[list addObject:Sh];
+		[listProxy addObject:Sh];
 		[Sh release];
 	}
+	
+	[list removeAllObjects];
+	[list addObjectsFromArray:listProxy];
+	[listProxy removeAllObjects];
 	
 	[self.activityIndicator stopAnimating];
 	
+	[self performSelectorOnMainThread:@selector(reloadTableView) withObject:nil waitUntilDone:NO];
+}
+
+- (void)reloadTableView {
 	[self.tableView reloadData];
 }
 
@@ -167,7 +180,6 @@ static BOOL ShouldStream;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
 }
-
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -222,7 +234,8 @@ static BOOL ShouldStream;
 	return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+{
 	ShowDetailController *viewController = [[ShowDetailController alloc] initWithNibName:@"ShowView" bundle:[NSBundle mainBundle]];
 	if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
@@ -271,7 +284,6 @@ static BOOL ShouldStream;
     return YES;
 }
 
-
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
 {
 	self.searchDisplayController.searchResultsTableView.rowHeight = ROW_HEIGHT;
@@ -305,6 +317,7 @@ static BOOL ShouldStream;
 
 - (void)dealloc {
 	[list release];
+	[listProxy release];
 	[activityIndicator release];
 	[feedEntries release];
 	[feedAddress release];

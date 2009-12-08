@@ -21,12 +21,14 @@
 	IBOutlet UINavigationController	*navigationController; // 
 	UIActivityIndicatorView	*activityIndicator;
 	NSMutableArray *list;
+	NSMutableArray *listProxy;
 	NSMutableArray *feedEntries;
 }
 
 @property (nonatomic, retain) IBOutlet UINavigationController	*navigationController;
 @property (nonatomic, retain) UIActivityIndicatorView			*activityIndicator;
 @property (nonatomic, retain) NSMutableArray					*list;
+@property (nonatomic, retain) NSMutableArray					*listProxy;
 @property (nonatomic, retain) NSMutableArray					*feedEntries;
 
 - (void)pollFeed;

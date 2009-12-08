@@ -1,0 +1,1911 @@
+TKATG.com
+v7
+r1
+
+N/System/Library/Frameworks/CoreLocation.framework/CoreLocation
+c000000004AD86580000000000003C8C0
+t1255695744
+s248000
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/BG.png
+c000000004AC5496A00000000000045B2
+t1254443370
+s17842
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/BG1.png
+c000000004AC5496A0000000000005A6D
+t1254443370
+s23149
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/BG3.png
+c000000004AC5496A00000000000094EE
+t1254443370
+s38126
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/ChangeLog
+c000000004AC5496A00000000000002BB
+t1254443370
+s699
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/AudioStreamer.h
+c000000004A56A5BD0000000000000877
+t1247192509
+s2167
+i<UIKit/UIKit.h>
+i<pthread.h>
+i<AudioToolbox/AudioToolbox.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/AudioStreamer.m
+c000000004AA8105F00000000000056E4
+t1252528223
+s22244
+i"AudioStreamer.h"
+i<CFNetwork/CFNetwork.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/Beacon.h
+c000000004A8F12630000000000000387
+t1250890339
+s903
+i<UIKit/UIKit.h>
+i<CoreLocation/CoreLocation.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLDocument.h
+c000000004A05C39F0000000000000928
+t1241891743
+s2344
+i"CXMLNode.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLDocument.m
+c000000004A05C39F000000000000180B
+t1241891743
+s6155
+i"CXMLDocument.h"
+i<libxml/parser.h>
+i<libxml/HTMLparser.h>
+i<libxml/HTMLtree.h>
+i"CXMLNode_PrivateExtensions.h"
+i"CXMLElement.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLDocument_CreationExtensions.h
+c000000004A05C39F00000000000003C5
+t1241891743
+s965
+i"CXMLDocument.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLDocument_CreationExtensions.m
+c000000004A05C39F00000000000002D1
+t1241891743
+s721
+i"CXMLDocument_CreationExtensions.h"
+i"CXMLElement.h"
+i"CXMLNode_PrivateExtensions.h"
+i"CXMLDocument_PrivateExtensions.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLDocument_PrivateExtensions.h
+c000000004A05C39F00000000000005E8
+t1241891743
+s1512
+i"CXMLDocument.h"
+i<libxml/parser.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLDocument_PrivateExtensions.m
+c000000004A05C39F0000000000000664
+t1241891743
+s1636
+i"CXMLDocument_PrivateExtensions.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLElement.h
+c000000004A05C39F0000000000000774
+t1241891743
+s1908
+i"CXMLNode.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLElement.m
+c000000004A05C39F0000000000001098
+t1241891743
+s4248
+i"CXMLElement.h"
+i"CXMLNode_PrivateExtensions.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLElement_CreationExtensions.h
+c000000004A05C39F0000000000000152
+t1241891743
+s338
+i"CXMLElement.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLElement_CreationExtensions.m
+c000000004A05C39F0000000000000405
+t1241891743
+s1029
+i"CXMLElement_CreationExtensions.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLElement_ElementTreeExtensions.h
+c000000004A05C39F0000000000000135
+t1241891743
+s309
+i"CXMLElement.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLElement_ElementTreeExtensions.m
+c000000004A05C39F000000000000021D
+t1241891743
+s541
+i"CXMLElement_ElementTreeExtensions.h"
+i"CXMLElement_CreationExtensions.h"
+i"CXMLNode_CreationExtensions.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLNode.h
+c000000004A05C39F0000000000000B38
+t1241891743
+s2872
+i<Foundation/Foundation.h>
+i<libxml/tree.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLNode.m
+c000000004A05C39F000000000000203E
+t1241891743
+s8254
+i"CXMLNode.h"
+i"CXMLNode_PrivateExtensions.h"
+i"CXMLDocument.h"
+i"CXMLElement.h"
+i<libxml/xpath.h>
+i<libxml/xpathInternals.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLNode_CreationExtensions.h
+c000000004A05C39F0000000000000509
+t1241891743
+s1289
+i"CXMLNode.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLNode_CreationExtensions.m
+c000000004A05C39F0000000000000B25
+t1241891743
+s2853
+i"CXMLNode_CreationExtensions.h"
+i"CXMLDocument.h"
+i"CXMLElement.h"
+i"CXMLNode_PrivateExtensions.h"
+i"CXMLDocument_PrivateExtensions.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLNode_PrivateExtensions.h
+c000000004A05C39F00000000000005C6
+t1241891743
+s1478
+i"CXMLNode.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLNode_PrivateExtensions.m
+c000000004A05C39F00000000000009FD
+t1241891743
+s2557
+i"CXMLNode_PrivateExtensions.h"
+i"CXMLElement.h"
+i"CXMLDocument_PrivateExtensions.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLNode_XPathExtensions.h
+c000000004A05C39F000000000000059D
+t1241891743
+s1437
+i"CXMLNode.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLNode_XPathExtensions.m
+c000000004A05C39F0000000000000A68
+t1241891743
+s2664
+i"CXMLNode_XPathExtensions.h"
+i"CXMLDocument.h"
+i"CXMLNode_PrivateExtensions.h"
+i<libxml/xpath.h>
+i<libxml/xpathInternals.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CustomCell.h
+c000000004A05C39F000000000000048C
+t1241891743
+s1164
+i<UIKit/UIKit.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CustomCell.m
+c000000004A31F72A0000000000000C50
+t1244788522
+s3152
+i"CustomCell.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/DetailViewController.h
+c000000004A5346F6000000000000071D
+t1246971638
+s1821
+i<UIKit/UIKit.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/DetailViewController.m
+c000000004AC1481E000000000000098D
+t1254180894
+s2445
+i"DetailViewController.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/Event.h
+c000000004AC133940000000000000516
+t1254175636
+s1302
+i<Foundation/Foundation.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/Event.m
+c000000004AC1486D0000000000000D4E
+t1254180973
+s3406
+i"Event.h"
+i"MREntitiesConverter.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/EventsViewController.h
+c000000004B19502D0000000000000542
+t1259950125
+s1346
+i<UIKit/UIKit.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/EventsViewController.m
+c000000004B1950BA0000000000002C22
+t1259950266
+s11298
+i"EventsViewController.h"
+i"Event.h"
+i"CustomCell.h"
+i"TouchXML.h"
+i"DetailViewController.h"
+i"grabRSSFeed.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/GreyLinkCell.png
+c000000004AC508C30000000000000590
+t1254426819
+s1424
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/ImagePageViewController.h
+c000000004ADD10350000000000000620
+t1256001589
+s1568
+i<UIKit/UIKit.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/ImagePageViewController.m
+c000000004ADD165700000000000019E8
+t1256003159
+s6632
+i"ImagePageViewController.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/KATG_comAppDelegate.h
+c000000004AD5DB6B00000000000004E7
+t1255529323
+s1255
+i<UIKit/UIKit.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/KATG_comAppDelegate.m
+c000000004AE9FD450000000000000E15
+t1256848709
+s3605
+i"KATG_comAppDelegate.h"
+i"Beacon.h"
+i<sys/socket.h>
+i<netinet/in.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/LinkCell.h
+c000000004AC8F3AF00000000000003F0
+t1254683567
+s1008
+i<Foundation/Foundation.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/LinkCell.m
+c000000004AC8F5A7000000000000085D
+t1254684071
+s2141
+i"LinkCell.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/Links.h
+c000000004AC50EE1000000000000041F
+t1254428385
+s1055
+i<Foundation/Foundation.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/Links.m
+c000000004AC50EE50000000000000505
+t1254428389
+s1285
+i"Links.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/MREntitiesConverter.h
+c000000004AC1358B00000000000003AF
+t1254176139
+s943
+i<Foundation/Foundation.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/MREntitiesConverter.m
+c000000004AC14752000000000000066D
+t1254180690
+s1645
+i"MREntitiesConverter.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/OnAirViewController.h
+c000000004ABC160E0000000000000D46
+t1253840398
+s3398
+i<UIKit/UIKit.h>
+i<MediaPlayer/MediaPlayer.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/OnAirViewController.m
+c000000004AE784FA000000000000604D
+t1256686842
+s24653
+i"OnAirViewController.h"
+i"AudioStreamer.h"
+i<QuartzCore/CoreAnimation.h>
+i"sanitizeField.h"
+i"grabRSSFeed.h"
+i"Beacon.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/PastShowsController.h
+c000000004B1950CA0000000000000768
+t1259950282
+s1896
+i<UIKit/UIKit.h>
+i"Reachability.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/PastShowsController.m
+c000000004B1B00D30000000000002E73
+t1260060883
+s11891
+i"PastShowsController.h"
+i"ShowCell.h"
+i"Show.h"
+i"ShowDetailController.h"
+i"grabRSSFeed.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/Reachability.h
+c00000000486BBDCD00000000000013B4
+t1215020493
+s5044
+i<UIKit/UIKit.h>
+i<SystemConfiguration/SystemConfiguration.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/Reachability.m
+c00000000486BBDCD0000000000005B34
+t1215020493
+s23348
+i<sys/socket.h>
+i<netinet/in.h>
+i<netinet6/in6.h>
+i<arpa/inet.h>
+i<ifaddrs.h>
+i<netdb.h>
+i"Reachability.h"
+i<SystemConfiguration/SCNetworkReachability.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/RegexKitLite.h
+c0000000049FCE57700000000000027D4
+t1241310583
+s10196
+i<Foundation/NSArray.h>
+i<Foundation/NSError.h>
+i<Foundation/NSObjCRuntime.h>
+i<Foundation/NSRange.h>
+i<Foundation/NSString.h>
+i<limits.h>
+i<stdint.h>
+i<sys/types.h>
+i<TargetConditionals.h>
+i<AvailabilityMacros.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/RegexKitLite.m
+c0000000049F8F54A000000000001B17C
+t1241052490
+s110972
+i<CoreFoundation/CFBase.h>
+i<CoreFoundation/CFArray.h>
+i<CoreFoundation/CFString.h>
+i<Foundation/NSArray.h>
+i<Foundation/NSDictionary.h>
+i<Foundation/NSError.h>
+i<Foundation/NSException.h>
+i<Foundation/NSNotification.h>
+i<Foundation/NSRunLoop.h>
+i<Foundation/NSGarbageCollector.h>
+i<objc/runtime.h>
+i<libkern/OSAtomic.h>
+i<mach-o/loader.h>
+i<AvailabilityMacros.h>
+i<dlfcn.h>
+i<string.h>
+i<stdarg.h>
+i<stdlib.h>
+i<stdio.h>
+i"RegexKitLite.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/RegexKitLiteLicense.rtf
+c0000000049F4E5910000000000000925
+t1240786321
+s2341
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/Show.h
+c000000004AB6889E0000000000000434
+t1253476510
+s1076
+i<Foundation/Foundation.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/Show.m
+c000000004AB688630000000000000505
+t1253476451
+s1285
+i"Show.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/ShowCell.h
+c000000004B1B56F800000000000003DE
+t1260082936
+s990
+i<UIKit/UIKit.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/ShowCell.m
+c000000004B1B5AFC00000000000009E0
+t1260083964
+s2528
+i"ShowCell.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/ShowDetailController.h
+c000000004B1B01CC0000000000000CC2
+t1260061132
+s3266
+i<UIKit/UIKit.h>
+i<MediaPlayer/MediaPlayer.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/ShowDetailController.m
+c000000004B1E794500000000000040B5
+t1260288325
+s16565
+i"ShowDetailController.h"
+i"MREntitiesConverter.h"
+i"grabRSSFeed.h"
+i"ImagePageViewController.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/TableViewController.h
+c000000004A24ACE400000000000003EF
+t1243917540
+s1007
+i<UIKit/UIKit.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/TableViewController.m
+c000000004AC14BBD0000000000000F79
+t1254181821
+s3961
+i"TableViewController.h"
+i"WebViewController.h"
+i"TwtViewController.h"
+i"TweetCell.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/TinyBrowser.h
+c000000004AC50ED4000000000000045F
+t1254428372
+s1119
+i<UIKit/UIKit.h>
+i"linkList.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/TinyBrowser.m
+c000000004AC50EDC0000000000000BE1
+t1254428380
+s3041
+i"TinyBrowser.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/TouchXML.h
+c000000004A05C39F00000000000005DD
+t1241891743
+s1501
+i"CXMLDocument.h"
+i"CXMLDocument_CreationExtensions.h"
+i"CXMLElement.h"
+i"CXMLElement_CreationExtensions.h"
+i"CXMLElement_ElementTreeExtensions.h"
+i"CXMLNode.h"
+i"CXMLNode_CreationExtensions.h"
+i"CXMLNode_XPathExtensions.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/TweetCell.h
+c000000004A32C26C0000000000000472
+t1244840556
+s1138
+i<UIKit/UIKit.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/TweetCell.m
+c000000004A52926D0000000000000BC4
+t1246925421
+s3012
+i"TweetCell.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/TweetViewController.h
+c000000004A53423C000000000000057B
+t1246970428
+s1403
+i<UIKit/UIKit.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/TweetViewController.m
+c000000004B194D730000000000004A99
+t1259949427
+s19097
+i<JSON/JSON.h>
+i"TweetViewController.h"
+i"TwtViewController.h"
+i"WebViewController.h"
+i"TableViewController.h"
+i"TweetCell.h"
+i"grabRSSFeed.h"
+i"MREntitiesConverter.h"
+i"extractURL.h"
+i"RegexKitLite.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/TwtViewController.h
+c000000004AB3ABA600000000000004A2
+t1253288870
+s1186
+i<UIKit/UIKit.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/TwtViewController.m
+c000000004B194E1D0000000000002E56
+t1259949597
+s11862
+i<JSON/JSON.h>
+i"TwtViewController.h"
+i"TweetCell.h"
+i"grabRSSFeed.h"
+i"MREntitiesConverter.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/WebViewController.h
+c000000004AC14D1A000000000000048E
+t1254182170
+s1166
+i<UIKit/UIKit.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/WebViewController.m
+c000000004AC14D1E0000000000000B2B
+t1254182174
+s2859
+i"WebViewController.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/extractURL.h
+c000000004AA80EFC00000000000003C1
+t1252527868
+s961
+i<Foundation/Foundation.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/extractURL.m
+c000000004ABFD5970000000000001C7C
+t1254086039
+s7292
+i"extractURL.h"
+i"RegexKitLite.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/grabRSSFeed.h
+c000000004A2ECC9500000000000003A6
+t1244581013
+s934
+i<Foundation/Foundation.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/grabRSSFeed.m
+c000000004AA808A70000000000000AF7
+t1252526247
+s2807
+i"grabRSSFeed.h"
+i"TouchXML.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/linkList.h
+c000000004ACA38EF0000000000000410
+t1254766831
+s1040
+i<UIKit/UIKit.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/linkList.m
+c000000004AE9F3750000000000001348
+t1256846197
+s4936
+i"linkList.h"
+i"TinyBrowser.h"
+i"LinkCell.h"
+i"Links.h"
+i"grabRSSFeed.h"
+i"MREntitiesConverter.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/sanitizeField.h
+c000000004A4EB1D6000000000000035F
+t1246671318
+s863
+i<Foundation/Foundation.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/sanitizeField.m
+c000000004A2EE12C0000000000000491
+t1244586284
+s1169
+i"sanitizeField.h"
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Copyright
+c000000004AC5496A0000000000000129
+t1254443370
+s297
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Credits
+c000000004AC5496A00000000000001FC
+t1254443370
+s508
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Default.png
+c000000004AE781F00000000000009526
+t1256686064
+s38182
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/DetailView.xib
+c000000004AC5496A00000000000032FB
+t1254443370
+s13051
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Entitlements.plist
+c000000004AC5496A00000000000000E1
+t1254443370
+s225
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/EventIconTrans.png
+c000000004AC5496A00000000000001C9
+t1254443370
+s457
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/GreenBox.png
+c000000004AC5496A000000000000DC0C
+t1254443370
+s56332
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Icon.png
+c000000004AC5496A0000000000001C3B
+t1254443370
+s7227
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/KATG_com_Prefix.pch
+c000000004AC5496A0000000000000352
+t1254443370
+s850
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/KaTGTab.png
+c000000004AC5496A00000000000005BC
+t1254443370
+s1468
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/LinkBG.png
+c000000004AC5496A0000000000004D43
+t1254443370
+s19779
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/LinkButton.png
+c000000004AC5496A00000000000007AA
+t1254443370
+s1962
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/LiveShowIconTrans.png
+c000000004AC5496A0000000000000236
+t1254443370
+s566
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/MainWindow.xib
+c000000004AC5496A0000000000014B6F
+t1254443370
+s84847
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/PastShowsTab.png
+c000000004AC5496A00000000000007AB
+t1254443370
+s1963
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Phone.png
+c000000004AC5496A0000000000000956
+t1254443370
+s2390
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/README
+c000000004AC5496A00000000000005A2
+t1254443370
+s1442
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/RoadMap
+c000000004AC5496A00000000000003E0
+t1254443370
+s992
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Settings.bundle
+c000000004ADCC21F0000000000000088
+t1255981599
+s136
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/ShowTable.xib
+c000000004AC5496A0000000000005547
+t1254443370
+s21831
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/ShowView.xib
+c000000004AC5496A0000000000008CF0
+t1254443370
+s36080
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/TableView.xib
+c000000004AC5496A000000000000465D
+t1254443370
+s18013
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/TextView.png
+c000000004AC5496A0000000000001A8D
+t1254443370
+s6797
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/ToDo
+c000000004AC5496A00000000000000D1
+t1254443370
+s209
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/TweetIconSub.png
+c000000004AC5496A0000000000000994
+t1254443370
+s2452
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/bloop.caf
+c000000004AEA060200000000000089EC
+t1256850946
+s35308
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/brumski.caf
+c000000004AC5496A0000000000005576
+t1254443370
+s21878
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app.dSYM
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/BG.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/BG1.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/BG3.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/ChangeLog
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/Copyright
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/Credits
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/Default.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/DetailView.nib
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/Entitlements.plist
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/EventIconTrans.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/GreenBox.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/GreyLinkCell.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/Icon.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/Info.plist
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/KATG.com
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/KaTGTab.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/LinkBG.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/LinkButton.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/LiveShowIconTrans.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/MainWindow.nib
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/PastShowsTab.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/Phone.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/PkgInfo
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/README
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/RegexKitLiteLicense.rtf
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/ResourceRules.plist
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/RoadMap
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/Settings.bundle
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/ShowTable.nib
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/ShowView.nib
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/TableView.nib
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/TextView.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/ToDo
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/TweetIconSub.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/bloop.caf
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/brumski.caf
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/calTab.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/embedded.mobileprovision
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/feedButtonNormal.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/feedButtonPressed.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/gpl-3.0.txt
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/haha.caf
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/iTunesArtwork
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/keithandthegirl.com.caf
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/leftslide.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/loadingButton.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/onAirTab.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/othButMinus.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/othButMinusHighlighted.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/othButPlus.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/othButPlusHighlighted.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/phen.caf
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/playButton.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/postCellBackground30.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/postCellBackground60.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/postCellBackground80.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/postCellBackgroundDark60.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/postCellBackgroundDark80.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/postCellBackgroundSelected60.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/postCellBackgroundSelected80.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/rightslide.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/stopButton.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/twitTab.png
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/AudioStreamer.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLDocument.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLDocument_CreationExtensions.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLDocument_PrivateExtensions.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLElement.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLElement_CreationExtensions.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLElement_ElementTreeExtensions.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLNode.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLNode_CreationExtensions.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLNode_PrivateExtensions.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLNode_XPathExtensions.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CustomCell.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/DetailViewController.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/Event.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/EventsViewController.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/ImagePageViewController.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/KATG.com.LinkFileList
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/KATG_comAppDelegate.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/LinkCell.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/Links.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/MREntitiesConverter.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/OnAirViewController.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/PastShowsController.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/Reachability.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/RegexKitLite.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/Show.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/ShowCell.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/ShowDetailController.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/TableViewController.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/TinyBrowser.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/TweetCell.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/TweetViewController.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/TwtViewController.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/WebViewController.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/extractURL.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/grabRSSFeed.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/linkList.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/main.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/sanitizeField.o
+t2
+s0
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/calTab.png
+c000000004AC5496A0000000000000713
+t1254443370
+s1811
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/feedButtonNormal.png
+c000000004AC5496A0000000000000FF3
+t1254443370
+s4083
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/feedButtonPressed.png
+c000000004AC5496A0000000000000F94
+t1254443370
+s3988
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/gpl-3.0.txt
+c000000004AC5496A000000000000894B
+t1254443370
+s35147
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/haha.caf
+c000000004AC5496A0000000000022120
+t1254443370
+s139552
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/iTunesArtwork
+c000000004AC5496A0000000000029185
+t1254443370
+s168325
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/keithandthegirl.com.caf
+c000000004AC5496A00000000000299FC
+t1254443370
+s170492
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/leftslide.png
+c000000004AC5496A00000000000001C1
+t1254443370
+s449
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/libPMAnalytics-r69.a
+c000000004A8EF7240000000000094A38
+t1250883364
+s608824
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/loadingButton.png
+c000000004AC5496A00000000000015FB
+t1254443370
+s5627
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/main.m
+c000000004AC5496A00000000000003F9
+t1254443370
+s1017
+i<UIKit/UIKit.h>
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/onAirTab.png
+c000000004AC5496A0000000000000AA9
+t1254443370
+s2729
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/othButMinus.png
+c000000004AC5496A0000000000001198
+t1254443370
+s4504
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/othButMinusHighlighted.png
+c000000004AC5496A000000000000059A
+t1254443370
+s1434
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/othButPlus.png
+c000000004AC5496A00000000000011CE
+t1254443370
+s4558
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/othButPlusHighlighted.png
+c000000004AC5496A00000000000005CD
+t1254443370
+s1485
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/phen.caf
+c000000004AC5496A0000000000019EB4
+t1254443370
+s106164
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/playButton.png
+c000000004AC5496A0000000000001019
+t1254443370
+s4121
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/postCellBackground30.png
+c000000004AC5496A0000000000000AEB
+t1254443370
+s2795
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/postCellBackground60.png
+c000000004AC5496A0000000000000B11
+t1254443370
+s2833
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/postCellBackground80.png
+c000000004AC5496A0000000000000B14
+t1254443370
+s2836
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/postCellBackgroundDark60.png
+c000000004AC5496A0000000000000B11
+t1254443370
+s2833
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/postCellBackgroundDark80.png
+c000000004AC5496A0000000000000B13
+t1254443370
+s2835
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/postCellBackgroundSelected60.png
+c000000004AC5496A0000000000000B0F
+t1254443370
+s2831
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/postCellBackgroundSelected80.png
+c000000004AC5496A0000000000000B12
+t1254443370
+s2834
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/rightslide.png
+c000000004AC5496A000000000000015D
+t1254443370
+s349
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/stopButton.png
+c000000004AC5496A00000000000010DB
+t1254443370
+s4315
+
+N/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/twitTab.png
+c000000004AC5496A0000000000001650
+t1254443370
+s5712
+
+N/Users/paperworkbin/Library/MobileDevice/Provisioning Profiles/4F0B0D22-A371-463D-B04E-02AB04CA3201.mobileprovision
+c000000004ADBD6C50000000000001C69
+t1255921349
+s7273
+
+N/usr/lib/libsqlite3.0.dylib
+c000000004A11A42D0000000000253560
+t1242670125
+s2438496
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym
+c000000004AA81C590000000000000110
+t1252531289
+s272
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/ResourceRules.plist
+c000000004A0BA04000000000000001E5
+t1242275904
+s485
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/System/Library/Frameworks/AudioToolbox.framework/AudioToolbox
+c000000004A12212500000000002CE5F0
+t1242702117
+s2942448
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/System/Library/Frameworks/CFNetwork.framework/CFNetwork
+c000000004A121FB10000000000193E60
+t1242701745
+s1654368
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004A121EB900000000003D72A0
+t1242701497
+s4027040
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004A121FF90000000000396540
+t1242701817
+s3761472
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+c000000004A1223F00000000000187E90
+t1242702832
+s1605264
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c000000004A12211900000000001CA4E0
+t1242702105
+s1877216
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/System/Library/Frameworks/SystemConfiguration.framework/SystemConfiguration
+c000000004A121F7D0000000000089F30
+t1242701693
+s565040
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004A1221FD00000000019A6110
+t1242702333
+s26894608
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/HTMLparser.h
+c000000004A0BACAF0000000000002401
+t1242279087
+s9217
+i<libxml/xmlversion.h>
+i<libxml/parser.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/HTMLtree.h
+c000000004A0BACAF0000000000000E65
+t1242279087
+s3685
+i<stdio.h>
+i<libxml/xmlversion.h>
+i<libxml/tree.h>
+i<libxml/HTMLparser.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/SAX.h
+c000000004A0BACAF000000000000113C
+t1242279087
+s4412
+i<stdio.h>
+i<stdlib.h>
+i<libxml/xmlversion.h>
+i<libxml/parser.h>
+i<libxml/xlink.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/SAX2.h
+c000000004A0BACAF0000000000001350
+t1242279087
+s4944
+i<stdio.h>
+i<stdlib.h>
+i<libxml/xmlversion.h>
+i<libxml/parser.h>
+i<libxml/xlink.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/dict.h
+c000000004A0BACAF000000000000062E
+t1242279087
+s1582
+i<libxml/xmlversion.h>
+i<libxml/tree.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/encoding.h
+c000000004A0BACAF00000000000021D4
+t1242279087
+s8660
+i<libxml/xmlversion.h>
+i<iconv.h>
+i<stdint.h>
+i<libxml/tree.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/entities.h
+c000000004A0BACAF0000000000001240
+t1242279087
+s4672
+i<libxml/xmlversion.h>
+i<libxml/tree.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/globals.h
+c000000004A0BACAF000000000000381B
+t1242279087
+s14363
+i<libxml/xmlversion.h>
+i<libxml/parser.h>
+i<libxml/xmlerror.h>
+i<libxml/SAX.h>
+i<libxml/SAX2.h>
+i<libxml/xmlmemory.h>
+i<libxml/threads.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/hash.h
+c000000004A0BACAF00000000000019A7
+t1242279087
+s6567
+i<libxml/xmlversion.h>
+i<libxml/parser.h>
+i<libxml/dict.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/list.h
+c000000004A0BACAF0000000000000D5E
+t1242279087
+s3422
+i<libxml/xmlversion.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/parser.h
+c000000004A0BACAF00000000000098A9
+t1242279087
+s39081
+i<stdarg.h>
+i<libxml/xmlversion.h>
+i<libxml/tree.h>
+i<libxml/dict.h>
+i<libxml/hash.h>
+i<libxml/valid.h>
+i<libxml/entities.h>
+i<libxml/xmlerror.h>
+i<libxml/xmlstring.h>
+i<libxml/encoding.h>
+i<libxml/xmlIO.h>
+i<libxml/globals.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/threads.h
+c000000004A0BACAF000000000000073C
+t1242279087
+s1852
+i<libxml/xmlversion.h>
+i<libxml/globals.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/tree.h
+c000000004A0BACAF0000000000008F14
+t1242279087
+s36628
+i<stdio.h>
+i<libxml/xmlversion.h>
+i<libxml/xmlstring.h>
+i<libxml/xmlregexp.h>
+i<libxml/xmlmemory.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/valid.h
+c000000004A0BACAF00000000000035F6
+t1242279087
+s13814
+i<libxml/xmlversion.h>
+i<libxml/xmlerror.h>
+i<libxml/tree.h>
+i<libxml/list.h>
+i<libxml/xmlautomata.h>
+i<libxml/xmlregexp.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/xlink.h
+c000000004A0BACAF00000000000013BB
+t1242279087
+s5051
+i<libxml/xmlversion.h>
+i<libxml/tree.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/xmlIO.h
+c000000004A0BACAF00000000000028D0
+t1242279087
+s10448
+i<stdio.h>
+i<libxml/xmlversion.h>
+i<libxml/globals.h>
+i<libxml/tree.h>
+i<libxml/parser.h>
+i<libxml/encoding.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/xmlautomata.h
+c000000004A0BACAF0000000000000F98
+t1242279087
+s3992
+i<libxml/xmlversion.h>
+i<libxml/tree.h>
+i<libxml/xmlregexp.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/xmlerror.h
+c000000004A0BACAF0000000000008F38
+t1242279087
+s36664
+i<libxml/parser.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/xmlexports.h
+c000000004A0BACAF0000000000000E77
+t1242279087
+s3703
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/xmlmemory.h
+c000000004A0BACAF0000000000001754
+t1242279087
+s5972
+i<stdio.h>
+i<libxml/xmlversion.h>
+i<libxml/threads.h>
+i<libxml/globals.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/xmlregexp.h
+c000000004A0BACAF0000000000001552
+t1242279087
+s5458
+i<libxml/xmlversion.h>
+i<libxml/tree.h>
+i<libxml/dict.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/xmlstring.h
+c000000004A0BACAF000000000000155A
+t1242279087
+s5466
+i<stdarg.h>
+i<libxml/xmlversion.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/xmlversion.h
+c000000004A0BACAF0000000000001E27
+t1242279087
+s7719
+i<libxml/xmlexports.h>
+i<ansidecl.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/xpath.h
+c000000004A0BACAF0000000000003F47
+t1242279087
+s16199
+i<libxml/xmlversion.h>
+i<libxml/xmlerror.h>
+i<libxml/tree.h>
+i<libxml/hash.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/usr/include/libxml2/libxml/xpathInternals.h
+c000000004A0BACAF0000000000004BF8
+t1242279087
+s19448
+i<libxml/xmlversion.h>
+i<libxml/xpath.h>
+
+N/var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/KATG_com_Prefix-gfxtrragjlmufcdvhgxlssbkbcnm/KATG_com_Prefix.pch.gch
+t2
+s0
+
+NInfo.plist
+c000000004B194C9B000000000000039C
+t1259949211
+s924
+
+CCodeSign "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app"
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/AudioStreamer.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/AudioStreamer.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLDocument.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLDocument.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLDocument_CreationExtensions.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLDocument_CreationExtensions.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLDocument_PrivateExtensions.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLDocument_PrivateExtensions.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLElement.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLElement.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLElement_CreationExtensions.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLElement_CreationExtensions.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLElement_ElementTreeExtensions.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLElement_ElementTreeExtensions.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLNode.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLNode.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLNode_CreationExtensions.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLNode_CreationExtensions.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLNode_PrivateExtensions.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLNode_PrivateExtensions.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CXMLNode_XPathExtensions.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CXMLNode_XPathExtensions.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/CustomCell.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/CustomCell.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/DetailViewController.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/DetailViewController.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/Event.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/Event.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/EventsViewController.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/EventsViewController.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/ImagePageViewController.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/ImagePageViewController.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/KATG_comAppDelegate.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/KATG_comAppDelegate.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/LinkCell.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/LinkCell.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/Links.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/Links.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/MREntitiesConverter.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/MREntitiesConverter.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/OnAirViewController.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/OnAirViewController.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/PastShowsController.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/PastShowsController.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/Reachability.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/Reachability.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/RegexKitLite.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/RegexKitLite.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/Show.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/Show.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/ShowCell.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/ShowCell.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/ShowDetailController.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/ShowDetailController.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/TableViewController.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/TableViewController.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/TinyBrowser.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/TinyBrowser.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/TweetCell.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/TweetCell.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/TweetViewController.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/TweetViewController.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/TwtViewController.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/TwtViewController.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/WebViewController.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/WebViewController.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/extractURL.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/extractURL.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/grabRSSFeed.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/grabRSSFeed.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/linkList.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/linkList.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/main.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/main.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileC "build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/Objects-normal/armv6/sanitizeField.o" /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/Classes/sanitizeField.m normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CCompileXIB /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/DetailView.xib
+r0
+
+CCompileXIB /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/MainWindow.xib
+r0
+
+CCompileXIB /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/ShowTable.xib
+r0
+
+CCompileXIB /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/ShowView.xib
+r0
+
+CCompileXIB /Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/TableView.xib
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/BG.png" BG.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/BG1.png" BG1.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/BG3.png" BG3.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/Default.png" Default.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/EventIconTrans.png" EventIconTrans.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/GreenBox.png" GreenBox.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/GreyLinkCell.png" Classes/GreyLinkCell.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/Icon.png" Icon.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/KaTGTab.png" KaTGTab.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/LinkBG.png" LinkBG.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/LinkButton.png" LinkButton.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/LiveShowIconTrans.png" LiveShowIconTrans.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/PastShowsTab.png" PastShowsTab.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/Phone.png" Phone.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/TextView.png" TextView.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/TweetIconSub.png" TweetIconSub.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/calTab.png" calTab.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/feedButtonNormal.png" feedButtonNormal.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/feedButtonPressed.png" feedButtonPressed.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/leftslide.png" leftslide.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/loadingButton.png" loadingButton.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/onAirTab.png" onAirTab.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/othButMinus.png" othButMinus.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/othButMinusHighlighted.png" othButMinusHighlighted.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/othButPlus.png" othButPlus.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/othButPlusHighlighted.png" othButPlusHighlighted.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/playButton.png" playButton.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/postCellBackground30.png" postCellBackground30.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/postCellBackground60.png" postCellBackground60.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/postCellBackground80.png" postCellBackground80.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/postCellBackgroundDark60.png" postCellBackgroundDark60.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/postCellBackgroundDark80.png" postCellBackgroundDark80.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/postCellBackgroundSelected60.png" postCellBackgroundSelected60.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/postCellBackgroundSelected80.png" postCellBackgroundSelected80.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/rightslide.png" rightslide.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/stopButton.png" stopButton.png
+r0
+
+CCopyPNGFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/twitTab.png" twitTab.png
+r0
+
+CCopyPlistFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/Entitlements.plist" Entitlements.plist
+r0
+
+CCpResource "build/Debug Simulator-iphoneos/KATG.com.app/ChangeLog" ChangeLog
+r0
+
+CCpResource "build/Debug Simulator-iphoneos/KATG.com.app/Copyright" Copyright
+r0
+
+CCpResource "build/Debug Simulator-iphoneos/KATG.com.app/Credits" Credits
+r0
+
+CCpResource "build/Debug Simulator-iphoneos/KATG.com.app/README" README
+r0
+
+CCpResource "build/Debug Simulator-iphoneos/KATG.com.app/RegexKitLiteLicense.rtf" Classes/RegexKitLiteLicense.rtf
+r0
+
+CCpResource "build/Debug Simulator-iphoneos/KATG.com.app/ResourceRules.plist" /var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/ResourceRules.plist
+r0
+
+CCpResource "build/Debug Simulator-iphoneos/KATG.com.app/RoadMap" RoadMap
+r0
+
+CCpResource "build/Debug Simulator-iphoneos/KATG.com.app/Settings.bundle" Settings.bundle
+r0
+
+CCpResource "build/Debug Simulator-iphoneos/KATG.com.app/ToDo" ToDo
+r0
+
+CCpResource "build/Debug Simulator-iphoneos/KATG.com.app/bloop.caf" bloop.caf
+r0
+
+CCpResource "build/Debug Simulator-iphoneos/KATG.com.app/brumski.caf" brumski.caf
+r0
+
+CCpResource "build/Debug Simulator-iphoneos/KATG.com.app/gpl-3.0.txt" gpl-3.0.txt
+r0
+
+CCpResource "build/Debug Simulator-iphoneos/KATG.com.app/haha.caf" haha.caf
+r0
+
+CCpResource "build/Debug Simulator-iphoneos/KATG.com.app/iTunesArtwork" iTunesArtwork
+r0
+
+CCpResource "build/Debug Simulator-iphoneos/KATG.com.app/keithandthegirl.com.caf" keithandthegirl.com.caf
+r0
+
+CCpResource "build/Debug Simulator-iphoneos/KATG.com.app/phen.caf" phen.caf
+r0
+
+CGenerateDSYMFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app.dSYM" "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/KATG.com"
+r0
+
+CLd "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/KATG.com" normal armv6
+r0
+
+CProcessInfoPlistFile "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/Info.plist" Info.plist
+r0
+
+CProcessPCH /var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/KATG_com_Prefix-gfxtrragjlmufcdvhgxlssbkbcnm/KATG_com_Prefix.pch.gch KATG_com_Prefix.pch normal armv6 objective-c com.apple.compilers.llvmgcc42
+r0
+
+CProcessProductPackaging "/Users/paperworkbin/Library/MobileDevice/Provisioning Profiles/4F0B0D22-A371-463D-B04E-02AB04CA3201.mobileprovision" "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app/embedded.mobileprovision"
+r0
+
+CProcessProductPackaging /var/folders/8f/8fyUkDruH0qUEyrFVuTtxE+++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs/iphoneos-iPhoneOS3.0-azhlowpimgyjrgeidatmldtwbdym/Entitlements.plist "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/KATG.com.build/Debug Simulator-iphoneos/KATG.com.build/KATG.com.xcent"
+r0
+
+CTouch "/Users/paperworkbin/Dropbox/DEV/Objective-C/katgiphone/KATG.com/build/Debug Simulator-iphoneos/KATG.com.app"
+r0
+

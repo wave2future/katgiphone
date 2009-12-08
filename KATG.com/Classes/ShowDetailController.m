@@ -23,6 +23,7 @@
 @implementation ShowDetailController
 
 BOOL Stream = NO;
+BOOL mpPlaying = NO;
 int imageNumber = 0;
 
 NSMutableArray *imageArray;
@@ -37,6 +38,7 @@ NSMutableArray *imageArray;
 	showLink = @"";
 	
 	feedAddress = [NSString stringWithFormat: @"http://app.keithandthegirl.com/Api/Feed/Show/?ShowId=%@", showNumber];
+	//feedAddress = @"http://getitdownonpaper.com/katg/test.xml";
 	
 	self.navigationItem.title = @"Show Details";
 	
@@ -164,9 +166,36 @@ NSMutableArray *imageArray;
 //* 
 //*******************************************************
 - (IBAction)buttonPressed:(id)sender {
+	if (mpPlaying) {
+		return;
+	}
+	[activityIndicator startAnimating];
+	mpPlaying = YES;
+	NSURL *theURL = [NSURL URLWithString:[self showLink]];
+	NSURLRequest *theRequest=[NSURLRequest requestWithURL:theURL
+											  cachePolicy:NSURLRequestUseProtocolCachePolicy
+										  timeoutInterval:60.0];
+	theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+}
+
+- (NSURLRequest *)connection:(NSURLConnection *)connection 
+			 willSendRequest:(NSURLRequest *)request 
+			redirectResponse:(NSURLResponse *)redirectResponse {
+	
+	[urlDescription release];
+	urlDescription = nil;
+	
+	urlDescription = [[request URL] description];
+	[urlDescription retain];
+	
+	return request;
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response 
+{
 	if (Stream) {
-		NSURL *movieURL = [[NSURL alloc] initWithString:[self showLink]];
-		[self playMovie:(NSURL *)movieURL];
+		NSURL *url = [NSURL URLWithString:urlDescription];
+		[self playMovie:url];
 	} else {
 		NSString *alertMessage = @"Streaming shows over cellular network is disabled, enable Wifi to stream";
 		UIAlertView *alert = [[UIAlertView alloc] 
@@ -177,7 +206,17 @@ NSMutableArray *imageArray;
 							  otherButtonTitles:nil];
 		[alert show];
 		[alert autorelease];
+		mpPlaying = NO;
 	}
+	
+	[theConnection cancel];
+	[theConnection release];
+	theConnection = nil;
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error 
+{
+	
 }
 
 - (IBAction)segmentedController:(id)sender {
@@ -383,7 +422,6 @@ NSMutableArray *imageArray;
 		// save the movie player object
 		self.moviePlayer = mp;
 		[mp release];
-		[activityIndicator startAnimating];
 	}
 }
 
@@ -400,7 +438,8 @@ NSMutableArray *imageArray;
 //  Notification called when the movie finished playing.
 - (void) moviePlayBackDidFinish:(NSNotification*)notification
 {
-    [[UIApplication sharedApplication] setStatusBarHidden:NO animated:NO]; 
+    [[UIApplication sharedApplication] setStatusBarHidden:NO animated:NO];
+	mpPlaying = NO;
 }
 
 - (void)createNotificationForTermination { 
@@ -432,6 +471,10 @@ NSMutableArray *imageArray;
 }
 
 - (void)dealloc {
+	[[NSNotificationCenter defaultCenter]
+	 removeObserver:self];
+	[urlDescription release];
+	[theConnection release];
 	[viewControllers release];
     [scrollView release];
     [pageControl release];

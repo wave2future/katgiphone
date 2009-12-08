@@ -38,6 +38,10 @@
     NSMutableArray						*viewControllers;
 	NSMutableDictionary					*imageDictionary;
     BOOL pageControlUsed;
+	
+	//NSURL *theURL;
+	NSString *urlDescription;
+	NSURLConnection *theConnection;
 }
 
 @property (nonatomic, retain) IBOutlet UIButton *button;

@@ -183,8 +183,13 @@ static BOOL otherTweets;
 	
 	[self.activityIndicator stopAnimating];
 	
-	[self.tableView reloadData];
+	[self performSelectorOnMainThread:@selector(reloadTableView) withObject:nil waitUntilDone:NO];
+	
 	self.navigationItem.leftBarButtonItem.enabled = YES;
+}
+
+- (void)reloadTableView {
+	[self.tableView reloadData];
 }
 
 #pragma mark Table view methodss

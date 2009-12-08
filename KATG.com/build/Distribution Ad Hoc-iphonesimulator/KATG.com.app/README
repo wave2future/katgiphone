@@ -1,0 +1,44 @@
+-----------------------------------------------------------------------------
+    Name: KATG.com.app
+    Author: Doug Russell
+-----------------------------------------------------------------------------
+    Copyright (C) 2009 Doug Russell
+
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+About:
+This app does cool things and great stuff.
+Sometimes it completes exceptional actions.
+
+
+Use:
+Jam on the buttons with your marshmallow pig fingers.
+
+
+To install the JSON parser:
+
+Download JSON_2.1.1.dmg from 
+Copy the content of the 'SDKs' folder to ~/Library/SDKs. (You may have to create that directory.)
+In the target build options, add
+Additional SDKs
+$HOME/Library/SDKs/JSON/$(PLATFORM_NAME).sdk
+Other Linker Flags
+-ObjC -ljson
+Code Signing Resource Rules Path
+$(SDKROOT)/ResourceRules.plist
+
+To install the TouchXML parser:
+
