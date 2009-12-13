@@ -1,37 +1,7 @@
-************THIS DOCUMENT IS OUT OF DATE AND INNACURATE************
-
-
-1.0 (End of april)
-Live show tab:
-live show feed status        (done)
-new live show time           
-play live show via shoutcast (done)
-submit feedback              (done)
-
-Events tab:
-Upcoming KATG events         (done)
-
-Twitter Tab:
-View Twitters from KATG      (done)
-@keithandthegirl
-@keithmalley
-
-Youtube tab:
-Mobile Youtube interface w/ KATG vids (done)
-
-1.1 (middle of summer)
-Move live show tab into navigation bar
-
-Past shows tab:
-Past shows with notes, pics and playback (I am putting this off until 1.1 because the iPhone 3.0 SDK doesn't have the same data streaming restrictions as 2.2 and I don't want to fight that fight)
-
-Twitter tab:
-Ability to use your twitter account to post tweets
-
-Store tab:
-Mobile interface to KATG store that exits to safari for paypal transaction
+1.12
+Bug Fix for past shows redirection flaw
+Bug Fix for past shows notification flaw
 
 1.2
-
-Store tab:
-Integrate in app transactions (This will be last because e-commerce means evaluating the app for security in detail) 
+Internationalization
+To Be Decided

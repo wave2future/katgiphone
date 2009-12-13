@@ -23,16 +23,13 @@ About:
 This app does cool things and great stuff.
 Sometimes it completes exceptional actions.
 
-
 Use:
 Jam on the buttons with your marshmallow pig fingers.
 
-
 To install the JSON parser:
-
 Download JSON_2.1.1.dmg from 
 Copy the content of the 'SDKs' folder to ~/Library/SDKs. (You may have to create that directory.)
-In the target build options, add
+In the target build options, add (This should already be there)
 Additional SDKs
 $HOME/Library/SDKs/JSON/$(PLATFORM_NAME).sdk
 Other Linker Flags
@@ -40,5 +37,11 @@ Other Linker Flags
 Code Signing Resource Rules Path
 $(SDKROOT)/ResourceRules.plist
 
-To install the TouchXML parser:
+To install the TouchXML parser: (This should already be there)
+The build files for TouchXML are included in the project
+In the target build options, add
+Other Linker Flags
+-lxml2
+Header Search Paths
+/usr/include/libxml2
 
