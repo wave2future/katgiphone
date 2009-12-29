@@ -1,8 +1,8 @@
 //
 //  KATG_comAppDelegate.m
 //  KATG.com
-//  
-//  Copyright 2008 Doug Russell
+//
+//  Copyright 2009 Doug Russell
 //  
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -17,26 +17,42 @@
 //  limitations under the License.
 
 #import "KATG_comAppDelegate.h"
-#import "Beacon.h"
-#include <sys/socket.h>
-#include <netinet/in.h>
-
+#import "Reachability.h"
 
 @implementation KATG_comAppDelegate
 
 @synthesize window;
 @synthesize tabBarController;
+@synthesize userDefaults;
+@synthesize shouldStream;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	// Add the tab bar controller's current view as a subview of the window
+#pragma mark -
+#pragma mark Application Delegate Methods
+#pragma mark -
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
+{
+	// Set tab bar delegate to take advantage of didSelectViewController
+	[tabBarController setDelegate:self];
+	// Finds OnAirViewController in stack of viewControllers in tab controller and sets it's delegate
+	for (id vC in [tabBarController viewControllers]) 
+	{
+		if ([[[vC class] description] isEqualToString:@"OnAirViewController"]) 
+		{
+			[vC setDelegate:self];
+			break;
+		}
+	}
 	[window addSubview:tabBarController.view];
+	// Register for push notifications
 	[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | 
 													 UIRemoteNotificationTypeBadge | 
 													 UIRemoteNotificationTypeSound)];
-	if ([launchOptions count] > 0) {
+	// If app is launched from a notification, display that notification in an alertview
+	if ([launchOptions count] > 0) 
+	{
 		NSString *alertMessage = [[[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] 
 								   objectForKey:@"aps"] 
-								   objectForKey:@"alert"];
+								  objectForKey:@"alert"];
 		UIAlertView *alert = [[UIAlertView alloc] 
 							  initWithTitle:@"Notification"
 							  message:alertMessage 
@@ -44,54 +60,129 @@
 							  cancelButtonTitle:@"Continue" 
 							  otherButtonTitles:nil];
 		[alert show];
-		[alert autorelease];
+		[alert release];
 	}
-	NSString *applicationCode = @"a38a2cbef55901a33781c4b41d9c1a2b";
-	[Beacon initAndStartBeaconWithApplicationCode:applicationCode useCoreLocation:NO useOnlyWiFi:NO];
+	// Register reachability object
+	[self checkReachability];
 	return YES;
 }
-
-#pragma mark Termination Notification
-// Post notification triggered by app termination, used by On Air View and Tweet View to save data
-- (void)talkToOnAirView { 
-	[[NSNotificationCenter defaultCenter] 
-	 postNotificationName:@"ApplicationWillTerminate" 
-	 object:@"Terminate"]; 
+// When application closes clear any badge icons
+- (void)applicationWillTerminate:(UIApplication *)application 
+{
+	application.applicationIconBadgeNumber = 0;
 }
-
-// Delegation methods 
-- (void)applicationWillTerminate:(UIApplication *)application {
-	 application.applicationIconBadgeNumber = 0;
-	[self talkToOnAirView];
-	[Beacon endBeacon];
-}
-
 #pragma mark Push Notification
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-	//NSLog(@"deviceToken: %@", deviceToken);
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken 
+{
 	NSString *token = [[NSString alloc] initWithFormat: @"%@", deviceToken];
 	[self sendProviderDeviceToken:token];
 }
 
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {	
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error 
+{	
     //NSLog(@"Error in registration. Error: %@", error);
 }
-
-- (void)sendProviderDeviceToken:(NSString *)token {		
+// This needs some attention, seems awkward
+- (void)sendProviderDeviceToken:(NSString *)token 
+{		
 	NSString *myRequestString = @"http://app.keithandthegirl.com/app/tokenserver/tokenserver.php?dev=";
 	token = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)token, NULL, NULL, kCFStringEncodingUTF8);
 	myRequestString = [myRequestString stringByAppendingString:token];
 	NSURLRequest *request = [[ NSURLRequest alloc ] initWithURL: [ NSURL URLWithString: myRequestString ] ]; 
-	[ NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil ];
+	[NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil];
 	[request autorelease];
 	[token release];
 }
+#pragma mark -
+#pragma mark Tab Bar Delegate Methods
+#pragma mark -
+// Notifies change in tab bar selected view controller
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController 
+{
+	// Checks if selected controller is a UINavigation controller and if it is checks the class
+	// of it's top view controller, if the top view controller is the PastShowsTableViewController
+	// or (future change) twitter then set it's delegate
+	if ([[[viewController class] description] isEqualToString:@"UINavigationController"]) 
+	{
+		if ([[[[viewController topViewController] class] description] isEqualToString:@"PastShowsTableViewController"]) {
+			[[viewController topViewController] setDelegate:self];
+		}
+	}
+}
+#pragma mark -
+#pragma mark Reachability
+#pragma mark -
+// Access user defaults, register for changes in reachability an start reachability object
+- (void)checkReachability 
+{
+	userDefaults = [NSUserDefaults standardUserDefaults];
+	[[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(reachabilityChanged:) 
+												 name:kReachabilityChangedNotification 
+											   object:nil];
+	hostReach = [[Reachability reachabilityWithHostName: @"www.keithandthegirl.com"] retain];
+	[hostReach startNotifer];
+}
+// Respond to changes in reachability
+- (void)reachabilityChanged:(NSNotification* )note
+{
+	Reachability *curReach = [note object];
+	NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
+	[self updateReachability:curReach];
+}
+// ShouldStream indicates connection status:
+// 0 No Connection
+// 1 WWAN Connection, stream past shows over WWAN preference is set to NO
+// 2 WWAN Connection, stream past shows over WWAN preference is set to YES
+// 3 Wifi Connection
+// If no connection is available inform user with alert
+- (void)updateReachability:(Reachability*)curReach
+{
+	BOOL streamPref = [userDefaults boolForKey:@"StreamPSOverCell"];
+	NetworkStatus netStatus = [curReach currentReachabilityStatus];
+	switch (netStatus) {
+		case NotReachable:
+		{
+			shouldStream = [NSNumber numberWithInt:0];
+			UIAlertView *alert = [[UIAlertView alloc]
+								  initWithTitle:@"NO INTERNET CONNECTION"
+								  message:@"This Application requires an active internet connection. Please connect to wifi or cellular data network for full application functionality." 
+								  delegate:nil
+								  cancelButtonTitle:@"Continue" 
+								  otherButtonTitles:nil];
+			[alert show];
+			[alert release];
+			break;
+		}
+		case ReachableViaWWAN:
+		{
+			if (streamPref) 
+			{
+				shouldStream = [NSNumber numberWithInt:2];
+			} 
+			else 
+			{
+				shouldStream = [NSNumber numberWithInt:1];
+			}
+			break;
+		}
+		case ReachableViaWiFi:
+		{
+			shouldStream = [NSNumber numberWithInt:3];
+			break;
+		}
+	}
+}
 
-#pragma mark System Stuff
-- (void)dealloc {
-	[tabBarController release];
-	[window release];
-	[super dealloc];
+#pragma mark -
+#pragma mark Cleanup
+#pragma mark -
+- (void)dealloc 
+{
+    [tabBarController release];
+    [window release];
+	[hostReach release];
+    [super dealloc];
 }
 
 @end

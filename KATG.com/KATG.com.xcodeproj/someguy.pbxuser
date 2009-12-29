@@ -3,20 +3,16 @@
 	1D6058900D05DD3D006BFB54 /* KATG.com */ = {
 		activeExec = 0;
 		executables = (
-			AF09F6C510AF380500866984 /* KATG.com */,
+			AFD2EA9310DEB16D005C6F18 /* KATG.com */,
 		);
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = "Debug Simulator";
-		activeExecutable = AF09F6C510AF380500866984 /* KATG.com */;
-		activeSDKPreference = iphonesimulator3.0;
+		activeBuildConfigurationName = Debug;
+		activeExecutable = AFD2EA9310DEB16D005C6F18 /* KATG.com */;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* KATG.com */;
-		breakpoints = (
-			AF09F70F10AF454A00866984 /* ShowDetailController.m:395 */,
-		);
-		codeSenseManager = AF09F6DF10AF382900866984 /* Code sense */;
+		codeSenseManager = AFD2EAB510DEB190005C6F18 /* Code sense */;
 		executables = (
-			AF09F6C510AF380500866984 /* KATG.com */,
+			AFD2EA9310DEB16D005C6F18 /* KATG.com */,
 		);
 		perUserDictionary = {
 			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
@@ -24,7 +20,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					531,
+					577,
 					20,
 					48.16259765625,
 					43,
@@ -41,33 +37,21 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 279918597;
-			PBXWorkspaceStateSaveDate = 279918597;
+			PBXPerProjectTemplateStateSaveDate = 283029876;
+			PBXWorkspaceStateSaveDate = 283029876;
 		};
-		perUserProjectItems = {
-			AF09F71310AF455200866984 /* PBXTextBookmark */ = AF09F71310AF455200866984 /* PBXTextBookmark */;
-			AF09F71610AF7EAC00866984 /* PBXTextBookmark */ = AF09F71610AF7EAC00866984 /* PBXTextBookmark */;
-		};
-		sourceControlManager = AF09F6DE10AF382900866984 /* Source Control */;
+		sourceControlManager = AFD2EAB410DEB190005C6F18 /* Source Control */;
 		userBuildSettings = {
 		};
 	};
-	5310E82F0FB90AE60065A4BC /* ShowDetailController.m */ = {
-		uiCtxt = {
-			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{1211, 707}\";\n            s = 0;\n        },\n                {\n            r = \"{1959, 564}\";\n            s = 0;\n        },\n                {\n            r = \"{2567, 463}\";\n            s = 0;\n        },\n                {\n            r = \"{3057, 525}\";\n            s = 0;\n        },\n                {\n            r = \"{3621, 752}\";\n            s = 0;\n        },\n                {\n            r = \"{4396, 897}\";\n            s = 0;\n        },\n                {\n            r = \"{5478, 505}\";\n            s = 0;\n        },\n                {\n            r = \"{6030, 477}\";\n            s = 0;\n        },\n                {\n            r = \"{6551, 108}\";\n            s = 0;\n        },\n                {\n            r = \"{6685, 2887}\";\n            s = 0;\n        },\n                {\n            r = \"{9617, 1382}\";\n            s = 0;\n        },\n                {\n            r = \"{11043, 172}\";\n            s = 0;\n        },\n                {\n            r = \"{11258, 186}\";\n            s = 0;\n        },\n                {\n            r = \"{11499, 1020}\";\n            s = 0;\n        },\n                {\n            r = \"{12691, 27}\";\n            s = 0;\n        },\n                {\n            r = \"{12756, 634}\";\n            s = 0;\n        },\n                {\n            r = \"{13409, 17}\";\n            s = 0;\n        },\n                {\n            r = \"{13461, 19}\";\n            s = 0;\n        },\n                {\n            r = \"{13659, 282}\";\n            s = 0;\n        },\n                {\n            r = \"{14297, 77}\";\n            s = 0;\n        },\n                {\n            r = \"{14419, 205}\";\n            s = 0;\n        },\n                {\n            r = \"{14697, 463}\";\n            s = 0;\n        },\n                {\n            r = \"{15196, 99}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 15550}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {831, 1573}}";
-			sepNavSelRange = "{2933, 0}";
-			sepNavVisRange = "{2299, 806}";
-		};
-	};
-	AF09F6C510AF380500866984 /* KATG.com */ = {
+	AFD2EA9310DEB16D005C6F18 /* KATG.com */ = {
 		isa = PBXExecutable;
 		activeArgIndices = (
 		);
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 1;
+		breakpointsEnabled = 0;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
@@ -84,15 +68,11 @@
 		executableUserSymbolLevel = 0;
 		libgmallocEnabled = 0;
 		name = KATG.com;
-		savedGlobals = {
-		};
 		showTypeColumn = 0;
 		sourceDirectories = (
 		);
-		variableFormatDictionary = {
-		};
 	};
-	AF09F6DE10AF382900866984 /* Source Control */ = {
+	AFD2EAB410DEB190005C6F18 /* Source Control */ = {
 		isa = PBXSourceControlManager;
 		fallbackIsa = XCSourceControlManager;
 		isSCMEnabled = 0;
@@ -102,46 +82,8 @@
 			};
 		};
 	};
-	AF09F6DF10AF382900866984 /* Code sense */ = {
+	AFD2EAB510DEB190005C6F18 /* Code sense */ = {
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
-	};
-	AF09F70F10AF454A00866984 /* ShowDetailController.m:395 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = 5310E82F0FB90AE60065A4BC /* ShowDetailController.m */;
-		functionName = "-moviePreloadDidFinish:";
-		hitCount = 1;
-		ignoreCount = 0;
-		lineNumber = 395;
-		location = KATG.com;
-		modificationTime = 279922058.945839;
-		originalNumberOfMultipleMatches = 1;
-		state = 1;
-	};
-	AF09F71310AF455200866984 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5310E82F0FB90AE60065A4BC /* ShowDetailController.m */;
-		name = "ShowDetailController.m: 393";
-		rLen = 0;
-		rLoc = 2502;
-		rType = 0;
-		vrLen = 776;
-		vrLoc = 2102;
-	};
-	AF09F71610AF7EAC00866984 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 5310E82F0FB90AE60065A4BC /* ShowDetailController.m */;
-		name = "ShowDetailController.m: 436";
-		rLen = 0;
-		rLoc = 15378;
-		rType = 0;
-		vrLen = 1927;
-		vrLoc = 13623;
 	};
 }

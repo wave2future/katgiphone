@@ -2,12 +2,7 @@
 //  OnAirViewController.h
 //  KATG.com
 //
-//  Live Show Tab with: 
-//  Live Feed Playback
-//  Submit Feedback
-//  Live Feed Status
-//  
-//  Copyright 2008 Doug Russell
+//  Copyright 2009 Doug Russell
 //  
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -21,88 +16,58 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import <UIKit/UIKit.h>
-#import <MediaPlayer/MediaPlayer.h>
+#import "GrabXMLFeed.h"
+#import "EventsDataModel.h"
 
 @class AudioStreamer; // This is the shoutcast radio class
-
-@interface OnAirViewController : UIViewController {
-	// Live Feed Play Button
-	IBOutlet UIButton		*audioButton;
-	// Instantiate radio object
-	AudioStreamer			*streamer;
+@interface OnAirViewController : UIViewController
+<UITextViewDelegate, GrabXMLFeedDelegate, EventsDataModelDelegate>
+{
+	id               delegate;
+	NSNumber         *shouldStream;
+	
+	NSUserDefaults   *userDefaults;
+		
+	// Feedback
+	UITextField		 *nameTextField;
+	UITextField		 *locationTextField;
+	UITextView		 *commentTextView;
+	UIButton		 *feedbackButton;
+	
+	// Live Show Status
+	UILabel			 *liveShowStatusLabel;
+	
+	// Next Live Show Countdown
+	UILabel			 *nextLiveShowCountdownLabel;
+	NSInteger        timeSince;
+	
+	// Shoutcast
+	UIButton		 *audioButton;
+	AudioStreamer    *streamer;
+	BOOL             playOnConnection;
 	
 	// Volume Slider
-	IBOutlet UIView			*volumeSliderContainer;
+	UIView			 *volumeSliderContainer;
 	
-	// Feedback fields and button
-	IBOutlet UIButton		*feedbackButton;
-	IBOutlet UITextField	*nameField;
-	IBOutlet UITextField	*locField;
-	IBOutlet UITextView		*comField;
-	
-	NSUserDefaults			*userDefaults;
-	
-	IBOutlet UIButton		*callButton;
-	
-	// Feed status
-	IBOutlet UILabel		*statusText;
-	
-	// Timers
-	NSTimer					*feedTimer;
-	NSTimer					*showTimer;
-	
-	// Next Live Show
-	IBOutlet UILabel		*days;
-	IBOutlet UILabel		*hours;
-	IBOutlet UILabel		*minutes;
+	// Phone In Button
+	UIButton		 *callButton;
 }
-
-// Ensures textFields and Labels will persist in memory until they've been used
-@property (nonatomic, retain) IBOutlet UIButton		*audioButton;
-@property (nonatomic, retain) IBOutlet UIView		*volumeSliderContainer;
-@property (nonatomic, retain) IBOutlet UIButton		*feedbackButton;
-@property (nonatomic, retain) IBOutlet UITextField	*nameField;
-@property (nonatomic, retain) IBOutlet UITextField	*locField;
-@property (nonatomic, retain) IBOutlet UITextView	*comField;
-@property (nonatomic, retain) IBOutlet UIButton		*callButton;
-@property (nonatomic, retain) IBOutlet UILabel		*statusText;
-@property (nonatomic, retain) IBOutlet UILabel		*days;
-@property (nonatomic, retain) IBOutlet UILabel		*hours;
-@property (nonatomic, retain) IBOutlet UILabel		*minutes;
-
-// Play Button
-- (IBAction)audioButtonPressed:(id)sender;
-- (void)setAudioButtonImage:(UIImage *)image;
-- (void)spinButton;
-// Set up user default to automatically launch audiostreamer
-- (void)setDefaults;
-- (void)createNotificationForTermination;
-// System Volume Slider
-- (void)drawVolumeSlider;
-// Submit feedback
-- (IBAction)feedbackButtonPressed:(id)sender;
-// Custom feedback button image
-- (void)setFeedbackButtonImage;
-// Dismiss keyboard when DONE is pressed
-- (IBAction)textFieldDoneEditing:(id)sender;
-// Dismiss keyboard when user clicks outside Comment textView (big invisible button in background)
-- (IBAction)textViewDoneEditing:(id)sender;
-// Call Button
-- (IBAction)phoneButtonPressed:(id)sender;
-// 
-- (IBAction)infoSheet:(id)sender;
-// Establish timer to update feed status
-- (void)setFeedStatusTimer;
-// Autorelease pool for pollFeed
-- (void)feedStatusAutoPool;
-// Poll live show status feed
-- (void)pollFeedStatus;
-// 
-- (void)setNextShowTimer;
-// 
-- (void)nextShowAutoPool;
-// 
-- (void)pollNextShow;
+@property (nonatomic, assign) id delegate;
+@property (nonatomic, retain) NSNumber *shouldStream;
+// Feedback
+@property (nonatomic, retain) IBOutlet UITextField *nameTextField;
+@property (nonatomic, retain) IBOutlet UITextField *locationTextField;
+@property (nonatomic, retain) IBOutlet UITextView  *commentTextView;
+@property (nonatomic, retain) IBOutlet UIButton    *feedbackButton;
+// Live Show Status
+@property (nonatomic, retain) IBOutlet UILabel	   *liveShowStatusLabel;
+// Next Live Show Countdown
+@property (nonatomic, retain) IBOutlet UILabel	   *nextLiveShowCountdownLabel;
+// Shoutcast
+@property (nonatomic, retain) IBOutlet UIButton	   *audioButton;
+// Volume Slider
+@property (nonatomic, retain) IBOutlet UIView      *volumeSliderContainer;
+// Phone In Button
+@property (nonatomic, retain) IBOutlet UIButton	   *callButton;
 
 @end

@@ -26,7 +26,13 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>Streaming over cellular network w/o unlimited data may be costly</string>
+			<string>Streaming over cellular network</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>w/o unlimited data may be costly</string>
 		</dict>
 	</array>
 </dict>
