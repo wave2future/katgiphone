@@ -23,6 +23,7 @@
 - (void)_updateReachability:(Reachability*)curReach;
 
 - (NSArray *)_getShows;
+- (NSArray *)_getShowsFromDisk;
 
 - (NSDictionary *)_loadingDictionary;
 - (NSDictionary *)_noConnectionDictionary;

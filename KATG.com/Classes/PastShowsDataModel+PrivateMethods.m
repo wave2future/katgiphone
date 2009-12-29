@@ -105,6 +105,18 @@
 	return [shws retain];
 }
 
+- (NSArray *)_getShowsFromDisk
+{
+	NSString *path = [_dataPath stringByAppendingPathComponent:@"shows.plist"];
+	NSArray *shws = [NSArray arrayWithContentsOfFile:path];
+	if (shws == nil && [shouldStream intValue] != 0) {
+		shws = [NSArray arrayWithObject:[self _loadingDictionary]];
+	} else if (shws == nil && [shouldStream intValue] == 0) {
+		shws = [NSArray arrayWithObject:[self _noConnectionDictionary]];
+	}
+	return [shws retain];
+}
+
 - (NSDictionary *)_loadingDictionary 
 {
 	NSDictionary *show = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:

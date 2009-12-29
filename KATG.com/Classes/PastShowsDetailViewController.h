@@ -66,6 +66,7 @@
 @property (nonatomic, retain) MPMoviePlayerController *moviePlayer;
 @property (nonatomic, retain) NSURL *movieURL;
 
+- (void)setNoteViewText:(NSString *)text;
 - (IBAction)segmentedControlChangedState:(id)sender;
 - (IBAction)playButtonPressed:(id)sender;
 - (void)playMovie;

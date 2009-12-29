@@ -36,6 +36,7 @@
 
 + (PastShowsDataModel *)sharedPastShowsDataModel;
 - (NSArray *)shows;
+- (NSArray *)showsFromDisk;
 
 @end
 

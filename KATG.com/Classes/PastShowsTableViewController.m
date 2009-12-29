@@ -48,11 +48,28 @@
 												 name:kReachabilityChangedNotification 
 											   object:nil];
 	
-	PastShowsDataModel *model = [PastShowsDataModel sharedPastShowsDataModel];
+	model = [PastShowsDataModel sharedPastShowsDataModel];
 	[model setDelegate:self];
 	[model setShouldStream:shouldStream];
-	list = [model shows];
+	list =  [model shows];
 	filteredList = [[NSMutableArray alloc] initWithCapacity:1000];
+}
+
+- (void)viewDidAppear:(BOOL)animated 
+{
+	if ([list count] == 0) 
+	{
+		list = [model showsFromDisk];
+		[self reloadTableView];
+	}
+}
+
+- (void)viewDidDisappear:(BOOL)animated 
+{
+	[list release];
+	list = [[NSArray alloc] init];
+	[filteredList removeAllObjects];
+	[self reloadTableView];
 }
 
 #pragma mark Reachability

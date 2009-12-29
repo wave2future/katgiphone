@@ -17,6 +17,7 @@
 //  limitations under the License.
 
 #import "EventsDataModel+Reachability.h"
+#import "EventsDataModel+PrivateMethods.h"
 #import "Reachability.h"
 
 @implementation EventsDataModel (Reachability)

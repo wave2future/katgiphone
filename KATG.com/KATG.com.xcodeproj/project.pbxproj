@@ -13,6 +13,8 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
+		8B45FEEC10E9F6CE00F2F3E7 /* LinksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B45FEEA10E9F6CE00F2F3E7 /* LinksViewController.m */; };
+		8B45FEED10E9F6CE00F2F3E7 /* LinksView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B45FEEB10E9F6CE00F2F3E7 /* LinksView.xib */; };
 		8B4E16A110DB08CC005D8BA9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4E16A010DB08CC005D8BA9 /* Reachability.m */; };
 		8B4E1BAF10DC645E005D8BA9 /* OnAirViewController+Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4E1BAE10DC645E005D8BA9 /* OnAirViewController+Reachability.m */; };
 		8B4E1BD710DC80A1005D8BA9 /* PastShowsDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4E1BD610DC80A1005D8BA9 /* PastShowsDataModel.m */; };
@@ -117,6 +119,9 @@
 		28A0AB4B0D9B1048005BE974 /* KATG_com_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KATG_com_Prefix.pch; sourceTree = "<group>"; };
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = ../MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8B45FEE910E9F6CE00F2F3E7 /* LinksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinksViewController.h; sourceTree = "<group>"; };
+		8B45FEEA10E9F6CE00F2F3E7 /* LinksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinksViewController.m; sourceTree = "<group>"; };
+		8B45FEEB10E9F6CE00F2F3E7 /* LinksView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LinksView.xib; sourceTree = "<group>"; };
 		8B4E169F10DB08CC005D8BA9 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		8B4E16A010DB08CC005D8BA9 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		8B4E1BAD10DC645E005D8BA9 /* OnAirViewController+Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OnAirViewController+Reachability.h"; sourceTree = "<group>"; };
@@ -351,6 +356,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8B45FEE710E9F69B00F2F3E7 /* Links */ = {
+			isa = PBXGroup;
+			children = (
+				8B45FEE910E9F6CE00F2F3E7 /* LinksViewController.h */,
+				8B45FEEA10E9F6CE00F2F3E7 /* LinksViewController.m */,
+			);
+			name = Links;
+			sourceTree = "<group>";
+		};
+		8B45FEEE10E9F6DF00F2F3E7 /* Links */ = {
+			isa = PBXGroup;
+			children = (
+				8B45FEEB10E9F6CE00F2F3E7 /* LinksView.xib */,
+			);
+			name = Links;
+			sourceTree = "<group>";
+		};
 		8B4E1BD410DC808E005D8BA9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,6 +544,7 @@
 				8BDC7E6A10D9965F00A0F6AA /* Events */,
 				8B53ED9C10DAC09C0038B87B /* Past Shows */,
 				8B4E25A210DDE8F4005D8BA9 /* Twitter */,
+				8B45FEE710E9F69B00F2F3E7 /* Links */,
 				8BDC814710D9CB3300A0F6AA /* ModalWebViewController.h */,
 				8BDC814810D9CB3300A0F6AA /* ModalWebViewController.m */,
 			);
@@ -536,6 +559,7 @@
 				8B4E1F9D10DCC4C3005D8BA9 /* Events */,
 				8B4E1F9E10DCC4E7005D8BA9 /* Past Shows */,
 				8B4E259C10DDE8C1005D8BA9 /* Twitter */,
+				8B45FEEE10E9F6DF00F2F3E7 /* Links */,
 				8BDC814910D9CB3300A0F6AA /* ModalWebView.xib */,
 			);
 			name = Views;
@@ -796,6 +820,7 @@
 				8B4E213510DCE7D6005D8BA9 /* phen.caf in Resources */,
 				8B4E25A110DDE8E6005D8BA9 /* TwitterTableView.xib in Resources */,
 				8B4E26E910DE8F0D005D8BA9 /* twitTab.png in Resources */,
+				8B45FEED10E9F6CE00F2F3E7 /* LinksView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -852,6 +877,7 @@
 				8B4E258E10DDE3B6005D8BA9 /* TwitterDataModel.m in Sources */,
 				8B4E25A010DDE8E6005D8BA9 /* TwitterTableViewController.m in Sources */,
 				8B4E25A710DDE9B8005D8BA9 /* TwitterTableCellView.m in Sources */,
+				8B45FEEC10E9F6CE00F2F3E7 /* LinksViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -954,7 +980,10 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = (
+					"~/Dropbox/DEV/google-toolbox-for-mac-read-only/",
+					/usr/include/libxml2,
+				);
 				OTHER_LDFLAGS = "-lxml2";
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "4F0B0D22-A371-463D-B04E-02AB04CA3201";

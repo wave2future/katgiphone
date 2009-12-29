@@ -20,7 +20,9 @@
 
 
 @interface TwitterTableViewController : UITableViewController {
-
+	id delegate;
 }
+
+@property (nonatomic, assign) id delegate;
 
 @end

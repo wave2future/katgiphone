@@ -17,6 +17,7 @@
 //  limitations under the License.
 
 #import "OnAirViewController+Reachability.h"
+#import "OnAirViewController+AudioStreamer.h"
 #import "Reachability.h"
 
 @implementation OnAirViewController (Reachability)

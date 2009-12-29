@@ -24,6 +24,5 @@
 - (void)setupReachability;
 - (void)reachabilityChanged:(NSNotification* )note;
 - (void)updateReachability:(Reachability*)curReach;
-- (void)notConnectedAlert;
 
 @end

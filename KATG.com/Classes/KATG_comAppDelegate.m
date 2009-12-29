@@ -31,17 +31,6 @@
 #pragma mark -
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {
-	// Set tab bar delegate to take advantage of didSelectViewController
-	[tabBarController setDelegate:self];
-	// Finds OnAirViewController in stack of viewControllers in tab controller and sets it's delegate
-	for (id vC in [tabBarController viewControllers]) 
-	{
-		if ([[[vC class] description] isEqualToString:@"OnAirViewController"]) 
-		{
-			[vC setDelegate:self];
-			break;
-		}
-	}
 	[window addSubview:tabBarController.view];
 	// Register for push notifications
 	[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | 
@@ -92,22 +81,6 @@
 	[NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil];
 	[request autorelease];
 	[token release];
-}
-#pragma mark -
-#pragma mark Tab Bar Delegate Methods
-#pragma mark -
-// Notifies change in tab bar selected view controller
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController 
-{
-	// Checks if selected controller is a UINavigation controller and if it is checks the class
-	// of it's top view controller, if the top view controller is the PastShowsTableViewController
-	// or (future change) twitter then set it's delegate
-	if ([[[viewController class] description] isEqualToString:@"UINavigationController"]) 
-	{
-		if ([[[[viewController topViewController] class] description] isEqualToString:@"PastShowsTableViewController"]) {
-			[[viewController topViewController] setDelegate:self];
-		}
-	}
 }
 #pragma mark -
 #pragma mark Reachability

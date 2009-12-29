@@ -26,6 +26,7 @@
 	NSMutableArray		   *filteredList;
 	NSNumber               *shouldStream;
 	NSUserDefaults		   *userDefaults;
+	PastShowsDataModel     *model;
 }
 
 @property (nonatomic, assign)          id                     delegate;

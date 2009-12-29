@@ -32,4 +32,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PastShowsDataModel);
 	return [self _getShows];
 }
 
+- (NSArray *)showsFromDisk 
+{
+	return [self _getShowsFromDisk];
+}
+
 @end

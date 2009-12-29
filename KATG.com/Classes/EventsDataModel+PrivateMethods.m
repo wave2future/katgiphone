@@ -61,7 +61,6 @@
 {
 	NSString *path = [_dataPath stringByAppendingPathComponent:EVENTSPLIST];
 	NSArray *evnts = [NSArray arrayWithContentsOfFile:path];
-	NSInteger *test = [shouldStream intValue];
 	if (evnts == nil && [shouldStream intValue] != 0 && shouldStream != nil) {
 		evnts = [NSArray arrayWithObject:[self _loadingDictionary]];
 	} else if (evnts == nil && ([shouldStream intValue] == 0 || shouldStream == nil)) {

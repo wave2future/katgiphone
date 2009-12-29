@@ -17,6 +17,9 @@
 //  limitations under the License.
 
 #import "OnAirViewController.h"
+#import "AudioStreamer.h"
+#import <QuartzCore/CoreAnimation.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface OnAirViewController (AudioStreamer)
 // Setup

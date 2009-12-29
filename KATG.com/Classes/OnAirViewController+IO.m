@@ -17,6 +17,7 @@
 //  limitations under the License.
 
 #import "OnAirViewController+IO.h"
+#import "OnAirViewController+AudioStreamer.h"
 
 @implementation OnAirViewController (IO)
 

@@ -28,5 +28,6 @@
 - (void)_buildShow:(NSMutableArray *)feedEntries;
 - (void)_writeShowToFile:(NSString *)ID;
 - (void)_attemptRelease;
+- (void)_stopPollingThread;
 
 @end
