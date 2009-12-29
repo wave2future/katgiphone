@@ -1,5 +1,5 @@
 //
-//  PastShowDataModel.m
+//  PastShowPicsDataModel+PrivateMethods.m
 //  KATG.com
 //
 //  Copyright 2009 Doug Russell
@@ -16,20 +16,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import "PastShowDataModel.h"
-#import "PastShowDataModel+PrivateMethods.h"
-#import "SynthesizeSingleton.h"
+#import "PastShowPicsDataModel+PrivateMethods.h"
 
-@implementation PastShowDataModel
-
-@synthesize delegate;
-@synthesize shouldStream;
-
-SYNTHESIZE_SINGLETON_FOR_CLASS(PastShowDataModel);
-
-- (NSDictionary *)show:(NSString *)ID 
-{
-	return [self _getShow:ID];
-}
+@implementation PastShowPicsDataModel (PrivateMethods)
 
 @end
