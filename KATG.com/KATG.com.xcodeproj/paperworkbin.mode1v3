@@ -233,6 +233,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -268,8 +270,6 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
-								<string>8B0AC6F110E9D1930073AAFF</string>
-								<string>29B97323FDCFA39411CA2CEA</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
@@ -311,8 +311,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -327,10 +325,6 @@
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
 										<string>LogicTests.m</string>
-										<key>_historyCapacity</key>
-										<integer>0</integer>
-										<key>bookmark</key>
-										<string>8B0AC72C10E9D3610073AAFF</string>
 										<key>history</key>
 										<array>
 											<string>8BB7F90010D5A13C00719438</string>
@@ -444,8 +438,6 @@
 											<string>8B0AC69410E9C70E0073AAFF</string>
 											<string>8B0AC69510E9C70E0073AAFF</string>
 											<string>8B0AC70A10E9D2710073AAFF</string>
-											<string>8B0AC72B10E9D3610073AAFF</string>
-											<string>8B0AC72710E9D34F0073AAFF</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -503,9 +495,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>8B0AC6EE10E9D1780073AAFF</string>
+				<string>8B0AC84310E9E36F0073AAFF</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>8B0AC6EF10E9D1780073AAFF</string>
+				<string>8B0AC84410E9E36F0073AAFF</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -668,7 +660,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>LogicTests.m</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -685,8 +677,6 @@
 							<string>440pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -726,7 +716,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>8BB7F8F310D5A12900719438</string>
-				<string>8B0AC6F010E9D1780073AAFF</string>
+				<string>8B0AC84510E9E36F0073AAFF</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
