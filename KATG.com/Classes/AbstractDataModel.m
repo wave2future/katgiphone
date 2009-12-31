@@ -1,5 +1,5 @@
 //
-//  PastShowPicsDataModel.m
+//  AbstractDataModel.m
 //  KATG.com
 //
 //  Copyright 2009 Doug Russell
@@ -16,19 +16,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import "PastShowPicsDataModel.h"
-#import "PastShowPicsDataModel+PrivateMethods.h"
-#import "SynthesizeSingleton.h"
+#import "AbstractDataModel.h"
 
-@implementation PastShowPicsDataModel
-@synthesize delegate;
-@synthesize shouldStream;
-
-SYNTHESIZE_SINGLETON_FOR_CLASS(PastShowPicsDataModel);
-
-- (NSArray *)pics:(NSString *)ID 
-{
-	return [self _getPics:ID];
-}
-
+@implementation AbstractDataModel
+	
 @end

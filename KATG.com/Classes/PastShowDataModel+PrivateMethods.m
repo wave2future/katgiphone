@@ -143,13 +143,19 @@
 	}
 }
 
-- (void)_writeShowToFile:(NSString *)ID {
+- (void)_writeShowToFile:(NSString *)ID 
+{
 	if (![NSThread isMainThread]) {
 		NSString *path = [_dataPath stringByAppendingPathComponent:[NSString stringWithFormat:@"show_%@.plist", ID]];
 		[_show writeToFile:path atomically:YES];
 	} else {
 		[self performSelectorOnMainThread:@selector(_writeShowToFile:) withObject:ID waitUntilDone:NO];
 	}
+}
+
+- (void)_reachabilityChanged:(NSNotification *)note 
+{
+	
 }
 
 - (void)_attemptRelease 

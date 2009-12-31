@@ -50,7 +50,11 @@
 	[model setShouldStream:shouldStream];
 	NSDictionary *sh = [model show:[show objectForKey:@"ID"]];
 	
-	[noteView setText:[sh objectForKey:@"Detail"]];
+	PastShowPicsDataModel *picsModel = [PastShowPicsDataModel sharedPastShowPicsDataModel];
+	[picsModel setDelegate:self];
+	[picsModel setShouldStream:shouldStream];
+	NSArray *pics = [picsModel pics:[show objectForKey:@"ID"]];
+	
 	movieURL = [[NSURL URLWithString:[sh objectForKey:@"FileUrl"]] retain];
 	if (!movieURL) {
 		[playButton setEnabled:NO];
@@ -59,20 +63,13 @@
 		[playButton setHidden:YES];
 	}
 	
-	[titleLabel setText:[show objectForKey:@"Title"]];
+	[self labels];
 	
-	CGSize size = 
-	[[show objectForKey:@"Guests"] sizeWithFont:
-	 [UIFont systemFontOfSize:[guestsLabel minimumFontSize]]
-	 ];
-	if (size.width > guestsLabel.frame.size.width) {
-		[guestsLabel setFont:[UIFont systemFontOfSize:12]];
-		[guestsLabel setNumberOfLines:3];
-	}
-	
-	[guestsLabel setText:[show objectForKey:@"Guests"]];
-	[numberLabel setText:[NSString stringWithFormat:@"Show %@", [show objectForKey:@"Number"]]];
-	
+	[self notifications];
+}
+
+- (void)notifications 
+{
 	[[NSNotificationCenter defaultCenter] 
 	 addObserver:self 
 	 selector:@selector(moviePreloadDidFinish:) 
@@ -84,6 +81,21 @@
 	 selector:@selector(moviePlayBackDidFinish:) 
 	 name:MPMoviePlayerPlaybackDidFinishNotification 
 	 object:nil];
+}
+
+- (void)labels 
+{
+	[noteView setText:[sh objectForKey:@"Detail"]];
+	[titleLabel setText:[show objectForKey:@"Title"]];
+	[guestsLabel setText:[show objectForKey:@"Guests"]];
+	[numberLabel setText:[NSString stringWithFormat:@"Show %@", [show objectForKey:@"Number"]]];
+	CGSize size = 
+	[[show objectForKey:@"Guests"] sizeWithFont:
+	 [UIFont systemFontOfSize:[guestsLabel minimumFontSize]]];
+	if (size.width > guestsLabel.frame.size.width) {
+		[guestsLabel setFont:[UIFont systemFontOfSize:12]];
+		[guestsLabel setNumberOfLines:3];
+	}
 }
 
 - (void)pastShowDataModelDidChange:(NSDictionary *)show 

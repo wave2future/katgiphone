@@ -18,8 +18,11 @@
 
 #import <MediaPlayer/MediaPlayer.h>
 #import "PastShowDataModel.h"
+#import "PastShowPicsDataModel.h"
 
-@interface PastShowsDetailViewController : UIViewController <PastShowDataModelDelegate> {
+@interface PastShowsDetailViewController : UIViewController 
+<PastShowDataModelDelegate, PastShowPicsDataModelDelegate> 
+{
 	NSNumber     *shouldStream;
 	NSDictionary *show;
 	
@@ -44,6 +47,12 @@
 	NSURL *movieURL;
 	NSString *urlDescription;
 	BOOL playing;
+	
+	UIScrollView *scrollView;
+	UIPageControl *pageControl;
+	NSMutableArray *viewControllers;
+	NSArray *imageArray;
+	BOOL pageControlUsed;
 }
 
 @property (nonatomic, retain) NSNumber     *shouldStream;

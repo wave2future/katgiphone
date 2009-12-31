@@ -35,6 +35,7 @@
 @property (nonatomic, assign)   NSNumber *shouldStream;
 
 + (PastShowPicsDataModel *)sharedPastShowPicsDataModel;
+- (NSArray *)pics:(NSString *)ID;
 
 @end
 

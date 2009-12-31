@@ -20,4 +20,6 @@
 
 @interface PastShowPicsDataModel (PrivateMethods)
 
+- (NSArray *)_getPics:(NSString *)ID;
+
 @end

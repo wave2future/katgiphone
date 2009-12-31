@@ -1,5 +1,5 @@
 //
-//  PastShowPicsDataModel.m
+//  AbstractDataModel.h
 //  KATG.com
 //
 //  Copyright 2009 Doug Russell
@@ -16,19 +16,23 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import "PastShowPicsDataModel.h"
-#import "PastShowPicsDataModel+PrivateMethods.h"
-#import "SynthesizeSingleton.h"
+//  Experimenting with building a superclass for data models
+//  Needs more thought before I proceed
 
-@implementation PastShowPicsDataModel
-@synthesize delegate;
-@synthesize shouldStream;
+#import <Foundation/Foundation.h>
 
-SYNTHESIZE_SINGLETON_FOR_CLASS(PastShowPicsDataModel);
-
-- (NSArray *)pics:(NSString *)ID 
-{
-	return [self _getPics:ID];
+@interface AbstractDataModel : NSObject {
+@public
+	id delegate;
+	NSNumber       *shouldStream;
+@private
+	NSString       *_dataPath;
+	NSArray        *_shows;
+	NSMutableArray *_showsProxy;
+	NSUserDefaults *_userDefaults;
 }
+
+@property (nonatomic, assign) id delegate;
+@property (nonatomic, assign) NSNumber *shouldStream;
 
 @end

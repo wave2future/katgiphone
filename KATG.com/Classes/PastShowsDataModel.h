@@ -31,8 +31,8 @@
 	NSAutoreleasePool *pollingPool;
 }
 
-@property (nonatomic, assign)   id<PastShowsDataModelDelegate> delegate;
-@property (nonatomic, assign)   NSNumber *shouldStream;
+@property (nonatomic, assign) id<PastShowsDataModelDelegate> delegate;
+@property (nonatomic, assign) NSNumber *shouldStream;
 
 + (PastShowsDataModel *)sharedPastShowsDataModel;
 - (NSArray *)shows;
