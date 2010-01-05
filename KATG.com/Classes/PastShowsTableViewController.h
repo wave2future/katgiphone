@@ -21,7 +21,6 @@
 @class Reachability;
 @interface PastShowsTableViewController : UITableViewController <PastShowsDataModelDelegate> {
 	id                     delegate;
-	UINavigationController *navigationController;
 	NSArray		           *list;
 	NSMutableArray		   *filteredList;
 	NSNumber               *shouldStream;
@@ -29,10 +28,9 @@
 	PastShowsDataModel     *model;
 }
 
-@property (nonatomic, assign)          id                     delegate;
-@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
-@property (nonatomic, retain)          NSArray                *list;
-@property (nonatomic, retain)          NSMutableArray         *filteredList;
+@property (nonatomic, assign) id             delegate;
+@property (nonatomic, retain) NSArray        *list;
+@property (nonatomic, retain) NSMutableArray *filteredList;
 
 - (void)reloadTableView;
 - (void)_reachabilityChanged:(NSNotification* )note;

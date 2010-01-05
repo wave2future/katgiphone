@@ -19,11 +19,8 @@
 #import "EventsDataModel.h"
 
 @interface EventTableViewController : UITableViewController <EventsDataModelDelegate> {
-	UINavigationController *navigationController;
 	NSArray				   *list;
 }
-
-@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
 - (void)reloadTableView;
 - (void)getEventsData;

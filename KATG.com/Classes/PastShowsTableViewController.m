@@ -26,14 +26,12 @@
 @implementation PastShowsTableViewController
 
 @synthesize delegate;
-@synthesize navigationController;
 @synthesize list;
 @synthesize filteredList;
 
 #pragma mark -
 #pragma mark Setup
 #pragma mark -
-
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
@@ -54,24 +52,14 @@
 	list =  [model shows];
 	filteredList = [[NSMutableArray alloc] initWithCapacity:1000];
 }
-
 - (void)viewDidAppear:(BOOL)animated 
 {
-	/*if ([list count] == 0) 
-	{
-		list = [model showsFromDisk];
-		[self reloadTableView];
-	}*/
+	
 }
-
 - (void)viewDidDisappear:(BOOL)animated 
 {
-	/*[list release];
-	list = [[NSArray alloc] init];
-	[filteredList removeAllObjects];
-	[self reloadTableView];*/
+	
 }
-
 #pragma mark Reachability
 - (void)_reachabilityChanged:(NSNotification* )note
 {
@@ -79,7 +67,6 @@
 	NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
 	[self _updateReachability:curReach];
 }
-
 - (void)_updateReachability:(Reachability*)curReach
 {
 	BOOL streamPref = [userDefaults boolForKey:@"StreamPSOverCell"];
@@ -106,34 +93,29 @@
 		}
 	}
 }
-
 #pragma mark -
 #pragma mark Cleanup
 #pragma mark -
-
 - (void)didReceiveMemoryWarning 
 {
     [super didReceiveMemoryWarning];
-	
+	[list release];
+	list = [[NSArray alloc] init];
+	[self reloadTableView];
 }
-
 - (void)dealloc 
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	[navigationController release];
 	[list release];
     [super dealloc];
 }
-
 #pragma mark -
 #pragma mark Table view methods
 #pragma mark -
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
 {
     return 1;
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
 	if (tableView == self.searchDisplayController.searchResultsTableView)
@@ -145,7 +127,6 @@
         return [list count];
     }
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {    
     static NSString *CellIdentifier = @"PastShowsTableCell";
@@ -188,7 +169,6 @@
 	
     return cell;
 }
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
 	PastShowsDetailViewController *viewController = [[PastShowsDetailViewController alloc] initWithNibName:@"PastShowsDetailView" bundle:nil];
@@ -203,10 +183,9 @@
 		[viewController setShow:[list objectAtIndex:indexPath.row]];
     }
 	
-	[self.navigationController pushViewController:viewController animated:YES];
+	[[self navigationController] pushViewController:viewController animated:YES];
 	[viewController release];
 }
-
 - (void)reloadTableView 
 {
 	if ([NSThread isMainThread]) {
@@ -217,14 +196,12 @@
 							waitUntilDone:NO];
 	}
 }
-
 - (void)pastShowsDataModelDidChange:(NSArray *)shows 
 {
 	[list release];
 	list = shows;
 	[self reloadTableView];
 }
-
 - (void)filterContentForSearchText:(NSString*)searchText
 {
 	// Update the filtered array based on the search text and scope.
@@ -257,7 +234,6 @@
 		}
 	}
 }
-
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
 	self.searchDisplayController.searchResultsTableView.rowHeight = ROW_HEIGHT;
@@ -265,7 +241,6 @@
     // Return YES to cause the search result table view to be reloaded.
     return YES;
 }
-
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
 {
 	self.searchDisplayController.searchResultsTableView.rowHeight = ROW_HEIGHT;

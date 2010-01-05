@@ -22,40 +22,33 @@
 
 @implementation EventTableViewController
 
-@synthesize navigationController;
-
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
-	
 	[self.tableView setRowHeight:80.0];
-	
 	[self getEventsData];
 }
-
 - (void)didReceiveMemoryWarning 
 {
     [super didReceiveMemoryWarning];
+	[list release];
+	list = [[NSArray alloc] init];
+	[self reloadTableView];
 }
-
 - (void)dealloc 
 {
-	[navigationController release];
 	[list release];
     [super dealloc];
 }
-
 #pragma mark Table view methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
 {
     return 1;
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
 	return [list count];
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
     static NSString *CellIdentifier = @"EventTableCell";
@@ -78,35 +71,31 @@
 		[[cell eventTypeImageView] setImage:[UIImage imageNamed:@"EventIconTrans.png"]];
 	}
 	
-	/*if (indexPath.row % 2 == 0) {
-	 [(UIImageView *)[cell backgroundView] setImage:[UIImage imageNamed:@"CellBackgroundDark80.png"]];
-	 }*/
-	
 	[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 	
     return cell;
 }
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
 	EventDetailViewController *eventDetailViewController = 
 	[[EventDetailViewController alloc] initWithNibName:@"EventDetailView" bundle:nil];
 	eventDetailViewController.event = [[list objectAtIndex:indexPath.row] copy];
-	[self.navigationController pushViewController:eventDetailViewController animated:YES];
+	[[self navigationController] pushViewController:eventDetailViewController animated:YES];
 	[eventDetailViewController release];
 }
-
 - (void)reloadTableView 
 {
-	if ([NSThread isMainThread]) {
+	if ([NSThread isMainThread]) 
+	{
 		[self.tableView reloadData];
-	} else {
+	} 
+	else 
+	{
 		[self performSelectorOnMainThread:@selector(reloadTableView) 
 							   withObject:nil 
 							waitUntilDone:NO];
 	}
 }
-
 - (void)getEventsData 
 {
 	[[NSNotificationCenter defaultCenter] 
@@ -117,7 +106,6 @@
 	EventsDataModel *model = [EventsDataModel sharedEventsDataModel];
 	list = [model eventsFromDisk];
 }
-
 - (void)eventsDataModelDidChangeNotification:(NSNotification *)notification 
 {
 	list = [notification object];

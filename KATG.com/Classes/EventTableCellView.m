@@ -28,7 +28,8 @@
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier 
 {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) 
+	{
         // Initialization code
     }
     return self;
@@ -37,9 +38,12 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated 
 {
     [super setSelected:selected animated:animated];
-	if (selected) {
+	if (selected) 
+	{
 		[eventTitleLabel setTextColor:[UIColor whiteColor]];
-	} else {
+	} 
+	else 
+	{
 		[eventTitleLabel setTextColor:[UIColor blackColor]];
 	}
 }

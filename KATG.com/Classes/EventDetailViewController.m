@@ -38,8 +38,8 @@
 							[[event objectForKey:@"Details"] stringByReplacingOccurrencesOfString:@"Here's how to listen: <a href=\"../Live/HowToListen.aspx\" target=\"_blank\"><font face=\"Arial\" size=\"2\">http://www.keithandthegirl.com/Live/HowToListen.aspx</font></a>" withString:@"" options:NSBackwardsSearch range:NSMakeRange(0, [[event objectForKey:@"Details"] length])],
 							htmlFooter];
 	webView.backgroundColor = [UIColor clearColor];
-	[webView loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"http://keithandthegirl.com/"]];
-	
+	[webView loadHTMLString:htmlString 
+					baseURL:[NSURL URLWithString:@"http://keithandthegirl.com/"]];
 	[titleLabel setText:[event objectForKey:@"Title"]];
 	[dayLabel setText:[event objectForKey:@"Day"]];
 	[dateLabel setText:[event objectForKey:@"Date"]];
@@ -48,17 +48,16 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType 
 {
-	if (navigationType == UIWebViewNavigationTypeOther) {
+	if (navigationType == UIWebViewNavigationTypeOther) 
+	{
 		return YES;
 	}
-	
 	ModalWebViewController *viewController = 
 	[[ModalWebViewController alloc] initWithNibName:@"ModalWebView" bundle:nil];
 	[viewController setUrlRequest:request];
 	[viewController setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
 	[self presentModalViewController:viewController animated:YES];
 	[viewController release];
-	
 	return NO;
 }
 
@@ -72,6 +71,10 @@
 {
 	[webView release];
 	[event release];
+	[titleLabel release];
+	[dayLabel release];
+	[dateLabel release];
+	[timeLabel release];
     [super dealloc];
 }
 
