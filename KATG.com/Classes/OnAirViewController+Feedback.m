@@ -18,44 +18,46 @@
 
 #import "OnAirViewController+Feedback.h"
 #import "Feedback.h"
+#import "ImageAdditions.h"
 
 @implementation OnAirViewController (Feedback)
 
 #pragma mark -
 #pragma mark FeedBack System
 #pragma mark -
-
 #pragma mark TextField/TextView Methods
+// action linked to transparent button behind textview
 - (IBAction)resignFirstResponder:(id)sender 
 {
 	[self resignAllResponders];
 }
-
+// Delegate method called when user exits textview
 - (void)textViewDidEndEditing:(UITextView *)textView 
 {
 	[self resignAllResponders];
 }
-
+// Delegate method called when user enters text view
+// If text view contains stock value of "Comment"
+// it is automatically cleared
 - (void)textViewDidBeginEditing:(UITextView *)textView {
 	if ([commentTextView.text isEqualToString:@"Comment"]) {
 		[commentTextView setText:@""];
 	}
 }
-
+// Resign responder for all text fields,
+// dissmissing the keyboard
 - (void)resignAllResponders 
 {
 	[nameTextField resignFirstResponder];
 	[locationTextField resignFirstResponder];
 	[commentTextView resignFirstResponder];
 }
-
+// Set custom button images for feedback button
 - (void)setFeedbackButtonImages 
 {
 	// Feedback Button normal image state
 	UIImage *feedbackButtonNormal = 
-	[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] 
-									  pathForResource:@"feedButtonNormal" 
-									  ofType:@"png"]];
+	 UIImageForNameExtension(@"feedButtonNormal", @"png");
 	feedbackButtonNormal = 
 	[feedbackButtonNormal stretchableImageWithLeftCapWidth:12 
 											  topCapHeight:12];
@@ -63,20 +65,20 @@
 							  forState:UIControlStateNormal];
 	// Feedback Button highlighted image state
 	UIImage *feedbackButtonHighlighted = 
-	[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] 
-									  pathForResource:@"feedButtonHighlighted" 
-									  ofType:@"png"]];
+	UIImageForNameExtension(@"feedButtonHighlighted", @"png");
 	feedbackButtonHighlighted = 
 	[feedbackButtonHighlighted stretchableImageWithLeftCapWidth:12 
 												   topCapHeight:12];
 	[feedbackButton setBackgroundImage:feedbackButtonHighlighted 
 							  forState:UIControlStateHighlighted];
 }
-
 #pragma mark Feedback Post Methods
+// Create feedback object from text field contents
+// Temporarily disable feedback button
 - (IBAction)submitFeedback:(id)sender 
 {
-	if ([shouldStream intValue] == 0) {
+	if ([shouldStream intValue] == 0) // If not connected return
+	{
 		return;
 	}
 	// Disable feedback button until this feedback is done sending
@@ -89,13 +91,13 @@
 	[fb setComment:commentTextView.text];
 	[fb send];
 }
-
+// Delegate method when feedback is done sending
+// Clears comment text view, reenables feedbackbutton
 - (void)feedbackDidCompleteSuccessfully:(Feedback *)fb 
 {
 	[fb release];
 	commentTextView.text = @"";
 	[feedbackButton setEnabled:YES];
 }
-
 
 @end

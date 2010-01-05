@@ -36,6 +36,7 @@
 	
 	// Live Show Status
 	UILabel			 *liveShowStatusLabel;
+	NSAutoreleasePool *feedPool;
 	
 	// Next Live Show Countdown
 	UILabel			 *nextLiveShowCountdownLabel;

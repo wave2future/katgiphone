@@ -22,6 +22,14 @@
 
 - (void)pollStatusFeed 
 {
+	[NSThread detachNewThreadSelector:@selector(pollStatusFeedThread) 
+							 toTarget:self 
+						   withObject:nil];
+}
+- (void)pollStatusFeedThread
+{
+	feedPool = 
+	[[NSAutoreleasePool alloc] init];
 	// Create the feed string
 	NSString *feedAddress = @"http://www.keithandthegirl.com/feed/show/live";
 	// Select the xPath to parse against
@@ -35,6 +43,38 @@
 	[parser setInstanceNumber:1];
 	// Start parser
 	[parser parse];
+}
+- (void)parsingDidCompleteSuccessfully:(GrabXMLFeed *)parser 
+{
+	NSMutableArray *feedEntries = 
+	[NSMutableArray arrayWithArray:[parser feedEntries]];
+	int feedEntryIndex = 0;
+	NSString *feedStatusString;
+	NSString *feedStatus = nil;
+	if ([feedEntries count] > 0) 
+	{
+		feedStatusString = 
+		[[feedEntries objectAtIndex: feedEntryIndex] objectForKey: @"OnAir"];
+		int feedStatusInt = [feedStatusString intValue];
+		feedStatusString = nil;
+		if(feedStatusInt == 0) 
+		{
+			feedStatus = @"Not Live";
+		} 
+		else if(feedStatusInt == 1) 
+		{
+			feedStatus = @"Live";
+		} 
+		else 
+		{
+			feedStatus = @"Unknown";
+		}
+		[self performSelectorOnMainThread:@selector(setLiveShowStatusLabelText:)
+							   withObject:feedStatus 
+							waitUntilDone:NO];
+	}
+	[parser release];
+	[feedPool drain];
 }
 
 - (void)setLiveShowStatusLabelText:(NSString *)text 

@@ -23,45 +23,57 @@
 
 - (void)loadDefaults 
 {
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(writeDefaults) 
-												 name:@"UIApplicationWillTerminateNotification" 
-											   object:nil];
+	[[NSNotificationCenter defaultCenter] 
+	 addObserver:self
+	 selector:@selector(writeDefaults) 
+	 name:@"UIApplicationWillTerminateNotification" 
+	 object:nil];
 	
 	userDefaults = [NSUserDefaults standardUserDefaults];
 	NSString *name = [userDefaults objectForKey:@"Name"];
-	if (name != nil) {
+	if (name != nil) 
+	{
 		[nameTextField setText:name];
 	}
 	NSString *location = [userDefaults objectForKey:@"Location"];
-	if (location != nil) {
+	if (location != nil) 
+	{
 		[locationTextField setText:location];
 	}
 	NSString *comment = [userDefaults objectForKey:@"Comment"];
-	if (comment != nil) {
+	if (comment != nil) 
+	{
 		[commentTextView setText:comment];
 	}
-	if ([userDefaults boolForKey:@"playing"] && shouldStream > 0) {
+	if ([userDefaults boolForKey:@"playing"] && shouldStream > 0) 
+	{
 		[self audioButtonPressed:nil];
-	} else if ([userDefaults boolForKey:@"playing"] && shouldStream == 0) {
+	} 
+	else if ([userDefaults boolForKey:@"playing"] && shouldStream == 0) 
+	{
 		playOnConnection = YES;
 	}
 }
-
 - (void)writeDefaults  
 {
-	if ([nameTextField.text length] > 0) {
+	if ([nameTextField.text length] > 0) 
+	{
 		[userDefaults setObject:nameTextField.text forKey:@"Name"];
 	}
-	if ([locationTextField.text length] > 0) {
+	if ([locationTextField.text length] > 0) 
+	{
 		[userDefaults setObject:locationTextField.text forKey:@"Location"];
 	}
-	if ([commentTextView.text length] > 0) {
+	if ([commentTextView.text length] > 0) 
+	{
 		[userDefaults setObject:commentTextView.text forKey:@"Comment"];
 	}
-	if (streamer) {
+	if (streamer) 
+	{
 		[userDefaults setBool:YES forKey:@"playing"];
-	} else {
+	} 
+	else 
+	{
 		[userDefaults setBool:NO forKey:@"playing"];
 	}
 	[userDefaults synchronize];

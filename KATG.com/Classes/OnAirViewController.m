@@ -22,52 +22,23 @@
 @implementation OnAirViewController
 @synthesize delegate;
 // Feedback
-@synthesize nameTextField; 
-@synthesize locationTextField;
-@synthesize commentTextView;
-@synthesize feedbackButton;
+@synthesize nameTextField, locationTextField, commentTextView, feedbackButton;
 // Live Show Status
 @synthesize liveShowStatusLabel;
 // Next Live Show Countdown
 @synthesize nextLiveShowCountdownLabel;
 // Shoutcast 
-@synthesize audioButton;
-@synthesize volumeSliderContainer;
+@synthesize audioButton, volumeSliderContainer;
 // Phone In
 @synthesize callButton;
 // connection status
 @synthesize shouldStream;
 
-#pragma mark -
-#pragma mark Setup
-#pragma mark -
-
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
-	// Set should stream and register for changes in reachability
-	[self setupReachability];
-	// Set custom feedback button images
-	[self setFeedbackButtonImages];
-	// Setup shoutcast playback and volume control
-	[self setupAudioAssets];
-	// Make sure phone is available, if not hide/disable phone in button
-	if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel:+16465028682"]]) {
-		[callButton setEnabled:NO];
-		[callButton setHidden:YES];
-	}
-	/*// Check live feed status
-	[self pollStatusFeed];*/
-	// Setup events data model
-	[self getEventsData];
-	// Check user defaults for resume values (playback and comment/name/location text)
-	[self loadDefaults];
+	[self setup];
 }
-
-#pragma mark -
-#pragma mark Cleanup
-#pragma mark -
-
 - (void)didReceiveMemoryWarning 
 {
     [super didReceiveMemoryWarning];
@@ -76,24 +47,9 @@
 		[streamer stop];
 	}
 }
-
 - (void)dealloc 
 {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	
-	[nameTextField release];
-	[locationTextField release];
-	[commentTextView release];
-		
-	[nextLiveShowCountdownLabel release];
-	
-	[audioButton release];
-	[streamer release];
-	
-	[volumeSliderContainer release];
-	
-	[callButton release];
-	
+	[super cleanup];
     [super dealloc];
 }
 

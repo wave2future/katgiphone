@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>8B8ABE8210F2EDAA00E51DFF</string>
+						<string>8B8ABECE10F2F8C600E51DFF</string>
 						<key>history</key>
 						<array>
 							<string>8B8ABD5C10F2DBAD00E51DFF</string>
@@ -274,8 +274,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -299,7 +297,7 @@
 						<dict>
 							<key>PBXSmartGroupTreeModuleColumnWidthsKey</key>
 							<array>
-								<real>406</real>
+								<real>361</real>
 							</array>
 							<key>PBXSmartGroupTreeModuleColumnsKey_v4</key>
 							<array>
@@ -313,15 +311,9 @@
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>080E96DDFE201D6D7F000001</string>
 								<string>8B4E1BD410DC808E005D8BA9</string>
-								<string>8B4E20B610DCDF00005D8BA9</string>
-								<string>8B4E258B10DDE397005D8BA9</string>
-								<string>8B4E1BEF10DC8CCA005D8BA9</string>
-								<string>8BEF289910EB332E000DF638</string>
-								<string>8BEF289A10EB3340000DF638</string>
-								<string>8BEF289B10EB3359000DF638</string>
 								<string>8BB7F8BD10D5992E00719438</string>
-								<string>8BDC7E6A10D9965F00A0F6AA</string>
-								<string>8B53ED9C10DAC09C0038B87B</string>
+								<string>8BB7F97510D5A89100719438</string>
+								<string>8B4E255D10DDDE99005D8BA9</string>
 								<string>8BB7FA3810D5C0EC00719438</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>8BB7F8DE10D59DED00719438</string>
@@ -330,15 +322,16 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>55</integer>
-									<integer>46</integer>
-									<integer>37</integer>
+									<integer>22</integer>
+									<integer>15</integer>
+									<integer>12</integer>
+									<integer>11</integer>
 									<integer>2</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 447}, {406, 883}}</string>
+							<string>{{0, 0}, {361, 883}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -350,11 +343,11 @@
 					<key>GeometryConfiguration</key>
 					<dict>
 						<key>Frame</key>
-						<string>{{0, 0}, {423, 901}}</string>
+						<string>{{0, 0}, {378, 901}}</string>
 						<key>GroupTreeTableConfiguration</key>
 						<array>
 							<string>MainColumn</string>
-							<real>406</real>
+							<real>361</real>
 						</array>
 						<key>RubberWindowFrame</key>
 						<string>0 60 1168 942 0 0 1280 1002 </string>
@@ -362,18 +355,20 @@
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
 					<key>Proportion</key>
-					<string>423pt</string>
+					<string>378pt</string>
 				</dict>
 				<dict>
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ImagePageViewController.m</string>
+								<string>OnAirViewController+FeedStatus.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -381,11 +376,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>ImagePageViewController.m</string>
+										<string>OnAirViewController+FeedStatus.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>8B8ABE8110F2EDAA00E51DFF</string>
+										<string>8B8ABECD10F2F8C600E51DFF</string>
 										<key>history</key>
 										<array>
 											<string>8BB7F90010D5A13C00719438</string>
@@ -431,18 +426,9 @@
 											<string>8B4E225710DD8E31005D8BA9</string>
 											<string>8B4E225810DD8E31005D8BA9</string>
 											<string>8B4E225910DD8E31005D8BA9</string>
-											<string>8B4E226010DD8E31005D8BA9</string>
-											<string>8B4E226310DD8E31005D8BA9</string>
-											<string>8B4E226410DD8E31005D8BA9</string>
-											<string>8B4E231110DD9694005D8BA9</string>
 											<string>8B4E240F10DDA836005D8BA9</string>
 											<string>8B4E24BE10DDB206005D8BA9</string>
 											<string>8B4E24C010DDB206005D8BA9</string>
-											<string>8B4E256A10DDDF79005D8BA9</string>
-											<string>8B4E257910DDE33F005D8BA9</string>
-											<string>8B4E257A10DDE33F005D8BA9</string>
-											<string>8B4E257B10DDE33F005D8BA9</string>
-											<string>8B4E257E10DDE33F005D8BA9</string>
 											<string>8B4E25AF10DDE9EF005D8BA9</string>
 											<string>8B4E25B010DDE9EF005D8BA9</string>
 											<string>8B4E25EF10DDED1D005D8BA9</string>
@@ -488,10 +474,7 @@
 											<string>8B8ABDB310F2DEF300E51DFF</string>
 											<string>8B8ABDB410F2DEF300E51DFF</string>
 											<string>8B8ABDBF10F2E07300E51DFF</string>
-											<string>8B8ABDEE10F2E46300E51DFF</string>
 											<string>8B8ABDF810F2E48800E51DFF</string>
-											<string>8B8ABE0F10F2E53500E51DFF</string>
-											<string>8B8ABE3710F2E6A900E51DFF</string>
 											<string>8B8ABE3D10F2E81A00E51DFF</string>
 											<string>8B8ABE3F10F2E81A00E51DFF</string>
 											<string>8B8ABE4010F2E81A00E51DFF</string>
@@ -517,7 +500,19 @@
 											<string>8B8ABE7B10F2ED6200E51DFF</string>
 											<string>8B8ABE7C10F2ED6200E51DFF</string>
 											<string>8B8ABE7D10F2ED6200E51DFF</string>
-											<string>8B8ABE8010F2EDAA00E51DFF</string>
+											<string>8B8ABEA310F2F79500E51DFF</string>
+											<string>8B8ABEA410F2F79500E51DFF</string>
+											<string>8B8ABEA510F2F79500E51DFF</string>
+											<string>8B8ABEA710F2F79500E51DFF</string>
+											<string>8B8ABEA910F2F79500E51DFF</string>
+											<string>8B8ABEAA10F2F79500E51DFF</string>
+											<string>8B8ABEAB10F2F79500E51DFF</string>
+											<string>8B8ABEAC10F2F79500E51DFF</string>
+											<string>8B8ABEB810F2F7D400E51DFF</string>
+											<string>8B8ABEC010F2F83A00E51DFF</string>
+											<string>8B8ABEC110F2F83A00E51DFF</string>
+											<string>8B8ABEC210F2F83A00E51DFF</string>
+											<string>8B8ABEAD10F2F79500E51DFF</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -529,7 +524,7 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {740, 896}}</string>
+								<string>{{0, 0}, {785, 896}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 60 1168 942 0 0 1280 1002 </string>
 							</dict>
@@ -549,7 +544,7 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 901}, {740, 0}}</string>
+								<string>{{0, 901}, {785, 0}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 60 1168 942 0 0 1280 1002 </string>
 							</dict>
@@ -560,7 +555,7 @@
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>740pt</string>
+					<string>785pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -715,6 +710,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>8B8ABECF10F2F8C600E51DFF</string>
+		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>8B8ABB1810F2A04700E51DFF</string>
 		<string>8B8ABAB110F2907A00E51DFF</string>
 		<string>8B8ABAAC10F2905300E51DFF</string>
@@ -746,7 +743,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>PastShowsDetailViewController+ScrollView.m</string>
+								<string>OnAirViewController+SetupCleanup.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -959,21 +956,19 @@
 							<key>Dock</key>
 							<array>
 								<dict>
-									<key>BecomeActive</key>
-									<true/>
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>OnAirViewController+AudioStreamer.m</string>
+										<string></string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{0, 0}, {1235, 520}}</string>
+										<string>{{0, 0}, {1235, 421}}</string>
 										<key>RubberWindowFrame</key>
 										<string>0 224 1235 778 0 0 1280 1002 </string>
 									</dict>
@@ -984,9 +979,11 @@
 								</dict>
 							</array>
 							<key>Proportion</key>
-							<string>520pt</string>
+							<string>421pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -997,14 +994,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 525}, {1235, 212}}</string>
+								<string>{{0, 426}, {1235, 311}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 224 1235 778 0 0 1280 1002 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXProjectFindModule</string>
 							<key>Proportion</key>
-							<string>212pt</string>
+							<string>311pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -1022,8 +1019,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>8BEF31A410F0128C000DF638</string>
-				<string>8BEF31A510F0128C000DF638</string>
+				<string>8B8ABE9110F2F73D00E51DFF</string>
+				<string>8B8ABE9210F2F73D00E51DFF</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>
