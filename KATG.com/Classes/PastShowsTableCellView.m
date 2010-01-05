@@ -48,6 +48,7 @@
 {
 	[showTypeImageView release];
 	[showTitleLabel release];
+	[showGuestsLabel release];
 	[showNotesImageView release];
 	[showPicsImageView release];
     [super dealloc];

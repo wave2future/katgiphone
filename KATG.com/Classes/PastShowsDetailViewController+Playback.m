@@ -12,40 +12,6 @@
 @implementation PastShowsDetailViewController (Playback)
 
 #pragma mark -
-#pragma mark Redirect Hack
-#pragma mark -
-// This is a hack to deal with MPMoviePlayer failing to handle some redirects
-// as of 3.1
-- (NSURLRequest *)connection:(NSURLConnection *)connection 
-			 willSendRequest:(NSURLRequest *)request 
-			redirectResponse:(NSURLResponse *)redirectResponse 
-{
-	[urlDescription release];
-	urlDescription = nil;	
-	urlDescription = [[request URL] description];
-	[urlDescription retain];
-	return request;
-}
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response 
-{
-	[connection cancel];
-	[connection release];
-	connection = nil;
-	
-	[movieURL release];
-	movieURL = nil;
-	movieURL = [[NSURL URLWithString:urlDescription] retain];
-	
-	[self playMovie];
-}
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error 
-{
-	[self setPlayButtonImage:UIImageForNameExtension(@"playButton", @"png")];
-	[connection release];
-	connection = nil;
-	playing = NO;
-}
-#pragma mark -
 #pragma mark Playback Methods
 #pragma mark -
 - (void)chooseCorrectPlayback
@@ -90,6 +56,32 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO animated:NO];
 	playing = NO;
 	[self setPlayButtonImage:UIImageForNameExtension(@"playButton", @"png")];
+}
+#pragma mark -
+#pragma mark Redirect Hack
+#pragma mark -
+// This is a hack to deal with MPMoviePlayer failing to handle some redirects
+// as of 3.1
+- (NSURLRequest *)connection:(NSURLConnection *)connection 
+			 willSendRequest:(NSURLRequest *)request 
+			redirectResponse:(NSURLResponse *)redirectResponse 
+{
+	[movieURL release]; movieURL = nil;
+	movieURL = [[request URL] retain];
+	return request;
+}
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response 
+{
+	[connection cancel];
+	[connection release]; connection = nil;
+	[self playMovie];
+}
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error 
+{
+	[self setPlayButtonImage:UIImageForNameExtension(@"playButton", @"png")];
+	[connection release];
+	connection = nil;
+	playing = NO;
 }
 #pragma mark -
 #pragma mark Playbutton Animatipn

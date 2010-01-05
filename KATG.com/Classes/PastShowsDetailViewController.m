@@ -18,7 +18,7 @@
 
 #import "PastShowsDetailViewController.h"
 #import "PastShowsDetailViewController+Playback.h"
-#import "PastShowsDetailViewController+ScollView.h"
+#import "PastShowsDetailViewController+ScrollView.h"
 
 @implementation PastShowsDetailViewController
 
@@ -138,7 +138,6 @@
     [viewControllers release];
 	[moviePlayer release];
 	[movieURL release];
-	[urlDescription release];
 	[picDataArray release];
     [super dealloc];
 }

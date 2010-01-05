@@ -86,7 +86,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					608,
+					523,
 					20,
 					48,
 					43,
@@ -785,6 +785,30 @@
 			8B8ABF4B10F3076400E51DFF /* PBXTextBookmark */ = 8B8ABF4B10F3076400E51DFF /* PBXTextBookmark */;
 			8B8ABF4E10F3080600E51DFF /* PBXTextBookmark */ = 8B8ABF4E10F3080600E51DFF /* PBXTextBookmark */;
 			8B8ABF4F10F3080600E51DFF /* PBXTextBookmark */ = 8B8ABF4F10F3080600E51DFF /* PBXTextBookmark */;
+			8B8ABF5310F30B5500E51DFF /* PBXTextBookmark */ = 8B8ABF5310F30B5500E51DFF /* PBXTextBookmark */;
+			8B8ABF5410F30B5500E51DFF /* PBXTextBookmark */ = 8B8ABF5410F30B5500E51DFF /* PBXTextBookmark */;
+			8B8ABF5510F30B5500E51DFF /* PBXTextBookmark */ = 8B8ABF5510F30B5500E51DFF /* PBXTextBookmark */;
+			8B8ABF5610F30B5500E51DFF /* PBXTextBookmark */ = 8B8ABF5610F30B5500E51DFF /* PBXTextBookmark */;
+			8B8ABF5710F30B5500E51DFF /* PBXTextBookmark */ = 8B8ABF5710F30B5500E51DFF /* PBXTextBookmark */;
+			8B8ABF5810F30B5500E51DFF /* PBXTextBookmark */ = 8B8ABF5810F30B5500E51DFF /* PBXTextBookmark */;
+			8B8ABF5910F30B5500E51DFF /* PBXTextBookmark */ = 8B8ABF5910F30B5500E51DFF /* PBXTextBookmark */;
+			8B8ABF5A10F30B5500E51DFF /* PBXTextBookmark */ = 8B8ABF5A10F30B5500E51DFF /* PBXTextBookmark */;
+			8B8ABF5B10F30B5500E51DFF /* PBXTextBookmark */ = 8B8ABF5B10F30B5500E51DFF /* PBXTextBookmark */;
+			8B8ABF5E10F30BAF00E51DFF /* PBXTextBookmark */ = 8B8ABF5E10F30BAF00E51DFF /* PBXTextBookmark */;
+			8B8ABF5F10F30BAF00E51DFF /* PBXTextBookmark */ = 8B8ABF5F10F30BAF00E51DFF /* PBXTextBookmark */;
+			8B8ABF6010F30BAF00E51DFF /* PBXTextBookmark */ = 8B8ABF6010F30BAF00E51DFF /* PBXTextBookmark */;
+			8B8ABF6110F30BAF00E51DFF /* PBXTextBookmark */ = 8B8ABF6110F30BAF00E51DFF /* PBXTextBookmark */;
+			8B8ABF6210F30BAF00E51DFF /* PBXTextBookmark */ = 8B8ABF6210F30BAF00E51DFF /* PBXTextBookmark */;
+			8B8ABF6710F30D7000E51DFF /* PBXTextBookmark */ = 8B8ABF6710F30D7000E51DFF /* PBXTextBookmark */;
+			8B8ABF6810F30D7000E51DFF /* XCBuildMessageTextBookmark */ = 8B8ABF6810F30D7000E51DFF /* XCBuildMessageTextBookmark */;
+			8B8ABF6910F30D7000E51DFF /* PBXTextBookmark */ = 8B8ABF6910F30D7000E51DFF /* PBXTextBookmark */;
+			8B8ABF6C10F30DAB00E51DFF /* PBXTextBookmark */ = 8B8ABF6C10F30DAB00E51DFF /* PBXTextBookmark */;
+			8B8ABF6D10F30DAB00E51DFF /* PBXTextBookmark */ = 8B8ABF6D10F30DAB00E51DFF /* PBXTextBookmark */;
+			8B8ABF6E10F30DAB00E51DFF /* PBXTextBookmark */ = 8B8ABF6E10F30DAB00E51DFF /* PBXTextBookmark */;
+			8B8ABF6F10F30DAB00E51DFF /* PBXTextBookmark */ = 8B8ABF6F10F30DAB00E51DFF /* PBXTextBookmark */;
+			8B8ABF7010F30DAB00E51DFF /* PBXTextBookmark */ = 8B8ABF7010F30DAB00E51DFF /* PBXTextBookmark */;
+			8B8ABF7110F30DAB00E51DFF /* PBXTextBookmark */ = 8B8ABF7110F30DAB00E51DFF /* PBXTextBookmark */;
+			8B8ABF7210F30DAB00E51DFF /* PBXTextBookmark */ = 8B8ABF7210F30DAB00E51DFF /* PBXTextBookmark */;
 			8BB7F90010D5A13C00719438 = 8BB7F90010D5A13C00719438 /* PBXTextBookmark */;
 			8BB7FA8D10D5C4DA00719438 = 8BB7FA8D10D5C4DA00719438 /* PBXTextBookmark */;
 			8BBBC80810D8BB9B00A780FC = 8BBBC80810D8BB9B00A780FC /* PBXBookmark */;
@@ -1155,7 +1179,7 @@
 			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{1596, 19}\";\n            s = 0;\n        },\n                {\n            r = \"{1635, 227}\";\n            s = 0;\n        },\n                {\n            r = \"{1973, 147}\";\n            s = 0;\n        },\n                {\n            r = \"{2175, 507}\";\n            s = 0;\n        },\n                {\n            r = \"{3379, 401}\";\n            s = 0;\n        },\n                {\n            r = \"{3821, 424}\";\n            s = 0;\n        },\n                {\n            r = \"{4291, 426}\";\n            s = 0;\n        },\n                {\n            r = \"{5430, 1298}\";\n            s = 0;\n        },\n                {\n            r = \"{6757, 121}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 7010}\";\n    s = 0;\n}";
 			sepNavIntBoundsRect = "{{0, 0}, {712, 1508}}";
 			sepNavSelRange = "{3234, 0}";
-			sepNavVisRange = "{56, 1732}";
+			sepNavVisRange = "{56, 1766}";
 			sepNavWindowFrame = "{{-1280, 224}, {1235, 800}}";
 		};
 	};
@@ -1235,7 +1259,7 @@
 		isa = PBXTextBookmark;
 		fRef = 8BDC7EB710D99ADF00A0F6AA /* EventTableCellView.m */;
 		name = "EventTableCellView.m: 29";
-		rLen = 228;
+		rLen = 230;
 		rLoc = 859;
 		rType = 0;
 		vrLen = 1365;
@@ -1256,7 +1280,7 @@
 		fRef = 8BDC7F2710D9A3E200A0F6AA /* EventDetailViewController.m */;
 		name = "EventDetailViewController.m: 47";
 		rLen = 0;
-		rLoc = 2157;
+		rLoc = 2161;
 		rType = 0;
 		vrLen = 2952;
 		vrLoc = 0;
@@ -1853,18 +1877,18 @@
 	};
 	8B53EDC510DAC4610038B87B /* PastShowsTableViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {786, 839}}";
-			sepNavSelRange = "{1162, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {786, 864}}";
+			sepNavSelRange = "{804, 202}";
 			sepNavVisRange = "{0, 1315}";
 			sepNavWindowFrame = "{{15, 0}, {835, 778}}";
 		};
 	};
 	8B53EDC610DAC4610038B87B /* PastShowsTableViewController.m */ = {
 		uiCtxt = {
-			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{1009, 649}\";\n            s = 0;\n        },\n                {\n            r = \"{1699, 3}\";\n            s = 0;\n        },\n                {\n            r = \"{1746, 3}\";\n            s = 0;\n        },\n                {\n            r = \"{1830, 147}\";\n            s = 0;\n        },\n                {\n            r = \"{2032, 506}\";\n            s = 0;\n        },\n                {\n            r = \"{2757, 100}\";\n            s = 0;\n        },\n                {\n            r = \"{2989, 15}\";\n            s = 0;\n        },\n                {\n            r = \"{3097, 162}\";\n            s = 0;\n        },\n                {\n            r = \"{3366, 1856}\";\n            s = 0;\n        },\n                {\n            r = \"{5318, 525}\";\n            s = 0;\n        },\n                {\n            r = \"{5871, 193}\";\n            s = 0;\n        },\n                {\n            r = \"{6121, 58}\";\n            s = 0;\n        },\n                {\n            r = \"{6239, 1436}\";\n            s = 0;\n        },\n                {\n            r = \"{7808, 218}\";\n            s = 0;\n        },\n                {\n            r = \"{8157, 251}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 8417}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {915, 1066}}";
-			sepNavSelRange = "{1360, 73}";
-			sepNavVisRange = "{277, 2022}";
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{1009, 642}\";\n            s = 0;\n        },\n                {\n            r = \"{1692, 3}\";\n            s = 0;\n        },\n                {\n            r = \"{1739, 3}\";\n            s = 0;\n        },\n                {\n            r = \"{1829, 112}\";\n            s = 0;\n        },\n                {\n            r = \"{1961, 168}\";\n            s = 0;\n        },\n                {\n            r = \"{2210, 147}\";\n            s = 0;\n        },\n                {\n            r = \"{2412, 506}\";\n            s = 0;\n        },\n                {\n            r = \"{3050, 15}\";\n            s = 0;\n        },\n                {\n            r = \"{3158, 162}\";\n            s = 0;\n        },\n                {\n            r = \"{3427, 1856}\";\n            s = 0;\n        },\n                {\n            r = \"{5379, 525}\";\n            s = 0;\n        },\n                {\n            r = \"{5932, 193}\";\n            s = 0;\n        },\n                {\n            r = \"{6182, 58}\";\n            s = 0;\n        },\n                {\n            r = \"{6300, 1436}\";\n            s = 0;\n        },\n                {\n            r = \"{7869, 218}\";\n            s = 0;\n        },\n                {\n            r = \"{8218, 251}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 8478}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {915, 1001}}";
+			sepNavSelRange = "{1341, 0}";
+			sepNavVisRange = "{272, 1927}";
 			sepNavWindowFrame = "{{1, 9}, {1233, 769}}";
 		};
 	};
@@ -1909,16 +1933,17 @@
 	};
 	8B53EF2510DADBD80038B87B /* PastShowsTableCellView.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {879, 868}}";
-			sepNavSelRange = "{1046, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {786, 864}}";
+			sepNavSelRange = "{705, 159}";
 			sepNavVisRange = "{0, 1225}";
 		};
 	};
 	8B53EF2610DADBD80038B87B /* PastShowsTableCellView.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {799, 846}}";
-			sepNavSelRange = "{813, 0}";
-			sepNavVisRange = "{0, 1529}";
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{972, 133}\";\n            s = 0;\n        },\n                {\n            r = \"{1169, 191}\";\n            s = 0;\n        },\n                {\n            r = \"{1381, 168}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 1557}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {786, 864}}";
+			sepNavSelRange = "{1039, 0}";
+			sepNavVisRange = "{0, 1068}";
 			sepNavWindowFrame = "{{5, 197}, {1230, 576}}";
 		};
 	};
@@ -1960,18 +1985,18 @@
 	};
 	8B53F0AD10DB03740038B87B /* PastShowsDetailViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {799, 1144}}";
-			sepNavSelRange = "{1551, 874}";
-			sepNavVisRange = "{656, 1824}";
+			sepNavIntBoundsRect = "{{0, 0}, {701, 1144}}";
+			sepNavSelRange = "{1480, 0}";
+			sepNavVisRange = "{757, 1839}";
 			sepNavWindowFrame = "{{-1265, 224}, {1133, 800}}";
 		};
 	};
 	8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */ = {
 		uiCtxt = {
-			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{1185, 97}\";\n            s = 0;\n        },\n                {\n            r = \"{1298, 578}\";\n            s = 0;\n        },\n                {\n            r = \"{1902, 353}\";\n            s = 0;\n        },\n                {\n            r = \"{2274, 517}\";\n            s = 0;\n        },\n                {\n            r = \"{2811, 690}\";\n            s = 0;\n        },\n                {\n            r = \"{3537, 116}\";\n            s = 0;\n        },\n                {\n            r = \"{4245, 390}\";\n            s = 0;\n        },\n                {\n            r = \"{4680, 172}\";\n            s = 0;\n        },\n                {\n            r = \"{4910, 945}\";\n            s = 0;\n        },\n                {\n            r = \"{5969, 175}\";\n            s = 0;\n        },\n                {\n            r = \"{6189, 641}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 6838}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {679, 1157}}";
-			sepNavSelRange = "{1759, 0}";
-			sepNavVisRange = "{802, 1373}";
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{1186, 97}\";\n            s = 0;\n        },\n                {\n            r = \"{1299, 578}\";\n            s = 0;\n        },\n                {\n            r = \"{1903, 353}\";\n            s = 0;\n        },\n                {\n            r = \"{2275, 517}\";\n            s = 0;\n        },\n                {\n            r = \"{2812, 690}\";\n            s = 0;\n        },\n                {\n            r = \"{3538, 116}\";\n            s = 0;\n        },\n                {\n            r = \"{3679, 72}\";\n            s = 0;\n        },\n                {\n            r = \"{4219, 390}\";\n            s = 0;\n        },\n                {\n            r = \"{4654, 172}\";\n            s = 0;\n        },\n                {\n            r = \"{4884, 945}\";\n            s = 0;\n        },\n                {\n            r = \"{5943, 175}\";\n            s = 0;\n        },\n                {\n            r = \"{6163, 641}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 6812}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {701, 1066}}";
+			sepNavSelRange = "{1638, 0}";
+			sepNavVisRange = "{0, 1701}";
 			sepNavWindowFrame = "{{0, 0}, {1235, 778}}";
 		};
 	};
@@ -2022,7 +2047,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 56";
 		rLen = 0;
-		rLoc = 1224;
+		rLoc = 1225;
 		rType = 0;
 		vrLen = 1231;
 		vrLoc = 1252;
@@ -2032,7 +2057,7 @@
 		fRef = 8B53EDC610DAC4610038B87B /* PastShowsTableViewController.m */;
 		name = "PastShowsTableViewController.m: 49";
 		rLen = 0;
-		rLoc = 1429;
+		rLoc = 1425;
 		rType = 0;
 		vrLen = 2232;
 		vrLoc = 824;
@@ -2139,7 +2164,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 56";
 		rLen = 0;
-		rLoc = 1224;
+		rLoc = 1225;
 		rType = 0;
 		vrLen = 2340;
 		vrLoc = 828;
@@ -2149,7 +2174,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 56";
 		rLen = 0;
-		rLoc = 1224;
+		rLoc = 1225;
 		rType = 0;
 		vrLen = 1617;
 		vrLoc = 828;
@@ -2159,7 +2184,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 56";
 		rLen = 0;
-		rLoc = 1224;
+		rLoc = 1225;
 		rType = 0;
 		vrLen = 2340;
 		vrLoc = 828;
@@ -2193,7 +2218,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 48";
 		rLen = 0;
-		rLoc = 1224;
+		rLoc = 1225;
 		rType = 0;
 		vrLen = 4279;
 		vrLoc = 1003;
@@ -2243,7 +2268,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 66";
 		rLen = 0;
-		rLoc = 1682;
+		rLoc = 1683;
 		rType = 0;
 		vrLen = 4183;
 		vrLoc = 1003;
@@ -2463,7 +2488,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 67";
 		rLen = 0;
-		rLoc = 1683;
+		rLoc = 1684;
 		rType = 0;
 		vrLen = 4205;
 		vrLoc = 982;
@@ -2473,7 +2498,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 67";
 		rLen = 0;
-		rLoc = 1683;
+		rLoc = 1684;
 		rType = 0;
 		vrLen = 4056;
 		vrLoc = 982;
@@ -2493,7 +2518,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 67";
 		rLen = 0;
-		rLoc = 1683;
+		rLoc = 1684;
 		rType = 0;
 		vrLen = 4056;
 		vrLoc = 982;
@@ -2563,7 +2588,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 67";
 		rLen = 0;
-		rLoc = 1683;
+		rLoc = 1684;
 		rType = 0;
 		vrLen = 4056;
 		vrLoc = 982;
@@ -2603,7 +2628,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 67";
 		rLen = 0;
-		rLoc = 1683;
+		rLoc = 1684;
 		rType = 0;
 		vrLen = 4056;
 		vrLoc = 982;
@@ -2640,24 +2665,24 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 48";
 		rLen = 0;
-		rLoc = 1224;
+		rLoc = 1225;
 		rType = 0;
 		vrLen = 837;
 		vrLoc = 2350;
 	};
 	8B8ABB1D10F2A21600E51DFF /* PastShowsDetailViewController+Playback.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {679, 864}}";
-			sepNavSelRange = "{343, 0}";
-			sepNavVisRange = "{0, 349}";
+			sepNavIntBoundsRect = "{{0, 0}, {701, 864}}";
+			sepNavSelRange = "{289, 0}";
+			sepNavVisRange = "{0, 380}";
 		};
 	};
 	8B8ABB1E10F2A21600E51DFF /* PastShowsDetailViewController+Playback.m */ = {
 		uiCtxt = {
-			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{619, 142}\";\n            s = 0;\n        },\n                {\n            r = \"{859, 185}\";\n            s = 0;\n        },\n                {\n            r = \"{1131, 133}\";\n            s = 0;\n        },\n                {\n            r = \"{1357, 514}\";\n            s = 0;\n        },\n                {\n            r = \"{1892, 246}\";\n            s = 0;\n        },\n                {\n            r = \"{2262, 40}\";\n            s = 0;\n        },\n                {\n            r = \"{2424, 166}\";\n            s = 0;\n        },\n                {\n            r = \"{2677, 1004}\";\n            s = 0;\n        },\n                {\n            r = \"{3729, 275}\";\n            s = 0;\n        },\n                {\n            r = \"{4085, 43}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 4136}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {801, 869}}";
-			sepNavSelRange = "{719, 0}";
-			sepNavVisRange = "{0, 1398}";
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{401, 514}\";\n            s = 0;\n        },\n                {\n            r = \"{936, 246}\";\n            s = 0;\n        },\n                {\n            r = \"{1306, 40}\";\n            s = 0;\n        },\n                {\n            r = \"{1468, 166}\";\n            s = 0;\n        },\n                {\n            r = \"{2524, 1004}\";\n            s = 0;\n        },\n                {\n            r = \"{3576, 275}\";\n            s = 0;\n        },\n                {\n            r = \"{3932, 43}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 3983}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {701, 864}}";
+			sepNavSelRange = "{1020, 0}";
+			sepNavVisRange = "{0, 1702}";
 		};
 	};
 	8B8ABB2210F2A2F800E51DFF /* PBXTextBookmark */ = {
@@ -2675,7 +2700,7 @@
 		fRef = 8B53EDC610DAC4610038B87B /* PastShowsTableViewController.m */;
 		name = "PastShowsTableViewController.m: 59";
 		rLen = 0;
-		rLoc = 1699;
+		rLoc = 1692;
 		rType = 0;
 		vrLen = 7432;
 		vrLoc = 800;
@@ -2685,7 +2710,7 @@
 		fRef = 8B8ABB1D10F2A21600E51DFF /* PastShowsDetailViewController+Playback.h */;
 		name = "PastShowsDetailViewController+Playback.h: 16";
 		rLen = 0;
-		rLoc = 343;
+		rLoc = 374;
 		rType = 0;
 		vrLen = 349;
 		vrLoc = 0;
@@ -2705,7 +2730,7 @@
 		fRef = 8B53F0AD10DB03740038B87B /* PastShowsDetailViewController.h */;
 		name = "PastShowsDetailViewController.h: 76";
 		rLen = 0;
-		rLoc = 2616;
+		rLoc = 2589;
 		rType = 0;
 		vrLen = 2024;
 		vrLoc = 325;
@@ -2715,7 +2740,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 20";
 		rLen = 0;
-		rLoc = 802;
+		rLoc = 803;
 		rType = 0;
 		vrLen = 1387;
 		vrLoc = 273;
@@ -2725,7 +2750,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 24";
 		rLen = 0;
-		rLoc = 875;
+		rLoc = 876;
 		rType = 0;
 		vrLen = 3888;
 		vrLoc = 402;
@@ -2773,7 +2798,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 24";
 		rLen = 0;
-		rLoc = 850;
+		rLoc = 851;
 		rType = 0;
 		vrLen = 748;
 		vrLoc = 402;
@@ -2793,7 +2818,7 @@
 		fRef = 8B8ABB1D10F2A21600E51DFF /* PastShowsDetailViewController+Playback.h */;
 		name = "PastShowsDetailViewController+Playback.h: 16";
 		rLen = 0;
-		rLoc = 343;
+		rLoc = 374;
 		rType = 0;
 		vrLen = 349;
 		vrLoc = 0;
@@ -2842,7 +2867,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 24";
 		rLen = 0;
-		rLoc = 850;
+		rLoc = 851;
 		rType = 0;
 		vrLen = 4578;
 		vrLoc = 0;
@@ -2872,7 +2897,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 202";
 		rLen = 0;
-		rLoc = 6829;
+		rLoc = 6803;
 		rType = 0;
 		vrLen = 3521;
 		vrLoc = 2224;
@@ -2902,7 +2927,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 202";
 		rLen = 0;
-		rLoc = 6829;
+		rLoc = 6803;
 		rType = 0;
 		vrLen = 3522;
 		vrLoc = 2224;
@@ -2932,7 +2957,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 178";
 		rLen = 1;
-		rLoc = 6227;
+		rLoc = 6201;
 		rType = 0;
 		vrLen = 2989;
 		vrLoc = 2760;
@@ -2989,7 +3014,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 197";
 		rLen = 0;
-		rLoc = 6831;
+		rLoc = 6805;
 		rType = 0;
 		vrLen = 4360;
 		vrLoc = 904;
@@ -2999,7 +3024,7 @@
 		fRef = 8B8ABB1D10F2A21600E51DFF /* PastShowsDetailViewController+Playback.h */;
 		name = "PastShowsDetailViewController+Playback.h: 16";
 		rLen = 0;
-		rLoc = 343;
+		rLoc = 374;
 		rType = 0;
 		vrLen = 349;
 		vrLoc = 0;
@@ -3009,7 +3034,7 @@
 		fRef = 8B8ABB1E10F2A21600E51DFF /* PastShowsDetailViewController+Playback.m */;
 		name = "PastShowsDetailViewController+Playback.m: 111";
 		rLen = 0;
-		rLoc = 3982;
+		rLoc = 3829;
 		rType = 0;
 		vrLen = 3512;
 		vrLoc = 64;
@@ -3019,7 +3044,7 @@
 		fRef = 8B8ABB1E10F2A21600E51DFF /* PastShowsDetailViewController+Playback.m */;
 		name = "PastShowsDetailViewController+Playback.m: 83";
 		rLen = 0;
-		rLoc = 2222;
+		rLoc = 2438;
 		rType = 0;
 		vrLen = 3057;
 		vrLoc = 671;
@@ -3039,7 +3064,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 24";
 		rLen = 0;
-		rLoc = 850;
+		rLoc = 851;
 		rType = 0;
 		vrLen = 984;
 		vrLoc = 160;
@@ -3049,7 +3074,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 24";
 		rLen = 0;
-		rLoc = 850;
+		rLoc = 851;
 		rType = 0;
 		vrLen = 984;
 		vrLoc = 160;
@@ -3107,7 +3132,7 @@
 		fRef = 8B8ABB1E10F2A21600E51DFF /* PastShowsDetailViewController+Playback.m */;
 		name = "PastShowsDetailViewController+Playback.m: 40";
 		rLen = 0;
-		rLoc = 1044;
+		rLoc = 2217;
 		rType = 0;
 		vrLen = 4136;
 		vrLoc = 0;
@@ -3127,7 +3152,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 118";
 		rLen = 0;
-		rLoc = 4126;
+		rLoc = 4100;
 		rType = 0;
 		vrLen = 5278;
 		vrLoc = 0;
@@ -3397,7 +3422,7 @@
 		fRef = 8B53EDC610DAC4610038B87B /* PastShowsTableViewController.m */;
 		name = "PastShowsTableViewController.m: 59";
 		rLen = 0;
-		rLoc = 1699;
+		rLoc = 1692;
 		rType = 0;
 		vrLen = 7432;
 		vrLoc = 799;
@@ -3427,7 +3452,7 @@
 		fRef = 8B53F0AD10DB03740038B87B /* PastShowsDetailViewController.h */;
 		name = "PastShowsDetailViewController.h: 74";
 		rLen = 0;
-		rLoc = 2309;
+		rLoc = 2282;
 		rType = 0;
 		vrLen = 1896;
 		vrLoc = 621;
@@ -3437,7 +3462,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 97";
 		rLen = 5;
-		rLoc = 2972;
+		rLoc = 2973;
 		rType = 0;
 		vrLen = 2978;
 		vrLoc = 1738;
@@ -3447,7 +3472,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 318";
 		rLen = 0;
-		rLoc = 6831;
+		rLoc = 6805;
 		rType = 0;
 		vrLen = 2405;
 		vrLoc = 7406;
@@ -3457,7 +3482,7 @@
 		fRef = 8B53F0AD10DB03740038B87B /* PastShowsDetailViewController.h */;
 		name = "PastShowsDetailViewController.h: 86";
 		rLen = 0;
-		rLoc = 2616;
+		rLoc = 2589;
 		rType = 0;
 		vrLen = 1932;
 		vrLoc = 908;
@@ -3467,7 +3492,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 233";
 		rLen = 0;
-		rLoc = 6831;
+		rLoc = 6805;
 		rType = 0;
 		vrLen = 2405;
 		vrLoc = 7406;
@@ -3477,7 +3502,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 244";
 		rLen = 0;
-		rLoc = 6831;
+		rLoc = 6805;
 		rType = 0;
 		vrLen = 3961;
 		vrLoc = 3661;
@@ -3497,7 +3522,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 247";
 		rLen = 0;
-		rLoc = 6831;
+		rLoc = 6805;
 		rType = 0;
 		vrLen = 3482;
 		vrLoc = 4278;
@@ -3547,7 +3572,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 247";
 		rLen = 0;
-		rLoc = 2336;
+		rLoc = 2337;
 		rType = 0;
 		vrLen = 2441;
 		vrLoc = 1742;
@@ -3557,7 +3582,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 91";
 		rLen = 0;
-		rLoc = 2791;
+		rLoc = 2792;
 		rType = 0;
 		vrLen = 6122;
 		vrLoc = 325;
@@ -3567,7 +3592,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 103";
 		rLen = 0;
-		rLoc = 3103;
+		rLoc = 3104;
 		rType = 0;
 		vrLen = 3452;
 		vrLoc = 4335;
@@ -3614,7 +3639,7 @@
 		isa = PBXTextBookmark;
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		rLen = 0;
-		rLoc = 244;
+		rLoc = 243;
 		rType = 1;
 	};
 	8B8ABC6E10F2BCDE00E51DFF /* PBXTextBookmark */ = {
@@ -3622,7 +3647,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 182";
 		rLen = 0;
-		rLoc = 5130;
+		rLoc = 5104;
 		rType = 0;
 		vrLen = 3922;
 		vrLoc = 1862;
@@ -3632,7 +3657,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 113";
 		rLen = 67;
-		rLoc = 3433;
+		rLoc = 3434;
 		rType = 0;
 		vrLen = 3922;
 		vrLoc = 1862;
@@ -3642,7 +3667,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 113";
 		rLen = 67;
-		rLoc = 1892;
+		rLoc = 1893;
 		rType = 0;
 		vrLen = 1672;
 		vrLoc = 1189;
@@ -3652,7 +3677,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 64";
 		rLen = 363;
-		rLoc = 1892;
+		rLoc = 1893;
 		rType = 0;
 		vrLen = 6931;
 		vrLoc = 3227;
@@ -3662,7 +3687,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 187";
 		rLen = 0;
-		rLoc = 5699;
+		rLoc = 5673;
 		rType = 0;
 		vrLen = 3777;
 		vrLoc = 2796;
@@ -3672,7 +3697,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 187";
 		rLen = 0;
-		rLoc = 5699;
+		rLoc = 5673;
 		rType = 0;
 		vrLen = 3777;
 		vrLoc = 2796;
@@ -3682,7 +3707,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 189";
 		rLen = 0;
-		rLoc = 5404;
+		rLoc = 5378;
 		rType = 0;
 		vrLen = 4405;
 		vrLoc = 1268;
@@ -3692,7 +3717,7 @@
 		fRef = 8B53F0AD10DB03740038B87B /* PastShowsDetailViewController.h */;
 		name = "PastShowsDetailViewController.h: 86";
 		rLen = 0;
-		rLoc = 2616;
+		rLoc = 2589;
 		rType = 0;
 		vrLen = 1932;
 		vrLoc = 908;
@@ -3702,7 +3727,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 189";
 		rLen = 0;
-		rLoc = 2734;
+		rLoc = 2735;
 		rType = 0;
 		vrLen = 2202;
 		vrLoc = 2150;
@@ -3712,7 +3737,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 91";
 		rLen = 0;
-		rLoc = 2791;
+		rLoc = 2792;
 		rType = 0;
 		vrLen = 4422;
 		vrLoc = 916;
@@ -3737,7 +3762,7 @@
 		isa = PBXTextBookmark;
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		rLen = 0;
-		rLoc = 183;
+		rLoc = 182;
 		rType = 1;
 	};
 	8B8ABC8F10F2BE1200E51DFF /* PBXTextBookmark */ = {
@@ -3745,7 +3770,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 181";
 		rLen = 0;
-		rLoc = 5102;
+		rLoc = 5076;
 		rType = 0;
 		vrLen = 3927;
 		vrLoc = 3334;
@@ -3755,7 +3780,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 181";
 		rLen = 0;
-		rLoc = 5102;
+		rLoc = 5076;
 		rType = 0;
 		vrLen = 3927;
 		vrLoc = 3334;
@@ -3765,7 +3790,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 191";
 		rLen = 0;
-		rLoc = 5699;
+		rLoc = 5673;
 		rType = 0;
 		vrLen = 3927;
 		vrLoc = 3334;
@@ -3775,7 +3800,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 191";
 		rLen = 0;
-		rLoc = 5699;
+		rLoc = 5673;
 		rType = 0;
 		vrLen = 3927;
 		vrLoc = 3334;
@@ -3819,7 +3844,7 @@
 		fRef = 8B53EDC610DAC4610038B87B /* PastShowsTableViewController.m */;
 		name = "PastShowsTableViewController.m: 69";
 		rLen = 0;
-		rLoc = 1747;
+		rLoc = 1740;
 		rType = 0;
 		vrLen = 5584;
 		vrLoc = 799;
@@ -3849,7 +3874,7 @@
 		fRef = 8B8ABB1E10F2A21600E51DFF /* PastShowsDetailViewController+Playback.m */;
 		name = "PastShowsDetailViewController+Playback.m: 40";
 		rLen = 0;
-		rLoc = 1044;
+		rLoc = 2217;
 		rType = 0;
 		vrLen = 4136;
 		vrLoc = 0;
@@ -3859,7 +3884,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 191";
 		rLen = 0;
-		rLoc = 5699;
+		rLoc = 5673;
 		rType = 0;
 		vrLen = 4013;
 		vrLoc = 3305;
@@ -3869,7 +3894,7 @@
 		fRef = 8B53F0AD10DB03740038B87B /* PastShowsDetailViewController.h */;
 		name = "PastShowsDetailViewController.h: 86";
 		rLen = 0;
-		rLoc = 2616;
+		rLoc = 2589;
 		rType = 0;
 		vrLen = 1932;
 		vrLoc = 908;
@@ -3879,7 +3904,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 191";
 		rLen = 0;
-		rLoc = 5699;
+		rLoc = 5673;
 		rType = 0;
 		vrLen = 2970;
 		vrLoc = 5455;
@@ -3889,7 +3914,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 281";
 		rLen = 0;
-		rLoc = 6831;
+		rLoc = 6805;
 		rType = 0;
 		vrLen = 3204;
 		vrLoc = 5733;
@@ -3899,7 +3924,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 273";
 		rLen = 0;
-		rLoc = 6831;
+		rLoc = 6805;
 		rType = 0;
 		vrLen = 4619;
 		vrLoc = 5733;
@@ -3909,7 +3934,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 277";
 		rLen = 0;
-		rLoc = 6831;
+		rLoc = 6805;
 		rType = 0;
 		vrLen = 4620;
 		vrLoc = 5733;
@@ -3919,7 +3944,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 280";
 		rLen = 0;
-		rLoc = 6831;
+		rLoc = 6805;
 		rType = 0;
 		vrLen = 3415;
 		vrLoc = 5704;
@@ -3929,7 +3954,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 280";
 		rLen = 0;
-		rLoc = 6831;
+		rLoc = 6805;
 		rType = 0;
 		vrLen = 4487;
 		vrLoc = 5704;
@@ -3979,7 +4004,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 278";
 		rLen = 0;
-		rLoc = 6831;
+		rLoc = 6805;
 		rType = 0;
 		vrLen = 4461;
 		vrLoc = 5733;
@@ -3989,7 +4014,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 273";
 		rLen = 0;
-		rLoc = 6831;
+		rLoc = 6805;
 		rType = 0;
 		vrLen = 4467;
 		vrLoc = 5733;
@@ -3999,7 +4024,7 @@
 		fRef = 8B8ABB1E10F2A21600E51DFF /* PastShowsDetailViewController+Playback.m */;
 		name = "PastShowsDetailViewController+Playback.m: 40";
 		rLen = 0;
-		rLoc = 1044;
+		rLoc = 2217;
 		rType = 0;
 		vrLen = 4136;
 		vrLoc = 0;
@@ -4103,7 +4128,7 @@
 		fRef = 8B8ABB1E10F2A21600E51DFF /* PastShowsDetailViewController+Playback.m */;
 		name = "PastShowsDetailViewController+Playback.m: 40";
 		rLen = 0;
-		rLoc = 1044;
+		rLoc = 2217;
 		rType = 0;
 		vrLen = 4136;
 		vrLoc = 0;
@@ -4113,7 +4138,7 @@
 		fRef = 8B53F0AD10DB03740038B87B /* PastShowsDetailViewController.h */;
 		name = "PastShowsDetailViewController.h: 84";
 		rLen = 0;
-		rLoc = 2616;
+		rLoc = 2589;
 		rType = 0;
 		vrLen = 1842;
 		vrLoc = 723;
@@ -4133,7 +4158,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 22";
 		rLen = 0;
-		rLoc = 802;
+		rLoc = 803;
 		rType = 0;
 		vrLen = 6477;
 		vrLoc = 278;
@@ -4203,7 +4228,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 197";
 		rLen = 0;
-		rLoc = 5690;
+		rLoc = 5664;
 		rType = 0;
 		vrLen = 2675;
 		vrLoc = 3536;
@@ -4213,7 +4238,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 197";
 		rLen = 0;
-		rLoc = 5690;
+		rLoc = 5664;
 		rType = 0;
 		vrLen = 2543;
 		vrLoc = 3536;
@@ -4223,7 +4248,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 197";
 		rLen = 0;
-		rLoc = 2363;
+		rLoc = 2364;
 		rType = 0;
 		vrLen = 1335;
 		vrLoc = 1306;
@@ -4233,7 +4258,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 91";
 		rLen = 0;
-		rLoc = 2791;
+		rLoc = 2792;
 		rType = 0;
 		vrLen = 3174;
 		vrLoc = 3769;
@@ -4243,7 +4268,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 192";
 		rLen = 0;
-		rLoc = 5476;
+		rLoc = 5450;
 		rType = 0;
 		vrLen = 3170;
 		vrLoc = 3769;
@@ -4253,7 +4278,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 200";
 		rLen = 0;
-		rLoc = 5702;
+		rLoc = 5676;
 		rType = 0;
 		vrLen = 2618;
 		vrLoc = 3677;
@@ -4263,7 +4288,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 200";
 		rLen = 0;
-		rLoc = 5702;
+		rLoc = 5676;
 		rType = 0;
 		vrLen = 3263;
 		vrLoc = 3677;
@@ -5638,7 +5663,7 @@
 		fRef = 8B53EDC610DAC4610038B87B /* PastShowsTableViewController.m */;
 		name = "PastShowsTableViewController.m: 64";
 		rLen = 0;
-		rLoc = 1701;
+		rLoc = 1694;
 		rType = 0;
 		vrLen = 2135;
 		vrLoc = 774;
@@ -5658,7 +5683,7 @@
 		fRef = 8B53EDC610DAC4610038B87B /* PastShowsTableViewController.m */;
 		name = "PastShowsTableViewController.m: 64";
 		rLen = 0;
-		rLoc = 1701;
+		rLoc = 1694;
 		rType = 0;
 		vrLen = 2135;
 		vrLoc = 774;
@@ -5688,7 +5713,7 @@
 		fRef = 8B53F0AD10DB03740038B87B /* PastShowsDetailViewController.h */;
 		name = "PastShowsDetailViewController.h: 60";
 		rLen = 874;
-		rLoc = 1551;
+		rLoc = 1524;
 		rType = 0;
 		vrLen = 1824;
 		vrLoc = 656;
@@ -5698,7 +5723,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 129";
 		rLen = 0;
-		rLoc = 3773;
+		rLoc = 3774;
 		rType = 0;
 		vrLen = 4060;
 		vrLoc = 803;
@@ -5708,7 +5733,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 142";
 		rLen = 0;
-		rLoc = 4104;
+		rLoc = 4078;
 		rType = 0;
 		vrLen = 6035;
 		vrLoc = 803;
@@ -5728,7 +5753,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 142";
 		rLen = 0;
-		rLoc = 4104;
+		rLoc = 4078;
 		rType = 0;
 		vrLen = 6035;
 		vrLoc = 803;
@@ -6052,7 +6077,7 @@
 		fRef = 8B8ABB1D10F2A21600E51DFF /* PastShowsDetailViewController+Playback.h */;
 		name = "PastShowsDetailViewController+Playback.h: 16";
 		rLen = 0;
-		rLoc = 343;
+		rLoc = 374;
 		rType = 0;
 		vrLen = 349;
 		vrLoc = 0;
@@ -6062,7 +6087,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 142";
 		rLen = 0;
-		rLoc = 4104;
+		rLoc = 4078;
 		rType = 0;
 		vrLen = 6036;
 		vrLoc = 802;
@@ -7330,7 +7355,7 @@
 		fRef = 8B53EDC610DAC4610038B87B /* PastShowsTableViewController.m */;
 		name = "PastShowsTableViewController.m: 243";
 		rLen = 0;
-		rLoc = 8027;
+		rLoc = 8088;
 		rType = 0;
 		vrLen = 8009;
 		vrLoc = 401;
@@ -7340,7 +7365,7 @@
 		fRef = 8B53EDC610DAC4610038B87B /* PastShowsTableViewController.m */;
 		name = "PastShowsTableViewController.m: 98";
 		rLen = 0;
-		rLoc = 2590;
+		rLoc = 2919;
 		rType = 0;
 		vrLen = 8068;
 		vrLoc = 277;
@@ -7360,7 +7385,7 @@
 		fRef = 8B53EDC610DAC4610038B87B /* PastShowsTableViewController.m */;
 		name = "PastShowsTableViewController.m: 100";
 		rLen = 0;
-		rLoc = 2625;
+		rLoc = 2919;
 		rType = 0;
 		vrLen = 8140;
 		vrLoc = 277;
@@ -7373,6 +7398,245 @@
 		rLoc = 5378;
 		rType = 0;
 		vrLen = 2628;
+		vrLoc = 56;
+	};
+	8B8ABF5310F30B5500E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8BDC7E9910D9990300A0F6AA /* EventTableViewController.m */;
+		name = "EventTableViewController.m: 108";
+		rLen = 0;
+		rLoc = 3561;
+		rType = 0;
+		vrLen = 3707;
+		vrLoc = 0;
+	};
+	8B8ABF5410F30B5500E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8BDC7EB610D99ADF00A0F6AA /* EventTableCellView.h */;
+		name = "EventTableCellView.h: 20";
+		rLen = 500;
+		rLoc = 696;
+		rType = 0;
+		vrLen = 1203;
+		vrLoc = 0;
+	};
+	8B8ABF5510F30B5500E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8BDC7EB710D99ADF00A0F6AA /* EventTableCellView.m */;
+		name = "EventTableCellView.m: 32";
+		rLen = 0;
+		rLoc = 1032;
+		rType = 0;
+		vrLen = 1541;
+		vrLoc = 0;
+	};
+	8B8ABF5610F30B5500E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8BDC7F2610D9A3E200A0F6AA /* EventDetailViewController.h */;
+		name = "EventDetailViewController.h: 23";
+		rLen = 79;
+		rLoc = 769;
+		rType = 0;
+		vrLen = 1210;
+		vrLoc = 0;
+	};
+	8B8ABF5710F30B5500E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8BDC7F2710D9A3E200A0F6AA /* EventDetailViewController.m */;
+		name = "EventDetailViewController.m: 47";
+		rLen = 0;
+		rLoc = 2161;
+		rType = 0;
+		vrLen = 3042;
+		vrLoc = 0;
+	};
+	8B8ABF5810F30B5500E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B53EDC510DAC4610038B87B /* PastShowsTableViewController.h */;
+		name = "PastShowsTableViewController.h: 23";
+		rLen = 202;
+		rLoc = 804;
+		rType = 0;
+		vrLen = 1315;
+		vrLoc = 0;
+	};
+	8B8ABF5910F30B5500E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B53EDC610DAC4610038B87B /* PastShowsTableViewController.m */;
+		name = "PastShowsTableViewController.m: 71";
+		rLen = 0;
+		rLoc = 1978;
+		rType = 0;
+		vrLen = 8133;
+		vrLoc = 277;
+	};
+	8B8ABF5A10F30B5500E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B53EDC610DAC4610038B87B /* PastShowsTableViewController.m */;
+		name = "PastShowsTableViewController.m: 86";
+		rLen = 0;
+		rLoc = 2410;
+		rType = 0;
+		vrLen = 8201;
+		vrLoc = 277;
+	};
+	8B8ABF5B10F30B5500E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B4E1BD910DC8285005D8BA9 /* PastShowsDataModel+PrivateMethods.m */;
+		name = "PastShowsDataModel+PrivateMethods.m: 185";
+		rLen = 0;
+		rLoc = 5378;
+		rType = 0;
+		vrLen = 2662;
+		vrLoc = 56;
+	};
+	8B8ABF5E10F30BAF00E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B53EDC610DAC4610038B87B /* PastShowsTableViewController.m */;
+		name = "PastShowsTableViewController.m: 86";
+		rLen = 0;
+		rLoc = 2410;
+		rType = 0;
+		vrLen = 8206;
+		vrLoc = 272;
+	};
+	8B8ABF5F10F30BAF00E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B53EF2510DADBD80038B87B /* PastShowsTableCellView.h */;
+		name = "PastShowsTableCellView.h: 20";
+		rLen = 159;
+		rLoc = 705;
+		rType = 0;
+		vrLen = 1225;
+		vrLoc = 0;
+	};
+	8B8ABF6010F30BAF00E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B53EF2610DADBD80038B87B /* PastShowsTableCellView.m */;
+		name = "PastShowsTableCellView.m: 25";
+		rLen = 0;
+		rLoc = 813;
+		rType = 0;
+		vrLen = 1529;
+		vrLoc = 0;
+	};
+	8B8ABF6110F30BAF00E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B53EF2610DADBD80038B87B /* PastShowsTableCellView.m */;
+		name = "PastShowsTableCellView.m: 53";
+		rLen = 0;
+		rLoc = 1527;
+		rType = 0;
+		vrLen = 1557;
+		vrLoc = 0;
+	};
+	8B8ABF6210F30BAF00E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B4E1BD910DC8285005D8BA9 /* PastShowsDataModel+PrivateMethods.m */;
+		name = "PastShowsDataModel+PrivateMethods.m: 185";
+		rLen = 0;
+		rLoc = 5378;
+		rType = 0;
+		vrLen = 2662;
+		vrLoc = 56;
+	};
+	8B8ABF6710F30D7000E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8BBBC80610D8BB3800A780FC /* OnAirViewController+AudioStreamer.m */;
+		name = "OnAirViewController+AudioStreamer.m: 29";
+		rLen = 0;
+		rLoc = 904;
+		rType = 0;
+		vrLen = 856;
+		vrLoc = 761;
+	};
+	8B8ABF6810F30D7000E51DFF /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "PastShowsDetailViewController+ScollView.h: No such file or directory";
+		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 20;
+		rType = 1;
+	};
+	8B8ABF6910F30D7000E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
+		name = "PastShowsDetailViewController.m: 21";
+		rLen = 0;
+		rLoc = 750;
+		rType = 0;
+		vrLen = 1097;
+		vrLoc = 87;
+	};
+	8B8ABF6C10F30DAB00E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B53EF2610DADBD80038B87B /* PastShowsTableCellView.m */;
+		name = "PastShowsTableCellView.m: 45";
+		rLen = 0;
+		rLoc = 1361;
+		rType = 0;
+		vrLen = 1557;
+		vrLoc = 0;
+	};
+	8B8ABF6D10F30DAB00E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B53F0AD10DB03740038B87B /* PastShowsDetailViewController.h */;
+		name = "PastShowsDetailViewController.h: 54";
+		rLen = 0;
+		rLoc = 1480;
+		rType = 0;
+		vrLen = 1839;
+		vrLoc = 757;
+	};
+	8B8ABF6E10F30DAB00E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B8ABB1D10F2A21600E51DFF /* PastShowsDetailViewController+Playback.h */;
+		name = "PastShowsDetailViewController+Playback.h: 13";
+		rLen = 0;
+		rLoc = 289;
+		rType = 0;
+		vrLen = 380;
+		vrLoc = 0;
+	};
+	8B8ABF6F10F30DAB00E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B8ABB1E10F2A21600E51DFF /* PastShowsDetailViewController+Playback.m */;
+		name = "PastShowsDetailViewController+Playback.m: 69";
+		rLen = 0;
+		rLoc = 1982;
+		rType = 0;
+		vrLen = 3983;
+		vrLoc = 0;
+	};
+	8B8ABF7010F30DAB00E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
+		name = "PastShowsDetailViewController.m: 115";
+		rLen = 0;
+		rLoc = 3503;
+		rType = 0;
+		vrLen = 3752;
+		vrLoc = 0;
+	};
+	8B8ABF7110F30DAB00E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
+		name = "PastShowsDetailViewController.m: 141";
+		rLen = 0;
+		rLoc = 4054;
+		rType = 0;
+		vrLen = 4117;
+		vrLoc = 0;
+	};
+	8B8ABF7210F30DAB00E51DFF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B4E1BD910DC8285005D8BA9 /* PastShowsDataModel+PrivateMethods.m */;
+		name = "PastShowsDataModel+PrivateMethods.m: 185";
+		rLen = 0;
+		rLoc = 5378;
+		rType = 0;
+		vrLen = 2662;
 		vrLoc = 56;
 	};
 	8BB7F8B010D5990C00719438 /* KATG.com */ = {
@@ -7627,9 +7891,9 @@
 	8BBBC80610D8BB3800A780FC /* OnAirViewController+AudioStreamer.m */ = {
 		uiCtxt = {
 			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{1103, 12}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 5133}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {1219, 2353}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1219, 2379}}";
 			sepNavSelRange = "{904, 0}";
-			sepNavVisRange = "{616, 868}";
+			sepNavVisRange = "{761, 845}";
 			sepNavWindowFrame = "{{0, 0}, {1229, 778}}";
 		};
 	};
@@ -7666,25 +7930,25 @@
 	};
 	8BDC7E9910D9990300A0F6AA /* EventTableViewController.m */ = {
 		uiCtxt = {
-			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{1151, 15}\";\n            s = 0;\n        },\n                {\n            r = \"{1260, 23}\";\n            s = 0;\n        },\n                {\n            r = \"{1391, 1281}\";\n            s = 0;\n        },\n                {\n            r = \"{3146, 193}\";\n            s = 0;\n        },\n                {\n            r = \"{3366, 267}\";\n            s = 0;\n        },\n                {\n            r = \"{3714, 57}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 3781}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {786, 988}}";
-			sepNavSelRange = "{848, 0}";
-			sepNavVisRange = "{3, 1831}";
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{823, 86}\";\n            s = 0;\n        },\n                {\n            r = \"{945, 112}\";\n            s = 0;\n        },\n                {\n            r = \"{1077, 39}\";\n            s = 0;\n        },\n                {\n            r = \"{1218, 15}\";\n            s = 0;\n        },\n                {\n            r = \"{1326, 23}\";\n            s = 0;\n        },\n                {\n            r = \"{1456, 1140}\";\n            s = 0;\n        },\n                {\n            r = \"{2692, 348}\";\n            s = 0;\n        },\n                {\n            r = \"{3068, 199}\";\n            s = 0;\n        },\n                {\n            r = \"{3293, 267}\";\n            s = 0;\n        },\n                {\n            r = \"{3640, 57}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 3707}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {786, 841}}";
+			sepNavSelRange = "{1341, 0}";
+			sepNavVisRange = "{0, 1431}";
 			sepNavWindowFrame = "{{6, 0}, {1229, 1002}}";
 		};
 	};
 	8BDC7EB610D99ADF00A0F6AA /* EventTableCellView.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {621, 621}}";
+			sepNavIntBoundsRect = "{{0, 0}, {786, 841}}";
 			sepNavSelRange = "{696, 500}";
 			sepNavVisRange = "{0, 1203}";
 		};
 	};
 	8BDC7EB710D99ADF00A0F6AA /* EventTableCellView.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {740, 754}}";
-			sepNavSelRange = "{859, 228}";
-			sepNavVisRange = "{0, 1365}";
+			sepNavIntBoundsRect = "{{0, 0}, {786, 841}}";
+			sepNavSelRange = "{1032, 0}";
+			sepNavVisRange = "{0, 1541}";
 		};
 	};
 	8BDC7ED610D99DC000A0F6AA /* PBXBookmark */ = {
@@ -7701,15 +7965,15 @@
 	};
 	8BDC7F2610D9A3E200A0F6AA /* EventDetailViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {740, 621}}";
-			sepNavSelRange = "{1196, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {786, 841}}";
+			sepNavSelRange = "{769, 79}";
 			sepNavVisRange = "{0, 1210}";
 		};
 	};
 	8BDC7F2710D9A3E200A0F6AA /* EventDetailViewController.m */ = {
 		uiCtxt = {
-			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{925, 1232}\";\n            s = 0;\n        },\n                {\n            r = \"{2305, 421}\";\n            s = 0;\n        },\n                {\n            r = \"{2763, 100}\";\n            s = 0;\n        },\n                {\n            r = \"{2884, 60}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 2952}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {1013, 621}}";
+			sepNavFolds = "{\n    c =     (\n                {\n            r = \"{925, 1236}\";\n            s = 0;\n        },\n                {\n            r = \"{2309, 419}\";\n            s = 0;\n        },\n                {\n            r = \"{2765, 100}\";\n            s = 0;\n        },\n                {\n            r = \"{2886, 148}\";\n            s = 0;\n        }\n    );\n    r = \"{0, 3042}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {1013, 864}}";
 			sepNavSelRange = "{926, 0}";
 			sepNavVisRange = "{0, 1143}";
 			sepNavWindowFrame = "{{6, 0}, {1229, 1002}}";
@@ -8031,7 +8295,7 @@
 		fRef = 8B53F0AE10DB03740038B87B /* PastShowsDetailViewController.m */;
 		name = "PastShowsDetailViewController.m: 124";
 		rLen = 0;
-		rLoc = 5955;
+		rLoc = 5929;
 		rType = 0;
 		vrLen = 5318;
 		vrLoc = 959;
@@ -8080,7 +8344,7 @@
 		isa = PBXTextBookmark;
 		fRef = 8B53EDC610DAC4610038B87B /* PastShowsTableViewController.m */;
 		rLen = 11;
-		rLoc = 1294;
+		rLoc = 1290;
 		rType = 0;
 	};
 	8BEF322B10F024FC000DF638 /* PBXTextBookmark */ = {
@@ -8088,7 +8352,7 @@
 		fRef = 8B53EDC610DAC4610038B87B /* PastShowsTableViewController.m */;
 		name = "PastShowsTableViewController.m: 49";
 		rLen = 0;
-		rLoc = 1429;
+		rLoc = 1425;
 		rType = 0;
 		vrLen = 1236;
 		vrLoc = 824;

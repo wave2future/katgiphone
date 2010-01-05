@@ -10,6 +10,7 @@
 
 @interface PastShowsDetailViewController (Playback)
 
+- (void)chooseCorrectPlayback;
 - (void)playMovie;
 - (void)spinButton;
 - (void)setPlayButtonImage:(UIImage *)image;

@@ -35,21 +35,18 @@
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
-	
 	[self.tableView setRowHeight:ROW_HEIGHT];
 	self.searchDisplayController.searchResultsTableView.rowHeight = ROW_HEIGHT;
-	
 	userDefaults = [NSUserDefaults standardUserDefaults];
 	shouldStream = [delegate shouldStream];
 	[[NSNotificationCenter defaultCenter] addObserver:self 
 											 selector:@selector(_reachabilityChanged:) 
 												 name:kReachabilityChangedNotification 
 											   object:nil];
-	
 	model = [PastShowsDataModel sharedPastShowsDataModel];
 	[model setDelegate:self];
 	[model setShouldStream:shouldStream];
-	list =  [model shows];
+	list = [model shows];
 	filteredList = [[NSMutableArray alloc] initWithCapacity:1000];
 }
 - (void)viewDidAppear:(BOOL)animated 
@@ -59,6 +56,25 @@
 - (void)viewDidDisappear:(BOOL)animated 
 {
 	
+}
+#pragma mark -
+#pragma mark Cleanup
+#pragma mark -
+- (void)didReceiveMemoryWarning 
+{
+    [super didReceiveMemoryWarning];
+	[list release];
+	list = [[NSArray alloc] init];
+	[self reloadTableView];
+}
+- (void)dealloc 
+{
+	delegate = nil;
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	[list release];
+	[filteredList release];
+	[shouldStream release];	
+    [super dealloc];
 }
 #pragma mark Reachability
 - (void)_reachabilityChanged:(NSNotification* )note
@@ -92,22 +108,6 @@
 			break;
 		}
 	}
-}
-#pragma mark -
-#pragma mark Cleanup
-#pragma mark -
-- (void)didReceiveMemoryWarning 
-{
-    [super didReceiveMemoryWarning];
-	[list release];
-	list = [[NSArray alloc] init];
-	[self reloadTableView];
-}
-- (void)dealloc 
-{
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	[list release];
-    [super dealloc];
 }
 #pragma mark -
 #pragma mark Table view methods

@@ -51,7 +51,6 @@ UIScrollViewDelegate>
 	MPMoviePlayerController *moviePlayer;
 	
 	NSURL *movieURL;
-	NSString *urlDescription;
 	BOOL playing;
 	
 	NSArray *picDataArray;
