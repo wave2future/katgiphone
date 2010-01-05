@@ -23,9 +23,8 @@
 @implementation OnAirViewController (Feedback)
 
 #pragma mark -
-#pragma mark FeedBack System
-#pragma mark -
 #pragma mark TextField/TextView Methods
+#pragma mark -
 // action linked to transparent button behind textview
 - (IBAction)resignFirstResponder:(id)sender 
 {
@@ -52,6 +51,9 @@
 	[locationTextField resignFirstResponder];
 	[commentTextView resignFirstResponder];
 }
+#pragma mark -
+#pragma mark Button
+#pragma mark -
 // Set custom button images for feedback button
 - (void)setFeedbackButtonImages 
 {
@@ -72,7 +74,9 @@
 	[feedbackButton setBackgroundImage:feedbackButtonHighlighted 
 							  forState:UIControlStateHighlighted];
 }
+#pragma mark -
 #pragma mark Feedback Post Methods
+#pragma mark -
 // Create feedback object from text field contents
 // Temporarily disable feedback button
 - (IBAction)submitFeedback:(id)sender 

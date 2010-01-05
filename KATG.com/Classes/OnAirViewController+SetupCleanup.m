@@ -6,6 +6,8 @@
 //  Copyright 2010 Paper Software. All rights reserved.
 //
 
+#define kPhoneNumber @"tel:+16465028682"
+
 #import "OnAirViewController+SetupCleanup.h"
 
 @implementation OnAirViewController (SetupCleanup)
@@ -19,7 +21,7 @@
 	// Setup shoutcast playback and volume control
 	[self setupAudioAssets];
 	// Make sure phone is available, if not hide/disable phone in button
-	if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel:+16465028682"]]) 
+	if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:kPhoneNumber]]) 
 	{
 		[callButton setEnabled:NO];
 		[callButton setHidden:YES];

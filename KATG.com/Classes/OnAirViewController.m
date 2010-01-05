@@ -17,6 +17,7 @@
 //  limitations under the License.
 
 #import "OnAirViewControllerCategories.h"
+#import "OnAirViewController+SetupCleanup.h"
 #import "Reachability.h"
 
 @implementation OnAirViewController
@@ -49,7 +50,7 @@
 }
 - (void)dealloc 
 {
-	[super cleanup];
+	[self cleanup];
     [super dealloc];
 }
 

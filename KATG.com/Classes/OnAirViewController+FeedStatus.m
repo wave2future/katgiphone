@@ -16,38 +16,45 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+#define kFeedAddress @"http://www.keithandthegirl.com/feed/show/live"
+#define kXPath @"//root"
+
 #import "OnAirViewController+FeedStatus.h"
 
 @implementation OnAirViewController (FeedStatus)
 
+// Launch thread to check shoutcast feed status
 - (void)pollStatusFeed 
 {
 	[NSThread detachNewThreadSelector:@selector(pollStatusFeedThread) 
 							 toTarget:self 
 						   withObject:nil];
 }
+// Setup parser for shout cast feed status
 - (void)pollStatusFeedThread
 {
 	feedPool = 
 	[[NSAutoreleasePool alloc] init];
-	// Create the feed string
-	NSString *feedAddress = @"http://www.keithandthegirl.com/feed/show/live";
+	// Create the feed URL string
+	NSString *feedAddress = kFeedAddress;
 	// Select the xPath to parse against
-	NSString *xPath = @"//root";
+	NSString *xPath = kXPath;
 	// Instantiate GrabXMLFeed
 	GrabXMLFeed *parser = 
 	[[GrabXMLFeed alloc] initWithFeed:feedAddress xPath:xPath];
 	// Set parser delegate
 	[parser setDelegate:self];
-	// Set instance number
-	[parser setInstanceNumber:1];
+	// Set instance number, 
+	// used by delegate methods to discern parser instances, not necessary here
+	//[parser setInstanceNumber:1];
 	// Start parser
 	[parser parse];
 }
+// Parser delegate when document is fully parsed
 - (void)parsingDidCompleteSuccessfully:(GrabXMLFeed *)parser 
 {
-	NSMutableArray *feedEntries = 
-	[NSMutableArray arrayWithArray:[parser feedEntries]];
+	// cast feedEntries into an immutable array
+	NSArray *feedEntries = (NSArray *)[[parser feedEntries] copy];
 	int feedEntryIndex = 0;
 	NSString *feedStatusString;
 	NSString *feedStatus = nil;
