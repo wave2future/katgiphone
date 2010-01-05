@@ -20,14 +20,19 @@
 
 @implementation OnAirViewController (NextShowTime)
 
+// setup events data model singleton
 - (void)getEventsData 
 {
-	[[NSNotificationCenter defaultCenter] 
+	timeSince = NSIntegerMax; // used to calculate time til next show
+	//respond to changes in event data
+	[[NSNotificationCenter defaultCenter]
 	 addObserver:self 
 	 selector:@selector(eventsDataModelDidChangeNotification:)
 	 name:@"EventsModelDidChange" 
 	 object:nil];
-	timeSince = NSIntegerMax;
+	// Events data model singleton with initial connection status,
+	// using notification instead of delegation because OnAir
+	// and Events controllers will both want to know about changes
 	EventsDataModel *model = [EventsDataModel sharedEventsDataModel];
 	[model setShouldStream:shouldStream];
 	[model startNotifier];
@@ -38,7 +43,8 @@
 {
 	NSArray *events = [notification object];
 	for (NSDictionary *event in events) {
-		if ([[event objectForKey:@"ShowType"] boolValue]) {
+		if ([[event objectForKey:@"ShowType"] boolValue]) 
+		{
 			NSDate *time = [event objectForKey:@"DateTime"];
 			NSInteger since = [time timeIntervalSinceNow];
 			if (since < timeSince)
@@ -60,14 +66,18 @@
 	NSInteger d = timeSince / 86400;
 	NSInteger h = timeSince / 3600 - d * 24;
 	NSInteger m = timeSince / 60 - d * 1440 - h * 60;
-	[self setNextLiveShowCountdownLabelText:[NSString stringWithFormat:@"%02d : %02d : %02d", d, h , m]];
+	[self setNextLiveShowCountdownLabelText:
+	 [NSString stringWithFormat:@"%02d : %02d : %02d", d, h , m]];
 }
 
 - (void)setNextLiveShowCountdownLabelText:(NSString *)text
 {
-	if ([NSThread isMainThread]) {
+	if ([NSThread isMainThread]) 
+	{
 		[nextLiveShowCountdownLabel setText:text];
-	} else {
+	} 
+	else 
+	{
 		[self performSelectorOnMainThread:@selector(setNextLiveShowCountdownLabelText:) 
 							   withObject:text 
 							waitUntilDone:NO];

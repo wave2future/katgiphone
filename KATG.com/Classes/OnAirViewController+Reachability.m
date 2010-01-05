@@ -33,7 +33,8 @@
 
 - (void)reachabilityChanged:(NSNotification* )note
 {
-	if (streamer) {
+	if (streamer) 
+	{
 		[audioButton.layer removeAllAnimations];
 		[streamer stop];
 	}
@@ -45,7 +46,8 @@
 - (void)updateReachability:(Reachability*)curReach
 {
 	NetworkStatus netStatus = [curReach currentReachabilityStatus];
-	switch (netStatus) {
+	switch (netStatus) 
+	{
 		case NotReachable:
 		{
 			shouldStream = [NSNumber numberWithInt:0];
@@ -62,8 +64,10 @@
 			break;
 		}
 	}
-	if (shouldStream > 0) {
-		if (playOnConnection) {
+	if (shouldStream > 0) 
+	{
+		if (playOnConnection) 
+		{
 			[self audioButtonPressed:self];
 			playOnConnection = NO;
 		}

@@ -58,37 +58,42 @@
 	int feedEntryIndex = 0;
 	NSString *feedStatusString;
 	NSString *feedStatus = nil;
-	if ([feedEntries count] > 0) 
+	if ([feedEntries count] > 0) // Make sure feedEntries isn't empty 
 	{
+		// Feedentries is an array of dictionaries
+		// the dictionary keys are the xml node values
 		feedStatusString = 
-		[[feedEntries objectAtIndex: feedEntryIndex] objectForKey: @"OnAir"];
+		[[feedEntries objectAtIndex:feedEntryIndex] objectForKey: @"OnAir"];
 		int feedStatusInt = [feedStatusString intValue];
-		feedStatusString = nil;
-		if(feedStatusInt == 0) 
-		{
-			feedStatus = @"Not Live";
-		} 
-		else if(feedStatusInt == 1) 
-		{
-			feedStatus = @"Live";
-		} 
-		else 
-		{
-			feedStatus = @"Unknown";
+		switch (feedStatusInt) {
+			case 0:
+				feedStatus = @"Not Live";
+				break;
+			case 1:
+				feedStatus = @"Live";
+				break;
+			default:
+				feedStatus = @"Unknown";
+				break;
 		}
+		// Set live show status label on main thread (UIKit is not threadsafe)
 		[self performSelectorOnMainThread:@selector(setLiveShowStatusLabelText:)
 							   withObject:feedStatus 
 							waitUntilDone:NO];
 	}
+	// Release parser and drain threads autorelease pool
 	[parser release];
 	[feedPool drain];
 }
-
+// Set live show status label
 - (void)setLiveShowStatusLabelText:(NSString *)text 
 {
-	if ([NSThread isMainThread]) {
+	if ([NSThread isMainThread]) // (UIKit is not threadsafe)
+	{
 		[liveShowStatusLabel setText:text];
-	} else {
+	} 
+	else // if not on main thread place message on runloop for main thread
+	{
 		[self performSelectorOnMainThread:@selector(setLiveShowStatusLabelText:) 
 							   withObject:text 
 							waitUntilDone:NO];

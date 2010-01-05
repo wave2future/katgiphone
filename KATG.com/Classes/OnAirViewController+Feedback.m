@@ -18,7 +18,6 @@
 
 #import "OnAirViewController+Feedback.h"
 #import "Feedback.h"
-#import "ImageAdditions.h"
 
 @implementation OnAirViewController (Feedback)
 

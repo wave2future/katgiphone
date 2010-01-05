@@ -22,9 +22,10 @@
 
 - (IBAction)callButtonPressed:(id)sender 
 {
-	NSURL *url= [NSURL URLWithString:@"tel:+16465028682"];
+	NSURL *url= [NSURL URLWithString:kPhoneNumber];
 	NSString *osVersion = [[UIDevice currentDevice] systemVersion];
-	if ([osVersion doubleValue] >= 3.1) {
+	if ([osVersion doubleValue] >= 3.1) 
+	{
 		// On 3.1 and up use webview to dial
 		UIWebView *webview = [[UIWebView alloc] initWithFrame:[callButton frame]];
 		webview.alpha = 0.0;
@@ -32,12 +33,12 @@
 		[self.view insertSubview:webview belowSubview:callButton];
 		[webview release];
 	}
-	else {
+	else 
+	{
 		// On 3.0 dial as usual
 		[[UIApplication sharedApplication] openURL: url];          
 	}
 }
-
 - (IBAction)infoButtonPressed:(id)sender 
 {
 	UIAlertView *alert = [[UIAlertView alloc] 

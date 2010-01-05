@@ -6,8 +6,6 @@
 //  Copyright 2010 Paper Software. All rights reserved.
 //
 
-#define kPhoneNumber @"tel:+16465028682"
-
 #import "OnAirViewController+SetupCleanup.h"
 
 @implementation OnAirViewController (SetupCleanup)

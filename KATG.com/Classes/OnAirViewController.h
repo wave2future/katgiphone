@@ -16,8 +16,11 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+#define kPhoneNumber @"tel:+16465028682"
+
 #import "GrabXMLFeed.h"
 #import "EventsDataModel.h"
+#import "ImageAdditions.h"
 
 @class AudioStreamer; // This is the shoutcast radio class
 @interface OnAirViewController : UIViewController
