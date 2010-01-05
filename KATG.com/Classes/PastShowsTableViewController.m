@@ -57,19 +57,19 @@
 
 - (void)viewDidAppear:(BOOL)animated 
 {
-	if ([list count] == 0) 
+	/*if ([list count] == 0) 
 	{
 		list = [model showsFromDisk];
 		[self reloadTableView];
-	}
+	}*/
 }
 
 - (void)viewDidDisappear:(BOOL)animated 
 {
-	[list release];
+	/*[list release];
 	list = [[NSArray alloc] init];
 	[filteredList removeAllObjects];
-	[self reloadTableView];
+	[self reloadTableView];*/
 }
 
 #pragma mark Reachability

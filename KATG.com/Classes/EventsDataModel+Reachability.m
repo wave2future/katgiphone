@@ -51,7 +51,12 @@
 	}
 	
 	if ([shouldStream intValue] != 0 && _pollOnConnection) {
-		[self _pollEventsFeed];
+		[NSThread detachNewThreadSelector:@selector(_pollEventsFeed) 
+								 toTarget:self 
+							   withObject:nil];
+		/*[self performSelectorOnMainThread:@selector(_pollEventsFeed) 
+		 withObject:nil 
+		 waitUntilDone:NO];*/
 		_pollOnConnection = NO;
 	}
 }

@@ -27,7 +27,7 @@
 	 selector:@selector(eventsDataModelDidChangeNotification:)
 	 name:@"EventsModelDidChange" 
 	 object:nil];
-	timeSince = NSUIntegerMax;
+	timeSince = NSIntegerMax;
 	EventsDataModel *model = [EventsDataModel sharedEventsDataModel];
 	[model setShouldStream:shouldStream];
 	[model startNotifier];
@@ -40,12 +40,16 @@
 	for (NSDictionary *event in events) {
 		if ([[event objectForKey:@"ShowType"] boolValue]) {
 			NSDate *time = [event objectForKey:@"DateTime"];
-			timeSince = [time timeIntervalSinceNow];
-			NSInteger d = timeSince / 86400;
-			NSInteger h = timeSince / 3600 - d * 24;
-			NSInteger m = timeSince / 60 - d * 1440 - h * 60;
-			[self setNextLiveShowCountdownLabelText:
-			 [NSString stringWithFormat:@"%02d : %02d : %02d", d, h , m]];
+			NSInteger since = [time timeIntervalSinceNow];
+			if (since < timeSince)
+			{
+				timeSince = [time timeIntervalSinceNow];
+				NSInteger d = timeSince / 86400;
+				NSInteger h = timeSince / 3600 - d * 24;
+				NSInteger m = timeSince / 60 - d * 1440 - h * 60;
+				[self setNextLiveShowCountdownLabelText:
+				 [NSString stringWithFormat:@"%02d : %02d : %02d", d, h , m]];
+			}
 		}
 	}
 }

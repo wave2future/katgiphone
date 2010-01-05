@@ -18,9 +18,9 @@
 
 #import "EventOperation.h"
 
-#define EVENTSPLIST @"events.plist"
-#define FEEDADDRESS @"http://www.keithandthegirl.com/feed/event/"
-#define XPATH @"//Event"
+#define kEventsPlist @"events.plist"
+#define kFeedAddress @"http://www.keithandthegirl.com/feed/event/"
+#define kXPath @"//Event"
 #define EventsModelWillChange @"EventsModelWillChange"
 #define EventsModelDidChange @"EventsModelDidChange"
 
@@ -42,6 +42,7 @@
 	NSMutableArray   *_eventsProxy;
 	NSOperationQueue *_eventQueue;
 	BOOL             _pollOnConnection;
+	NSAutoreleasePool *_pollingPool;
 }
 
 @property (nonatomic, assign)   id<EventsDataModelDelegate> delegate;

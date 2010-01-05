@@ -25,15 +25,24 @@
 - (void)loadView 
 {
 	[super loadView];
+	CGFloat x = 0;
+	CGFloat y = 0;
+	CGFloat w = 250;
+	CGFloat h = 170;
 	// Create a UIView that will fit in the UIScrollView this will be added to and assign it to self.view
-	CGRect rect = CGRectMake(0, 0, 270, 190);
+	CGRect rect = CGRectMake(x, y, w, h);
 	view = [[UIView alloc] initWithFrame:rect];
-	self.view = view;
-	[view setBackgroundColor:[UIColor blackColor]];
+	[self setView:view];
+	[view release];
+	[view setBackgroundColor:[UIColor clearColor]];
 	
-	imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+	// Create centered imageView with 80% of the view rectangle
+	rect = CGRectMake(trunc(0.1*w), trunc(0.1*h), trunc(0.8*w), trunc(0.8*h));
+	imageView = [[UIImageView alloc] initWithFrame:rect];
 	imageView.multipleTouchEnabled = YES;
 	imageView.userInteractionEnabled = YES;
+	[imageView setContentMode:UIViewContentModeScaleAspectFit];
+	[imageView setBackgroundColor:[UIColor clearColor]];
 	[view addSubview:imageView];
 	[imageView release];
 }
@@ -43,11 +52,13 @@
 	[super didReceiveMemoryWarning];
 }
 
+- (void)viewDidUnload
+{
+	[imageView removeFromSuperview]; imageView = nil;	
+}
+
 - (void)dealloc 
 {
-	[view removeFromSuperview];
-	[imageView removeFromSuperview];
-	imageView = nil;
     [super dealloc];
 }
 

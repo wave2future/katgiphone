@@ -30,6 +30,12 @@
 	[op release];
 }
 
+- (void)parsingDidCompleteSuccessfully:(GrabXMLFeed *)parser
+{
+	[parser release];
+	[_pollingPool drain];
+}
+
 - (void)operationDidFinishSuccesfully:(EventOperation *)op 
 {	
 	NSDictionary *event = [[op event] copy];
@@ -44,7 +50,7 @@
 	if ([NSThread isMainThread]) 
 	{
 		[_eventsProxy addObject:event];
-		NSString *path = [_dataPath stringByAppendingPathComponent:EVENTSPLIST];
+		NSString *path = [_dataPath stringByAppendingPathComponent:kEventsPlist];
 		[_eventsProxy sortUsingSelector:@selector(compareByDateAscending:)];
 		[_eventsProxy writeToFile:path atomically:YES];
 		

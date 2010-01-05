@@ -25,14 +25,16 @@
 @private
 	NSString            *_dataPath;
 	NSArray             *_pics;
+	NSMutableArray      *_picsProxyParser;
+	NSMutableArray		*_picsProxyImages;
 	NSUserDefaults      *_userDefaults;
 	
 	NSThread            *pollingThread;
 	NSAutoreleasePool   *pollingPool;
 }
 
-@property (nonatomic, assign)   id<PastShowPicsDataModelDelegate> delegate;
-@property (nonatomic, assign)   NSNumber *shouldStream;
+@property (nonatomic, assign) id<PastShowPicsDataModelDelegate> delegate;
+@property (nonatomic, assign) NSNumber *shouldStream;
 
 + (PastShowPicsDataModel *)sharedPastShowPicsDataModel;
 - (NSArray *)pics:(NSString *)ID;

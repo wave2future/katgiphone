@@ -30,12 +30,10 @@
 	}
 	return self;
 }
-
 - (void)dealloc {
 	[event release];
 	[super dealloc];
 }
-
 - (void)main {
 	if( !self.isCancelled )
 	{
@@ -44,7 +42,6 @@
 		[pool drain];
 	}
 }
-
 - (void)_processEvent 
 {	
 	NSDictionary *dateTimes = [self _dateFormatting];
@@ -74,7 +71,6 @@
 		[[self delegate] operationDidFinishSuccesfully:self];
 	}
 }
-
 - (NSDictionary *)_dateFormatting 
 {
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -138,7 +134,6 @@
 	
 	return dateTimes;
 }
-
 - (NSNumber *)_showType 
 {
 	if ([[event objectForKey:@"Title"] rangeOfString:@"Live Show"].location != NSNotFound) {

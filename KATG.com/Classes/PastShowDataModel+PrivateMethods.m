@@ -153,15 +153,43 @@
 	}
 }
 
-- (void)_reachabilityChanged:(NSNotification *)note 
+- (void)_reachabilityChanged:(NSNotification* )note
 {
-	
+	Reachability *curReach = [note object];
+	NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
+	[self _updateReachability:curReach];
+}
+
+- (void)_updateReachability:(Reachability*)curReach
+{
+	BOOL streamPref = [_userDefaults boolForKey:@"StreamPSOverCell"];
+	NetworkStatus netStatus = [curReach currentReachabilityStatus];
+	switch (netStatus) {
+		case NotReachable:
+		{
+			shouldStream = [NSNumber numberWithInt:0];
+			break;
+		}
+		case ReachableViaWWAN:
+		{
+			if (streamPref) {
+				shouldStream = [NSNumber numberWithInt:2];
+			} else {
+				shouldStream = [NSNumber numberWithInt:1];
+			}
+			break;
+		}
+		case ReachableViaWiFi:
+		{
+			shouldStream = [NSNumber numberWithInt:3];
+			break;
+		}
+	}
 }
 
 - (void)_attemptRelease 
 {
-	[self release];
-	self = nil;
+	[super release];
 }
 
 - (void)dealloc 

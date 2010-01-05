@@ -18,8 +18,21 @@
 
 #import "PastShowPicsDataModel.h"
 
+@class Reachability;
+@class GrabXMLFeed;
 @interface PastShowPicsDataModel (PrivateMethods)
 
+- (void)_attemptRelease;
+- (void)_reachabilityChanged:(NSNotification* )note;
+- (void)_updateReachability:(Reachability*)curReach;
 - (NSArray *)_getPics:(NSString *)ID;
+- (NSArray *)_loadingArray;
+- (NSArray *)_noConnectionArray;
+- (void)_pollShowFeed:(NSString *)ID;
+- (void)parsingDidCompleteSuccessfully:(GrabXMLFeed *)parser;
+- (void)buildList:(NSMutableArray *)feedEntries;
+- (void)writeShowsToFile;
+- (void)downloadThumbs;
+- (void)stopShowsThread;
 
 @end

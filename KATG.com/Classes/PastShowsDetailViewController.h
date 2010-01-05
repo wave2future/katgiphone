@@ -19,10 +19,16 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "PastShowDataModel.h"
 #import "PastShowPicsDataModel.h"
+#import "ImagePageViewController.h"
+#import "ImageAdditions.h"
 
 @interface PastShowsDetailViewController : UIViewController 
-<PastShowDataModelDelegate, PastShowPicsDataModelDelegate> 
+<PastShowDataModelDelegate, PastShowPicsDataModelDelegate,
+UIScrollViewDelegate> 
 {
+	PastShowDataModel *model;
+	PastShowPicsDataModel *picsModel;
+	
 	NSNumber     *shouldStream;
 	NSDictionary *show;
 	
@@ -48,11 +54,7 @@
 	NSString *urlDescription;
 	BOOL playing;
 	
-	UIScrollView *scrollView;
-	UIPageControl *pageControl;
-	NSMutableArray *viewControllers;
-	NSArray *imageArray;
-	BOOL pageControlUsed;
+	NSArray *picDataArray;
 }
 
 @property (nonatomic, retain) NSNumber     *shouldStream;
@@ -71,15 +73,16 @@
 
 @property (nonatomic, retain) IBOutlet UIScrollView  *scrollView;
 @property (nonatomic, retain) IBOutlet UIPageControl *pageControl;
+@property (nonatomic, retain)          NSMutableArray *viewControllers;
 
 @property (nonatomic, retain) MPMoviePlayerController *moviePlayer;
 @property (nonatomic, retain) NSURL *movieURL;
 
+- (void)data;
+- (void)notifications;
+- (void)labels;
 - (void)setNoteViewText:(NSString *)text;
 - (IBAction)segmentedControlChangedState:(id)sender;
 - (IBAction)playButtonPressed:(id)sender;
-- (void)playMovie;
-- (void)spinButton;
-- (void)setPlayButtonImage:(UIImage *)image;
 
 @end

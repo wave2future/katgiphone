@@ -17,43 +17,41 @@
 //  limitations under the License.
 
 #import "PastShowsDetailViewController.h"
-#import <QuartzCore/CoreAnimation.h>
+#import "PastShowsDetailViewController+Playback.h"
+#import "PastShowsDetailViewController+ScollView.h"
 
 @implementation PastShowsDetailViewController
 
-@synthesize shouldStream;
-@synthesize show;
-
-@synthesize titleLabel;
-@synthesize numberLabel;
-@synthesize guestsLabel;
-
+@synthesize shouldStream, show;
+@synthesize titleLabel, numberLabel, guestsLabel;
 @synthesize playButton;
-
 @synthesize segmentedControl;
+@synthesize noteView, picView;
+@synthesize scrollView, pageControl, viewControllers;
+@synthesize moviePlayer, movieURL;
 
-@synthesize noteView;
-@synthesize picView;
-
-@synthesize scrollView;
-@synthesize pageControl;
-
-@synthesize moviePlayer;
-@synthesize movieURL;
-
+#pragma mark -
+#pragma mark SetupCleanup
+#pragma mark -
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
-	
-	PastShowDataModel *model = [PastShowDataModel sharedPastShowDataModel];
+	[self data];
+	[self labels];
+	[self notifications];
+	[self pictures];
+}
+- (void)data
+{
+	model = [PastShowDataModel sharedPastShowDataModel];
 	[model setDelegate:self];
 	[model setShouldStream:shouldStream];
 	NSDictionary *sh = [model show:[show objectForKey:@"ID"]];
 	
-	PastShowPicsDataModel *picsModel = [PastShowPicsDataModel sharedPastShowPicsDataModel];
+	picsModel = [PastShowPicsDataModel sharedPastShowPicsDataModel];
 	[picsModel setDelegate:self];
 	[picsModel setShouldStream:shouldStream];
-	NSArray *pics = [picsModel pics:[show objectForKey:@"ID"]];
+	picDataArray = [picsModel pics:[show objectForKey:@"ID"]];
 	
 	movieURL = [[NSURL URLWithString:[sh objectForKey:@"FileUrl"]] retain];
 	if (!movieURL) {
@@ -62,12 +60,7 @@
 	if ([shouldStream intValue] < 2) {
 		[playButton setHidden:YES];
 	}
-	
-	[self labels];
-	
-	[self notifications];
 }
-
 - (void)notifications 
 {
 	[[NSNotificationCenter defaultCenter] 
@@ -82,10 +75,9 @@
 	 name:MPMoviePlayerPlaybackDidFinishNotification 
 	 object:nil];
 }
-
 - (void)labels 
 {
-	[noteView setText:[sh objectForKey:@"Detail"]];
+	[noteView setText:[show objectForKey:@"Detail"]];
 	[titleLabel setText:[show objectForKey:@"Title"]];
 	[guestsLabel setText:[show objectForKey:@"Guests"]];
 	[numberLabel setText:[NSString stringWithFormat:@"Show %@", [show objectForKey:@"Number"]]];
@@ -97,7 +89,62 @@
 		[guestsLabel setNumberOfLines:3];
 	}
 }
-
+- (void)pictures
+{
+	NSMutableArray *controllers = [[NSMutableArray alloc] init];
+	for (unsigned i = 0; i < picDataArray.count; i++) {
+		[controllers addObject:[NSNull null]];
+	}
+	self.viewControllers = controllers;
+	[controllers release];
+	
+	scrollView.pagingEnabled = YES;
+	scrollView.contentSize = 
+	CGSizeMake(scrollView.frame.size.width * picDataArray.count, 
+			   scrollView.frame.size.height);
+	scrollView.showsHorizontalScrollIndicator = NO;
+	scrollView.showsVerticalScrollIndicator = NO;
+	scrollView.scrollsToTop = NO;
+	scrollView.delegate = self;
+	
+	pageControl.numberOfPages = picDataArray.count;
+	pageControl.currentPage = 0;
+	
+	[self loadScrollViewWithPage:0];
+	[self loadScrollViewWithPage:1];
+}
+- (void)didReceiveMemoryWarning 
+{
+	[super didReceiveMemoryWarning];
+	[moviePlayer stop];
+	[self.navigationController popViewControllerAnimated:YES];
+}
+- (void)viewDidUnload
+{
+	[scrollView removeFromSuperview];
+	[pageControl removeFromSuperview];
+}
+- (void)dealloc 
+{
+	[shouldStream release];
+	[show release];
+	[titleLabel release];
+	[numberLabel release];
+	[guestsLabel release];
+	[playButton release];
+	[segmentedControl release];
+	[noteView release];
+	[picView release];
+    [viewControllers release];
+	[moviePlayer release];
+	[movieURL release];
+	[urlDescription release];
+	[picDataArray release];
+    [super dealloc];
+}
+#pragma mark -
+#pragma mark Model Delegates
+#pragma mark -
 - (void)pastShowDataModelDidChange:(NSDictionary *)show 
 {
 	if (![NSThread isMainThread]) {
@@ -108,10 +155,11 @@
 			[playButton setEnabled:NO];
 		}
 	} else {
-		[self performSelectorOnMainThread:@selector(pastShowDataModelDidChange:) withObject:[show copy] waitUntilDone:NO];
+		[self performSelectorOnMainThread:@selector(pastShowDataModelDidChange:)
+							   withObject:[show copy] 
+							waitUntilDone:NO];
 	}
 }
-
 - (void)setNoteViewText:(NSString *)text 
 {
 	if ([NSThread isMainThread]) {
@@ -120,7 +168,42 @@
 		[self performSelectorOnMainThread:@selector(setNoteViewText:) withObject:text waitUntilDone:NO];
 	}
 }
-
+- (void)pastShowPicsDataModelDidChange:(NSArray *)pics
+{
+	if ([NSThread isMainThread])
+	{
+		NSInteger *count = [picDataArray count];
+		picDataArray = [pics copy];
+		NSMutableArray *controllers = [[NSMutableArray alloc] initWithArray:viewControllers];
+		for (unsigned i = count; i < picDataArray.count; i++) 
+		{
+			[controllers addObject:[NSNull null]];
+		}
+		self.viewControllers = controllers;
+		[controllers release];
+		scrollView.contentSize = 
+		CGSizeMake(scrollView.frame.size.width * picDataArray.count, 
+				   scrollView.frame.size.height);
+		pageControl.numberOfPages = picDataArray.count;
+		for (unsigned i = 0; i < picDataArray.count; i++) 
+		{
+			ImagePageViewController *controller = [viewControllers objectAtIndex:i];
+			if ((NSNull *)controller != [NSNull null]) 
+			{
+				[self updateViewController:controller page:i];
+			}
+		}
+	}
+	else 
+	{
+		[self performSelectorOnMainThread:@selector(pastShowPicsDataModelDidChange:)
+							   withObject:[pics copy] 
+							waitUntilDone:NO];
+	}
+}
+#pragma mark -
+#pragma mark Button Methods
+#pragma mark -
 - (IBAction)segmentedControlChangedState:(id)sender 
 {
 	if ([segmentedControl selectedSegmentIndex] == 0) {
@@ -131,7 +214,6 @@
 		[picView setHidden:NO];
 	}
 }
-
 - (IBAction)playButtonPressed:(id)sender 
 {
 	if ([shouldStream intValue] < 2) 
@@ -149,7 +231,7 @@
 	}
 	if (playing) 
 	{
-		[self setPlayButtonImage:[UIImage imageNamed:@"playButton.png"]];
+		[self setPlayButtonImage:UIImageForNameExtension(@"playButton", @"png")];
 		if (moviePlayer) 
 		{
 			[moviePlayer stop];
@@ -159,147 +241,7 @@
 	}
 	playing = YES;
 	
-	[self setPlayButtonImage:[UIImage imageNamed:@"loadButton.png"]];
-	[self spinButton];
-	
-	NSString *osVersion = [[UIDevice currentDevice] systemVersion];
-	if ([osVersion doubleValue] >= 3.1) 
-	{
-		// On 3.1 and up 
-		NSURLRequest *theRequest = [NSURLRequest requestWithURL:movieURL
-												  cachePolicy:NSURLRequestUseProtocolCachePolicy
-											  timeoutInterval:60.0];
-		[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-	}
-	else 
-	{
-		// On 3.0
-		[self playMovie];          
-	}
-}
-
-- (NSURLRequest *)connection:(NSURLConnection *)connection 
-			 willSendRequest:(NSURLRequest *)request 
-			redirectResponse:(NSURLResponse *)redirectResponse 
-{
-	[urlDescription release];
-	urlDescription = nil;
-	
-	urlDescription = [[request URL] description];
-	[urlDescription retain];
-	
-	return request;
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response 
-{
-	[connection cancel];
-	[connection release];
-	connection = nil;
-	
-	[movieURL release];
-	movieURL = nil;
-	movieURL = [[NSURL URLWithString:urlDescription] retain];
-	
-	[self playMovie];
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error 
-{
-	[self setPlayButtonImage:[UIImage imageNamed:@"playButton.png"]];
-	[connection release];
-	connection = nil;
-	playing = NO;
-}
-
--(void)playMovie 
-{
-	// Initialize a movie player object with the specified URL
-	MPMoviePlayerController *mp = [[MPMoviePlayerController alloc] initWithContentURL:movieURL];
-	if (mp) 
-	{
-		// save the movie player object
-		self.moviePlayer = mp;
-		[mp release];
-	}
-}
-
-//  Notification called when the movie finished preloading.
-- (void) moviePreloadDidFinish:(NSNotification*)notification
-{
-	[self.moviePlayer play];
-}
-
-//  Notification called when the movie finished playing.
-- (void) moviePlayBackDidFinish:(NSNotification*)notification
-{
-    [[UIApplication sharedApplication] setStatusBarHidden:NO animated:NO];
-	playing = NO;
-	[self setPlayButtonImage:[UIImage imageNamed:@"playButton.png"]];
-}
-
-- (void)spinButton 
-{
-	[CATransaction begin];
-	[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
-	CGRect frame = [playButton frame];
-	playButton.layer.anchorPoint = CGPointMake(0.5, 0.5);
-	playButton.layer.position = CGPointMake(frame.origin.x + 0.5 * frame.size.width, frame.origin.y + 0.5 * frame.size.height);
-	[CATransaction commit];
-	
-	[CATransaction begin];
-	[CATransaction setValue:(id)kCFBooleanFalse forKey:kCATransactionDisableActions];
-	[CATransaction setValue:[NSNumber numberWithFloat:2.0] forKey:kCATransactionAnimationDuration];
-	
-	CABasicAnimation *animation;
-	animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-	animation.fromValue = [NSNumber numberWithFloat:0.0];
-	animation.toValue = [NSNumber numberWithFloat:2 * M_PI];
-	animation.timingFunction = [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionLinear];
-	animation.delegate = self;
-	[playButton.layer addAnimation:animation forKey:@"rotationAnimation"];
-	
-	[CATransaction commit];
-}
-
-- (void)setPlayButtonImage:(UIImage *)image 
-{
-	[playButton.layer removeAllAnimations];
-	[playButton setImage:image forState:UIControlStateNormal];
-}
-
-- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)finished 
-{
-	if (finished)
-	{
-		[self spinButton];
-	}
-}
-
-- (void)didReceiveMemoryWarning 
-{
-	[super didReceiveMemoryWarning];
-	[moviePlayer stop];
-	[self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)dealloc 
-{
-	[shouldStream release];
-	[show release];
-	[titleLabel release];
-	[numberLabel release];
-	[guestsLabel release];
-	[playButton release];
-	[segmentedControl release];
-	[noteView release];
-	[picView release];
-	[scrollView release];
-    [pageControl release];
-    [viewControllers release];
-	[movieURL release];
-	[moviePlayer release];
-    [super dealloc];
+	[self chooseCorrectPlayback];
 }
 
 @end

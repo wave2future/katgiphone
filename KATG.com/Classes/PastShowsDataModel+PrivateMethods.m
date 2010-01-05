@@ -18,17 +18,15 @@
 #import "Reachability.h"
 #import "GrabXMLFeed.h"
 
-#define FEEDADDRESS @"http://app.keithandthegirl.com/Api/Feed/Show-List-Everything-Compact/"
-
 @implementation PastShowsDataModel (PrivateMethods)
 
 #pragma mark -
 #pragma mark Setup
 #pragma mark -
-
 - (id)init 
 {
-    if (self = [super init]) {
+    if (self = [super init]) 
+	{
 		[[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(_reachabilityChanged:) 
 													 name:kReachabilityChangedNotification 
@@ -47,16 +45,31 @@
     }
     return self;
 }
-
+- (void)_attemptRelease 
+{
+	[super release];
+}
+- (void)dealloc 
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	if ([pollingThread isExecuting]) {
+		[self stopShowsThread];
+	}
+	delegate = nil;
+	[_dataPath release];
+	[_shows release];
+	[_showsProxy release];
+	[super dealloc];
+}
+#pragma mark -
 #pragma mark Reachability
-
+#pragma mark -
 - (void)_reachabilityChanged:(NSNotification* )note
 {
 	Reachability *curReach = [note object];
 	NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
 	[self _updateReachability:curReach];
 }
-
 - (void)_updateReachability:(Reachability*)curReach
 {
 	BOOL streamPref = [_userDefaults boolForKey:@"StreamPSOverCell"];
@@ -83,7 +96,6 @@
 		}
 	}
 }
-
 #pragma mark -
 #pragma mark Shows
 #pragma mark -
@@ -104,7 +116,6 @@
 	}
 	return [shws retain];
 }
-
 - (NSArray *)_getShowsFromDisk
 {
 	NSString *path = [_dataPath stringByAppendingPathComponent:@"shows.plist"];
@@ -116,7 +127,6 @@
 	}
 	return [shws retain];
 }
-
 - (NSDictionary *)_loadingDictionary 
 {
 	NSDictionary *show = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
@@ -133,7 +143,6 @@
 															  @"ID", nil]];
 	return show;
 }
-
 - (NSDictionary *)_noConnectionDictionary 
 {
 	NSDictionary *show = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
@@ -150,13 +159,12 @@
 															  @"ID", nil]];
 	return show;
 }
-
 - (void)_pollShowsFeed 
 {
 	pollingPool = [[NSAutoreleasePool alloc] init];
-	NSString *feedAddress = FEEDADDRESS;
+	NSString *feedAddress = kFeedAddress;
 	// Select the xPath to parse against
-	NSString *xPath = @"//S";
+	NSString *xPath = kXPath;
 	// Instantiate GrabXMLFeed
 	GrabXMLFeed *parser = 
 	[[GrabXMLFeed alloc] initWithFeed:feedAddress xPath:xPath];
@@ -167,15 +175,14 @@
 	// Start parser
 	[parser parse];
 }
-
 - (void)parsingDidCompleteSuccessfully:(GrabXMLFeed *)parser 
 {	
 	NSMutableArray *feedEntries = [[parser feedEntries] copy];
 	[self buildList:feedEntries];
 	[feedEntries release];
+	[parser release];
 	[self stopShowsThread];
 }
-
 - (void)buildList:(NSMutableArray *)feedEntries 
 {
 	if (_showsProxy.count != 0) {
@@ -213,37 +220,17 @@
 		[_showsProxy removeAllObjects];
 	}
 }
-
-- (void)writeShowsToFile {
+- (void)writeShowsToFile 
+{
 	NSString *path = [_dataPath stringByAppendingPathComponent:@"shows.plist"];
 	[_shows writeToFile:path atomically:YES];
 }
-
 - (void)stopShowsThread 
 {
-	[pollingPool release];
+	[pollingPool drain];
 	[pollingThread cancel];
 	[pollingThread release];
 	pollingThread = nil;
-}
-
-- (void)_attemptRelease 
-{
-	[self release];
-	self = nil;
-}
-
-- (void)dealloc 
-{
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	if ([pollingThread isExecuting]) {
-		[self stopShowsThread];
-	}
-	delegate = nil;
-	[_dataPath release];
-	[_shows release];
-	[_showsProxy release];
-	[super dealloc];
 }
 
 @end
