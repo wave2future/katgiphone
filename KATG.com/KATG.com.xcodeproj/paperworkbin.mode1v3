@@ -197,7 +197,48 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>8B8AC2AC10F44FCD00E51DFF</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>PastShowsDetailViewController.m</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>8B8AC2AD10F44FCD00E51DFF</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>PastShowsDetailViewController.m</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>8B8AC2AE10F44FCD00E51DFF</string>
+						<key>history</key>
+						<array>
+							<string>8B8AC2A610F44FB200E51DFF</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {1235, 737}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>0 0 1235 778 0 0 1280 1002 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -327,7 +368,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>TwitterDataModel.m</string>
+								<string>PastShowsDetailViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -335,11 +376,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>TwitterDataModel.m</string>
+										<string>PastShowsDetailViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>8B8AC2A510F44C8F00E51DFF</string>
+										<string>8B8AC2AB10F44FCD00E51DFF</string>
 										<key>history</key>
 										<array>
 											<string>8BB7F90010D5A13C00719438</string>
@@ -470,13 +511,13 @@
 											<string>8B8AC25E10F41DD300E51DFF</string>
 											<string>8B8AC26B10F42B8E00E51DFF</string>
 											<string>8B8AC27310F4374000E51DFF</string>
-											<string>8B8AC27B10F44B1400E51DFF</string>
 											<string>8B8AC27C10F44B1400E51DFF</string>
 											<string>8B8AC27D10F44B1400E51DFF</string>
 											<string>8B8AC27E10F44B1400E51DFF</string>
 											<string>8B8AC27F10F44B1400E51DFF</string>
 											<string>8B8AC28010F44B1400E51DFF</string>
-											<string>8B8AC28110F44B1400E51DFF</string>
+											<string>8B8AC2A910F44FCD00E51DFF</string>
+											<string>8B8AC2AA10F44FCD00E51DFF</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -680,8 +721,9 @@
 		<string>8B8ABAAC10F2905300E51DFF</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>8BB7F8F310D5A12900719438</string>
 		<string>/Users/paperworkbin/Dropbox/DEV/Active/Objective-C/katgiphone/KATG.com/KATG.com.xcodeproj</string>
+		<string>8BB7F8F310D5A12900719438</string>
+		<string>8B8AC2AC10F44FCD00E51DFF</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 55 1235 947 0 0 1280 1002 </string>
@@ -705,7 +747,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>PastShowPicsDataModel+PrivateMethods.m</string>
+								<string>PastShowsDetailViewController.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -776,7 +818,7 @@
 			<key>WindowToolGUID</key>
 			<string>8BB7F8F310D5A12900719438</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

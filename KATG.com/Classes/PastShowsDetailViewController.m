@@ -166,13 +166,13 @@
 {
 	if (![NSThread isMainThread]) 
 	{
-		NSString *URL = [sh objectForKey:@"FileUrl"];
+		NSString *URL = [show objectForKey:@"FileUrl"];
 		if (URL) movieURL = [[NSURL URLWithString:URL] retain];
 		if (!movieURL || [shouldStream intValue] < 2) 
 		{
 			[self hidePlayButton];
 		}
-		NSString *detail = [sh objectForKey:@"Detail"];
+		NSString *detail = [show objectForKey:@"Detail"];
 		if (detail) [self setNoteViewText:detail];
 	} 
 	else 
