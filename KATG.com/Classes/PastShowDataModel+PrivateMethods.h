@@ -27,6 +27,8 @@
 - (void)_pollShowFeed:(NSString *)ID;
 - (void)_buildShow:(NSMutableArray *)feedEntries;
 - (void)_writeShowToFile:(NSString *)ID;
+- (void)_reachabilityChanged:(NSNotification* )note;
+- (void)_updateReachability:(Reachability*)curReach;
 - (void)_attemptRelease;
 - (void)_stopPollingThread;
 

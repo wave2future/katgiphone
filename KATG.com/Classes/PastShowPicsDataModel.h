@@ -16,6 +16,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+#define kPicsPlist @"pics_%@.plist"
+
 @protocol PastShowPicsDataModelDelegate;
 
 @interface PastShowPicsDataModel : NSObject {
@@ -29,15 +31,21 @@
 	NSMutableArray		*_picsProxyImages;
 	NSUserDefaults      *_userDefaults;
 	
-	NSThread            *pollingThread;
-	NSAutoreleasePool   *pollingPool;
+	NSThread            *_pollingThread;
+	NSAutoreleasePool   *_pollingPool;
+	
+	NSThread            *_imageThread;
+	NSAutoreleasePool   *_imagePool;
+	
+	NSString            *_ID;
 }
 
 @property (nonatomic, assign) id<PastShowPicsDataModelDelegate> delegate;
 @property (nonatomic, assign) NSNumber *shouldStream;
 
-+ (PastShowPicsDataModel *)sharedPastShowPicsDataModel;
++ (id)model;
 - (NSArray *)pics:(NSString *)ID;
+- (void)cancel;
 
 @end
 

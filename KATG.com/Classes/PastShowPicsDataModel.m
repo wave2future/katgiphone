@@ -18,17 +18,23 @@
 
 #import "PastShowPicsDataModel.h"
 #import "PastShowPicsDataModel+PrivateMethods.h"
-#import "SynthesizeSingleton.h"
+#import "PastShowPicsDataModel+Thumbs.h"
 
 @implementation PastShowPicsDataModel
 @synthesize delegate;
 @synthesize shouldStream;
 
-SYNTHESIZE_SINGLETON_FOR_CLASS(PastShowPicsDataModel);
-
++ (id)model
+{
+	return [[self alloc] init];
+}
 - (NSArray *)pics:(NSString *)ID 
 {
 	return [self _getPics:ID];
+}
+- (void)cancel
+{
+	[self _cancel];
 }
 
 @end

@@ -16,6 +16,9 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+#define kFeedAddress @"http://www.keithandthegirl.com/feed/event/"
+#define kXPath @"//Event"
+
 #import "EventsDataModel+PrivateMethods.h"
 #import "Reachability.h"
 #import "GrabXMLFeed.h"
@@ -73,13 +76,13 @@
 - (NSArray *)_getEvents 
 {
 	NSString *path = [_dataPath stringByAppendingPathComponent:kEventsPlist];
-	NSArray *evnts = [NSArray arrayWithContentsOfFile:path];
+	NSArray *evnts = [[NSArray alloc] initWithContentsOfFile:path];
 	if (evnts == nil && [shouldStream intValue] != 0 && shouldStream != nil) {
 		evnts = [NSArray arrayWithObject:[self _loadingDictionary]];
 	} else if (evnts == nil && ([shouldStream intValue] == 0 || shouldStream == nil)) {
 		evnts = [NSArray arrayWithObject:[self _noConnectionDictionary]];
 	}
-	if (shouldStream != 0) {
+	if ([shouldStream intValue] != 0) {
 		[NSThread detachNewThreadSelector:@selector(_pollEventsFeed) 
 								 toTarget:self 
 							   withObject:nil];
@@ -89,7 +92,7 @@
 	} else {
 		_pollOnConnection = YES;
 	}
-	return [evnts retain];
+	return evnts;
 }
 - (NSArray *)_getEventsFromDisk 
 {

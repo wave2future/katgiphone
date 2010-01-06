@@ -16,6 +16,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+#define kShowPlist @"show_%@.plist"
+
 @protocol PastShowDataModelDelegate;
 
 @interface PastShowDataModel : NSObject {
@@ -27,8 +29,8 @@
 	NSDictionary        *_show;
 	NSUserDefaults      *_userDefaults;
 	
-	NSThread            *pollingThread;
-	NSAutoreleasePool   *pollingPool;
+	NSThread            *_pollingThread;
+	NSAutoreleasePool   *_pollingPool;
 }
 
 @property (nonatomic, assign)   id<PastShowDataModelDelegate> delegate;

@@ -42,7 +42,7 @@
 				}
 				
 				// Create a temporary MutableDictionary to store the items fields in, which will eventually end up in feedEntries
-				NSMutableDictionary *feedItem = [NSMutableDictionary dictionary];
+				NSMutableDictionary *feedItem = [[NSMutableDictionary alloc] init];
 				
 				// Create a counter variable as type "int"
 				int counter;
@@ -52,9 +52,7 @@
 					
 					NSString *strVal = [[resultElement childAtIndex:counter] stringValue];
 					
-					if (strVal == nil) {
-						strVal = @"NULL";
-					}
+					if (!strVal) strVal = @"NULL";
 					
 					// Add each field to the feedItem Dictionary with the node name as key and node value as the value
 					[feedItem setObject:strVal forKey:[[resultElement childAtIndex:counter] name]];
@@ -62,6 +60,7 @@
 				
 				// Add the feedItem to the global feedEntries Array so that the view can access it.
 				[feedEntries addObject:feedItem];
+				[feedItem release];
 				
 				if ([[self delegate] respondsToSelector:@selector(parsingDidCompleteForNode:parser:)]) {
 					[[self delegate] parsingDidCompleteForNode:feedItem parser:self];

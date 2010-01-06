@@ -10,7 +10,8 @@
 
 @implementation PastShowsDetailViewController (ScrollView)
 
-- (void)updateViewController:(ImagePageViewController *)controller page:(NSInteger)page
+- (void)updateViewController:(ImagePageViewController *)controller 
+						page:(NSInteger)page
 {
 	NSData *imageData = 
 	[[picDataArray objectAtIndex:page] objectForKey:@"Data"];
@@ -41,14 +42,17 @@
     if ((NSNull *)controller == [NSNull null]) {
         controller = [[ImagePageViewController alloc] init];
 		[controller loadView];
+		[controller.titleLabel setText:
+		 [[picDataArray objectAtIndex:page] objectForKey:@"Title"]];
 		NSData *imageData = 
 		[[picDataArray objectAtIndex:page] objectForKey:@"Data"];
 		UIImage *imageLo = [UIImage imageWithData:imageData];
 		[controller.imageView setImage:imageLo];
+		[controller.descriptionLabel setText:
+		 [[picDataArray objectAtIndex:page] objectForKey:@"Description"]];
 		[viewControllers replaceObjectAtIndex:page withObject:controller];
         [controller release];
     }
-	
     // add the controller's view to the scroll view
     if (nil == controller.view.superview) {
         CGRect frame = scrollView.frame;
@@ -95,7 +99,8 @@
     [self loadScrollViewWithPage:page + 1];
 	[self removeViewsAfterPage:page + 2];
 }
-// At the end of scroll animation, reset the boolean used when scrolls originate from the UIPageControl
+// At the end of scroll animation, reset the boolean used 
+// when scrolls originate from the UIPageControl
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView 
 {
     pageControlUsed = NO;

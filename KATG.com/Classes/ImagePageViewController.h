@@ -18,9 +18,13 @@
 
 @interface ImagePageViewController : UIViewController {
 	UIView *view;
+	UILabel     *titleLabel;
 	UIImageView *imageView;
+	UILabel     *descriptionLabel;
 }
 
+@property (nonatomic, retain) UILabel     *titleLabel;
 @property (nonatomic, retain) UIImageView *imageView;
+@property (nonatomic, retain) UILabel     *descriptionLabel;
 
 @end

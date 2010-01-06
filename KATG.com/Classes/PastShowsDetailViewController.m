@@ -2,7 +2,7 @@
 //  PastShowsDetailViewController.m
 //  KATG.com
 //
-//  Copyright 2008 Doug Russell
+//  Copyright 2009 Doug Russell
 //  
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -43,23 +43,31 @@
 }
 - (void)data
 {
+	NSString *ID = [show objectForKey:@"ID"];
 	model = [PastShowDataModel sharedPastShowDataModel];
 	[model setDelegate:self];
 	[model setShouldStream:shouldStream];
-	NSDictionary *sh = [model show:[show objectForKey:@"ID"]];
+	NSDictionary *sh = [model show:ID];
 	
-	picsModel = [PastShowPicsDataModel sharedPastShowPicsDataModel];
+	picsModel = [PastShowPicsDataModel model];
 	[picsModel setDelegate:self];
 	[picsModel setShouldStream:shouldStream];
-	picDataArray = [picsModel pics:[show objectForKey:@"ID"]];
+	picDataArray = [picsModel pics:ID];
 	
-	movieURL = [[NSURL URLWithString:[sh objectForKey:@"FileUrl"]] retain];
-	if (!movieURL) {
-		[playButton setEnabled:NO];
+	NSString *URL = [sh objectForKey:@"FileUrl"];
+	if (URL) movieURL = [[NSURL URLWithString:URL] retain];
+	if (!movieURL || [shouldStream intValue] < 2) 
+	{
+		[self hidePlayButton];
 	}
-	if ([shouldStream intValue] < 2) {
-		[playButton setHidden:YES];
-	}
+	NSString *detail = [sh objectForKey:@"Detail"];
+	if (detail) [self setNoteViewText:detail];
+	[sh release];
+}
+- (void)hidePlayButton
+{
+	[playButton setEnabled:NO];
+	[playButton setHidden:YES];
 }
 - (void)notifications 
 {
@@ -68,7 +76,6 @@
 	 selector:@selector(moviePreloadDidFinish:) 
 	 name:MPMoviePlayerContentPreloadDidFinishNotification 
 	 object:nil];
-	
 	[[NSNotificationCenter defaultCenter]
 	 addObserver:self 
 	 selector:@selector(moviePlayBackDidFinish:) 
@@ -77,26 +84,35 @@
 }
 - (void)labels 
 {
-	[noteView setText:[show objectForKey:@"Detail"]];
-	[titleLabel setText:[show objectForKey:@"Title"]];
-	[guestsLabel setText:[show objectForKey:@"Guests"]];
-	[numberLabel setText:[NSString stringWithFormat:@"Show %@", [show objectForKey:@"Number"]]];
+	NSString *title = [show objectForKey:@"Title"];
+	if (title) [titleLabel setText:title];
+	NSString *guests = [show objectForKey:@"Guests"];
+	if (guests) [guestsLabel setText:guests];
+	NSString *number = 
+	[NSString stringWithFormat:@"Show %@", [show objectForKey:@"Number"]];
+	if (number) [numberLabel setText:number];
 	CGSize size = 
-	[[show objectForKey:@"Guests"] sizeWithFont:
+	[guests sizeWithFont:
 	 [UIFont systemFontOfSize:[guestsLabel minimumFontSize]]];
-	if (size.width > guestsLabel.frame.size.width) {
+	if (size.width > guestsLabel.frame.size.width) 
+	{
 		[guestsLabel setFont:[UIFont systemFontOfSize:12]];
 		[guestsLabel setNumberOfLines:3];
 	}
 }
 - (void)pictures
 {
+	if (!picDataArray) return;
 	NSMutableArray *controllers = [[NSMutableArray alloc] init];
-	for (unsigned i = 0; i < picDataArray.count; i++) {
+	for (unsigned i = 0; i < picDataArray.count; i++) 
+	{
 		[controllers addObject:[NSNull null]];
 	}
-	self.viewControllers = controllers;
-	[controllers release];
+	if (controllers) 
+	{
+		[self setViewControllers:controllers];
+		[controllers release];
+	}
 	
 	scrollView.pagingEnabled = YES;
 	scrollView.contentSize = 
@@ -126,6 +142,8 @@
 }
 - (void)dealloc 
 {
+	[picsModel cancel];
+	[picsModel release];
 	[shouldStream release];
 	[show release];
 	[titleLabel release];
@@ -146,14 +164,19 @@
 #pragma mark -
 - (void)pastShowDataModelDidChange:(NSDictionary *)show 
 {
-	if (![NSThread isMainThread]) {
-		[self setNoteViewText:[show objectForKey:@"Detail"]];
-		[movieURL release];
-		movieURL = [[NSURL URLWithString:[show objectForKey:@"FileUrl"]] retain];
-		if (!movieURL) {
-			[playButton setEnabled:NO];
+	if (![NSThread isMainThread]) 
+	{
+		NSString *URL = [sh objectForKey:@"FileUrl"];
+		if (URL) movieURL = [[NSURL URLWithString:URL] retain];
+		if (!movieURL || [shouldStream intValue] < 2) 
+		{
+			[self hidePlayButton];
 		}
-	} else {
+		NSString *detail = [sh objectForKey:@"Detail"];
+		if (detail) [self setNoteViewText:detail];
+	} 
+	else 
+	{
 		[self performSelectorOnMainThread:@selector(pastShowDataModelDidChange:)
 							   withObject:[show copy] 
 							waitUntilDone:NO];
@@ -161,9 +184,12 @@
 }
 - (void)setNoteViewText:(NSString *)text 
 {
-	if ([NSThread isMainThread]) {
+	if ([NSThread isMainThread] && text) 
+	{
 		[noteView setText:text];
-	} else {
+	} 
+	else if (text) 
+	{
 		[self performSelectorOnMainThread:@selector(setNoteViewText:) withObject:text waitUntilDone:NO];
 	}
 }
@@ -171,15 +197,19 @@
 {
 	if ([NSThread isMainThread])
 	{
-		NSInteger *count = [picDataArray count];
+		if (!picDataArray) return;
+		NSInteger count = [picDataArray count];
 		picDataArray = [pics copy];
 		NSMutableArray *controllers = [[NSMutableArray alloc] initWithArray:viewControllers];
 		for (unsigned i = count; i < picDataArray.count; i++) 
 		{
 			[controllers addObject:[NSNull null]];
 		}
-		self.viewControllers = controllers;
-		[controllers release];
+		if (controllers)
+		{
+			self.viewControllers = controllers;
+			[controllers release];
+	}
 		scrollView.contentSize = 
 		CGSizeMake(scrollView.frame.size.width * picDataArray.count, 
 				   scrollView.frame.size.height);

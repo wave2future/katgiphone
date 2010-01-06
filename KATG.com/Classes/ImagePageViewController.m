@@ -20,7 +20,7 @@
 
 @implementation ImagePageViewController
 
-@synthesize imageView;
+@synthesize titleLabel, imageView, descriptionLabel;
 
 - (void)loadView 
 {
@@ -29,12 +29,24 @@
 	CGFloat y = 0;
 	CGFloat w = 250;
 	CGFloat h = 170;
-	// Create a UIView that will fit in the UIScrollView this will be added to and assign it to self.view
+	// Create a UIView that will fit in the UIScrollView 
+	// this will be added to and assign it to self.view
 	CGRect rect = CGRectMake(x, y, w, h);
 	view = [[UIView alloc] initWithFrame:rect];
 	[self setView:view];
 	[view release];
 	[view setBackgroundColor:[UIColor clearColor]];
+	
+	// Create centered label with 80% width of the view rectangle
+	rect = CGRectMake(trunc(0.1*w), 0, trunc(0.8*w), trunc(0.1*h));
+	titleLabel = [[UILabel alloc] initWithFrame:rect];
+	[titleLabel setFont:[UIFont systemFontOfSize:14]];
+	[titleLabel setMinimumFontSize:8];
+	[titleLabel setAdjustsFontSizeToFitWidth:YES];
+	[titleLabel setTextAlignment:UITextAlignmentCenter];
+	[titleLabel setBackgroundColor:[UIColor clearColor]];
+	[view addSubview:titleLabel];
+	[titleLabel release];
 	
 	// Create centered imageView with 80% of the view rectangle
 	rect = CGRectMake(trunc(0.1*w), trunc(0.1*h), trunc(0.8*w), trunc(0.8*h));
@@ -45,21 +57,36 @@
 	[imageView setBackgroundColor:[UIColor clearColor]];
 	[view addSubview:imageView];
 	[imageView release];
+	
+	// Create centered label with 80% width of the view rectangle
+	rect = CGRectMake(trunc(0.1*w), trunc(0.9*h), trunc(0.8*w), trunc(0.1*h));
+	descriptionLabel = [[UILabel alloc] initWithFrame:rect];
+	[descriptionLabel setAdjustsFontSizeToFitWidth:YES];
+	[descriptionLabel setTextAlignment:UITextAlignmentCenter];
+	[descriptionLabel setBackgroundColor:[UIColor clearColor]];
+	[descriptionLabel setTextColor:[UIColor grayColor]];
+	[view addSubview:descriptionLabel];
+	[descriptionLabel release];
 }
-
 - (void)didReceiveMemoryWarning 
 {
 	[super didReceiveMemoryWarning];
 }
-
 - (void)viewDidUnload
 {
-	[imageView removeFromSuperview]; imageView = nil;	
+	[titleLabel removeFromSuperview]; titleLabel = nil;
+	[imageView removeFromSuperview]; imageView = nil;
+	[descriptionLabel removeFromSuperview]; descriptionLabel = nil;
 }
-
 - (void)dealloc 
 {
     [super dealloc];
+}
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	UITouch *touch = [[event allTouches] anyObject];
+	if (touch.tapCount == 2) {
+		
+	}
 }
 
 

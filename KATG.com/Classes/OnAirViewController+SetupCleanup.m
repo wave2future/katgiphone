@@ -25,9 +25,9 @@
 		[callButton setHidden:YES];
 	}
 	// Check live feed status
-	[self pollStatusFeed];
+	//[self pollStatusFeed];
 	// Setup events data model
-	[self getEventsData];
+	//[self getEventsData];
 	// Check user defaults for resume values 
 	// (playback and comment/name/location text)
 	[self loadDefaults];

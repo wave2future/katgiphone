@@ -26,8 +26,7 @@
 @implementation PastShowsTableViewController
 
 @synthesize delegate;
-@synthesize list;
-@synthesize filteredList;
+@synthesize list, filteredList;
 
 #pragma mark -
 #pragma mark Setup
@@ -48,14 +47,6 @@
 	[model setShouldStream:shouldStream];
 	list = [model shows];
 	filteredList = [[NSMutableArray alloc] initWithCapacity:1000];
-}
-- (void)viewDidAppear:(BOOL)animated 
-{
-	
-}
-- (void)viewDidDisappear:(BOOL)animated 
-{
-	
 }
 #pragma mark -
 #pragma mark Cleanup

@@ -20,7 +20,8 @@
 #import "Reachability.h"
 #import "GrabXMLFeed.h"
 
-#define FEEDADDRESS @"http://app.keithandthegirl.com/Api/Feed/Show/?ShowId=%@"
+#define kFeedAddress @"http://app.keithandthegirl.com/Api/Feed/Show/?ShowId=%@"
+#define kXPath @"//root"
 
 @implementation PastShowDataModel (PrivateMethods)
 
@@ -43,24 +44,41 @@
     }
     return self;
 }
-
+- (void)_attemptRelease 
+{
+	[super release];
+}
+- (void)dealloc 
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	if ([_pollingThread isExecuting])
+	{
+		[self _stopPollingThread];
+	}
+	delegate = nil;
+	[_dataPath release];
+	[_show release];
+	[super dealloc];
+}
 - (NSDictionary *)_getShow:(NSString *)ID 
 {
-	NSString *path = 
-	[_dataPath stringByAppendingPathComponent:[NSString stringWithFormat:@"show_%@.plist", ID]];
+	NSString *fileName = [NSString stringWithFormat:kShowPlist, ID];
+	NSString *path = [_dataPath stringByAppendingPathComponent:fileName];
 	NSDictionary *shw = [NSDictionary dictionaryWithContentsOfFile:path];
 	if (shw == nil && [shouldStream intValue] != 0) {
 		shw = [self _loadingDictionary];
 	} else if (shw == nil && [shouldStream intValue] == 0) {
 		shw = [self _noConnectionDictionary];
 	}
-	if (shouldStream != 0) {
-		pollingThread = [[NSThread alloc] initWithTarget:self selector:@selector(_pollShowFeed:) object:ID];
-		[pollingThread start];
+	if ([shouldStream intValue] != 0) {
+		_pollingThread = 
+		[[NSThread alloc] initWithTarget:self 
+								selector:@selector(_pollShowFeed:) 
+								  object:ID];
+		[_pollingThread start];
 	}
 	return [shw retain];
 }
-
 - (NSDictionary *)_loadingDictionary 
 {
 	NSDictionary *show = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
@@ -71,7 +89,6 @@
 															  @"Detail", nil]];
 	return show;
 }
-
 - (NSDictionary *)_noConnectionDictionary 
 {
 	NSDictionary *show = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
@@ -82,13 +99,12 @@
 															  @"Detail", nil]];
 	return show;
 }
-
 - (void)_pollShowFeed:(NSString *)ID 
 {
-	pollingPool = [[NSAutoreleasePool alloc] init];
-	NSString *feedAddress = [NSString stringWithFormat:FEEDADDRESS, ID];;
+	_pollingPool = [[NSAutoreleasePool alloc] init];
+	NSString *feedAddress = [NSString stringWithFormat:kFeedAddress, ID];;
 	// Select the xPath to parse against
-	NSString *xPath = @"//root";
+	NSString *xPath = kXPath;
 	// Instantiate GrabXMLFeed
 	GrabXMLFeed *parser = 
 	[[GrabXMLFeed alloc] initWithFeed:feedAddress xPath:xPath];
@@ -99,7 +115,6 @@
 	// Start parser
 	[parser parse];
 }
-
 - (void)parsingDidCompleteSuccessfully:(GrabXMLFeed *)parser 
 {	
 	NSMutableArray *feedEntries = [[parser feedEntries] copy];
@@ -108,58 +123,62 @@
 	[parser autorelease];
 	[self _stopPollingThread];
 }
-
 - (void)_stopPollingThread 
 {
-	[pollingPool release];
-	[pollingThread cancel];
-	pollingThread = nil;
+	[_pollingPool drain];
+	[_pollingThread cancel];
+	[_pollingThread release]; _pollingThread = nil;
 }
-
 - (void)_buildShow:(NSMutableArray *)feedEntries 
 {
 	if ([feedEntries count] > 0) {
 		NSDictionary *entry = [feedEntries objectAtIndex:0];
 		
 		NSString *detail;
-		if ([[entry objectForKey:@"Detail"] isEqualToString:@"NULL"]) {
+		if ([[entry objectForKey:@"Detail"] isEqualToString:@"NULL"]) 
+		{
 			detail = @" • No Show Notes";
-		} else {
+		} 
+		else 
+		{
 			detail = @" • ";
-			detail = [detail stringByAppendingString:[[entry objectForKey:@"Detail"] stringByReplacingOccurrencesOfString:@"\n" withString:@"\n • "]];
+			detail = 
+			[detail stringByAppendingString:
+			 [[entry objectForKey:@"Detail"] stringByReplacingOccurrencesOfString:@"\n" 
+																	   withString:@"\n • "]];
 		}
-		
-
-		_show = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
-																  [entry objectForKey:@"FileUrl"],
-																  detail, nil]
-														 forKeys:[NSArray arrayWithObjects:
-																  @"FileUrl",
-																  @"Detail", nil]];
+		_show = 
+		[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
+											 [entry objectForKey:@"FileUrl"],
+											 detail, nil]
+									forKeys:[NSArray arrayWithObjects:
+											 @"FileUrl",
+											 @"Detail", nil]];
 		[[self delegate] pastShowDataModelDidChange:_show];
 		if (![detail isEqualToString:@" • No Show Notes"]) {
 			[self _writeShowToFile:[entry objectForKey:@"ShowId"]];
 		}
 	}
 }
-
 - (void)_writeShowToFile:(NSString *)ID 
 {
 	if (![NSThread isMainThread]) {
-		NSString *path = [_dataPath stringByAppendingPathComponent:[NSString stringWithFormat:@"show_%@.plist", ID]];
+		NSString *path = 
+		[_dataPath stringByAppendingPathComponent:
+		 [NSString stringWithFormat:kShowPlist, ID]];
 		[_show writeToFile:path atomically:YES];
 	} else {
-		[self performSelectorOnMainThread:@selector(_writeShowToFile:) withObject:ID waitUntilDone:NO];
+		[self performSelectorOnMainThread:@selector(_writeShowToFile:)
+							   withObject:ID 
+							waitUntilDone:NO];
 	}
 }
-
 - (void)_reachabilityChanged:(NSNotification* )note
 {
 	Reachability *curReach = [note object];
 	NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
 	[self _updateReachability:curReach];
 }
-
 - (void)_updateReachability:(Reachability*)curReach
 {
 	BOOL streamPref = [_userDefaults boolForKey:@"StreamPSOverCell"];
@@ -185,23 +204,6 @@
 			break;
 		}
 	}
-}
-
-- (void)_attemptRelease 
-{
-	[super release];
-}
-
-- (void)dealloc 
-{
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	[pollingPool release];
-	[pollingThread cancel];
-	pollingThread = nil;
-	delegate = nil;
-	[_dataPath release];
-	[_show release];
-	[super dealloc];
 }
 
 @end

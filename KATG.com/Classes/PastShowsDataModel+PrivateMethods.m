@@ -101,14 +101,14 @@
 #pragma mark -
 - (NSArray *)_getShows 
 {
-	NSString *path = [_dataPath stringByAppendingPathComponent:@"shows.plist"];
+	NSString *path = [_dataPath stringByAppendingPathComponent:kShowsPlist];
 	NSArray *shws = [NSArray arrayWithContentsOfFile:path];
 	if (shws == nil && [shouldStream intValue] != 0) {
 		shws = [NSArray arrayWithObject:[self _loadingDictionary]];
 	} else if (shws == nil && [shouldStream intValue] == 0) {
 		shws = [NSArray arrayWithObject:[self _noConnectionDictionary]];
 	}
-	if (shouldStream != 0) {
+	if ([shouldStream intValue] != 0) {
 		pollingThread = [[NSThread alloc] initWithTarget:self 
 												selector:@selector(_pollShowsFeed) 
 												  object:nil];

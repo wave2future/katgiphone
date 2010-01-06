@@ -1,5 +1,5 @@
 //
-//  PastShowPicsDataModel+PrivateMethods.h
+//  PastShowPicsDataModel+Thumbs.h
 //  KATG.com
 //
 //  Copyright 2009 Doug Russell
@@ -18,17 +18,10 @@
 
 #import "PastShowPicsDataModel.h"
 
-@class Reachability;
-@interface PastShowPicsDataModel (PrivateMethods)
+@interface PastShowPicsDataModel (Thumbs)
 
-- (void)_reachabilityChanged:(NSNotification* )note;
-- (void)_updateReachability:(Reachability*)curReach;
-- (NSArray *)_getPics:(NSString *)ID;
-- (NSArray *)_loadingArray;
-- (NSArray *)_noConnectionArray;
-- (void)_pollShowFeed:(NSString *)ID;
-- (void)_buildList:(NSMutableArray *)feedEntries;
-- (void)_writePicsToFile:(NSString *)ID;
-- (void)_stopShowThread;
+- (void)_downloadThumbs;
+- (void)_downloadThumbsThread;
+- (void)_stopImageThread;
 
 @end

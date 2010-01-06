@@ -80,6 +80,7 @@ UIScrollViewDelegate>
 - (void)data;
 - (void)notifications;
 - (void)labels;
+- (void)pictures;
 - (void)setNoteViewText:(NSString *)text;
 - (IBAction)segmentedControlChangedState:(id)sender;
 - (IBAction)playButtonPressed:(id)sender;

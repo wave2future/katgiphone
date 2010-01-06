@@ -16,13 +16,9 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import "EventOperation.h"
-
 #define kEventsPlist @"events.plist"
-#define kFeedAddress @"http://www.keithandthegirl.com/feed/event/"
-#define kXPath @"//Event"
-#define EventsModelWillChange @"EventsModelWillChange"
-#define EventsModelDidChange @"EventsModelDidChange"
+
+#import "EventOperation.h"
 
 @protocol EventsDataModelDelegate;
 

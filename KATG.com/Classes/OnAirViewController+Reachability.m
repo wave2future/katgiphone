@@ -64,7 +64,7 @@
 			break;
 		}
 	}
-	if (shouldStream > 0) 
+	if ([shouldStream intValue] > 0) 
 	{
 		if (playOnConnection) 
 		{

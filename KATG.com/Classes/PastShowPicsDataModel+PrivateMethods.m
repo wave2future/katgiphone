@@ -27,7 +27,7 @@
 #pragma mark -
 #pragma mark Setup/Cleanup
 #pragma mark -
-- (id)init 
+- (id)init
 {
     if (self = [super init]) {
 		[[NSNotificationCenter defaultCenter] addObserver:self 
@@ -48,15 +48,27 @@
     }
     return self;
 }
-- (void)_attemptRelease 
+- (void)_cancel
 {
-	[super release];
+	if ([_pollingThread isExecuting]) 
+	{
+		[_pollingThread cancel];
+	}
+	if ([_imageThread isExecuting]) 
+	{
+		[_imageThread cancel];
+	}
 }
 - (void)dealloc 
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	if ([pollingThread isExecuting]) {
-		[self stopShowsThread];
+	if ([_pollingThread isExecuting]) 
+	{
+		[self _stopShowThread];
+	}
+	if ([_imageThread isExecuting]) 
+	{
+		[self _stopImageThread];
 	}
 	delegate = nil;
 	[_dataPath release];
@@ -105,17 +117,22 @@
 #pragma mark -
 - (NSArray *)_getPics:(NSString *)ID
 {
+	_ID = [ID retain];
 	NSString *path = 
-	[_dataPath stringByAppendingPathComponent:[NSString stringWithFormat:@"pics_%@.plist", ID]];
+	[_dataPath stringByAppendingPathComponent:
+	 [NSString stringWithFormat:kPicsPlist, ID]];
 	NSArray *pics = [NSArray arrayWithContentsOfFile:path];
 	if (pics == nil && [shouldStream intValue] != 0) {
 		pics = [self _loadingArray];
 	} else if (pics == nil && [shouldStream intValue] == 0) {
 		pics = [self _noConnectionArray];
 	}
-	if (shouldStream != 0) {
-		pollingThread = [[NSThread alloc] initWithTarget:self selector:@selector(_pollShowFeed:) object:ID];
-		[pollingThread start];
+	if ([shouldStream intValue] != 0) {
+		_pollingThread = 
+		[[NSThread alloc] initWithTarget:self 
+								selector:@selector(_pollShowFeed:) 
+								  object:ID];
+		[_pollingThread start];
 	}
 	return [pics retain];
 }
@@ -144,7 +161,7 @@
 }
 - (void)_pollShowFeed:(NSString *)ID 
 {
-	pollingPool = [[NSAutoreleasePool alloc] init];
+	_pollingPool = [[NSAutoreleasePool alloc] init];
 	NSString *feedAddress = [NSString stringWithFormat:kFeedAddress, ID];
 	// Select the xPath to parse against
 	NSString *xPath = kXPath;
@@ -156,34 +173,47 @@
 	// Set instance number
 	[parser setInstanceNumber:1];
 	// Start parser
-	[parser parse];
+	if (![_pollingThread isCancelled]) [parser parse];
+}
+- (void)parsingDidCompleteForNode:(NSDictionary *)node parser:(GrabXMLFeed *)parser
+{
+	if ([_pollingThread isCancelled]) [parser cancel];
 }
 - (void)parsingDidCompleteSuccessfully:(GrabXMLFeed *)parser 
-{	
-	NSMutableArray *feedEntries = [[parser feedEntries] copy];
-	[self buildList:feedEntries];
-	[feedEntries release];
-	[self performSelectorOnMainThread:@selector(downloadThumbs) 
-						   withObject:nil 
-						waitUntilDone:NO];
-	[self stopShowsThread];
-}
-- (void)buildList:(NSMutableArray *)feedEntries 
 {
-	if (_picsProxyParser.count != 0) {
+	if (![_pollingThread isCancelled])
+	{
+		NSMutableArray *feedEntries = [[parser feedEntries] copy];
+		[parser release];
+		[self _buildList:feedEntries];
+		[feedEntries release];
+		if (![_pollingThread isCancelled])
+		{
+			[self performSelectorOnMainThread:@selector(_downloadThumbs) 
+								   withObject:nil 
+								waitUntilDone:NO];
+			[self _stopShowThread];
+		}
+	}
+}
+- (void)_buildList:(NSMutableArray *)feedEntries 
+{
+	if (_picsProxyParser.count != 0) 
+	{
 		[_picsProxyParser removeAllObjects];
 	}
-	for (NSDictionary *feedEntry in feedEntries) {
+	NSString *path = [[NSBundle mainBundle] pathForResource:@"Loading" 
+													 ofType:@"png"];
+	NSData *imageData = [[NSData alloc] initWithContentsOfFile:path]; 
+	NSDictionary *pic;
+	for (NSDictionary *feedEntry in feedEntries) 
+	{
 		NSString *picURL = [feedEntry objectForKey: @"url"];
 		NSString *picTitle  = [feedEntry objectForKey: @"title"];
 		NSString *picDescription = [feedEntry objectForKey: @"description"];
-		if ([picTitle isEqualToString:@"NULL"]) { picTitle = @""; }
-		if ([picDescription isEqualToString:@"NULL"]) { picDescription = @""; }
-		NSString *path = [[NSBundle mainBundle] pathForResource:@"Loading" 
-														 ofType:@"png"];
-		NSData *imageData = [NSData dataWithContentsOfFile:path];
-		
-		NSDictionary *pic = 
+		if ([picTitle isEqualToString:@"NULL"]) picTitle = @"";
+		if ([picDescription isEqualToString:@"NULL"]) picDescription = @"";
+		pic = 
 		[[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:
 											   picURL,
 											   picTitle,
@@ -195,73 +225,41 @@
 											   @"Description", 
 											   @"Data", nil]];
 		[_picsProxyParser addObject:pic];
-		[pic release];
+		[pic release]; pic = nil;
 	}
-	if ([_picsProxyParser count] > [_pics count]) {
+	[imageData release]; imageData = nil;
+	if ([_picsProxyParser count] > [_pics count]) 
+	{
 		[_pics release];
 		_pics = (NSArray *)[_picsProxyParser copy];
 		[[self delegate] pastShowPicsDataModelDidChange:_pics];	
-		//[self performSelectorOnMainThread:@selector(writeShowsToFile) withObject:nil waitUntilDone:NO];
+		[self performSelectorOnMainThread:@selector(_writePicsToFile:) 
+							   withObject:_ID
+							waitUntilDone:NO];
 		[_picsProxyParser removeAllObjects];
 	}
 }
-- (void)writeShowsToFile 
+- (void)_writePicsToFile:(NSString *)ID 
 {
-	//NSString *path = [_dataPath stringByAppendingPathComponent:@"shows.plist"];
-	//[_pics writeToFile:path atomically:YES];
-}
-- (void)downloadThumbs
-{
-	if (_picsProxyImages.count != 0) 
+	if ([NSThread isMainThread]) 
 	{
-		[_picsProxyImages removeAllObjects];
-	}
-	[_picsProxyImages addObjectsFromArray:_pics];
-	
-	for (int n = 0; n < [_picsProxyImages count]; n++)
+		NSString *path = 
+		[_dataPath stringByAppendingPathComponent:
+		 [NSString stringWithFormat:kPicsPlist, ID]];
+		[_pics writeToFile:path atomically:YES];
+	} 
+	else 
 	{
-		NSDictionary *pic = 
-		[_picsProxyImages objectAtIndex:n];
-		NSError *error;
-		NSData *data = 
-		[NSData dataWithContentsOfURL:
-		 [NSURL URLWithString:[pic objectForKey:@"URL"]] 
-							  options:NSUncachedRead 
-								error:&error];
-		if (data)
-		{
-			NSDictionary *dictionary = 
-			[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
-												 [pic objectForKey:@"URL"],
-												 [pic objectForKey:@"Title"],
-												 [pic objectForKey:@"Description"], 
-												 data, nil]
-										forKeys:[NSArray arrayWithObjects:
-												 @"URL",
-												 @"Title",
-												 @"Description", 
-												 @"Data", nil]];
-			[_picsProxyImages replaceObjectAtIndex:n withObject:dictionary];
-			[_pics release];
-			_pics = (NSArray *)[_picsProxyImages copy];
-			[[self delegate] pastShowPicsDataModelDidChange:_pics];	
-			
-		} 
-		else 
-		{
-			// Handle error;
-			NSLog([error description]);
-		}
-	}
-	
-	NSLog(@"");
+		[self performSelectorOnMainThread:@selector(_writePicsToFile:)
+							   withObject:ID 
+							waitUntilDone:NO];
+	}	
 }
-- (void)stopShowsThread 
+- (void)_stopShowThread 
 {
-	[pollingPool release];
-	pollingPool = nil;
-	[pollingThread cancel];
-	[pollingThread release];
-	pollingThread = nil;
+	[_pollingPool drain]; _pollingPool = nil;
+	[_pollingThread cancel];
+	[_pollingThread release]; _pollingThread = nil;
 }
+
 @end

@@ -16,6 +16,9 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+#define EventsModelWillChange @"EventsModelWillChange"
+#define EventsModelDidChange @"EventsModelDidChange"
+
 #import "EventsDataModel+Operations.h"
 #import "GrabXMLFeed.h"
 #import "NSDictionary+EventSorting.h"
@@ -53,26 +56,23 @@
 		NSString *path = [_dataPath stringByAppendingPathComponent:kEventsPlist];
 		[_eventsProxy sortUsingSelector:@selector(compareByDateAscending:)];
 		[_eventsProxy writeToFile:path atomically:YES];
-		
-		if ([[self delegate] respondsToSelector:@selector(eventsDataModelWillChange:)]) 
+		if ([(NSObject *)[self delegate] respondsToSelector:@selector(eventsDataModelWillChange:)]) 
 		{
 			[[self delegate] eventsDataModelWillChange:_events];
 		}
-		
 		if (notify) 
 		{
 			[[NSNotificationCenter defaultCenter] 
 			 postNotificationName:EventsModelWillChange 
 			 object:_events];
 		}
+		[_events release];
+		_events = (NSArray *)[_eventsProxy copy]; //release events first
 		
-		_events = (NSArray *)[_eventsProxy copy];
-		
-		if ([[self delegate] respondsToSelector:@selector(eventsDataModelDidChange:)]) 
+		if ([(NSObject *)[self delegate] respondsToSelector:@selector(eventsDataModelDidChange:)]) 
 		{
 			[[self delegate] eventsDataModelDidChange:_events];
 		}
-		
 		if (notify) 
 		{
 			[[NSNotificationCenter defaultCenter] 

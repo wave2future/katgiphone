@@ -45,11 +45,11 @@
 	{
 		[commentTextView setText:comment];
 	}
-	if ([userDefaults boolForKey:@"playing"] && shouldStream > 0) 
+	if ([userDefaults boolForKey:@"playing"] && [shouldStream intValue] > 0) 
 	{
 		[self audioButtonPressed:nil];
 	} 
-	else if ([userDefaults boolForKey:@"playing"] && shouldStream == 0) 
+	else if ([userDefaults boolForKey:@"playing"] && [shouldStream intValue] == 0) 
 	{
 		playOnConnection = YES;
 	}

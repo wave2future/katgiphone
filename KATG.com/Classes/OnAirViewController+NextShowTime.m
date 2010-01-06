@@ -36,7 +36,7 @@
 	EventsDataModel *model = [EventsDataModel sharedEventsDataModel];
 	[model setShouldStream:shouldStream];
 	[model startNotifier];
-	[model events];
+	[[model events] autorelease];
 }
 
 - (void)eventsDataModelDidChangeNotification:(NSNotification *)notification 
@@ -47,7 +47,7 @@
 		{
 			NSDate *time = [event objectForKey:@"DateTime"];
 			NSInteger since = [time timeIntervalSinceNow];
-			if (since < timeSince)
+			if (since < timeSince && since > 0)
 			{
 				timeSince = [time timeIntervalSinceNow];
 				NSInteger d = timeSince / 86400;

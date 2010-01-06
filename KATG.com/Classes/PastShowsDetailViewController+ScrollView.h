@@ -10,6 +10,7 @@
 
 @interface PastShowsDetailViewController (ScrollView)
 
+- (void)updateViewController:(ImagePageViewController *)controller page:(NSInteger)page;
 - (void)changePage:(NSInteger)page;
 - (void)loadScrollViewWithPage:(int)page;
 - (void)removeViewsBeforePage:(int)page;
