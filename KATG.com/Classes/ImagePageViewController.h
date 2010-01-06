@@ -16,19 +16,28 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+@protocol ImagePageDelegate;
+
 @interface ImagePageViewController : UIViewController {
-	id          delegate;
+	id<ImagePageDelegate> delegate;
 	UIView      *view;
 	UILabel     *titleLabel;
 	UIImageView *imageView;
 	UILabel     *descriptionLabel;
 	NSString    *URL;
+	BOOL        tapped;
 }
 
-@property (nonatomic, assign) id          delegate;
+@property (nonatomic, assign) id<ImagePageDelegate> delegate;
 @property (nonatomic, retain) UILabel     *titleLabel;
 @property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, retain) UILabel     *descriptionLabel;
 @property (nonatomic, retain) NSString    *URL;
+
+@end
+
+@protocol ImagePageDelegate
+
+- (void)presentHiResImageView:(NSString *)URL;
 
 @end

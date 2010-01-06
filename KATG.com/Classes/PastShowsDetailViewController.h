@@ -24,7 +24,7 @@
 
 @interface PastShowsDetailViewController : UIViewController 
 <PastShowDataModelDelegate, PastShowPicsDataModelDelegate,
-UIScrollViewDelegate> 
+UIScrollViewDelegate, ImagePageDelegate> 
 {
 	PastShowDataModel *model;
 	PastShowPicsDataModel *picsModel;

@@ -64,6 +64,7 @@
 		8B8AC2EC10F4588400E51DFF /* HiResImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8AC2E910F4588400E51DFF /* HiResImageView.xib */; };
 		8B8AC2ED10F4588400E51DFF /* HiResImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AC2EB10F4588400E51DFF /* HiResImageViewController.m */; };
 		8B8AC2F010F458CB00E51DFF /* TapDetectingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AC2EF10F458CB00E51DFF /* TapDetectingImageView.m */; };
+		8B8AC36810F5263900E51DFF /* PastShowsDetailViewController+HiResImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8AC36710F5263900E51DFF /* PastShowsDetailViewController+HiResImageView.m */; };
 		8BB7F8C210D5996E00719438 /* OnAirViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BB7F8C010D5996E00719438 /* OnAirViewController.m */; };
 		8BB7F8C310D5996E00719438 /* OnAirView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BB7F8C110D5996E00719438 /* OnAirView.xib */; };
 		8BB7F8E110D59E1700719438 /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BB7F8E010D59E1700719438 /* BG.png */; };
@@ -214,6 +215,8 @@
 		8B8AC2EB10F4588400E51DFF /* HiResImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HiResImageViewController.m; sourceTree = "<group>"; };
 		8B8AC2EE10F458CB00E51DFF /* TapDetectingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapDetectingImageView.h; sourceTree = "<group>"; };
 		8B8AC2EF10F458CB00E51DFF /* TapDetectingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapDetectingImageView.m; sourceTree = "<group>"; };
+		8B8AC36610F5263900E51DFF /* PastShowsDetailViewController+HiResImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PastShowsDetailViewController+HiResImageView.h"; sourceTree = "<group>"; };
+		8B8AC36710F5263900E51DFF /* PastShowsDetailViewController+HiResImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PastShowsDetailViewController+HiResImageView.m"; sourceTree = "<group>"; };
 		8BB7F8BF10D5996E00719438 /* OnAirViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnAirViewController.h; sourceTree = "<group>"; };
 		8BB7F8C010D5996E00719438 /* OnAirViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnAirViewController.m; sourceTree = "<group>"; };
 		8BB7F8C110D5996E00719438 /* OnAirView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnAirView.xib; sourceTree = "<group>"; };
@@ -590,6 +593,8 @@
 				8B8ABB1E10F2A21600E51DFF /* PastShowsDetailViewController+Playback.m */,
 				8B8ABCE710F2C70400E51DFF /* PastShowsDetailViewController+ScrollView.h */,
 				8B8ABCE810F2C70400E51DFF /* PastShowsDetailViewController+ScrollView.m */,
+				8B8AC36610F5263900E51DFF /* PastShowsDetailViewController+HiResImageView.h */,
+				8B8AC36710F5263900E51DFF /* PastShowsDetailViewController+HiResImageView.m */,
 			);
 			name = DetailCategories;
 			sourceTree = "<group>";
@@ -986,6 +991,7 @@
 				8B8AC1BC10F411F800E51DFF /* PastShowPicsDataModel+Thumbs.m in Sources */,
 				8B8AC2ED10F4588400E51DFF /* HiResImageViewController.m in Sources */,
 				8B8AC2F010F458CB00E51DFF /* TapDetectingImageView.m in Sources */,
+				8B8AC36810F5263900E51DFF /* PastShowsDetailViewController+HiResImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,9 +2,19 @@
 //  PastShowsDetailViewController+ScrollView.m
 //  KATG.com
 //
-//  Created by Doug Russell on 1/4/10.
-//  Copyright 2010 Paper Software. All rights reserved.
-//
+//  Copyright 2009 Doug Russell
+//  
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//  
+//  http://www.apache.org/licenses/LICENSE-2.0
+//  
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 
 #import "PastShowsDetailViewController+ScrollView.h"
 
@@ -13,10 +23,16 @@
 - (void)updateViewController:(ImagePageViewController *)controller 
 						page:(NSInteger)page
 {
+	[controller.titleLabel setText:
+	 [[picDataArray objectAtIndex:page] objectForKey:@"Title"]];
 	NSData *imageData = 
 	[[picDataArray objectAtIndex:page] objectForKey:@"Data"];
 	UIImage *imageLo = [UIImage imageWithData:imageData];
 	[controller.imageView setImage:imageLo];
+	[controller.descriptionLabel setText:
+	 [[picDataArray objectAtIndex:page] objectForKey:@"Description"]];
+	[controller setURL:
+	 [[picDataArray objectAtIndex:page] objectForKey:@"URL"]];
 }
 - (void)changePage:(NSInteger)page
 {
