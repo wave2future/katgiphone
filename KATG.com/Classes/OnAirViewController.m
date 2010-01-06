@@ -38,7 +38,11 @@
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
-	[self setup];
+	[self setupOne];
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+	[self setupTwo];
 }
 - (void)didReceiveMemoryWarning 
 {

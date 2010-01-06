@@ -36,7 +36,8 @@
 	EventsDataModel *model = [EventsDataModel sharedEventsDataModel];
 	[model setShouldStream:shouldStream];
 	[model startNotifier];
-	[[model events] autorelease];
+	NSArray *events = [model events];
+	[events release];
 }
 
 - (void)eventsDataModelDidChangeNotification:(NSNotification *)notification 

@@ -41,6 +41,7 @@
 	ImagePageViewController *controller = [viewControllers objectAtIndex:page];
     if ((NSNull *)controller == [NSNull null]) {
         controller = [[ImagePageViewController alloc] init];
+		[controller setDelegate:self];
 		[controller loadView];
 		[controller.titleLabel setText:
 		 [[picDataArray objectAtIndex:page] objectForKey:@"Title"]];
@@ -50,6 +51,8 @@
 		[controller.imageView setImage:imageLo];
 		[controller.descriptionLabel setText:
 		 [[picDataArray objectAtIndex:page] objectForKey:@"Description"]];
+		[controller setURL:
+		 [[picDataArray objectAtIndex:page] objectForKey:@"URL"]];
 		[viewControllers replaceObjectAtIndex:page withObject:controller];
         [controller release];
     }

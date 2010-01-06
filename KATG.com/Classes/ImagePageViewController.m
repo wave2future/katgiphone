@@ -17,10 +17,12 @@
 //  limitations under the License.
 
 #import "ImagePageViewController.h"
+#import "HiResImageViewController.h"
 
 @implementation ImagePageViewController
 
-@synthesize titleLabel, imageView, descriptionLabel;
+@synthesize delegate;
+@synthesize titleLabel, imageView, descriptionLabel, URL;
 
 - (void)loadView 
 {
@@ -82,12 +84,23 @@
 {
     [super dealloc];
 }
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 
+{
 	UITouch *touch = [[event allTouches] anyObject];
 	if (touch.tapCount == 2) {
-		
+		URL = [URL stringByReplacingOccurrencesOfString:@"-Thumb" withString:@""];
+		NSURL *url = [NSURL URLWithString:URL];
+		NSData *imageData = 
+		[NSData dataWithContentsOfURL:url];
+		UIImage *image = [UIImage imageWithData:imageData];
+		HiResImageViewController *viewController = 
+		[[HiResImageViewController alloc] initWithNibName:@"HiResImageView" 
+												   bundle:nil 
+													image:image];
+		[delegate setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+		[delegate presentModalViewController:viewController animated:YES];
+		[viewController release];
 	}
 }
-
 
 @end

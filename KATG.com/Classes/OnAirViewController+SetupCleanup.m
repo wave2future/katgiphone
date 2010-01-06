@@ -10,7 +10,7 @@
 
 @implementation OnAirViewController (SetupCleanup)
 
-- (void)setup
+- (void)setupOne
 {
 	// Set should stream and register for changes in reachability
 	[self setupReachability];
@@ -24,8 +24,12 @@
 		[callButton setEnabled:NO];
 		[callButton setHidden:YES];
 	}
+	
+}
+- (void)setupTwo
+{
 	// Check live feed status
-	//[self pollStatusFeed];
+	[self pollStatusFeed];
 	// Setup events data model
 	//[self getEventsData];
 	// Check user defaults for resume values 

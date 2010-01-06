@@ -17,14 +17,18 @@
 //  limitations under the License.
 
 @interface ImagePageViewController : UIViewController {
-	UIView *view;
+	id          delegate;
+	UIView      *view;
 	UILabel     *titleLabel;
 	UIImageView *imageView;
 	UILabel     *descriptionLabel;
+	NSString    *URL;
 }
 
+@property (nonatomic, assign) id          delegate;
 @property (nonatomic, retain) UILabel     *titleLabel;
 @property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, retain) UILabel     *descriptionLabel;
+@property (nonatomic, retain) NSString    *URL;
 
 @end

@@ -10,7 +10,8 @@
 
 @interface OnAirViewController (SetupCleanup)
 
-- (void)setup;
+- (void)setupOne;
+- (void)setupTwo;
 - (void)cleanup;
 
 @end
