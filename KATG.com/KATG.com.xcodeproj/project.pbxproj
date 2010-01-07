@@ -13,6 +13,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
+		8B251B0510F56CED004253DE /* PastShowPicsDataModel+HiRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B251B0410F56CED004253DE /* PastShowPicsDataModel+HiRes.m */; };
 		8B45FEEC10E9F6CE00F2F3E7 /* LinksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B45FEEA10E9F6CE00F2F3E7 /* LinksViewController.m */; };
 		8B45FEED10E9F6CE00F2F3E7 /* LinksView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B45FEEB10E9F6CE00F2F3E7 /* LinksView.xib */; };
 		8B4E16A110DB08CC005D8BA9 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4E16A010DB08CC005D8BA9 /* Reachability.m */; };
@@ -134,6 +135,8 @@
 		28A0AB4B0D9B1048005BE974 /* KATG_com_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KATG_com_Prefix.pch; sourceTree = "<group>"; };
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = ../MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8B251B0310F56CED004253DE /* PastShowPicsDataModel+HiRes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PastShowPicsDataModel+HiRes.h"; sourceTree = "<group>"; };
+		8B251B0410F56CED004253DE /* PastShowPicsDataModel+HiRes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PastShowPicsDataModel+HiRes.m"; sourceTree = "<group>"; };
 		8B45FEE910E9F6CE00F2F3E7 /* LinksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinksViewController.h; sourceTree = "<group>"; };
 		8B45FEEA10E9F6CE00F2F3E7 /* LinksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinksViewController.m; sourceTree = "<group>"; };
 		8B45FEEB10E9F6CE00F2F3E7 /* LinksView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LinksView.xib; sourceTree = "<group>"; };
@@ -826,6 +829,8 @@
 				8BEF287E10EA0AE0000DF638 /* PastShowPicsDataModel+PrivateMethods.m */,
 				8B8AC1BA10F411F800E51DFF /* PastShowPicsDataModel+Thumbs.h */,
 				8B8AC1BB10F411F800E51DFF /* PastShowPicsDataModel+Thumbs.m */,
+				8B251B0310F56CED004253DE /* PastShowPicsDataModel+HiRes.h */,
+				8B251B0410F56CED004253DE /* PastShowPicsDataModel+HiRes.m */,
 			);
 			name = "Past Show Pics";
 			sourceTree = "<group>";
@@ -992,6 +997,7 @@
 				8B8AC2ED10F4588400E51DFF /* HiResImageViewController.m in Sources */,
 				8B8AC2F010F458CB00E51DFF /* TapDetectingImageView.m in Sources */,
 				8B8AC36810F5263900E51DFF /* PastShowsDetailViewController+HiResImageView.m in Sources */,
+				8B251B0510F56CED004253DE /* PastShowPicsDataModel+HiRes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

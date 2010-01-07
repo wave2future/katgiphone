@@ -16,11 +16,14 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+#define kPicsPlist @"pics_%@.plist"
+
 #import "PastShowPicsDataModel.h"
 
 @class Reachability;
 @interface PastShowPicsDataModel (PrivateMethods)
 
+- (void)_cancel;
 - (void)_reachabilityChanged:(NSNotification* )note;
 - (void)_updateReachability:(Reachability*)curReach;
 - (NSArray *)_getPics:(NSString *)ID;

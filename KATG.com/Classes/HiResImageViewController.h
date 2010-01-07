@@ -30,6 +30,7 @@
 @property(nonatomic, retain) UIImage *image;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil image:(UIImage *)anImage;
+- (void)updateImage:(UIImage *)img;
 - (IBAction)dismissModalViewController;
 - (IBAction)saveImage;
 - (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center;

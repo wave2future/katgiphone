@@ -26,7 +26,7 @@
 <PastShowDataModelDelegate, PastShowPicsDataModelDelegate,
 UIScrollViewDelegate, ImagePageDelegate> 
 {
-	PastShowDataModel *model;
+	PastShowDataModel     *model;
 	PastShowPicsDataModel *picsModel;
 	
 	NSNumber     *shouldStream;

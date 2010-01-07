@@ -32,10 +32,6 @@
 												 selector:@selector(_reachabilityChanged:) 
 													 name:kReachabilityChangedNotification 
 												   object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(_attemptRelease) 
-													 name:UIApplicationWillTerminateNotification 
-												   object:nil];
 		_dataPath =
 		[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 
 											  NSUserDomainMask, 
@@ -44,20 +40,19 @@
     }
     return self;
 }
-- (void)_attemptRelease 
+- (void)_cancel 
 {
-	[super release];
+	if([_pollingThread isExecuting])
+	{
+		[_pollingThread cancel];
+	}
 }
 - (void)dealloc 
 {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	if ([_pollingThread isExecuting])
-	{
-		[self _stopPollingThread];
-	}
 	delegate = nil;
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	[self _stopPollingThread];
 	[_dataPath release];
-	[_show release];
 	[super dealloc];
 }
 - (NSDictionary *)_getShow:(NSString *)ID 
@@ -65,12 +60,16 @@
 	NSString *fileName = [NSString stringWithFormat:kShowPlist, ID];
 	NSString *path = [_dataPath stringByAppendingPathComponent:fileName];
 	NSDictionary *shw = [NSDictionary dictionaryWithContentsOfFile:path];
-	if (shw == nil && [shouldStream intValue] != 0) {
+	if (!shw && [shouldStream intValue] != 0) 
+	{
 		shw = [self _loadingDictionary];
-	} else if (shw == nil && [shouldStream intValue] == 0) {
+	} 
+	else if (!shw && [shouldStream intValue] == 0) 
+	{
 		shw = [self _noConnectionDictionary];
 	}
-	if ([shouldStream intValue] != 0) {
+	if ([shouldStream intValue] != 0) 
+	{
 		_pollingThread = 
 		[[NSThread alloc] initWithTarget:self 
 								selector:@selector(_pollShowFeed:) 
@@ -116,16 +115,19 @@
 	[parser parse];
 }
 - (void)parsingDidCompleteSuccessfully:(GrabXMLFeed *)parser 
-{	
-	NSMutableArray *feedEntries = [[parser feedEntries] copy];
-	[self _buildShow:feedEntries];
-	[feedEntries release];
-	[parser autorelease];
+{
+	if (![_pollingThread isCancelled])
+	{
+		NSMutableArray *feedEntries = [[parser feedEntries] copy];
+		[self _buildShow:feedEntries];
+		[feedEntries release];
+		[parser release];
+	}
 	[self _stopPollingThread];
 }
 - (void)_stopPollingThread 
 {
-	[_pollingPool drain];
+	[_pollingPool drain]; _pollingPool = nil;
 	[_pollingThread cancel];
 	[_pollingThread release]; _pollingThread = nil;
 }
@@ -155,7 +157,8 @@
 											 @"FileUrl",
 											 @"Detail", nil]];
 		[[self delegate] pastShowDataModelDidChange:_show];
-		if (![detail isEqualToString:@" • No Show Notes"]) {
+		if (![detail isEqualToString:@" • No Show Notes"]) 
+		{
 			[self _writeShowToFile:[entry objectForKey:@"ShowId"]];
 		}
 	}

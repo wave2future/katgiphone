@@ -29,21 +29,22 @@
 #pragma mark -
 - (id)init
 {
-    if (self = [super init]) {
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(_reachabilityChanged:) 
-													 name:kReachabilityChangedNotification 
-												   object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(_attemptRelease) 
-													 name:UIApplicationWillTerminateNotification 
-												   object:nil];
+    if (self = [super init]) 
+	{
+		// Respond to changes in reachability
+		[[NSNotificationCenter defaultCenter]
+		 addObserver:self 
+		 selector:@selector(_reachabilityChanged:) 
+		 name:kReachabilityChangedNotification 
+		 object:nil];
+		// Defaults path for reading/writing data (documents directory)
 		_dataPath =
 		[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 
 											  NSUserDomainMask, 
 											  YES) lastObject] retain];
-		_userDefaults = [NSUserDefaults standardUserDefaults];
+		// 
 		_picsProxyParser = [[NSMutableArray alloc] init];
+		// 
 		_picsProxyImages = [[NSMutableArray alloc] init];
     }
     return self;
@@ -62,14 +63,8 @@
 - (void)dealloc 
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	if ([_pollingThread isExecuting]) 
-	{
-		[self _stopShowThread];
-	}
-	if ([_imageThread isExecuting]) 
-	{
-		[self _stopImageThread];
-	}
+	[self _stopShowThread];
+	[self _stopImageThread];
 	delegate = nil;
 	[_dataPath release];
 	[_pics release];
@@ -88,7 +83,6 @@
 }
 - (void)_updateReachability:(Reachability*)curReach
 {
-	BOOL streamPref = [_userDefaults boolForKey:@"StreamPSOverCell"];
 	NetworkStatus netStatus = [curReach currentReachabilityStatus];
 	switch (netStatus) {
 		case NotReachable:
@@ -98,11 +92,7 @@
 		}
 		case ReachableViaWWAN:
 		{
-			if (streamPref) {
-				shouldStream = [NSNumber numberWithInt:2];
-			} else {
-				shouldStream = [NSNumber numberWithInt:1];
-			}
+			shouldStream = [NSNumber numberWithInt:2];
 			break;
 		}
 		case ReachableViaWiFi:
@@ -117,34 +107,46 @@
 #pragma mark -
 - (NSArray *)_getPics:(NSString *)ID
 {
+	// Store ID for later use (this is a clumsy way to do this
 	_ID = [ID retain];
+	// Path to Pics Plist with image data, title, description and URL
 	NSString *path = 
 	[_dataPath stringByAppendingPathComponent:
 	 [NSString stringWithFormat:kPicsPlist, ID]];
+	// Attempt to retrieve pic plist from disk
 	NSArray *pics = [NSArray arrayWithContentsOfFile:path];
-	if (pics == nil && [shouldStream intValue] != 0) {
+	// if pics does not exist on disk:
+	if (!pics && [shouldStream intValue] != 0) 
+	{
+		// and user is connected
+		// returning array with loading dictionary
 		pics = [self _loadingArray];
-	} else if (pics == nil && [shouldStream intValue] == 0) {
-		pics = [self _noConnectionArray];
-	}
-	if ([shouldStream intValue] != 0) {
+		// then start thread to retrieve pics data
 		_pollingThread = 
 		[[NSThread alloc] initWithTarget:self 
 								selector:@selector(_pollShowFeed:) 
 								  object:ID];
 		[_pollingThread start];
+	} 
+	else if (!pics && [shouldStream intValue] == 0) 
+	{
+		// and user is not connected
+		// returning array with No Connection Dictionary
+		pics = [self _noConnectionArray];
 	}
 	return [pics retain];
 }
 - (NSArray *)_loadingArray 
 {
-	NSString *path = [[NSBundle mainBundle] pathForResource:@"Loading" 
-													 ofType:@"png"];
-	NSData *imageData = [NSData dataWithContentsOfFile:path];
+	NSURL *URL = 
+	[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Loading"
+														   ofType:@"png"]];
+	NSData *imageData = 
+	[NSData dataWithContentsOfURL:URL];
 	NSDictionary *pic = 
 	[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
-										 @"",
-										 @"",
+										 [URL description],
+										 @"Loading Images",
 										 @"", 
 										 imageData, nil]
 								forKeys:[NSArray arrayWithObjects:
@@ -156,8 +158,23 @@
 }
 - (NSArray *)_noConnectionArray 
 {
-	NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"NoConnection.png"];
-	return [NSArray arrayWithObject:[UIImage imageWithContentsOfFile:path]];
+	NSURL *URL = 
+	[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"NoConnection"
+														   ofType:@"png"]];
+	NSData *imageData = 
+	[NSData dataWithContentsOfURL:URL];
+	NSDictionary *pic = 
+	[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
+										 [URL description],
+										 @"No Connection",
+										 @"", 
+										 imageData, nil]
+								forKeys:[NSArray arrayWithObjects:
+										 @"URL",
+										 @"Title",
+										 @"Description", 
+										 @"Data", nil]];
+	return [NSArray arrayWithObject:pic];
 }
 - (void)_pollShowFeed:(NSString *)ID 
 {
@@ -232,10 +249,7 @@
 	{
 		[_pics release];
 		_pics = (NSArray *)[_picsProxyParser copy];
-		[[self delegate] pastShowPicsDataModelDidChange:_pics];	
-		[self performSelectorOnMainThread:@selector(_writePicsToFile:) 
-							   withObject:_ID
-							waitUntilDone:NO];
+		[[self delegate] pastShowPicsDataModelDidChange:_pics];
 		[_picsProxyParser removeAllObjects];
 	}
 }

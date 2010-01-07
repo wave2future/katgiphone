@@ -21,6 +21,7 @@
 @class Reachability;
 @interface PastShowDataModel (PrivateMethods)
 
+- (void)_cancel;
 - (NSDictionary *)_getShow:(NSString *)ID;
 - (NSDictionary *)_loadingDictionary;
 - (NSDictionary *)_noConnectionDictionary;

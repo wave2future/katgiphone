@@ -20,20 +20,6 @@
 
 @implementation PastShowsDetailViewController (ScrollView)
 
-- (void)updateViewController:(ImagePageViewController *)controller 
-						page:(NSInteger)page
-{
-	[controller.titleLabel setText:
-	 [[picDataArray objectAtIndex:page] objectForKey:@"Title"]];
-	NSData *imageData = 
-	[[picDataArray objectAtIndex:page] objectForKey:@"Data"];
-	UIImage *imageLo = [UIImage imageWithData:imageData];
-	[controller.imageView setImage:imageLo];
-	[controller.descriptionLabel setText:
-	 [[picDataArray objectAtIndex:page] objectForKey:@"Description"]];
-	[controller setURL:
-	 [[picDataArray objectAtIndex:page] objectForKey:@"URL"]];
-}
 - (void)changePage:(NSInteger)page
 {
 	pageControl.currentPage = page;
@@ -59,16 +45,7 @@
         controller = [[ImagePageViewController alloc] init];
 		[controller setDelegate:self];
 		[controller loadView];
-		[controller.titleLabel setText:
-		 [[picDataArray objectAtIndex:page] objectForKey:@"Title"]];
-		NSData *imageData = 
-		[[picDataArray objectAtIndex:page] objectForKey:@"Data"];
-		UIImage *imageLo = [UIImage imageWithData:imageData];
-		[controller.imageView setImage:imageLo];
-		[controller.descriptionLabel setText:
-		 [[picDataArray objectAtIndex:page] objectForKey:@"Description"]];
-		[controller setURL:
-		 [[picDataArray objectAtIndex:page] objectForKey:@"URL"]];
+		controller = [self updateViewController:controller page:page];
 		[viewControllers replaceObjectAtIndex:page withObject:controller];
         [controller release];
     }
@@ -80,6 +57,26 @@
         controller.view.frame = frame;
         [scrollView addSubview:controller.view];
     }
+}
+- (ImagePageViewController *)updateViewController:(ImagePageViewController *)controller 
+											 page:(NSInteger)page
+{
+	if (!picDataArray && [picDataArray count] > page) return nil;
+	
+	NSString *title = [[picDataArray objectAtIndex:page] objectForKey:@"Title"];
+	if (title) [controller.titleLabel setText:title];
+	
+	NSData *imageData = [[picDataArray objectAtIndex:page] objectForKey:@"Data"];
+	UIImage *imageLo = [UIImage imageWithData:imageData];
+	if (imageLo) [controller.imageView setImage:imageLo];
+	
+	NSString *description = [[picDataArray objectAtIndex:page] objectForKey:@"Description"];
+	if (description) [controller.descriptionLabel setText:description];
+	
+	NSURL *URL = [NSURL URLWithString:[[picDataArray objectAtIndex:page] objectForKey:@"URL"]];
+	if (URL) [controller setURL:URL];
+	
+	return controller;
 }
 - (void)removeViewsBeforePage:(int)page 
 {

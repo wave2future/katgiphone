@@ -19,18 +19,24 @@
 #import "PastShowPicsDataModel.h"
 #import "PastShowPicsDataModel+PrivateMethods.h"
 #import "PastShowPicsDataModel+Thumbs.h"
+#import "PastShowPicsDataModel+HiRes.h"
 
 @implementation PastShowPicsDataModel
+
 @synthesize delegate;
 @synthesize shouldStream;
 
-+ (id)model
++ (id)model // Returned instance has a retain count of 1
 {
 	return [[self alloc] init];
 }
-- (NSArray *)pics:(NSString *)ID 
+- (NSArray *)pics:(NSString *)ID // Returned array will have a retain count of 1
 {
 	return [self _getPics:ID];
+}
+- (UIImage *)pic:(NSURL *)URL // Returned image will have a retain count of 0
+{
+	return [self _getPic:URL];
 }
 - (void)cancel
 {

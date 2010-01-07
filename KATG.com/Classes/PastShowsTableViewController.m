@@ -64,7 +64,6 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[list release];
 	[filteredList release];
-	[shouldStream release];	
     [super dealloc];
 }
 #pragma mark Reachability

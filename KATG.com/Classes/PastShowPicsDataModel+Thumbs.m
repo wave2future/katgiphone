@@ -52,9 +52,12 @@
 								error:&error];
 		if (data && ![_imageThread isCancelled])
 		{
+			
+			
+			
 			NSDictionary *dictionary = 
 			[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
-												 [pic objectForKey:@"URL"],
+												 [[pic objectForKey:@"URL"] stringByReplacingOccurrencesOfString:@"-Thumb" withString:@""],
 												 [pic objectForKey:@"Title"],
 												 [pic objectForKey:@"Description"], 
 												 data, nil]

@@ -81,6 +81,7 @@
 }
 - (void)dealloc 
 {
+	[URL release];
     [super dealloc];
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 

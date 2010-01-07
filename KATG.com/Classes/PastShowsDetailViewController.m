@@ -19,6 +19,7 @@
 #import "PastShowsDetailViewController.h"
 #import "PastShowsDetailViewController+Playback.h"
 #import "PastShowsDetailViewController+ScrollView.h"
+#import "PastShowsDetailViewController+HiResImageView.h"
 
 @implementation PastShowsDetailViewController
 
@@ -44,7 +45,7 @@
 - (void)data
 {
 	NSString *ID = [show objectForKey:@"ID"];
-	model = [PastShowDataModel sharedPastShowDataModel];
+	model = [PastShowDataModel model];
 	[model setDelegate:self];
 	[model setShouldStream:shouldStream];
 	NSDictionary *sh = [model show:ID];
@@ -113,7 +114,6 @@
 		[self setViewControllers:controllers];
 		[controllers release];
 	}
-	
 	scrollView.pagingEnabled = YES;
 	scrollView.contentSize = 
 	CGSizeMake(scrollView.frame.size.width * picDataArray.count, 
@@ -122,10 +122,8 @@
 	scrollView.showsVerticalScrollIndicator = NO;
 	scrollView.scrollsToTop = NO;
 	scrollView.delegate = self;
-	
 	pageControl.numberOfPages = picDataArray.count;
 	pageControl.currentPage = 0;
-	
 	[self loadScrollViewWithPage:0];
 	[self loadScrollViewWithPage:1];
 }
@@ -137,27 +135,36 @@
 }
 - (void)viewDidUnload
 {
-	[scrollView removeFromSuperview];
-	[pageControl removeFromSuperview];
+	
 }
 - (void)dealloc 
 {
-	[picsModel cancel];
-	[picsModel release];
-	[shouldStream release];
-	[show release];
 	[titleLabel release];
 	[numberLabel release];
 	[guestsLabel release];
+	
 	[playButton release];
-	[segmentedControl release];
-	[noteView release];
-	[picView release];
-    [viewControllers release];
 	[moviePlayer release];
 	[movieURL release];
+	
+	[picsModel cancel];
+	[picsModel release];
+	[model cancel];
+	[model release];
+	
+	[segmentedControl release];
+	
+	[picView release];
+	[scrollView release];
+	[pageControl release];
+	[viewControllers release];
 	[picDataArray release];
-    [super dealloc];
+	
+	[noteView release];
+	
+	[show release];
+	
+	[super dealloc];
 }
 #pragma mark -
 #pragma mark Model Delegates
@@ -219,7 +226,7 @@
 			ImagePageViewController *controller = [viewControllers objectAtIndex:i];
 			if ((NSNull *)controller != [NSNull null]) 
 			{
-				[self updateViewController:controller page:i];
+				controller = [self updateViewController:controller page:i];
 			}
 		}
 	}

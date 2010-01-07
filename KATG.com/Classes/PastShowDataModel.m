@@ -18,18 +18,23 @@
 
 #import "PastShowDataModel.h"
 #import "PastShowDataModel+PrivateMethods.h"
-#import "SynthesizeSingleton.h"
 
 @implementation PastShowDataModel
 
 @synthesize delegate;
 @synthesize shouldStream;
 
-SYNTHESIZE_SINGLETON_FOR_CLASS(PastShowDataModel);
-
+// Returns retained model instance
++ (id)model
+{
+	return [[self alloc] init];
+}
 - (NSDictionary *)show:(NSString *)ID 
 {
 	return [self _getShow:ID];
 }
-
+- (void)cancel
+{
+	[self _cancel];
+}
 @end

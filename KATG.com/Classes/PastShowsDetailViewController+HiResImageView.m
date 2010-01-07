@@ -23,45 +23,22 @@
 
 @implementation PastShowsDetailViewController (HiResImageView)
 
-- (void)presentHiResImageView:(NSString *)URL
+- (void)presentHiResImageView:(NSURL *)URL
 {
-	NSURL *url = 
-	[NSURL URLWithString:[URL stringByReplacingOccurrencesOfString:@"-Thumb" 
-														withString:@""]];
-	[NSThread detachNewThreadSelector:@selector(lkjaslasffaosaijfasfsfa:) 
-							 toTarget:self 
-						   withObject:url];
-	
+	UIImage *image = [picsModel pic:URL];
+	HiResImageViewController *viewController = 
+	[[HiResImageViewController alloc] initWithNibName:@"HiResImageView" 
+											   bundle:nil 
+												image:image];
+	[self setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+	[self presentModalViewController:viewController animated:YES];
+	[viewController release];
 }
-- (void)lkjaslasffaosaijfasfsfa:(NSURL *)url
+- (void)pastShowPicDataModelDidChange:(UIImage *)pic
 {
-	NSAutoreleasePool *pool = 
-	[[NSAutoreleasePool alloc] init];
-	NSData *imageData = 
-	[NSData dataWithContentsOfURL:url];
-	[self performSelectorOnMainThread:@selector(asdfsdafdsdfasfadssdf:) 
-						   withObject:imageData 
-						waitUntilDone:NO];
-	[pool release];
-}
-- (void)asdfsdafdsdfasfadssdf:(NSData *)imageData
-{
-	if ([NSThread isMainThread])
+	if ([(HiResImageViewController *)[self modalViewController] respondsToSelector:@selector(updateImage:)])
 	{
-		UIImage *image = [UIImage imageWithData:imageData];
-		HiResImageViewController *viewController = 
-		[[HiResImageViewController alloc] initWithNibName:@"HiResImageView" 
-												   bundle:nil 
-													image:image];
-		[self setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-		[self presentModalViewController:viewController animated:YES];
-		[viewController release];
-	}
-	else 
-	{
-		[self performSelectorOnMainThread:@selector(asdfsdafdsdfasfadssdf:) 
-							   withObject:imageData 
-							waitUntilDone:NO];
+		[(HiResImageViewController *)[self modalViewController] updateImage:pic];
 	}
 }
 

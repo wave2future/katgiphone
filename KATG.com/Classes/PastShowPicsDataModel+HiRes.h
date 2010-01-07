@@ -1,5 +1,5 @@
 //
-//  PastShowsDetailViewController+ScrollView.h
+//  PastShowPicsDataModel+HiRes.h
 //  KATG.com
 //
 //  Copyright 2009 Doug Russell
@@ -16,15 +16,13 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import "PastShowsDetailViewController.h"
+#import "PastShowPicsDataModel.h"
 
-@interface PastShowsDetailViewController (ScrollView)
+@interface PastShowPicsDataModel (HiRes)
 
-- (ImagePageViewController *)updateViewController:(ImagePageViewController *)controller page:(NSInteger)page;
-- (void)changePage:(NSInteger)page;
-- (void)loadScrollViewWithPage:(int)page;
-- (void)removeViewsBeforePage:(int)page;
-- (void)removeViewsAfterPage:(int)page;
-- (void)scrollViewDidScroll:(UIScrollView *)sender;- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;
+- (UIImage *)_getPic:(NSURL *)URL;
+- (void)_pollingPictureThread:(NSURL *)url;
+- (void)_processImageData:(NSData *)imageData;
+- (void)_writePicToFile:(NSData *)imageData name:(NSString *)name;
 
 @end

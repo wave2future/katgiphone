@@ -41,9 +41,7 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
 	delegate = nil;
-	
-	[shouldStream release];
-	
+		
 	[nameTextField release];
 	[locationTextField release];
 	[commentTextView release];

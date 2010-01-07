@@ -24,7 +24,7 @@
 	UILabel     *titleLabel;
 	UIImageView *imageView;
 	UILabel     *descriptionLabel;
-	NSString    *URL;
+	NSURL       *URL;
 	BOOL        tapped;
 }
 
@@ -32,12 +32,12 @@
 @property (nonatomic, retain) UILabel     *titleLabel;
 @property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, retain) UILabel     *descriptionLabel;
-@property (nonatomic, retain) NSString    *URL;
+@property (nonatomic, retain) NSURL       *URL;
 
 @end
 
 @protocol ImagePageDelegate
 
-- (void)presentHiResImageView:(NSString *)URL;
+- (void)presentHiResImageView:(NSURL *)URL;
 
 @end
