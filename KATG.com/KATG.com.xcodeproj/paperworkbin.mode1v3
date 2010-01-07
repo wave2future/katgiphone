@@ -233,8 +233,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -274,24 +272,23 @@
 								<string>8B4E1BD410DC808E005D8BA9</string>
 								<string>8B4E20B610DCDF00005D8BA9</string>
 								<string>8B4E1BEF10DC8CCA005D8BA9</string>
-								<string>8BEF289910EB332E000DF638</string>
-								<string>8BEF289A10EB3340000DF638</string>
-								<string>8BEF289B10EB3359000DF638</string>
+								<string>8B4E258910DDE35E005D8BA9</string>
 								<string>8BB7F8BE10D5993900719438</string>
-								<string>8B4E1F9E10DCC4E7005D8BA9</string>
 								<string>8BB7F8BD10D5992E00719438</string>
 								<string>8B53ED9C10DAC09C0038B87B</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>4</integer>
+									<integer>31</integer>
+									<integer>29</integer>
+									<integer>26</integer>
 									<integer>2</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 2}, {400, 888}}</string>
+							<string>{{0, 0}, {400, 888}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -321,12 +318,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>PastShowDataModel+PrivateMethods.m</string>
+								<string>PastShowsTableViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -334,11 +333,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>PastShowDataModel+PrivateMethods.m</string>
+										<string>PastShowsTableViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>8B251C5010F58FD6004253DE</string>
+										<string>8B251C6A10F594A2004253DE</string>
 										<key>history</key>
 										<array>
 											<string>8BB7F90010D5A13C00719438</string>
@@ -396,7 +395,6 @@
 											<string>8B45FF0E10E9FB0600F2F3E7</string>
 											<string>8B45FF0F10E9FB0600F2F3E7</string>
 											<string>8BEF28C410EC12D0000DF638</string>
-											<string>8BEF28C510EC12D0000DF638</string>
 											<string>8BEF28CB10EC12D0000DF638</string>
 											<string>8BEF28CC10EC12D0000DF638</string>
 											<string>8B8ABB8410F2A59F00E51DFF</string>
@@ -477,12 +475,12 @@
 											<string>8B251C2310F58E9A004253DE</string>
 											<string>8B251C3510F58F47004253DE</string>
 											<string>8B251C3610F58F47004253DE</string>
-											<string>8B251C3710F58F47004253DE</string>
 											<string>8B251C3810F58F47004253DE</string>
 											<string>8B251C4A10F58FAE004253DE</string>
 											<string>8B251C4B10F58FAE004253DE</string>
 											<string>8B251C4E10F58FD6004253DE</string>
-											<string>8B251C4F10F58FD6004253DE</string>
+											<string>8B251C6910F594A2004253DE</string>
+											<string>8B251C3710F58F47004253DE</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -680,7 +678,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>8B251C4D10F58FAE004253DE</string>
+		<string>8B251C6B10F594A2004253DE</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>8B251AD310F567AA004253DE</string>
 		<string>8B251A5010F55D16004253DE</string>

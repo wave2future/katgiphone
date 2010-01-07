@@ -192,6 +192,10 @@
 	list = shows;
 	[self reloadTableView];
 }
+#define kAll 0
+#define kTitle 1
+#define kNumber 2
+#define kGuests 3
 - (void)filterContentForSearchText:(NSString*)searchText
 {
 	// Update the filtered array based on the search text and scope.
@@ -202,15 +206,15 @@
 	{
 		NSInteger buttonIndex = self.searchDisplayController.searchBar.selectedScopeButtonIndex;
 		NSRange	result1 = NSMakeRange(NSNotFound, 0);
-		if (buttonIndex == 0 || buttonIndex == 3) {
+		if (buttonIndex == kTitle || buttonIndex == kAll) {
 			result1 = [[show objectForKey:@"Title"] rangeOfString:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch)];
 		}
 		NSRange	result2 = NSMakeRange(NSNotFound, 0);
-		if (buttonIndex == 1 || buttonIndex == 3) {
+		if (buttonIndex == kNumber || buttonIndex == kAll) {
 			result2 = [[show objectForKey:@"Number"] rangeOfString:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch)];
 		}
 		NSRange	result3 = NSMakeRange(NSNotFound, 0);
-		if (buttonIndex == 2 || buttonIndex == 3) {
+		if (buttonIndex == kGuests || buttonIndex == kAll) {
 			result3 = [[show objectForKey:@"Guests"] rangeOfString:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch)];
 		}
 		
