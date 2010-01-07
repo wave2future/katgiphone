@@ -77,19 +77,22 @@
 {
 	NSString *path = [_dataPath stringByAppendingPathComponent:kEventsPlist];
 	NSArray *evnts = [[NSArray alloc] initWithContentsOfFile:path];
-	if (evnts == nil && [shouldStream intValue] != 0 && shouldStream != nil) {
+	if (!evnts && [shouldStream intValue] != 0 && shouldStream != nil) 
+	{
 		evnts = [NSArray arrayWithObject:[self _loadingDictionary]];
-	} else if (evnts == nil && ([shouldStream intValue] == 0 || shouldStream == nil)) {
+	} 
+	else if (!evnts && ([shouldStream intValue] == 0 || shouldStream == nil)) 
+	{
 		evnts = [NSArray arrayWithObject:[self _noConnectionDictionary]];
 	}
-	if ([shouldStream intValue] != 0) {
+	if ([shouldStream intValue] != 0) 
+	{
 		[NSThread detachNewThreadSelector:@selector(_pollEventsFeed) 
 								 toTarget:self 
 							   withObject:nil];
-		/*[self performSelectorOnMainThread:@selector(_pollEventsFeed) 
-							   withObject:nil 
-							waitUntilDone:NO];*/
-	} else {
+	} 
+	else 
+	{
 		_pollOnConnection = YES;
 	}
 	return evnts;
@@ -98,7 +101,7 @@
 {
 	NSString *path = [_dataPath stringByAppendingPathComponent:kEventsPlist];
 	NSArray *evnts = [NSArray arrayWithContentsOfFile:path];
-	if (evnts == nil) {
+	if (!evnts) {
 		evnts = [self _getEvents];
 	}
 	return [evnts retain];

@@ -29,7 +29,6 @@
 		
 		// add touch-sensitive image view to the scroll view
 		imageView = [[TapDetectingImageView alloc] initWithImage:image];
-		[image release]; image = nil;
 		[imageView setDelegate:self];
 		[imageView setTag:ZOOM_VIEW_TAG];
 		[imageScrollView setContentSize:[imageView frame].size];
@@ -83,6 +82,8 @@
 - (void)updateImage:(UIImage *)img
 {
 	// Swap out image and adjust content size
+	[image release]; image = nil;
+	image = [img retain];
 	[imageView setImage:img];
 	[imageView setFrame:CGRectMake(0, 0, [img size].width, [img size].height)];
 	[imageScrollView setContentSize:[imageView frame].size];	
@@ -204,6 +205,7 @@
 	if (error != NULL)
 	{
 		// Show error message...
+		NSLog([error description]);
 	}
 	else  // No errors
 	{

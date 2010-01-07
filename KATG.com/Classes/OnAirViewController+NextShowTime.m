@@ -36,14 +36,14 @@
 	EventsDataModel *model = [EventsDataModel sharedEventsDataModel];
 	[model setShouldStream:shouldStream];
 	[model startNotifier];
-	NSArray *events = [model events];
-	[events release];
+	[model events];
 }
 
 - (void)eventsDataModelDidChangeNotification:(NSNotification *)notification 
 {
 	NSArray *events = [notification object];
-	for (NSDictionary *event in events) {
+	for (NSDictionary *event in events) 
+	{
 		if ([[event objectForKey:@"ShowType"] boolValue]) 
 		{
 			NSDate *time = [event objectForKey:@"DateTime"];
