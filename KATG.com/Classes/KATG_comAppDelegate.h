@@ -35,7 +35,6 @@
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
-@property (nonatomic, assign) NSUserDefaults *userDefaults;
 @property (nonatomic, retain) NSNumber *shouldStream;
 
 // Send in Token for Push Notifications

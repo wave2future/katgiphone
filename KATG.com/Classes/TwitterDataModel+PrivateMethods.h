@@ -1,5 +1,5 @@
 //
-//  TwitterTableCellView.h
+//  TwitterDataModel+PrivateMethods.h
 //  Scott Sigler
 //
 //  Copyright 2009 Doug Russell
@@ -16,18 +16,22 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-@interface TwitterTableCellView : UITableViewCell {
-	UIView  *bgView;
-	UIView  *selView;
-	UILabel *tweetNameLabel;
-	UILabel *timeSinceLabel;
-	UILabel *tweetBodyLabel;
-	UIImageView *iconView;
-}
+#import "TwitterDataModel.h"
 
-@property (nonatomic, retain) UILabel *tweetNameLabel;
-@property (nonatomic, retain) UILabel *timeSinceLabel;
-@property (nonatomic, retain) UILabel *tweetBodyLabel;
-@property (nonatomic, retain) UIImageView *iconView;
+@class CXMLElement;
+@interface TwitterDataModel (PrivateMethods)
+
+- (NSArray *)_getTweets;
+- (void)_cancelTweets;
+- (void)_stopTweetsThread;
+- (void)_pollFeed;
+- (id)_processElement:(CXMLElement *)element forName:(NSString *)name;
+- (NSArray *)_getOtherTweets;
+- (void)_cancelOtherTweets;
+- (void)_stopOtherTweetsThread;
+- (void)_pollOtherFeed;
+- (UIImage *)_getImage:(NSURL *)imageURL forIndexPath:(NSIndexPath *)indexPath;
+- (void)downloadImage:(NSURL *)imageURL forIndexPath:(NSIndexPath *)indexPath;
+- (void)addToImagesDictionary:(NSArray *)array;
 
 @end

@@ -16,12 +16,12 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+#define ROW_HEIGHT 80.0
+
 #import "PastShowsTableViewController.h"
 #import "PastShowsTableCellView.h"
 #import "PastShowsDetailViewController.h"
 #import "Reachability.h"
-
-#define ROW_HEIGHT 80.0
 
 @implementation PastShowsTableViewController
 

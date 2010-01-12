@@ -1,6 +1,6 @@
 //
 //  TwitterTableViewController.m
-//  KATG.com
+//  Scott Sigler
 //
 //  Copyright 2009 Doug Russell
 //  
@@ -16,154 +16,281 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import "TwitterTableViewController.h"
+#define kRowHeight 80
 
+#import "TwitterTableViewController.h"
+#import "TwitterTableCellView.h"
+#import "Reachability.h"
 
 @implementation TwitterTableViewController
 
-@synthesize delegate;
+@synthesize delegate, activityIndicator;
 
-/*
-- (id)initWithStyle:(UITableViewStyle)style {
-    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-    if (self = [super initWithStyle:style]) {
-    }
-    return self;
-}
-*/
-
-/*
-- (void)viewDidLoad {
+#pragma mark -
+#pragma mark SetupCleanup
+#pragma mark -
+- (void)viewDidLoad 
+{
     [super viewDidLoad];
-
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	[self.tableView setRowHeight:kRowHeight];
+	shouldStream = [delegate shouldStream];
+	[self notification];
+	[self setupModel];
+	[self addSegmentedControl];
+	[self addActivityIndicator];
 }
-*/
-
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)notification
+{
+	[[NSNotificationCenter defaultCenter] 
+	 addObserver:self 
+	 selector:@selector(reachabilityChanged:) 
+	 name:kReachabilityChangedNotification 
+	 object:nil];
 }
-*/
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)setupModel
+{
+	model = [TwitterDataModel model];
+	[model setDelegate:self];
+	[model setShouldStream:shouldStream];
+	tweetList = [[model tweets] retain];
 }
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
+- (void)addSegmentedControl
+{
+	// Make sure left bar button is nil so that titleView
+	// will be displayed
+	[[self navigationItem] setLeftBarButtonItem:nil];
+	// Add segCon for switching from Scott's tweets to Junkie Tweets
+	UISegmentedControl *segCon = 
+	[[UISegmentedControl alloc] initWithItems:
+	 [NSArray arrayWithObjects:@"Sigler Tweets", @"Junkie Tweets", nil]];
+	[segCon setSegmentedControlStyle:UISegmentedControlStyleBar];
+	[segCon setSelectedSegmentIndex:0];
+	[segCon addTarget:self 
+			   action:@selector(othTweets:) 
+	 forControlEvents:UIControlEventValueChanged];
+	[[self navigationItem] setTitleView:segCon];
+	[segCon release];
 }
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
+- (void)addActivityIndicator
+{
+	// Create a 'right hand button' that is a activity Indicator
+	CGRect frame = CGRectMake(0.0, 0.0, 25.0, 25.0);
+	self.activityIndicator = 
+	[[UIActivityIndicatorView alloc] initWithFrame:frame];
+	[self.activityIndicator sizeToFit];
+	self.activityIndicator.autoresizingMask =
+	(UIViewAutoresizingFlexibleLeftMargin |
+	 UIViewAutoresizingFlexibleRightMargin |
+	 UIViewAutoresizingFlexibleTopMargin |
+	 UIViewAutoresizingFlexibleBottomMargin);
+	UIBarButtonItem *loadingView = 
+	[[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
+	loadingView.target = self;
+	[[self navigationItem] setRightBarButtonItem:loadingView];
+	[activityIndicator release];
+	[self.activityIndicator startAnimating];
 }
-*/
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+- (void)didReceiveMemoryWarning 
+{
+	[model cancelTweets];
+	[model cancelOtherTweets];
+    [super didReceiveMemoryWarning];	
 }
-*/
-
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
-
-
-#pragma mark Table view methods
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-
-// Customize the number of rows in the table view.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
-}
-
-
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    // Set up the cell...
-	
-    return cell;
-}
-
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
-}
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
-- (void)dealloc {
+- (void)dealloc 
+{
+	delegate = nil;
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	[self cleanupModel];
+	[tweetList release];
     [super dealloc];
 }
-
+- (void)cleanupModel
+{
+	[model cancelTweets];
+	[model cancelOtherTweets];
+	[model setDelegate:nil];
+	[model release];
+}
+#pragma mark -
+#pragma mark Table view methods
+#pragma mark -
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
+{
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+{
+    return [tweetList count];
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    static NSString *CellIdentifier = @"TwitterTableCell";
+    TwitterTableCellView *cell = (TwitterTableCellView *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[TwitterTableCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+	NSString *name = [[tweetList objectAtIndex:indexPath.row] objectForKey:@"Name"];
+	if (name) [[cell tweetNameLabel] setText:name];
+	NSString *text = [[tweetList objectAtIndex:indexPath.row] objectForKey:@"TweetText"];
+	if (text) [[cell tweetBodyLabel] setText:text];
+	NSURL *url = [NSURL URLWithString:[[tweetList objectAtIndex:indexPath.row] objectForKey:@"IconURL"]];
+	if (url) 
+	{
+		UIImage *icon = [model image:url forIndexPath:indexPath];
+		if (icon) [[cell iconView] setImage:icon];
+	}
+	NSDate *created = [[tweetList objectAtIndex:indexPath.row] objectForKey:@"CreatedAt"];
+	if (created)
+	{
+		NSString *since = [self timeSince:created];
+		if (since) [[cell timeSinceLabel] setText:since];
+	}
+	//[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+	return cell;
+}
+- (NSString *)timeSince:(NSDate *)date
+{
+	NSInteger timeSince = -[date timeIntervalSinceNow];
+	NSString *interval = @"s";
+	if (timeSince > 60) {
+		interval = @"m";
+		timeSince /= 60;
+		
+		if (timeSince > 60) {
+			interval = @"h";
+			timeSince /= 60;
+			
+			if (timeSince > 24) {
+				interval = @"d";
+				timeSince /= 24;
+				
+				if (timeSince > 7) {
+					interval = @"w";
+					timeSince /= 7;
+				}
+			}
+		}
+	}
+	NSString *since = [NSString stringWithFormat:@"%i%@", timeSince, interval];
+	return since;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+	
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath 
+{	
+	NSString *text = [[tweetList objectAtIndex:indexPath.row] objectForKey:@"TweetText"];
+	CGSize maxTextSize = CGSizeMake(238.0, 400.0);
+	CGSize textSize = [text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:maxTextSize];
+	CGFloat height = MAX((textSize.height + 30.0f), 80.0f);
+	return height;
+}
+- (void)reloadTableView
+{
+	if ([NSThread isMainThread])
+	{
+		[self.tableView reloadData];
+	} 
+	else 
+	{
+		[self performSelectorOnMainThread:@selector(reloadTableView) 
+							   withObject:nil 
+							waitUntilDone:NO];
+	}
+}
+#pragma mark -
+#pragma mark Model Delegate Methods
+#pragma mark -
+- (void)tweetsDidChange:(NSArray *)tweets
+{
+	if ([NSThread isMainThread])
+	{
+		if (tweets && [tweets count] > 0)
+		{
+			[tweetList release]; tweetList = nil;
+			tweetList = [tweets retain];
+			[self reloadTableView];
+			[activityIndicator stopAnimating];
+		}
+	}
+	else
+	{
+		[self performSelectorOnMainThread:@selector(tweetsDidChange:) 
+							   withObject:tweets 
+							waitUntilDone:NO];
+	}
+}
+- (void)imageDidChange:(UIImage *)image forIndexPath:(NSIndexPath *)indexPath
+{
+	if ([NSThread isMainThread])
+	{
+		TwitterTableCellView *cell = (TwitterTableCellView *)[self.tableView cellForRowAtIndexPath:indexPath];
+		if (cell)
+		{
+			// Setting the image here may be duplicating effort
+			// from the cellForRowIndexPath method
+			cell.iconView.image = image;
+			[cell setNeedsLayout];
+		}
+	}
+}
+#pragma mark -
+#pragma mark SegmentedController
+#pragma mark -
+- (void)othTweets:(id)sender
+{
+	if ([sender selectedSegmentIndex] == 0)
+	{
+		[model cancelOtherTweets];
+		[tweetList release]; tweetList = nil;
+		tweetList = [[model tweets] retain];
+		[self reloadTableView];
+	}
+	else
+	{
+		[model cancelTweets];
+		[tweetList release]; tweetList = nil;
+		tweetList = [[model otherTweets] retain];
+		[self reloadTableView];
+	}
+}
+#pragma mark -
+#pragma mark Reachability
+#pragma mark -
+// Respond to changes in reachability
+- (void)reachabilityChanged:(NSNotification* )note
+{
+	Reachability *curReach = [note object];
+	//NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
+	[self updateReachability:curReach];
+}
+// ShouldStream indicates connection status:
+// 0 No Connection
+// 1 WWAN Connection, stream past shows over WWAN preference is set to NO
+// 2 WWAN Connection, stream past shows over WWAN preference is set to YES
+// 3 Wifi Connection
+// If no connection is available inform user with alert
+- (void)updateReachability:(Reachability*)curReach
+{
+	NetworkStatus netStatus = [curReach currentReachabilityStatus];
+	switch (netStatus) 
+	{
+		case NotReachable:
+		{
+			shouldStream = [NSNumber numberWithInt:0];
+			break;
+		}
+		case ReachableViaWWAN:
+		{
+			shouldStream = [NSNumber numberWithInt:2];
+		}
+		case ReachableViaWiFi:
+		{
+			shouldStream = [NSNumber numberWithInt:3];
+			break;
+		}
+	}
+}
 
 @end
-

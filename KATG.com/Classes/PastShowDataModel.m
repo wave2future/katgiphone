@@ -37,4 +37,5 @@
 {
 	[self _cancel];
 }
+
 @end

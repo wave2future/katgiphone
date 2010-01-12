@@ -1,6 +1,6 @@
 //
 //  TwitterDataModel.m
-//  KATG.com
+//  Scott Sigler
 //
 //  Copyright 2009 Doug Russell
 //  
@@ -17,28 +17,39 @@
 //  limitations under the License.
 
 #import "TwitterDataModel.h"
-#import "SynthesizeSingleton.h"
+#import "TwitterDataModel+PrivateMethods.h"
+#import "TouchXML.h"
 
 @implementation TwitterDataModel
 
-@synthesize delegate;
-@synthesize shouldStream;
+@synthesize delegate, shouldStream;
 
-SYNTHESIZE_SINGLETON_FOR_CLASS(TwitterDataModel);
++ (id)model
+{
+	return [[self alloc] init];
+}
 
-- (NSArray *)tweets 
+- (NSArray *)tweets
 {
 	return [self _getTweets];
 }
 
-- (void)startNotifier 
+- (NSArray *)otherTweets
 {
-	notify = YES;
+	return [self _getOtherTweets];
+}
+- (void)cancelTweets
+{
+	[self _cancelTweets];
+}
+- (void)cancelOtherTweets
+{
+	[self _cancelOtherTweets];
 }
 
-- (void)stopNotifier 
+- (UIImage *)image:(NSURL *)imageURL forIndexPath:(NSIndexPath *)indexPath
 {
-	notify = NO;
+	return [self _getImage:imageURL forIndexPath:indexPath];
 }
 
 @end

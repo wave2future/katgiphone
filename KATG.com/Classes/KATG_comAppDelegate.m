@@ -23,7 +23,6 @@
 
 @synthesize window;
 @synthesize tabBarController;
-@synthesize userDefaults;
 @synthesize shouldStream;
 
 #pragma mark -
@@ -66,7 +65,6 @@
 	NSString *token = [[NSString alloc] initWithFormat: @"%@", deviceToken];
 	[self sendProviderDeviceToken:token];
 }
-
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error 
 {	
     //NSLog(@"Error in registration. Error: %@", error);

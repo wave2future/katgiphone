@@ -1,6 +1,6 @@
 //
 //  TwitterDataModel.h
-//  KATG.com
+//  Scott Sigler
 //
 //  Copyright 2009 Doug Russell
 //  
@@ -16,53 +16,79 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#define SearchString @"http://search.twitter.com/search.rss?q=from%3Akeithandthegirl+OR+from%3AKeithMalley"
-#define ExtendedSearch @"+OR+from%3AKaTGShowAlert+OR+%3Akeithmalley+OR+keithandthegirl+OR+katg+OR+%22keith+and+the+girl%22"
-#define ResultsCount @"&rpp=20"
-
-@protocol TwitterDataModelDelegate;
+@protocol TwitterModelDelegate;
 
 @interface TwitterDataModel : NSObject {
 @public
-	id<TwitterDataModelDelegate> delegate;
+	id<TwitterModelDelegate> delegate;
 	// ShouldStream indicates connection status:
 	// 0 No Connection
 	// 1 WWAN Connection, stream past shows over WWAN preference is set to NO
 	// 2 WWAN Connection, stream past shows over WWAN preference is set to YES
 	// 3 Wifi Connection
-	NSNumber         *shouldStream;
-	BOOL             notify;
+	NSNumber            *shouldStream;
 @private
-	NSString         *_dataPath;
+	NSString            *_dataPath;
+	NSArray             *_tweets;
 	
-	NSArray          *_tweets;
-	NSMutableArray   *_tweetsProxy;
+	NSThread            *_tweetThread;
+	NSAutoreleasePool   *_tweetPool;
 	
-	// How do I want to store the images?
+	NSThread            *_otherTweetThread;
+	NSAutoreleasePool   *_otherTweetPool;
 	
-	BOOL             _pollOnConnection;
+	NSMutableDictionary *_images;
+	
+	NSDateFormatter     *_formatter;
+	NSDateFormatter     *_otherFormatter;
+	
+	BOOL                _pollOnConnection;
 }
 
-@property (nonatomic, assign) id<TwitterDataModelDelegate> delegate;
+@property (nonatomic, assign) id<TwitterModelDelegate> delegate;
 @property (nonatomic, assign) NSNumber *shouldStream;
 
-// Access shared Tweets Model
-+ (TwitterDataModel *)sharedTwitterDataModel;
-// Access events:
-// Immediately returns either tweets from disk or a tempory tweet i.e loading or no connection
-// Then Asynchronously polls twitter feed and informs delegate or posts a notification when changes occur
-- (NSArray *)tweets;
-// Start change notifications
-- (void)startNotifier;
-// Stop change notifications
-- (void)stopNotifier;
+// Returns retained model instance
++ (id)model;
+// THIS NEEDS MODIFICATION
+// Returns retained array of dictionary objects with tweet data
+//   ==>(NSARRAY *)
+//			==>(NSDICTIONARY *)
+//					OBJECT==>(NSDate *)   KEY==>@"CreatedAt"
+//					OBJECT==>(NSSTRING *) KEY==>@"TweetText"
+//                  OBJECT==>(NSSTRING *) KEY==>@"Name"
+//                  OBJECT==>(NSSTRING *) KEY==>@"ScreenName"
+//                  OBJECT==>(NSSTRING *) KEY==>@"IconURL"
+// Method returns immediately with one of the following:
+//       1. if data exists on disk tweet array is returned from data on disk
+//       2. if data does not exist on disk and user has connectivity,
+//          a tweet array is returned with single dictionary to indicate that 
+//          tweet data is being loaded
+//       3. if data does not exist on disk and user does not have connectivity
+//          a tweet array is returned with single dictionary to indicate that 
+//          no connection is available
+// After initially returning, updated show data is obtained and shared
+// via delegate methods (this process is in a state of change and will
+// be better documented once it is nearer to complete)
+- (NSArray *)tweets;       // Scott's Feed
+- (NSArray *)otherTweets;  // People tweeting about Scott
+// Cancels any running processes so model can be dismissed or changed
+- (void)cancelTweets;
+- (void)cancelOtherTweets;
+// Method returns immediately with one of the following:
+//       1. if image has already been loaded, returns final image
+//       2. if image has not been previously loaded,= a temporary image is
+//          returned
+// After method returns:
+//       1. if the image exists on disk it is loaded and then sent to
+//          the delegate
+//       2. if the image does not exist it is retrieved from the given URL,
+//          loaded, sent to delegate and written to disk for future use
+- (UIImage *)image:(NSURL *)imageURL forIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
-@protocol TwitterDataModelDelegate
-@optional
-// Notifies delegate just before events data will change
-- (void)twitterDataModelWillChange:(NSArray *)tweets;
-// Notifies delegate events data has changed
-- (void)twitterDataModelDidChange:(NSArray *)tweets;
+@protocol TwitterModelDelegate
+- (void)tweetsDidChange:(NSArray *)tweets;
+- (void)imageDidChange:(UIImage *)image forIndexPath:(NSIndexPath *)indexPath;
 @end
