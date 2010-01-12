@@ -1,8 +1,8 @@
 //
-//  CXMLElement_ElementTreeExtensions.h
+//  CXMLDocument_CreationExtensions.h
 //  TouchCode
 //
-//  Created by Jonathan Wight on 11/14/08.
+//  Created by Jonathan Wight on 11/11/08.
 //  Copyright 2008 toxicsoftware.com. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,11 +27,21 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "CXMLElement.h"
+#import "CXMLDocument.h"
 
+@interface CXMLDocument (CXMLDocument_CreationExtensions)
 
-@interface CXMLElement (CXMLElement_ElementTreeExtensions)
-
-- (CXMLElement *)subelement:(NSString *)inName;
+//- (void)setVersion:(NSString *)version; //primitive
+//- (void)setStandalone:(BOOL)standalone; //primitive
+//- (void)setDocumentContentKind:(CXMLDocumentContentKind)kind; //primitive
+//- (void)setMIMEType:(NSString *)MIMEType; //primitive
+//- (void)setDTD:(CXMLDTD *)documentTypeDeclaration; //primitive
+//- (void)setRootElement:(CXMLNode *)root;
+- (void)insertChild:(CXMLNode *)child atIndex:(NSUInteger)index;
+//- (void)insertChildren:(NSArray *)children atIndex:(NSUInteger)index;
+//- (void)removeChildAtIndex:(NSUInteger)index; //primitive
+//- (void)setChildren:(NSArray *)children; //primitive
+- (void)addChild:(CXMLNode *)child;
+//- (void)replaceChildAtIndex:(NSUInteger)index withNode:(CXMLNode *)node;
 
 @end

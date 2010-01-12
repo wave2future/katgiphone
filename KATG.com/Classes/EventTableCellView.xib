@@ -3,7 +3,7 @@
 	<data>
 		<int key="IBDocument.SystemTarget">784</int>
 		<string key="IBDocument.SystemVersion">10C540</string>
-		<string key="IBDocument.InterfaceBuilderVersion">732</string>
+		<string key="IBDocument.InterfaceBuilderVersion">740</string>
 		<string key="IBDocument.AppKitVersion">1038.25</string>
 		<string key="IBDocument.HIToolboxVersion">458.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
@@ -66,7 +66,7 @@
 							<object class="IBUILabel" id="972918430">
 								<reference key="NSNextResponder" ref="147581631"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{236, 17}, {54, 15}}</string>
+								<string key="NSFrame">{{229, 18}, {71, 15}}</string>
 								<reference key="NSSuperview" ref="147581631"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -83,13 +83,13 @@
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
-								<float key="IBUIMinimumFontSize">10</float>
+								<float key="IBUIMinimumFontSize">8</float>
 								<int key="IBUITextAlignment">1</int>
 							</object>
 							<object class="IBUILabel" id="328825840">
 								<reference key="NSNextResponder" ref="147581631"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{236, 31}, {54, 15}}</string>
+								<string key="NSFrame">{{229, 32}, {71, 15}}</string>
 								<reference key="NSSuperview" ref="147581631"/>
 								<object class="NSColor" key="IBUIBackgroundColor" id="692213424">
 									<int key="NSColorSpace">3</int>
@@ -106,13 +106,13 @@
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
-								<float key="IBUIMinimumFontSize">10</float>
+								<float key="IBUIMinimumFontSize">8</float>
 								<int key="IBUITextAlignment">1</int>
 							</object>
 							<object class="IBUILabel" id="5757792">
 								<reference key="NSNextResponder" ref="147581631"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{236, 45}, {54, 15}}</string>
+								<string key="NSFrame">{{229, 46}, {71, 15}}</string>
 								<reference key="NSSuperview" ref="147581631"/>
 								<reference key="IBUIBackgroundColor" ref="692213424"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -126,8 +126,7 @@
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
-								<float key="IBUIMinimumFontSize">10</float>
-								<int key="IBUINumberOfLines">3</int>
+								<float key="IBUIMinimumFontSize">8</float>
 								<int key="IBUITextAlignment">1</int>
 							</object>
 							<object class="IBUIImageView" id="627208035">
@@ -349,7 +348,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>EventTableCellView</string>
-					<string>{{-1148, 806}, {320, 80}}</string>
+					<string>{{125, 380}, {320, 80}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

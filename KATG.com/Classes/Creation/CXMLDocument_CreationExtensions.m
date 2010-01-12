@@ -1,8 +1,8 @@
 //
-//  CXMLElement_ElementTreeExtensions.h
+//  CXMLDocument_CreationExtensions.m
 //  TouchCode
 //
-//  Created by Jonathan Wight on 11/14/08.
+//  Created by Jonathan Wight on 11/11/08.
 //  Copyright 2008 toxicsoftware.com. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,11 +27,27 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#import "CXMLDocument_CreationExtensions.h"
+
 #import "CXMLElement.h"
+#import "CXMLNode_PrivateExtensions.h"
+#import "CXMLDocument_PrivateExtensions.h"
 
+@implementation CXMLDocument (CXMLDocument_CreationExtensions)
 
-@interface CXMLElement (CXMLElement_ElementTreeExtensions)
+- (void)insertChild:(CXMLNode *)child atIndex:(NSUInteger)index
+{
+[self.nodePool addObject:child];
 
-- (CXMLElement *)subelement:(NSString *)inName;
+CXMLNode *theCurrentNode = [self.children objectAtIndex:index];
+xmlAddPrevSibling(theCurrentNode->_node, child->_node);
+}
+
+- (void)addChild:(CXMLNode *)child
+{
+[self.nodePool addObject:child];
+
+xmlAddChild(self->_node, child->_node);
+}
 
 @end

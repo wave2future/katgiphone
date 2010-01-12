@@ -45,17 +45,21 @@
     }
     return self;
 }
+- (void)stopShowsThread 
+{
+	[pollingPool drain]; pollingPool = nil;
+	[pollingThread cancel];
+	[pollingThread release]; pollingThread = nil;
+}
 - (void)_attemptRelease 
 {
 	[super release];
 }
 - (void)dealloc 
 {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	if ([pollingThread isExecuting]) {
-		[self stopShowsThread];
-	}
 	delegate = nil;
+	[self stopShowsThread];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[_dataPath release];
 	[_shows release];
 	[_showsProxy release];
@@ -67,7 +71,7 @@
 - (void)_reachabilityChanged:(NSNotification* )note
 {
 	Reachability *curReach = [note object];
-	NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
+	//NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
 	[self _updateReachability:curReach];
 }
 - (void)_updateReachability:(Reachability*)curReach
@@ -224,13 +228,6 @@
 {
 	NSString *path = [_dataPath stringByAppendingPathComponent:@"shows.plist"];
 	[_shows writeToFile:path atomically:YES];
-}
-- (void)stopShowsThread 
-{
-	[pollingPool drain];
-	[pollingThread cancel];
-	[pollingThread release];
-	pollingThread = nil;
 }
 
 @end

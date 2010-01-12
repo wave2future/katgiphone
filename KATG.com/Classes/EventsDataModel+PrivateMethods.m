@@ -63,11 +63,11 @@
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[_eventQueue cancelAllOperations];
-	[_eventQueue release];
-	_eventQueue = nil;
+	[_eventQueue release]; _eventQueue = nil;
 	[_dataPath release];
 	[_events release];
 	[_eventsProxy release];
+	[_pollingPool drain]; _pollingPool = nil;
 	[super dealloc];
 }
 #pragma mark -

@@ -25,10 +25,9 @@
 - (void)_reachabilityChanged:(NSNotification* )note
 {
 	Reachability *curReach = [note object];
-	NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
+	//NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
 	[self _updateReachability:curReach];
 }
-
 - (void)_updateReachability:(Reachability*)curReach
 {
 	NetworkStatus netStatus = [curReach currentReachabilityStatus];

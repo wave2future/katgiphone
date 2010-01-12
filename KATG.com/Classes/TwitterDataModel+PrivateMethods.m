@@ -1,6 +1,6 @@
 //
 //  TwitterDataModel+PrivateMethods.m
-//  Scott Sigler
+//  KATG.com
 //
 //  Copyright 2009 Doug Russell
 //  
@@ -16,8 +16,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#define kFeedAddress @"http://twitter.com/statuses/user_timeline/ScottSigler.xml"
-#define kOtherFeedAddress @"http://search.twitter.com/search.atom?q=%3Ascottsigler+OR+scottsigler+OR+scott%20sigler&rpp=20"
+#define kFeedAddress @"http://search.twitter.com/search.atom?q=from%3Akeithandthegirl+OR+from%3AKeithMalley&rpp=30"
+#define kOtherFeedAddress @"http://search.twitter.com/search.atom?q=from%3Akeithandthegirl+OR+from%3AKeithMalley+OR+from%3AKaTGShowAlert+OR+%3Akeithmalley+OR+keithandthegirl+OR+katg+OR+%22keith+and+the+girl%22&rpp=30"
 #define kTwitterPlist @"twitter.plist"
 #define kOtherTwitterPlist @"otherTwitter.plist"
 
@@ -127,68 +127,9 @@
 {
 	_tweetPool = [[NSAutoreleasePool alloc] init];
 	NSURL *feedURL = [NSURL URLWithString:kFeedAddress];
-	NSError *error;
 	if (![[NSThread currentThread] isCancelled] && [shouldStream intValue] > 0)
 	{
-		CXMLDocument *parser = 
-		[[[CXMLDocument alloc] initWithContentsOfURL:feedURL options:0 error:&error] autorelease];
-		CXMLElement *rootElement = [parser rootElement];
-		NSArray *elements = [rootElement elementsForName:@"status"];
-		NSMutableDictionary *tweet;
-		NSMutableArray *tweets = [[NSMutableArray alloc] init];
-		for (CXMLElement *element in elements)
-		{
-			tweet = [[NSMutableDictionary alloc] init];
-			// <created_at>Sun Jan 10 21:32:03 +0000 2010</created_at>
-			NSString *createdAt = [self _processElement:element forName:@"created_at"];
-			if (createdAt && ![[NSThread currentThread] isCancelled])
-			{
-				NSDate *createdAtDate = [_formatter dateFromString:createdAt];
-				if (createdAtDate && ![[NSThread currentThread] isCancelled])
-				{
-					[tweet setObject:createdAtDate forKey:@"CreatedAt"];
-				}
-			}
-			//<text>Oreos acquired. Store did not have Double Stuff (the pinko commies!). Also: brat and cheese for Packers game. Oreos ... Oreos ... Oreos ...</text>
-			NSString *tweetText = [self _processElement:element forName:@"text"];
-			if (tweetText && ![[NSThread currentThread] isCancelled])
-			{
-				[tweet setObject:tweetText forKey:@"TweetText"];
-			}
-			NSArray *userArray = [element elementsForName:@"user"];
-			if ([userArray count] == 1 && ![[NSThread currentThread] isCancelled])
-			{
-				CXMLElement *userElement = [userArray objectAtIndex:0];
-				//<name>Scott Sigler</name>
-				NSString *nameString = [self _processElement:userElement forName:@"name"];
-				if (nameString && ![[NSThread currentThread] isCancelled])
-				{
-					[tweet setObject:nameString forKey:@"Name"];
-				}
-				//<screen_name>scottsigler</screen_name>
-				NSString *sNameString = [self _processElement:userElement forName:@"screen_name"];
-				if (sNameString && ![[NSThread currentThread] isCancelled])
-				{
-					[tweet setObject:sNameString forKey:@"ScreenName"];
-				}
-				//<profile_image_url>http://a1.twimg.com/profile_images/422871190/SiglerStank_252_normal.jpg</profile_image_url>
-				NSString *urlString = [self _processElement:userElement forName:@"profile_image_url"];
-				if (urlString && ![[NSThread currentThread] isCancelled])
-				{
-					[tweet setObject:urlString forKey:@"IconURL"];
-				}
-			}
-			if (![[NSThread currentThread] isCancelled])
-			{
-				[tweets addObject:tweet];
-				[tweet release];
-			}
-			else 
-			{
-				[tweet release];
-				break;
-			}		
-		}
+		NSMutableArray *tweets = [self _performParse:feedURL];
 		if (![[NSThread currentThread] isCancelled])
 		{
 			_tweets = (NSArray *)[tweets copy];
@@ -237,76 +178,9 @@
 {
 	_otherTweetPool = [[NSAutoreleasePool alloc] init];
 	NSURL *feedURL = [NSURL URLWithString:kOtherFeedAddress];
-	NSError *error;
 	if (![[NSThread currentThread] isCancelled] && [shouldStream intValue] > 0)
 	{
-		CXMLDocument *parser = 
-		[[[CXMLDocument alloc] initWithContentsOfURL:feedURL 
-											 options:0 
-											   error:&error] autorelease];
-		CXMLElement *rootElement = [parser rootElement];
-		NSArray *elements = [rootElement elementsForName:@"entry"];
-		NSMutableDictionary *tweet;
-		NSMutableArray *tweets = [[NSMutableArray alloc] init];
-		for (CXMLElement *element in elements)
-		{
-			tweet = [[NSMutableDictionary alloc] init];
-			//<published>2010-01-10T19:59:15Z</published>
-			NSString *createdAt = [self _processElement:element forName:@"published"];
-			createdAt = [createdAt stringByReplacingOccurrencesOfString:@"T" withString:@" "];
-			createdAt = [createdAt stringByReplacingOccurrencesOfString:@"Z" withString:@" "];
-			if (createdAt && ![[NSThread currentThread] isCancelled])
-			{
-				NSDate *createdAtDate = [_otherFormatter dateFromString:createdAt];
-				if (createdAtDate && ![[NSThread currentThread] isCancelled])
-				{
-					[tweet setObject:createdAtDate forKey:@"CreatedAt"];
-				}
-			}
-			//<title>Just finished reading &quot;The Rookie&quot; by Scott Sigler. It was even better than &quot;Contagious!&quot; Highly recommended to all Alabama fans-- and foes!</title>
-			NSString *tweetText = [self _processElement:element forName:@"title"];
-			if (tweetText && ![[NSThread currentThread] isCancelled])
-			{
-				[tweet setObject:tweetText forKey:@"TweetText"];
-			}
-			//<link type="image/png" href="http://a1.twimg.com/profile_images/616834278/rings-100_normal.jpg" rel="image"/>
-			// This is a clumsy chunk of code, needs revision
-			NSArray *linkArray = [element elementsForName:@"link"];
-			for (CXMLElement *linkElement in linkArray) 
-			{
-				NSArray *linkAttributes = [linkElement attributes];
-				for (CXMLNode *node in linkAttributes) 
-				{
-					if ([[node stringValue] rangeOfString:@"image/"].location != NSNotFound)
-					{
-						NSString *urlString = [[linkAttributes objectAtIndex:1] stringValue];
-						if (urlString) [tweet setObject:urlString forKey:@"IconURL"];
-					}
-				}
-			}
-			NSArray *userArray = [element elementsForName:@"author"];
-			if ([userArray count] == 1)
-			{
-				CXMLElement *userElement = [userArray objectAtIndex:0];
-				//<name>docartemis (Ginger Campbell, MD)</name>
-				NSString *nameString = [self _processElement:userElement forName:@"name"];
-				if (nameString && ![[NSThread currentThread] isCancelled])
-				{
-					[tweet setObject:nameString forKey:@"Name"];
-					[tweet setObject:nameString forKey:@"ScreenName"];
-				}
-			}
-			if (![[NSThread currentThread] isCancelled])
-			{
-				[tweets addObject:tweet];
-				[tweet release];
-			}
-			else 
-			{
-				[tweet release];
-				break;
-			}
-		}
+		NSMutableArray *tweets = [self _performParse:feedURL];
 		if (![[NSThread currentThread] isCancelled])
 		{
 			_tweets = (NSArray *)[tweets copy];
@@ -323,7 +197,7 @@
 	}
 }
 #pragma mark -
-#pragma mark label
+#pragma mark Blah Blah Blah
 #pragma mark -
 - (NSArray *)_loadingArray
 {
@@ -358,6 +232,78 @@
 										 @"ScreenName",
 										 @"IconURL", nil]];
 	return [NSArray arrayWithObject:twt];
+}
+- (NSMutableArray *)_performParse:(NSURL *)feedURL
+{
+	NSError *error;
+	CXMLDocument *parser = 
+	[[[CXMLDocument alloc] initWithContentsOfURL:feedURL 
+										 options:0 
+										   error:&error] autorelease];
+	CXMLElement *rootElement = [parser rootElement];
+	NSArray *elements = [rootElement elementsForName:@"entry"];
+	NSMutableDictionary *tweet;
+	NSMutableArray *tweets = [[NSMutableArray alloc] init];
+	for (CXMLElement *element in elements)
+	{
+		tweet = [[NSMutableDictionary alloc] init];
+		//<published>2010-01-10T19:59:15Z</published>
+		NSString *createdAt = [self _processElement:element forName:@"published"];
+		createdAt = [createdAt stringByReplacingOccurrencesOfString:@"T" withString:@" "];
+		createdAt = [createdAt stringByReplacingOccurrencesOfString:@"Z" withString:@" "];
+		if (createdAt && ![[NSThread currentThread] isCancelled])
+		{
+			NSDate *createdAtDate = [_otherFormatter dateFromString:createdAt];
+			if (createdAtDate && ![[NSThread currentThread] isCancelled])
+			{
+				[tweet setObject:createdAtDate forKey:@"CreatedAt"];
+			}
+		}
+		//<title>Just finished reading &quot;The Rookie&quot; by Scott Sigler. It was even better than &quot;Contagious!&quot; Highly recommended to all Alabama fans-- and foes!</title>
+		NSString *tweetText = [self _processElement:element forName:@"title"];
+		if (tweetText && ![[NSThread currentThread] isCancelled])
+		{
+			[tweet setObject:tweetText forKey:@"TweetText"];
+		}
+		//<link type="image/png" href="http://a1.twimg.com/profile_images/616834278/rings-100_normal.jpg" rel="image"/>
+		// This is a clumsy chunk of code, needs revision
+		NSArray *linkArray = [element elementsForName:@"link"];
+		for (CXMLElement *linkElement in linkArray) 
+		{
+			NSArray *linkAttributes = [linkElement attributes];
+			for (CXMLNode *node in linkAttributes) 
+			{
+				if ([[node stringValue] rangeOfString:@"image/"].location != NSNotFound)
+				{
+					NSString *urlString = [[linkAttributes objectAtIndex:1] stringValue];
+					if (urlString) [tweet setObject:urlString forKey:@"IconURL"];
+				}
+			}
+		}
+		NSArray *userArray = [element elementsForName:@"author"];
+		if ([userArray count] == 1)
+		{
+			CXMLElement *userElement = [userArray objectAtIndex:0];
+			//<name>docartemis (Ginger Campbell, MD)</name>
+			NSString *nameString = [self _processElement:userElement forName:@"name"];
+			if (nameString && ![[NSThread currentThread] isCancelled])
+			{
+				[tweet setObject:nameString forKey:@"Name"];
+				[tweet setObject:nameString forKey:@"ScreenName"];
+			}
+		}
+		if (![[NSThread currentThread] isCancelled])
+		{
+			[tweets addObject:tweet];
+			[tweet release];
+		}
+		else 
+		{
+			[tweet release];
+			break;
+		}
+	}
+	return tweets;
 }
 - (id)_processElement:(CXMLElement *)element forName:(NSString *)name
 {

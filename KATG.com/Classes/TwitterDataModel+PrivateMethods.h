@@ -1,6 +1,6 @@
 //
 //  TwitterDataModel+PrivateMethods.h
-//  Scott Sigler
+//  KATG.com
 //
 //  Copyright 2009 Doug Russell
 //  

@@ -1,8 +1,8 @@
 //
-//  CXMLElement_ElementTreeExtensions.h
+//  CTidy.h
 //  TouchCode
 //
-//  Created by Jonathan Wight on 11/14/08.
+//  Created by Jonathan Wight on 03/07/08.
 //  Copyright 2008 toxicsoftware.com. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
@@ -27,11 +27,27 @@
 //  OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "CXMLElement.h"
+#ifdef TOUCHXMLUSETIDY
 
+#import <Foundation/Foundation.h>
 
-@interface CXMLElement (CXMLElement_ElementTreeExtensions)
+#include "tidy.h"
+#include "buffio.h"
 
-- (CXMLElement *)subelement:(NSString *)inName;
+typedef enum {
+	TidyFormat_HTML,
+	TidyFormat_XML,
+	TidyFormat_XHTML,
+} CTidyFormat;
+
+@interface CTidy : NSObject {
+}
+
++ (CTidy *)tidy;
+
+- (NSData *)tidyData:(NSData *)inData inputFormat:(CTidyFormat)inInputFormat outputFormat:(CTidyFormat)inOutputFormat diagnostics:(NSString **)outDiagnostics error:(NSError **)outError;
+- (NSString *)tidyString:(NSString *)inString inputFormat:(CTidyFormat)inInputFormat outputFormat:(CTidyFormat)inOutputFormat diagnostics:(NSString **)outDiagnostics error:(NSError **)outError;
 
 @end
+
+#endif /* TOUCHXMLUSETIDY */

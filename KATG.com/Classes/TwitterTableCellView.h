@@ -17,8 +17,8 @@
 //  limitations under the License.
 
 @interface TwitterTableCellView : UITableViewCell {
-	UIView  *bgView;
-	UIView  *selView;
+	UIImageView  *bgView;
+	UIImageView  *selView;
 	UILabel *tweetNameLabel;
 	UILabel *timeSinceLabel;
 	UILabel *tweetBodyLabel;

@@ -16,7 +16,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#define kRowHeight 80
+#define kRowHeight 86
 
 #import "TwitterTableViewController.h"
 #import "TwitterTableCellView.h"
@@ -62,7 +62,7 @@
 	// Add segCon for switching from Scott's tweets to Junkie Tweets
 	UISegmentedControl *segCon = 
 	[[UISegmentedControl alloc] initWithItems:
-	 [NSArray arrayWithObjects:@"Sigler Tweets", @"Junkie Tweets", nil]];
+	 [NSArray arrayWithObjects:@"KATG", @"KATG Clan", nil]];
 	[segCon setSegmentedControlStyle:UISegmentedControlStyleBar];
 	[segCon setSelectedSegmentIndex:0];
 	[segCon addTarget:self 
@@ -130,7 +130,7 @@
         cell = [[[TwitterTableCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
 	NSString *name = [[tweetList objectAtIndex:indexPath.row] objectForKey:@"Name"];
-	if (name) [[cell tweetNameLabel] setText:name];
+	if (name) [[cell tweetNameLabel] setText:[NSString stringWithFormat:@"@%@", name]];
 	NSString *text = [[tweetList objectAtIndex:indexPath.row] objectForKey:@"TweetText"];
 	if (text) [[cell tweetBodyLabel] setText:text];
 	NSURL *url = [NSURL URLWithString:[[tweetList objectAtIndex:indexPath.row] objectForKey:@"IconURL"]];
@@ -183,7 +183,7 @@
 	NSString *text = [[tweetList objectAtIndex:indexPath.row] objectForKey:@"TweetText"];
 	CGSize maxTextSize = CGSizeMake(238.0, 400.0);
 	CGSize textSize = [text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:maxTextSize];
-	CGFloat height = MAX((textSize.height + 30.0f), 80.0f);
+	CGFloat height = MAX((textSize.height + 36.0f), 86.0f);
 	return height;
 }
 - (void)reloadTableView

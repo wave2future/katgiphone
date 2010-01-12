@@ -16,8 +16,11 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+#define iconRect CGRectMake(7, 24, 50, 50)
+
 #import "TwitterTableCellView.h"
 #import <QuartzCore/CoreAnimation.h>
+#import "ImageAdditions.h"
 
 @implementation TwitterTableCellView
 
@@ -28,12 +31,13 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) 
 	{
 		UIColor *green = [UIColor colorWithRed:0.627451f green:0.7451f blue:0.627451f alpha:1.0];
-        bgView = [[UIView alloc] initWithFrame:CGRectZero];
-		[bgView setBackgroundColor:green];
+		bgView = 
+		[[UIImageView alloc] initWithImage:UIImageForNameExtension(@"CellBackgroundDark80", @"png")];
 		[self setBackgroundView:bgView];
 		[bgView release];
 		
-        selView = [[UIView alloc] initWithFrame:CGRectZero];
+        selView = 
+		[[UIImageView alloc] initWithImage:UIImageForNameExtension(@"CellBackgroundSelected80", @"png")];
 		[selView setBackgroundColor:[UIColor colorWithRed:0.427451f green:0.5451f blue:0.427451f alpha:1.0]];
 		[self setSelectedBackgroundView:selView];
 		[selView release];
@@ -69,7 +73,7 @@
 		[iconView release];
 		
 		//This should probably be in layout
-		CGRect frame = CGRectMake(7, 24, 50, 50);
+		CGRect frame = iconRect;
 		// Make layer
 		CAShapeLayer *strokeLayer = [CAShapeLayer layer];
 		[strokeLayer setBounds:frame];
@@ -103,11 +107,11 @@
 	frame = CGRectMake(206, 3, 94, 21);
 	[timeSinceLabel setFrame:frame];
 	
-	frame = CGRectMake(62, 24, 238, self.contentView.bounds.size.height - 30);
+	frame = CGRectMake(62, 24, 238, self.contentView.bounds.size.height - 36);
 	[tweetBodyLabel setFrame:frame];
 	[tweetBodyLabel setNumberOfLines:trunc((self.contentView.bounds.size.height)/10)];
 	
-	frame = CGRectMake(7, 24, 50, 50);
+	frame = iconRect;
 	[iconView setFrame:frame];
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated 

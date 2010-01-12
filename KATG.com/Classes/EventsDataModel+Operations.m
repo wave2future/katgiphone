@@ -36,16 +36,15 @@
 - (void)parsingDidCompleteSuccessfully:(GrabXMLFeed *)parser
 {
 	[parser release];
-	[_pollingPool drain];
+	[_pollingPool drain]; _pollingPool = nil;
 }
 
 - (void)operationDidFinishSuccesfully:(EventOperation *)op 
 {	
 	NSDictionary *event = [[op event] copy];
-	if (event == nil) {
-		return;
+	if (event) {
+		[self _addToEventsProxy:event];
 	}
-	[self _addToEventsProxy:event];
 }
 
 - (void)_addToEventsProxy:(NSDictionary *)event 

@@ -1,9 +1,9 @@
 //
 //  CXMLNode.m
-//  TouchXML
+//  TouchCode
 //
 //  Created by Jonathan Wight on 03/07/08.
-//  Copyright (c) 2008 Jonathan Wight
+//  Copyright 2008 toxicsoftware.com. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person
 //  obtaining a copy of this software and associated documentation
@@ -80,17 +80,23 @@ else
 {
 NSAssert(_node != NULL, @"CXMLNode does not have attached libxml2 _node.");
 xmlChar *theXMLString;
-if ( _node->type == CXMLTextKind ) 
+BOOL theFreeReminderFlag = NO;
+if (_node->type == XML_TEXT_NODE || _node->type == XML_CDATA_SECTION_NODE) 
 	theXMLString = _node->content;
 else
+	{
 	theXMLString = xmlNodeListGetString(_node->doc, _node->children, YES);
+	theFreeReminderFlag = YES;
+	}
 
 NSString *theStringValue = NULL;
 if (theXMLString != NULL)
 	{
 	theStringValue = [NSString stringWithUTF8String:(const char *)theXMLString];
-	if ( _node->type != CXMLTextKind )
+	if (theFreeReminderFlag == YES)
+		{
 		xmlFree(theXMLString);
+		}
 	}
 
 return(theStringValue);
