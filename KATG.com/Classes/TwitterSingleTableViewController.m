@@ -1,6 +1,6 @@
 //
-//  TwitterTableViewController.m
-//  Scott Sigler
+//  TwitterSingleTableViewController.m
+//  KATG.com
 //
 //  Copyright 2009 Doug Russell
 //  
@@ -16,82 +16,15 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-/*CGRect FindInTweet(NSString* string, NSString* query)
-{
-	NSLog(@"string: %@", string);
-	
-	NSLog(@"query: %@", query);
-	
-	NSRange range = [string rangeOfString:query];
-	
-	NSInteger index = range.location + range.length;
-	
-	NSString *subString = [string substringToIndex:index];
-	
-	NSLog(@"substring: %@", subString);
-	
-	CGSize maxTextSize = CGSizeMake(238.0, 400.0);
-	
-	CGSize subStringSize = 
-	[subString sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:maxTextSize];
-	
-	NSLog(@"substring: height %f width %f", subStringSize.height, subStringSize.width);
-	
-	int ql = [query length]; int sl = [subString length];
-	for (int i = ql; i <= sl; i++)
-	{
-		NSString *subSubString = [subString substringToIndex:i];
-	
-		CGSize subSubSize = [subSubString sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:maxTextSize];
-		
-		//NSLog(@"%f  %f", subSubSize.height, subStringSize.width);
-		
-		if (subSubSize.height == subStringSize.height)
-		{
-			
-			index = i;
-			
-			break;
-		}
-	}
-	
-	NSRange end = NSMakeRange(index, [subString length] - index);
-	
-	NSRange nextSpace = [subString rangeOfString:@" " options:NSCaseInsensitiveSearch range:end];
-	
-	NSRange newLine = [subString rangeOfString:@"\n" options:NSCaseInsensitiveSearch range:end];
-	
-	if (nextSpace.location == NSNotFound && newLine.location == NSNotFound)
-	{
-		
-	}
-	
-	
-	
-	NSString *queryLine = [subString substringFromIndex:index];
-	NSLog(@"queryline: %@", queryLine);
-	CGSize queryLineSize = [queryLine sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:maxTextSize];
-	NSLog(@"queryLineSize: height %f width %f", queryLineSize.height, queryLineSize.width);
-	CGSize querySize = [query sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:maxTextSize];
-	NSLog(@"querySize: height %f width %f", querySize.height, querySize.width);
-	CGFloat yoffset = subStringSize.height - queryLineSize.height;
-	CGFloat xoffset = queryLineSize.width - querySize.width;
-	CGRect frame = CGRectMake(xoffset, yoffset, querySize.width, querySize.height);
-	return frame;
-}*/
-
 #define kRowHeight 86
 
-#import "TwitterTableViewController.h"
+#import "TwitterSingleTableViewController.h"
 #import "TwitterTableCellView.h"
 #import "Reachability.h"
-#import "ModalWebViewController.h"
-#import "InterTableViewController.h"
-#import "TwitterSingleTableViewController.h"
 
-@implementation TwitterTableViewController
+@implementation TwitterSingleTableViewController
 
-@synthesize delegate, activityIndicator;
+@synthesize shouldStream, activityIndicator, user;
 
 #pragma mark -
 #pragma mark SetupCleanup
@@ -100,10 +33,8 @@
 {
     [super viewDidLoad];
 	[self.tableView setRowHeight:kRowHeight];
-	shouldStream = [delegate shouldStream];
 	[self notification];
 	[self setupModel];
-	[self addSegmentedControl];
 	[self addActivityIndicator];
 }
 - (void)notification
@@ -116,27 +47,10 @@
 }
 - (void)setupModel
 {
-	model = [TwitterDataModel model];
+	model = [TwitterSingleDataModel model];
 	[model setDelegate:self];
 	[model setShouldStream:shouldStream];
-	tweetList = [[model tweets] retain];
-}
-- (void)addSegmentedControl
-{
-	// Make sure left bar button is nil so that titleView
-	// will be displayed
-	[[self navigationItem] setLeftBarButtonItem:nil];
-	// Add segCon for switching from Scott's tweets to Junkie Tweets
-	UISegmentedControl *segCon = 
-	[[UISegmentedControl alloc] initWithItems:
-	 [NSArray arrayWithObjects:@"KATG", @"KATG Clan", nil]];
-	[segCon setSegmentedControlStyle:UISegmentedControlStyleBar];
-	[segCon setSelectedSegmentIndex:0];
-	[segCon addTarget:self 
-			   action:@selector(othTweets:) 
-	 forControlEvents:UIControlEventValueChanged];
-	[[self navigationItem] setTitleView:segCon];
-	[segCon release];
+	tweetList = [[model tweetsForUser:user] retain];
 }
 - (void)addActivityIndicator
 {
@@ -165,7 +79,6 @@
 }
 - (void)dealloc 
 {
-	delegate = nil;
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[self cleanupModel];
 	[tweetList release];
@@ -174,7 +87,6 @@
 - (void)cleanupModel
 {
 	[model cancelTweets];
-	[model cancelOtherTweets];
 	[model setDelegate:nil];
 	[model release];
 }
@@ -199,18 +111,7 @@
 	NSString *name = [[tweetList objectAtIndex:indexPath.row] objectForKey:@"Name"];
 	if (name) [[cell tweetNameLabel] setText:[NSString stringWithFormat:@"@%@", name]];
 	NSString *text = [[tweetList objectAtIndex:indexPath.row] objectForKey:@"TweetText"];
-	if (text) 
-	{
-		[[cell tweetBodyLabel] setText:text];
-		/*if ([text rangeOfString:@"http://moby.to/nupydd"].location != NSNotFound)
-		{
-			CGRect frame = FindInTweet(text, @"http://moby.to/nupydd");
-			UIView *aView = [[UIView alloc] initWithFrame:frame];
-			[aView setBackgroundColor:[UIColor blueColor]];
-			[[cell tweetBodyLabel] addSubview:aView];
-			[aView release];
-		}*/
-	}
+	if (text) [[cell tweetBodyLabel] setText:text];
 	NSURL *url = [NSURL URLWithString:[[tweetList objectAtIndex:indexPath.row] objectForKey:@"IconURL"]];
 	if (url) 
 	{
@@ -222,21 +123,6 @@
 	{
 		NSString *since = [self timeSince:created];
 		if (since) [[cell timeSinceLabel] setText:since];
-	}
-	NSInteger links = 0;
-	NSArray *urls = [[tweetList objectAtIndex:indexPath.row] objectForKey:@"urls"];
-	if (urls)
-	{
-		links += [urls count];
-	}
-	NSArray *twts = [[tweetList objectAtIndex:indexPath.row] objectForKey:@"twts"];
-	if (twts)
-	{
-		links += [twts count];
-	}
-	if (links > 0)
-	{
-		[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 	}
 	return cell;
 }
@@ -268,43 +154,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-	NSArray *urls = [[tweetList objectAtIndex:indexPath.row] objectForKey:@"urls"];
-	NSArray *twts = [[tweetList objectAtIndex:indexPath.row] objectForKey:@"twts"];
 	
-	if ([urls count] + [twts count] > 1) 
-	{
-		InterTableViewController *viewController = 
-		[[InterTableViewController alloc] initWithNibName:@"InterTableView" 
-												   bundle:nil];
-		[viewController setShouldStream:shouldStream];
-		[viewController setUrlList:urls];
-		[viewController setTwtList:twts];
-		[[self navigationController] pushViewController:viewController 
-											   animated:YES];
-		[viewController release];
-	}
-	else if ([urls count] == 1 && [twts count] == 0)
-	{
-		NSURLRequest *request = 
-		[NSURLRequest requestWithURL:[NSURL URLWithString:[urls objectAtIndex:0]]];
-		ModalWebViewController *viewController = 
-		[[ModalWebViewController alloc] initWithNibName:@"ModalWebView" bundle:nil];
-		[viewController setUrlRequest:request];
-		[viewController setDisableDone:YES];
-		[[self navigationController] pushViewController:viewController animated:YES];
-		[viewController release];
-	} 
-	else if ([urls count] == 0 && [twts count] == 1) 
-	{
-		TwitterSingleTableViewController *viewController = 
-		[[TwitterSingleTableViewController alloc] initWithNibName:@"TwitterSingleTableView" 
-														   bundle:nil];
-		[viewController setShouldStream:shouldStream];
-		[viewController setUser:[twts objectAtIndex:0]];
-		[[self navigationController] pushViewController:viewController 
-											   animated:YES];
-		[viewController release];
-	}	
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath 
 {	
@@ -364,26 +214,6 @@
 	}
 }
 #pragma mark -
-#pragma mark SegmentedController
-#pragma mark -
-- (void)othTweets:(id)sender
-{
-	if ([sender selectedSegmentIndex] == 0)
-	{
-		[model cancelOtherTweets];
-		[tweetList release]; tweetList = nil;
-		tweetList = [[model tweets] retain];
-		[self reloadTableView];
-	}
-	else
-	{
-		[model cancelTweets];
-		[tweetList release]; tweetList = nil;
-		tweetList = [[model otherTweets] retain];
-		[self reloadTableView];
-	}
-}
-#pragma mark -
 #pragma mark Reachability
 #pragma mark -
 // Respond to changes in reachability
@@ -422,3 +252,4 @@
 }
 
 @end
+

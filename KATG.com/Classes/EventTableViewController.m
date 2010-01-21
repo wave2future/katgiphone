@@ -104,7 +104,7 @@
 	 name:@"EventsModelDidChange" 
 	 object:nil];
 	EventsDataModel *model = [EventsDataModel sharedEventsDataModel];
-	list = [model eventsFromDisk];
+	list = [[model eventsFromDisk] retain];
 }
 - (void)eventsDataModelDidChangeNotification:(NSNotification *)notification 
 {

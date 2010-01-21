@@ -54,6 +54,7 @@
 								 toTarget:self 
 							   withObject:nil];
 		_pollOnConnection = NO;
+		_polling = YES;
 	}
 }
 

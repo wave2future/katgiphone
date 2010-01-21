@@ -58,6 +58,10 @@
 				<object class="IBUIViewController" key="IBUISelectedViewController" id="26169020">
 					<object class="IBUITabBarItem" key="IBUITabBarItem" id="534041692">
 						<string key="IBUITitle">Links</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">KaTGTab.png</string>
+						</object>
 						<reference key="IBUITabBar"/>
 					</object>
 					<reference key="IBUIParentViewController" ref="1034742383"/>
@@ -723,6 +727,10 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">TwitterTableViewController</string>
 					<string key="superclassName">UITableViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">othTweets:</string>
+						<string key="NS.object.0">id</string>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">delegate</string>
 						<string key="NS.object.0">id</string>

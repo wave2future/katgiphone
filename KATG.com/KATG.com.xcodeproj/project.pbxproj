@@ -97,6 +97,7 @@
 		8BBBC80710D8BB3800A780FC /* OnAirViewController+AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBC80610D8BB3800A780FC /* OnAirViewController+AudioStreamer.m */; };
 		8BBBC83F10D8BFA600A780FC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBBC83E10D8BFA600A780FC /* AudioToolbox.framework */; };
 		8BBBC84310D8BFB500A780FC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBBC84210D8BFB500A780FC /* QuartzCore.framework */; };
+		8BC2ACAA10FD636000AD381F /* KaTGTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC2ACA910FD636000AD381F /* KaTGTab.png */; };
 		8BDC7E4010D8C06D00A0F6AA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BDC7E3F10D8C06D00A0F6AA /* CFNetwork.framework */; };
 		8BDC7E5310D8C3D700A0F6AA /* leftslide.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BDC7E5110D8C3D700A0F6AA /* leftslide.png */; };
 		8BDC7E5410D8C3D700A0F6AA /* rightslide.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BDC7E5210D8C3D700A0F6AA /* rightslide.png */; };
@@ -124,6 +125,22 @@
 		8BEF28B910EC10F4000DF638 /* Loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BEF28B710EC10F4000DF638 /* Loading.png */; };
 		8BEF28BA10EC10F4000DF638 /* NoConnection.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BEF28B810EC10F4000DF638 /* NoConnection.png */; };
 		8BEF293F10EC2039000DF638 /* ImagePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEF293E10EC2039000DF638 /* ImagePageViewController.m */; };
+		8BF1A97F110762E7009A4F01 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF1A97D110762E7009A4F01 /* RegexKitLite.m */; };
+		8BF1A980110762E7009A4F01 /* RegexKitLiteLicense.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 8BF1A97E110762E7009A4F01 /* RegexKitLiteLicense.rtf */; };
+		8BF1A98D110763A0009A4F01 /* ExtractURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF1A98C110763A0009A4F01 /* ExtractURL.m */; };
+		8BF1AA6711077E1C009A4F01 /* InterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF1AA6511077E1C009A4F01 /* InterTableViewController.m */; };
+		8BF1AA6811077E1C009A4F01 /* InterTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BF1AA6611077E1C009A4F01 /* InterTableView.xib */; };
+		8BF1AA8C1107824C009A4F01 /* Compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BF1AA8B1107824C009A4F01 /* Compass.png */; };
+		8BF1AA8F110782DF009A4F01 /* Twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BF1AA8E110782DF009A4F01 /* Twitter.png */; };
+		8BF1AAA8110789F3009A4F01 /* TwitterSingleDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF1AAA7110789F3009A4F01 /* TwitterSingleDataModel.m */; };
+		8BF1AAB511078F26009A4F01 /* TwitterSingleDataModel+PrivateMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF1AAB411078F26009A4F01 /* TwitterSingleDataModel+PrivateMethods.m */; };
+		8BF1AAC311079369009A4F01 /* TwitterSingleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF1AAC111079369009A4F01 /* TwitterSingleTableViewController.m */; };
+		8BF1AAC411079369009A4F01 /* TwitterSingleTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BF1AAC211079369009A4F01 /* TwitterSingleTableView.xib */; };
+		8BF1AB0011079BD2009A4F01 /* LinkBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BF1AAFF11079BD2009A4F01 /* LinkBG.png */; };
+		8BF1AB0211079BEB009A4F01 /* LinkButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BF1AB0111079BEB009A4F01 /* LinkButton.png */; };
+		8BF1AB1C11079E7A009A4F01 /* LinksTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF1AB1B11079E7A009A4F01 /* LinksTableCellView.m */; };
+		8BF1AB891107A68A009A4F01 /* LinksDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF1AB881107A68A009A4F01 /* LinksDataModel.m */; };
+		8BF1AB8D1107A791009A4F01 /* LinksDataModel+PrivateMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF1AB8C1107A791009A4F01 /* LinksDataModel+PrivateMethods.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -274,6 +291,7 @@
 		8BBBC80610D8BB3800A780FC /* OnAirViewController+AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OnAirViewController+AudioStreamer.m"; sourceTree = "<group>"; };
 		8BBBC83E10D8BFA600A780FC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
 		8BBBC84210D8BFB500A780FC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
+		8BC2ACA910FD636000AD381F /* KaTGTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KaTGTab.png; sourceTree = "<group>"; };
 		8BDC7E3F10D8C06D00A0F6AA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		8BDC7E5110D8C3D700A0F6AA /* leftslide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftslide.png; sourceTree = "<group>"; };
 		8BDC7E5210D8C3D700A0F6AA /* rightslide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightslide.png; sourceTree = "<group>"; };
@@ -308,6 +326,31 @@
 		8BEF28B810EC10F4000DF638 /* NoConnection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoConnection.png; sourceTree = "<group>"; };
 		8BEF293D10EC2039000DF638 /* ImagePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePageViewController.h; sourceTree = "<group>"; };
 		8BEF293E10EC2039000DF638 /* ImagePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePageViewController.m; sourceTree = "<group>"; };
+		8BF1A97C110762E7009A4F01 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		8BF1A97D110762E7009A4F01 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		8BF1A97E110762E7009A4F01 /* RegexKitLiteLicense.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = RegexKitLiteLicense.rtf; sourceTree = "<group>"; };
+		8BF1A98B110763A0009A4F01 /* ExtractURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtractURL.h; sourceTree = "<group>"; };
+		8BF1A98C110763A0009A4F01 /* ExtractURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtractURL.m; sourceTree = "<group>"; };
+		8BF1AA6411077E1C009A4F01 /* InterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterTableViewController.h; sourceTree = "<group>"; };
+		8BF1AA6511077E1C009A4F01 /* InterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterTableViewController.m; sourceTree = "<group>"; };
+		8BF1AA6611077E1C009A4F01 /* InterTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterTableView.xib; sourceTree = "<group>"; };
+		8BF1AA8B1107824C009A4F01 /* Compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Compass.png; sourceTree = "<group>"; };
+		8BF1AA8E110782DF009A4F01 /* Twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Twitter.png; sourceTree = "<group>"; };
+		8BF1AAA6110789F3009A4F01 /* TwitterSingleDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterSingleDataModel.h; sourceTree = "<group>"; };
+		8BF1AAA7110789F3009A4F01 /* TwitterSingleDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterSingleDataModel.m; sourceTree = "<group>"; };
+		8BF1AAB311078F26009A4F01 /* TwitterSingleDataModel+PrivateMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TwitterSingleDataModel+PrivateMethods.h"; sourceTree = "<group>"; };
+		8BF1AAB411078F26009A4F01 /* TwitterSingleDataModel+PrivateMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TwitterSingleDataModel+PrivateMethods.m"; sourceTree = "<group>"; };
+		8BF1AAC011079369009A4F01 /* TwitterSingleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterSingleTableViewController.h; sourceTree = "<group>"; };
+		8BF1AAC111079369009A4F01 /* TwitterSingleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterSingleTableViewController.m; sourceTree = "<group>"; };
+		8BF1AAC211079369009A4F01 /* TwitterSingleTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwitterSingleTableView.xib; sourceTree = "<group>"; };
+		8BF1AAFF11079BD2009A4F01 /* LinkBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LinkBG.png; sourceTree = "<group>"; };
+		8BF1AB0111079BEB009A4F01 /* LinkButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LinkButton.png; sourceTree = "<group>"; };
+		8BF1AB1A11079E7A009A4F01 /* LinksTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinksTableCellView.h; sourceTree = "<group>"; };
+		8BF1AB1B11079E7A009A4F01 /* LinksTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinksTableCellView.m; sourceTree = "<group>"; };
+		8BF1AB871107A68A009A4F01 /* LinksDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinksDataModel.h; sourceTree = "<group>"; };
+		8BF1AB881107A68A009A4F01 /* LinksDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinksDataModel.m; sourceTree = "<group>"; };
+		8BF1AB8B1107A791009A4F01 /* LinksDataModel+PrivateMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LinksDataModel+PrivateMethods.h"; sourceTree = "<group>"; };
+		8BF1AB8C1107A791009A4F01 /* LinksDataModel+PrivateMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LinksDataModel+PrivateMethods.m"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* KATG_com-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "KATG_com-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -416,6 +459,8 @@
 			isa = PBXGroup;
 			children = (
 				8B45FEEB10E9F6CE00F2F3E7 /* LinksView.xib */,
+				8BF1AB1A11079E7A009A4F01 /* LinksTableCellView.h */,
+				8BF1AB1B11079E7A009A4F01 /* LinksTableCellView.m */,
 			);
 			name = Links;
 			sourceTree = "<group>";
@@ -426,6 +471,7 @@
 				8B4E20B610DCDF00005D8BA9 /* Events */,
 				8B4E1BEF10DC8CCA005D8BA9 /* Past Shows */,
 				8B4E258910DDE35E005D8BA9 /* Twitter */,
+				8BF1AB851107A515009A4F01 /* Links */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -527,6 +573,10 @@
 				8B6A803810FC1E3200258594 /* TwitterDataModel.m */,
 				8B6A803910FC1E3300258594 /* TwitterDataModel+PrivateMethods.h */,
 				8B6A803A10FC1E3300258594 /* TwitterDataModel+PrivateMethods.m */,
+				8BF1AAA6110789F3009A4F01 /* TwitterSingleDataModel.h */,
+				8BF1AAA7110789F3009A4F01 /* TwitterSingleDataModel.m */,
+				8BF1AAB311078F26009A4F01 /* TwitterSingleDataModel+PrivateMethods.h */,
+				8BF1AAB411078F26009A4F01 /* TwitterSingleDataModel+PrivateMethods.m */,
 			);
 			name = Twitter;
 			sourceTree = "<group>";
@@ -550,6 +600,8 @@
 				8B6A803D10FC1E3300258594 /* TwitterTableView.xib */,
 				8B6A803B10FC1E3300258594 /* TwitterTableCellView.h */,
 				8B6A803C10FC1E3300258594 /* TwitterTableCellView.m */,
+				8BF1AA6611077E1C009A4F01 /* InterTableView.xib */,
+				8BF1AAC211079369009A4F01 /* TwitterSingleTableView.xib */,
 			);
 			name = Twitter;
 			sourceTree = "<group>";
@@ -559,6 +611,10 @@
 			children = (
 				8B6A803E10FC1E3300258594 /* TwitterTableViewController.h */,
 				8B6A803F10FC1E3300258594 /* TwitterTableViewController.m */,
+				8BF1AA6411077E1C009A4F01 /* InterTableViewController.h */,
+				8BF1AA6511077E1C009A4F01 /* InterTableViewController.m */,
+				8BF1AAC011079369009A4F01 /* TwitterSingleTableViewController.h */,
+				8BF1AAC111079369009A4F01 /* TwitterSingleTableViewController.m */,
 			);
 			name = Twitter;
 			sourceTree = "<group>";
@@ -686,6 +742,8 @@
 				8BB7F8DF10D59DFF00719438 /* OnAir */,
 				8BDC7EC310D99D0500A0F6AA /* Events */,
 				8B53EF5C10DADFCF0038B87B /* PastShows */,
+				8BF1AA8A11078241009A4F01 /* Twitter */,
+				8BF1AAFE11079BAD009A4F01 /* Links */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -715,6 +773,11 @@
 		8BB7FA3810D5C0EC00719438 /* Utility Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8BF1A97C110762E7009A4F01 /* RegexKitLite.h */,
+				8BF1A97D110762E7009A4F01 /* RegexKitLite.m */,
+				8BF1A97E110762E7009A4F01 /* RegexKitLiteLicense.rtf */,
+				8BF1A98B110763A0009A4F01 /* ExtractURL.h */,
+				8BF1A98C110763A0009A4F01 /* ExtractURL.m */,
 				8BB7FA3910D5C0FE00719438 /* Parser */,
 				8B4E169F10DB08CC005D8BA9 /* Reachability.h */,
 				8B4E16A010DB08CC005D8BA9 /* Reachability.m */,
@@ -752,6 +815,7 @@
 				8BDC7EC410D99D3200A0F6AA /* calendarTab.png */,
 				8B53EDCE10DAC6FC0038B87B /* pastShowsTab.png */,
 				8B4E26E810DE8F0D005D8BA9 /* twitTab.png */,
+				8BC2ACA910FD636000AD381F /* KaTGTab.png */,
 			);
 			name = "Tab Images";
 			sourceTree = "<group>";
@@ -856,6 +920,35 @@
 			name = "Past Show Pics";
 			sourceTree = "<group>";
 		};
+		8BF1AA8A11078241009A4F01 /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				8BF1AA8B1107824C009A4F01 /* Compass.png */,
+				8BF1AA8E110782DF009A4F01 /* Twitter.png */,
+			);
+			name = Twitter;
+			sourceTree = "<group>";
+		};
+		8BF1AAFE11079BAD009A4F01 /* Links */ = {
+			isa = PBXGroup;
+			children = (
+				8BF1AB0111079BEB009A4F01 /* LinkButton.png */,
+				8BF1AAFF11079BD2009A4F01 /* LinkBG.png */,
+			);
+			name = Links;
+			sourceTree = "<group>";
+		};
+		8BF1AB851107A515009A4F01 /* Links */ = {
+			isa = PBXGroup;
+			children = (
+				8BF1AB871107A68A009A4F01 /* LinksDataModel.h */,
+				8BF1AB881107A68A009A4F01 /* LinksDataModel.m */,
+				8BF1AB8B1107A791009A4F01 /* LinksDataModel+PrivateMethods.h */,
+				8BF1AB8C1107A791009A4F01 /* LinksDataModel+PrivateMethods.m */,
+			);
+			name = Links;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -950,6 +1043,14 @@
 				8B8ABC9F10F2BF8900E51DFF /* GreenBox.png in Resources */,
 				8B8AC2EC10F4588400E51DFF /* HiResImageView.xib in Resources */,
 				8B6A804310FC1E3300258594 /* TwitterTableView.xib in Resources */,
+				8BC2ACAA10FD636000AD381F /* KaTGTab.png in Resources */,
+				8BF1A980110762E7009A4F01 /* RegexKitLiteLicense.rtf in Resources */,
+				8BF1AA6811077E1C009A4F01 /* InterTableView.xib in Resources */,
+				8BF1AA8C1107824C009A4F01 /* Compass.png in Resources */,
+				8BF1AA8F110782DF009A4F01 /* Twitter.png in Resources */,
+				8BF1AAC411079369009A4F01 /* TwitterSingleTableView.xib in Resources */,
+				8BF1AB0011079BD2009A4F01 /* LinkBG.png in Resources */,
+				8BF1AB0211079BEB009A4F01 /* LinkButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1020,6 +1121,15 @@
 				8B6A80BB10FC234600258594 /* CXMLNode_XPathExtensions.m in Sources */,
 				8B6A80BC10FC234600258594 /* CXMLNode.m in Sources */,
 				8B6A80BD10FC234600258594 /* CTidy.m in Sources */,
+				8BF1A97F110762E7009A4F01 /* RegexKitLite.m in Sources */,
+				8BF1A98D110763A0009A4F01 /* ExtractURL.m in Sources */,
+				8BF1AA6711077E1C009A4F01 /* InterTableViewController.m in Sources */,
+				8BF1AAA8110789F3009A4F01 /* TwitterSingleDataModel.m in Sources */,
+				8BF1AAB511078F26009A4F01 /* TwitterSingleDataModel+PrivateMethods.m in Sources */,
+				8BF1AAC311079369009A4F01 /* TwitterSingleTableViewController.m in Sources */,
+				8BF1AB1C11079E7A009A4F01 /* LinksTableCellView.m in Sources */,
+				8BF1AB891107A68A009A4F01 /* LinksDataModel.m in Sources */,
+				8BF1AB8D1107A791009A4F01 /* LinksDataModel+PrivateMethods.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1093,7 +1203,10 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
-				OTHER_LDFLAGS = "-lxml2";
+				OTHER_LDFLAGS = (
+					"-licucore",
+					"-lxml2",
+				);
 				PREBINDING = NO;
 				PROVISIONING_PROFILE = "56500AAA-0BB5-4ADE-AF54-24B9DEB97520";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "56500AAA-0BB5-4ADE-AF54-24B9DEB97520";
@@ -1117,16 +1230,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Russell (U77D7975SM)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Russell (U77D7975SM)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
-				OTHER_LDFLAGS = "-lxml2";
+				OTHER_LDFLAGS = (
+					"-licucore",
+					"-lxml2",
+				);
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "4F0B0D22-A371-463D-B04E-02AB04CA3201";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4F0B0D22-A371-463D-B04E-02AB04CA3201";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "26BFF8BD-137F-4116-AE88-F3C2426D727F";
 				SDKROOT = iphoneos3.1;
 			};
 			name = Debug;

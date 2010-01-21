@@ -21,6 +21,7 @@
 @class Reachability;
 @interface PastShowsTableViewController : UITableViewController <PastShowsDataModelDelegate> {
 	id                     delegate;
+	UIActivityIndicatorView *activityIndicator;
 	NSArray		           *list;
 	NSMutableArray		   *filteredList;
 	NSNumber               *shouldStream;
@@ -29,6 +30,7 @@
 }
 
 @property (nonatomic, assign) id             delegate;
+@property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, retain) NSArray        *list;
 @property (nonatomic, retain) NSMutableArray *filteredList;
 

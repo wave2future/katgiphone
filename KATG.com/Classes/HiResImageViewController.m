@@ -64,6 +64,8 @@
 		CGPathRelease(path);
 		
 		[[activityIndicator layer] insertSublayer:shapeLayer atIndex:0];
+		
+		[activityIndicator startAnimating];
     }
     return self;
 }
@@ -91,6 +93,7 @@
 	float minimumScale = [imageScrollView frame].size.width  / [imageView frame].size.width;
 	[imageScrollView setMinimumZoomScale:minimumScale];
 	[imageScrollView setZoomScale:minimumScale];
+	[activityIndicator stopAnimating];
 }
 
 - (void)didReceiveMemoryWarning 

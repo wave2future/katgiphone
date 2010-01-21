@@ -71,7 +71,10 @@
 }
 // This needs some attention, seems awkward
 - (void)sendProviderDeviceToken:(NSString *)token 
-{		
+{
+//	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"token" message:token delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+//	[alertView show];
+//	[alertView release];
 	NSString *myRequestString = @"http://app.keithandthegirl.com/app/tokenserver/tokenserver.php?dev=";
 	token = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)token, NULL, NULL, kCFStringEncodingUTF8);
 	myRequestString = [myRequestString stringByAppendingString:token];

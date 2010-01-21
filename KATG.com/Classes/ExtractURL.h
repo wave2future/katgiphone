@@ -1,5 +1,5 @@
 //
-//  LinksViewController.h
+//  ExtractURL.h
 //  KATG.com
 //
 //  Copyright 2009 Doug Russell
@@ -16,21 +16,10 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import "LinksDataModel.h"
+#import <Foundation/Foundation.h>
 
-@interface LinksViewController : UIViewController <LinksModelDelegate, UITableViewDelegate> {
-	id delegate;
-	NSNumber *shouldStream;
-	
-	UIButton *infoButton;
-	UITableView *tblView;
-	NSArray *list;
+@interface ExtractURL : NSObject {
+
 }
-
-@property (nonatomic, retain) id delegate;
-@property (nonatomic, retain) IBOutlet UIButton *infoButton;
-@property (nonatomic, retain) IBOutlet UITableView *tblView;
-
-- (IBAction)infoSheet;
 
 @end

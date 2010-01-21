@@ -39,6 +39,7 @@
 	NSOperationQueue *_eventQueue;
 	BOOL             _pollOnConnection;
 	NSAutoreleasePool *_pollingPool;
+	BOOL             _polling;
 }
 
 @property (nonatomic, assign)   id<EventsDataModelDelegate> delegate;

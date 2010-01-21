@@ -20,15 +20,19 @@
 @private
 	UIWebView *webView;
 	UIToolbar *toolbar;
+	UIBarButtonItem *doneButton;
 	UIActivityIndicatorView *activityIndicator;
+	BOOL disableDone;
 @public
 	NSURLRequest *urlRequest;
 }
 
 @property(nonatomic, retain)IBOutlet UIWebView *webView;
 @property(nonatomic, retain)IBOutlet UIToolbar *toolbar;
+@property(nonatomic, retain)IBOutlet UIBarButtonItem *doneButton;
 @property(nonatomic, retain)IBOutlet UIActivityIndicatorView *activityIndicator;
 @property(nonatomic, retain)         NSURLRequest *urlRequest;
+@property(nonatomic, assign)         BOOL disableDone;
 
 - (IBAction)dismissModalViewController:(id)sender;
 - (IBAction)openInSafari:(id)sender;

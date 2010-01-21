@@ -1,5 +1,5 @@
 //
-//  LinksViewController.h
+//  LinksTableCellView.h
 //  KATG.com
 //
 //  Copyright 2009 Doug Russell
@@ -16,21 +16,12 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import "LinksDataModel.h"
-
-@interface LinksViewController : UIViewController <LinksModelDelegate, UITableViewDelegate> {
-	id delegate;
-	NSNumber *shouldStream;
-	
-	UIButton *infoButton;
-	UITableView *tblView;
-	NSArray *list;
+@interface LinksTableCellView : UITableViewCell {
+	UILabel *lblTitle;
+	UIImageView *imgSquare;
 }
 
-@property (nonatomic, retain) id delegate;
-@property (nonatomic, retain) IBOutlet UIButton *infoButton;
-@property (nonatomic, retain) IBOutlet UITableView *tblView;
-
-- (IBAction)infoSheet;
+@property (nonatomic, retain) UILabel *lblTitle;
+@property (nonatomic, retain) UIImageView *imgSquare;
 
 @end

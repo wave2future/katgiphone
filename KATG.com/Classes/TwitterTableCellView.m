@@ -53,7 +53,6 @@
 		timeSinceLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 		[timeSinceLabel setFont:[UIFont systemFontOfSize:14]];
 		[timeSinceLabel setBackgroundColor:green];
-		[timeSinceLabel setText:@"14h"];
 		[timeSinceLabel setTextColor:[UIColor darkGrayColor]];
 		[timeSinceLabel setTextAlignment:UITextAlignmentRight];
 		[self addSubview:timeSinceLabel];
@@ -64,6 +63,7 @@
 		[tweetBodyLabel setNumberOfLines:3];
 		[tweetBodyLabel setBackgroundColor:green];
 		[tweetBodyLabel setTextColor:[UIColor blackColor]];
+		[tweetBodyLabel setBaselineAdjustment:UIBaselineAdjustmentNone];
 		[self addSubview:tweetBodyLabel];
 		[tweetBodyLabel release];
 		
@@ -109,7 +109,7 @@
 	
 	frame = CGRectMake(62, 24, 238, self.contentView.bounds.size.height - 36);
 	[tweetBodyLabel setFrame:frame];
-	[tweetBodyLabel setNumberOfLines:trunc((self.contentView.bounds.size.height)/10)];
+	[tweetBodyLabel setNumberOfLines:trunc((self.contentView.bounds.size.height)/18)];
 	
 	frame = iconRect;
 	[iconView setFrame:frame];

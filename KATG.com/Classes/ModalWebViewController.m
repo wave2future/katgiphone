@@ -22,12 +22,18 @@
 
 @synthesize webView;
 @synthesize toolbar;
+@synthesize doneButton;
 @synthesize activityIndicator;
 @synthesize urlRequest;
+@synthesize disableDone;
 
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
+	if (disableDone)
+	{
+		[doneButton setEnabled:NO];
+	}
 	[webView loadRequest:urlRequest];
 }
 
@@ -81,6 +87,7 @@
 	[webView release];
 	[urlRequest release];
 	[toolbar release];
+	[doneButton release];
 	[activityIndicator release];
     [super dealloc];
 }

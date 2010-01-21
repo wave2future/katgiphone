@@ -26,15 +26,17 @@
 @implementation PastShowsTableViewController
 
 @synthesize delegate;
+@synthesize activityIndicator;
 @synthesize list, filteredList;
 
 #pragma mark -
-#pragma mark Setup
+#pragma mark Setup/Cleanup
 #pragma mark -
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
 	[self.tableView setRowHeight:ROW_HEIGHT];
+	[self addActivityIndicator];
 	self.searchDisplayController.searchResultsTableView.rowHeight = ROW_HEIGHT;
 	userDefaults = [NSUserDefaults standardUserDefaults];
 	shouldStream = [delegate shouldStream];
@@ -48,9 +50,25 @@
 	list = [model shows];
 	filteredList = [[NSMutableArray alloc] initWithCapacity:1000];
 }
-#pragma mark -
-#pragma mark Cleanup
-#pragma mark -
+- (void)addActivityIndicator
+{
+	// Create a 'right hand button' that is a activity Indicator
+	CGRect frame = CGRectMake(0.0, 0.0, 25.0, 25.0);
+	self.activityIndicator = 
+	[[UIActivityIndicatorView alloc] initWithFrame:frame];
+	[self.activityIndicator sizeToFit];
+	self.activityIndicator.autoresizingMask =
+	(UIViewAutoresizingFlexibleLeftMargin |
+	 UIViewAutoresizingFlexibleRightMargin |
+	 UIViewAutoresizingFlexibleTopMargin |
+	 UIViewAutoresizingFlexibleBottomMargin);
+	UIBarButtonItem *loadingView = 
+	[[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
+	loadingView.target = self;
+	[[self navigationItem] setRightBarButtonItem:loadingView];
+	[activityIndicator release];
+	[self.activityIndicator startAnimating];
+}
 - (void)didReceiveMemoryWarning 
 {
     [super didReceiveMemoryWarning];
@@ -62,6 +80,7 @@
 {
 	delegate = nil;
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	[activityIndicator removeFromSuperview];
 	[list release];
 	[filteredList release];
     [super dealloc];
@@ -191,6 +210,7 @@
 	[list release];
 	list = shows;
 	[self reloadTableView];
+	[activityIndicator stopAnimating];
 }
 #define kAll 0
 #define kTitle 1

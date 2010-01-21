@@ -87,9 +87,13 @@
 	}
 	if ([shouldStream intValue] != 0) 
 	{
-		[NSThread detachNewThreadSelector:@selector(_pollEventsFeed) 
-								 toTarget:self 
-							   withObject:nil];
+		if (!_polling && !_pollOnConnection) 
+		{
+			[NSThread detachNewThreadSelector:@selector(_pollEventsFeed) 
+									 toTarget:self 
+								   withObject:nil];
+		}
+		_polling = YES;
 	} 
 	else 
 	{
@@ -104,7 +108,7 @@
 	if (!evnts) {
 		evnts = [self _getEvents];
 	}
-	return [evnts retain];
+	return evnts;
 }
 - (NSDictionary *)_loadingDictionary 
 {

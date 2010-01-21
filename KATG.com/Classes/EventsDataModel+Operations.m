@@ -78,6 +78,7 @@
 			 postNotificationName:EventsModelDidChange 
 			 object:_events];
 		}
+		[self writeEventsToDisk];
 	} 
 	else 
 	{
@@ -85,6 +86,21 @@
 							   withObject:event 
 							waitUntilDone:NO];
 	}
+}
+- (void)writeEventsToDisk
+{
+	if ([NSThread isMainThread])
+	{
+		NSString *path = [_dataPath stringByAppendingPathComponent:kEventsPlist];
+		[_events writeToFile:path atomically:YES];
+	}
+	else 
+	{
+		[self performSelectorOnMainThread:@selector(writeEventsToDisk) 
+							   withObject:nil 
+							waitUntilDone:NO];
+	}
+
 }
 
 @end
