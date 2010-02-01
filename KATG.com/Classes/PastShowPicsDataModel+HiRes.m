@@ -21,7 +21,7 @@
 
 @implementation PastShowPicsDataModel (HiRes)
 
-- (UIImage *)_getPic:(NSURL *)URL
+- (UIImage *)_getPic:(NSURL *)URL local:(BOOL *)fromDisk
 {
 	NSString *path = 
 	[_dataPath stringByAppendingPathComponent:[[URL description] lastPathComponent]];
@@ -29,8 +29,13 @@
 	if (imageData)
 	{
 		UIImage *image = [UIImage imageWithData:imageData];
-		if (image) return image;
+		if (image) 
+		{
+			*fromDisk = YES;
+			return image;
+		}
 	}
+	*fromDisk = NO;
 	[NSThread detachNewThreadSelector:@selector(_pollingPictureThread:) 
 							 toTarget:self 
 						   withObject:URL];

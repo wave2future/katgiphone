@@ -20,7 +20,7 @@
 
 @interface PastShowPicsDataModel (HiRes)
 
-- (UIImage *)_getPic:(NSURL *)URL;
+- (UIImage *)_getPic:(NSURL *)URL local:(BOOL *)fromDisk;
 - (void)_pollingPictureThread:(NSURL *)url;
 - (void)_processImageData:(NSData *)imageData;
 - (void)_writePicToFile:(NSData *)imageData name:(NSString *)name;

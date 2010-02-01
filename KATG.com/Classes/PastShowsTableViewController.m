@@ -149,21 +149,50 @@
 	
 	if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
-        [[cell showTitleLabel] setText:[[filteredList objectAtIndex:indexPath.row] objectForKey:@"Show"]];
-		[[cell showGuestsLabel] setText:[[filteredList objectAtIndex:indexPath.row] objectForKey:@"Guests"]];
+        NSString *titleString = [[filteredList objectAtIndex:indexPath.row] objectForKey:@"Show"];
+		if (titleString)
+		{
+			CGSize size =
+			[titleString sizeWithFont:[UIFont systemFontOfSize:17] 
+					constrainedToSize:CGSizeMake(cell.showTitleLabel.frame.size.width, 60)];
+			if (size.height > 36)
+			{
+				cell.showTitleLabel.font = [UIFont systemFontOfSize:14];
+				cell.showTitleLabel.numberOfLines = 3;
+			}
+			[[cell showTitleLabel] setText:titleString];
+		}
+		NSString *guestsString = [[filteredList objectAtIndex:indexPath.row] objectForKey:@"Guests"];
+		if (guestsString) [[cell showGuestsLabel] setText:guestsString];
 		
+		// This is some display nonsense that needs to be removed
+		// and replaced with real logic
 		if ([[[filteredList objectAtIndex:indexPath.row] objectForKey:@"Number"] intValue] < 30) {
 			[[cell showTypeImageView] setImage:[UIImage imageNamed:@"katgtv.png"]];
 		} else {
 			[[cell showTypeImageView] setImage:[UIImage imageNamed:@"LiveShowIconTrans.png"]];
 		}
+		
 		[[cell showNotesImageView] setImage:[UIImage imageNamed:@"notes.png"]];
 		[[cell showPicsImageView] setImage:[UIImage imageNamed:@"pics.png"]];
     }
 	else
 	{
-        [[cell showTitleLabel] setText:[[list objectAtIndex:indexPath.row] objectForKey:@"Show"]];
-		[[cell showGuestsLabel] setText:[[list objectAtIndex:indexPath.row] objectForKey:@"Guests"]];
+		NSString *titleString = [[list objectAtIndex:indexPath.row] objectForKey:@"Show"];
+		if (titleString)
+		{
+			CGSize size =
+			[titleString sizeWithFont:[UIFont systemFontOfSize:17] 
+					constrainedToSize:CGSizeMake(cell.showTitleLabel.frame.size.width, 60)];
+			if (size.height > 36)
+			{
+				cell.showTitleLabel.font = [UIFont systemFontOfSize:14];
+				cell.showTitleLabel.numberOfLines = 3;
+			}
+			[[cell showTitleLabel] setText:titleString];
+		}
+		NSString *guestsString = [[list objectAtIndex:indexPath.row] objectForKey:@"Guests"];
+		if (guestsString) [[cell showGuestsLabel] setText:guestsString];
 		
 		if ([[[list objectAtIndex:indexPath.row] objectForKey:@"Number"] intValue] < 30) {
 			[[cell showTypeImageView] setImage:[UIImage imageNamed:@"katgtv.png"]];

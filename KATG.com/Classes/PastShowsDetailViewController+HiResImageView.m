@@ -25,11 +25,13 @@
 
 - (void)presentHiResImageView:(NSURL *)URL
 {
-	UIImage *image = [picsModel pic:URL];
+	BOOL fromDisk = NO;
+	UIImage *image = [picsModel pic:URL local:&fromDisk];
 	HiResImageViewController *viewController = 
 	[[HiResImageViewController alloc] initWithNibName:@"HiResImageView" 
 											   bundle:nil 
 												image:image];
+	[viewController setFromDisk:fromDisk];
 	[self setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
 	[self presentModalViewController:viewController animated:YES];
 	[viewController release];

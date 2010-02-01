@@ -20,4 +20,7 @@
 
 @interface PastShowsDetailViewController (HiResImageView)
 
+- (void)presentHiResImageView:(NSURL *)URL;
+- (void)pastShowPicDataModelDidChange:(UIImage *)pic;
+
 @end

@@ -14,7 +14,7 @@
 
 @implementation HiResImageViewController
 
-@synthesize toolBar, doneButton, imageScrollView, imageView, image, saveButton;
+@synthesize toolBar, doneButton, imageScrollView, imageView, image, saveButton, fromDisk;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -64,9 +64,7 @@
 		CGPathRelease(path);
 		
 		[[activityIndicator layer] insertSublayer:shapeLayer atIndex:0];
-		
-		[activityIndicator startAnimating];
-    }
+	}
     return self;
 }
 
@@ -79,6 +77,10 @@
 - (void)viewDidLoad 
 {
     [super viewDidLoad];
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+	if (!fromDisk) [activityIndicator startAnimating];
 }
 
 - (void)updateImage:(UIImage *)img

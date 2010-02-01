@@ -34,9 +34,12 @@
 {
 	return [self _getPics:ID];
 }
-- (UIImage *)pic:(NSURL *)URL // Returned image will have a retain count of 0
+- (UIImage *)pic:(NSURL *)URL local:(BOOL *)fromDisk // Returned image will have a retain count of 0
 {
-	return [self _getPic:URL];
+	BOOL local = NO;
+	UIImage *image =  [self _getPic:URL local:&local];
+	*fromDisk = local;
+	return image;
 }
 - (void)cancel
 {

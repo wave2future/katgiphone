@@ -20,6 +20,8 @@
 	UIScrollView *imageScrollView;
 	TapDetectingImageView *imageView;
 	UIImage *image;
+	
+	BOOL fromDisk;
 }
 
 @property(nonatomic, retain) IBOutlet UIToolbar *toolBar;
@@ -28,6 +30,7 @@
 @property(nonatomic, retain) UIScrollView *imageScrollView;
 @property(nonatomic, retain) TapDetectingImageView *imageView;
 @property(nonatomic, retain) UIImage *image;
+@property(nonatomic, readwrite) BOOL fromDisk;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil image:(UIImage *)anImage;
 - (void)updateImage:(UIImage *)img;

@@ -39,11 +39,10 @@
 	[view setBackgroundColor:[UIColor clearColor]];
 	
 	// Create centered label with 80% width of the view rectangle
-	rect = CGRectMake(trunc(0.1*w), 0, trunc(0.8*w), trunc(0.1*h));
+	rect = CGRectMake(trunc(0.1*w), 0, trunc(0.8*w), trunc(0.2*h));
 	titleLabel = [[UILabel alloc] initWithFrame:rect];
 	[titleLabel setFont:[UIFont systemFontOfSize:14]];
-	[titleLabel setMinimumFontSize:8];
-	[titleLabel setAdjustsFontSizeToFitWidth:YES];
+	[titleLabel setNumberOfLines:1];
 	[titleLabel setTextAlignment:UITextAlignmentCenter];
 	[titleLabel setBackgroundColor:[UIColor clearColor]];
 	[view addSubview:titleLabel];

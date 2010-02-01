@@ -82,7 +82,7 @@
 // After initially returning, image data is obtained and shared via delegate 
 // methods (this process is in a state of change and will be better documented 
 // once it is nearer to complete)
-- (UIImage *)pic:(NSURL *)URL;
+- (UIImage *)pic:(NSURL *)URL local:(BOOL *)fromDisk;
 // Cancels any running processes so model can be dismissed
 - (void)cancel;
 

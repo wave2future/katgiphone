@@ -63,8 +63,23 @@
 {
 	if (!picDataArray && [picDataArray count] > page) return nil;
 	
-	NSString *title = [[picDataArray objectAtIndex:page] objectForKey:@"Title"];
-	if (title) [controller.titleLabel setText:title];
+	NSString *titleString = [[picDataArray objectAtIndex:page] objectForKey:@"Title"];
+	if (titleString)
+	{
+		CGSize size = 
+		[titleString sizeWithFont:[UIFont systemFontOfSize:14] 
+				constrainedToSize:CGSizeMake(controller.titleLabel.frame.size.width, 100)];
+		if (size.height > 17)
+		{
+			controller.titleLabel.numberOfLines = 2;
+			CGRect frame = controller.imageView.frame;
+			controller.imageView.frame = CGRectMake(frame.origin.x, 
+													frame.origin.y + 17, 
+													frame.size.width, 
+													frame.size.height - 17);
+		}
+		[controller.titleLabel setText:titleString];
+	}
 	
 	NSData *imageData = [[picDataArray objectAtIndex:page] objectForKey:@"Data"];
 	UIImage *imageLo = [UIImage imageWithData:imageData];
