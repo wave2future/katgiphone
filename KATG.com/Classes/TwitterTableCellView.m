@@ -24,7 +24,7 @@
 
 @implementation TwitterTableCellView
 
-@synthesize tweetNameLabel, timeSinceLabel, tweetBodyLabel, iconView;
+@synthesize tweetNameLabel, timeSinceLabel, tweetBodyLabel, iconView, accesoryButton;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier 
 {
@@ -67,8 +67,8 @@
 		[self addSubview:tweetBodyLabel];
 		[tweetBodyLabel release];
 		
-		iconView = [[UIImageView alloc] initWithFrame:CGRectZero];
-		[iconView setContentMode:UIViewContentModeScaleAspectFit];
+		iconView = [[UIButton alloc] initWithFrame:CGRectZero];
+		[iconView.imageView setContentMode:UIViewContentModeScaleAspectFit];
 		[self addSubview:iconView];
 		[iconView release];
 		
@@ -88,6 +88,14 @@
 		[strokeLayer setPath:path];
 		CGPathRelease(path);
 		[[iconView layer] addSublayer:strokeLayer];
+		
+		UIImage *image = [UIImage imageNamed:@"Arrow.png"];
+		CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
+		accesoryButton = [[UIButton alloc] initWithFrame:rect];
+		[accesoryButton setImage:image forState:UIControlStateNormal];
+		[self setAccessoryView:accesoryButton];
+		[[self accessoryView] setHidden:YES];
+		[accesoryButton release];
     }
     return self;
 }
@@ -127,6 +135,7 @@
 	[timeSinceLabel removeFromSuperview];
 	[tweetBodyLabel removeFromSuperview];
 	[iconView removeFromSuperview];
+	[accesoryButton removeFromSuperview];
     [super dealloc];
 }
 

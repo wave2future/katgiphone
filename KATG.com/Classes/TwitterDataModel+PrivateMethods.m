@@ -21,9 +21,6 @@
 #define kTwitterPlist @"twitter.plist"
 #define kOtherTwitterPlist @"otherTwitter.plist"
 
-//NSString *searchString = @"http://search.twitter.com/search.json?q=from%3Akeithandthegirl+OR+from%3AKeithMalley";
-//searchString = [searchString stringByAppendingString: @"+OR+from%3AKaTGShowAlert+OR+%3Akeithmalley+OR+keithandthegirl+OR+katg+OR+%22keith+and+the+girl%22"];
-
 #import "TwitterDataModel+PrivateMethods.h"
 #import "TouchXML.h"
 #import "Reachability.h"
@@ -52,7 +49,7 @@
 		[_otherFormatter setDateStyle: NSDateFormatterLongStyle];
 		[_otherFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
 		[_otherFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-		[_otherFormatter setDateFormat: @"yyyy-mm-dd HH:mm:ss "];
+		[_otherFormatter setDateFormat: @"yyyy-MM-dd HH:mm:ss "];
 		// Path for documents directory
 		_dataPath =
 		[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 
@@ -136,7 +133,7 @@
 			_tweets = (NSArray *)[tweets copy];
 			[[self delegate] tweetsDidChange:_tweets];
 			[self _writeToFile:(NSArray *)[tweets copy] withPath:kTwitterPlist];
-		}	
+		}
 		[tweets release];
 		[self _stopTweetsThread];
 	}

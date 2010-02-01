@@ -22,12 +22,14 @@
 	UILabel *tweetNameLabel;
 	UILabel *timeSinceLabel;
 	UILabel *tweetBodyLabel;
-	UIImageView *iconView;
+	UIButton *iconView;
+	UIButton *accesoryButton;
 }
 
 @property (nonatomic, retain) UILabel *tweetNameLabel;
 @property (nonatomic, retain) UILabel *timeSinceLabel;
 @property (nonatomic, retain) UILabel *tweetBodyLabel;
-@property (nonatomic, retain) UIImageView *iconView;
+@property (nonatomic, retain) UIButton *iconView;
+@property (nonatomic, retain) UIButton *accesoryButton;
 
 @end

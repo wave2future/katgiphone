@@ -116,7 +116,7 @@
 	if (url) 
 	{
 		UIImage *icon = [model image:url forIndexPath:indexPath];
-		if (icon) [[cell iconView] setImage:icon];
+		if (icon) [[cell iconView] setBackgroundImage:icon forState:UIControlStateNormal];
 	}
 	NSDate *created = [[tweetList objectAtIndex:indexPath.row] objectForKey:@"CreatedAt"];
 	if (created)
@@ -208,7 +208,7 @@
 		{
 			// Setting the image here may be duplicating effort
 			// from the cellForRowIndexPath method
-			cell.iconView.image = image;
+			[cell.iconView setBackgroundImage:image forState:UIControlStateNormal];
 			[cell setNeedsLayout];
 		}
 	}

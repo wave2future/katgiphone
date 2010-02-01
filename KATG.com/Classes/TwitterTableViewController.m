@@ -88,6 +88,7 @@
 #import "ModalWebViewController.h"
 #import "InterTableViewController.h"
 #import "TwitterSingleTableViewController.h"
+#import "ImageAdditions.h"
 
 @implementation TwitterTableViewController
 
@@ -100,6 +101,8 @@
 {
     [super viewDidLoad];
 	[self.tableView setRowHeight:kRowHeight];
+	self.tableView.userInteractionEnabled = YES;
+	self.tableView.multipleTouchEnabled = YES;
 	shouldStream = [delegate shouldStream];
 	[self notification];
 	[self setupModel];
@@ -202,20 +205,13 @@
 	if (text) 
 	{
 		[[cell tweetBodyLabel] setText:text];
-		/*if ([text rangeOfString:@"http://moby.to/nupydd"].location != NSNotFound)
-		{
-			CGRect frame = FindInTweet(text, @"http://moby.to/nupydd");
-			UIView *aView = [[UIView alloc] initWithFrame:frame];
-			[aView setBackgroundColor:[UIColor blueColor]];
-			[[cell tweetBodyLabel] addSubview:aView];
-			[aView release];
-		}*/
 	}
 	NSURL *url = [NSURL URLWithString:[[tweetList objectAtIndex:indexPath.row] objectForKey:@"IconURL"]];
 	if (url) 
 	{
 		UIImage *icon = [model image:url forIndexPath:indexPath];
-		if (icon) [[cell iconView] setImage:icon];
+		if (icon) [[cell iconView] setBackgroundImage:icon forState:UIControlStateNormal];
+		[cell.iconView addTarget:self action:@selector(iconViewTapped:event:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	NSDate *created = [[tweetList objectAtIndex:indexPath.row] objectForKey:@"CreatedAt"];
 	if (created)
@@ -236,7 +232,8 @@
 	}
 	if (links > 0)
 	{
-		[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+		[[cell accessoryView] setHidden:NO];
+		[cell.accesoryButton addTarget:self action:@selector(accessoryButtonTapped:event:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	return cell;
 }
@@ -267,6 +264,48 @@
 	return since;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+	
+}
+- (void)iconViewTapped:(id)sender event:(id)event
+{
+	NSSet *touches = [event allTouches];
+	UITouch *touch = [touches anyObject];
+	CGPoint currentTouchPosition = [touch locationInView:self.tableView];
+	NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:currentTouchPosition];
+	if (indexPath != nil)
+	{
+		NSString *name = [[tweetList objectAtIndex:indexPath.row] objectForKey:@"Name"];
+		NSArray *splitArray = [name componentsSeparatedByString:@" "]; 
+		if ([splitArray count] > 0) 
+		{
+			NSString *user = [splitArray objectAtIndex:0];
+			if (user)
+			{
+				TwitterSingleTableViewController *viewController = 
+				[[TwitterSingleTableViewController alloc] initWithNibName:@"TwitterSingleTableView" 
+																   bundle:nil];
+				[viewController setShouldStream:shouldStream];
+				[viewController setUser:user];
+				[[self navigationController] pushViewController:viewController 
+													   animated:YES];
+				[viewController release];
+			}
+		}
+	}
+}
+- (void)accessoryButtonTapped:(id)sender event:(id)event
+{
+	NSSet *touches = [event allTouches];
+	UITouch *touch = [touches anyObject];
+	CGPoint currentTouchPosition = [touch locationInView:self.tableView];
+	NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:currentTouchPosition];
+	if (indexPath != nil)
+	{
+		[self tableView:self.tableView accessoryButtonTappedForRowWithIndexPath:indexPath];
+	}
+}
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
 	NSArray *urls = [[tweetList objectAtIndex:indexPath.row] objectForKey:@"urls"];
 	NSArray *twts = [[tweetList objectAtIndex:indexPath.row] objectForKey:@"twts"];
@@ -304,7 +343,7 @@
 		[[self navigationController] pushViewController:viewController 
 											   animated:YES];
 		[viewController release];
-	}	
+	}
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath 
 {	
@@ -358,7 +397,7 @@
 		{
 			// Setting the image here may be duplicating effort
 			// from the cellForRowIndexPath method
-			cell.iconView.image = image;
+			[cell.iconView setBackgroundImage:image forState:UIControlStateNormal];;
 			[cell setNeedsLayout];
 		}
 	}
