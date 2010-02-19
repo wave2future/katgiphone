@@ -31,15 +31,9 @@
 #pragma mark -
 - (id)init 
 {
-    if (self = [super init]) {
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(_reachabilityChanged:) 
-													 name:kReachabilityChangedNotification 
-												   object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(_attemptRelease) 
-													 name:UIApplicationWillTerminateNotification 
-												   object:nil];
+    if (self = [super init]) 
+	{
+		[self _registerNotifications];
 		_dataPath =
 		[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 
 											  NSUserDomainMask, 
@@ -49,18 +43,33 @@
     }
     return self;
 }
--(void)_setupEventQueue 
+- (void)_registerNotifications
 {
+	// Respond to changes in reachability
+	[[NSNotificationCenter defaultCenter] 
+	 addObserver:self 
+	 selector:@selector(_reachabilityChanged:) 
+	 name:kReachabilityChangedNotification 
+	 object:nil];
+	// When app is closed attempt to release object
+	[[NSNotificationCenter defaultCenter] 
+	 addObserver:self 
+	 selector:@selector(_attemptRelease) 
+	 name:UIApplicationWillTerminateNotification 
+	 object:nil];
+}
+-(void)_setupEventQueue 
+{ // set up operations queue for processing events after parsing
 	_eventQueue = [[NSOperationQueue alloc] init];
 	[_eventQueue setMaxConcurrentOperationCount:[[NSProcessInfo processInfo] activeProcessorCount] + 1];
 	_eventsProxy = [[NSMutableArray alloc] init];
 }
 - (void)_attemptRelease 
-{
+{ // call super class (NSObject *) release because this is a singleton
 	[super release];
 }
 - (void)dealloc 
-{
+{ // Cleanup
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[_eventQueue cancelAllOperations];
 	[_eventQueue release]; _eventQueue = nil;
@@ -74,29 +83,34 @@
 #pragma mark Shows
 #pragma mark -
 - (NSArray *)_getEvents 
-{
+{ // load events array
+	// Try to load events array from disk
 	NSString *path = [_dataPath stringByAppendingPathComponent:kEventsPlist];
 	NSArray *evnts = [[NSArray alloc] initWithContentsOfFile:path];
+	// If events array fails to load from disc and a connection is available
 	if (!evnts && [shouldStream intValue] != 0 && shouldStream != nil) 
-	{
+	{ 	// set events to loading dictionary
 		evnts = [NSArray arrayWithObject:[self _loadingDictionary]];
-	} 
+	} // If events array fails to load from disc and a connection isn't available
 	else if (!evnts && ([shouldStream intValue] == 0 || shouldStream == nil)) 
-	{
+	{ // set events to no connection dictionary
 		evnts = [NSArray arrayWithObject:[self _noConnectionDictionary]];
 	}
+	// if a connection is available
 	if ([shouldStream intValue] != 0) 
-	{
+	{ // if not already polling or waiting for a connection
 		if (!_polling && !_pollOnConnection) 
-		{
+		{ // start thread to get events from server
 			[NSThread detachNewThreadSelector:@selector(_pollEventsFeed) 
 									 toTarget:self 
 								   withObject:nil];
 		}
+		// this should probably be in the braces with the thread,
+		// don't remember why it's heres
 		_polling = YES;
 	} 
 	else 
-	{
+	{ // if connection is not available
 		_pollOnConnection = YES;
 	}
 	return evnts;

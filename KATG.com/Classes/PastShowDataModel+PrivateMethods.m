@@ -28,10 +28,11 @@
 - (id)init 
 {
     if (self = [super init]) {
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(_reachabilityChanged:) 
-													 name:kReachabilityChangedNotification 
-												   object:nil];
+		[[NSNotificationCenter defaultCenter] 
+		 addObserver:self 
+		 selector:@selector(_reachabilityChanged:) 
+		 name:kReachabilityChangedNotification 
+		 object:nil];
 		_dataPath =
 		[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 
 											  NSUserDomainMask, 
@@ -76,7 +77,7 @@
 								  object:ID];
 		[_pollingThread start];
 	}
-	return [shw retain];
+	return shw;
 }
 - (NSDictionary *)_loadingDictionary 
 {
@@ -170,6 +171,7 @@
 		[_dataPath stringByAppendingPathComponent:
 		 [NSString stringWithFormat:kShowPlist, ID]];
 		[_show writeToFile:path atomically:YES];
+		[[self delegate] pastShowModelDidFinish];
 	} else {
 		[self performSelectorOnMainThread:@selector(_writeShowToFile:)
 							   withObject:ID 

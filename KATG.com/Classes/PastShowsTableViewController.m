@@ -47,7 +47,7 @@
 	model = [PastShowsDataModel sharedPastShowsDataModel];
 	[model setDelegate:self];
 	[model setShouldStream:shouldStream];
-	list = [model shows];
+	list = [[model shows] retain];
 	filteredList = [[NSMutableArray alloc] initWithCapacity:1000];
 }
 - (void)addActivityIndicator
@@ -67,18 +67,22 @@
 	loadingView.target = self;
 	[[self navigationItem] setRightBarButtonItem:loadingView];
 	[activityIndicator release];
+	[loadingView release];
 	[self.activityIndicator startAnimating];
 }
 - (void)didReceiveMemoryWarning 
 {
     [super didReceiveMemoryWarning];
-	[list release];
+	/*[list release];
 	list = [[NSArray alloc] init];
-	[self reloadTableView];
+	[self reloadTableView];*/
 }
 - (void)dealloc 
 {
 	delegate = nil;
+	[model setDelegate:nil];
+	[model release];
+	model = nil;
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[activityIndicator removeFromSuperview];
 	[list release];
@@ -149,63 +153,54 @@
 	
 	if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
-        NSString *titleString = [[filteredList objectAtIndex:indexPath.row] objectForKey:@"Show"];
-		if (titleString)
-		{
-			CGSize size =
-			[titleString sizeWithFont:[UIFont systemFontOfSize:17] 
-					constrainedToSize:CGSizeMake(cell.showTitleLabel.frame.size.width, 60)];
-			if (size.height > 36)
-			{
-				cell.showTitleLabel.font = [UIFont systemFontOfSize:14];
-				cell.showTitleLabel.numberOfLines = 3;
-			}
-			[[cell showTitleLabel] setText:titleString];
-		}
-		NSString *guestsString = [[filteredList objectAtIndex:indexPath.row] objectForKey:@"Guests"];
-		if (guestsString) [[cell showGuestsLabel] setText:guestsString];
-		
-		// This is some display nonsense that needs to be removed
-		// and replaced with real logic
-		if ([[[filteredList objectAtIndex:indexPath.row] objectForKey:@"Number"] intValue] < 30) {
-			[[cell showTypeImageView] setImage:[UIImage imageNamed:@"katgtv.png"]];
-		} else {
-			[[cell showTypeImageView] setImage:[UIImage imageNamed:@"LiveShowIconTrans.png"]];
-		}
-		
-		[[cell showNotesImageView] setImage:[UIImage imageNamed:@"notes.png"]];
-		[[cell showPicsImageView] setImage:[UIImage imageNamed:@"pics.png"]];
+        cell = [self decorateCell:cell withArray:filteredList withIndexPath:indexPath];
     }
 	else
 	{
-		NSString *titleString = [[list objectAtIndex:indexPath.row] objectForKey:@"Show"];
-		if (titleString)
-		{
-			CGSize size =
-			[titleString sizeWithFont:[UIFont systemFontOfSize:17] 
-					constrainedToSize:CGSizeMake(cell.showTitleLabel.frame.size.width, 60)];
-			if (size.height > 36)
-			{
-				cell.showTitleLabel.font = [UIFont systemFontOfSize:14];
-				cell.showTitleLabel.numberOfLines = 3;
-			}
-			[[cell showTitleLabel] setText:titleString];
-		}
-		NSString *guestsString = [[list objectAtIndex:indexPath.row] objectForKey:@"Guests"];
-		if (guestsString) [[cell showGuestsLabel] setText:guestsString];
-		
-		if ([[[list objectAtIndex:indexPath.row] objectForKey:@"Number"] intValue] < 30) {
-			[[cell showTypeImageView] setImage:[UIImage imageNamed:@"katgtv.png"]];
-		} else {
-			[[cell showTypeImageView] setImage:[UIImage imageNamed:@"LiveShowIconTrans.png"]];
-		}
-		[[cell showNotesImageView] setImage:[UIImage imageNamed:@"notes.png"]];
-		[[cell showPicsImageView] setImage:[UIImage imageNamed:@"pics.png"]];
+		cell = [self decorateCell:cell withArray:list withIndexPath:indexPath];
     }
+	
+    return cell;
+}
+- (PastShowsTableCellView *)decorateCell:(PastShowsTableCellView *)cell withArray:(NSArray *)aList withIndexPath:(NSIndexPath *)indexPath
+{
+	NSString *titleString = [[aList objectAtIndex:indexPath.row] objectForKey:@"Show"];
+	if (titleString)
+	{
+		CGSize size =
+		[titleString sizeWithFont:[UIFont systemFontOfSize:17] 
+				constrainedToSize:CGSizeMake(cell.showTitleLabel.frame.size.width, 60)];
+		if (size.height > 36)
+		{
+			cell.showTitleLabel.font = [UIFont systemFontOfSize:14];
+			cell.showTitleLabel.numberOfLines = 3;
+		}
+		[[cell showTitleLabel] setText:titleString];
+	}
+	NSString *guestsString = [[aList objectAtIndex:indexPath.row] objectForKey:@"Guests"];
+	if (guestsString) [[cell showGuestsLabel] setText:guestsString];
+	
+	// This is some display nonsense that needs to be removed
+	// and replaced with real logic
+	if ([[[aList objectAtIndex:indexPath.row] objectForKey:@"Type"] boolValue]) {
+		[[cell showTypeImageView] setImage:[UIImage imageNamed:@"katgtv.png"]];
+	} else {
+		[[cell showTypeImageView] setImage:[UIImage imageNamed:@"LiveShowIconTrans.png"]];
+	}
+	
+	if ([[[aList objectAtIndex:indexPath.row] objectForKey:@"hasNotes"] boolValue])
+	{
+		[[cell showNotesImageView] setImage:[UIImage imageNamed:@"notes.png"]];
+	}
+	
+	if ([[[aList objectAtIndex:indexPath.row] objectForKey:@"hasPics"] boolValue])
+	{
+		[[cell showPicsImageView] setImage:[UIImage imageNamed:@"pics.png"]];
+	}
 	
 	[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 	
-    return cell;
+	return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
@@ -237,9 +232,28 @@
 - (void)pastShowsDataModelDidChange:(NSArray *)shows 
 {
 	[list release];
-	list = shows;
+	list = [shows retain];
 	[self reloadTableView];
-	[activityIndicator stopAnimating];
+}
+- (void)pastShowsModelDidFinish
+{
+	[model setDelegate:nil];
+	[model release];
+	model = nil;
+	[self stopActivityIndicator];
+}
+- (void)stopActivityIndicator
+{
+	if ([NSThread isMainThread])
+	{
+		[activityIndicator stopAnimating];
+	}
+	else {
+		[self performSelectorOnMainThread:@selector(stopActivityIndicator) 
+							   withObject:nil 
+							waitUntilDone:NO];
+	}
+
 }
 #define kAll 0
 #define kTitle 1

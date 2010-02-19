@@ -68,6 +68,7 @@
 
 @protocol PastShowDataModelDelegate
 @optional
-- (void)pastShowDataModelWillChange:(NSDictionary *)show;
-- (void)pastShowDataModelDidChange:(NSDictionary *)show;
+- (void)pastShowDataModelWillChange:(NSDictionary *)aShow;
+- (void)pastShowDataModelDidChange:(NSDictionary *)aShow;
+- (void)pastShowModelDidFinish;
 @end

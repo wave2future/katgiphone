@@ -78,6 +78,7 @@ UIScrollViewDelegate, ImagePageDelegate>
 @property (nonatomic, retain) NSURL *movieURL;
 
 - (void)data;
+- (void)hidePlayButton;
 - (void)notifications;
 - (void)labels;
 - (void)pictures;

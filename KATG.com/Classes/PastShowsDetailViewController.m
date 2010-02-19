@@ -48,7 +48,7 @@
 	model = [PastShowDataModel model];
 	[model setDelegate:self];
 	[model setShouldStream:shouldStream];
-	NSDictionary *sh = [model show:ID];
+	NSDictionary *sh = [[model show:ID] retain];
 	
 	picsModel = [PastShowPicsDataModel model];
 	[picsModel setDelegate:self];
@@ -148,9 +148,12 @@
 	[movieURL release];
 	
 	[picsModel cancel];
-	[picsModel release];
+	[picsModel setDelegate:nil];
+	[picsModel release]; picsModel = nil;
+	
 	[model cancel];
-	[model release];
+	[model setDelegate:nil];
+	[model release]; model = nil;
 	
 	[segmentedControl release];
 	
@@ -169,23 +172,23 @@
 #pragma mark -
 #pragma mark Model Delegates
 #pragma mark -
-- (void)pastShowDataModelDidChange:(NSDictionary *)show 
+- (void)pastShowDataModelDidChange:(NSDictionary *)aShow 
 {
-	if (![NSThread isMainThread]) 
+	if ([NSThread isMainThread]) 
 	{
-		NSString *URL = [show objectForKey:@"FileUrl"];
+		NSString *URL = [aShow objectForKey:@"FileUrl"];
 		if (URL) movieURL = [[NSURL URLWithString:URL] retain];
 		if (!movieURL || [shouldStream intValue] < 2) 
 		{
 			[self hidePlayButton];
 		}
-		NSString *detail = [show objectForKey:@"Detail"];
+		NSString *detail = [aShow objectForKey:@"Detail"];
 		if (detail) [self setNoteViewText:detail];
 	} 
 	else 
 	{
 		[self performSelectorOnMainThread:@selector(pastShowDataModelDidChange:)
-							   withObject:[show copy] 
+							   withObject:aShow 
 							waitUntilDone:NO];
 	}
 }
@@ -199,6 +202,11 @@
 	{
 		[self performSelectorOnMainThread:@selector(setNoteViewText:) withObject:text waitUntilDone:NO];
 	}
+}
+- (void)pastShowModelDidFinish
+{
+	[model setDelegate:nil];
+	[model release]; model = nil;
 }
 - (void)pastShowPicsDataModelDidChange:(NSArray *)pics
 {

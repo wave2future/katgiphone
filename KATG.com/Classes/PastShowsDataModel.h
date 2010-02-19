@@ -23,13 +23,12 @@
 @interface PastShowsDataModel : NSObject {
 @public
 	id<PastShowsDataModelDelegate> delegate;
-	NSNumber       *shouldStream;
+	NSNumber          *shouldStream;
 @private
-	NSString       *_dataPath;
-	NSArray        *_shows;
-	NSMutableArray *_showsProxy;
-	NSUserDefaults *_userDefaults;
-	NSThread       *pollingThread;
+	NSString          *_dataPath;
+	NSArray           *_shows;
+	NSUserDefaults    *_userDefaults;
+	NSThread          *pollingThread;
 	NSAutoreleasePool *pollingPool;
 }
 
@@ -46,4 +45,5 @@
 @optional
 - (void)pastShowsDataModelWillChange:(NSArray *)shows;
 - (void)pastShowsDataModelDidChange:(NSArray *)shows;
+- (void)pastShowsModelDidFinish;
 @end

@@ -18,6 +18,7 @@
 
 #import "PastShowsDataModel.h"
 
+@class PastShowsTableCellView;
 @class Reachability;
 @interface PastShowsTableViewController : UITableViewController <PastShowsDataModelDelegate> {
 	id                     delegate;
@@ -34,8 +35,11 @@
 @property (nonatomic, retain) NSArray        *list;
 @property (nonatomic, retain) NSMutableArray *filteredList;
 
+- (void)addActivityIndicator;
 - (void)reloadTableView;
 - (void)_reachabilityChanged:(NSNotification* )note;
 - (void)_updateReachability:(Reachability*)curReach;
+- (PastShowsTableCellView *)decorateCell:(PastShowsTableCellView *)cell withArray:(NSArray *)aList withIndexPath:(NSIndexPath *)indexPath;
+- (void)stopActivityIndicator;
 
 @end

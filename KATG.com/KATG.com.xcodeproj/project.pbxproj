@@ -120,6 +120,8 @@
 		8BDC814B10D9CB3300A0F6AA /* ModalWebView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BDC814910D9CB3300A0F6AA /* ModalWebView.xib */; };
 		8BDC81F910D9DB1000A0F6AA /* BGEvent.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BDC81F810D9DB1000A0F6AA /* BGEvent.png */; };
 		8BDC81FF10D9DB5C00A0F6AA /* TextView.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BDC81FE10D9DB5C00A0F6AA /* TextView.png */; };
+		8BE784CB1120AEBC00778BD1 /* Base64Transcoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE784C81120AEBC00778BD1 /* Base64Transcoder.m */; };
+		8BE784CC1120AEBC00778BD1 /* NSData+Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BE784CA1120AEBC00778BD1 /* NSData+Base64Additions.m */; };
 		8BED700B10D9F952003B07F6 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BED700A10D9F952003B07F6 /* Entitlements.plist */; };
 		8BEF287410EA082D000DF638 /* PastShowPicsDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEF287310EA082D000DF638 /* PastShowPicsDataModel.m */; };
 		8BEF287F10EA0AE0000DF638 /* PastShowPicsDataModel+PrivateMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEF287E10EA0AE0000DF638 /* PastShowPicsDataModel+PrivateMethods.m */; };
@@ -142,6 +144,7 @@
 		8BF1AB1C11079E7A009A4F01 /* LinksTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF1AB1B11079E7A009A4F01 /* LinksTableCellView.m */; };
 		8BF1AB891107A68A009A4F01 /* LinksDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF1AB881107A68A009A4F01 /* LinksDataModel.m */; };
 		8BF1AB8D1107A791009A4F01 /* LinksDataModel+PrivateMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF1AB8C1107A791009A4F01 /* LinksDataModel+PrivateMethods.m */; };
+		8BF9B4841120B39C0007FD03 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF9B4831120B39C0007FD03 /* libFlurry.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -319,6 +322,10 @@
 		8BDC814910D9CB3300A0F6AA /* ModalWebView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalWebView.xib; sourceTree = "<group>"; };
 		8BDC81F810D9DB1000A0F6AA /* BGEvent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BGEvent.png; sourceTree = "<group>"; };
 		8BDC81FE10D9DB5C00A0F6AA /* TextView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TextView.png; sourceTree = "<group>"; };
+		8BE784C71120AEBC00778BD1 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
+		8BE784C81120AEBC00778BD1 /* Base64Transcoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Transcoder.m; sourceTree = "<group>"; };
+		8BE784C91120AEBC00778BD1 /* NSData+Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64Additions.h"; sourceTree = "<group>"; };
+		8BE784CA1120AEBC00778BD1 /* NSData+Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64Additions.m"; sourceTree = "<group>"; };
 		8BED700A10D9F952003B07F6 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		8BEF287210EA082D000DF638 /* PastShowPicsDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PastShowPicsDataModel.h; sourceTree = "<group>"; };
 		8BEF287310EA082D000DF638 /* PastShowPicsDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PastShowPicsDataModel.m; sourceTree = "<group>"; };
@@ -353,6 +360,8 @@
 		8BF1AB881107A68A009A4F01 /* LinksDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinksDataModel.m; sourceTree = "<group>"; };
 		8BF1AB8B1107A791009A4F01 /* LinksDataModel+PrivateMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LinksDataModel+PrivateMethods.h"; sourceTree = "<group>"; };
 		8BF1AB8C1107A791009A4F01 /* LinksDataModel+PrivateMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LinksDataModel+PrivateMethods.m"; sourceTree = "<group>"; };
+		8BF9B4821120B39C0007FD03 /* FlurryAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAPI.h; sourceTree = "<group>"; };
+		8BF9B4831120B39C0007FD03 /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* KATG_com-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "KATG_com-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -369,6 +378,7 @@
 				8BDC7E4010D8C06D00A0F6AA /* CFNetwork.framework in Frameworks */,
 				8BDC7E5D10D8C58E00A0F6AA /* MediaPlayer.framework in Frameworks */,
 				8B53EFF110DAF8850038B87B /* SystemConfiguration.framework in Frameworks */,
+				8BF9B4841120B39C0007FD03 /* libFlurry.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,12 +785,12 @@
 		8BB7FA3810D5C0EC00719438 /* Utility Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8BF1A97C110762E7009A4F01 /* RegexKitLite.h */,
-				8BF1A97D110762E7009A4F01 /* RegexKitLite.m */,
-				8BF1A97E110762E7009A4F01 /* RegexKitLiteLicense.rtf */,
+				8BF9B4811120B39C0007FD03 /* FlurryLib */,
+				8BF9B47A1120B25F0007FD03 /* regex */,
+				8BE784C61120AEBC00778BD1 /* base64 */,
+				8BB7FA3910D5C0FE00719438 /* Parser */,
 				8BF1A98B110763A0009A4F01 /* ExtractURL.h */,
 				8BF1A98C110763A0009A4F01 /* ExtractURL.m */,
-				8BB7FA3910D5C0FE00719438 /* Parser */,
 				8B4E169F10DB08CC005D8BA9 /* Reachability.h */,
 				8B4E16A010DB08CC005D8BA9 /* Reachability.m */,
 				8BBBC80210D8BB0900A780FC /* AudioStreamer.h */,
@@ -885,6 +895,17 @@
 			name = Documents;
 			sourceTree = "<group>";
 		};
+		8BE784C61120AEBC00778BD1 /* base64 */ = {
+			isa = PBXGroup;
+			children = (
+				8BE784C71120AEBC00778BD1 /* Base64Transcoder.h */,
+				8BE784C81120AEBC00778BD1 /* Base64Transcoder.m */,
+				8BE784C91120AEBC00778BD1 /* NSData+Base64Additions.h */,
+				8BE784CA1120AEBC00778BD1 /* NSData+Base64Additions.m */,
+			);
+			path = base64;
+			sourceTree = "<group>";
+		};
 		8BEF289910EB332E000DF638 /* Past Shows */ = {
 			isa = PBXGroup;
 			children = (
@@ -950,6 +971,25 @@
 				8BF1AB8C1107A791009A4F01 /* LinksDataModel+PrivateMethods.m */,
 			);
 			name = Links;
+			sourceTree = "<group>";
+		};
+		8BF9B47A1120B25F0007FD03 /* regex */ = {
+			isa = PBXGroup;
+			children = (
+				8BF1A97C110762E7009A4F01 /* RegexKitLite.h */,
+				8BF1A97D110762E7009A4F01 /* RegexKitLite.m */,
+				8BF1A97E110762E7009A4F01 /* RegexKitLiteLicense.rtf */,
+			);
+			name = regex;
+			sourceTree = "<group>";
+		};
+		8BF9B4811120B39C0007FD03 /* FlurryLib */ = {
+			isa = PBXGroup;
+			children = (
+				8BF9B4821120B39C0007FD03 /* FlurryAPI.h */,
+				8BF9B4831120B39C0007FD03 /* libFlurry.a */,
+			);
+			path = FlurryLib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1134,6 +1174,8 @@
 				8BF1AB1C11079E7A009A4F01 /* LinksTableCellView.m in Sources */,
 				8BF1AB891107A68A009A4F01 /* LinksDataModel.m in Sources */,
 				8BF1AB8D1107A791009A4F01 /* LinksDataModel+PrivateMethods.m in Sources */,
+				8BE784CB1120AEBC00778BD1 /* Base64Transcoder.m in Sources */,
+				8BE784CC1120AEBC00778BD1 /* NSData+Base64Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1150,6 +1192,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = KATG_com_Prefix.pch;
 				INFOPLIST_FILE = "KATG_com-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/FlurryLib\"",
+				);
 				PRODUCT_NAME = KATG.com;
 			};
 			name = Debug;
@@ -1162,6 +1208,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = KATG_com_Prefix.pch;
 				INFOPLIST_FILE = "KATG_com-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/FlurryLib\"",
+				);
 				PRODUCT_NAME = KATG.com;
 			};
 			name = Release;
@@ -1192,6 +1242,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = KATG_com_Prefix.pch;
 				INFOPLIST_FILE = "KATG_com-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/FlurryLib\"",
+				);
 				PRODUCT_NAME = KATG.com;
 			};
 			name = "Debug Simulator";
@@ -1226,6 +1280,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = KATG_com_Prefix.pch;
 				INFOPLIST_FILE = "KATG_com-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/FlurryLib\"",
+				);
 				PRODUCT_NAME = KATG.com;
 			};
 			name = Distribution;
@@ -1234,6 +1292,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Russell (U77D7975SM)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1244,7 +1303,7 @@
 					"-lxml2",
 				);
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "26BFF8BD-137F-4116-AE88-F3C2426D727F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "35C623BE-6490-4C08-B37F-F7DFF155299E";
 				SDKROOT = iphoneos3.1;
 			};
 			name = Debug;

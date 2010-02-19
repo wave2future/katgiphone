@@ -95,6 +95,7 @@
 		[accesoryButton setImage:image forState:UIControlStateNormal];
 		[self setAccessoryView:accesoryButton];
 		[[self accessoryView] setHidden:YES];
+		[(UIButton *)[self accessoryView] setEnabled:NO];
 		[accesoryButton release];
     }
     return self;

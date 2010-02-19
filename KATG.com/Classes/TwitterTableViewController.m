@@ -233,7 +233,13 @@
 	if (links > 0)
 	{
 		[[cell accessoryView] setHidden:NO];
+		[[cell accessoryView] setEnabled:YES];
 		[cell.accesoryButton addTarget:self action:@selector(accessoryButtonTapped:event:) forControlEvents:UIControlEventTouchUpInside];
+	}
+	else
+	{
+		[[cell accessoryView] setHidden:YES];
+		[[cell accessoryView] setEnabled:NO];
 	}
 	return cell;
 }

@@ -30,16 +30,16 @@
 	// 1 WWAN Connection, stream past shows over WWAN preference is set to NO
 	// 2 WWAN Connection, stream past shows over WWAN preference is set to YES
 	// 3 Wifi Connection
-	NSNumber         *shouldStream;
-	BOOL             notify;
+	NSNumber          *shouldStream;
+	BOOL              notify;
 @private
-	NSString         *_dataPath;
-	NSArray          *_events;
-	NSMutableArray   *_eventsProxy;
-	NSOperationQueue *_eventQueue;
-	BOOL             _pollOnConnection;
+	NSString          *_dataPath;
+	NSArray           *_events;
+	NSMutableArray    *_eventsProxy;
+	NSOperationQueue  *_eventQueue;
+	BOOL              _pollOnConnection;
 	NSAutoreleasePool *_pollingPool;
-	BOOL             _polling;
+	BOOL              _polling;
 }
 
 @property (nonatomic, assign)   id<EventsDataModelDelegate> delegate;

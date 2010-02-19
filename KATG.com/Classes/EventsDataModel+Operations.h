@@ -21,5 +21,6 @@
 @interface EventsDataModel (Operations)
 
 - (void)_addToEventsProxy:(NSDictionary *)event;
+- (void)writeEventsToDisk;
 
 @end

@@ -43,6 +43,6 @@
 - (void)checkReachability;
 // Respond to changes in reachability status
 - (void)updateReachability:(Reachability*)curReach;
-- (void)reachabilityChanged:(NSNotification* )note;
+- (void)reachabilityChanged:(NSNotification* )notification;
 
 @end

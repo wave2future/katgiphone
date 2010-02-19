@@ -47,10 +47,10 @@
 - (void)didReceiveMemoryWarning 
 {
     [super didReceiveMemoryWarning];
-	if (streamer)
+	/*if (streamer)
 	{
 		[streamer stop];
-	}
+	}*/
 }
 - (void)dealloc 
 {

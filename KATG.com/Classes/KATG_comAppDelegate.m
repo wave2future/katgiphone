@@ -18,6 +18,13 @@
 
 #import "KATG_comAppDelegate.h"
 #import "Reachability.h"
+#import "NSData+Base64Additions.h"
+#import "FlurryAPI.h"
+
+void uncaughtExceptionHandler(NSException *exception) 
+{
+    [FlurryAPI logError:@"Uncaught" message:@"Crash!" exception:exception];
+}
 
 @implementation KATG_comAppDelegate
 
@@ -30,6 +37,11 @@
 #pragma mark -
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {
+	// Sending uncaught exceptions to flurry
+	NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+	// Start flurry tracker
+	[FlurryAPI startSession:@"336AP3RPEPG53RGVUQMV"];
+	// add view
 	[window addSubview:tabBarController.view];
 	// Register for push notifications
 	[application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | 
@@ -38,48 +50,53 @@
 	// If app is launched from a notification, display that notification in an alertview
 	if ([launchOptions count] > 0) 
 	{
-		NSString *alertMessage = [[[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] 
-								   objectForKey:@"aps"] 
-								  objectForKey:@"alert"];
-		UIAlertView *alert = [[UIAlertView alloc] 
-							  initWithTitle:@"Notification"
-							  message:alertMessage 
-							  delegate:nil
-							  cancelButtonTitle:@"Continue" 
-							  otherButtonTitles:nil];
-		[alert show];
-		[alert release];
+		NSString *alertMessage = 
+		[[[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] 
+		  objectForKey:@"aps"] 
+		 objectForKey:@"alert"];
+		if (alertMessage)
+		{
+			UIAlertView *alert = [[UIAlertView alloc] 
+								  initWithTitle:@"Notification"
+								  message:alertMessage 
+								  delegate:nil
+								  cancelButtonTitle:@"Continue" 
+								  otherButtonTitles:nil];
+			[alert show];
+			[alert release];
+		}
 	}
 	// Register reachability object
 	[self checkReachability];
 	return YES;
 }
-// When application closes clear any badge icons
 - (void)applicationWillTerminate:(UIApplication *)application 
-{
+{ // When application closes clear any badge icons
 	application.applicationIconBadgeNumber = 0;
 }
 #pragma mark Push Notification
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken 
-{
+{ // pass device token to send method
+//	NSString *token = [[deviceToken encodeWebSafeBase64ForData] retain];
+//	NSLog(token);
+//	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"token" message:token delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+//	[alertView show];
+//	[alertView release];
 	NSString *token = [[NSString alloc] initWithFormat: @"%@", deviceToken];
 	[self sendProviderDeviceToken:token];
 }
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error 
-{	
-    //NSLog(@"Error in registration. Error: %@", error);
+{ // Log a failure to register for push
+	[FlurryAPI logError:@"failToRegisterPush" message:@"failToRegisterPush" exception:error];
 }
-// This needs some attention, seems awkward
 - (void)sendProviderDeviceToken:(NSString *)token 
-{
-//	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"token" message:token delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
-//	[alertView show];
-//	[alertView release];
-	NSString *myRequestString = @"http://app.keithandthegirl.com/app/tokenserver/tokenserver.php?dev=";
+{ // This needs some attention, seems awkward, should be threaded
+	NSString *myRequestString = 
+	@"http://app.keithandthegirl.com/app/tokenserver/tokenserver.php?dev=";
 	token = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)token, NULL, NULL, kCFStringEncodingUTF8);
 	myRequestString = [myRequestString stringByAppendingString:token];
-	NSURLRequest *request = [[ NSURLRequest alloc ] initWithURL: [ NSURL URLWithString: myRequestString ] ]; 
-	[NSURLConnection sendSynchronousRequest: request returningResponse: nil error: nil];
+	NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:myRequestString]]; 
+	[NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
 	[request autorelease];
 	[token release];
 }
@@ -90,18 +107,20 @@
 - (void)checkReachability 
 {
 	userDefaults = [NSUserDefaults standardUserDefaults];
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(reachabilityChanged:) 
-												 name:kReachabilityChangedNotification 
-											   object:nil];
-	hostReach = [[Reachability reachabilityWithHostName: @"www.keithandthegirl.com"] retain];
+	[[NSNotificationCenter defaultCenter] 
+	 addObserver:self 
+	 selector:@selector(reachabilityChanged:) 
+	 name:kReachabilityChangedNotification 
+	 object:nil];
+	hostReach = 
+	[[Reachability reachabilityWithHostName:@"www.keithandthegirl.com"] retain];
 	[hostReach startNotifer];
 }
 // Respond to changes in reachability
-- (void)reachabilityChanged:(NSNotification* )note
+- (void)reachabilityChanged:(NSNotification* )notification
 {
-	Reachability *curReach = [note object];
-	NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
+	Reachability *curReach = [notification object];
+	//NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
 	[self updateReachability:curReach];
 }
 // ShouldStream indicates connection status:
@@ -147,12 +166,12 @@
 		}
 	}
 }
-
 #pragma mark -
 #pragma mark Cleanup
 #pragma mark -
 - (void)dealloc 
 {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
     [tabBarController release];
     [window release];
 	[hostReach release];

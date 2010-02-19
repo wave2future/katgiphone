@@ -45,6 +45,8 @@
 	if (event) {
 		[self _addToEventsProxy:event];
 	}
+	NSInteger count = [[_eventQueue operations] count];
+	NSLog(@"%d", count);
 }
 
 - (void)_addToEventsProxy:(NSDictionary *)event 
@@ -66,7 +68,7 @@
 			 object:_events];
 		}
 		[_events release];
-		_events = (NSArray *)[_eventsProxy copy]; //release events first
+		_events = (NSArray *)[_eventsProxy copy];
 		
 		if ([(NSObject *)[self delegate] respondsToSelector:@selector(eventsDataModelDidChange:)]) 
 		{

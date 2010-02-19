@@ -14,9 +14,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#define kFeedAddress @"http://app.keithandthegirl.com/Api/Feed/Show-List-Everything-Compact/"
-#define kXPath @"//S"
-
 #import "PastShowsDataModel.h"
 
 @class Reachability;
@@ -33,7 +30,5 @@
 
 - (void)buildList:(NSMutableArray *)feedEntries;
 - (void)stopShowsThread;
-
-- (void)_attemptRelease;
 
 @end

@@ -62,13 +62,16 @@
 	if (indexPath.row < [urlList count]) 
 	{
 		[[cell tweetBodyLabel] setText:[urlList objectAtIndex:indexPath.row]];
-		[[cell iconView] setImage:UIImageForNameExtension(@"Compass", @"png")];
+		[[cell iconView] setImage:UIImageForNameExtension(@"Compass", @"png") forState:UIControlStateNormal];
 	} 
 	else if (indexPath.row >= [urlList count]) 
 	{
 		[[cell tweetBodyLabel] setText:[twtList objectAtIndex:indexPath.row - [urlList count]]];
-		[[cell iconView] setImage:UIImageForNameExtension(@"Twitter", @"png")];
+		[[cell iconView] setImage:UIImageForNameExtension(@"Twitter", @"png") forState:UIControlStateNormal];
 	}
+	
+	[[cell accessoryView] setHidden:NO];
+	//[(UIButton *)[cell accessoryView] setEnabled:YES];
 	
     return cell;
 }

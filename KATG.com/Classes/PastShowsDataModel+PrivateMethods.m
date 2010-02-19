@@ -14,6 +14,10 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+#define kFeedAddress @"http://app.keithandthegirl.com/Api/Feed/Show-List-Everything-Compact/"
+//#define kFeedAddress @"http://getitdownonpaper.com/KATG/ShortList"
+#define kXPath @"//S"
+
 #import "PastShowsDataModel+PrivateMethods.h"
 #import "Reachability.h"
 #import "GrabXMLFeed.h"
@@ -31,16 +35,11 @@
 												 selector:@selector(_reachabilityChanged:) 
 													 name:kReachabilityChangedNotification 
 												   object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(_attemptRelease) 
-													 name:UIApplicationWillTerminateNotification 
-												   object:nil];
 		_dataPath =
 		[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, 
 											  NSUserDomainMask, 
 											  YES) lastObject] retain];
 		_userDefaults = [NSUserDefaults standardUserDefaults];
-		_showsProxy = [[NSMutableArray alloc] init];
 		_shows = [[NSArray alloc] init];
     }
     return self;
@@ -51,10 +50,6 @@
 	[pollingThread cancel];
 	[pollingThread release]; pollingThread = nil;
 }
-- (void)_attemptRelease 
-{
-	[super release];
-}
 - (void)dealloc 
 {
 	delegate = nil;
@@ -62,7 +57,6 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[_dataPath release];
 	[_shows release];
-	[_showsProxy release];
 	[super dealloc];
 }
 #pragma mark -
@@ -118,7 +112,14 @@
 												  object:nil];
 		[pollingThread start];
 	}
-	return [shws retain];
+	else
+	{
+		if ([(NSObject *)[self delegate] respondsToSelector:@selector(pastShowsModelDidFinish)])
+		{
+			[[self delegate] pastShowsModelDidFinish];
+		}
+	}
+	return shws;
 }
 - (NSArray *)_getShowsFromDisk
 {
@@ -129,7 +130,7 @@
 	} else if (shws == nil && [shouldStream intValue] == 0) {
 		shws = [NSArray arrayWithObject:[self _noConnectionDictionary]];
 	}
-	return [shws retain];
+	return shws;
 }
 - (NSDictionary *)_loadingDictionary 
 {
@@ -186,39 +187,56 @@
 	[feedEntries release];
 	[parser release];
 	[self stopShowsThread];
+	if ([(NSObject *)[self delegate] respondsToSelector:@selector(pastShowsModelDidFinish)])
+	{
+		[[self delegate] pastShowsModelDidFinish];
+	}
 }
 - (void)buildList:(NSMutableArray *)feedEntries 
 {
-	if (_showsProxy.count != 0) {
-		[_showsProxy removeAllObjects];
-	}
+	NSMutableArray *_showsProxy = [NSMutableArray arrayWithCapacity:[feedEntries count]];
 	for (NSDictionary *feedEntry in feedEntries) {
 		NSString *showNumber = [feedEntry objectForKey: @"N"];
+		if (!showNumber) showNumber = @"";
 		NSString *showTitle  = [feedEntry objectForKey: @"T"];
+		if (!showTitle) showTitle = @"";
 		NSString *showGuests = [feedEntry objectForKey: @"G"];
-		if ([showGuests isEqualToString:@"NULL"]) { showGuests = @"No Guests"; }
-		NSString *showID	 = [feedEntry objectForKey: @"I"];
-		
+		if (!showGuests || [showGuests isEqualToString:@"NULL"]) showGuests = @"No Guests";
+		NSString *showID = [feedEntry objectForKey: @"I"];
+		if (!showID) showID = @"";
+		NSString *showType = [feedEntry objectForKey:@"TV"];
+		if (!showType) showType = @"0";
+		NSString *showNotes = [feedEntry objectForKey:@"SN"];
+		if (!showNotes) showNotes = @"0";
+		NSString *showPics = [feedEntry objectForKey:@"P"];
+		if (!showPics) showPics = @"0";
 		NSString *showNumberTitle = [NSString stringWithFormat:@"%@ - %@", showNumber, showTitle];
+		if (!showNumberTitle) showNumberTitle = @"";
 		
 		NSDictionary *show = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:
 																	showNumberTitle,
 																	showTitle,
 																	showNumber,
 																	showGuests,
-																	showID, nil]
+																	showID, 
+																	showType,
+																	showNotes, 
+																	showPics, nil]
 														   forKeys:[NSArray arrayWithObjects:
 																	@"Show",
 																	@"Title",
 																	@"Number",
 																	@"Guests",
-																	@"ID", nil]];
+																	@"ID", 
+																	@"Type",
+																	@"hasNotes", 
+																	@"hasPics", nil]];
 		[_showsProxy addObject:show];
 		[show release];
 	}
 	if ([_showsProxy count] > [_shows count]) {
 		[_shows release];
-		_shows = (NSArray *)[_showsProxy copy];
+		_shows = [[NSArray alloc] initWithArray:_showsProxy];
 		[[self delegate] pastShowsDataModelDidChange:_shows];	
 		[self performSelectorOnMainThread:@selector(writeShowsToFile) withObject:nil waitUntilDone:NO];
 		[_showsProxy removeAllObjects];

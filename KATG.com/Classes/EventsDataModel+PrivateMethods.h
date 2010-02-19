@@ -20,7 +20,8 @@
 
 @interface EventsDataModel (PrivateMethods)
 
--(void)_setupEventQueue;
+- (void)_registerNotifications;
+- (void)_setupEventQueue;
 - (NSArray *)_getEvents;
 - (NSArray *)_getEventsFromDisk;
 - (NSDictionary *)_loadingDictionary;
