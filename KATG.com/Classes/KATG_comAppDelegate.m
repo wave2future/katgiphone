@@ -82,15 +82,18 @@ void uncaughtExceptionHandler(NSException *exception)
 //	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"token" message:token delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
 //	[alertView show];
 //	[alertView release];
-	NSString *token = [[NSString alloc] initWithFormat: @"%@", deviceToken];
-	[self sendProviderDeviceToken:token];
+	NSString *token = [NSString stringWithFormat: @"%@", deviceToken];
+	[NSThread detachNewThreadSelector:@selector(sendProviderDeviceToken:) 
+							 toTarget:self 
+						   withObject:token];
 }
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error 
 { // Log a failure to register for push
-	[FlurryAPI logError:@"failToRegisterPush" message:@"failToRegisterPush" exception:error];
+	//[FlurryAPI logError:@"failToRegisterPush" message:@"failToRegisterPush" exception:nil];
 }
 - (void)sendProviderDeviceToken:(NSString *)token 
-{ // This needs some attention, seems awkward, should be threaded
+{ // This needs some attention, seems awkward
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	NSString *myRequestString = 
 	@"http://app.keithandthegirl.com/app/tokenserver/tokenserver.php?dev=";
 	token = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)token, NULL, NULL, kCFStringEncodingUTF8);
@@ -99,6 +102,7 @@ void uncaughtExceptionHandler(NSException *exception)
 	[NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
 	[request autorelease];
 	[token release];
+	[pool release];
 }
 #pragma mark -
 #pragma mark Reachability

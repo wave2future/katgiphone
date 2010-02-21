@@ -256,7 +256,7 @@
 						<dict>
 							<key>PBXSmartGroupTreeModuleColumnWidthsKey</key>
 							<array>
-								<real>388</real>
+								<real>458</real>
 							</array>
 							<key>PBXSmartGroupTreeModuleColumnsKey_v4</key>
 							<array>
@@ -269,24 +269,21 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>080E96DDFE201D6D7F000001</string>
-								<string>8B4E1BD410DC808E005D8BA9</string>
-								<string>8B4E20B610DCDF00005D8BA9</string>
-								<string>8B4E258B10DDE397005D8BA9</string>
-								<string>8B4E1BEF10DC8CCA005D8BA9</string>
-								<string>8B4E258910DDE35E005D8BA9</string>
-								<string>8BB7FA3810D5C0EC00719438</string>
+								<string>8BB7F8BD10D5992E00719438</string>
+								<string>8BB7F97510D5A89100719438</string>
+								<string>8B4E255D10DDDE99005D8BA9</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>47</integer>
-									<integer>33</integer>
+									<integer>4</integer>
+									<integer>2</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 336}, {388, 888}}</string>
+							<string>{{0, 0}, {458, 888}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -298,11 +295,11 @@
 					<key>GeometryConfiguration</key>
 					<dict>
 						<key>Frame</key>
-						<string>{{0, 0}, {405, 906}}</string>
+						<string>{{0, 0}, {475, 906}}</string>
 						<key>GroupTreeTableConfiguration</key>
 						<array>
 							<string>MainColumn</string>
-							<real>388</real>
+							<real>458</real>
 						</array>
 						<key>RubberWindowFrame</key>
 						<string>0 55 1280 947 0 0 1280 1002 </string>
@@ -310,7 +307,7 @@
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
 					<key>Proportion</key>
-					<string>405pt</string>
+					<string>475pt</string>
 				</dict>
 				<dict>
 					<key>Dock</key>
@@ -323,7 +320,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>EventOperation.m</string>
+								<string>KATG_comAppDelegate.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -331,11 +328,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>EventOperation.m</string>
+										<string>KATG_comAppDelegate.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>8BB557EB1130E37100B3A3F7</string>
+										<string>8BB558221130E82C00B3A3F7</string>
 										<key>history</key>
 										<array>
 											<string>8BB7F90010D5A13C00719438</string>
@@ -390,7 +387,6 @@
 											<string>8BF38AC910FCDF1100D72A7E</string>
 											<string>8BF38ACA10FCDF1100D72A7E</string>
 											<string>8BE3A2271102B1B80042974C</string>
-											<string>8BE3A31A1103E54A0042974C</string>
 											<string>8BF1A91111075D43009A4F01</string>
 											<string>8BF1A9AA11076887009A4F01</string>
 											<string>8BF1A9AC11076887009A4F01</string>
@@ -447,7 +443,6 @@
 											<string>8B53E42E1118CDCC00C99B5E</string>
 											<string>8B53E42F1118CDCC00C99B5E</string>
 											<string>8B53E4301118CDCC00C99B5E</string>
-											<string>8BDA0CEC111E60AD00BF0303</string>
 											<string>8BDA0CED111E60AD00BF0303</string>
 											<string>8BDA0CEE111E60AD00BF0303</string>
 											<string>8BDA0CEF111E60AD00BF0303</string>
@@ -467,9 +462,6 @@
 											<string>8BDA0CFD111E60AD00BF0303</string>
 											<string>8BDA0CFE111E60AD00BF0303</string>
 											<string>8BDA0CFF111E60AD00BF0303</string>
-											<string>8BDA0D00111E60AD00BF0303</string>
-											<string>8BDA0D01111E60AD00BF0303</string>
-											<string>8BDA0D02111E60AD00BF0303</string>
 											<string>8BDA0D06111E60AD00BF0303</string>
 											<string>8BDA0D07111E60AD00BF0303</string>
 											<string>8BDA0D08111E60AD00BF0303</string>
@@ -496,8 +488,6 @@
 											<string>8B3DD656112F60BF00F1CD5C</string>
 											<string>8B3DD657112F60BF00F1CD5C</string>
 											<string>8B3DD658112F60BF00F1CD5C</string>
-											<string>8B3DD659112F60BF00F1CD5C</string>
-											<string>8B3DD65A112F60BF00F1CD5C</string>
 											<string>8B3DD65B112F60BF00F1CD5C</string>
 											<string>8BB5567411309F7A00B3A3F7</string>
 											<string>8BB556C61130A4F300B3A3F7</string>
@@ -507,9 +497,17 @@
 											<string>8BB557B31130E01F00B3A3F7</string>
 											<string>8BB557C51130E0A800B3A3F7</string>
 											<string>8BB557C61130E0A800B3A3F7</string>
-											<string>8BB557D41130E23B00B3A3F7</string>
 											<string>8BB557D51130E23B00B3A3F7</string>
-											<string>8BB557D61130E23B00B3A3F7</string>
+											<string>8BB5580E1130E70100B3A3F7</string>
+											<string>8BB5580F1130E70100B3A3F7</string>
+											<string>8BB558101130E70100B3A3F7</string>
+											<string>8BB558111130E70100B3A3F7</string>
+											<string>8BB558121130E70100B3A3F7</string>
+											<string>8BB558131130E70100B3A3F7</string>
+											<string>8BB558141130E70100B3A3F7</string>
+											<string>8BB558151130E70100B3A3F7</string>
+											<string>8BB558201130E82C00B3A3F7</string>
+											<string>8BB558211130E82C00B3A3F7</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -521,7 +519,7 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {870, 901}}</string>
+								<string>{{0, 0}, {800, 901}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 55 1280 947 0 0 1280 1002 </string>
 							</dict>
@@ -541,7 +539,7 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 906}, {870, 0}}</string>
+								<string>{{0, 906}, {800, 0}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 55 1280 947 0 0 1280 1002 </string>
 							</dict>
@@ -552,7 +550,7 @@
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>870pt</string>
+					<string>800pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -711,8 +709,8 @@
 		<string>8BB5568C11309FCA00B3A3F7</string>
 		<string>8BB5568D11309FCA00B3A3F7</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>8BB7F8F310D5A12900719438</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/paperworkbin/Dropbox/DEV/Active/Objective-C/katgiphone/KATG.com/KATG.com.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -737,7 +735,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>PastShowPicsDataModel.m</string>
+								<string>KATG_comAppDelegate.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -808,7 +806,7 @@
 			<key>WindowToolGUID</key>
 			<string>8BB7F8F310D5A12900719438</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -1056,7 +1054,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1107, 204}}</string>
 								<key>RubberWindowFrame</key>
-								<string>1379 751 1107 245 1280 224 1280 800 </string>
+								<string>1320 316 1107 245 1280 224 1280 800 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
@@ -1085,7 +1083,7 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>1379 751 1107 245 1280 224 1280 800 </string>
+			<string>1320 316 1107 245 1280 224 1280 800 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
