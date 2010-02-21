@@ -40,6 +40,31 @@
 											  YES) lastObject] retain];
 		[self _setupEventQueue];
 		
+		_formatter = [[NSDateFormatter alloc] init];
+		[_formatter setDateStyle: NSDateFormatterLongStyle];
+		[_formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+		[_formatter setDateFormat: @"MM/dd/yyyy HH:mm zzz"];
+		NSLocale *us = [[NSLocale alloc] initWithLocaleIdentifier:@"US"];
+		[_formatter setLocale:us];
+		[us release];
+		
+		_dayFormatter = [[NSDateFormatter alloc] init];
+		[_dayFormatter setDateStyle: NSDateFormatterLongStyle];
+		[_dayFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+		[_dayFormatter setDateFormat: @"EEE"];
+		[_dayFormatter setLocale:[NSLocale currentLocale]];
+		
+		_dateFormatter = [[NSDateFormatter alloc] init];
+		[_dateFormatter setDateStyle: NSDateFormatterLongStyle];
+		[_dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+		[_dateFormatter setDateFormat: @"MM/dd"];
+		[_dateFormatter setLocale:[NSLocale currentLocale]];
+		
+		_timeFormatter = [[NSDateFormatter alloc] init];
+		[_timeFormatter setDateStyle: NSDateFormatterLongStyle];
+		[_timeFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+		[_timeFormatter setDateFormat: @"h:mm aa"];
+		[_timeFormatter setLocale:[NSLocale currentLocale]];
     }
     return self;
 }
@@ -68,15 +93,23 @@
 { // call super class (NSObject *) release because this is a singleton
 	[super release];
 }
-- (void)dealloc 
-{ // Cleanup
+- (void)_cleanup
+{
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[_eventQueue cancelAllOperations];
 	[_eventQueue release]; _eventQueue = nil;
+	[_formatter release]; _formatter = nil;
+	[_dayFormatter release]; _dayFormatter = nil;
+	[_dateFormatter release]; _dateFormatter = nil;
+	[_timeFormatter release]; _timeFormatter = nil;
+	[_pollingPool drain]; _pollingPool = nil;
+}
+- (void)dealloc 
+{
+	[self _cleanup];
 	[_dataPath release];
 	[_events release];
 	[_eventsProxy release];
-	[_pollingPool drain]; _pollingPool = nil;
 	[super dealloc];
 }
 #pragma mark -
@@ -117,15 +150,13 @@
 }
 - (NSArray *)_getEventsFromDisk 
 {
+	// Attempt to load events array from disk
 	NSString *path = [_dataPath stringByAppendingPathComponent:kEventsPlist];
 	NSArray *evnts = [NSArray arrayWithContentsOfFile:path];
-	if (!evnts) {
-		evnts = [self _getEvents];
-	}
 	return evnts;
 }
 - (NSDictionary *)_loadingDictionary 
-{
+{ // dictionary to inform user event data is being loaded
 	NSDictionary *event;
 	event = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
 												 @"Loading Events",

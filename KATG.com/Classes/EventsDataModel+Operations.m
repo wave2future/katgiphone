@@ -29,6 +29,10 @@
 {
 	EventOperation *op = [[EventOperation alloc] initWithEvent:node];
 	[op setDelegate:self];
+	[op setFormatter:[_formatter copy]];
+	[op setDayFormatter:[_dayFormatter copy]];
+	[op setDateFormatter:[_dateFormatter copy]];
+	[op setTimeFormatter:[_timeFormatter copy]];
 	[_eventQueue addOperation:op];
 	[op release];
 }
@@ -37,6 +41,19 @@
 {
 	[parser release];
 	[_pollingPool drain]; _pollingPool = nil;
+	[self performSelectorOnMainThread:@selector(startTimer) 
+						   withObject:nil 
+						waitUntilDone:NO];
+}
+
+- (void)startTimer
+{
+	_timer = 
+	[NSTimer scheduledTimerWithTimeInterval:5.0 
+									 target:self 
+								   selector:@selector(checkQueue:) 
+								   userInfo:nil 
+									repeats:NO];
 }
 
 - (void)operationDidFinishSuccesfully:(EventOperation *)op 
@@ -45,8 +62,27 @@
 	if (event) {
 		[self _addToEventsProxy:event];
 	}
+	//NSInteger count = [[_eventQueue operations] count];
+	//NSLog(@"%d", count);
+}
+
+- (void)checkQueue:(NSTimer *)timer
+{
 	NSInteger count = [[_eventQueue operations] count];
-	NSLog(@"%d", count);
+	//NSLog(@"count: %d", count);
+	if (count > 0)
+	{
+		//NSLog(@"continue");
+		[NSTimer scheduledTimerWithTimeInterval:5.0 
+										 target:self 
+									   selector:@selector(checkQueue:) 
+									   userInfo:nil 
+										repeats:NO];
+	}
+	else 
+	{
+		[self _cleanup];
+	}
 }
 
 - (void)_addToEventsProxy:(NSDictionary *)event 
@@ -89,6 +125,7 @@
 							waitUntilDone:NO];
 	}
 }
+
 - (void)writeEventsToDisk
 {
 	if ([NSThread isMainThread])

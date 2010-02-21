@@ -21,10 +21,18 @@
 @interface EventOperation : NSOperation {
 	id<EventOperationDelegate> delegate;
 	NSDictionary *event;
+	NSDateFormatter *formatter;
+	NSDateFormatter *dayFormatter;
+	NSDateFormatter *dateFormatter;
+	NSDateFormatter *timeFormatter;
 }
 
 @property (nonatomic, assign) id<EventOperationDelegate> delegate;
-@property (nonatomic, copy) NSDictionary *event;
+@property (nonatomic, retain) NSDictionary *event;
+@property (nonatomic, retain) NSDateFormatter *formatter;
+@property (nonatomic, retain) NSDateFormatter *dayFormatter;
+@property (nonatomic, retain) NSDateFormatter *dateFormatter;
+@property (nonatomic, retain) NSDateFormatter *timeFormatter;
 
 - (id)initWithEvent:(NSDictionary *)anEvent;
 - (void)_processEvent;

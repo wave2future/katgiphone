@@ -40,6 +40,13 @@
 	BOOL              _pollOnConnection;
 	NSAutoreleasePool *_pollingPool;
 	BOOL              _polling;
+	
+	NSDateFormatter   *_formatter;
+	NSDateFormatter   *_dayFormatter;
+	NSDateFormatter   *_dateFormatter;
+	NSDateFormatter   *_timeFormatter;
+	
+	NSTimer           *_timer;
 }
 
 @property (nonatomic, assign)   id<EventsDataModelDelegate> delegate;

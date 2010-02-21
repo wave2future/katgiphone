@@ -22,6 +22,7 @@
 
 @synthesize delegate;
 @synthesize event;
+@synthesize formatter, dayFormatter, dateFormatter, timeFormatter;
 
 - (id)initWithEvent:(NSDictionary *)anEvent {
 	if( (self = [super init]) )
@@ -32,6 +33,10 @@
 }
 - (void)dealloc {
 	[event release];
+	[formatter release];
+	[dayFormatter release];
+	[dateFormatter release];
+	[timeFormatter release];
 	[super dealloc];
 }
 - (void)main {
@@ -67,43 +72,21 @@
 												 @"Time", 
 												 @"ShowType", nil]];
 	
-	if (event != nil && [self delegate]) {
+	if (event != nil && [self delegate]) 
+	{
 		[[self delegate] operationDidFinishSuccesfully:self];
 	}
 }
 - (NSDictionary *)_dateFormatting 
-{
-	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-	[formatter setDateStyle: NSDateFormatterLongStyle];
-	[formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
-	[formatter setDateFormat: @"MM/dd/yyyy HH:mm zzz"];
-	NSLocale *us = [[NSLocale alloc] initWithLocaleIdentifier:@"US"];
-	[formatter setLocale:us];
-	[us release];
-	
-	NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
-	[dayFormatter setDateStyle: NSDateFormatterLongStyle];
-	[dayFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
-	[dayFormatter setDateFormat: @"EEE"];
-	[dayFormatter setLocale:[NSLocale currentLocale]];
-	
-	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	[dateFormatter setDateStyle: NSDateFormatterLongStyle];
-	[dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
-	[dateFormatter setDateFormat: @"MM/dd"];
-	[dateFormatter setLocale:[NSLocale currentLocale]];
-	
-	NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
-	[timeFormatter setDateStyle: NSDateFormatterLongStyle];
-	[timeFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
-	[timeFormatter setDateFormat: @"h:mm aa"];
-	[timeFormatter setLocale:[NSLocale currentLocale]];
-	
+{	
 	NSString *eventTimeString = [event objectForKey:@"StartDate"];
 	NSTimeZone *EST = [NSTimeZone timeZoneWithName:@"America/New_York"];
-	if ([EST isDaylightSavingTime]) {
+	if ([EST isDaylightSavingTime]) 
+	{
 		eventTimeString = [eventTimeString stringByAppendingString:@" EDT"];
-	} else {
+	} 
+	else 
+	{
 		eventTimeString = [eventTimeString stringByAppendingString:@" EST"];
 	}
 	
@@ -126,12 +109,6 @@
 										 @"Day",
 										 @"Date",
 										 @"Time", nil]];
-	
-	[formatter release];
-	[dayFormatter release];
-	[dateFormatter release];
-	[timeFormatter release];
-	
 	return dateTimes;
 }
 - (NSNumber *)_showType 

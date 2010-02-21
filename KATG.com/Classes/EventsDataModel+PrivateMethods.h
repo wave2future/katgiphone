@@ -22,6 +22,7 @@
 
 - (void)_registerNotifications;
 - (void)_setupEventQueue;
+- (void)_cleanup;
 - (NSArray *)_getEvents;
 - (NSArray *)_getEventsFromDisk;
 - (NSDictionary *)_loadingDictionary;
