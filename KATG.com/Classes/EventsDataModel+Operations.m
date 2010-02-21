@@ -29,10 +29,13 @@
 {
 	EventOperation *op = [[EventOperation alloc] initWithEvent:node];
 	[op setDelegate:self];
-	[op setFormatter:[_formatter copy]];
-	[op setDayFormatter:[_dayFormatter copy]];
-	[op setDateFormatter:[_dateFormatter copy]];
-	[op setTimeFormatter:[_timeFormatter copy]];
+	// Setters are (nonatomic, copy)
+	// each op will get their own
+	// instance of each formatter
+	[op setFormatter:_formatter];
+	[op setDayFormatter:_dayFormatter];
+	[op setDateFormatter:_dateFormatter];
+	[op setTimeFormatter:_timeFormatter];
 	[_eventQueue addOperation:op];
 	[op release];
 }

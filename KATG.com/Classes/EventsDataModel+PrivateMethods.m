@@ -119,7 +119,7 @@
 { // load events array
 	// Try to load events array from disk
 	NSString *path = [_dataPath stringByAppendingPathComponent:kEventsPlist];
-	NSArray *evnts = [[NSArray alloc] initWithContentsOfFile:path];
+	NSArray *evnts = [NSArray arrayWithContentsOfFile:path];
 	// If events array fails to load from disc and a connection is available
 	if (!evnts && [shouldStream intValue] != 0 && shouldStream != nil) 
 	{ 	// set events to loading dictionary

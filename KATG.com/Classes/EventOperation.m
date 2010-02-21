@@ -24,14 +24,16 @@
 @synthesize event;
 @synthesize formatter, dayFormatter, dateFormatter, timeFormatter;
 
-- (id)initWithEvent:(NSDictionary *)anEvent {
+- (id)initWithEvent:(NSDictionary *)anEvent 
+{
 	if( (self = [super init]) )
 	{
 		event = [anEvent retain];
 	}
 	return self;
 }
-- (void)dealloc {
+- (void)dealloc 
+{
 	[event release];
 	[formatter release];
 	[dayFormatter release];
@@ -39,7 +41,8 @@
 	[timeFormatter release];
 	[super dealloc];
 }
-- (void)main {
+- (void)main 
+{
 	if( !self.isCancelled )
 	{
 		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
@@ -48,33 +51,54 @@
 	}
 }
 - (void)_processEvent 
-{	
-	NSDictionary *dateTimes = [self _dateFormatting];
-	
-	NSNumber *showType = [self _showType];
-	
-	event = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
-												 [event objectForKey:@"Title"],
-												 [event objectForKey:@"EventId"],
-												 [event objectForKey:@"Details"],
-												 [dateTimes objectForKey:@"DateTime"],
-												 [dateTimes objectForKey:@"Day"],
-												 [dateTimes objectForKey:@"Date"],
-												 [dateTimes objectForKey:@"Time"], 
-												 showType, nil]
-										forKeys:[NSArray arrayWithObjects:
-												 @"Title",
-												 @"EventId",
-												 @"Details",
-												 @"DateTime",
-												 @"Day",
-												 @"Date",
-												 @"Time", 
-												 @"ShowType", nil]];
-	
-	if (event != nil && [self delegate]) 
+{
+	if( !self.isCancelled )
 	{
-		[[self delegate] operationDidFinishSuccesfully:self];
+		NSDictionary *dateTimes;
+		NSNumber *showType;
+		if( !self.isCancelled )
+		{
+			dateTimes = [self _dateFormatting];
+		}
+		if( !self.isCancelled )
+		{
+			showType = [self _showType];
+		}
+		if( !self.isCancelled )
+		{
+			NSString *title = [event objectForKey:@"Title"];
+			if (!title) title = @"";
+			NSString *eventID = [event objectForKey:@"EventId"];
+			if (!eventID) eventID = @"";
+			NSString *details = [event objectForKey:@"Details"];
+			if (!details) details = @"";
+			
+			[event release]; event = nil;
+			event =
+			[[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
+												  title,
+												  eventID,
+												  details,
+												  [dateTimes objectForKey:@"DateTime"],
+												  [dateTimes objectForKey:@"Day"],
+												  [dateTimes objectForKey:@"Date"],
+												  [dateTimes objectForKey:@"Time"], 
+												  showType, nil]
+										 forKeys:[NSArray arrayWithObjects:
+												  @"Title",
+												  @"EventId",
+												  @"Details",
+												  @"DateTime",
+												  @"Day",
+												  @"Date",
+												  @"Time", 
+												  @"ShowType", nil]] retain];
+			
+			if (event != nil && [self delegate] && !self.isCancelled) 
+			{
+				[[self delegate] operationDidFinishSuccesfully:self];
+			}
+		}
 	}
 }
 - (NSDictionary *)_dateFormatting 

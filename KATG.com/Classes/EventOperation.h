@@ -29,10 +29,10 @@
 
 @property (nonatomic, assign) id<EventOperationDelegate> delegate;
 @property (nonatomic, retain) NSDictionary *event;
-@property (nonatomic, retain) NSDateFormatter *formatter;
-@property (nonatomic, retain) NSDateFormatter *dayFormatter;
-@property (nonatomic, retain) NSDateFormatter *dateFormatter;
-@property (nonatomic, retain) NSDateFormatter *timeFormatter;
+@property (nonatomic, copy) NSDateFormatter *formatter;
+@property (nonatomic, copy) NSDateFormatter *dayFormatter;
+@property (nonatomic, copy) NSDateFormatter *dateFormatter;
+@property (nonatomic, copy) NSDateFormatter *timeFormatter;
 
 - (id)initWithEvent:(NSDictionary *)anEvent;
 - (void)_processEvent;
