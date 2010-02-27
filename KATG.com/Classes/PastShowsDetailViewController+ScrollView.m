@@ -69,7 +69,7 @@
 		CGSize size = 
 		[titleString sizeWithFont:[UIFont systemFontOfSize:14] 
 				constrainedToSize:CGSizeMake(controller.titleLabel.frame.size.width, 100)];
-		if (size.height > 17)
+		if (size.height > 17 && !controller.scaledDown)
 		{
 			controller.titleLabel.numberOfLines = 2;
 			CGRect frame = controller.imageView.frame;
@@ -77,6 +77,7 @@
 													frame.origin.y + 17, 
 													frame.size.width, 
 													frame.size.height - 17);
+			controller.scaledDown = YES;
 		}
 		[controller.titleLabel setText:titleString];
 	}

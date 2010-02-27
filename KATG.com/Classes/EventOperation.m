@@ -26,9 +26,9 @@
 
 - (id)initWithEvent:(NSDictionary *)anEvent 
 {
-	if( (self = [super init]) )
+	if( self = [super init] )
 	{
-		event = [anEvent retain];
+		event = [anEvent copy];
 	}
 	return self;
 }
@@ -66,11 +66,11 @@
 		}
 		if( !self.isCancelled )
 		{
-			NSString *title = [event objectForKey:@"Title"];
+			NSString *title = [[event objectForKey:@"Title"] retain];
 			if (!title) title = @"";
-			NSString *eventID = [event objectForKey:@"EventId"];
+			NSString *eventID = [[event objectForKey:@"EventId"] retain];
 			if (!eventID) eventID = @"";
-			NSString *details = [event objectForKey:@"Details"];
+			NSString *details = [[event objectForKey:@"Details"] retain];
 			if (!details) details = @"";
 			
 			[event release]; event = nil;

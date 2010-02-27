@@ -28,7 +28,7 @@
 }
 
 @property (nonatomic, assign) id<EventOperationDelegate> delegate;
-@property (nonatomic, retain) NSDictionary *event;
+@property (nonatomic, copy) NSDictionary *event;
 @property (nonatomic, copy) NSDateFormatter *formatter;
 @property (nonatomic, copy) NSDateFormatter *dayFormatter;
 @property (nonatomic, copy) NSDateFormatter *dateFormatter;

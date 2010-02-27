@@ -21,6 +21,7 @@
 #import "GrabXMLFeed.h"
 #import "EventsDataModel.h"
 #import "ImageAdditions.h"
+#import "FlurryAPI.h"
 
 @class AudioStreamer; // This is the shoutcast radio class
 @interface OnAirViewController : UIViewController

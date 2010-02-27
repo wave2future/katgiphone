@@ -8,6 +8,7 @@
 
 #import "LinksDataModel.h"
 #import "LinksDataModel+PrivateMethods.h"
+#import "FlurryAPI.h"
 
 @implementation LinksDataModel
 
@@ -19,6 +20,7 @@
 }
 - (NSArray *)links
 {
+	[FlurryAPI logEvent:@"links"];
 	return [self _getLinks];
 }
 - (void)cancel

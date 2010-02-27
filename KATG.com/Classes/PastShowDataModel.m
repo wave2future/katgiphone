@@ -18,6 +18,7 @@
 
 #import "PastShowDataModel.h"
 #import "PastShowDataModel+PrivateMethods.h"
+#import "FlurryAPI.h"
 
 @implementation PastShowDataModel
 
@@ -31,6 +32,7 @@
 }
 - (NSDictionary *)show:(NSString *)ID 
 {
+	[FlurryAPI logEvent:@"getshow" withParameters:[NSDictionary dictionaryWithObject:ID forKey:@"ID"]];
 	return [self _getShow:ID];
 }
 - (void)cancel

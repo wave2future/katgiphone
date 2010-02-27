@@ -41,6 +41,7 @@
 	
 	if (!streamer) 
 	{
+		[FlurryAPI logEvent:@"playButton"];
 		NSString *urlString = @"http://liveshow.keithandthegirl.com:8004";
 		//NSString *urlString = 
 		//@"http://scfire-mtc-aa05.stream.aol.com:80/stream/1010";

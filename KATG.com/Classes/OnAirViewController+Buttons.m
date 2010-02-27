@@ -22,6 +22,7 @@
 
 - (IBAction)callButtonPressed:(id)sender 
 {
+	[FlurryAPI logEvent:@"callin"];
 	NSURL *url= [NSURL URLWithString:kPhoneNumber];
 	NSString *osVersion = [[UIDevice currentDevice] systemVersion];
 	if ([osVersion doubleValue] >= 3.1) 
@@ -41,6 +42,7 @@
 }
 - (IBAction)infoButtonPressed:(id)sender 
 {
+	[FlurryAPI logEvent:@"infobutton"];
 	UIAlertView *alert = [[UIAlertView alloc] 
 						  initWithTitle:@"Keith and The Girl"
 						  message:@"This is for anyone into hearing and learning about the Keith and The Girl show on the go. Listen live, check upcoming live events, watch KATGtv video episodes, see show notes and pictures, and much more. Take a look around, and enjoy." 

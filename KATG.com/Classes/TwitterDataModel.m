@@ -19,6 +19,7 @@
 #import "TwitterDataModel.h"
 #import "TwitterDataModel+PrivateMethods.h"
 #import "TouchXML.h"
+#import "FlurryAPI.h"
 
 @implementation TwitterDataModel
 
@@ -31,11 +32,13 @@
 
 - (NSArray *)tweets
 {
+	[FlurryAPI logEvent:@"tweets"];
 	return [self _getTweets];
 }
 
 - (NSArray *)otherTweets
 {
+	[FlurryAPI logEvent:@"othertweets"];
 	return [self _getOtherTweets];
 }
 - (void)cancelTweets

@@ -19,6 +19,7 @@
 #import "PastShowsDataModel.h"
 #import "PastShowsDataModel+PrivateMethods.h"
 #import "SynthesizeSingleton.h"
+#import "FlurryAPI.h"
 
 @implementation PastShowsDataModel
 
@@ -29,11 +30,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PastShowsDataModel);
 
 - (NSArray *)shows 
 {
+	[FlurryAPI logEvent:@"getshows"];
 	return [self _getShows];
 }
 
 - (NSArray *)showsFromDisk 
 {
+	[FlurryAPI logEvent:@"getshowsfromdisk"];
 	return [self _getShowsFromDisk];
 }
 

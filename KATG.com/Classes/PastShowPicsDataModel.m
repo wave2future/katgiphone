@@ -20,6 +20,7 @@
 #import "PastShowPicsDataModel+PrivateMethods.h"
 #import "PastShowPicsDataModel+Thumbs.h"
 #import "PastShowPicsDataModel+HiRes.h"
+#import "FlurryAPI.h"
 
 @implementation PastShowPicsDataModel
 
@@ -32,10 +33,14 @@
 }
 - (NSArray *)pics:(NSString *)ID // Returned array will have a retain count of 1
 {
+	[FlurryAPI logEvent:@"pics" withParameters:[NSDictionary dictionaryWithObject:ID forKey:@"ID"]];
 	return [self _getPics:ID];
 }
 - (UIImage *)pic:(NSURL *)URL local:(BOOL *)fromDisk // Returned image will have a retain count of 0
 {
+	[FlurryAPI logEvent:@"picfromurl" 
+		 withParameters:[NSDictionary dictionaryWithObject:[URL description] 
+													forKey:@"URL"]];
 	BOOL local = NO;
 	UIImage *image =  [self _getPic:URL local:&local];
 	*fromDisk = local;

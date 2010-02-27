@@ -21,7 +21,7 @@
 @implementation ImagePageViewController
 
 @synthesize delegate;
-@synthesize titleLabel, imageView, descriptionLabel, URL;
+@synthesize titleLabel, imageView, descriptionLabel, URL, scaledDown;
 
 - (void)loadView 
 {

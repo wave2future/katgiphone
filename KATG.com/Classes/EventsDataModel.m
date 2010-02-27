@@ -21,6 +21,7 @@
 #import "EventsDataModel+Reachability.h"
 #import "EventsDataModel+Operations.h"
 #import "SynthesizeSingleton.h"
+#import "FlurryAPI.h"
 
 @implementation EventsDataModel
 
@@ -31,11 +32,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(EventsDataModel);
 
 - (NSArray *)events 
 {
+	[FlurryAPI logEvent:@"getevents"];
 	return [self _getEvents];
 }
 
 - (NSArray *)eventsFromDisk 
 {
+	[FlurryAPI logEvent:@"geteventsfromdisk"];
 	return [self _getEventsFromDisk];
 }
 

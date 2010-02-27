@@ -80,6 +80,7 @@
 // Temporarily disable feedback button
 - (IBAction)submitFeedback:(id)sender 
 {
+	[FlurryAPI logEvent:@"sendFeedback"];
 	if ([shouldStream intValue] == 0) // If not connected return
 	{
 		return;

@@ -26,6 +26,7 @@
 	UILabel     *descriptionLabel;
 	NSURL       *URL;
 	BOOL        tapped;
+	BOOL        scaledDown;
 }
 
 @property (nonatomic, assign) id<ImagePageDelegate> delegate;
@@ -33,6 +34,7 @@
 @property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, retain) UILabel     *descriptionLabel;
 @property (nonatomic, retain) NSURL       *URL;
+@property (nonatomic, readwrite) BOOL     scaledDown;
 
 @end
 

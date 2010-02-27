@@ -202,13 +202,40 @@
 	{
 		NSMutableArray *feedEntries = [[parser feedEntries] copy];
 		[parser release];
-		[self _buildList:feedEntries];
-		[feedEntries release];
-		if (![_pollingThread isCancelled])
+		if ([feedEntries count] > 0)
 		{
-			[self performSelectorOnMainThread:@selector(_downloadThumbs) 
-								   withObject:nil 
-								waitUntilDone:NO];
+			[self _buildList:feedEntries];
+			[feedEntries release];
+			if (![_pollingThread isCancelled])
+			{
+				[self performSelectorOnMainThread:@selector(_downloadThumbs) 
+									   withObject:nil 
+									waitUntilDone:NO];
+				[self _stopShowThread];
+			}
+		}
+		else 
+		{
+			[_pics release];
+			NSData *data = 
+			[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"NoPics" 
+																		   ofType:@"png"]];
+			NSDictionary *pic = 
+			[[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:
+												   @"",
+												   @"No Show Pics",
+												   @"", 
+												   data, nil]
+										  forKeys:[NSArray arrayWithObjects:
+												   @"URL",
+												   @"Title",
+												   @"Description", 
+												   @"Data", nil]];
+			_pics = [[NSArray alloc] initWithObjects:pic, nil];
+			if (delegate)
+			{
+				[[self delegate] pastShowPicsDataModelDidChange:_pics];
+			}
 			[self _stopShowThread];
 		}
 	}
