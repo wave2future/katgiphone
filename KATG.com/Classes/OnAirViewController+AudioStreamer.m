@@ -34,8 +34,19 @@
 - (void)setAudioButtonImage:(UIImage *)image 
 {
 	[audioButton.layer removeAllAnimations];
-	[audioButton setImage:image forState:UIControlStateNormal];
-}
+	if (!image)
+	{
+		[audioButton setImage:[UIImage imageNamed:@"playButton.png"] forState:0];
+	}
+	else
+	{
+		[audioButton setImage:image forState:0];
+		
+		if ([audioButton.currentImage isEqual:[UIImage imageNamed:@"loadButton.png"]])
+		{
+			[self spinButton];
+		}
+	}}
 //
 // spinButton
 //
@@ -102,9 +113,9 @@
 	}
 	[FlurryAPI logEvent:@"playButton"];
 	if ([audioButton.currentImage isEqual:[UIImage imageNamed:@"playButton.png"]])
-	{		
-		[self createStreamer];
+	{
 		[self setAudioButtonImage:[UIImage imageNamed:@"loadButton.png"]];
+		[self createStreamer];
 		[streamer start];
 	}
 	else

@@ -63,7 +63,7 @@
 	{
 		if (playOnConnection) 
 		{
-			[self audioButtonPressed:self];
+			[self audioButtonPressed:nil];
 			playOnConnection = NO;
 		}
 	}
