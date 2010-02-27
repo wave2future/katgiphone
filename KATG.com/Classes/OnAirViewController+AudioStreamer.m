@@ -180,9 +180,9 @@
 	
 	[self destroyStreamer];
 	
-	//NSString *urlString = @"http://liveshow.keithandthegirl.com:8004";
-	NSString *urlString = 
-	@"http://scfire-mtc-aa05.stream.aol.com:80/stream/1010";
+	NSString *urlString = @"http://liveshow.keithandthegirl.com:8004";
+	//NSString *urlString = 
+	//@"http://scfire-mtc-aa05.stream.aol.com:80/stream/1010";
 	NSURL *url = [NSURL URLWithString:urlString];
 	
 	streamer = [[AudioStreamer alloc] initWithURL:url];

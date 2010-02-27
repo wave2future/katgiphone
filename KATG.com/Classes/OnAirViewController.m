@@ -40,10 +40,6 @@
     [super viewDidLoad];
 	[self setupOne];
 }
-- (void)viewDidAppear:(BOOL)animated
-{
-	[self setupTwo];
-}
 - (void)didReceiveMemoryWarning 
 {
     [super didReceiveMemoryWarning];

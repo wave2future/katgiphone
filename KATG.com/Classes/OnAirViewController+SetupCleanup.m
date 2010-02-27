@@ -24,10 +24,6 @@
 		[callButton setEnabled:NO];
 		[callButton setHidden:YES];
 	}
-	
-}
-- (void)setupTwo
-{
 	// Check live feed status
 	[self pollStatusFeed];
 	// Setup events data model
