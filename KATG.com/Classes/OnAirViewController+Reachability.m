@@ -33,13 +33,8 @@
 
 - (void)reachabilityChanged:(NSNotification* )note
 {
-	if (streamer) 
-	{
-		[audioButton.layer removeAllAnimations];
-		[streamer stop];
-	}
 	Reachability *curReach = [note object];
-	NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
+	//NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
 	[self updateReachability:curReach];
 }
 

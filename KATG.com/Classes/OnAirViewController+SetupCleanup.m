@@ -53,7 +53,8 @@
 	[nextLiveShowCountdownLabel release];
 	
 	[audioButton release];
-	[streamer release];
+	//[streamer release];
+	[self destroyStreamer];
 	
 	[volumeSliderContainer release];
 	

@@ -52,20 +52,19 @@
 								error:&error];
 		if (data && ![_imageThread isCancelled])
 		{
-			
-			
-			
 			NSDictionary *dictionary = 
 			[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
 												 [[pic objectForKey:@"URL"] stringByReplacingOccurrencesOfString:@"-Thumb" withString:@""],
 												 [pic objectForKey:@"Title"],
 												 [pic objectForKey:@"Description"], 
-												 data, nil]
+												 data, 
+												 [NSNumber numberWithBool:NO], nil]
 										forKeys:[NSArray arrayWithObjects:
 												 @"URL",
 												 @"Title",
 												 @"Description", 
-												 @"Data", nil]];
+												 @"Data", 
+												 @"isStub", nil]];
 			[_picsProxyImages replaceObjectAtIndex:n withObject:dictionary];
 			[_pics release];
 			_pics = (NSArray *)[_picsProxyImages copy];

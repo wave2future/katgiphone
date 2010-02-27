@@ -49,7 +49,7 @@
     [super didReceiveMemoryWarning];
 	if (streamer)
 	{
-		[streamer stop];
+		[self destroyStreamer];
 	}
 }
 - (void)dealloc 

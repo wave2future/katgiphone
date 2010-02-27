@@ -25,118 +25,171 @@
 #pragma mark -
 - (void)setupAudioAssets 
 {
-	UIImage *image = UIImageForNameExtension(@"playButton", @"png");
-	[self setAudioButtonImage:image];
+	[self setAudioButtonImage:[UIImage imageNamed:@"playButton.png"]];
 	[self drawVolumeSlider];
 }
 #pragma mark -
 #pragma mark Shoutcast
 #pragma mark -
-- (IBAction)audioButtonPressed:(id)sender 
-{
-	if ([shouldStream intValue] == 0) 
-	{
-		return;
-	}
-	
-	if (!streamer) 
-	{
-		[FlurryAPI logEvent:@"playButton"];
-		NSString *urlString = @"http://liveshow.keithandthegirl.com:8004";
-		//NSString *urlString = 
-		//@"http://scfire-mtc-aa05.stream.aol.com:80/stream/1010";
-		NSURL *url = [NSURL URLWithString:urlString];
-		streamer = [[AudioStreamer alloc] initWithURL:url];
-		[streamer addObserver:self 
-				   forKeyPath:@"isPlaying" 
-					  options:0 
-					  context:nil];
-		[streamer start];
-		[self setAudioButtonImage:UIImageForNameExtension(@"loadButton", @"png")];
-		[self spinButton];
-	} 
-	else 
-	{
-		[audioButton.layer removeAllAnimations];
-		[streamer stop];
-	}
-}
 - (void)setAudioButtonImage:(UIImage *)image 
 {
 	[audioButton.layer removeAllAnimations];
 	[audioButton setImage:image forState:UIControlStateNormal];
 }
-- (void)spinButton 
+//
+// spinButton
+//
+// Shows the spin button when the audio is loading. This is largely irrelevant
+// now that the audio is loaded from a local file.
+//
+- (void)spinButton
 {
 	[CATransaction begin];
-	[CATransaction setValue:(id)kCFBooleanTrue 
-					 forKey:kCATransactionDisableActions];
+	[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
 	CGRect frame = [audioButton frame];
 	audioButton.layer.anchorPoint = CGPointMake(0.5, 0.5);
-	audioButton.layer.position = 
-	CGPointMake(frame.origin.x + 0.5 * frame.size.width, 
-				frame.origin.y + 0.5 * frame.size.height);
+	audioButton.layer.position = CGPointMake(frame.origin.x + 0.5 * frame.size.width, frame.origin.y + 0.5 * frame.size.height);
 	[CATransaction commit];
 	
 	[CATransaction begin];
-	[CATransaction setValue:(id)kCFBooleanFalse 
-					 forKey:kCATransactionDisableActions];
-	[CATransaction setValue:[NSNumber numberWithFloat:2.0] 
-					 forKey:kCATransactionAnimationDuration];
+	[CATransaction setValue:(id)kCFBooleanFalse forKey:kCATransactionDisableActions];
+	[CATransaction setValue:[NSNumber numberWithFloat:2.0] forKey:kCATransactionAnimationDuration];
 	
 	CABasicAnimation *animation;
 	animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
 	animation.fromValue = [NSNumber numberWithFloat:0.0];
 	animation.toValue = [NSNumber numberWithFloat:2 * M_PI];
-	animation.timingFunction = 
-	[CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionLinear];
+	animation.timingFunction = [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionLinear];
 	animation.delegate = self;
 	[audioButton.layer addAnimation:animation forKey:@"rotationAnimation"];
 	
 	[CATransaction commit];
 }
-- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)finished 
+
+//
+// animationDidStop:finished:
+//
+// Restarts the spin animation on the button when it ends. Again, this is
+// largely irrelevant now that the audio is loaded from a local file.
+//
+// Parameters:
+//    theAnimation - the animation that rotated the button.
+//    finished - is the animation finised?
+//
+- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)finished
 {
 	if (finished)
 	{
 		[self spinButton];
 	}
 }
-- (void)observeValueForKeyPath:(NSString *)keyPath 
-						 ofObject:(id)object 
-						   change:(NSDictionary *)change 
-						  context:(void *)context 
+
+//
+// buttonPressed:
+//
+// Handles the play/stop button. Creates, observes and starts the
+// audio streamer when it is a play button. Stops the audio streamer when
+// it isn't.
+//
+// Parameters:
+//    sender - normally, the play/stop button.
+//
+- (IBAction)audioButtonPressed:(id)sender
 {
-	if ([keyPath isEqual:@"isPlaying"]) {
-		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-		
-		if ([(AudioStreamer *)object isPlaying]) 
-		{
-			[self performSelector:@selector(setAudioButtonImage:) 
-						 onThread:[NSThread mainThread] 
-					   withObject:UIImageForNameExtension(@"stopButton", @"png")
-					waitUntilDone:NO];
-		} 
-		else 
-		{
-			[streamer removeObserver:self 
-						  forKeyPath:@"isPlaying"];
-			[streamer release];
-			streamer = nil;
-			
-			[self performSelector:@selector(setAudioButtonImage:) 
-						 onThread:[NSThread mainThread] 
-					   withObject:UIImageForNameExtension(@"playButton", @"png")
-					waitUntilDone:NO];
-		}
-		[pool release];
+	if ([shouldStream intValue] == 0) 
+	{
 		return;
 	}
-	[super observeValueForKeyPath:keyPath 
-						 ofObject:object 
-						   change:change
-						  context:context];
+	[FlurryAPI logEvent:@"playButton"];
+	if ([audioButton.currentImage isEqual:[UIImage imageNamed:@"playButton.png"]])
+	{		
+		[self createStreamer];
+		[self setAudioButtonImage:[UIImage imageNamed:@"loadButton.png"]];
+		[streamer start];
+	}
+	else
+	{
+		[streamer stop];
+	}
 }
+//
+// playbackStateChanged:
+//
+// Invoked when the AudioStreamer
+// reports that its playback status has changed.
+//
+- (void)playbackStateChanged:(NSNotification *)aNotification
+{
+	if ([streamer isWaiting])
+	{
+		[self setAudioButtonImage:[UIImage imageNamed:@"loadButton.png"]];
+	}
+	else if ([streamer isPlaying])
+	{
+		[self setAudioButtonImage:[UIImage imageNamed:@"stopButton.png"]];
+	}
+	else if ([streamer isIdle])
+	{
+		[self destroyStreamer];
+		[self setAudioButtonImage:[UIImage imageNamed:@"playButton.png"]];
+	}
+}
+//
+// destroyStreamer
+//
+// Removes the streamer, the UI update timer and the change notification
+//
+- (void)destroyStreamer
+{
+	if (streamer)
+	{
+		[[NSNotificationCenter defaultCenter]
+		 removeObserver:self
+		 name:ASStatusChangedNotification
+		 object:streamer];
+		//[progressUpdateTimer invalidate];
+		//progressUpdateTimer = nil;
+		
+		[streamer stop];
+		[streamer release];
+		streamer = nil;
+	}
+}
+// 
+// createStreamer
+//
+// Creates or recreates the AudioStreamer object.
+//
+- (void)createStreamer
+{
+	if (streamer)
+	{
+		return;
+	}
+	
+	[self destroyStreamer];
+	
+	//NSString *urlString = @"http://liveshow.keithandthegirl.com:8004";
+	NSString *urlString = 
+	@"http://scfire-mtc-aa05.stream.aol.com:80/stream/1010";
+	NSURL *url = [NSURL URLWithString:urlString];
+	
+	streamer = [[AudioStreamer alloc] initWithURL:url];
+	
+//	progressUpdateTimer =
+//	[NSTimer
+//	 scheduledTimerWithTimeInterval:0.1
+//	 target:self
+//	 selector:@selector(updateProgress:)
+//	 userInfo:nil
+//	 repeats:YES];
+	[[NSNotificationCenter defaultCenter]
+	 addObserver:self
+	 selector:@selector(playbackStateChanged:)
+	 name:ASStatusChangedNotification
+	 object:streamer];
+}
+
 #pragma mark -
 #pragma mark Volume
 #pragma mark -

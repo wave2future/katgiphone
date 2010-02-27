@@ -133,6 +133,21 @@
 		// and user is not connected
 		// returning array with No Connection Dictionary
 		pics = [self _noConnectionArray];
+	} 
+	else if (pics && [shouldStream intValue] != 0)
+	{
+		for (NSDictionary *dict in pics)
+		{
+			if ([[dict objectForKey:@"isStub"] boolValue])
+			{
+				_pollingThread = 
+				[[NSThread alloc] initWithTarget:self 
+										selector:@selector(_pollShowFeed:) 
+										  object:ID];
+				[_pollingThread start];
+				break;
+			}
+		}
 	}
 	return [pics retain];
 }
@@ -262,12 +277,14 @@
 											   picURL,
 											   picTitle,
 											   picDescription, 
-											   imageData, nil]
+											   imageData, 
+											   [NSNumber numberWithBool:YES],nil]
 									  forKeys:[NSArray arrayWithObjects:
 											   @"URL",
 											   @"Title",
 											   @"Description", 
-											   @"Data", nil]];
+											   @"Data",
+											   @"isStub", nil]];
 		[_picsProxyParser addObject:pic];
 		[pic release]; pic = nil;
 	}
