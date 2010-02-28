@@ -190,12 +190,23 @@
 	
 	if ([[[aList objectAtIndex:indexPath.row] objectForKey:@"hasNotes"] boolValue])
 	{
+		[[cell showNotesImageView] setHidden:NO];
 		[[cell showNotesImageView] setImage:[UIImage imageNamed:@"notes.png"]];
 	}
+	else 
+	{
+		[[cell showNotesImageView] setHidden:YES];
+	}
+
 	
 	if ([[[aList objectAtIndex:indexPath.row] objectForKey:@"hasPics"] boolValue])
 	{
+		[[cell showPicsImageView] setHidden:NO];
 		[[cell showPicsImageView] setImage:[UIImage imageNamed:@"pics.png"]];
+	}
+	else 
+	{
+		[[cell showPicsImageView] setHidden:YES];
 	}
 	
 	[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
